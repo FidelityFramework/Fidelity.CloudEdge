@@ -1,7 +1,7 @@
 {
   "schema": "./temp/Vectorize-openapi.json",
   "project": "Fidelity.CloudEdge.Management.Vectorize",
-  "output": "../../src/Management/Fidelity.CloudEdge.Management.Vectorize",
+  "output": "../../src/Management/CloudEdge.Management.Vectorize",
   "asyncReturnType": "async",
   "target": "fsharp",
   "synchronous": false,

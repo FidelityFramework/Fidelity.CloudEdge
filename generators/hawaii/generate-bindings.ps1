@@ -5,7 +5,7 @@ param(
     [string]$SpecUrl = "https://api.cloudflare.com/schemas/openapi.json",
 
     [Parameter(Mandatory=$false)]
-    [string]$OutputPath = "..\..\src\Management\Fidelity.CloudEdge.Management\Generated.fs"
+    [string]$OutputPath = "..\..\src\Management\CloudEdge.Management\Generated.fs"
 )
 
 Write-Host "Hawaii Binding Generator for Cloudflare Management APIs" -ForegroundColor Cyan
