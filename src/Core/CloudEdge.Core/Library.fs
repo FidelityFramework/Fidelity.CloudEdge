@@ -1,4 +1,4 @@
-﻿namespace CloudFlare.Core
+﻿namespace Fidelity.CloudEdge.Core
 
 open System
 open Fable.Core

@@ -76,64 +76,6 @@ Fidelity.CloudEdge/
 - **Usage**: REST API clients for deployment tools and scripts
 - **Framework Role**: Enables dynamic resource allocation for actor migrations
 
-### Actor Model Substrate Transparency
-
-The core insight of Fidelity.CloudEdge is that the actor model doesn't care where it runs:
-
-```fsharp
-// Same code, different substrates
-type UserActor() =
-    let mailbox = MailboxProcessor<UserMsg>.Start(fun inbox ->
-        async {
-            while true do
-                let! msg = inbox.Receive()
-                match msg with
-                | GetUser userId ->
-                    // Sequential processing guaranteed
-                    let! user = database.GetUser(userId)
-                    // ...
-        })
-
-// Bare Metal (via Firefly): MLIR compilation → native code
-// Edge (via Fable): F# → JavaScript → V8 in Cloudflare Workers
-
-// Both provide: message queue, sequential processing, state isolation
-```
-
-### Durable Objects as Actor Substrate
-
-Cloudflare's Durable Objects provide the sequential execution context necessary for actor model guarantees:
-
-- **Single-threaded execution**: Each Durable Object instance handles one request at a time
-- **Guaranteed ordering**: Messages are processed in FIFO order
-- **State isolation**: Each actor instance has isolated state
-- **Geographic affinity**: Objects can be co-located with data for low latency
-
-This makes Durable Objects a natural substrate for F# actors at the edge:
-
-```fsharp
-// RAG Agent as Durable Object
-open Fidelity.CloudEdge.DurableObjects
-open Fidelity.CloudEdge.AI
-open Fidelity.CloudEdge.Vectorize
-
-[<DurableObject>]
-type RAGAgent(state: DurableObjectState, env: Env) =
-    let vectorize = env.VECTOR_INDEX
-    let ai = env.AI
-
-    member this.fetch(request: Request) = async {
-        let! query = request.json<QueryRequest>()
-
-        // Sequential processing guaranteed by Durable Object runtime
-        let! vectors = vectorize.query(query.embedding, topK = 5)
-        let context = vectors |> buildContext
-        let! response = ai.run(Llama_3, {| prompt = query.text; context = context |})
-
-        return Response.json(response)
-    }
-```
-
 ## Current Implementation Status
 
 > **⚠️ Important Note**: While the generated code is coherent, extensive testing and validation is required before production use.
@@ -344,58 +286,6 @@ let handleR2Request (env: Env) = async {
 }
 ```
 
-## Building from Source
-
-### Prerequisites
-- .NET 8.0 or later
-- Node.js 18+
-- Glutinum CLI: `npm install -g @glutinum/cli`
-- Hawaii: `dotnet tool install -g hawaii`
-
-### Build Commands
-
-```bash
-# Clone repository
-git clone https://github.com/speakeztech/Fidelity.CloudEdge.git
-cd Fidelity.CloudEdge
-
-# Build entire solution
-dotnet build Fidelity.CloudEdge.sln -c Release
-
-# Run tests
-dotnet test Fidelity.CloudEdge.sln -c Release
-
-# Build NuGet packages
-cd nuget
-dotnet fsi build.fsx
-
-# Run sample Worker
-cd ../samples/HelloWorker
-dotnet fable . --outDir dist
-npx wrangler dev
-```
-
-## Generation Pipeline
-
-### Runtime Bindings (TypeScript → F#)
-```bash
-cd generators/glutinum
-npx @glutinum/cli generate \
-    ../../node_modules/@cloudflare/workers-types/index.d.ts \
-    --output ../../src/Runtime/CloudEdge.Worker.Context/Generated.fs
-```
-
-### Management APIs (OpenAPI → F#)
-```bash
-cd generators/hawaii
-
-# 1. Segment the massive OpenAPI spec
-dotnet fsi extract-services.fsx
-
-# 2. Generate F# clients
-hawaii --config d1-hawaii.json
-```
-
 ## Sample Projects
 
 ### HelloWorker
@@ -419,13 +309,6 @@ cd samples/SecureChat
 dotnet fable . --outDir dist
 npx wrangler dev
 ```
-
-### AskAI
-RAG agent demonstrating actor model on edge:
-- Durable Objects for stateful actor instances
-- Vectorize for semantic search
-- Workers AI for LLM inference
-- CLI management interface
 
 ## Vision & Roadmap
 
@@ -472,15 +355,6 @@ let deploy env = cloudflare {
 // cfs deploy ./deploy.fsx --offline    # Generate wrangler.toml
 // cfs deploy ./deploy.fsx --hybrid     # Provision + TOML generation
 ```
-
-### Firetower - Visual Platform Observatory
-
-Firetower will provide Erlang Observer-style monitoring for the entire Fidelity ecosystem:
-
-- **Actor Visualization**: Live actor topology, message flow, and supervision trees
-- **Cross-Substrate Monitoring**: Unified view of actors on bare metal and edge
-- **Performance Analytics**: Latency heatmaps, throughput metrics, bottleneck detection
-- **Cost Optimization**: Real-time billing estimates and substrate-switching recommendations
 
 ### Unified Development Experience
 

@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\CloudFlare.Core\CloudFlare.Core.fsproj" />
-    <ProjectReference Include="..\CloudFlare.Worker.Context\CloudFlare.Worker.Context.fsproj" />
+    <ProjectReference Include="..\..\Core\CloudEdge.Core\CloudEdge.Core.fsproj" />
+    <ProjectReference Include="..\CloudEdge.Worker.Context\CloudEdge.Worker.Context.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
