@@ -31,25 +31,25 @@ jobs:
           echo "Publishing version: $VERSION"
 
       - name: Build solution
-        run: dotnet build CloudflareFS.sln -c Release
+        run: dotnet build Fidelity.CloudEdge.sln -c Release
 
       - name: Generate Fable project file
         working-directory: nuget
         run: dotnet fsi build.fsx --stage "Generate Unified Fable .fsproj"
 
-      - name: Pack CloudflareFS.Runtime
+      - name: Pack Fidelity.CloudEdge.Runtime
         working-directory: nuget
-        run: dotnet pack CloudflareFS.Runtime.proj -c Release -o out /p:PackageVersion=${{ steps.version.outputs.version }}
+        run: dotnet pack Fidelity.CloudEdge.Runtime.proj -c Release -o out /p:PackageVersion=${{ steps.version.outputs.version }}
 
-      - name: Pack CloudflareFS.Management
+      - name: Pack Fidelity.CloudEdge.Management
         working-directory: nuget
-        run: dotnet pack CloudflareFS.Management.proj -c Release -o out /p:PackageVersion=${{ steps.version.outputs.version }}
+        run: dotnet pack Fidelity.CloudEdge.Management.proj -c Release -o out /p:PackageVersion=${{ steps.version.outputs.version }}
 
       - name: Push to NuGet
         working-directory: nuget/out
         run: |
-          dotnet nuget push CloudflareFS.Runtime.${{ steps.version.outputs.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push CloudflareFS.Management.${{ steps.version.outputs.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push Fidelity.CloudEdge.Runtime.${{ steps.version.outputs.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push Fidelity.CloudEdge.Management.${{ steps.version.outputs.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
       - name: Upload packages as artifacts
         uses: actions/upload-artifact@v4

@@ -24,13 +24,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore CloudflareFS.sln
+        run: dotnet restore Fidelity.CloudEdge.sln
 
       - name: Build
-        run: dotnet build CloudflareFS.sln -c Release --no-restore
+        run: dotnet build Fidelity.CloudEdge.sln -c Release --no-restore
 
       - name: Test
-        run: dotnet test CloudflareFS.sln -c Release --no-build --verbosity normal
+        run: dotnet test Fidelity.CloudEdge.sln -c Release --no-build --verbosity normal
 
       - name: Generate Fable project file
         working-directory: nuget
@@ -39,8 +39,8 @@ jobs:
       - name: Pack (validation only)
         working-directory: nuget
         run: |
-          dotnet pack CloudflareFS.Runtime.proj -c Release -o out
-          dotnet pack CloudflareFS.Management.proj -c Release -o out
+          dotnet pack Fidelity.CloudEdge.Runtime.proj -c Release -o out
+          dotnet pack Fidelity.CloudEdge.Management.proj -c Release -o out
 
       - name: Upload packages as artifacts
         uses: actions/upload-artifact@v4

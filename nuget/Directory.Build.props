@@ -1,7 +1,7 @@
 <Project>
   <!--
-    Shared NuGet package properties for CloudflareFS packages.
-    These properties are inherited by CloudflareFS.Runtime.proj and CloudflareFS.Management.proj.
+    Shared NuGet package properties for Fidelity.CloudEdge packages.
+    These properties are inherited by Fidelity.CloudEdge.Runtime.proj and Fidelity.CloudEdge.Management.proj.
   -->
 
   <PropertyGroup>
@@ -11,12 +11,12 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package Metadata">
-    <Authors>CloudflareFS Contributors</Authors>
-    <Company>CloudflareFS</Company>
-    <Copyright>Copyright (c) CloudflareFS Contributors</Copyright>
+    <Authors>Fidelity.CloudEdge Contributors</Authors>
+    <Company>Fidelity Framework</Company>
+    <Copyright>Copyright (c) Fidelity Framework Contributors</Copyright>
     <PackageLicenseExpression>MIT OR Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/speakeztech/CloudflareFS</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/speakeztech/CloudflareFS</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/speakeztech/Fidelity.CloudEdge</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/speakeztech/Fidelity.CloudEdge</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
