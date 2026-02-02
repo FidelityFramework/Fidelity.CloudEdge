@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Management\CloudFlare.Management.R2\CloudFlare.Management.R2.fsproj" />
-    <ProjectReference Include="..\..\src\Management\CloudFlare.Management.Workers\CloudFlare.Management.Workers.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.R2\CloudEdge.Management.R2.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Workers\CloudEdge.Management.Workers.fsproj" />
   </ItemGroup>
 
 </Project>

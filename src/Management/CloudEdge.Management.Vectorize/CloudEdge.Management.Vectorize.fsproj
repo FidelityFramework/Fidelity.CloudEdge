@@ -2,6 +2,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <AssemblyName>Fidelity.CloudEdge.Management.Vectorize</AssemblyName>
+    <RootNamespace>Fidelity.CloudEdge.Management.Vectorize</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="StringEnum.fs" />

@@ -2,6 +2,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <AssemblyName>Fidelity.CloudEdge.Management.Queues</AssemblyName>
+    <RootNamespace>Fidelity.CloudEdge.Management.Queues</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="StringEnum.fs" />

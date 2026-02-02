@@ -28,9 +28,9 @@
     Note: In a full implementation, you would reference the Hawaii-generated
     Management API bindings here:
 
-    <ProjectReference Include="../../../src/Management/CloudFlare.Management.R2/CloudFlare.Management.R2.fsproj" />
-    <ProjectReference Include="../../../src/Management/CloudFlare.Management.D1/CloudFlare.Management.D1.fsproj" />
-    <ProjectReference Include="../../../src/Management/CloudFlare.Management.Workers/CloudFlare.Management.Workers.fsproj" />
+    <ProjectReference Include="../../../src/Management/CloudEdge.Management.R2/CloudEdge.Management.R2.fsproj" />
+    <ProjectReference Include="../../../src/Management/CloudEdge.Management.D1/CloudEdge.Management.D1.fsproj" />
+    <ProjectReference Include="../../../src/Management/CloudEdge.Management.Workers/CloudEdge.Management.Workers.fsproj" />
   -->
 
 </Project>

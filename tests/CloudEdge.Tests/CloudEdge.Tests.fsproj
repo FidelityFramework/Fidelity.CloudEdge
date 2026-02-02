@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <OutputType>Exe</OutputType>
+    <AssemblyName>Fidelity.CloudEdge.Tests</AssemblyName>
+    <RootNamespace>Fidelity.CloudEdge.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,12 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Core\CloudFlare.Core\CloudFlare.Core.fsproj" />
-    <ProjectReference Include="..\..\src\Management\CloudFlare.Management.D1\CloudFlare.Management.D1.fsproj" />
-    <ProjectReference Include="..\..\src\Management\CloudFlare.Management.R2\CloudFlare.Management.R2.fsproj" />
-    <ProjectReference Include="..\..\src\Management\CloudFlare.Management.Workers\CloudFlare.Management.Workers.fsproj" />
-    <ProjectReference Include="..\..\src\Runtime\CloudFlare.AI\CloudFlare.AI.fsproj" />
-    <ProjectReference Include="..\..\src\Runtime\CloudFlare.Worker.Context\CloudFlare.Worker.Context.fsproj" />
+    <ProjectReference Include="..\..\src\Core\CloudEdge.Core\CloudEdge.Core.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.D1\CloudEdge.Management.D1.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.R2\CloudEdge.Management.R2.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Workers\CloudEdge.Management.Workers.fsproj" />
+    <ProjectReference Include="..\..\src\Runtime\CloudEdge.AI\CloudEdge.AI.fsproj" />
+    <ProjectReference Include="..\..\src\Runtime\CloudEdge.Worker.Context\CloudEdge.Worker.Context.fsproj" />
   </ItemGroup>
 
 </Project>

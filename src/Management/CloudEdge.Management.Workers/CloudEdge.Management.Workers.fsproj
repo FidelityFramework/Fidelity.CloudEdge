@@ -2,6 +2,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <AssemblyName>Fidelity.CloudEdge.Management.Workers</AssemblyName>
+    <RootNamespace>Fidelity.CloudEdge.Management.Workers</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="StringEnum.fs" />

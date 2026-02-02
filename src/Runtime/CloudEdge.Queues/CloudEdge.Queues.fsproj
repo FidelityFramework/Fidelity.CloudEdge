@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Fidelity.CloudEdge.Queues</AssemblyName>
+    <RootNamespace>Fidelity.CloudEdge.Queues</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

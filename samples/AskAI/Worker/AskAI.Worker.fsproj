@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../../src/Runtime/CloudFlare.Worker.Context/CloudFlare.Worker.Context.fsproj" />
-    <ProjectReference Include="../../../src/Runtime/CloudFlare.D1/CloudFlare.D1.fsproj" />
-    <ProjectReference Include="../../../src/Runtime/CloudFlare.AI/CloudFlare.AI.fsproj" />
+    <ProjectReference Include="../../../src/Runtime/CloudEdge.Worker.Context/CloudEdge.Worker.Context.fsproj" />
+    <ProjectReference Include="../../../src/Runtime/CloudEdge.D1/CloudEdge.D1.fsproj" />
+    <ProjectReference Include="../../../src/Runtime/CloudEdge.AI/CloudEdge.AI.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
