@@ -5,7 +5,7 @@ param(
     [string]$SpecUrl = "https://api.cloudflare.com/schemas/openapi.json",
 
     [Parameter(Mandatory=$false)]
-    [string]$OutputPath = "..\..\src\Management\CloudFlare.Api\Generated.fs"
+    [string]$OutputPath = "..\..\src\Management\Fidelity.CloudEdge.Management\Generated.fs"
 )
 
 Write-Host "Hawaii Binding Generator for Cloudflare Management APIs" -ForegroundColor Cyan
@@ -45,7 +45,7 @@ Write-Host "Generating F# client bindings..." -ForegroundColor Yellow
 try {
     hawaii $specFile `
         --output $OutputPath `
-        --namespace CloudFlare.Api `
+        --namespace Fidelity.CloudEdge.Management `
         --synchronous false `
         --target fsharp
 
@@ -65,5 +65,5 @@ catch {
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
 Write-Host "  1. Review generated bindings in $OutputPath" -ForegroundColor Gray
-Write-Host "  2. Add CloudFlare.Api project reference to your solution" -ForegroundColor Gray
+Write-Host "  2. Add Fidelity.CloudEdge.Management project reference to your solution" -ForegroundColor Gray
 Write-Host "  3. Configure API authentication in your code" -ForegroundColor Gray

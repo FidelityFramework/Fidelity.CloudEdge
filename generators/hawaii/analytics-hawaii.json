@@ -1,8 +1,8 @@
 {
   "schema": "./temp/Analytics-openapi.json",
-  "project": "CloudFlare.Management.Analytics",
+  "project": "Fidelity.CloudEdge.Management.Analytics",
   "output": "./Generated-Analytics",
-  "namespace": "CloudFlare.Management.Analytics",
+  "namespace": "Fidelity.CloudEdge.Management.Analytics",
   "synchronous": false,
   "target": "fsharp",
   "generateClient": true,

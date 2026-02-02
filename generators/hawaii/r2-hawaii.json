@@ -1,8 +1,8 @@
 {
   "schema": "./temp/R2-openapi.json",
-  "project": "CloudFlare.Management.R2",
-  "output": "../../src/Management/CloudFlare.Management.R2",
-  "namespace": "CloudFlare.Management.R2",
+  "project": "Fidelity.CloudEdge.Management.R2",
+  "output": "../../src/Management/Fidelity.CloudEdge.Management.R2",
+  "namespace": "Fidelity.CloudEdge.Management.R2",
   "synchronous": false,
   "target": "fsharp",
   "generateClient": true,

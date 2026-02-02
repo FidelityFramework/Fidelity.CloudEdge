@@ -1,5 +1,5 @@
 {
-  "namespace": "CloudFlare.Api.Storage.KV",
+  "namespace": "Fidelity.CloudEdge.Management.KV",
   "synchronous": false,
   "target": "fsharp",
   "emptyDefinitions": "ignore",

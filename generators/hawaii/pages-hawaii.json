@@ -1,8 +1,8 @@
 {
   "schema": "./schemas/Pages-openapi.json",
-  "project": "CloudFlare.Management.Pages",
-  "output": "../../src/Management/CloudFlare.Management.Pages",
-  "namespace": "CloudFlare.Management.Pages",
+  "project": "Fidelity.CloudEdge.Management.Pages",
+  "output": "../../src/Management/Fidelity.CloudEdge.Management.Pages",
+  "namespace": "Fidelity.CloudEdge.Management.Pages",
   "synchronous": false,
   "target": "fsharp",
   "generateClient": true,

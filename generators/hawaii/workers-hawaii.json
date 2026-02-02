@@ -1,8 +1,8 @@
 {
   "schema": "./temp/Workers-openapi.json",
-  "project": "CloudFlare.Management.Workers",
+  "project": "Fidelity.CloudEdge.Management.Workers",
   "output": "./Generated-Workers",
-  "namespace": "CloudFlare.Management.Workers",
+  "namespace": "Fidelity.CloudEdge.Management.Workers",
   "synchronous": false,
   "target": "fsharp",
   "generateClient": true,

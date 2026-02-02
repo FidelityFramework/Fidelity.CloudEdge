@@ -1,8 +1,8 @@
 {
   "schema": "./temp/KV-openapi.json",
-  "project": "CloudFlare.Api.Storage.KV",
+  "project": "Fidelity.CloudEdge.Management.KV",
   "output": "./Generated",
-  "namespace": "CloudFlare.Api.Storage.KV",
+  "namespace": "Fidelity.CloudEdge.Management.KV",
   "synchronous": false,
   "target": "fsharp",
   "generateClient": true,

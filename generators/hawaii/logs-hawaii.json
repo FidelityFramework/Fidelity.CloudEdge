@@ -1,8 +1,8 @@
 {
   "schema": "./temp/Logs-openapi.json",
-  "project": "CloudFlare.Management.Logs",
+  "project": "Fidelity.CloudEdge.Management.Logs",
   "output": "./Generated-Logs",
-  "namespace": "CloudFlare.Management.Logs",
+  "namespace": "Fidelity.CloudEdge.Management.Logs",
   "synchronous": false,
   "target": "fsharp",
   "generateClient": true,

@@ -1,8 +1,8 @@
 {
   "schema": "./temp/Queues-openapi.json",
-  "project": "CloudFlare.Management.Queues",
+  "project": "Fidelity.CloudEdge.Management.Queues",
   "output": "./Generated-Queues",
-  "namespace": "CloudFlare.Management.Queues",
+  "namespace": "Fidelity.CloudEdge.Management.Queues",
   "synchronous": false,
   "target": "fsharp",
   "generateClient": true,
