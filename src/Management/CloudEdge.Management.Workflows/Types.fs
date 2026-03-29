@@ -42,7 +42,7 @@ type WorListWorkflows_BadRequestErrors = { code: float; message: string }
 type WorListWorkflows_BadRequest =
     { errors: list<WorListWorkflows_BadRequestErrors>
       messages: list<string>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -277,7 +277,7 @@ type WorListWorkflowInstances_BadRequestErrors = { code: float; message: string 
 type WorListWorkflowInstances_BadRequest =
     { errors: list<WorListWorkflowInstances_BadRequestErrors>
       messages: list<string>
-      result: obj
+      result: list<obj>
       success: bool }
 
 type WorListWorkflowInstances_NotFoundErrors = { code: float; message: string }
@@ -285,7 +285,7 @@ type WorListWorkflowInstances_NotFoundErrors = { code: float; message: string }
 type WorListWorkflowInstances_NotFound =
     { errors: list<WorListWorkflowInstances_NotFoundErrors>
       messages: list<string>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -456,7 +456,7 @@ type WorBatchCreateWorkflowInstance_BadRequestErrors = { code: float; message: s
 type WorBatchCreateWorkflowInstance_BadRequest =
     { errors: list<WorBatchCreateWorkflowInstance_BadRequestErrors>
       messages: list<string>
-      result: obj
+      result: list<obj>
       success: bool }
 
 type WorBatchCreateWorkflowInstance_NotFoundErrors = { code: float; message: string }
@@ -464,7 +464,7 @@ type WorBatchCreateWorkflowInstance_NotFoundErrors = { code: float; message: str
 type WorBatchCreateWorkflowInstance_NotFound =
     { errors: list<WorBatchCreateWorkflowInstance_NotFoundErrors>
       messages: list<string>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -693,7 +693,7 @@ type WorSendEventWorkflowInstance_OKResultinfo =
 type WorSendEventWorkflowInstance_OK =
     { errors: list<WorSendEventWorkflowInstance_OKErrors>
       messages: list<WorSendEventWorkflowInstance_OKMessages>
-      result: Option<obj>
+      result: Option<Map<string, obj>>
       result_info: Option<WorSendEventWorkflowInstance_OKResultinfo>
       success: bool }
 
@@ -702,7 +702,7 @@ type WorSendEventWorkflowInstance_BadRequestErrors = { code: float; message: str
 type WorSendEventWorkflowInstance_BadRequest =
     { errors: list<WorSendEventWorkflowInstance_BadRequestErrors>
       messages: list<string>
-      result: obj
+      result: Map<string, obj>
       success: bool }
 
 type WorSendEventWorkflowInstance_NotFoundErrors = { code: float; message: string }
@@ -710,7 +710,7 @@ type WorSendEventWorkflowInstance_NotFoundErrors = { code: float; message: strin
 type WorSendEventWorkflowInstance_NotFound =
     { errors: list<WorSendEventWorkflowInstance_NotFoundErrors>
       messages: list<string>
-      result: obj
+      result: Map<string, obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -852,7 +852,7 @@ type WorListWorkflowVersions_BadRequestErrors = { code: float; message: string }
 type WorListWorkflowVersions_BadRequest =
     { errors: list<WorListWorkflowVersions_BadRequestErrors>
       messages: list<string>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]

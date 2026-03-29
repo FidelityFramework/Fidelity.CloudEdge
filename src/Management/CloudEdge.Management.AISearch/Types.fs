@@ -2000,7 +2000,7 @@ type Messages =
 type AiSearchInstanceChatCompletionPayload =
     { ai_search_options: Option<Aisearchoptions>
       messages: list<Messages>
-      model: Option<obj>
+      model: Option<string>
       stream: Option<bool> }
     ///Creates an instance of AiSearchInstanceChatCompletionPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (messages: list<Messages>): AiSearchInstanceChatCompletionPayload =
@@ -2054,7 +2054,7 @@ type AiSearchInstanceChatCompletion_OK =
     { choices: list<Choices>
       chunks: list<Chunks>
       id: Option<string>
-      model: Option<obj>
+      model: Option<string>
       object: Option<string> }
 
 type AiSearchInstanceChatCompletion_NotFoundErrors = { code: float; message: string }
@@ -2103,7 +2103,7 @@ type AiSearchInstanceListJobs_BadRequestErrors = { message: string }
 
 type AiSearchInstanceListJobs_BadRequest =
     { errors: list<AiSearchInstanceListJobs_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 type AiSearchInstanceListJobs_InternalServerErrorErrors = { code: float; message: string }
@@ -2291,7 +2291,7 @@ type AiSearchInstanceListJobLogs_BadRequestErrors = { message: string }
 
 type AiSearchInstanceListJobLogs_BadRequest =
     { errors: list<AiSearchInstanceListJobLogs_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 type AiSearchInstanceListJobLogs_InternalServerErrorErrors = { code: float; message: string }
@@ -2488,8 +2488,8 @@ type AiSearchInstanceSearch =
 type AiSearchStats_OKResult =
     { completed: Option<int>
       error: Option<int>
-      file_embed_errors: Option<obj>
-      index_source_errors: Option<obj>
+      file_embed_errors: Option<Map<string, obj>>
+      index_source_errors: Option<Map<string, obj>>
       last_activity: Option<System.DateTimeOffset>
       queued: Option<int>
       running: Option<int>

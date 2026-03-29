@@ -11807,7 +11807,7 @@ type McpPortalsApiListPortals_BadRequestErrors = { message: string }
 
 type McpPortalsApiListPortals_BadRequest =
     { errors: list<McpPortalsApiListPortals_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -12125,7 +12125,7 @@ type McpPortalsApiListServers_BadRequestErrors = { message: string }
 
 type McpPortalsApiListServers_BadRequest =
     { errors: list<McpPortalsApiListServers_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]

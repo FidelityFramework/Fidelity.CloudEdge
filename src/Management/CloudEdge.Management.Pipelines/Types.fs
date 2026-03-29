@@ -550,7 +550,7 @@ type Errors = { code: float; message: string }
 
 type GetV4AccountsByAccountIdPipelinesDeprecated_BadRequest =
     { errors: list<Errors>
-      results: obj
+      results: list<``cloudflare-pipelinesworkers-pipelines-pipeline``>
       success: obj }
 
 [<RequireQualifiedAccess>]

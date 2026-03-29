@@ -170,6 +170,57 @@ module Schema =
             | None -> None
         | None -> None
 
+    /// Build operationId → response schema map from paths (for specs with inline schemas)
+    let buildOperationResponseMap (root: JsonElement) : Map<string, JsonElement> =
+        let mutable result = Map.empty
+        match tryGetProp root "paths" with
+        | Some paths when paths.ValueKind = JsonValueKind.Object ->
+            for pathEntry in paths.EnumerateObject() do
+                for methodEntry in pathEntry.Value.EnumerateObject() do
+                    let method = methodEntry.Name
+                    if method = "get" || method = "post" || method = "put" || method = "delete" || method = "patch" then
+                        match getStringProp methodEntry.Value "operationId" with
+                        | Some opId ->
+                            // Get 200 response schema
+                            match tryGetProp methodEntry.Value "responses" with
+                            | Some responses ->
+                                for statusEntry in responses.EnumerateObject() do
+                                    if statusEntry.Name.StartsWith("2") then
+                                        match tryGetProp statusEntry.Value "content" with
+                                        | Some content ->
+                                            for contentEntry in content.EnumerateObject() do
+                                                if contentEntry.Name.Contains("json") then
+                                                    match tryGetProp contentEntry.Value "schema" with
+                                                    | Some schema -> result <- result |> Map.add opId schema
+                                                    | None -> ()
+                                        | None -> ()
+                            | None -> ()
+                        | None -> ()
+        | _ -> ()
+        result
+
+    /// Resolve a property from an inline response schema (for specs without named schemas)
+    let getPropertyFromResponseSchema (responseSchema: JsonElement) (propName: string) =
+        // Response might be { properties: { result: ..., success: ... } }
+        // or might be { type: "object" } (untyped)
+        match tryGetProp responseSchema "properties" with
+        | Some props -> tryGetProp props propName
+        | None -> None
+
+    /// Convert operationId to Hawaii PascalCase DU name
+    /// "aig-config-list-evaluators" → "AigConfigListEvaluators"
+    let operationIdToTypeName (opId: string) =
+        opId.Split([|'-'; '_'|])
+        |> Array.map (fun s ->
+            if s.Length > 0 then
+                (string (System.Char.ToUpper s.[0])) + s.[1..]
+            else s)
+        |> String.concat ""
+
+    /// Backtick-quote a type name if it contains hyphens
+    let quoteTypeName (name: string) =
+        if name.Contains("-") then sprintf "``%s``" name else name
+
     /// Map a SchemaInfo to an F# type string
     let rec schemaToFSharpType (info: SchemaInfo) : string option =
         match info with
@@ -180,7 +231,7 @@ module Schema =
         | DateTimeType -> Some "System.DateTimeOffset"
         | ArrayOfObjects -> Some "list<obj>"
         | ArrayOfStrings -> Some "list<string>"
-        | ArrayOfType name -> Some (sprintf "list<%s>" name)
+        | ArrayOfType name -> Some (sprintf "list<%s>" (name.Replace("_", "") |> quoteTypeName))
         | ObjectNoProperties -> Some "Map<string, obj>"
         | NullEnum -> Some "obj"  // null enum stays obj
         | AllOfWrapper inner -> schemaToFSharpType inner
@@ -279,73 +330,45 @@ module Resolver =
 
         else
             // Try schema-based resolution
-            // Find the schema that matches this type name
             let matchingSchema =
                 schemaNames |> List.tryFind (fun sn ->
                     let cleaned = sn.Replace("_", "").Replace("-", "")
                     let typeCleaned = typeName.Replace("``", "").Replace("-", "")
                     cleaned = typeCleaned || sn.EndsWith(typeName.Replace("``", "")))
 
+            /// Wrap raw type with Option<> if the original field was Option<obj>
+            let wrapOpt (rawType: string) =
+                if currentType.StartsWith("Option<") && not (rawType.StartsWith("Option<")) then
+                    sprintf "Option<%s>" rawType
+                else rawType
+
+            /// Backtick-quote a type name if it contains hyphens
+            let quoteIfNeeded (name: string) =
+                if name.Contains("-") then sprintf "``%s``" name else name
+
             match matchingSchema with
             | Some schemaName ->
                 match Schema.getPropertySchema root schemaName fieldName with
                 | Some propEl ->
                     let info = classifySchema root propEl
-                    match info with
-                    | StringType ->
-                        if currentType = "Option<obj>" then Some "Option<string>"
-                        elif currentType = "obj" then Some "string"
-                        else None
-                    | IntegerType ->
-                        if currentType = "Option<obj>" then Some "Option<int>"
-                        elif currentType = "obj" then Some "int"
-                        else None
-                    | NumberType ->
-                        if currentType = "Option<obj>" then Some "Option<float>"
-                        elif currentType = "obj" then Some "float"
-                        else None
-                    | BooleanType ->
-                        if currentType = "Option<obj>" then Some "Option<bool>"
-                        elif currentType = "obj" then Some "bool"
-                        else None
-                    | DateTimeType ->
-                        if currentType = "Option<obj>" then Some "Option<System.DateTimeOffset>"
-                        elif currentType = "obj" then Some "System.DateTimeOffset"
-                        else None
-                    | ArrayOfStrings ->
-                        if currentType = "Option<obj>" || currentType = "Option<list<obj>>" then Some "Option<list<string>>"
-                        elif currentType = "obj" || currentType = "list<obj>" then Some "list<string>"
-                        else None
-                    | ArrayOfObjects ->
-                        if currentType = "Option<obj>" || currentType = "Option<list<obj>>" then Some "Option<list<obj>>"
-                        elif currentType = "obj" then Some "list<obj>"
-                        else None
-                    | ObjectNoProperties ->
-                        if currentType = "Option<obj>" then Some "Option<Map<string, obj>>"
-                        elif currentType = "obj" then Some "Map<string, obj>"
-                        else None
-                    | AllOfWrapper inner ->
-                        // allOf wrapping a $ref with description — resolve to the $ref's type
-                        match inner with
-                        | StringType ->
-                            if currentType = "Option<obj>" then Some "Option<string>"
-                            elif currentType = "obj" then Some "string"
-                            else None
-                        | DateTimeType ->
-                            if currentType = "Option<obj>" then Some "Option<System.DateTimeOffset>"
-                            elif currentType = "obj" then Some "System.DateTimeOffset"
-                            else None
-                        | IntegerType ->
-                            if currentType = "Option<obj>" then Some "Option<int>"
-                            elif currentType = "obj" then Some "int"
-                            else None
-                        | NumberType ->
-                            if currentType = "Option<obj>" then Some "Option<float>"
-                            elif currentType = "obj" then Some "float"
-                            else None
-                        | _ -> Schema.schemaToFSharpType inner
-                    | NullEnum -> None  // null enum stays obj
-                    | _ -> None
+                    match Schema.schemaToFSharpType info with
+                    | Some rawType ->
+                        let wrapped = wrapOpt rawType
+                        if wrapped <> currentType then Some wrapped else None
+                    | None ->
+                        // Handle ArrayOfType with backtick quoting
+                        match info with
+                        | ArrayOfType name ->
+                            let quoted = quoteIfNeeded name
+                            let rawType = sprintf "list<%s>" quoted
+                            let wrapped = wrapOpt rawType
+                            if wrapped <> currentType then Some wrapped else None
+                        | AllOfWrapper (RefTo name) ->
+                            let quoted = quoteIfNeeded name
+                            let wrapped = wrapOpt quoted
+                            if wrapped <> currentType then Some wrapped else None
+                        | NullEnum -> None
+                        | _ -> None
                 | None -> None
             | None -> None
 
@@ -573,34 +596,114 @@ if schemaChanges > 0 then
     totalChanges <- totalChanges + schemaChanges
 content <- String.concat "\n" resultLines
 
-// ── Pass 5: Fix Create method defaults for Option→non-Option changes ──
-// When a field changes from Option<_> to list<_>, the Create default
-// must change from None to [] (empty list). When it changes to a
-// non-Option type that was previously optional, None → appropriate default.
+// ── Pass 4b: Path-based resolution for inline schemas ────────────
+// For specs with no named schemas (AI, AIGateway, AISearch, AutoRAG,
+// Workflows, etc.), resolve fields by matching type names to operationIds
+// and looking up the inline response schema.
 
-let mutable defaultFixes = 0
+let opResponseMap = Schema.buildOperationResponseMap root
+let mutable pathChanges = 0
 
-// Fix: fieldName = None where fieldName is now list<_>
-content <- Regex.Replace(content,
-    @"(\b(\w+)\s*=\s*)None(\s*[;\}])",
-    (fun m ->
-        let fieldName = m.Groups.[2].Value
-        // Check if this field was changed to list<_> by looking earlier in the file
-        let fieldPattern = sprintf @"\b%s:\s+list<" (Regex.Escape fieldName)
-        if Regex.IsMatch(content.[..m.Index], fieldPattern) then
-            // Check the nearest type context — find the field declaration for this field
-            let beforeMatch = content.[..m.Index]
-            let fieldDecl = Regex.Match(beforeMatch, sprintf @"%s:\s+(list<[^>]+>)" (Regex.Escape fieldName), RegexOptions.RightToLeft)
-            if fieldDecl.Success then
-                defaultFixes <- defaultFixes + 1
-                sprintf "%s[]%s" m.Groups.[1].Value m.Groups.[3].Value
-            else m.Value
-        else m.Value),
-    RegexOptions.Multiline)
+/// Wrap a raw schema type with Option<> if the original field was Option<obj>
+let wrapWithOption (currentFieldType: string) (rawType: string) =
+    if currentFieldType.StartsWith("Option<") && not (rawType.StartsWith("Option<")) then
+        sprintf "Option<%s>" rawType
+    else rawType
 
-if defaultFixes > 0 then
-    printfn "  Fixed %d Create method default(s) (None → [])" defaultFixes
-    totalChanges <- totalChanges + defaultFixes
+/// Try to resolve a field from the response schema, returning the Option-aware type
+let tryResolveFromSchema (responseSchema: JsonElement) (fieldName: string) (currentFieldType: string) =
+    let propEl =
+        match Schema.getPropertyFromResponseSchema responseSchema fieldName with
+        | Some p -> Some p
+        | None ->
+            // Try inside result.properties (nested envelope)
+            match Schema.getPropertyFromResponseSchema responseSchema "result" with
+            | Some resultEl -> Schema.getPropertyFromResponseSchema resultEl fieldName
+            | None -> None
+    match propEl with
+    | Some pe ->
+        let info = Schema.classifySchema root pe
+        match Schema.schemaToFSharpType info with
+        | Some rawType ->
+            let newType = wrapWithOption currentFieldType rawType
+            if newType <> currentFieldType then Some newType else None
+        | None -> None
+    | None -> None
+
+/// Try to match a type name to an operationId
+let tryMatchOperation (typeName: string) =
+    let cleanTypeName = typeName.Replace("``", "")
+    opResponseMap |> Map.tryFindKey (fun opId _ ->
+        let pascalOp = Schema.operationIdToTypeName opId
+        cleanTypeName.StartsWith(pascalOp) ||
+        cleanTypeName = pascalOp + "response" ||
+        cleanTypeName = pascalOp)
+
+if opResponseMap.Count > 0 then
+    let lines2 = content.Split('\n')
+    let mutable currentType2 = ""
+    let resultLines2 = ResizeArray<string>()
+
+    for i in 0 .. lines2.Length - 1 do
+        let line = lines2.[i]
+        let mutable handled = false
+
+        // Track current type
+        let typeMatch = Regex.Match(line, @"^type\s+(``[^`]+``|\S+)\s*=")
+        if typeMatch.Success then
+            currentType2 <- typeMatch.Groups.[1].Value
+
+        // Check for obj fields in record types
+        let fieldMatch = Regex.Match(line, @"^\s+(\w+):\s+((?:Option<)?(?:list<)?obj>?>?)")
+        if fieldMatch.Success && currentType2 <> "" then
+            let fieldName = fieldMatch.Groups.[1].Value
+            let currentFieldType = fieldMatch.Groups.[2].Value
+
+            match tryMatchOperation currentType2 with
+            | Some opId ->
+                let responseSchema = opResponseMap.[opId]
+                match tryResolveFromSchema responseSchema fieldName currentFieldType with
+                | Some newType ->
+                    let newLine = Replacer.replaceFieldType line fieldName currentFieldType newType
+                    resultLines2.Add(newLine)
+                    pathChanges <- pathChanges + 1
+                    printfn "  [path] %s.%s: %s → %s" currentType2 fieldName currentFieldType newType
+                    handled <- true
+                | None -> ()
+            | None -> ()
+
+        // Also handle Create method parameters
+        elif not handled && (line.Contains(": obj") && (line.TrimStart().StartsWith("(") || line.Contains("static member Create"))) then
+            let paramMatch = Regex.Match(line, @"(\w+):\s+((?:Option<)?(?:list<)?obj>?>?)")
+            if paramMatch.Success && currentType2 <> "" then
+                let fieldName = paramMatch.Groups.[1].Value
+                let currentFieldType = paramMatch.Groups.[2].Value
+                match tryMatchOperation currentType2 with
+                | Some opId ->
+                    let responseSchema = opResponseMap.[opId]
+                    match tryResolveFromSchema responseSchema fieldName currentFieldType with
+                    | Some newType ->
+                        let newLine = Replacer.replaceCreateParam line fieldName currentFieldType newType
+                        resultLines2.Add(newLine)
+                        pathChanges <- pathChanges + 1
+                        handled <- true
+                    | None -> ()
+                | None -> ()
+
+        if not handled then
+            resultLines2.Add(line)
+
+    if pathChanges > 0 then
+        printfn "  Path-resolved: %d field(s)" pathChanges
+        totalChanges <- totalChanges + pathChanges
+    content <- String.concat "\n" resultLines2
+
+// ── Pass 5: Removed ──
+// The global None→[] default fixer caused cross-record contamination.
+// Instead, the postprocessor preserves Option wrappers (Option<obj> → Option<X>)
+// which keeps Create defaults valid. Cases where Option is genuinely wrong
+// (e.g., failure envelopes where errors: Option<list<obj>> should be errors: list<Errors>)
+// are handled in Pass 1 (A1 rules) which also fixes the Create parameters.
 
 // ── Write results ─────────────────────────────────────────────────
 

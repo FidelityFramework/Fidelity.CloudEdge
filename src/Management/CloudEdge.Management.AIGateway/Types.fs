@@ -25,7 +25,7 @@ type Errors = { message: string }
 
 type AigConfigListEvaluators_BadRequest =
     { errors: list<Errors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -116,7 +116,7 @@ type AigConfigListGateway_BadRequestErrors = { message: string }
 
 type AigConfigListGateway_BadRequest =
     { errors: list<AigConfigListGateway_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -353,7 +353,7 @@ type AigConfigListDataset_BadRequestErrors = { message: string }
 
 type AigConfigListDataset_BadRequest =
     { errors: list<AigConfigListDataset_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -905,7 +905,7 @@ type AigConfigListEvaluations_BadRequestErrors = { message: string }
 
 type AigConfigListEvaluations_BadRequest =
     { errors: list<AigConfigListEvaluations_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1292,7 +1292,7 @@ type AigConfigListGatewayLogs_BadRequestErrors = { message: string }
 
 type AigConfigListGatewayLogs_BadRequest =
     { errors: list<AigConfigListGatewayLogs_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1420,7 +1420,7 @@ type AigConfigListProviders_BadRequestErrors = { message: string }
 
 type AigConfigListProviders_BadRequest =
     { errors: list<AigConfigListProviders_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1602,7 +1602,7 @@ type AigConfigListGatewayDynamicRoutes_BadRequestErrors = { message: string }
 
 type AigConfigListGatewayDynamicRoutes_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRoutes_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1826,7 +1826,7 @@ type AigConfigListGatewayDynamicRouteDeployments_BadRequestErrors = { message: s
 
 type AigConfigListGatewayDynamicRouteDeployments_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRouteDeployments_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1901,7 +1901,7 @@ type AigConfigListGatewayDynamicRouteVersions_BadRequestErrors = { message: stri
 
 type AigConfigListGatewayDynamicRouteVersions_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRouteVersions_BadRequestErrors>
-      result: obj
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1989,7 +1989,7 @@ type AigConfigGetGatewayUrl_BadRequestErrors = { message: string }
 
 type AigConfigGetGatewayUrl_BadRequest =
     { errors: list<AigConfigGetGatewayUrl_BadRequestErrors>
-      result: obj
+      result: string
       success: bool }
 
 [<RequireQualifiedAccess>]
