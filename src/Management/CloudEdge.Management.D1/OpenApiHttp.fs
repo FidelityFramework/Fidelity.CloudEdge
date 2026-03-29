@@ -11,11 +11,11 @@ open System.Threading
 
 
 module Serializer =
-    let options = JsonSerializerOptions()
+    let options = System.Text.Json.JsonSerializerOptions()
     options.Converters.Add(JsonFSharpConverter())
     options.DefaultIgnoreCondition <- JsonIgnoreCondition.WhenWritingNull
-    let serialize<'t> (value: 't) = JsonSerializer.Serialize(value, options)
-    let deserialize<'t> (content: string) = JsonSerializer.Deserialize<'t>(content, options)
+    let serialize<'t> (value: 't) = System.Text.Json.JsonSerializer.Serialize(value, options)
+    let deserialize<'t> (content: string) = System.Text.Json.JsonSerializer.Deserialize<'t>(content, options)
 
 [<RequireQualifiedAccess>]
 type OpenApiValue =
