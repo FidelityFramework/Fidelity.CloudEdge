@@ -266,7 +266,7 @@ type ``email-securityApiResponseCommon`` =
 
 type ``email-securityAttachment`` =
     { content_type: Option<string>
-      detection: Option<Newtonsoft.Json.Linq.JToken>
+      detection: Option<obj>
       encrypted: Option<bool>
       name: Option<string>
       size: int }
@@ -389,8 +389,8 @@ type ``email-securityDisplayName`` =
       name: Option<string>
       comments: Option<string>
       created_at: Option<System.DateTimeOffset>
-      directory_id: Option<Newtonsoft.Json.Linq.JToken>
-      directory_node_id: Option<Newtonsoft.Json.Linq.JToken>
+      directory_id: Option<obj>
+      directory_node_id: Option<obj>
       id: Option<int>
       last_modified: Option<System.DateTimeOffset>
       provenance: Option<string> }
@@ -424,16 +424,16 @@ type Regions =
 
 type ``email-securityDomain`` =
     { allowed_delivery_modes: list<``email-securityDeliveryMode``>
-      authorization: Option<Newtonsoft.Json.Linq.JToken>
+      authorization: Option<obj>
       created_at: System.DateTimeOffset
-      dmarc_status: Option<Newtonsoft.Json.Linq.JToken>
+      dmarc_status: Option<obj>
       domain: string
       drop_dispositions: list<``email-securityDispositionLabel``>
-      emails_processed: Option<Newtonsoft.Json.Linq.JToken>
-      folder: Option<Newtonsoft.Json.Linq.JToken>
+      emails_processed: Option<obj>
+      folder: Option<obj>
       ///The unique identifier for the domain.
       id: int
-      inbox_provider: Option<Newtonsoft.Json.Linq.JToken>
+      inbox_provider: Option<obj>
       integration_id: Option<System.Guid>
       ip_restrictions: list<string>
       last_modified: System.DateTimeOffset
@@ -442,7 +442,7 @@ type ``email-securityDomain`` =
       regions: list<Regions>
       require_tls_inbound: Option<bool>
       require_tls_outbound: Option<bool>
-      spf_status: Option<Newtonsoft.Json.Linq.JToken>
+      spf_status: Option<obj>
       transport: string }
     ///Creates an instance of email-securityDomain with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (allowed_delivery_modes: list<``email-securityDeliveryMode``>,
@@ -485,7 +485,7 @@ type ``email-securityLink`` =
 type Findings =
     { attachment: Option<string>
       detail: Option<string>
-      detection: Option<Newtonsoft.Json.Linq.JToken>
+      detection: Option<obj>
       field: Option<string>
       name: Option<string>
       portion: Option<string>
@@ -519,10 +519,10 @@ type Post_delivery_operations =
 
 type Properties =
     { allowlisted_pattern: Option<string>
-      allowlisted_pattern_type: Option<Newtonsoft.Json.Linq.JToken>
+      allowlisted_pattern_type: Option<obj>
       blocklisted_message: Option<bool>
       blocklisted_pattern: Option<string>
-      whitelisted_pattern_type: Option<Newtonsoft.Json.Linq.JToken> }
+      whitelisted_pattern_type: Option<obj> }
     ///Creates an instance of Properties with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Properties =
         { allowlisted_pattern = None
@@ -532,15 +532,15 @@ type Properties =
           whitelisted_pattern_type = None }
 
 type ``email-securityMailsearchMessage`` =
-    { action_log: Option<Newtonsoft.Json.Linq.JToken>
+    { action_log: Option<obj>
       alert_id: Option<string>
       client_recipients: Option<list<string>>
-      delivery_mode: Option<Newtonsoft.Json.Linq.JToken>
+      delivery_mode: Option<obj>
       detection_reasons: Option<list<string>>
       edf_hash: Option<string>
       envelope_from: Option<string>
       envelope_to: Option<list<string>>
-      final_disposition: Option<Newtonsoft.Json.Linq.JToken>
+      final_disposition: Option<obj>
       findings: Option<list<Findings>>
       from: Option<string>
       from_name: Option<string>
@@ -560,7 +560,7 @@ type ``email-securityMailsearchMessage`` =
       ``to``: Option<list<string>>
       to_name: Option<list<string>>
       ts: Option<string>
-      validation: Option<Newtonsoft.Json.Linq.JToken>
+      validation: Option<obj>
       id: Option<string> }
     ///Creates an instance of email-securityMailsearchMessage with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``email-securityMailsearchMessage`` =
@@ -707,13 +707,13 @@ type ``email-securityResultInfo`` =
           total_count = total_count }
 
 type ``email-securitySubmission`` =
-    { customer_status: Option<Newtonsoft.Json.Linq.JToken>
-      original_disposition: Option<Newtonsoft.Json.Linq.JToken>
+    { customer_status: Option<obj>
+      original_disposition: Option<obj>
       original_edf_hash: Option<string>
       outcome: Option<string>
-      outcome_disposition: Option<Newtonsoft.Json.Linq.JToken>
+      outcome_disposition: Option<obj>
       requested_by: Option<string>
-      requested_disposition: Option<Newtonsoft.Json.Linq.JToken>
+      requested_disposition: Option<obj>
       requested_ts: System.DateTimeOffset
       status: Option<string>
       subject: Option<string>
@@ -791,7 +791,7 @@ type ``email-securityUpdateAllowPolicy`` =
       ///Messages from this sender will bypass all detections and link following.
       is_trusted_sender: Option<bool>
       pattern: Option<string>
-      pattern_type: Option<Newtonsoft.Json.Linq.JToken>
+      pattern_type: Option<obj>
       ///Enforce DMARC, SPF or DKIM authentication.
       ///When on, Email Security only honors policies that pass authentication.
       verify_sender: Option<bool> }
@@ -810,7 +810,7 @@ type ``email-securityUpdateBlockedSender`` =
     { comments: Option<string>
       is_regex: Option<bool>
       pattern: Option<string>
-      pattern_type: Option<Newtonsoft.Json.Linq.JToken> }
+      pattern_type: Option<obj> }
     ///Creates an instance of email-securityUpdateBlockedSender with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``email-securityUpdateBlockedSender`` =
         { comments = None
@@ -1211,10 +1211,10 @@ type emaildestinationaddressesresponsecollectionMessages =
           source = None }
 
 type emaildestinationaddressesresponsecollectionResultinfo =
-    { count: Option<Newtonsoft.Json.Linq.JToken>
-      page: Option<Newtonsoft.Json.Linq.JToken>
-      per_page: Option<Newtonsoft.Json.Linq.JToken>
-      total_count: Option<Newtonsoft.Json.Linq.JToken> }
+    { count: Option<obj>
+      page: Option<obj>
+      per_page: Option<obj>
+      total_count: Option<obj> }
     ///Creates an instance of emaildestinationaddressesresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): emaildestinationaddressesresponsecollectionResultinfo =
         { count = None
@@ -1749,10 +1749,10 @@ type emailrulesresponsecollectionResultinfo =
           total_count = None }
 
 type ResultinfoFromemailrulesresponsecollection =
-    { count: Option<Newtonsoft.Json.Linq.JToken>
-      page: Option<Newtonsoft.Json.Linq.JToken>
-      per_page: Option<Newtonsoft.Json.Linq.JToken>
-      total_count: Option<Newtonsoft.Json.Linq.JToken> }
+    { count: Option<obj>
+      page: Option<obj>
+      per_page: Option<obj>
+      total_count: Option<obj> }
     ///Creates an instance of ResultinfoFromemailrulesresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ResultinfoFromemailrulesresponsecollection =
         { count = None
@@ -1870,7 +1870,7 @@ type emailsendingsubdomainresponsesingle =
       messages: Option<list<emailsendingsubdomainresponsesingleMessages>>
       ///Whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of emailsendingsubdomainresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): emailsendingsubdomainresponsesingle =
         { errors = None
@@ -2076,12 +2076,12 @@ type emailsecuritygetmessageresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritygetmessageresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygetmessageresponse =
+                          result: obj): emailsecuritygetmessageresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2105,9 +2105,9 @@ type Senderinfo =
 
 type Validation =
     { comment: Option<string>
-      dkim: Option<Newtonsoft.Json.Linq.JToken>
-      dmarc: Option<Newtonsoft.Json.Linq.JToken>
-      spf: Option<Newtonsoft.Json.Linq.JToken> }
+      dkim: Option<obj>
+      dmarc: Option<obj>
+      spf: Option<obj> }
     ///Creates an instance of Validation with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Validation =
         { comment = None
@@ -2118,7 +2118,7 @@ type Validation =
 type emailsecuritygetmessagedetectionsresponseResult =
     { action: string
       attachments: list<``email-securityAttachment``>
-      final_disposition: Option<Newtonsoft.Json.Linq.JToken>
+      final_disposition: Option<obj>
       headers: list<``email-securityMessageHeader``>
       links: list<``email-securityLink``>
       sender_info: Senderinfo
@@ -2218,12 +2218,12 @@ type emailsecuritypostreclassifyresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JObject }
+      result: obj }
     ///Creates an instance of emailsecuritypostreclassifyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JObject): emailsecuritypostreclassifyresponse =
+                          result: obj): emailsecuritypostreclassifyresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2301,12 +2301,12 @@ type emailsecuritycreateallowpolicyresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritycreateallowpolicyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritycreateallowpolicyresponse =
+                          result: obj): emailsecuritycreateallowpolicyresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2373,12 +2373,12 @@ type emailsecuritygetallowpolicyresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritygetallowpolicyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygetallowpolicyresponse =
+                          result: obj): emailsecuritygetallowpolicyresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2388,12 +2388,12 @@ type emailsecurityupdateallowpolicyresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecurityupdateallowpolicyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecurityupdateallowpolicyresponse =
+                          result: obj): emailsecurityupdateallowpolicyresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2421,12 +2421,12 @@ type emailsecuritycreateblockedsenderresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritycreateblockedsenderresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritycreateblockedsenderresponse =
+                          result: obj): emailsecuritycreateblockedsenderresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2493,12 +2493,12 @@ type emailsecuritygetblockedsenderresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritygetblockedsenderresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygetblockedsenderresponse =
+                          result: obj): emailsecuritygetblockedsenderresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2508,12 +2508,12 @@ type emailsecurityupdateblockedsenderresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecurityupdateblockedsenderresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecurityupdateblockedsenderresponse =
+                          result: obj): emailsecurityupdateblockedsenderresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2596,16 +2596,16 @@ type emailsecuritygetdomainresponseResultRegions =
 
 type emailsecuritygetdomainresponseResult =
     { allowed_delivery_modes: list<``email-securityDeliveryMode``>
-      authorization: Option<Newtonsoft.Json.Linq.JToken>
+      authorization: Option<obj>
       created_at: System.DateTimeOffset
-      dmarc_status: Option<Newtonsoft.Json.Linq.JToken>
+      dmarc_status: Option<obj>
       domain: string
       drop_dispositions: list<``email-securityDispositionLabel``>
-      emails_processed: Option<Newtonsoft.Json.Linq.JToken>
-      folder: Option<Newtonsoft.Json.Linq.JToken>
+      emails_processed: Option<obj>
+      folder: Option<obj>
       ///The unique identifier for the domain.
       id: int
-      inbox_provider: Option<Newtonsoft.Json.Linq.JToken>
+      inbox_provider: Option<obj>
       integration_id: Option<System.Guid>
       ip_restrictions: list<string>
       last_modified: System.DateTimeOffset
@@ -2614,7 +2614,7 @@ type emailsecuritygetdomainresponseResult =
       regions: list<emailsecuritygetdomainresponseResultRegions>
       require_tls_inbound: Option<bool>
       require_tls_outbound: Option<bool>
-      spf_status: Option<Newtonsoft.Json.Linq.JToken>
+      spf_status: Option<obj>
       transport: string }
     ///Creates an instance of emailsecuritygetdomainresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (allowed_delivery_modes: list<``email-securityDeliveryMode``>,
@@ -2680,16 +2680,16 @@ type emailsecurityupdatedomainresponseResultRegions =
 
 type emailsecurityupdatedomainresponseResult =
     { allowed_delivery_modes: list<``email-securityDeliveryMode``>
-      authorization: Option<Newtonsoft.Json.Linq.JToken>
+      authorization: Option<obj>
       created_at: System.DateTimeOffset
-      dmarc_status: Option<Newtonsoft.Json.Linq.JToken>
+      dmarc_status: Option<obj>
       domain: string
       drop_dispositions: list<``email-securityDispositionLabel``>
-      emails_processed: Option<Newtonsoft.Json.Linq.JToken>
-      folder: Option<Newtonsoft.Json.Linq.JToken>
+      emails_processed: Option<obj>
+      folder: Option<obj>
       ///The unique identifier for the domain.
       id: int
-      inbox_provider: Option<Newtonsoft.Json.Linq.JToken>
+      inbox_provider: Option<obj>
       integration_id: Option<System.Guid>
       ip_restrictions: list<string>
       last_modified: System.DateTimeOffset
@@ -2698,7 +2698,7 @@ type emailsecurityupdatedomainresponseResult =
       regions: list<emailsecurityupdatedomainresponseResultRegions>
       require_tls_inbound: Option<bool>
       require_tls_outbound: Option<bool>
-      spf_status: Option<Newtonsoft.Json.Linq.JToken>
+      spf_status: Option<obj>
       transport: string }
     ///Creates an instance of emailsecurityupdatedomainresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (allowed_delivery_modes: list<``email-securityDeliveryMode``>,
@@ -2769,12 +2769,12 @@ type emailsecuritycreatedisplaynameresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritycreatedisplaynameresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritycreatedisplaynameresponse =
+                          result: obj): emailsecuritycreatedisplaynameresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2804,12 +2804,12 @@ type emailsecuritygetdisplaynameresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritygetdisplaynameresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygetdisplaynameresponse =
+                          result: obj): emailsecuritygetdisplaynameresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2819,12 +2819,12 @@ type emailsecurityupdatedisplaynameresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecurityupdatedisplaynameresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecurityupdatedisplaynameresponse =
+                          result: obj): emailsecurityupdatedisplaynameresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2878,12 +2878,12 @@ type emailsecuritycreatetrusteddomainresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritycreatetrusteddomainresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritycreatetrusteddomainresponse =
+                          result: obj): emailsecuritycreatetrusteddomainresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2950,12 +2950,12 @@ type emailsecuritygettrusteddomainresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecuritygettrusteddomainresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygettrusteddomainresponse =
+                          result: obj): emailsecuritygettrusteddomainresponse =
         { errors = errors
           messages = messages
           success = success
@@ -2965,12 +2965,12 @@ type emailsecurityupdatetrusteddomainresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of emailsecurityupdatetrusteddomainresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): emailsecurityupdatetrusteddomainresponse =
+                          result: obj): emailsecurityupdatetrusteddomainresponse =
         { errors = errors
           messages = messages
           success = success
@@ -3000,7 +3000,7 @@ type EmailSecurityInvestigate =
     | OK of payload: emailsecurityinvestigateresponse
     ///The search is taking longer than expected. Use the Location header to poll for results.
     | Accepted of payload: emailsecurityinvestigateresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type Destination =
@@ -3029,7 +3029,7 @@ type EmailSecurityPostBulkMessageMovePayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityPostBulkMessageMove =
     | OK of payload: emailsecuritypostbulkmessagemoveresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 type EmailSecurityPostPreviewPayload =
     { ///The identifier of the message.
@@ -3041,24 +3041,24 @@ type EmailSecurityPostPreviewPayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityPostPreview =
     | OK of payload: emailsecuritypostpreviewresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityPostRelease =
     | OK of payload: emailsecuritypostreleaseresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessage =
     ///Contains the email message details.
     | OK of payload: emailsecuritygetmessageresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessageDetections =
     ///Contains the email message details.
     | OK of payload: emailsecuritygetmessagedetectionsresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type EmailSecurityPostMessageMovePayloadDestination =
@@ -3084,19 +3084,19 @@ type EmailSecurityPostMessageMovePayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityPostMessageMove =
     | OK of payload: emailsecuritypostmessagemoveresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessagePreview =
     ///Contains a preview of the email.
     | OK of payload: emailsecuritygetmessagepreviewresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessageRaw =
     ///Contains the raw content of the email.
     | OK of payload: emailsecuritygetmessagerawresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type Expecteddisposition =
@@ -3129,31 +3129,31 @@ type EmailSecurityPostReclassifyPayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityPostReclassify =
     | Accepted of payload: emailsecuritypostreclassifyresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessageTrace =
     ///Contains the email trace.
     | OK of payload: emailsecuritygetmessagetraceresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetPhishguardReports =
     ///Contains a list of PhishGuard reports.
     | OK of payload: emailsecuritygetphishguardreportsresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListAllowPolicies =
     ///Contains a list of allow policies for the account.
     | OK of payload: emailsecuritylistallowpoliciesresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityCreateAllowPolicy =
     ///Contains the newly created policy.
     | Created of payload: emailsecuritycreateallowpolicyresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 type EmailSecurityBatchAllowPoliciesPayloadDeletes =
     { ///The unique identifier for the allow policy.
@@ -3179,34 +3179,34 @@ type EmailSecurityBatchAllowPoliciesPayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityBatchAllowPolicies =
     | OK of payload: emailsecuritybatchallowpoliciesresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteAllowPolicy =
     | OK of payload: emailsecuritydeleteallowpolicyresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetAllowPolicy =
     | OK of payload: emailsecuritygetallowpolicyresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateAllowPolicy =
     | OK of payload: emailsecurityupdateallowpolicyresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListBlockedSenders =
     ///Contains a list of blocked senders for the account.
     | OK of payload: emailsecuritylistblockedsendersresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityCreateBlockedSender =
     ///Contains the newly created pattern.
     | Created of payload: emailsecuritycreateblockedsenderresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 type EmailSecurityBatchBlockedSendersPayloadDeletes =
     { ///The unique identifier for the allow policy.
@@ -3232,22 +3232,22 @@ type EmailSecurityBatchBlockedSendersPayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityBatchBlockedSenders =
     | OK of payload: emailsecuritybatchblockedsendersresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteBlockedSender =
     | OK of payload: emailsecuritydeleteblockedsenderresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetBlockedSender =
     | OK of payload: emailsecuritygetblockedsenderresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateBlockedSender =
     | OK of payload: emailsecurityupdateblockedsenderresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 type EmailSecurityDeleteDomainsPayloadArrayItem =
     { ///The unique identifier for the domain.
@@ -3260,24 +3260,24 @@ type EmailSecurityDeleteDomainsPayload = list<EmailSecurityDeleteDomainsPayloadA
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteDomains =
     | OK of payload: emailsecuritydeletedomainsresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListDomains =
     ///Contains a list of domains for the account.
     | OK of payload: emailsecuritylistdomainsresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteDomain =
     ///Deletes the domain with the provided id.
     | OK of payload: emailsecuritydeletedomainresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetDomain =
     | OK of payload: emailsecuritygetdomainresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type EmailSecurityUpdateDomainPayloadRegions =
@@ -3298,7 +3298,7 @@ type EmailSecurityUpdateDomainPayload =
     { allowed_delivery_modes: Option<list<``email-securityDeliveryMode``>>
       domain: Option<string>
       drop_dispositions: Option<list<``email-securityDispositionLabel``>>
-      folder: Option<Newtonsoft.Json.Linq.JToken>
+      folder: Option<obj>
       integration_id: Option<System.Guid>
       ip_restrictions: list<string>
       lookback_hops: Option<int>
@@ -3323,28 +3323,28 @@ type EmailSecurityUpdateDomainPayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateDomain =
     | OK of payload: emailsecurityupdatedomainresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListDisplayNames =
     ///Contains the list of impersonation registry entries for the account.
     | OK of payload: emailsecuritylistdisplaynamesresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityCreateDisplayName =
     | Created of payload: emailsecuritycreatedisplaynameresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteDisplayName =
     | OK of payload: emailsecuritydeletedisplaynameresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetDisplayName =
     | OK of payload: emailsecuritygetdisplaynameresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 type EmailSecurityUpdateDisplayNamePayload =
     { email: Option<string>
@@ -3359,7 +3359,7 @@ type EmailSecurityUpdateDisplayNamePayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateDisplayName =
     | OK of payload: emailsecurityupdatedisplaynameresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 type EmailSecurityBatchSendingDomainRestrictionsPayloadDeletes =
     { id: int }
@@ -3375,19 +3375,19 @@ type EmailSecurityBatchSendingDomainRestrictionsPayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityBatchSendingDomainRestrictions =
     | OK of payload: emailsecuritybatchsendingdomainrestrictionsresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListTrustedDomains =
     ///Contains the list of trusted domains for the account.
     | OK of payload: emailsecuritylisttrusteddomainsresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityCreateTrustedDomain =
     ///Contains the new trusted domain in the shape of the request body.
     | Created of payload: emailsecuritycreatetrusteddomainresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 type EmailSecurityBatchTrustedDomainsPayloadDeletes =
     { ///The unique identifier for the trusted domain.
@@ -3413,17 +3413,17 @@ type EmailSecurityBatchTrustedDomainsPayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityBatchTrustedDomains =
     | OK of payload: emailsecuritybatchtrusteddomainsresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteTrustedDomain =
     | OK of payload: emailsecuritydeletetrusteddomainresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetTrustedDomain =
     | OK of payload: emailsecuritygettrusteddomainresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 type EmailSecurityUpdateTrustedDomainPayload =
     { comments: Option<string>
@@ -3447,12 +3447,12 @@ type EmailSecurityUpdateTrustedDomainPayload =
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateTrustedDomain =
     | OK of payload: emailsecurityupdatetrusteddomainresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailSecuritySubmissions =
     | OK of payload: emailsecuritysubmissionsresponse
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type EmailRoutingDestinationAddressesListDestinationAddresses =

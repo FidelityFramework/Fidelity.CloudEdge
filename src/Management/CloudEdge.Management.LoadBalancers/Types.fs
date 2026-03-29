@@ -223,15 +223,15 @@ type ``load-balancingapi-response-common`` =
           success = success }
 
 type ``load-balancingapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      messages: obj
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of load-balancingapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: obj,
+                          messages: obj,
+                          result: obj,
                           success: bool): ``load-balancingapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -257,7 +257,7 @@ type ``load-balancingapi-response-single`` =
       messages: Option<list<``load-balancingapi-response-singleMessages``>>
       ///Whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of load-balancingapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``load-balancingapi-response-single`` =
         { errors = None
@@ -285,12 +285,12 @@ type ``load-balancingcomponents-schemas-singleresponse`` =
       ///Whether the API call was successful.
       success: bool
       ///A list of countries and subdivisions mapped to a region.
-      result: Newtonsoft.Json.Linq.JObject }
+      result: obj }
     ///Creates an instance of load-balancingcomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``load-balancingcomponents-schemas-singleresponseErrors``>,
                           messages: list<``load-balancingcomponents-schemas-singleresponseMessages``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JObject): ``load-balancingcomponents-schemas-singleresponse`` =
+                          result: obj): ``load-balancingcomponents-schemas-singleresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -798,12 +798,12 @@ type ``load-balancingmonitor-response-single`` =
       messages: list<``load-balancingmonitor-response-singleMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Newtonsoft.Json.Linq.JToken }
+      result: obj }
     ///Creates an instance of load-balancingmonitor-response-single with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``load-balancingmonitor-response-singleErrors``>,
                           messages: list<``load-balancingmonitor-response-singleMessages``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JToken): ``load-balancingmonitor-response-single`` =
+                          result: obj): ``load-balancingmonitor-response-single`` =
         { errors = errors
           messages = messages
           success = success
@@ -1138,12 +1138,12 @@ type ``load-balancingregioncomponents-schemas-responsecollection`` =
       messages: list<``load-balancingregioncomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Newtonsoft.Json.Linq.JObject }
+      result: obj }
     ///Creates an instance of load-balancingregioncomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``load-balancingregioncomponents-schemas-responsecollectionErrors``>,
                           messages: list<``load-balancingregioncomponents-schemas-responsecollectionMessages``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JObject): ``load-balancingregioncomponents-schemas-responsecollection`` =
+                          result: obj): ``load-balancingregioncomponents-schemas-responsecollection`` =
         { errors = errors
           messages = messages
           success = success
@@ -1174,7 +1174,7 @@ type ``load-balancingresourcereference`` =
     { ///When listed as a reference, the type (direction) of the reference.
       reference_type: Option<``load-balancingresourcereferenceReferencetype``>
       ///A list of references to (referrer) or from (referral) this resource.
-      references: Option<Newtonsoft.Json.Linq.JArray>
+      references: Option<list<obj>>
       resource_id: Option<string>
       ///The human-identifiable name of the resource.
       resource_name: Option<string>

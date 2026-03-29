@@ -168,15 +168,15 @@ type ``secrets-storeapi-response-common`` =
           success = success }
 
 type ``secrets-storeapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      messages: obj
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of secrets-storeapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: obj,
+                          messages: obj,
+                          result: obj,
                           success: bool): ``secrets-storeapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -290,7 +290,7 @@ type ``secrets-storequotaresponse`` =
       ///Whether the API call was successful.
       success: bool
       result_info: Option<``secrets-storequotaresponseResultinfo``>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of secrets-storequotaresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``secrets-storequotaresponseErrors``>,
                           messages: list<``secrets-storequotaresponseMessages``>,
@@ -386,7 +386,7 @@ type ``secrets-storesecretresponse`` =
       ///Whether the API call was successful.
       success: bool
       result_info: Option<``secrets-storesecretresponseResultinfo``>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of secrets-storesecretresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``secrets-storesecretresponseErrors``>,
                           messages: list<``secrets-storesecretresponseMessages``>,
@@ -398,9 +398,9 @@ type ``secrets-storesecretresponse`` =
           result = None }
 
 type ``secrets-storesecretsUsageObject`` =
-    { secrets: Newtonsoft.Json.Linq.JToken }
+    { secrets: obj }
     ///Creates an instance of secrets-storesecretsUsageObject with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (secrets: Newtonsoft.Json.Linq.JToken): ``secrets-storesecretsUsageObject`` =
+    static member Create (secrets: obj): ``secrets-storesecretsUsageObject`` =
         { secrets = secrets }
 
 type ``secrets-storesecretsresponsecollectionErrorsSource`` =
@@ -545,7 +545,7 @@ type ``secrets-storestoreresponse`` =
       ///Whether the API call was successful.
       success: bool
       result_info: Option<``secrets-storestoreresponseResultinfo``>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of secrets-storestoreresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``secrets-storestoreresponseErrors``>,
                           messages: list<``secrets-storestoreresponseMessages``>,

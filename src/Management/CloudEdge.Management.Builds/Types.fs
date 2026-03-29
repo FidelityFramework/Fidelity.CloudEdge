@@ -121,13 +121,13 @@ type Errors =
 type buildsAPIResponse =
     { errors: list<Errors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       result_info: Option<buildsPaginationInfo>
       success: bool }
     ///Creates an instance of buildsAPIResponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<Errors>,
                           messages: list<string>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): buildsAPIResponse =
         { errors = errors
           messages = messages
@@ -322,9 +322,9 @@ type buildsConfigAutofillResponse =
 
 type buildsCreateBuildRequest =
     { ///Git branch name (required if commit_hash not provided)
-      branch: Option<Newtonsoft.Json.Linq.JToken>
+      branch: Option<obj>
       ///Git commit hash (required if branch not provided)
-      commit_hash: Option<Newtonsoft.Json.Linq.JToken>
+      commit_hash: Option<obj>
       seed_repo: Option<buildsBuildSeedRepoInput> }
     ///Creates an instance of buildsCreateBuildRequest with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): buildsCreateBuildRequest =
@@ -408,12 +408,12 @@ type buildsErrorResponseErrors =
 type buildsErrorResponse =
     { errors: list<buildsErrorResponseErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
     ///Creates an instance of buildsErrorResponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<buildsErrorResponseErrors>,
                           messages: list<string>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): buildsErrorResponse =
         { errors = errors
           messages = messages
@@ -992,19 +992,19 @@ type GetLatestBuildsByScripts =
 type GetBuildByUuid =
     ///Build retrieved successfully
     | OK of payload: getBuildByUuidresponse
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type CancelBuildByUuid =
     ///Build canceled successfully
     | OK of payload: cancelBuildByUuidresponse
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type GetBuildLogs =
     ///Build logs retrieved successfully
     | OK of payload: getBuildLogsresponse
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type UpsertRepoConnection =
@@ -1013,8 +1013,8 @@ type UpsertRepoConnection =
 
 [<RequireQualifiedAccess>]
 type DeleteRepoConnection =
-    | OK of payload: Newtonsoft.Json.Linq.JToken
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type GetWorkerConfigAutofill =
@@ -1033,8 +1033,8 @@ type CreateBuildToken =
 
 [<RequireQualifiedAccess>]
 type DeleteBuildToken =
-    | OK of payload: Newtonsoft.Json.Linq.JToken
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type CreateTrigger =
@@ -1043,14 +1043,14 @@ type CreateTrigger =
 
 [<RequireQualifiedAccess>]
 type DeleteTrigger =
-    | OK of payload: Newtonsoft.Json.Linq.JToken
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type UpdateTrigger =
     ///Trigger updated successfully
     | OK of payload: updateTriggerresponse
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type CreateManualBuild =
@@ -1066,17 +1066,17 @@ type ListEnvironmentVariables =
 type UpsertEnvironmentVariables =
     ///Environment variables updated successfully
     | OK of payload: upsertEnvironmentVariablesresponse
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type DeleteEnvironmentVariable =
-    | OK of payload: Newtonsoft.Json.Linq.JToken
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type PurgeBuildCache =
-    | OK of payload: Newtonsoft.Json.Linq.JToken
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
+    | NotFound of payload: obj
 
 [<RequireQualifiedAccess>]
 type ListBuildsByScript =

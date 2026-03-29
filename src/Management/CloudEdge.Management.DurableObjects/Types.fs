@@ -140,15 +140,15 @@ type ``workersapi-response-common`` =
           success = success }
 
 type ``workersapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      messages: obj
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of workersapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: obj,
+                          messages: obj,
+                          result: obj,
                           success: bool): ``workersapi-response-common-failure`` =
         { errors = errors
           messages = messages

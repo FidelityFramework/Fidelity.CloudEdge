@@ -46,14 +46,14 @@ type Messages =
 type ``hyperdriveapi-response-collection`` =
     { errors: list<Errors>
       messages: list<Messages>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Return the status of the API call success.
       success: bool
       result_info: Option<hyperdriveresultinfo> }
     ///Creates an instance of hyperdriveapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<Errors>,
                           messages: list<Messages>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): ``hyperdriveapi-response-collection`` =
         { errors = errors
           messages = messages
@@ -78,13 +78,13 @@ type ``hyperdriveapi-response-commonMessages`` =
 type ``hyperdriveapi-response-common`` =
     { errors: list<``hyperdriveapi-response-commonErrors``>
       messages: list<``hyperdriveapi-response-commonMessages``>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Return the status of the API call success.
       success: bool }
     ///Creates an instance of hyperdriveapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``hyperdriveapi-response-commonErrors``>,
                           messages: list<``hyperdriveapi-response-commonMessages``>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): ``hyperdriveapi-response-common`` =
         { errors = errors
           messages = messages
@@ -92,15 +92,15 @@ type ``hyperdriveapi-response-common`` =
           success = success }
 
 type ``hyperdriveapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      messages: obj
+      result: obj
       ///Return the status of the API call success.
       success: bool }
     ///Creates an instance of hyperdriveapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: obj,
+                          messages: obj,
+                          result: obj,
                           success: bool): ``hyperdriveapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -124,7 +124,7 @@ type ``hyperdriveapi-response-singleMessages`` =
 type ``hyperdriveapi-response-single`` =
     { errors: Option<list<``hyperdriveapi-response-singleErrors``>>
       messages: Option<list<``hyperdriveapi-response-singleMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+      result: Option<obj>
       ///Return the status of the API call success.
       success: Option<bool> }
     ///Creates an instance of hyperdriveapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
@@ -160,7 +160,7 @@ type ``hyperdrivehyperdrive-caching-enabled`` =
           stale_while_revalidate = None }
 
 type ``hyperdrivehyperdrive-config`` =
-    { caching: Option<Newtonsoft.Json.Linq.JObject>
+    { caching: Option<obj>
       ///Defines the creation time of the Hyperdrive configuration.
       created_on: Option<System.DateTimeOffset>
       ///Define configurations using a unique string identifier.
@@ -170,13 +170,13 @@ type ``hyperdrivehyperdrive-config`` =
       mtls: Option<``hyperdrivehyperdrive-mtls``>
       ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: ``hyperdrivehyperdrive-name``
-      origin: Newtonsoft.Json.Linq.JObject
+      origin: obj
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
       origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
     ///Creates an instance of hyperdrivehyperdrive-config with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (id: hyperdriveidentifier,
                           name: ``hyperdrivehyperdrive-name``,
-                          origin: Newtonsoft.Json.Linq.JObject): ``hyperdrivehyperdrive-config`` =
+                          origin: obj): ``hyperdrivehyperdrive-config`` =
         { caching = None
           created_on = None
           id = id
@@ -186,10 +186,10 @@ type ``hyperdrivehyperdrive-config`` =
           origin = origin
           origin_connection_limit = None }
 
-type Origin = Map<string, Newtonsoft.Json.Linq.JToken>
+type Origin = Map<string, obj>
 
 type ``hyperdrivehyperdrive-config-patch`` =
-    { caching: Option<Newtonsoft.Json.Linq.JObject>
+    { caching: Option<obj>
       mtls: Option<``hyperdrivehyperdrive-mtls``>
       ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: Option<``hyperdrivehyperdrive-name``>
@@ -205,7 +205,7 @@ type ``hyperdrivehyperdrive-config-patch`` =
           origin_connection_limit = None }
 
 type ``hyperdrivehyperdrive-config-response`` =
-    { caching: Newtonsoft.Json.Linq.JObject
+    { caching: obj
       ///Defines the creation time of the Hyperdrive configuration.
       created_on: Option<System.DateTimeOffset>
       ///Define configurations using a unique string identifier.
@@ -215,11 +215,11 @@ type ``hyperdrivehyperdrive-config-response`` =
       mtls: Option<``hyperdrivehyperdrive-mtls``>
       ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: Option<``hyperdrivehyperdrive-name``>
-      origin: Option<Newtonsoft.Json.Linq.JObject>
+      origin: Option<obj>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
       origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
     ///Creates an instance of hyperdrivehyperdrive-config-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (caching: Newtonsoft.Json.Linq.JObject): ``hyperdrivehyperdrive-config-response`` =
+    static member Create (caching: obj): ``hyperdrivehyperdrive-config-response`` =
         { caching = caching
           created_on = None
           id = None
@@ -406,13 +406,13 @@ type ``delete-hyperdriveresponseMessages`` =
 type ``delete-hyperdriveresponse`` =
     { errors: list<``delete-hyperdriveresponseErrors``>
       messages: list<``delete-hyperdriveresponseMessages``>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Return the status of the API call success.
       success: bool }
     ///Creates an instance of delete-hyperdriveresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``delete-hyperdriveresponseErrors``>,
                           messages: list<``delete-hyperdriveresponseMessages``>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): ``delete-hyperdriveresponse`` =
         { errors = errors
           messages = messages

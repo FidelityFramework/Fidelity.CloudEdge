@@ -142,15 +142,15 @@ type ``pagesapi-response-common`` =
           success = success }
 
 type ``pagesapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      messages: obj
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of pagesapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: obj,
+                          messages: obj,
+                          result: obj,
                           success: bool): ``pagesapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -737,18 +737,18 @@ type pagesplaintextenvvar =
 ///Configs for deployments in a project.
 type Deploymentconfigs =
     { ///Configs for preview deploys.
-      preview: Newtonsoft.Json.Linq.JToken
+      preview: obj
       ///Configs for production deploys.
-      production: Newtonsoft.Json.Linq.JToken }
+      production: obj }
     ///Creates an instance of Deploymentconfigs with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (preview: Newtonsoft.Json.Linq.JToken, production: Newtonsoft.Json.Linq.JToken): Deploymentconfigs =
+    static member Create (preview: obj, production: obj): Deploymentconfigs =
         { preview = preview
           production = production }
 
 type pagesproject =
     { ///Configs for the project build process.
       build_config: Option<pagesbuildconfig>
-      canonical_deployment: Newtonsoft.Json.Linq.JToken
+      canonical_deployment: obj
       ///When the project was created.
       created_on: System.DateTimeOffset
       ///Configs for deployments in a project.
@@ -761,7 +761,7 @@ type pagesproject =
       framework_version: string
       ///ID of the project.
       id: string
-      latest_deployment: Newtonsoft.Json.Linq.JToken
+      latest_deployment: obj
       ///Name of the project.
       name: pagesprojectname
       ///Name of the preview script.
@@ -777,13 +777,13 @@ type pagesproject =
       ///Whether the project uses functions.
       uses_functions: bool }
     ///Creates an instance of pagesproject with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (canonical_deployment: Newtonsoft.Json.Linq.JToken,
+    static member Create (canonical_deployment: obj,
                           created_on: System.DateTimeOffset,
                           deployment_configs: Deploymentconfigs,
                           framework: string,
                           framework_version: string,
                           id: string,
-                          latest_deployment: Newtonsoft.Json.Linq.JToken,
+                          latest_deployment: obj,
                           name: pagesprojectname,
                           preview_script_name: string,
                           production_branch: string,
@@ -809,18 +809,18 @@ type pagesproject =
 ///Configs for deployments in a project.
 type ``pagesproject-objectDeploymentconfigs`` =
     { ///Configs for preview deploys.
-      preview: Newtonsoft.Json.Linq.JToken
+      preview: obj
       ///Configs for production deploys.
-      production: Newtonsoft.Json.Linq.JToken }
+      production: obj }
     ///Creates an instance of pagesproject-objectDeploymentconfigs with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (preview: Newtonsoft.Json.Linq.JToken, production: Newtonsoft.Json.Linq.JToken): ``pagesproject-objectDeploymentconfigs`` =
+    static member Create (preview: obj, production: obj): ``pagesproject-objectDeploymentconfigs`` =
         { preview = preview
           production = production }
 
 type ``pagesproject-object`` =
     { ///Configs for the project build process.
       build_config: Option<pagesbuildconfig>
-      canonical_deployment: Newtonsoft.Json.Linq.JToken
+      canonical_deployment: obj
       ///When the project was created.
       created_on: System.DateTimeOffset
       ///Configs for deployments in a project.
@@ -833,7 +833,7 @@ type ``pagesproject-object`` =
       framework_version: string
       ///ID of the project.
       id: string
-      latest_deployment: Newtonsoft.Json.Linq.JToken
+      latest_deployment: obj
       ///Name of the project.
       name: pagesprojectname
       ///Name of the preview script.
@@ -849,13 +849,13 @@ type ``pagesproject-object`` =
       ///Whether the project uses functions.
       uses_functions: bool }
     ///Creates an instance of pagesproject-object with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (canonical_deployment: Newtonsoft.Json.Linq.JToken,
+    static member Create (canonical_deployment: obj,
                           created_on: System.DateTimeOffset,
                           deployment_configs: ``pagesproject-objectDeploymentconfigs``,
                           framework: string,
                           framework_version: string,
                           id: string,
-                          latest_deployment: Newtonsoft.Json.Linq.JToken,
+                          latest_deployment: obj,
                           name: pagesprojectname,
                           preview_script_name: string,
                           production_branch: string,
@@ -1181,12 +1181,12 @@ type ``pages-project-delete-projectresponse`` =
       messages: list<``pages-project-delete-projectresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Newtonsoft.Json.Linq.JObject }
+      result: obj }
     ///Creates an instance of pages-project-delete-projectresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``pages-project-delete-projectresponseErrors``>,
                           messages: list<``pages-project-delete-projectresponseMessages``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JObject): ``pages-project-delete-projectresponse`` =
+                          result: obj): ``pages-project-delete-projectresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -1449,12 +1449,12 @@ type ``pages-deployment-delete-deploymentresponse`` =
       messages: list<``pages-deployment-delete-deploymentresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Newtonsoft.Json.Linq.JObject }
+      result: obj }
     ///Creates an instance of pages-deployment-delete-deploymentresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``pages-deployment-delete-deploymentresponseErrors``>,
                           messages: list<``pages-deployment-delete-deploymentresponseMessages``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JObject): ``pages-deployment-delete-deploymentresponse`` =
+                          result: obj): ``pages-deployment-delete-deploymentresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -1817,12 +1817,12 @@ type ``pages-domains-delete-domainresponse`` =
       messages: list<``pages-domains-delete-domainresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Newtonsoft.Json.Linq.JObject }
+      result: obj }
     ///Creates an instance of pages-domains-delete-domainresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``pages-domains-delete-domainresponseErrors``>,
                           messages: list<``pages-domains-delete-domainresponseMessages``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JObject): ``pages-domains-delete-domainresponse`` =
+                          result: obj): ``pages-domains-delete-domainresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -1967,12 +1967,12 @@ type ``pages-purge-build-cacheresponse`` =
       messages: list<``pages-purge-build-cacheresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Newtonsoft.Json.Linq.JObject }
+      result: obj }
     ///Creates an instance of pages-purge-build-cacheresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``pages-purge-build-cacheresponseErrors``>,
                           messages: list<``pages-purge-build-cacheresponseMessages``>,
                           success: bool,
-                          result: Newtonsoft.Json.Linq.JObject): ``pages-purge-build-cacheresponse`` =
+                          result: obj): ``pages-purge-build-cacheresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -2011,9 +2011,9 @@ type Buildconfig =
 ///Configs for deployments in a project.
 type PagesProjectCreateProjectPayloadDeploymentconfigs =
     { ///Configs for preview deploys.
-      preview: Option<Newtonsoft.Json.Linq.JToken>
+      preview: Option<obj>
       ///Configs for production deploys.
-      production: Option<Newtonsoft.Json.Linq.JToken> }
+      production: Option<obj> }
     ///Creates an instance of PagesProjectCreateProjectPayloadDeploymentconfigs with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): PagesProjectCreateProjectPayloadDeploymentconfigs = { preview = None; production = None }
 
@@ -2153,9 +2153,9 @@ type PagesProjectUpdateProjectPayloadBuildconfig =
 ///Configs for deployments in a project.
 type PagesProjectUpdateProjectPayloadDeploymentconfigs =
     { ///Configs for preview deploys.
-      preview: Option<Newtonsoft.Json.Linq.JToken>
+      preview: Option<obj>
       ///Configs for production deploys.
-      production: Option<Newtonsoft.Json.Linq.JToken> }
+      production: Option<obj> }
     ///Creates an instance of PagesProjectUpdateProjectPayloadDeploymentconfigs with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): PagesProjectUpdateProjectPayloadDeploymentconfigs = { preview = None; production = None }
 

@@ -192,7 +192,7 @@ type Type =
 
 type Result =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<Cachethreshold>
       chunk_overlap: Option<int>
@@ -200,7 +200,7 @@ type Result =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<Custommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<Fusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -215,9 +215,9 @@ type Result =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<Publicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<Retrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -506,14 +506,14 @@ type AiSearchCreateInstancesPayloadType =
 
 type AiSearchCreateInstancesPayload =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchCreateInstancesPayloadCachethreshold>
       chunk: Option<bool>
       chunk_overlap: Option<int>
       chunk_size: Option<int>
       custom_metadata: Option<list<AiSearchCreateInstancesPayloadCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       fusion_method: Option<AiSearchCreateInstancesPayloadFusionmethod>
       hybrid_search_enabled: Option<bool>
       ///Use your AI Search ID.
@@ -522,9 +522,9 @@ type AiSearchCreateInstancesPayload =
       metadata: Option<AiSearchCreateInstancesPayloadMetadata>
       public_endpoint_params: Option<AiSearchCreateInstancesPayloadPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchCreateInstancesPayloadRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -751,7 +751,7 @@ type AiSearchCreateInstances_CreatedResultType =
 
 type AiSearchCreateInstances_CreatedResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchCreateInstances_CreatedResultCachethreshold>
       chunk_overlap: Option<int>
@@ -759,7 +759,7 @@ type AiSearchCreateInstances_CreatedResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<AiSearchCreateInstances_CreatedResultCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<AiSearchCreateInstances_CreatedResultFusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -774,9 +774,9 @@ type AiSearchCreateInstances_CreatedResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<AiSearchCreateInstances_CreatedResultPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchCreateInstances_CreatedResultRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -998,7 +998,7 @@ type AiSearchDeleteInstances_OKResultType =
 
 type AiSearchDeleteInstances_OKResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchDeleteInstances_OKResultCachethreshold>
       chunk_overlap: Option<int>
@@ -1006,7 +1006,7 @@ type AiSearchDeleteInstances_OKResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<AiSearchDeleteInstances_OKResultCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<AiSearchDeleteInstances_OKResultFusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -1021,9 +1021,9 @@ type AiSearchDeleteInstances_OKResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<AiSearchDeleteInstances_OKResultPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchDeleteInstances_OKResultRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -1242,7 +1242,7 @@ type AiSearchFetchInstances_OKResultType =
 
 type AiSearchFetchInstances_OKResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchFetchInstances_OKResultCachethreshold>
       chunk_overlap: Option<int>
@@ -1250,7 +1250,7 @@ type AiSearchFetchInstances_OKResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<AiSearchFetchInstances_OKResultCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<AiSearchFetchInstances_OKResultFusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -1265,9 +1265,9 @@ type AiSearchFetchInstances_OKResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<AiSearchFetchInstances_OKResultPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchFetchInstances_OKResultRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -1559,14 +1559,14 @@ type AiSearchUpdateInstancesPayloadSourceparams =
 
 type AiSearchUpdateInstancesPayload =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchUpdateInstancesPayloadCachethreshold>
       chunk: Option<bool>
       chunk_overlap: Option<int>
       chunk_size: Option<int>
       custom_metadata: Option<list<AiSearchUpdateInstancesPayloadCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       fusion_method: Option<AiSearchUpdateInstancesPayloadFusionmethod>
       hybrid_search_enabled: Option<bool>
       max_num_results: Option<int>
@@ -1574,14 +1574,14 @@ type AiSearchUpdateInstancesPayload =
       paused: Option<bool>
       public_endpoint_params: Option<AiSearchUpdateInstancesPayloadPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchUpdateInstancesPayloadRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source_params: Option<AiSearchUpdateInstancesPayloadSourceparams>
       summarization: Option<bool>
-      summarization_model: Option<Newtonsoft.Json.Linq.JToken>
+      summarization_model: Option<obj>
       system_prompt_ai_search: Option<string>
       system_prompt_index_summarization: Option<string>
       system_prompt_rewrite_query: Option<string>
@@ -1809,7 +1809,7 @@ type AiSearchUpdateInstances_OKResultType =
 
 type AiSearchUpdateInstances_OKResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchUpdateInstances_OKResultCachethreshold>
       chunk_overlap: Option<int>
@@ -1817,7 +1817,7 @@ type AiSearchUpdateInstances_OKResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<AiSearchUpdateInstances_OKResultCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<AiSearchUpdateInstances_OKResultFusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -1832,9 +1832,9 @@ type AiSearchUpdateInstances_OKResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<AiSearchUpdateInstances_OKResultPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchUpdateInstances_OKResultRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -1874,7 +1874,7 @@ type AiSearchUpdateInstances =
 
 type Queryrewrite =
     { enabled: Option<bool>
-      model: Option<Newtonsoft.Json.Linq.JToken>
+      model: Option<obj>
       rewrite_prompt: Option<string> }
     ///Creates an instance of Queryrewrite with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Queryrewrite =
@@ -1885,7 +1885,7 @@ type Queryrewrite =
 type Reranking =
     { enabled: Option<bool>
       match_threshold: Option<float>
-      model: Option<Newtonsoft.Json.Linq.JToken> }
+      model: Option<obj> }
     ///Creates an instance of Reranking with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Reranking =
         { enabled = None
@@ -1946,7 +1946,7 @@ type Retrieval =
     { ///Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.
       boost_by: Option<list<RetrievalBoostby>>
       context_expansion: Option<int>
-      filters: Option<Newtonsoft.Json.Linq.JObject>
+      filters: Option<obj>
       fusion_method: Option<RetrievalFusionmethod>
       ///Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.
       keyword_match_mode: Option<RetrievalKeywordmatchmode>
@@ -2000,7 +2000,7 @@ type Messages =
 type AiSearchInstanceChatCompletionPayload =
     { ai_search_options: Option<Aisearchoptions>
       messages: list<Messages>
-      model: Option<Newtonsoft.Json.Linq.JToken>
+      model: Option<obj>
       stream: Option<bool> }
     ///Creates an instance of AiSearchInstanceChatCompletionPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (messages: list<Messages>): AiSearchInstanceChatCompletionPayload =
@@ -2032,7 +2032,7 @@ type Choices =
 
 type Item =
     { key: string
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       timestamp: Option<float> }
 
 type Scoringdetails =
@@ -2103,7 +2103,7 @@ type AiSearchInstanceListJobs_BadRequestErrors = { message: string }
 
 type AiSearchInstanceListJobs_BadRequest =
     { errors: list<AiSearchInstanceListJobs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceListJobs_InternalServerErrorErrors = { code: float; message: string }
@@ -2152,7 +2152,7 @@ type AiSearchInstanceCreateJob_BadRequestErrors = { message: string }
 
 type AiSearchInstanceCreateJob_BadRequest =
     { errors: list<AiSearchInstanceCreateJob_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceCreateJob_InternalServerErrorErrors = { code: float; message: string }
@@ -2196,7 +2196,7 @@ type AiSearchInstanceGetJob_BadRequestErrors = { message: string }
 
 type AiSearchInstanceGetJob_BadRequest =
     { errors: list<AiSearchInstanceGetJob_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceGetJob_InternalServerErrorErrors = { code: float; message: string }
@@ -2252,7 +2252,7 @@ type AiSearchInstanceChangeJobStatus_BadRequestErrors = { message: string }
 
 type AiSearchInstanceChangeJobStatus_BadRequest =
     { errors: list<AiSearchInstanceChangeJobStatus_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceChangeJobStatus_InternalServerErrorErrors = { code: float; message: string }
@@ -2291,7 +2291,7 @@ type AiSearchInstanceListJobLogs_BadRequestErrors = { message: string }
 
 type AiSearchInstanceListJobLogs_BadRequest =
     { errors: list<AiSearchInstanceListJobLogs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceListJobLogs_InternalServerErrorErrors = { code: float; message: string }
@@ -2311,7 +2311,7 @@ type AiSearchInstanceListJobLogs =
 
 type AiSearchInstanceSearchPayloadAisearchoptionsQueryrewrite =
     { enabled: Option<bool>
-      model: Option<Newtonsoft.Json.Linq.JToken>
+      model: Option<obj>
       rewrite_prompt: Option<string> }
     ///Creates an instance of AiSearchInstanceSearchPayloadAisearchoptionsQueryrewrite with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): AiSearchInstanceSearchPayloadAisearchoptionsQueryrewrite =
@@ -2322,7 +2322,7 @@ type AiSearchInstanceSearchPayloadAisearchoptionsQueryrewrite =
 type AiSearchInstanceSearchPayloadAisearchoptionsReranking =
     { enabled: Option<bool>
       match_threshold: Option<float>
-      model: Option<Newtonsoft.Json.Linq.JToken> }
+      model: Option<obj> }
     ///Creates an instance of AiSearchInstanceSearchPayloadAisearchoptionsReranking with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): AiSearchInstanceSearchPayloadAisearchoptionsReranking =
         { enabled = None
@@ -2384,7 +2384,7 @@ type AiSearchInstanceSearchPayloadAisearchoptionsRetrieval =
     { ///Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.
       boost_by: Option<list<AiSearchInstanceSearchPayloadAisearchoptionsRetrievalBoostby>>
       context_expansion: Option<int>
-      filters: Option<Newtonsoft.Json.Linq.JObject>
+      filters: Option<obj>
       fusion_method: Option<AiSearchInstanceSearchPayloadAisearchoptionsRetrievalFusionmethod>
       ///Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.
       keyword_match_mode: Option<AiSearchInstanceSearchPayloadAisearchoptionsRetrievalKeywordmatchmode>
@@ -2446,7 +2446,7 @@ type AiSearchInstanceSearchPayload =
 
 type AiSearchInstanceSearch_OKResultChunksItem =
     { key: string
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       timestamp: Option<float> }
 
 type AiSearchInstanceSearch_OKResultChunksScoringdetails =
@@ -2488,8 +2488,8 @@ type AiSearchInstanceSearch =
 type AiSearchStats_OKResult =
     { completed: Option<int>
       error: Option<int>
-      file_embed_errors: Option<Newtonsoft.Json.Linq.JObject>
-      index_source_errors: Option<Newtonsoft.Json.Linq.JObject>
+      file_embed_errors: Option<obj>
+      index_source_errors: Option<obj>
       last_activity: Option<System.DateTimeOffset>
       queued: Option<int>
       running: Option<int>

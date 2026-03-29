@@ -25,7 +25,7 @@ type Errors = { message: string }
 
 type AigConfigListEvaluators_BadRequest =
     { errors: list<Errors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -89,7 +89,7 @@ type AigConfigListGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -116,7 +116,7 @@ type AigConfigListGateway_BadRequestErrors = { message: string }
 
 type AigConfigListGateway_BadRequest =
     { errors: list<AigConfigListGateway_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -247,7 +247,7 @@ type AigConfigCreateGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -353,7 +353,7 @@ type AigConfigListDataset_BadRequestErrors = { message: string }
 
 type AigConfigListDataset_BadRequest =
     { errors: list<AigConfigListDataset_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -905,7 +905,7 @@ type AigConfigListEvaluations_BadRequestErrors = { message: string }
 
 type AigConfigListEvaluations_BadRequest =
     { errors: list<AigConfigListEvaluations_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1236,7 +1236,7 @@ type AigConfigDeleteGatewayLogs_BadRequestErrors = { message: string }
 
 type AigConfigDeleteGatewayLogs_BadRequest =
     { errors: list<AigConfigDeleteGatewayLogs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1292,7 +1292,7 @@ type AigConfigListGatewayLogs_BadRequestErrors = { message: string }
 
 type AigConfigListGatewayLogs_BadRequest =
     { errors: list<AigConfigListGatewayLogs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1357,7 +1357,7 @@ type AigConfigPatchGatewayLogPayload =
           score = None }
 
 type AigConfigPatchGatewayLog_OK =
-    { result: Newtonsoft.Json.Linq.JObject
+    { result: obj
       success: bool }
 
 type AigConfigPatchGatewayLog_NotFoundErrors = { code: float; message: string }
@@ -1382,7 +1382,7 @@ type AigConfigGetGatewayLogRequest_NotFound =
 [<RequireQualifiedAccess>]
 type AigConfigGetGatewayLogRequest =
     ///Returns the request body from a specific log
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Not Found
     | NotFound of payload: AigConfigGetGatewayLogRequest_NotFound
 
@@ -1395,7 +1395,7 @@ type AigConfigGetGatewayLogResponse_NotFound =
 [<RequireQualifiedAccess>]
 type AigConfigGetGatewayLogResponse =
     ///Returns the response body from a specific log
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Not Found
     | NotFound of payload: AigConfigGetGatewayLogResponse_NotFound
 
@@ -1420,7 +1420,7 @@ type AigConfigListProviders_BadRequestErrors = { message: string }
 
 type AigConfigListProviders_BadRequest =
     { errors: list<AigConfigListProviders_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1602,7 +1602,7 @@ type AigConfigListGatewayDynamicRoutes_BadRequestErrors = { message: string }
 
 type AigConfigListGatewayDynamicRoutes_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRoutes_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1659,7 +1659,7 @@ type AigConfigPostGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigPostGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1685,7 +1685,7 @@ type AigConfigDeleteGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigDeleteGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigDeleteGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1735,7 +1735,7 @@ type AigConfigGetGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigGetGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigGetGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1826,7 +1826,7 @@ type AigConfigListGatewayDynamicRouteDeployments_BadRequestErrors = { message: s
 
 type AigConfigListGatewayDynamicRouteDeployments_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRouteDeployments_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1860,7 +1860,7 @@ type AigConfigPostGatewayDynamicRouteDeployment_BadRequestErrors = { message: st
 
 type AigConfigPostGatewayDynamicRouteDeployment_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRouteDeployment_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1901,7 +1901,7 @@ type AigConfigListGatewayDynamicRouteVersions_BadRequestErrors = { message: stri
 
 type AigConfigListGatewayDynamicRouteVersions_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRouteVersions_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1935,7 +1935,7 @@ type AigConfigPostGatewayDynamicRouteVersion_BadRequestErrors = { message: strin
 
 type AigConfigPostGatewayDynamicRouteVersion_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRouteVersion_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1974,7 +1974,7 @@ type AigConfigGetGatewayDynamicRouteVersion_BadRequestErrors = { message: string
 
 type AigConfigGetGatewayDynamicRouteVersion_BadRequest =
     { errors: list<AigConfigGetGatewayDynamicRouteVersion_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1989,7 +1989,7 @@ type AigConfigGetGatewayUrl_BadRequestErrors = { message: string }
 
 type AigConfigGetGatewayUrl_BadRequest =
     { errors: list<AigConfigGetGatewayUrl_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -2053,7 +2053,7 @@ type AigConfigDeleteGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -2143,7 +2143,7 @@ type AigConfigFetchGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -2245,7 +2245,7 @@ type AigConfigUpdateGatewayPayload =
       cache_invalidate_on_update: bool
       cache_ttl: int
       collect_logs: bool
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       log_management: Option<int>
       log_management_strategy: Option<AigConfigUpdateGatewayPayloadLogmanagementstrategy>
       logpush: Option<bool>
@@ -2338,7 +2338,7 @@ type AigConfigUpdateGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>

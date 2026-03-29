@@ -10,14 +10,14 @@ type Rankingoptions =
 
 type Reranking =
     { enabled: Option<bool>
-      model: Option<Newtonsoft.Json.Linq.JToken> }
+      model: Option<obj> }
     ///Creates an instance of Reranking with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Reranking = { enabled = None; model = None }
 
 type AutoragConfigAiSearchPayload =
-    { filters: Option<Newtonsoft.Json.Linq.JToken>
+    { filters: Option<obj>
       max_num_results: Option<int>
-      model: Option<Newtonsoft.Json.Linq.JToken>
+      model: Option<obj>
       query: string
       ranking_options: Option<Rankingoptions>
       reranking: Option<Reranking>
@@ -41,7 +41,7 @@ type Content =
       ``type``: Option<string> }
 
 type Data =
-    { attributes: Option<Newtonsoft.Json.Linq.JObject>
+    { attributes: Option<obj>
       content: Option<list<Content>>
       file_id: Option<string>
       filename: Option<string>
@@ -239,12 +239,12 @@ type AutoragConfigSearchPayloadRankingoptions =
 
 type AutoragConfigSearchPayloadReranking =
     { enabled: Option<bool>
-      model: Option<Newtonsoft.Json.Linq.JToken> }
+      model: Option<obj> }
     ///Creates an instance of AutoragConfigSearchPayloadReranking with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): AutoragConfigSearchPayloadReranking = { enabled = None; model = None }
 
 type AutoragConfigSearchPayload =
-    { filters: Option<Newtonsoft.Json.Linq.JToken>
+    { filters: Option<obj>
       max_num_results: Option<int>
       query: string
       ranking_options: Option<AutoragConfigSearchPayloadRankingoptions>
@@ -264,7 +264,7 @@ type AutoragConfigSearch_OKResultDataContent =
       ``type``: Option<string> }
 
 type AutoragConfigSearch_OKResultData =
-    { attributes: Option<Newtonsoft.Json.Linq.JObject>
+    { attributes: Option<obj>
       content: Option<list<AutoragConfigSearch_OKResultDataContent>>
       file_id: Option<string>
       filename: Option<string>

@@ -82,15 +82,15 @@ type ``callsapi-response-common`` =
           success = success }
 
 type ``callsapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      messages: obj
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of callsapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: obj,
+                          messages: obj,
+                          result: obj,
                           success: bool): ``callsapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -582,7 +582,7 @@ type CallsAppsDeleteApp =
     ///Delete app response
     | OK of payload: callsappresponsesingle
     ///Delete app response failure
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type CallsAppsRetrieveAppDetails =
@@ -615,7 +615,7 @@ type CallsDeleteTurnKey =
     ///Delete TURN key response
     | OK of payload: callsturnkeyresponsesingle
     ///Delete TURN key response failure
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type CallsRetrieveTurnKeyDetails =

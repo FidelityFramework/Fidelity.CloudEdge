@@ -352,19 +352,19 @@ type ``zero-trust-gatewayapi-response-common`` =
           messages = messages
           success = success }
 
-type ``zero-trust-gatewayapi-response-common-failureErrors`` = Map<string, Newtonsoft.Json.Linq.JToken>
-type ``zero-trust-gatewayapi-response-common-failureMessages`` = Map<string, Newtonsoft.Json.Linq.JToken>
+type ``zero-trust-gatewayapi-response-common-failureErrors`` = Map<string, obj>
+type ``zero-trust-gatewayapi-response-common-failureMessages`` = Map<string, obj>
 
 type ``zero-trust-gatewayapi-response-common-failure`` =
     { errors: ``zero-trust-gatewayapi-response-common-failureErrors``
       messages: ``zero-trust-gatewayapi-response-common-failureMessages``
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Indicate whether the API call was successful.
       success: bool }
     ///Creates an instance of zero-trust-gatewayapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: ``zero-trust-gatewayapi-response-common-failureErrors``,
                           messages: ``zero-trust-gatewayapi-response-common-failureMessages``,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): ``zero-trust-gatewayapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -864,7 +864,7 @@ type ``zero-trust-gatewayemptyresponse`` =
       messages: list<``zero-trust-gatewayemptyresponseMessages``>
       ///Indicate whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of zero-trust-gatewayemptyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``zero-trust-gatewayemptyresponseErrors``>,
                           messages: list<``zero-trust-gatewayemptyresponseMessages``>,
@@ -896,9 +896,9 @@ type ``zero-trust-gatewayexpiration`` =
       duration: Option<int>
       ///Indicates whether the policy is expired.
       expired: Option<bool>
-      expires_at: Newtonsoft.Json.Linq.JToken }
+      expires_at: obj }
     ///Creates an instance of zero-trust-gatewayexpiration with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (expires_at: Newtonsoft.Json.Linq.JToken): ``zero-trust-gatewayexpiration`` =
+    static member Create (expires_at: obj): ``zero-trust-gatewayexpiration`` =
         { duration = None
           expired = None
           expires_at = expires_at }
@@ -930,11 +930,11 @@ type ``zero-trust-gatewayfips-settings`` =
 ///Configure logging settings for each rule type.
 type Settingsbyruletype =
     { ///Configure logging settings for DNS firewall.
-      dns: Option<Newtonsoft.Json.Linq.JToken>
+      dns: Option<obj>
       ///Configure logging settings for HTTP/HTTPS firewall.
-      http: Option<Newtonsoft.Json.Linq.JToken>
+      http: Option<obj>
       ///Configure logging settings for Network firewall.
-      l4: Option<Newtonsoft.Json.Linq.JToken> }
+      l4: Option<obj> }
     ///Creates an instance of Settingsbyruletype with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Settingsbyruletype = { dns = None; http = None; l4 = None }
 
@@ -1642,7 +1642,7 @@ type ``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse`` =
       messages: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseMessages``>
       ///Indicate whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseErrors``>,
                           messages: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseMessages``>,
@@ -2449,8 +2449,8 @@ type ZeroTrustGatewayApplicationAndApplicationTypeMappingsListApplicationAndAppl
 
 type ZeroTrustApplicationsReviewStatusList_BadRequestErrors = { code: int; message: string }
 type ZeroTrustApplicationsReviewStatusList_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustApplicationsReviewStatusListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustApplicationsReviewStatusListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustApplicationsReviewStatusListBadRequest = Map<string, obj>
+type MessagesFromZeroTrustApplicationsReviewStatusListBadRequest = Map<string, obj>
 
 type ZeroTrustApplicationsReviewStatusList_BadRequest =
     { errors: Option<list<ZeroTrustApplicationsReviewStatusList_BadRequestErrors>>
@@ -2483,8 +2483,8 @@ type ZeroTrustApplicationsReviewStatusUpdatePayload =
 
 type ZeroTrustApplicationsReviewStatusUpdate_BadRequestErrors = { code: int; message: string }
 type ZeroTrustApplicationsReviewStatusUpdate_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustApplicationsReviewStatusUpdateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustApplicationsReviewStatusUpdateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustApplicationsReviewStatusUpdateBadRequest = Map<string, obj>
+type MessagesFromZeroTrustApplicationsReviewStatusUpdateBadRequest = Map<string, obj>
 
 type ZeroTrustApplicationsReviewStatusUpdate_BadRequest =
     { errors: Option<list<ZeroTrustApplicationsReviewStatusUpdate_BadRequestErrors>>
@@ -2502,8 +2502,8 @@ type ZeroTrustApplicationsReviewStatusUpdate =
 
 type ZeroTrustGetAuditSshSettings_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGetAuditSshSettings_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGetAuditSshSettingsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGetAuditSshSettingsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGetAuditSshSettingsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGetAuditSshSettingsBadRequest = Map<string, obj>
 
 type ZeroTrustGetAuditSshSettings_BadRequest =
     { errors: Option<list<ZeroTrustGetAuditSshSettings_BadRequestErrors>>
@@ -2528,8 +2528,8 @@ type ZeroTrustUpdateAuditSshSettingsPayload =
 
 type ZeroTrustUpdateAuditSshSettings_BadRequestErrors = { code: int; message: string }
 type ZeroTrustUpdateAuditSshSettings_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustUpdateAuditSshSettingsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustUpdateAuditSshSettingsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustUpdateAuditSshSettingsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustUpdateAuditSshSettingsBadRequest = Map<string, obj>
 
 type ZeroTrustUpdateAuditSshSettings_BadRequest =
     { errors: Option<list<ZeroTrustUpdateAuditSshSettings_BadRequestErrors>>
@@ -2547,8 +2547,8 @@ type ZeroTrustUpdateAuditSshSettings =
 
 type ZeroTrustRotateSshAccountSeed_BadRequestErrors = { code: int; message: string }
 type ZeroTrustRotateSshAccountSeed_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustRotateSshAccountSeedBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustRotateSshAccountSeedBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustRotateSshAccountSeedBadRequest = Map<string, obj>
+type MessagesFromZeroTrustRotateSshAccountSeedBadRequest = Map<string, obj>
 
 type ZeroTrustRotateSshAccountSeed_BadRequest =
     { errors: Option<list<ZeroTrustRotateSshAccountSeed_BadRequestErrors>>
@@ -2566,8 +2566,8 @@ type ZeroTrustRotateSshAccountSeed =
 
 type ZeroTrustGatewayCategoriesListCategories_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayCategoriesListCategories_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayCategoriesListCategoriesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayCategoriesListCategoriesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayCategoriesListCategoriesBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayCategoriesListCategoriesBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayCategoriesListCategories_BadRequest =
     { errors: Option<list<ZeroTrustGatewayCategoriesListCategories_BadRequestErrors>>
@@ -2586,8 +2586,8 @@ type ZeroTrustGatewayCategoriesListCategories =
 
 type ZeroTrustCertificatesListZeroTrustCertificates_BadRequestErrors = { code: int; message: string }
 type ZeroTrustCertificatesListZeroTrustCertificates_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustCertificatesListZeroTrustCertificatesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustCertificatesListZeroTrustCertificatesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustCertificatesListZeroTrustCertificatesBadRequest = Map<string, obj>
+type MessagesFromZeroTrustCertificatesListZeroTrustCertificatesBadRequest = Map<string, obj>
 
 type ZeroTrustCertificatesListZeroTrustCertificates_BadRequest =
     { errors: Option<list<ZeroTrustCertificatesListZeroTrustCertificates_BadRequestErrors>>
@@ -2606,8 +2606,8 @@ type ZeroTrustCertificatesListZeroTrustCertificates =
 
 type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestErrors = { code: int; message: string }
 type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustCertificatesCreateZeroTrustCertificateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustCertificatesCreateZeroTrustCertificateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustCertificatesCreateZeroTrustCertificateBadRequest = Map<string, obj>
+type MessagesFromZeroTrustCertificatesCreateZeroTrustCertificateBadRequest = Map<string, obj>
 
 type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequest =
     { errors: Option<list<ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestErrors>>
@@ -2632,8 +2632,8 @@ type ZeroTrustCertificatesDeleteZeroTrustCertificate =
 
 type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestErrors = { code: int; message: string }
 type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustCertificatesZeroTrustCertificateDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustCertificatesZeroTrustCertificateDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustCertificatesZeroTrustCertificateDetailsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustCertificatesZeroTrustCertificateDetailsBadRequest = Map<string, obj>
 
 type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequest =
     { errors: Option<list<ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestErrors>>
@@ -2658,10 +2658,10 @@ type ZeroTrustCertificatesActivateZeroTrustCertificate =
 
 type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestErrors = { code: int; message: string }
 type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustCertificatesDeactivateZeroTrustCertificateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustCertificatesDeactivateZeroTrustCertificateBadRequest = Map<string, obj>
 
 type MessagesFromZeroTrustCertificatesDeactivateZeroTrustCertificateBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequest =
     { errors: Option<list<ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestErrors>>
@@ -2707,8 +2707,8 @@ type ZeroTrustAccountsGetZeroTrustCertificateConfiguration =
 
 type ZeroTrustListsListZeroTrustLists_BadRequestErrors = { code: int; message: string }
 type ZeroTrustListsListZeroTrustLists_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustListsListZeroTrustListsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustListsListZeroTrustListsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustListsListZeroTrustListsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustListsListZeroTrustListsBadRequest = Map<string, obj>
 
 type ZeroTrustListsListZeroTrustLists_BadRequest =
     { errors: Option<list<ZeroTrustListsListZeroTrustLists_BadRequestErrors>>
@@ -2773,8 +2773,8 @@ type ZeroTrustListsCreateZeroTrustList_BadRequestResult =
       ``type``: Option<``zero-trust-gatewayschemas-type``>
       updated_at: Option<``zero-trust-gatewayreadonlytimestamp``> }
 
-type ErrorsFromZeroTrustListsCreateZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustListsCreateZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustListsCreateZeroTrustListBadRequest = Map<string, obj>
+type MessagesFromZeroTrustListsCreateZeroTrustListBadRequest = Map<string, obj>
 
 type ZeroTrustListsCreateZeroTrustList_BadRequest =
     { errors: Option<list<ZeroTrustListsCreateZeroTrustList_BadRequestErrors>>
@@ -2792,15 +2792,15 @@ type ZeroTrustListsCreateZeroTrustList =
 
 type ZeroTrustListsDeleteZeroTrustList_BadRequestErrors = { code: int; message: string }
 type ZeroTrustListsDeleteZeroTrustList_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustListsDeleteZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustListsDeleteZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustListsDeleteZeroTrustListBadRequest = Map<string, obj>
+type MessagesFromZeroTrustListsDeleteZeroTrustListBadRequest = Map<string, obj>
 
 type ZeroTrustListsDeleteZeroTrustList_BadRequest =
     { errors: Option<list<ZeroTrustListsDeleteZeroTrustList_BadRequestErrors>>
       messages: Option<list<ZeroTrustListsDeleteZeroTrustList_BadRequestMessages>>
       ///Indicate whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustListsDeleteZeroTrustList =
@@ -2811,8 +2811,8 @@ type ZeroTrustListsDeleteZeroTrustList =
 
 type ZeroTrustListsZeroTrustListDetails_BadRequestErrors = { code: int; message: string }
 type ZeroTrustListsZeroTrustListDetails_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustListsZeroTrustListDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustListsZeroTrustListDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustListsZeroTrustListDetailsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustListsZeroTrustListDetailsBadRequest = Map<string, obj>
 
 type ZeroTrustListsZeroTrustListDetails_BadRequest =
     { errors: Option<list<ZeroTrustListsZeroTrustListDetails_BadRequestErrors>>
@@ -2846,8 +2846,8 @@ type ZeroTrustListsPatchZeroTrustListPayload =
 
 type ZeroTrustListsPatchZeroTrustList_BadRequestErrors = { code: int; message: string }
 type ZeroTrustListsPatchZeroTrustList_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustListsPatchZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustListsPatchZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustListsPatchZeroTrustListBadRequest = Map<string, obj>
+type MessagesFromZeroTrustListsPatchZeroTrustListBadRequest = Map<string, obj>
 
 type ZeroTrustListsPatchZeroTrustList_BadRequest =
     { errors: Option<list<ZeroTrustListsPatchZeroTrustList_BadRequestErrors>>
@@ -2886,8 +2886,8 @@ type ZeroTrustListsUpdateZeroTrustListPayload =
 
 type ZeroTrustListsUpdateZeroTrustList_BadRequestErrors = { code: int; message: string }
 type ZeroTrustListsUpdateZeroTrustList_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustListsUpdateZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustListsUpdateZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustListsUpdateZeroTrustListBadRequest = Map<string, obj>
+type MessagesFromZeroTrustListsUpdateZeroTrustListBadRequest = Map<string, obj>
 
 type ZeroTrustListsUpdateZeroTrustList_BadRequest =
     { errors: Option<list<ZeroTrustListsUpdateZeroTrustList_BadRequestErrors>>
@@ -2916,8 +2916,8 @@ type ZeroTrustListsZeroTrustListItems_BadRequestResultinfo =
       ///Show the total results available without any search parameters.
       total_count: Option<float> }
 
-type ErrorsFromZeroTrustListsZeroTrustListItemsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustListsZeroTrustListItemsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustListsZeroTrustListItemsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustListsZeroTrustListItemsBadRequest = Map<string, obj>
 
 type ZeroTrustListsZeroTrustListItems_BadRequest =
     { errors: Option<list<ZeroTrustListsZeroTrustListItems_BadRequestErrors>>
@@ -2938,10 +2938,10 @@ type ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequestErrors = {
 type ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequestMessages = { code: int; message: string }
 
 type ErrorsFromZeroTrustGatewayLocationsListZeroTrustGatewayLocationsBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type MessagesFromZeroTrustGatewayLocationsListZeroTrustGatewayLocationsBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequest =
     { errors: Option<list<ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequestErrors>>
@@ -2984,10 +2984,10 @@ type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequestErrors = 
 type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequestMessages = { code: int; message: string }
 
 type ErrorsFromZeroTrustGatewayLocationsCreateZeroTrustGatewayLocationBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type MessagesFromZeroTrustGatewayLocationsCreateZeroTrustGatewayLocationBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequest =
     { errors: Option<list<ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequestErrors>>
@@ -3007,17 +3007,17 @@ type ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequestErrors = 
 type ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequestMessages = { code: int; message: string }
 
 type ErrorsFromZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocationBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type MessagesFromZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocationBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequest =
     { errors: Option<list<ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequestMessages>>
       ///Indicate whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation =
@@ -3030,10 +3030,10 @@ type ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequestErrors =
 type ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequestMessages = { code: int; message: string }
 
 type ErrorsFromZeroTrustGatewayLocationsZeroTrustGatewayLocationDetailsBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type MessagesFromZeroTrustGatewayLocationsZeroTrustGatewayLocationDetailsBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequest =
     { errors: Option<list<ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequestErrors>>
@@ -3075,10 +3075,10 @@ type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequestErrors = 
 type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequestMessages = { code: int; message: string }
 
 type ErrorsFromZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocationBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type MessagesFromZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocationBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequest =
     { errors: Option<list<ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequestErrors>>
@@ -3124,8 +3124,8 @@ type ZeroTrustGatewayPacfilesList_BadRequestResult =
       ///Unique URL to download the PAC file.
       url: Option<``zero-trust-gatewayurl``> }
 
-type ErrorsFromZeroTrustGatewayPacfilesListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayPacfilesListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayPacfilesListBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayPacfilesListBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayPacfilesList_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesList_BadRequestErrors>>
@@ -3161,8 +3161,8 @@ type ZeroTrustGatewayPacfilesCreatePacfilePayload =
 
 type ZeroTrustGatewayPacfilesCreatePacfile_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayPacfilesCreatePacfile_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayPacfilesCreatePacfileBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayPacfilesCreatePacfileBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayPacfilesCreatePacfileBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayPacfilesCreatePacfileBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayPacfilesCreatePacfile_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesCreatePacfile_BadRequestErrors>>
@@ -3180,15 +3180,15 @@ type ZeroTrustGatewayPacfilesCreatePacfile =
 
 type ZeroTrustGatewayPacfilesDelete_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayPacfilesDelete_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayPacfilesDeleteBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayPacfilesDeleteBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayPacfilesDeleteBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayPacfilesDeleteBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayPacfilesDelete_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesDelete_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayPacfilesDelete_BadRequestMessages>>
       ///Indicate whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayPacfilesDelete =
@@ -3199,8 +3199,8 @@ type ZeroTrustGatewayPacfilesDelete =
 
 type ZeroTrustGatewayPacfilesDetails_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayPacfilesDetails_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayPacfilesDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayPacfilesDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayPacfilesDetailsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayPacfilesDetailsBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayPacfilesDetails_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesDetails_BadRequestErrors>>
@@ -3233,8 +3233,8 @@ type ZeroTrustGatewayPacfilesUpdatePayload =
 
 type ZeroTrustGatewayPacfilesUpdate_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayPacfilesUpdate_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayPacfilesUpdateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayPacfilesUpdateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayPacfilesUpdateBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayPacfilesUpdateBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayPacfilesUpdate_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesUpdate_BadRequestErrors>>
@@ -3252,8 +3252,8 @@ type ZeroTrustGatewayPacfilesUpdate =
 
 type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayProxyEndpointsListProxyEndpointsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayProxyEndpointsListProxyEndpointsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayProxyEndpointsListProxyEndpointsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayProxyEndpointsListProxyEndpointsBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestErrors>>
@@ -3272,15 +3272,15 @@ type ZeroTrustGatewayProxyEndpointsListProxyEndpoints =
 
 type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayProxyEndpointsCreateProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayProxyEndpointsCreateProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayProxyEndpointsCreateProxyEndpointBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayProxyEndpointsCreateProxyEndpointBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestMessages>>
       ///Indicate whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint =
@@ -3291,15 +3291,15 @@ type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint =
 
 type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayProxyEndpointsDeleteProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayProxyEndpointsDeleteProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayProxyEndpointsDeleteProxyEndpointBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayProxyEndpointsDeleteProxyEndpointBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestMessages>>
       ///Indicate whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint =
@@ -3310,15 +3310,15 @@ type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint =
 
 type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayProxyEndpointsProxyEndpointDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayProxyEndpointsProxyEndpointDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayProxyEndpointsProxyEndpointDetailsBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayProxyEndpointsProxyEndpointDetailsBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestMessages>>
       ///Indicate whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails =
@@ -3337,15 +3337,15 @@ type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpointPayload =
 
 type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayProxyEndpointsUpdateProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayProxyEndpointsUpdateProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayProxyEndpointsUpdateProxyEndpointBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayProxyEndpointsUpdateProxyEndpointBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestMessages>>
       ///Indicate whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint =
@@ -3356,8 +3356,8 @@ type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint =
 
 type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayRulesListZeroTrustGatewayRulesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayRulesListZeroTrustGatewayRulesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayRulesListZeroTrustGatewayRulesBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayRulesListZeroTrustGatewayRulesBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequest =
     { errors: Option<list<ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestErrors>>
@@ -3431,8 +3431,8 @@ type ZeroTrustGatewayRulesCreateZeroTrustGatewayRulePayload =
 
 type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayRulesCreateZeroTrustGatewayRuleBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayRulesCreateZeroTrustGatewayRuleBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayRulesCreateZeroTrustGatewayRuleBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayRulesCreateZeroTrustGatewayRuleBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequest =
     { errors: Option<list<ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestErrors>>
@@ -3450,10 +3450,10 @@ type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule =
 
 type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayRulesListZeroTrustGatewayRulesTenantBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayRulesListZeroTrustGatewayRulesTenantBadRequest = Map<string, obj>
 
 type MessagesFromZeroTrustGatewayRulesListZeroTrustGatewayRulesTenantBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequest =
     { errors: Option<list<ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestErrors>>
@@ -3472,15 +3472,15 @@ type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant =
 
 type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestMessages = { code: int; message: string }
-type ErrorsFromZeroTrustGatewayRulesDeleteZeroTrustGatewayRuleBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
-type MessagesFromZeroTrustGatewayRulesDeleteZeroTrustGatewayRuleBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type ErrorsFromZeroTrustGatewayRulesDeleteZeroTrustGatewayRuleBadRequest = Map<string, obj>
+type MessagesFromZeroTrustGatewayRulesDeleteZeroTrustGatewayRuleBadRequest = Map<string, obj>
 
 type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequest =
     { errors: Option<list<ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestMessages>>
       ///Indicate whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule =
@@ -3562,10 +3562,10 @@ type ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequestErrors =
 type ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequestMessages = { code: int; message: string }
 
 type ErrorsFromZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRuleBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type MessagesFromZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRuleBadRequest =
-    Map<string, Newtonsoft.Json.Linq.JToken>
+    Map<string, obj>
 
 type ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequest =
     { errors: Option<list<ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequestErrors>>

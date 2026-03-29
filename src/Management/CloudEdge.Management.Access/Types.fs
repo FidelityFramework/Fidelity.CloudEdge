@@ -886,9 +886,9 @@ type accessactivesessionsresponse =
 ///Matches any valid Access Service Token
 type accessanyvalidservicetokenrule =
     { ///An empty object which matches on all service tokens.
-      any_valid_service_token: Newtonsoft.Json.Linq.JObject }
+      any_valid_service_token: obj }
     ///Creates an instance of accessanyvalidservicetokenrule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (any_valid_service_token: Newtonsoft.Json.Linq.JObject): accessanyvalidservicetokenrule =
+    static member Create (any_valid_service_token: obj): accessanyvalidservicetokenrule =
         { any_valid_service_token = any_valid_service_token }
 
 type ``accessapi-response-collectionErrorsSource`` =
@@ -1002,15 +1002,15 @@ type ``accessapi-response-common`` =
           success = success }
 
 type ``accessapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      messages: obj
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of accessapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: obj,
+                          messages: obj,
+                          result: obj,
                           success: bool): ``accessapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -1464,7 +1464,7 @@ type accessapprovalgroup =
           email_addresses = None
           email_list_uuid = None }
 
-type accessapps = Map<string, Newtonsoft.Json.Linq.JToken>
+type accessapps = Map<string, obj>
 
 type ``accessappscomponents-schemas-responsecollectionErrorsSource`` =
     { pointer: Option<string> }
@@ -1637,7 +1637,7 @@ type ``accessappscomponents-schemas-singleresponse`` =
       messages: list<``accessappscomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of accessappscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``accessappscomponents-schemas-singleresponseErrors``>,
                           messages: list<``accessappscomponents-schemas-singleresponseMessages``>,
@@ -1834,7 +1834,7 @@ type Config =
 
 type accessazureAD =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -1918,10 +1918,10 @@ type accessbasepolicyresp =
 type accessbasicappresponseprops =
     { ///Audience tag.
       aud: Option<``accessschemas-aud``>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       ///UUID.
       id: Option<accessuuid>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accessbasicappresponseprops with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessbasicappresponseprops =
         { aud = None
@@ -1985,7 +1985,7 @@ type accessbookmarkprops =
 type accessbookmarks =
     { ///Displays the application in the App Launcher.
       app_launcher_visible: Option<``accessschemas-applaunchervisible``>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       ///The domain of the Bookmark application.
       domain: Option<``accessschemas-domain``>
       ///The unique identifier for the Bookmark application.
@@ -1994,7 +1994,7 @@ type accessbookmarks =
       logo_url: Option<``accessschemas-logourl``>
       ///The name of the Bookmark application.
       name: Option<``accessbookmarkscomponents-schemas-name``>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accessbookmarks with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessbookmarks =
         { app_launcher_visible = None
@@ -2484,7 +2484,7 @@ type accesscentrifyType =
 
 type accesscentrify =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -2503,15 +2503,15 @@ type accesscentrify =
 
 ///Matches any valid client certificate.
 type accesscertificaterule =
-    { certificate: Newtonsoft.Json.Linq.JObject }
+    { certificate: obj }
     ///Creates an instance of accesscertificaterule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (certificate: Newtonsoft.Json.Linq.JObject): accesscertificaterule =
+    static member Create (certificate: obj): accesscertificaterule =
         { certificate = certificate }
 
 type accesscertificates =
     { ///The hostnames of the applications that will use this certificate.
       associated_hostnames: Option<accessassociatedhostnames>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       expires_on: Option<accesstimestamp>
       ///The MD5 fingerprint of the certificate.
       fingerprint: Option<accessfingerprint>
@@ -2519,7 +2519,7 @@ type accesscertificates =
       id: Option<string>
       ///The name of the certificate.
       name: Option<``accesscertificatescomponents-schemas-name``>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accesscertificates with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesscertificates =
         { associated_hostnames = None
@@ -2783,7 +2783,7 @@ type ``accesscomponents-schemas-certificates`` =
       ///The MD5 fingerprint of the certificate.
       fingerprint: Option<accessfingerprint>
       ///The ID of the application that will use this certificate.
-      id: Option<Newtonsoft.Json.Linq.JToken>
+      id: Option<obj>
       ///The name of the certificate.
       name: Option<``accesscertificatescomponents-schemas-name-2``>
       updated_at: Option<accesstimestamp> }
@@ -3129,14 +3129,14 @@ type accesscreateresponseResult =
       client_id: Option<accessclientid>
       ///The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
       client_secret: Option<accessclientsecret>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<accessduration>
       ///The ID of the service token.
       id: Option<string>
       ///The name of the service token.
       name: Option<``accessschemas-name``>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accesscreateresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesscreateresponseResult =
         { client_id = None
@@ -3162,7 +3162,7 @@ type accesscreateresponse =
           success = success
           result = None }
 
-type accesscreatedat = Map<string, Newtonsoft.Json.Linq.JToken>
+type accesscreatedat = Map<string, obj>
 
 type ``accesscustom-claims-support`` =
     { ///Custom claims
@@ -3295,7 +3295,7 @@ type ``accesscustom-pagescomponents-schemas-singleresponse`` =
 type accesscustompage =
     { ///Number of apps the custom page is assigned to.
       app_count: Option<``accessschemas-appcount``>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       ///Custom page HTML.
       custom_html: string
       ///Custom page name.
@@ -3304,7 +3304,7 @@ type accesscustompage =
       ``type``: ``accessschemas-type``
       ///UUID.
       uid: Option<accessuuid>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accesscustompage with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (custom_html: string,
                           name: ``accesscustom-pagescomponents-schemas-name``,
@@ -3320,14 +3320,14 @@ type accesscustompage =
 type accesscustompagewithouthtml =
     { ///Number of apps the custom page is assigned to.
       app_count: Option<``accessschemas-appcount``>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       ///Custom page name.
       name: ``accesscustom-pagescomponents-schemas-name``
       ///Custom page type.
       ``type``: ``accessschemas-type``
       ///UUID.
       uid: Option<accessuuid>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accesscustompagewithouthtml with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesscustom-pagescomponents-schemas-name``, ``type``: ``accessschemas-type``): accesscustompagewithouthtml =
         { app_count = None
@@ -3386,7 +3386,7 @@ type accessdeleteauthenticatorresponse =
       messages: list<accessdeleteauthenticatorresponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of accessdeleteauthenticatorresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<accessdeleteauthenticatorresponseErrors>,
                           messages: list<accessdeleteauthenticatorresponseMessages>,
@@ -3435,7 +3435,7 @@ type accessdeleteuserresponse =
       messages: list<accessdeleteuserresponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of accessdeleteuserresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<accessdeleteuserresponseErrors>,
                           messages: list<accessdeleteuserresponseMessages>,
@@ -3513,9 +3513,9 @@ type accessemptyresponse =
 ///Matches everyone.
 type accesseveryonerule =
     { ///An empty object which matches on all users.
-      everyone: Newtonsoft.Json.Linq.JObject }
+      everyone: obj }
     ///Creates an instance of accesseveryonerule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (everyone: Newtonsoft.Json.Linq.JObject): accesseveryonerule = { everyone = everyone }
+    static member Create (everyone: obj): accesseveryonerule = { everyone = everyone }
 
 type Externalevaluation =
     { ///The API endpoint containing your business logic.
@@ -3603,7 +3603,7 @@ type accessfacebookType =
 
 type accessfacebook =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -3672,7 +3672,7 @@ type accessfailedloginresponseResultinfo =
 
 type accessfailedloginresponseResult =
     { expiration: Option<int>
-      metadata: Option<Newtonsoft.Json.Linq.JObject> }
+      metadata: Option<obj> }
     ///Creates an instance of accessfailedloginresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessfailedloginresponseResult = { expiration = None; metadata = None }
 
@@ -3924,7 +3924,7 @@ type accessgithubType =
 
 type accessgithub =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4031,7 +4031,7 @@ type accessgoogleType =
 
 type accessgoogle =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4117,7 +4117,7 @@ type ``accessgoogle-appsType`` =
 
 type ``accessgoogle-apps`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4513,7 +4513,7 @@ type ``accessidentity-providerType`` =
 
 type ``accessidentity-provider`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Newtonsoft.Json.Linq.JObject
+      config: obj
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4523,7 +4523,7 @@ type ``accessidentity-provider`` =
       ///The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
       ``type``: ``accessidentity-providerType`` }
     ///Creates an instance of accessidentity-provider with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (config: Newtonsoft.Json.Linq.JObject,
+    static member Create (config: obj,
                           name: ``accesscomponents-schemas-name``,
                           ``type``: ``accessidentity-providerType``): ``accessidentity-provider`` =
         { config = config
@@ -4532,7 +4532,7 @@ type ``accessidentity-provider`` =
           scim_config = None
           ``type`` = ``type`` }
 
-type ``accessidentity-providers`` = Map<string, Newtonsoft.Json.Linq.JToken>
+type ``accessidentity-providers`` = Map<string, obj>
 
 type ``accessidentity-providerscomponents-schemas-responsecollectionErrorsSource`` =
     { pointer: Option<string> }
@@ -4642,7 +4642,7 @@ type ``accessidentity-providerscomponents-schemas-singleresponse`` =
       messages: Option<list<``accessidentity-providerscomponents-schemas-singleresponseMessages``>>
       ///Whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of accessidentity-providerscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessidentity-providerscomponents-schemas-singleresponse`` =
         { errors = None
@@ -5022,7 +5022,7 @@ type accesslinkedinType =
 
 type accesslinkedin =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5389,7 +5389,7 @@ type accessoidcType =
 
 type accessoidc =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5528,7 +5528,7 @@ type accessoidcsaasapp =
       client_id: Option<string>
       ///The application client secret, only returned on POST request.
       client_secret: Option<string>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       custom_claims: Option<list<Customclaims>>
       ///The OIDC flows supported by this application
       grant_types: Option<list<Grant_types>>
@@ -5542,7 +5542,7 @@ type accessoidcsaasapp =
       refresh_token_options: Option<Refreshtokenoptions>
       ///Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
       scopes: Option<list<Scopes>>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accessoidcsaasapp with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessoidcsaasapp =
         { access_token_lifetime = None
@@ -5631,7 +5631,7 @@ type accessoktaType =
 
 type accessokta =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5734,7 +5734,7 @@ type accessoneloginType =
 
 type accessonelogin =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5832,7 +5832,7 @@ type TypeFromaccessonetimepin =
 
 type accessonetimepin =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5878,7 +5878,7 @@ type accessorganizations =
       auth_domain: Option<accessauthdomain>
       ///When set to `true`, users skip the identity provider selection step during login.
       auto_redirect_to_identity: Option<accessautoredirecttoidentity>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       custom_pages: Option<accesscustompages>
       ///Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
       deny_unmatched_requests: Option<accessdenyunmatchedrequests>
@@ -5897,7 +5897,7 @@ type accessorganizations =
       session_duration: Option<accesssessionduration>
       ///A description of the reason why the UI read only field is being toggled.
       ui_read_only_toggle_reason: Option<accessuireadonlytogglereason>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken>
+      updated_at: Option<obj>
       ///The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
       user_seat_expiration_inactive_time: Option<accessuserseatexpirationinactivetime>
       ///The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
@@ -6038,7 +6038,7 @@ type accesspingoneType =
 
 type accesspingone =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -6251,7 +6251,7 @@ type Appstate =
       aud: Option<string>
       hostname: Option<string>
       name: Option<string>
-      policies: Option<Newtonsoft.Json.Linq.JArray>
+      policies: Option<list<obj>>
       status: Option<string> }
     ///Creates an instance of Appstate with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Appstate =
@@ -6269,7 +6269,7 @@ type UseridentityGeo =
 
 type Useridentity =
     { account_id: Option<string>
-      device_sessions: Option<Newtonsoft.Json.Linq.JObject>
+      device_sessions: Option<obj>
       email: Option<string>
       geo: Option<UseridentityGeo>
       iat: Option<int>
@@ -7165,7 +7165,7 @@ type accesssaasprops =
       logo_url: Option<accesslogourl>
       ///The name of the application.
       name: Option<``accessappscomponents-schemas-name``>
-      saas_app: Option<Newtonsoft.Json.Linq.JObject>
+      saas_app: Option<obj>
       ///Configuration for provisioning to this application via SCIM. This is currently in closed beta.
       scim_config: Option<accessscimconfig>
       ///The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
@@ -7289,7 +7289,7 @@ type accesssamlConfig =
 
 type accesssaml =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -7395,7 +7395,7 @@ type accesssamlsaasapp =
       auth_type: Option<accesssamlsaasappAuthtype>
       ///The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
       consumer_service_url: Option<string>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       custom_attributes: Option<list<Customattributes>>
       ///The URL that the user will be redirected to after a successful login for IDP initiated logins.
       default_relay_state: Option<string>
@@ -7413,7 +7413,7 @@ type accesssamlsaasapp =
       sp_entity_id: Option<string>
       ///The endpoint where your SaaS application will send login requests.
       sso_endpoint: Option<string>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accesssamlsaasapp with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesssamlsaasapp =
         { auth_type = None
@@ -7535,7 +7535,7 @@ type ``accessschemas-azureADType`` =
 
 type ``accessschemas-azureAD`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -7592,9 +7592,9 @@ type ``accessschemas-bisoprops`` =
           ``type`` = None }
 
 type ``accessschemas-bookmarkprops`` =
-    { app_launcher_visible: Option<Newtonsoft.Json.Linq.JToken>
+    { app_launcher_visible: Option<obj>
       ///The URL or domain of the bookmark.
-      domain: Newtonsoft.Json.Linq.JToken
+      domain: obj
       ///The image URL for the logo shown in the App Launcher dashboard.
       logo_url: Option<accesslogourl>
       ///The name of the application.
@@ -7602,7 +7602,7 @@ type ``accessschemas-bookmarkprops`` =
       ///The application type.
       ``type``: string }
     ///Creates an instance of accessschemas-bookmarkprops with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (domain: Newtonsoft.Json.Linq.JToken, ``type``: string): ``accessschemas-bookmarkprops`` =
+    static member Create (domain: obj, ``type``: string): ``accessschemas-bookmarkprops`` =
         { app_launcher_visible = None
           domain = domain
           logo_url = None
@@ -7691,7 +7691,7 @@ type ``accessschemas-centrifyType`` =
 
 type ``accessschemas-centrify`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -7806,7 +7806,7 @@ type ``accessschemas-createresponse`` =
       messages: Option<list<``accessschemas-createresponseMessages``>>
       ///Whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of accessschemas-createresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-createresponse`` =
         { errors = None
@@ -7816,7 +7816,7 @@ type ``accessschemas-createresponse`` =
 
 type ``accessschemas-deviceposturerule`` =
     { check: Option<accessdeviceposturecheck>
-      data: Option<Newtonsoft.Json.Linq.JObject>
+      data: Option<obj>
       description: Option<string>
       error: Option<string>
       id: Option<string>
@@ -7837,7 +7837,7 @@ type ``accessschemas-deviceposturerule`` =
           ``type`` = None }
 
 type ``accessschemas-emptyresponse`` =
-    { result: Option<Newtonsoft.Json.Linq.JObject>
+    { result: Option<obj>
       success: Option<bool> }
     ///Creates an instance of accessschemas-emptyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-emptyresponse`` = { result = None; success = None }
@@ -7911,7 +7911,7 @@ type ``accessschemas-facebookType`` =
 
 type ``accessschemas-facebook`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8029,7 +8029,7 @@ type ``accessschemas-githubType`` =
 
 type ``accessschemas-github`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8115,7 +8115,7 @@ type ``accessschemas-googleType`` =
 
 type ``accessschemas-google`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8201,7 +8201,7 @@ type ``accessschemas-google-appsType`` =
 
 type ``accessschemas-google-apps`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8219,7 +8219,7 @@ type ``accessschemas-google-apps`` =
           ``type`` = None }
 
 type ``accessschemas-groups`` =
-    { created_at: Option<Newtonsoft.Json.Linq.JToken>
+    { created_at: Option<obj>
       ///Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
       exclude: Option<accessexclude>
       ///UUID.
@@ -8232,7 +8232,7 @@ type ``accessschemas-groups`` =
       name: Option<``accessgroupscomponents-schemas-name``>
       ///Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
       require: Option<accessrequire>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accessschemas-groups with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-groups`` =
         { created_at = None
@@ -8368,7 +8368,7 @@ type ``accessschemas-identity-providerType`` =
 
 type ``accessschemas-identity-provider`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Newtonsoft.Json.Linq.JObject
+      config: obj
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8378,7 +8378,7 @@ type ``accessschemas-identity-provider`` =
       ///The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
       ``type``: ``accessschemas-identity-providerType`` }
     ///Creates an instance of accessschemas-identity-provider with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (config: Newtonsoft.Json.Linq.JObject,
+    static member Create (config: obj,
                           name: ``accesscomponents-schemas-name``,
                           ``type``: ``accessschemas-identity-providerType``): ``accessschemas-identity-provider`` =
         { config = config
@@ -8456,7 +8456,7 @@ type ``accessschemas-linkedinType`` =
 
 type ``accessschemas-linkedin`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8561,7 +8561,7 @@ type ``accessschemas-oidcType`` =
 
 type ``accessschemas-oidc`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8792,7 +8792,7 @@ type ``accessschemas-oktaType`` =
 
 type ``accessschemas-okta`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8878,7 +8878,7 @@ type ``accessschemas-oneloginType`` =
 
 type ``accessschemas-onelogin`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8976,7 +8976,7 @@ type ``TypeFromaccessschemas-onetimepin`` =
 
 type ``accessschemas-onetimepin`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -9003,7 +9003,7 @@ type ``accessschemas-organizations`` =
       deny_unmatched_requests_exempted_zone_names: Option<accessdenyunmatchedrequestsexemptedzonenames>
       ///Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
       is_ui_read_only: Option<``accessschemas-isuireadonly``>
-      login_design: Option<Newtonsoft.Json.Linq.JToken>
+      login_design: Option<obj>
       ///The name of your Zero Trust organization.
       name: Option<``accessorganizationscomponents-schemas-name``>
       ///A description of the reason why the UI read only field is being toggled.
@@ -9093,7 +9093,7 @@ type ``accessschemas-pingoneType`` =
 
 type ``accessschemas-pingone`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -9168,7 +9168,7 @@ type ``accessschemas-policycheckresponseResultUseridentityGeo`` =
 
 type ``accessschemas-policycheckresponseResultUseridentity`` =
     { account_id: Option<string>
-      device_sessions: Option<Newtonsoft.Json.Linq.JObject>
+      device_sessions: Option<obj>
       email: Option<string>
       geo: Option<``accessschemas-policycheckresponseResultUseridentityGeo``>
       iat: Option<int>
@@ -9357,7 +9357,7 @@ type ``accessschemas-saasprops`` =
       logo_url: Option<accesslogourl>
       ///The name of the application.
       name: Option<``accessappscomponents-schemas-name``>
-      saas_app: Option<Newtonsoft.Json.Linq.JObject>
+      saas_app: Option<obj>
       ///The application type.
       ``type``: Option<string> }
     ///Creates an instance of accessschemas-saasprops with all optional fields initialized to None. The required fields are parameters of this function
@@ -9474,7 +9474,7 @@ type ``accessschemas-samlConfig`` =
 
 type ``accessschemas-saml`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -9583,7 +9583,7 @@ type ``accessschemas-samlsaasapp`` =
 
 ///Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 type ``accessschemas-scimconfig`` =
-    { authentication: Option<Newtonsoft.Json.Linq.JToken>
+    { authentication: Option<obj>
       ///If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
       deactivate_on_delete: Option<bool>
       ///Whether SCIM provisioning is turned on for this application.
@@ -9689,7 +9689,7 @@ type ``accessschemas-service-tokens`` =
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<``accessschemas-duration``>
       expires_at: Option<accesstimestamp>
-      id: Option<Newtonsoft.Json.Linq.JToken>
+      id: Option<obj>
       last_seen_at: Option<accesstimestamp>
       ///The name of the service token.
       name: Option<``accessservice-tokenscomponents-schemas-name``>
@@ -10017,7 +10017,7 @@ type ``accessschemas-yandexType`` =
 
 type ``accessschemas-yandex`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -10036,7 +10036,7 @@ type ``accessschemas-yandex`` =
 
 ///Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 type accessscimconfig =
-    { authentication: Option<Newtonsoft.Json.Linq.JToken>
+    { authentication: Option<obj>
       ///If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
       deactivate_on_delete: Option<bool>
       ///Whether SCIM provisioning is turned on for this application.
@@ -10596,15 +10596,15 @@ type accessselfhostedprops =
 type ``accessservice-tokens`` =
     { ///The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
       client_id: Option<accessclientid>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<accessduration>
       expires_at: Option<accesstimestamp>
-      id: Option<Newtonsoft.Json.Linq.JToken>
-      last_seen_at: Option<Newtonsoft.Json.Linq.JToken>
+      id: Option<obj>
+      last_seen_at: Option<obj>
       ///The name of the service token.
       name: Option<``accessschemas-name``>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accessservice-tokens with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessservice-tokens`` =
         { client_id = None
@@ -11052,10 +11052,10 @@ type accesssshprops =
 type accesstag =
     { ///The number of applications that have this tag
       app_count: Option<int>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<obj>
       ///The name of the tag
       name: ``accesstagscomponents-schemas-name``
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accesstag with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesstagscomponents-schemas-name``): accesstag =
         { app_count = None
@@ -11065,10 +11065,10 @@ type accesstag =
 
 ///A tag
 type accesstagwithoutappcount =
-    { created_at: Option<Newtonsoft.Json.Linq.JToken>
+    { created_at: Option<obj>
       ///The name of the tag
       name: ``accesstagscomponents-schemas-name``
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<obj> }
     ///Creates an instance of accesstagwithoutappcount with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesstagscomponents-schemas-name``): accesstagwithoutappcount =
         { created_at = None
@@ -11228,7 +11228,7 @@ type accesstargetcriteriaselfhostedapp =
           target_attributes = None
           protocol = None }
 
-type accessupdatedat = Map<string, Newtonsoft.Json.Linq.JToken>
+type accessupdatedat = Map<string, obj>
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type User_risk_score =
@@ -11328,10 +11328,10 @@ type ``accessuserscomponents-schemas-responsecollectionMessages`` =
           source = None }
 
 type ``accessuserscomponents-schemas-responsecollectionResultinfo`` =
-    { count: Option<Newtonsoft.Json.Linq.JToken>
-      page: Option<Newtonsoft.Json.Linq.JToken>
-      per_page: Option<Newtonsoft.Json.Linq.JToken>
-      total_count: Option<Newtonsoft.Json.Linq.JToken> }
+    { count: Option<obj>
+      page: Option<obj>
+      per_page: Option<obj>
+      total_count: Option<obj> }
     ///Creates an instance of accessuserscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessuserscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
@@ -11554,7 +11554,7 @@ type accessyandexType =
 
 type accessyandex =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -11610,7 +11610,7 @@ type ``access-applications-add-an-applicationresponse`` =
       messages: list<``access-applications-add-an-applicationresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of access-applications-add-an-applicationresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``access-applications-add-an-applicationresponseErrors``>,
                           messages: list<``access-applications-add-an-applicationresponseMessages``>,
@@ -11661,7 +11661,7 @@ type ``access-applications-update-an-access-applicationresponse`` =
       messages: list<``access-applications-update-an-access-applicationresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of access-applications-update-an-access-applicationresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``access-applications-update-an-access-applicationresponseErrors``>,
                           messages: list<``access-applications-update-an-access-applicationresponseMessages``>,
@@ -11808,7 +11808,7 @@ type McpPortalsApiListPortals_BadRequestErrors = { message: string }
 
 type McpPortalsApiListPortals_BadRequest =
     { errors: list<McpPortalsApiListPortals_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -11961,11 +11961,11 @@ type McpPortalsApiFetchGateways_OKResultServers =
       modified_by: Option<string>
       name: string
       on_behalf: Option<bool>
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray
-      updated_prompts: Newtonsoft.Json.Linq.JArray
-      updated_tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj>
+      updated_prompts: list<obj>
+      updated_tools: list<obj> }
 
 type McpPortalsApiFetchGateways_OKResult =
     { created_at: Option<System.DateTimeOffset>
@@ -12114,9 +12114,9 @@ type McpPortalsApiListServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj> }
 
 type McpPortalsApiListServers_OK =
     { result: list<McpPortalsApiListServers_OKResult>
@@ -12126,7 +12126,7 @@ type McpPortalsApiListServers_BadRequestErrors = { message: string }
 
 type McpPortalsApiListServers_BadRequest =
     { errors: list<McpPortalsApiListServers_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -12192,9 +12192,9 @@ type McpPortalsApiCreateServers_CreatedResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj> }
 
 type McpPortalsApiCreateServers_Created =
     { result: McpPortalsApiCreateServers_CreatedResult
@@ -12241,9 +12241,9 @@ type McpPortalsApiDeleteServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj> }
 
 type McpPortalsApiDeleteServers_OK =
     { result: McpPortalsApiDeleteServers_OKResult
@@ -12287,9 +12287,9 @@ type McpPortalsApiFetchServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj> }
 
 type McpPortalsApiFetchServers_OK =
     { result: McpPortalsApiFetchServers_OKResult
@@ -12343,9 +12343,9 @@ type McpPortalsApiUpdateServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj> }
 
 type McpPortalsApiUpdateServers_OK =
     { result: McpPortalsApiUpdateServers_OKResult
@@ -12376,7 +12376,7 @@ type McpPortalsApiUpdateServers =
     | NotFound of payload: McpPortalsApiUpdateServers_NotFound
 
 type McpPortalsApiSyncServer_OK =
-    { result: Newtonsoft.Json.Linq.JObject
+    { result: obj
       success: bool }
 
 type McpPortalsApiSyncServer_NotFoundErrors = { code: float; message: string }

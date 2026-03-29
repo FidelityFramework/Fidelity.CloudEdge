@@ -32,7 +32,7 @@ type ``mqqueue-pull-batchArrayItem`` =
       id: Option<string>
       ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
       lease_id: Option<``mqlease-id``>
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       timestamp_ms: Option<float> }
     ///Creates an instance of mqqueue-pull-batchArrayItem with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``mqqueue-pull-batchArrayItem`` =
@@ -202,7 +202,7 @@ type Contenttype =
         | Json -> "json"
 
 type ``mqqueue-message-json`` =
-    { body: Option<Newtonsoft.Json.Linq.JObject>
+    { body: Option<obj>
       content_type: Option<Contenttype> }
     ///Creates an instance of mqqueue-message-json with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``mqqueue-message-json`` = { body = None; content_type = None }
@@ -542,7 +542,7 @@ type ``queues-create-consumerresponse`` =
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       ///Response body representing a consumer
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of queues-create-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``queues-create-consumerresponse`` =
         { errors = None
@@ -563,7 +563,7 @@ type ``queues-get-consumerresponse`` =
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       ///Response body representing a consumer
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of queues-get-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``queues-get-consumerresponse`` =
         { errors = None
@@ -584,7 +584,7 @@ type ``queues-update-consumerresponse`` =
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       ///Response body representing a consumer
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of queues-update-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``queues-update-consumerresponse`` =
         { errors = None
@@ -637,7 +637,7 @@ type Messages =
       id: Option<string>
       ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
       lease_id: Option<``mqlease-id``>
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       timestamp_ms: Option<float> }
     ///Creates an instance of Messages with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Messages =

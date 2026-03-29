@@ -237,7 +237,7 @@ type ``r2-data-catalogapi-response-common-failureErrors`` =
 
 type ``r2-data-catalogapi-response-common-failure`` =
     { errors: Option<list<``r2-data-catalogapi-response-common-failureErrors``>>
-      messages: Option<Newtonsoft.Json.Linq.JArray>
+      messages: Option<list<obj>>
       success: Option<bool> }
     ///Creates an instance of r2-data-catalogapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogapi-response-common-failure`` =
@@ -386,9 +386,9 @@ type ``r2-data-catalogcatalog-maintenance-update-request`` =
 ///Updates compaction configuration (all fields optional).
 type ``r2-data-catalogcompaction-update-params`` =
     { ///Updates the state optionally.
-      state: Option<Newtonsoft.Json.Linq.JToken>
+      state: Option<obj>
       ///Updates the target file size optionally.
-      target_size_mb: Option<Newtonsoft.Json.Linq.JToken> }
+      target_size_mb: Option<obj> }
     ///Creates an instance of r2-data-catalogcompaction-update-params with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogcompaction-update-params`` = { state = None; target_size_mb = None }
 
@@ -467,7 +467,7 @@ type ``r2-data-catalogsnapshot-expiration-update-params`` =
       ///Updates the minimum number of snapshots to retain optionally.
       min_snapshots_to_keep: Option<int64>
       ///Updates the state optionally.
-      state: Option<Newtonsoft.Json.Linq.JToken> }
+      state: Option<obj> }
     ///Creates an instance of r2-data-catalogsnapshot-expiration-update-params with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogsnapshot-expiration-update-params`` =
         { max_snapshot_age = None
@@ -587,7 +587,7 @@ type ``r2-slurperConnectivityResponse`` =
 
 type ``r2-slurperCreateJobRequest`` =
     { overwrite: Option<bool>
-      source: Option<Newtonsoft.Json.Linq.JObject>
+      source: Option<obj>
       target: Option<``r2-slurperR2TargetSchema``> }
     ///Creates an instance of r2-slurperCreateJobRequest with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-slurperCreateJobRequest`` =
@@ -713,7 +713,7 @@ type ``r2-slurperJobResponse`` =
       finishedAt: Option<string>
       id: Option<string>
       overwrite: Option<bool>
-      source: Option<Newtonsoft.Json.Linq.JToken>
+      source: Option<obj>
       status: Option<``r2-slurperJobStatus``>
       target: Option<Target> }
     ///Creates an instance of r2-slurperJobResponse with all optional fields initialized to None. The required fields are parameters of this function
@@ -944,7 +944,7 @@ type ``r2bucket-config`` =
     static member Create (): ``r2bucket-config`` = { bucketName = None; queues = None }
 
 type ``r2bucket-lock-rule`` =
-    { condition: Newtonsoft.Json.Linq.JToken
+    { condition: obj
       ///Whether or not this rule is in effect.
       enabled: bool
       ///Unique identifier for this rule.
@@ -952,7 +952,7 @@ type ``r2bucket-lock-rule`` =
       ///Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
       prefix: Option<string> }
     ///Creates an instance of r2bucket-lock-rule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (condition: Newtonsoft.Json.Linq.JToken, enabled: bool, id: string): ``r2bucket-lock-rule`` =
+    static member Create (condition: obj, enabled: bool, id: string): ``r2bucket-lock-rule`` =
         { condition = condition
           enabled = enabled
           id = id
@@ -1374,7 +1374,7 @@ type ``r2lifecycle-date-condition`` =
 
 ///Transition to abort ongoing multipart uploads.
 type AbortMultipartUploadsTransition =
-    { condition: Option<Newtonsoft.Json.Linq.JToken> }
+    { condition: Option<obj> }
     ///Creates an instance of AbortMultipartUploadsTransition with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): AbortMultipartUploadsTransition = { condition = None }
 
@@ -1387,7 +1387,7 @@ type Conditions =
 
 ///Transition to delete objects.
 type DeleteObjectsTransition =
-    { condition: Option<Newtonsoft.Json.Linq.JToken> }
+    { condition: Option<obj> }
     ///Creates an instance of DeleteObjectsTransition with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): DeleteObjectsTransition = { condition = None }
 
@@ -1421,10 +1421,10 @@ type StorageClass =
         | InfrequentAccess -> "InfrequentAccess"
 
 type ``r2lifecycle-storage-transition`` =
-    { condition: Newtonsoft.Json.Linq.JToken
+    { condition: obj
       storageClass: StorageClass }
     ///Creates an instance of r2lifecycle-storage-transition with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (condition: Newtonsoft.Json.Linq.JToken, storageClass: StorageClass): ``r2lifecycle-storage-transition`` =
+    static member Create (condition: obj, storageClass: StorageClass): ``r2lifecycle-storage-transition`` =
         { condition = condition
           storageClass = storageClass }
 
@@ -1754,13 +1754,13 @@ type r2v4responseErrors =
 type r2v4response =
     { errors: list<r2v4responseErrors>
       messages: r2messages
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of r2v4response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<r2v4responseErrors>,
                           messages: r2messages,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): r2v4response =
         { errors = errors
           messages = messages
@@ -1776,13 +1776,13 @@ type r2v4responsefailureErrors =
 type r2v4responsefailure =
     { errors: list<r2v4responsefailureErrors>
       messages: r2messages
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of r2v4responsefailure with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<r2v4responsefailureErrors>,
                           messages: r2messages,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): r2v4responsefailure =
         { errors = errors
           messages = messages
@@ -1798,14 +1798,14 @@ type r2v4responselistErrors =
 type r2v4responselist =
     { errors: list<r2v4responselistErrors>
       messages: r2messages
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Whether the API call was successful.
       success: bool
       result_info: Option<r2resultinfo> }
     ///Creates an instance of r2v4responselist with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<r2v4responselistErrors>,
                           messages: r2messages,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): r2v4responselist =
         { errors = errors
           messages = messages

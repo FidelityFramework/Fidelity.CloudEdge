@@ -25,14 +25,14 @@ type ccImageRegistryCredentialsConfiguration =
 
 [<RequireQualifiedAccess>]
 type PublicListApplications =
-    | OK of payload: Newtonsoft.Json.Linq.JToken
-    | Unauthorized of payload: Newtonsoft.Json.Linq.JToken
-    | InternalServerError of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
+    | Unauthorized of payload: obj
+    | InternalServerError of payload: obj
 
 [<RequireQualifiedAccess>]
 type GenerateImageRegistryCredentials =
-    | Created of payload: Newtonsoft.Json.Linq.JToken
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
-    | Conflict of payload: Newtonsoft.Json.Linq.JToken
-    | InternalServerError of payload: Newtonsoft.Json.Linq.JToken
+    | Created of payload: obj
+    | BadRequest of payload: obj
+    | NotFound of payload: obj
+    | Conflict of payload: obj
+    | InternalServerError of payload: obj

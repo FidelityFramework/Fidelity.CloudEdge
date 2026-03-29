@@ -431,15 +431,15 @@ type ``streamapi-response-common`` =
           success = success }
 
 type ``streamapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      messages: obj
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of streamapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: obj,
+                          messages: obj,
+                          result: obj,
                           success: bool): ``streamapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -552,7 +552,7 @@ type streamclipResponseSingle =
       messages: list<streamclipResponseSingleMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of streamclipResponseSingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<streamclipResponseSingleErrors>,
                           messages: list<streamclipResponseSingleMessages>,
@@ -576,7 +576,7 @@ type streamclipping =
       ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
       maxDurationSeconds: Option<streammaxDurationSeconds>
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///The date and time the live input was last modified.
       modified: Option<streamliveinputmodified>
       playback: Option<streamplayback>
@@ -625,7 +625,7 @@ type streamcreateinputrequest =
       ///Indicates whether the live input is enabled and can accept streams.
       enabled: Option<streamliveinputenabled>
       ///A user modifiable key-value store used to reference other systems of record for managing live inputs.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
       recording: Option<streamliveinputrecordingsettings> }
     ///Creates an instance of streamcreateinputrequest with all optional fields initialized to None. The required fields are parameters of this function
@@ -708,7 +708,7 @@ type streamdirectuploadrequest =
       ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
       maxDurationSeconds: streammaxDurationSeconds
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
       requireSignedURLs: Option<streamrequireSignedURLs>
       ///Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
@@ -842,9 +842,9 @@ type streamdownloadsresponseMessages =
 ///An object with download type keys. Each key is optional and only present if that download type has been created.
 type streamdownloadsresponseResult =
     { ///The audio-only download. Only present if this download type has been created.
-      audio: Option<Newtonsoft.Json.Linq.JToken>
+      audio: Option<obj>
       ///The default video download. Only present if this download type has been created.
-      ``default``: Option<Newtonsoft.Json.Linq.JToken> }
+      ``default``: Option<obj> }
     ///Creates an instance of streamdownloadsresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): streamdownloadsresponseResult = { audio = None; ``default`` = None }
 
@@ -1237,7 +1237,7 @@ type streamliveinput =
       ///Indicates whether the live input is enabled and can accept streams.
       enabled: Option<streamliveinputenabled>
       ///A user modifiable key-value store used to reference other systems of record for managing live inputs.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///The date and time the live input was last modified.
       modified: Option<streamliveinputmodified>
       ///Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -1283,7 +1283,7 @@ type streamliveinputobjectwithouturl =
       ///Indicates whether the live input is enabled and can accept streams.
       enabled: Option<streamliveinputenabled>
       ///A user modifiable key-value store used to reference other systems of record for managing live inputs.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///The date and time the live input was last modified.
       modified: Option<streamliveinputmodified>
       ///A unique identifier for a live input.
@@ -1549,7 +1549,7 @@ type streamoutputresponsesingle =
       messages: list<streamoutputresponsesingleMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of streamoutputresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<streamoutputresponsesingleErrors>,
                           messages: list<streamoutputresponsesingleMessages>,
@@ -1747,7 +1747,7 @@ type streamupdateinputrequest =
       ///Indicates whether the live input is enabled and can accept streams.
       enabled: Option<streamliveinputenabled>
       ///A user modifiable key-value store used to reference other systems of record for managing live inputs.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
       recording: Option<streamliveinputrecordingsettings> }
     ///Creates an instance of streamupdateinputrequest with all optional fields initialized to None. The required fields are parameters of this function
@@ -1802,7 +1802,7 @@ type streamvideocopyrequest =
       ///A user-defined identifier for the media creator.
       creator: Option<streamcreator>
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
       requireSignedURLs: Option<streamrequireSignedURLs>
       ///Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
@@ -1935,7 +1935,7 @@ type streamvideoupdate =
       ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
       maxDurationSeconds: Option<streammaxDurationSeconds>
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
       requireSignedURLs: Option<streamrequireSignedURLs>
       ///Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
@@ -1970,7 +1970,7 @@ type streamvideos =
       ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
       maxDurationSeconds: Option<streammaxDurationSeconds>
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///The date and time the media item was last modified.
       modified: Option<streammodified>
       playback: Option<streamplayback>
@@ -1987,7 +1987,7 @@ type streamvideos =
       ///The size of the media item in bytes.
       size: Option<streamsize>
       ///Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
-      status: Option<Newtonsoft.Json.Linq.JToken>
+      status: Option<obj>
       ///The media item's thumbnail URI. This field is omitted until encoding is complete.
       thumbnail: Option<streamthumbnailurl>
       ///The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
@@ -2240,7 +2240,7 @@ type streamwebhookresponsesingle =
       messages: list<streamwebhookresponsesingleMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of streamwebhookresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<streamwebhookresponsesingleErrors>,
                           messages: list<streamwebhookresponsesingleMessages>,
@@ -2362,9 +2362,9 @@ type StreamVideosListVideos =
 [<RequireQualifiedAccess>]
 type StreamVideosInitiateVideoUploadsUsingTus =
     ///Initiate video uploads using TUS response.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Initiate video uploads using TUS response failure.
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type StreamVideoClippingClipVideosGivenAStartAndEndTime =
@@ -2425,9 +2425,9 @@ type StreamLiveInputsCreateALiveInput =
 [<RequireQualifiedAccess>]
 type StreamLiveInputsDeleteALiveInput =
     ///Delete a live input response.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Delete a live input response failure.
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsRetrieveALiveInput =
@@ -2474,9 +2474,9 @@ type ``StreamLiveInputsCreateANewOutput,ConnectedToALiveInput`` =
 [<RequireQualifiedAccess>]
 type StreamLiveInputsDeleteAnOutput =
     ///Delete an output response.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Delete an output response failure.
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsUpdateAnOutput =
@@ -2544,9 +2544,9 @@ type StreamWebhookCreateWebhooks =
 [<RequireQualifiedAccess>]
 type StreamVideosDeleteVideo =
     ///Delete video response.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Delete video response failure.
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: obj
 
 [<RequireQualifiedAccess>]
 type StreamVideosRetrieveVideoDetails =

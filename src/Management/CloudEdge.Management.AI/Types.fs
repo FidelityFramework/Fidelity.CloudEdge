@@ -30,7 +30,7 @@ type Errors = { message: string }
 
 type AigConfigListEvaluators_BadRequest =
     { errors: list<Errors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -94,7 +94,7 @@ type AigConfigListGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -121,7 +121,7 @@ type AigConfigListGateway_BadRequestErrors = { message: string }
 
 type AigConfigListGateway_BadRequest =
     { errors: list<AigConfigListGateway_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -252,7 +252,7 @@ type AigConfigCreateGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -358,7 +358,7 @@ type AigConfigListDataset_BadRequestErrors = { message: string }
 
 type AigConfigListDataset_BadRequest =
     { errors: list<AigConfigListDataset_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -910,7 +910,7 @@ type AigConfigListEvaluations_BadRequestErrors = { message: string }
 
 type AigConfigListEvaluations_BadRequest =
     { errors: list<AigConfigListEvaluations_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1241,7 +1241,7 @@ type AigConfigDeleteGatewayLogs_BadRequestErrors = { message: string }
 
 type AigConfigDeleteGatewayLogs_BadRequest =
     { errors: list<AigConfigDeleteGatewayLogs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1297,7 +1297,7 @@ type AigConfigListGatewayLogs_BadRequestErrors = { message: string }
 
 type AigConfigListGatewayLogs_BadRequest =
     { errors: list<AigConfigListGatewayLogs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1362,7 +1362,7 @@ type AigConfigPatchGatewayLogPayload =
           score = None }
 
 type AigConfigPatchGatewayLog_OK =
-    { result: Newtonsoft.Json.Linq.JObject
+    { result: obj
       success: bool }
 
 type AigConfigPatchGatewayLog_NotFoundErrors = { code: float; message: string }
@@ -1387,7 +1387,7 @@ type AigConfigGetGatewayLogRequest_NotFound =
 [<RequireQualifiedAccess>]
 type AigConfigGetGatewayLogRequest =
     ///Returns the request body from a specific log
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Not Found
     | NotFound of payload: AigConfigGetGatewayLogRequest_NotFound
 
@@ -1400,7 +1400,7 @@ type AigConfigGetGatewayLogResponse_NotFound =
 [<RequireQualifiedAccess>]
 type AigConfigGetGatewayLogResponse =
     ///Returns the response body from a specific log
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Not Found
     | NotFound of payload: AigConfigGetGatewayLogResponse_NotFound
 
@@ -1425,7 +1425,7 @@ type AigConfigListProviders_BadRequestErrors = { message: string }
 
 type AigConfigListProviders_BadRequest =
     { errors: list<AigConfigListProviders_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1607,7 +1607,7 @@ type AigConfigListGatewayDynamicRoutes_BadRequestErrors = { message: string }
 
 type AigConfigListGatewayDynamicRoutes_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRoutes_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1664,7 +1664,7 @@ type AigConfigPostGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigPostGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1690,7 +1690,7 @@ type AigConfigDeleteGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigDeleteGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigDeleteGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1740,7 +1740,7 @@ type AigConfigGetGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigGetGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigGetGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1831,7 +1831,7 @@ type AigConfigListGatewayDynamicRouteDeployments_BadRequestErrors = { message: s
 
 type AigConfigListGatewayDynamicRouteDeployments_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRouteDeployments_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1865,7 +1865,7 @@ type AigConfigPostGatewayDynamicRouteDeployment_BadRequestErrors = { message: st
 
 type AigConfigPostGatewayDynamicRouteDeployment_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRouteDeployment_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1906,7 +1906,7 @@ type AigConfigListGatewayDynamicRouteVersions_BadRequestErrors = { message: stri
 
 type AigConfigListGatewayDynamicRouteVersions_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRouteVersions_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1940,7 +1940,7 @@ type AigConfigPostGatewayDynamicRouteVersion_BadRequestErrors = { message: strin
 
 type AigConfigPostGatewayDynamicRouteVersion_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRouteVersion_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1979,7 +1979,7 @@ type AigConfigGetGatewayDynamicRouteVersion_BadRequestErrors = { message: string
 
 type AigConfigGetGatewayDynamicRouteVersion_BadRequest =
     { errors: list<AigConfigGetGatewayDynamicRouteVersion_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1994,7 +1994,7 @@ type AigConfigGetGatewayUrl_BadRequestErrors = { message: string }
 
 type AigConfigGetGatewayUrl_BadRequest =
     { errors: list<AigConfigGetGatewayUrl_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -2058,7 +2058,7 @@ type AigConfigDeleteGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -2148,7 +2148,7 @@ type AigConfigFetchGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -2250,7 +2250,7 @@ type AigConfigUpdateGatewayPayload =
       cache_invalidate_on_update: bool
       cache_ttl: int
       collect_logs: bool
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       log_management: Option<int>
       log_management_strategy: Option<AigConfigUpdateGatewayPayloadLogmanagementstrategy>
       logpush: Option<bool>
@@ -2343,7 +2343,7 @@ type AigConfigUpdateGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -2582,7 +2582,7 @@ type Type =
 
 type AiSearchListInstances_OKResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<Cachethreshold>
       chunk_overlap: Option<int>
@@ -2590,7 +2590,7 @@ type AiSearchListInstances_OKResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<Custommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<Fusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -2605,9 +2605,9 @@ type AiSearchListInstances_OKResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<Publicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<Retrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -2900,14 +2900,14 @@ type AiSearchCreateInstancesPayloadType =
 
 type AiSearchCreateInstancesPayload =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchCreateInstancesPayloadCachethreshold>
       chunk: Option<bool>
       chunk_overlap: Option<int>
       chunk_size: Option<int>
       custom_metadata: Option<list<AiSearchCreateInstancesPayloadCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       fusion_method: Option<AiSearchCreateInstancesPayloadFusionmethod>
       hybrid_search_enabled: Option<bool>
       ///Use your AI Search ID.
@@ -2916,9 +2916,9 @@ type AiSearchCreateInstancesPayload =
       metadata: Option<AiSearchCreateInstancesPayloadMetadata>
       public_endpoint_params: Option<AiSearchCreateInstancesPayloadPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchCreateInstancesPayloadRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -3145,7 +3145,7 @@ type AiSearchCreateInstances_CreatedResultType =
 
 type AiSearchCreateInstances_CreatedResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchCreateInstances_CreatedResultCachethreshold>
       chunk_overlap: Option<int>
@@ -3153,7 +3153,7 @@ type AiSearchCreateInstances_CreatedResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<AiSearchCreateInstances_CreatedResultCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<AiSearchCreateInstances_CreatedResultFusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -3168,9 +3168,9 @@ type AiSearchCreateInstances_CreatedResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<AiSearchCreateInstances_CreatedResultPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchCreateInstances_CreatedResultRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -3392,7 +3392,7 @@ type AiSearchDeleteInstances_OKResultType =
 
 type AiSearchDeleteInstances_OKResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchDeleteInstances_OKResultCachethreshold>
       chunk_overlap: Option<int>
@@ -3400,7 +3400,7 @@ type AiSearchDeleteInstances_OKResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<AiSearchDeleteInstances_OKResultCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<AiSearchDeleteInstances_OKResultFusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -3415,9 +3415,9 @@ type AiSearchDeleteInstances_OKResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<AiSearchDeleteInstances_OKResultPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchDeleteInstances_OKResultRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -3636,7 +3636,7 @@ type AiSearchFetchInstances_OKResultType =
 
 type AiSearchFetchInstances_OKResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchFetchInstances_OKResultCachethreshold>
       chunk_overlap: Option<int>
@@ -3644,7 +3644,7 @@ type AiSearchFetchInstances_OKResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<AiSearchFetchInstances_OKResultCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<AiSearchFetchInstances_OKResultFusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -3659,9 +3659,9 @@ type AiSearchFetchInstances_OKResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<AiSearchFetchInstances_OKResultPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchFetchInstances_OKResultRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -3953,14 +3953,14 @@ type AiSearchUpdateInstancesPayloadSourceparams =
 
 type AiSearchUpdateInstancesPayload =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchUpdateInstancesPayloadCachethreshold>
       chunk: Option<bool>
       chunk_overlap: Option<int>
       chunk_size: Option<int>
       custom_metadata: Option<list<AiSearchUpdateInstancesPayloadCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       fusion_method: Option<AiSearchUpdateInstancesPayloadFusionmethod>
       hybrid_search_enabled: Option<bool>
       max_num_results: Option<int>
@@ -3968,14 +3968,14 @@ type AiSearchUpdateInstancesPayload =
       paused: Option<bool>
       public_endpoint_params: Option<AiSearchUpdateInstancesPayloadPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchUpdateInstancesPayloadRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source_params: Option<AiSearchUpdateInstancesPayloadSourceparams>
       summarization: Option<bool>
-      summarization_model: Option<Newtonsoft.Json.Linq.JToken>
+      summarization_model: Option<obj>
       system_prompt_ai_search: Option<string>
       system_prompt_index_summarization: Option<string>
       system_prompt_rewrite_query: Option<string>
@@ -4203,7 +4203,7 @@ type AiSearchUpdateInstances_OKResultType =
 
 type AiSearchUpdateInstances_OKResult =
     { ai_gateway_id: Option<string>
-      ai_search_model: Option<Newtonsoft.Json.Linq.JToken>
+      ai_search_model: Option<obj>
       cache: Option<bool>
       cache_threshold: Option<AiSearchUpdateInstances_OKResultCachethreshold>
       chunk_overlap: Option<int>
@@ -4211,7 +4211,7 @@ type AiSearchUpdateInstances_OKResult =
       created_at: System.DateTimeOffset
       created_by: Option<string>
       custom_metadata: Option<list<AiSearchUpdateInstances_OKResultCustommetadata>>
-      embedding_model: Option<Newtonsoft.Json.Linq.JToken>
+      embedding_model: Option<obj>
       enable: Option<bool>
       fusion_method: Option<AiSearchUpdateInstances_OKResultFusionmethod>
       hybrid_search_enabled: Option<bool>
@@ -4226,9 +4226,9 @@ type AiSearchUpdateInstances_OKResult =
       public_endpoint_id: Option<string>
       public_endpoint_params: Option<AiSearchUpdateInstances_OKResultPublicendpointparams>
       reranking: Option<bool>
-      reranking_model: Option<Newtonsoft.Json.Linq.JToken>
+      reranking_model: Option<obj>
       retrieval_options: Option<AiSearchUpdateInstances_OKResultRetrievaloptions>
-      rewrite_model: Option<Newtonsoft.Json.Linq.JToken>
+      rewrite_model: Option<obj>
       rewrite_query: Option<bool>
       score_threshold: Option<float>
       source: Option<string>
@@ -4268,7 +4268,7 @@ type AiSearchUpdateInstances =
 
 type Queryrewrite =
     { enabled: Option<bool>
-      model: Option<Newtonsoft.Json.Linq.JToken>
+      model: Option<obj>
       rewrite_prompt: Option<string> }
     ///Creates an instance of Queryrewrite with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Queryrewrite =
@@ -4279,7 +4279,7 @@ type Queryrewrite =
 type Reranking =
     { enabled: Option<bool>
       match_threshold: Option<float>
-      model: Option<Newtonsoft.Json.Linq.JToken> }
+      model: Option<obj> }
     ///Creates an instance of Reranking with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Reranking =
         { enabled = None
@@ -4340,7 +4340,7 @@ type Retrieval =
     { ///Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.
       boost_by: Option<list<RetrievalBoostby>>
       context_expansion: Option<int>
-      filters: Option<Newtonsoft.Json.Linq.JObject>
+      filters: Option<obj>
       fusion_method: Option<RetrievalFusionmethod>
       ///Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.
       keyword_match_mode: Option<RetrievalKeywordmatchmode>
@@ -4394,7 +4394,7 @@ type Messages =
 type AiSearchInstanceChatCompletionPayload =
     { ai_search_options: Option<Aisearchoptions>
       messages: list<Messages>
-      model: Option<Newtonsoft.Json.Linq.JToken>
+      model: Option<obj>
       stream: Option<bool> }
     ///Creates an instance of AiSearchInstanceChatCompletionPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (messages: list<Messages>): AiSearchInstanceChatCompletionPayload =
@@ -4426,7 +4426,7 @@ type Choices =
 
 type Item =
     { key: string
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       timestamp: Option<float> }
 
 type Scoringdetails =
@@ -4497,7 +4497,7 @@ type AiSearchInstanceListJobs_BadRequestErrors = { message: string }
 
 type AiSearchInstanceListJobs_BadRequest =
     { errors: list<AiSearchInstanceListJobs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceListJobs_InternalServerErrorErrors = { code: float; message: string }
@@ -4546,7 +4546,7 @@ type AiSearchInstanceCreateJob_BadRequestErrors = { message: string }
 
 type AiSearchInstanceCreateJob_BadRequest =
     { errors: list<AiSearchInstanceCreateJob_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceCreateJob_InternalServerErrorErrors = { code: float; message: string }
@@ -4590,7 +4590,7 @@ type AiSearchInstanceGetJob_BadRequestErrors = { message: string }
 
 type AiSearchInstanceGetJob_BadRequest =
     { errors: list<AiSearchInstanceGetJob_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceGetJob_InternalServerErrorErrors = { code: float; message: string }
@@ -4646,7 +4646,7 @@ type AiSearchInstanceChangeJobStatus_BadRequestErrors = { message: string }
 
 type AiSearchInstanceChangeJobStatus_BadRequest =
     { errors: list<AiSearchInstanceChangeJobStatus_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceChangeJobStatus_InternalServerErrorErrors = { code: float; message: string }
@@ -4685,7 +4685,7 @@ type AiSearchInstanceListJobLogs_BadRequestErrors = { message: string }
 
 type AiSearchInstanceListJobLogs_BadRequest =
     { errors: list<AiSearchInstanceListJobLogs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type AiSearchInstanceListJobLogs_InternalServerErrorErrors = { code: float; message: string }
@@ -4705,7 +4705,7 @@ type AiSearchInstanceListJobLogs =
 
 type AiSearchInstanceSearchPayloadAisearchoptionsQueryrewrite =
     { enabled: Option<bool>
-      model: Option<Newtonsoft.Json.Linq.JToken>
+      model: Option<obj>
       rewrite_prompt: Option<string> }
     ///Creates an instance of AiSearchInstanceSearchPayloadAisearchoptionsQueryrewrite with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): AiSearchInstanceSearchPayloadAisearchoptionsQueryrewrite =
@@ -4716,7 +4716,7 @@ type AiSearchInstanceSearchPayloadAisearchoptionsQueryrewrite =
 type AiSearchInstanceSearchPayloadAisearchoptionsReranking =
     { enabled: Option<bool>
       match_threshold: Option<float>
-      model: Option<Newtonsoft.Json.Linq.JToken> }
+      model: Option<obj> }
     ///Creates an instance of AiSearchInstanceSearchPayloadAisearchoptionsReranking with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): AiSearchInstanceSearchPayloadAisearchoptionsReranking =
         { enabled = None
@@ -4778,7 +4778,7 @@ type AiSearchInstanceSearchPayloadAisearchoptionsRetrieval =
     { ///Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.
       boost_by: Option<list<AiSearchInstanceSearchPayloadAisearchoptionsRetrievalBoostby>>
       context_expansion: Option<int>
-      filters: Option<Newtonsoft.Json.Linq.JObject>
+      filters: Option<obj>
       fusion_method: Option<AiSearchInstanceSearchPayloadAisearchoptionsRetrievalFusionmethod>
       ///Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.
       keyword_match_mode: Option<AiSearchInstanceSearchPayloadAisearchoptionsRetrievalKeywordmatchmode>
@@ -4840,7 +4840,7 @@ type AiSearchInstanceSearchPayload =
 
 type AiSearchInstanceSearch_OKResultChunksItem =
     { key: string
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       timestamp: Option<float> }
 
 type AiSearchInstanceSearch_OKResultChunksScoringdetails =
@@ -4882,8 +4882,8 @@ type AiSearchInstanceSearch =
 type AiSearchStats_OKResult =
     { completed: Option<int>
       error: Option<int>
-      file_embed_errors: Option<Newtonsoft.Json.Linq.JObject>
-      index_source_errors: Option<Newtonsoft.Json.Linq.JObject>
+      file_embed_errors: Option<obj>
+      index_source_errors: Option<obj>
       last_activity: Option<System.DateTimeOffset>
       queued: Option<int>
       running: Option<int>
@@ -5099,16 +5099,16 @@ type AiSearchUpdateTokens =
     | NotFound of payload: AiSearchUpdateTokens_NotFound
 
 type WorkersAiSearchAuthor_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: list<obj>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JArray
+      result: list<obj>
       success: bool }
 
 type WorkersAiSearchAuthor_BadRequestErrors = { message: string }
 
 type WorkersAiSearchAuthor_BadRequest =
     { errors: list<WorkersAiSearchAuthor_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5134,7 +5134,7 @@ type WorkersAiListFinetunes_BadRequestErrors = { message: string }
 
 type WorkersAiListFinetunes_BadRequest =
     { errors: list<WorkersAiListFinetunes_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5170,7 +5170,7 @@ type WorkersAiCreateFinetune_OK =
       success: bool }
 
 type WorkersAiCreateFinetune_BadRequest =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5197,7 +5197,7 @@ type WorkersAiListPublicFinetunes_BadRequestErrors = { message: string }
 
 type WorkersAiListPublicFinetunes_BadRequest =
     { errors: list<WorkersAiListPublicFinetunes_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5216,7 +5216,7 @@ type WorkersAiUploadFinetuneAssetPayload =
 type WorkersAiUploadFinetuneAsset_OK = { success: bool }
 
 type WorkersAiUploadFinetuneAsset_BadRequest =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5246,7 +5246,7 @@ type WorkersAiGetModelSchema_BadRequestErrors = { message: string }
 
 type WorkersAiGetModelSchema_BadRequest =
     { errors: list<WorkersAiGetModelSchema_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5257,13 +5257,13 @@ type WorkersAiGetModelSchema =
     | BadRequest of payload: WorkersAiGetModelSchema_BadRequest
 
 type WorkersAiSearchModel_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: list<obj>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JArray
+      result: list<obj>
       success: bool }
 
 type WorkersAiSearchModel_NotFound =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5350,9 +5350,9 @@ type WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1BPayload =
     { ///Target langauge to translate to
       target_language: Targetlanguage
       ///Input text to translate. Can be a single string or a list of strings.
-      text: Newtonsoft.Json.Linq.JToken }
+      text: obj }
     ///Creates an instance of WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1BPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (target_language: Targetlanguage, text: Newtonsoft.Json.Linq.JToken): WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1BPayload =
+    static member Create (target_language: Targetlanguage, text: obj): WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1BPayload =
         { target_language = target_language
           text = text }
 
@@ -5360,13 +5360,13 @@ type WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1B_BadRequestErrors = { code: 
 
 type WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1B_BadRequest =
     { errors: list<WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1B_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1B =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfAi4bharatIndictrans2EnIndic1B_BadRequest
 
@@ -5447,10 +5447,10 @@ type WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1bPayload =
     { ///Target langauge to translate to
       target_language: WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1bPayloadTargetlanguage
       ///Input text to translate. Can be a single string or a list of strings.
-      text: Newtonsoft.Json.Linq.JToken }
+      text: obj }
     ///Creates an instance of WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1bPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (target_language: WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1bPayloadTargetlanguage,
-                          text: Newtonsoft.Json.Linq.JToken): WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1bPayload =
+                          text: obj): WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1bPayload =
         { target_language = target_language
           text = text }
 
@@ -5458,13 +5458,13 @@ type WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1b_BadRequestErrors = { co
 
 type WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1b_BadRequest =
     { errors: list<WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfAi4bharatOmniIndictrans2EnIndic1b_BadRequest
 
@@ -5472,13 +5472,13 @@ type WorkersAiPostRunCfAisingaporeGemmaSeaLionV427bIt_BadRequestErrors = { code:
 
 type WorkersAiPostRunCfAisingaporeGemmaSeaLionV427bIt_BadRequest =
     { errors: list<WorkersAiPostRunCfAisingaporeGemmaSeaLionV427bIt_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfAisingaporeGemmaSeaLionV427bIt =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfAisingaporeGemmaSeaLionV427bIt_BadRequest
 
@@ -5486,13 +5486,13 @@ type WorkersAiPostRunCfBaaiBgeBaseEnV15_BadRequestErrors = { code: string; messa
 
 type WorkersAiPostRunCfBaaiBgeBaseEnV15_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiBgeBaseEnV15_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiBgeBaseEnV15 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiBgeBaseEnV15_BadRequest
 
@@ -5500,13 +5500,13 @@ type WorkersAiPostRunCfBaaiBgeLargeEnV15_BadRequestErrors = { code: string; mess
 
 type WorkersAiPostRunCfBaaiBgeLargeEnV15_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiBgeLargeEnV15_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiBgeLargeEnV15 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiBgeLargeEnV15_BadRequest
 
@@ -5514,13 +5514,13 @@ type WorkersAiPostRunCfBaaiBgeM3_BadRequestErrors = { code: string; message: str
 
 type WorkersAiPostRunCfBaaiBgeM3_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiBgeM3_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiBgeM3 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiBgeM3_BadRequest
 
@@ -5547,13 +5547,13 @@ type WorkersAiPostRunCfBaaiBgeRerankerBase_BadRequestErrors = { code: string; me
 
 type WorkersAiPostRunCfBaaiBgeRerankerBase_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiBgeRerankerBase_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiBgeRerankerBase =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiBgeRerankerBase_BadRequest
 
@@ -5561,13 +5561,13 @@ type WorkersAiPostRunCfBaaiBgeSmallEnV15_BadRequestErrors = { code: string; mess
 
 type WorkersAiPostRunCfBaaiBgeSmallEnV15_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiBgeSmallEnV15_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiBgeSmallEnV15 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiBgeSmallEnV15_BadRequest
 
@@ -5575,13 +5575,13 @@ type WorkersAiPostRunCfBaaiOmniBgeBaseEnV15_BadRequestErrors = { code: string; m
 
 type WorkersAiPostRunCfBaaiOmniBgeBaseEnV15_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiOmniBgeBaseEnV15_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiOmniBgeBaseEnV15 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiOmniBgeBaseEnV15_BadRequest
 
@@ -5589,13 +5589,13 @@ type WorkersAiPostRunCfBaaiOmniBgeLargeEnV15_BadRequestErrors = { code: string; 
 
 type WorkersAiPostRunCfBaaiOmniBgeLargeEnV15_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiOmniBgeLargeEnV15_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiOmniBgeLargeEnV15 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiOmniBgeLargeEnV15_BadRequest
 
@@ -5603,13 +5603,13 @@ type WorkersAiPostRunCfBaaiOmniBgeM3_BadRequestErrors = { code: string; message:
 
 type WorkersAiPostRunCfBaaiOmniBgeM3_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiOmniBgeM3_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiOmniBgeM3 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiOmniBgeM3_BadRequest
 
@@ -5617,13 +5617,13 @@ type WorkersAiPostRunCfBaaiOmniBgeSmallEnV15_BadRequestErrors = { code: string; 
 
 type WorkersAiPostRunCfBaaiOmniBgeSmallEnV15_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiOmniBgeSmallEnV15_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiOmniBgeSmallEnV15 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiOmniBgeSmallEnV15_BadRequest
 
@@ -5631,13 +5631,13 @@ type WorkersAiPostRunCfBaaiRayBgeLargeEnV15_BadRequestErrors = { code: string; m
 
 type WorkersAiPostRunCfBaaiRayBgeLargeEnV15_BadRequest =
     { errors: list<WorkersAiPostRunCfBaaiRayBgeLargeEnV15_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBaaiRayBgeLargeEnV15 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBaaiRayBgeLargeEnV15_BadRequest
 
@@ -5654,18 +5654,18 @@ type WorkersAiPostRunCfBlackForestLabsFlux1Schnell_BadRequestErrors = { code: st
 
 type WorkersAiPostRunCfBlackForestLabsFlux1Schnell_BadRequest =
     { errors: list<WorkersAiPostRunCfBlackForestLabsFlux1Schnell_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBlackForestLabsFlux1Schnell =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBlackForestLabsFlux1Schnell_BadRequest
 
 type Multipart =
-    { body: Option<Newtonsoft.Json.Linq.JObject>
+    { body: Option<obj>
       contentType: Option<string> }
     ///Creates an instance of Multipart with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Multipart = { body = None; contentType = None }
@@ -5680,18 +5680,18 @@ type WorkersAiPostRunCfBlackForestLabsFlux2Dev_BadRequestErrors = { code: string
 
 type WorkersAiPostRunCfBlackForestLabsFlux2Dev_BadRequest =
     { errors: list<WorkersAiPostRunCfBlackForestLabsFlux2Dev_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBlackForestLabsFlux2Dev =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBlackForestLabsFlux2Dev_BadRequest
 
 type WorkersAiPostRunCfBlackForestLabsFlux2Klein4bPayloadMultipart =
-    { body: Option<Newtonsoft.Json.Linq.JObject>
+    { body: Option<obj>
       contentType: Option<string> }
     ///Creates an instance of WorkersAiPostRunCfBlackForestLabsFlux2Klein4bPayloadMultipart with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): WorkersAiPostRunCfBlackForestLabsFlux2Klein4bPayloadMultipart =
@@ -5707,18 +5707,18 @@ type WorkersAiPostRunCfBlackForestLabsFlux2Klein4b_BadRequestErrors = { code: st
 
 type WorkersAiPostRunCfBlackForestLabsFlux2Klein4b_BadRequest =
     { errors: list<WorkersAiPostRunCfBlackForestLabsFlux2Klein4b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBlackForestLabsFlux2Klein4b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBlackForestLabsFlux2Klein4b_BadRequest
 
 type WorkersAiPostRunCfBlackForestLabsFlux2Klein9bPayloadMultipart =
-    { body: Option<Newtonsoft.Json.Linq.JObject>
+    { body: Option<obj>
       contentType: Option<string> }
     ///Creates an instance of WorkersAiPostRunCfBlackForestLabsFlux2Klein9bPayloadMultipart with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): WorkersAiPostRunCfBlackForestLabsFlux2Klein9bPayloadMultipart =
@@ -5734,13 +5734,13 @@ type WorkersAiPostRunCfBlackForestLabsFlux2Klein9b_BadRequestErrors = { code: st
 
 type WorkersAiPostRunCfBlackForestLabsFlux2Klein9b_BadRequest =
     { errors: list<WorkersAiPostRunCfBlackForestLabsFlux2Klein9b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBlackForestLabsFlux2Klein9b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBlackForestLabsFlux2Klein9b_BadRequest
 
@@ -5785,13 +5785,13 @@ type WorkersAiPostRunCfBytedanceStableDiffusionXlLightning_BadRequestErrors = { 
 
 type WorkersAiPostRunCfBytedanceStableDiffusionXlLightning_BadRequest =
     { errors: list<WorkersAiPostRunCfBytedanceStableDiffusionXlLightning_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfBytedanceStableDiffusionXlLightning =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfBytedanceStableDiffusionXlLightning_BadRequest
 
@@ -5799,7 +5799,7 @@ type WorkersAiPostWebsocketRunCfDeepgramAura_BadRequestErrors = { message: strin
 
 type WorkersAiPostWebsocketRunCfDeepgramAura_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramAura_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5812,7 +5812,7 @@ type WorkersAiPostWebsocketRunCfDeepgramAura1_BadRequestErrors = { message: stri
 
 type WorkersAiPostWebsocketRunCfDeepgramAura1_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramAura1_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5906,13 +5906,13 @@ type WorkersAiPostRunCfDeepgramAura1_BadRequestErrors = { code: string; message:
 
 type WorkersAiPostRunCfDeepgramAura1_BadRequest =
     { errors: list<WorkersAiPostRunCfDeepgramAura1_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfDeepgramAura1 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfDeepgramAura1_BadRequest
 
@@ -5920,7 +5920,7 @@ type WorkersAiPostWebsocketRunCfDeepgramAura1Internal_BadRequestErrors = { messa
 
 type WorkersAiPostWebsocketRunCfDeepgramAura1Internal_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramAura1Internal_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5933,7 +5933,7 @@ type WorkersAiPostWebsocketRunCfDeepgramAura2_BadRequestErrors = { message: stri
 
 type WorkersAiPostWebsocketRunCfDeepgramAura2_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramAura2_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -5946,7 +5946,7 @@ type WorkersAiPostWebsocketRunCfDeepgramAura2En_BadRequestErrors = { message: st
 
 type WorkersAiPostWebsocketRunCfDeepgramAura2En_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramAura2En_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -6096,13 +6096,13 @@ type WorkersAiPostRunCfDeepgramAura2En_BadRequestErrors = { code: string; messag
 
 type WorkersAiPostRunCfDeepgramAura2En_BadRequest =
     { errors: list<WorkersAiPostRunCfDeepgramAura2En_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfDeepgramAura2En =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfDeepgramAura2En_BadRequest
 
@@ -6110,7 +6110,7 @@ type WorkersAiPostWebsocketRunCfDeepgramAura2Es_BadRequestErrors = { message: st
 
 type WorkersAiPostWebsocketRunCfDeepgramAura2Es_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramAura2Es_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -6200,13 +6200,13 @@ type WorkersAiPostRunCfDeepgramAura2Es_BadRequestErrors = { code: string; messag
 
 type WorkersAiPostRunCfDeepgramAura2Es_BadRequest =
     { errors: list<WorkersAiPostRunCfDeepgramAura2Es_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfDeepgramAura2Es =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfDeepgramAura2Es_BadRequest
 
@@ -6214,7 +6214,7 @@ type WorkersAiPostWebsocketRunCfDeepgramFlux_BadRequestErrors = { message: strin
 
 type WorkersAiPostWebsocketRunCfDeepgramFlux_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramFlux_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -6271,13 +6271,13 @@ type WorkersAiPostRunCfDeepgramFlux_BadRequestErrors = { code: string; message: 
 
 type WorkersAiPostRunCfDeepgramFlux_BadRequest =
     { errors: list<WorkersAiPostRunCfDeepgramFlux_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfDeepgramFlux =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfDeepgramFlux_BadRequest
 
@@ -6285,7 +6285,7 @@ type WorkersAiPostWebsocketRunCfDeepgramNova3_BadRequestErrors = { message: stri
 
 type WorkersAiPostWebsocketRunCfDeepgramNova3_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramNova3_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -6295,10 +6295,10 @@ type WorkersAiPostWebsocketRunCfDeepgramNova3 =
     | DefaultResponse
 
 type Audio =
-    { body: Newtonsoft.Json.Linq.JObject
+    { body: obj
       contentType: string }
     ///Creates an instance of Audio with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (body: Newtonsoft.Json.Linq.JObject, contentType: string): Audio =
+    static member Create (body: obj, contentType: string): Audio =
         { body = body
           contentType = contentType }
 
@@ -6467,13 +6467,13 @@ type WorkersAiPostRunCfDeepgramNova3_BadRequestErrors = { code: string; message:
 
 type WorkersAiPostRunCfDeepgramNova3_BadRequest =
     { errors: list<WorkersAiPostRunCfDeepgramNova3_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfDeepgramNova3 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfDeepgramNova3_BadRequest
 
@@ -6481,7 +6481,7 @@ type WorkersAiPostWebsocketRunCfDeepgramNova3Internal_BadRequestErrors = { messa
 
 type WorkersAiPostWebsocketRunCfDeepgramNova3Internal_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfDeepgramNova3Internal_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -6494,13 +6494,13 @@ type WorkersAiPostRunCfDeepseekAiDeepseekMath7bInstruct_BadRequestErrors = { cod
 
 type WorkersAiPostRunCfDeepseekAiDeepseekMath7bInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfDeepseekAiDeepseekMath7bInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfDeepseekAiDeepseekMath7bInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfDeepseekAiDeepseekMath7bInstruct_BadRequest
 
@@ -6508,13 +6508,13 @@ type WorkersAiPostRunCfDeepseekAiDeepseekR1DistillQwen32b_BadRequestErrors = { c
 
 type WorkersAiPostRunCfDeepseekAiDeepseekR1DistillQwen32b_BadRequest =
     { errors: list<WorkersAiPostRunCfDeepseekAiDeepseekR1DistillQwen32b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfDeepseekAiDeepseekR1DistillQwen32b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfDeepseekAiDeepseekR1DistillQwen32b_BadRequest
 
@@ -6522,13 +6522,13 @@ type WorkersAiPostRunCfDefogSqlcoder7b2_BadRequestErrors = { code: string; messa
 
 type WorkersAiPostRunCfDefogSqlcoder7b2_BadRequest =
     { errors: list<WorkersAiPostRunCfDefogSqlcoder7b2_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfDefogSqlcoder7b2 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfDefogSqlcoder7b2_BadRequest
 
@@ -6546,13 +6546,13 @@ type WorkersAiPostRunCfFacebookBartLargeCnn_BadRequestErrors = { code: string; m
 
 type WorkersAiPostRunCfFacebookBartLargeCnn_BadRequest =
     { errors: list<WorkersAiPostRunCfFacebookBartLargeCnn_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfFacebookBartLargeCnn =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfFacebookBartLargeCnn_BadRequest
 
@@ -6570,13 +6570,13 @@ type WorkersAiPostRunCfFacebookNonomniBartLargeCnn_BadRequestErrors = { code: st
 
 type WorkersAiPostRunCfFacebookNonomniBartLargeCnn_BadRequest =
     { errors: list<WorkersAiPostRunCfFacebookNonomniBartLargeCnn_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfFacebookNonomniBartLargeCnn =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfFacebookNonomniBartLargeCnn_BadRequest
 
@@ -6584,13 +6584,13 @@ type WorkersAiPostRunCfFacebookNonomniDetrResnet50_BadRequestErrors = { code: st
 
 type WorkersAiPostRunCfFacebookNonomniDetrResnet50_BadRequest =
     { errors: list<WorkersAiPostRunCfFacebookNonomniDetrResnet50_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfFacebookNonomniDetrResnet50 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfFacebookNonomniDetrResnet50_BadRequest
 
@@ -6598,33 +6598,33 @@ type WorkersAiPostRunCfFblgitUnaCybertron7bV2Bf16_BadRequestErrors = { code: str
 
 type WorkersAiPostRunCfFblgitUnaCybertron7bV2Bf16_BadRequest =
     { errors: list<WorkersAiPostRunCfFblgitUnaCybertron7bV2Bf16_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfFblgitUnaCybertron7bV2Bf16 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfFblgitUnaCybertron7bV2Bf16_BadRequest
 
 type WorkersAiPostRunCfGoogleEmbeddinggemma300mPayload =
-    { text: Newtonsoft.Json.Linq.JToken }
+    { text: obj }
     ///Creates an instance of WorkersAiPostRunCfGoogleEmbeddinggemma300mPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (text: Newtonsoft.Json.Linq.JToken): WorkersAiPostRunCfGoogleEmbeddinggemma300mPayload =
+    static member Create (text: obj): WorkersAiPostRunCfGoogleEmbeddinggemma300mPayload =
         { text = text }
 
 type WorkersAiPostRunCfGoogleEmbeddinggemma300m_BadRequestErrors = { code: string; message: string }
 
 type WorkersAiPostRunCfGoogleEmbeddinggemma300m_BadRequest =
     { errors: list<WorkersAiPostRunCfGoogleEmbeddinggemma300m_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfGoogleEmbeddinggemma300m =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfGoogleEmbeddinggemma300m_BadRequest
 
@@ -6632,13 +6632,13 @@ type WorkersAiPostRunCfGoogleGemma2bItLora_BadRequestErrors = { code: string; me
 
 type WorkersAiPostRunCfGoogleGemma2bItLora_BadRequest =
     { errors: list<WorkersAiPostRunCfGoogleGemma2bItLora_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfGoogleGemma2bItLora =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfGoogleGemma2bItLora_BadRequest
 
@@ -6646,13 +6646,13 @@ type WorkersAiPostRunCfGoogleGemma312bIt_BadRequestErrors = { code: string; mess
 
 type WorkersAiPostRunCfGoogleGemma312bIt_BadRequest =
     { errors: list<WorkersAiPostRunCfGoogleGemma312bIt_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfGoogleGemma312bIt =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfGoogleGemma312bIt_BadRequest
 
@@ -6660,34 +6660,34 @@ type WorkersAiPostRunCfGoogleGemma7bItLora_BadRequestErrors = { code: string; me
 
 type WorkersAiPostRunCfGoogleGemma7bItLora_BadRequest =
     { errors: list<WorkersAiPostRunCfGoogleGemma7bItLora_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfGoogleGemma7bItLora =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfGoogleGemma7bItLora_BadRequest
 
 type WorkersAiPostRunCfGoogleOmniEmbeddinggemma300mPayload =
     { ///Input text to embed. Can be a single string or a list of strings.
-      text: Newtonsoft.Json.Linq.JToken }
+      text: obj }
     ///Creates an instance of WorkersAiPostRunCfGoogleOmniEmbeddinggemma300mPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (text: Newtonsoft.Json.Linq.JToken): WorkersAiPostRunCfGoogleOmniEmbeddinggemma300mPayload =
+    static member Create (text: obj): WorkersAiPostRunCfGoogleOmniEmbeddinggemma300mPayload =
         { text = text }
 
 type WorkersAiPostRunCfGoogleOmniEmbeddinggemma300m_BadRequestErrors = { code: string; message: string }
 
 type WorkersAiPostRunCfGoogleOmniEmbeddinggemma300m_BadRequest =
     { errors: list<WorkersAiPostRunCfGoogleOmniEmbeddinggemma300m_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfGoogleOmniEmbeddinggemma300m =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfGoogleOmniEmbeddinggemma300m_BadRequest
 
@@ -6701,13 +6701,13 @@ type WorkersAiPostRunCfHuggingfaceDistilbertSst2Int8_BadRequestErrors = { code: 
 
 type WorkersAiPostRunCfHuggingfaceDistilbertSst2Int8_BadRequest =
     { errors: list<WorkersAiPostRunCfHuggingfaceDistilbertSst2Int8_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfHuggingfaceDistilbertSst2Int8 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfHuggingfaceDistilbertSst2Int8_BadRequest
 
@@ -6715,13 +6715,13 @@ type WorkersAiPostRunCfIbmGraniteGranite40HMicro_BadRequestErrors = { code: stri
 
 type WorkersAiPostRunCfIbmGraniteGranite40HMicro_BadRequest =
     { errors: list<WorkersAiPostRunCfIbmGraniteGranite40HMicro_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfIbmGraniteGranite40HMicro =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfIbmGraniteGranite40HMicro_BadRequest
 
@@ -6754,13 +6754,13 @@ type WorkersAiPostRunCfLeonardoLucidOrigin_BadRequestErrors = { code: string; me
 
 type WorkersAiPostRunCfLeonardoLucidOrigin_BadRequest =
     { errors: list<WorkersAiPostRunCfLeonardoLucidOrigin_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfLeonardoLucidOrigin =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfLeonardoLucidOrigin_BadRequest
 
@@ -6793,13 +6793,13 @@ type WorkersAiPostRunCfLeonardoPhoenix10_BadRequestErrors = { code: string; mess
 
 type WorkersAiPostRunCfLeonardoPhoenix10_BadRequest =
     { errors: list<WorkersAiPostRunCfLeonardoPhoenix10_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfLeonardoPhoenix10 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfLeonardoPhoenix10_BadRequest
 
@@ -6844,13 +6844,13 @@ type WorkersAiPostRunCfLykonDreamshaper8Lcm_BadRequestErrors = { code: string; m
 
 type WorkersAiPostRunCfLykonDreamshaper8Lcm_BadRequest =
     { errors: list<WorkersAiPostRunCfLykonDreamshaper8Lcm_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfLykonDreamshaper8Lcm =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfLykonDreamshaper8Lcm_BadRequest
 
@@ -6858,13 +6858,13 @@ type WorkersAiPostRunCfMetaLlamaLlama27bChatHfLora_BadRequestErrors = { code: st
 
 type WorkersAiPostRunCfMetaLlamaLlama27bChatHfLora_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlamaLlama27bChatHfLora_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlamaLlama27bChatHfLora =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlamaLlama27bChatHfLora_BadRequest
 
@@ -6872,13 +6872,13 @@ type WorkersAiPostRunCfMetaLlama27bChatFp16_BadRequestErrors = { code: string; m
 
 type WorkersAiPostRunCfMetaLlama27bChatFp16_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama27bChatFp16_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama27bChatFp16 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama27bChatFp16_BadRequest
 
@@ -6886,13 +6886,13 @@ type WorkersAiPostRunCfMetaLlama27bChatInt8_BadRequestErrors = { code: string; m
 
 type WorkersAiPostRunCfMetaLlama27bChatInt8_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama27bChatInt8_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama27bChatInt8 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama27bChatInt8_BadRequest
 
@@ -6900,13 +6900,13 @@ type WorkersAiPostRunCfMetaLlama38bInstruct_BadRequestErrors = { code: string; m
 
 type WorkersAiPostRunCfMetaLlama38bInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama38bInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama38bInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama38bInstruct_BadRequest
 
@@ -6914,13 +6914,13 @@ type WorkersAiPostRunCfMetaLlama38bInstructAwq_BadRequestErrors = { code: string
 
 type WorkersAiPostRunCfMetaLlama38bInstructAwq_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama38bInstructAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama38bInstructAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama38bInstructAwq_BadRequest
 
@@ -6928,13 +6928,13 @@ type WorkersAiPostRunCfMetaLlama3170bInstructFp8Fast_BadRequestErrors = { code: 
 
 type WorkersAiPostRunCfMetaLlama3170bInstructFp8Fast_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama3170bInstructFp8Fast_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama3170bInstructFp8Fast =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama3170bInstructFp8Fast_BadRequest
 
@@ -6942,13 +6942,13 @@ type WorkersAiPostRunCfMetaLlama318bInstructAwq_BadRequestErrors = { code: strin
 
 type WorkersAiPostRunCfMetaLlama318bInstructAwq_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama318bInstructAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama318bInstructAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama318bInstructAwq_BadRequest
 
@@ -6956,13 +6956,13 @@ type WorkersAiPostRunCfMetaLlama318bInstructFp8_BadRequestErrors = { code: strin
 
 type WorkersAiPostRunCfMetaLlama318bInstructFp8_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama318bInstructFp8_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama318bInstructFp8 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama318bInstructFp8_BadRequest
 
@@ -6970,13 +6970,13 @@ type WorkersAiPostRunCfMetaLlama318bInstructFp8Fast_BadRequestErrors = { code: s
 
 type WorkersAiPostRunCfMetaLlama318bInstructFp8Fast_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama318bInstructFp8Fast_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama318bInstructFp8Fast =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama318bInstructFp8Fast_BadRequest
 
@@ -6984,13 +6984,13 @@ type WorkersAiPostRunCfMetaLlama3211bVisionInstruct_BadRequestErrors = { code: s
 
 type WorkersAiPostRunCfMetaLlama3211bVisionInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama3211bVisionInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama3211bVisionInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama3211bVisionInstruct_BadRequest
 
@@ -6998,13 +6998,13 @@ type WorkersAiPostRunCfMetaLlama321bInstruct_BadRequestErrors = { code: string; 
 
 type WorkersAiPostRunCfMetaLlama321bInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama321bInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama321bInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama321bInstruct_BadRequest
 
@@ -7012,13 +7012,13 @@ type WorkersAiPostRunCfMetaLlama323bInstruct_BadRequestErrors = { code: string; 
 
 type WorkersAiPostRunCfMetaLlama323bInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama323bInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama323bInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama323bInstruct_BadRequest
 
@@ -7026,13 +7026,13 @@ type WorkersAiPostRunCfMetaLlama3370bInstructFp8Fast_BadRequestErrors = { code: 
 
 type WorkersAiPostRunCfMetaLlama3370bInstructFp8Fast_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama3370bInstructFp8Fast_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama3370bInstructFp8Fast =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama3370bInstructFp8Fast_BadRequest
 
@@ -7040,13 +7040,13 @@ type WorkersAiPostRunCfMetaLlama4Scout17b16eInstruct_BadRequestErrors = { code: 
 
 type WorkersAiPostRunCfMetaLlama4Scout17b16eInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlama4Scout17b16eInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlama4Scout17b16eInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlama4Scout17b16eInstruct_BadRequest
 
@@ -7095,13 +7095,13 @@ type WorkersAiPostRunCfMetaLlamaGuard38b_BadRequestErrors = { code: string; mess
 
 type WorkersAiPostRunCfMetaLlamaGuard38b_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaLlamaGuard38b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaLlamaGuard38b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaLlamaGuard38b_BadRequest
 
@@ -7109,13 +7109,13 @@ type WorkersAiPostRunCfMetaM2m10012b_BadRequestErrors = { code: string; message:
 
 type WorkersAiPostRunCfMetaM2m10012b_BadRequest =
     { errors: list<WorkersAiPostRunCfMetaM2m10012b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMetaM2m10012b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMetaM2m10012b_BadRequest
 
@@ -7123,13 +7123,13 @@ type WorkersAiPostRunCfMicrosoftNonomniResnet50_BadRequestErrors = { code: strin
 
 type WorkersAiPostRunCfMicrosoftNonomniResnet50_BadRequest =
     { errors: list<WorkersAiPostRunCfMicrosoftNonomniResnet50_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMicrosoftNonomniResnet50 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMicrosoftNonomniResnet50_BadRequest
 
@@ -7137,13 +7137,13 @@ type WorkersAiPostRunCfMicrosoftPhi2_BadRequestErrors = { code: string; message:
 
 type WorkersAiPostRunCfMicrosoftPhi2_BadRequest =
     { errors: list<WorkersAiPostRunCfMicrosoftPhi2_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMicrosoftPhi2 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMicrosoftPhi2_BadRequest
 
@@ -7151,13 +7151,13 @@ type WorkersAiPostRunCfMicrosoftResnet50_BadRequestErrors = { code: string; mess
 
 type WorkersAiPostRunCfMicrosoftResnet50_BadRequest =
     { errors: list<WorkersAiPostRunCfMicrosoftResnet50_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMicrosoftResnet50 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMicrosoftResnet50_BadRequest
 
@@ -7165,13 +7165,13 @@ type WorkersAiPostRunCfMistralMistral7bInstructV01_BadRequestErrors = { code: st
 
 type WorkersAiPostRunCfMistralMistral7bInstructV01_BadRequest =
     { errors: list<WorkersAiPostRunCfMistralMistral7bInstructV01_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMistralMistral7bInstructV01 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMistralMistral7bInstructV01_BadRequest
 
@@ -7179,13 +7179,13 @@ type WorkersAiPostRunCfMistralMistral7bInstructV02Lora_BadRequestErrors = { code
 
 type WorkersAiPostRunCfMistralMistral7bInstructV02Lora_BadRequest =
     { errors: list<WorkersAiPostRunCfMistralMistral7bInstructV02Lora_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMistralMistral7bInstructV02Lora =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMistralMistral7bInstructV02Lora_BadRequest
 
@@ -7193,13 +7193,13 @@ type WorkersAiPostRunCfMistralaiMistralSmall3124bInstruct_BadRequestErrors = { c
 
 type WorkersAiPostRunCfMistralaiMistralSmall3124bInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfMistralaiMistralSmall3124bInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMistralaiMistralSmall3124bInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMistralaiMistralSmall3124bInstruct_BadRequest
 
@@ -7215,13 +7215,13 @@ type WorkersAiPostRunCfMyshellAiMelotts_BadRequestErrors = { code: string; messa
 
 type WorkersAiPostRunCfMyshellAiMelotts_BadRequest =
     { errors: list<WorkersAiPostRunCfMyshellAiMelotts_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfMyshellAiMelotts =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfMyshellAiMelotts_BadRequest
 
@@ -7229,13 +7229,13 @@ type WorkersAiPostRunCfOpenaiGptOss120b_BadRequestErrors = { code: string; messa
 
 type WorkersAiPostRunCfOpenaiGptOss120b_BadRequest =
     { errors: list<WorkersAiPostRunCfOpenaiGptOss120b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfOpenaiGptOss120b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfOpenaiGptOss120b_BadRequest
 
@@ -7243,13 +7243,13 @@ type WorkersAiPostRunCfOpenaiGptOss20b_BadRequestErrors = { code: string; messag
 
 type WorkersAiPostRunCfOpenaiGptOss20b_BadRequest =
     { errors: list<WorkersAiPostRunCfOpenaiGptOss20b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfOpenaiGptOss20b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfOpenaiGptOss20b_BadRequest
 
@@ -7257,18 +7257,18 @@ type WorkersAiPostRunCfOpenaiWhisper_BadRequestErrors = { code: string; message:
 
 type WorkersAiPostRunCfOpenaiWhisper_BadRequest =
     { errors: list<WorkersAiPostRunCfOpenaiWhisper_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfOpenaiWhisper =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfOpenaiWhisper_BadRequest
 
 type WorkersAiPostRunCfOpenaiWhisperLargeV3TurboPayload =
-    { audio: Newtonsoft.Json.Linq.JToken
+    { audio: obj
       ///The number of beams to use in beam search decoding. Higher values may improve accuracy at the cost of speed.
       beam_size: Option<int>
       ///Threshold for filtering out segments with high compression ratio, which often indicate repetitive or hallucinated text.
@@ -7292,7 +7292,7 @@ type WorkersAiPostRunCfOpenaiWhisperLargeV3TurboPayload =
       ///Preprocess the audio with a voice activity detection model.
       vad_filter: Option<bool> }
     ///Creates an instance of WorkersAiPostRunCfOpenaiWhisperLargeV3TurboPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (audio: Newtonsoft.Json.Linq.JToken): WorkersAiPostRunCfOpenaiWhisperLargeV3TurboPayload =
+    static member Create (audio: obj): WorkersAiPostRunCfOpenaiWhisperLargeV3TurboPayload =
         { audio = audio
           beam_size = None
           compression_ratio_threshold = None
@@ -7310,13 +7310,13 @@ type WorkersAiPostRunCfOpenaiWhisperLargeV3Turbo_BadRequestErrors = { code: stri
 
 type WorkersAiPostRunCfOpenaiWhisperLargeV3Turbo_BadRequest =
     { errors: list<WorkersAiPostRunCfOpenaiWhisperLargeV3Turbo_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfOpenaiWhisperLargeV3Turbo =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfOpenaiWhisperLargeV3Turbo_BadRequest
 
@@ -7324,13 +7324,13 @@ type WorkersAiPostRunCfOpenaiWhisperTinyEn_BadRequestErrors = { code: string; me
 
 type WorkersAiPostRunCfOpenaiWhisperTinyEn_BadRequest =
     { errors: list<WorkersAiPostRunCfOpenaiWhisperTinyEn_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfOpenaiWhisperTinyEn =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfOpenaiWhisperTinyEn_BadRequest
 
@@ -7338,34 +7338,34 @@ type WorkersAiPostRunCfOpenchatOpenchat350106_BadRequestErrors = { code: string;
 
 type WorkersAiPostRunCfOpenchatOpenchat350106_BadRequest =
     { errors: list<WorkersAiPostRunCfOpenchatOpenchat350106_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfOpenchatOpenchat350106 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfOpenchatOpenchat350106_BadRequest
 
 type WorkersAiPostRunCfPfnetPlamoEmbedding1bPayload =
     { ///Input text to embed. Can be a single string or a list of strings.
-      text: Newtonsoft.Json.Linq.JToken }
+      text: obj }
     ///Creates an instance of WorkersAiPostRunCfPfnetPlamoEmbedding1bPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (text: Newtonsoft.Json.Linq.JToken): WorkersAiPostRunCfPfnetPlamoEmbedding1bPayload =
+    static member Create (text: obj): WorkersAiPostRunCfPfnetPlamoEmbedding1bPayload =
         { text = text }
 
 type WorkersAiPostRunCfPfnetPlamoEmbedding1b_BadRequestErrors = { code: string; message: string }
 
 type WorkersAiPostRunCfPfnetPlamoEmbedding1b_BadRequest =
     { errors: list<WorkersAiPostRunCfPfnetPlamoEmbedding1b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfPfnetPlamoEmbedding1b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfPfnetPlamoEmbedding1b_BadRequest
 
@@ -7373,7 +7373,7 @@ type WorkersAiPostWebsocketRunCfPipecatAiSmartTurnV2_BadRequestErrors = { messag
 
 type WorkersAiPostWebsocketRunCfPipecatAiSmartTurnV2_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfPipecatAiSmartTurnV2_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -7386,7 +7386,7 @@ type WorkersAiPostWebsocketRunCfPipecatAiSmartTurnV3_BadRequestErrors = { messag
 
 type WorkersAiPostWebsocketRunCfPipecatAiSmartTurnV3_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfPipecatAiSmartTurnV3_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -7399,13 +7399,13 @@ type WorkersAiPostRunCfQwenQwen1505bChat_BadRequestErrors = { code: string; mess
 
 type WorkersAiPostRunCfQwenQwen1505bChat_BadRequest =
     { errors: list<WorkersAiPostRunCfQwenQwen1505bChat_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfQwenQwen1505bChat =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfQwenQwen1505bChat_BadRequest
 
@@ -7413,13 +7413,13 @@ type WorkersAiPostRunCfQwenQwen1518bChat_BadRequestErrors = { code: string; mess
 
 type WorkersAiPostRunCfQwenQwen1518bChat_BadRequest =
     { errors: list<WorkersAiPostRunCfQwenQwen1518bChat_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfQwenQwen1518bChat =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfQwenQwen1518bChat_BadRequest
 
@@ -7427,13 +7427,13 @@ type WorkersAiPostRunCfQwenQwen1514bChatAwq_BadRequestErrors = { code: string; m
 
 type WorkersAiPostRunCfQwenQwen1514bChatAwq_BadRequest =
     { errors: list<WorkersAiPostRunCfQwenQwen1514bChatAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfQwenQwen1514bChatAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfQwenQwen1514bChatAwq_BadRequest
 
@@ -7441,13 +7441,13 @@ type WorkersAiPostRunCfQwenQwen157bChatAwq_BadRequestErrors = { code: string; me
 
 type WorkersAiPostRunCfQwenQwen157bChatAwq_BadRequest =
     { errors: list<WorkersAiPostRunCfQwenQwen157bChatAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfQwenQwen157bChatAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfQwenQwen157bChatAwq_BadRequest
 
@@ -7455,13 +7455,13 @@ type WorkersAiPostRunCfQwenQwen25Coder32bInstruct_BadRequestErrors = { code: str
 
 type WorkersAiPostRunCfQwenQwen25Coder32bInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfQwenQwen25Coder32bInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfQwenQwen25Coder32bInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfQwenQwen25Coder32bInstruct_BadRequest
 
@@ -7469,22 +7469,22 @@ type WorkersAiPostRunCfQwenQwen330bA3bFp8_BadRequestErrors = { code: string; mes
 
 type WorkersAiPostRunCfQwenQwen330bA3bFp8_BadRequest =
     { errors: list<WorkersAiPostRunCfQwenQwen330bA3bFp8_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfQwenQwen330bA3bFp8 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfQwenQwen330bA3bFp8_BadRequest
 
 type WorkersAiPostRunCfQwenQwen3Embedding06bPayload =
-    { documents: Option<Newtonsoft.Json.Linq.JToken>
+    { documents: Option<obj>
       ///Optional instruction for the task
       instruction: Option<string>
-      queries: Option<Newtonsoft.Json.Linq.JToken>
-      text: Option<Newtonsoft.Json.Linq.JToken> }
+      queries: Option<obj>
+      text: Option<obj> }
     ///Creates an instance of WorkersAiPostRunCfQwenQwen3Embedding06bPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): WorkersAiPostRunCfQwenQwen3Embedding06bPayload =
         { documents = None
@@ -7496,13 +7496,13 @@ type WorkersAiPostRunCfQwenQwen3Embedding06b_BadRequestErrors = { code: string; 
 
 type WorkersAiPostRunCfQwenQwen3Embedding06b_BadRequest =
     { errors: list<WorkersAiPostRunCfQwenQwen3Embedding06b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfQwenQwen3Embedding06b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfQwenQwen3Embedding06b_BadRequest
 
@@ -7510,13 +7510,13 @@ type WorkersAiPostRunCfQwenQwq32b_BadRequestErrors = { code: string; message: st
 
 type WorkersAiPostRunCfQwenQwq32b_BadRequest =
     { errors: list<WorkersAiPostRunCfQwenQwq32b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfQwenQwq32b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfQwenQwq32b_BadRequest
 
@@ -7561,13 +7561,13 @@ type WorkersAiPostRunCfRunwaymlStableDiffusionV15Img2img_BadRequestErrors = { co
 
 type WorkersAiPostRunCfRunwaymlStableDiffusionV15Img2img_BadRequest =
     { errors: list<WorkersAiPostRunCfRunwaymlStableDiffusionV15Img2img_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfRunwaymlStableDiffusionV15Img2img =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfRunwaymlStableDiffusionV15Img2img_BadRequest
 
@@ -7612,13 +7612,13 @@ type WorkersAiPostRunCfRunwaymlStableDiffusionV15Inpainting_BadRequestErrors = {
 
 type WorkersAiPostRunCfRunwaymlStableDiffusionV15Inpainting_BadRequest =
     { errors: list<WorkersAiPostRunCfRunwaymlStableDiffusionV15Inpainting_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfRunwaymlStableDiffusionV15Inpainting =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfRunwaymlStableDiffusionV15Inpainting_BadRequest
 
@@ -7663,13 +7663,13 @@ type WorkersAiPostRunCfStabilityaiStableDiffusionXlBase10_BadRequestErrors = { c
 
 type WorkersAiPostRunCfStabilityaiStableDiffusionXlBase10_BadRequest =
     { errors: list<WorkersAiPostRunCfStabilityaiStableDiffusionXlBase10_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfStabilityaiStableDiffusionXlBase10 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfStabilityaiStableDiffusionXlBase10_BadRequest
 
@@ -7677,7 +7677,7 @@ type WorkersAiPostWebsocketRunCfSvenTestPipeHttp_BadRequestErrors = { message: s
 
 type WorkersAiPostWebsocketRunCfSvenTestPipeHttp_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfSvenTestPipeHttp_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -7690,7 +7690,7 @@ type WorkersAiPostWebsocketRunCfTestHelloWorldCog_BadRequestErrors = { message: 
 
 type WorkersAiPostWebsocketRunCfTestHelloWorldCog_BadRequest =
     { errors: list<WorkersAiPostWebsocketRunCfTestHelloWorldCog_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -7703,13 +7703,13 @@ type WorkersAiPostRunCfTheblokeDiscolmGerman7bV1Awq_BadRequestErrors = { code: s
 
 type WorkersAiPostRunCfTheblokeDiscolmGerman7bV1Awq_BadRequest =
     { errors: list<WorkersAiPostRunCfTheblokeDiscolmGerman7bV1Awq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfTheblokeDiscolmGerman7bV1Awq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfTheblokeDiscolmGerman7bV1Awq_BadRequest
 
@@ -7717,13 +7717,13 @@ type WorkersAiPostRunCfTiiuaeFalcon7bInstruct_BadRequestErrors = { code: string;
 
 type WorkersAiPostRunCfTiiuaeFalcon7bInstruct_BadRequest =
     { errors: list<WorkersAiPostRunCfTiiuaeFalcon7bInstruct_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfTiiuaeFalcon7bInstruct =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfTiiuaeFalcon7bInstruct_BadRequest
 
@@ -7731,13 +7731,13 @@ type WorkersAiPostRunCfTinyllamaTinyllama11bChatV10_BadRequestErrors = { code: s
 
 type WorkersAiPostRunCfTinyllamaTinyllama11bChatV10_BadRequest =
     { errors: list<WorkersAiPostRunCfTinyllamaTinyllama11bChatV10_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfTinyllamaTinyllama11bChatV10 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfTinyllamaTinyllama11bChatV10_BadRequest
 
@@ -7745,13 +7745,13 @@ type WorkersAiPostRunCfZaiOrgGlm47Flash_BadRequestErrors = { code: string; messa
 
 type WorkersAiPostRunCfZaiOrgGlm47Flash_BadRequest =
     { errors: list<WorkersAiPostRunCfZaiOrgGlm47Flash_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunCfZaiOrgGlm47Flash =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunCfZaiOrgGlm47Flash_BadRequest
 
@@ -7759,13 +7759,13 @@ type WorkersAiPostRunHfGoogleGemma7bIt_BadRequestErrors = { code: string; messag
 
 type WorkersAiPostRunHfGoogleGemma7bIt_BadRequest =
     { errors: list<WorkersAiPostRunHfGoogleGemma7bIt_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfGoogleGemma7bIt =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfGoogleGemma7bIt_BadRequest
 
@@ -7773,13 +7773,13 @@ type WorkersAiPostRunHfMistralMistral7bInstructV02_BadRequestErrors = { code: st
 
 type WorkersAiPostRunHfMistralMistral7bInstructV02_BadRequest =
     { errors: list<WorkersAiPostRunHfMistralMistral7bInstructV02_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfMistralMistral7bInstructV02 =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfMistralMistral7bInstructV02_BadRequest
 
@@ -7787,13 +7787,13 @@ type WorkersAiPostRunHfNexusflowStarlingLm7bBeta_BadRequestErrors = { code: stri
 
 type WorkersAiPostRunHfNexusflowStarlingLm7bBeta_BadRequest =
     { errors: list<WorkersAiPostRunHfNexusflowStarlingLm7bBeta_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfNexusflowStarlingLm7bBeta =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfNexusflowStarlingLm7bBeta_BadRequest
 
@@ -7801,13 +7801,13 @@ type WorkersAiPostRunHfNousresearchHermes2ProMistral7b_BadRequestErrors = { code
 
 type WorkersAiPostRunHfNousresearchHermes2ProMistral7b_BadRequest =
     { errors: list<WorkersAiPostRunHfNousresearchHermes2ProMistral7b_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfNousresearchHermes2ProMistral7b =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfNousresearchHermes2ProMistral7b_BadRequest
 
@@ -7815,13 +7815,13 @@ type WorkersAiPostRunHfTheblokeDeepseekCoder67bBaseAwq_BadRequestErrors = { code
 
 type WorkersAiPostRunHfTheblokeDeepseekCoder67bBaseAwq_BadRequest =
     { errors: list<WorkersAiPostRunHfTheblokeDeepseekCoder67bBaseAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfTheblokeDeepseekCoder67bBaseAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfTheblokeDeepseekCoder67bBaseAwq_BadRequest
 
@@ -7829,13 +7829,13 @@ type WorkersAiPostRunHfTheblokeDeepseekCoder67bInstructAwq_BadRequestErrors = { 
 
 type WorkersAiPostRunHfTheblokeDeepseekCoder67bInstructAwq_BadRequest =
     { errors: list<WorkersAiPostRunHfTheblokeDeepseekCoder67bInstructAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfTheblokeDeepseekCoder67bInstructAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfTheblokeDeepseekCoder67bInstructAwq_BadRequest
 
@@ -7843,13 +7843,13 @@ type WorkersAiPostRunHfTheblokeLlama213bChatAwq_BadRequestErrors = { code: strin
 
 type WorkersAiPostRunHfTheblokeLlama213bChatAwq_BadRequest =
     { errors: list<WorkersAiPostRunHfTheblokeLlama213bChatAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfTheblokeLlama213bChatAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfTheblokeLlama213bChatAwq_BadRequest
 
@@ -7857,13 +7857,13 @@ type WorkersAiPostRunHfTheblokeMistral7bInstructV01Awq_BadRequestErrors = { code
 
 type WorkersAiPostRunHfTheblokeMistral7bInstructV01Awq_BadRequest =
     { errors: list<WorkersAiPostRunHfTheblokeMistral7bInstructV01Awq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfTheblokeMistral7bInstructV01Awq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfTheblokeMistral7bInstructV01Awq_BadRequest
 
@@ -7871,13 +7871,13 @@ type WorkersAiPostRunHfTheblokeNeuralChat7bV31Awq_BadRequestErrors = { code: str
 
 type WorkersAiPostRunHfTheblokeNeuralChat7bV31Awq_BadRequest =
     { errors: list<WorkersAiPostRunHfTheblokeNeuralChat7bV31Awq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfTheblokeNeuralChat7bV31Awq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfTheblokeNeuralChat7bV31Awq_BadRequest
 
@@ -7885,13 +7885,13 @@ type WorkersAiPostRunHfTheblokeOpenhermes25Mistral7bAwq_BadRequestErrors = { cod
 
 type WorkersAiPostRunHfTheblokeOpenhermes25Mistral7bAwq_BadRequest =
     { errors: list<WorkersAiPostRunHfTheblokeOpenhermes25Mistral7bAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfTheblokeOpenhermes25Mistral7bAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfTheblokeOpenhermes25Mistral7bAwq_BadRequest
 
@@ -7899,24 +7899,24 @@ type WorkersAiPostRunHfTheblokeZephyr7bBetaAwq_BadRequestErrors = { code: string
 
 type WorkersAiPostRunHfTheblokeZephyr7bBetaAwq_BadRequest =
     { errors: list<WorkersAiPostRunHfTheblokeZephyr7bBetaAwq_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
 type WorkersAiPostRunHfTheblokeZephyr7bBetaAwq =
     ///Object with user data.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Bad request
     | BadRequest of payload: WorkersAiPostRunHfTheblokeZephyr7bBetaAwq_BadRequest
 
 type WorkersAiPostRunModel_OK =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: Option<obj> }
 
 type WorkersAiPostRunModel_BadRequestErrors = { message: string }
 
 type WorkersAiPostRunModel_BadRequest =
     { errors: list<WorkersAiPostRunModel_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -7927,13 +7927,13 @@ type WorkersAiPostRunModel =
     | BadRequest of payload: WorkersAiPostRunModel_BadRequest
 
 type WorkersAiSearchTask_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: list<obj>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JArray
+      result: list<obj>
       success: bool }
 
 type WorkersAiSearchTask_NotFound =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -7963,7 +7963,7 @@ type WorkersAiPostToMarkdown_BadRequestErrors = { message: string }
 
 type WorkersAiPostToMarkdown_BadRequest =
     { errors: list<WorkersAiPostToMarkdown_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -7983,7 +7983,7 @@ type WorkersAiGetToMarkdownSupported_BadRequestErrors = { message: string }
 
 type WorkersAiGetToMarkdownSupported_BadRequest =
     { errors: list<WorkersAiGetToMarkdownSupported_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
