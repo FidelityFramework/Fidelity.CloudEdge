@@ -886,9 +886,9 @@ type accessactivesessionsresponse =
 ///Matches any valid Access Service Token
 type accessanyvalidservicetokenrule =
     { ///An empty object which matches on all service tokens.
-      any_valid_service_token: obj }
+      any_valid_service_token: Map<string, obj> }
     ///Creates an instance of accessanyvalidservicetokenrule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (any_valid_service_token: obj): accessanyvalidservicetokenrule =
+    static member Create (any_valid_service_token: Map<string, obj>): accessanyvalidservicetokenrule =
         { any_valid_service_token = any_valid_service_token }
 
 type ``accessapi-response-collectionErrorsSource`` =
@@ -1002,14 +1002,14 @@ type ``accessapi-response-common`` =
           success = success }
 
 type ``accessapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of accessapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``accessapi-response-common-failure`` =
         { errors = errors
@@ -1918,10 +1918,10 @@ type accessbasepolicyresp =
 type accessbasicappresponseprops =
     { ///Audience tag.
       aud: Option<``accessschemas-aud``>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       ///UUID.
       id: Option<accessuuid>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessbasicappresponseprops with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessbasicappresponseprops =
         { aud = None
@@ -1985,7 +1985,7 @@ type accessbookmarkprops =
 type accessbookmarks =
     { ///Displays the application in the App Launcher.
       app_launcher_visible: Option<``accessschemas-applaunchervisible``>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       ///The domain of the Bookmark application.
       domain: Option<``accessschemas-domain``>
       ///The unique identifier for the Bookmark application.
@@ -1994,7 +1994,7 @@ type accessbookmarks =
       logo_url: Option<``accessschemas-logourl``>
       ///The name of the Bookmark application.
       name: Option<``accessbookmarkscomponents-schemas-name``>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessbookmarks with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessbookmarks =
         { app_launcher_visible = None
@@ -2505,13 +2505,13 @@ type accesscentrify =
 type accesscertificaterule =
     { certificate: obj }
     ///Creates an instance of accesscertificaterule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (certificate: obj): accesscertificaterule =
+    static member Create (certificate: Map<string, obj>): accesscertificaterule =
         { certificate = certificate }
 
 type accesscertificates =
     { ///The hostnames of the applications that will use this certificate.
       associated_hostnames: Option<accessassociatedhostnames>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       expires_on: Option<accesstimestamp>
       ///The MD5 fingerprint of the certificate.
       fingerprint: Option<accessfingerprint>
@@ -2519,7 +2519,7 @@ type accesscertificates =
       id: Option<string>
       ///The name of the certificate.
       name: Option<``accesscertificatescomponents-schemas-name``>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesscertificates with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesscertificates =
         { associated_hostnames = None
@@ -2783,7 +2783,7 @@ type ``accesscomponents-schemas-certificates`` =
       ///The MD5 fingerprint of the certificate.
       fingerprint: Option<accessfingerprint>
       ///The ID of the application that will use this certificate.
-      id: Option<obj>
+      id: Option<string>
       ///The name of the certificate.
       name: Option<``accesscertificatescomponents-schemas-name-2``>
       updated_at: Option<accesstimestamp> }
@@ -3129,14 +3129,14 @@ type accesscreateresponseResult =
       client_id: Option<accessclientid>
       ///The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
       client_secret: Option<accessclientsecret>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<accessduration>
       ///The ID of the service token.
       id: Option<string>
       ///The name of the service token.
       name: Option<``accessschemas-name``>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesscreateresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesscreateresponseResult =
         { client_id = None
@@ -3162,7 +3162,7 @@ type accesscreateresponse =
           success = success
           result = None }
 
-type accesscreatedat = Map<string, obj>
+type accesscreatedat = System.DateTimeOffset
 
 type ``accesscustom-claims-support`` =
     { ///Custom claims
@@ -3295,7 +3295,7 @@ type ``accesscustom-pagescomponents-schemas-singleresponse`` =
 type accesscustompage =
     { ///Number of apps the custom page is assigned to.
       app_count: Option<``accessschemas-appcount``>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       ///Custom page HTML.
       custom_html: string
       ///Custom page name.
@@ -3304,7 +3304,7 @@ type accesscustompage =
       ``type``: ``accessschemas-type``
       ///UUID.
       uid: Option<accessuuid>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesscustompage with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (custom_html: string,
                           name: ``accesscustom-pagescomponents-schemas-name``,
@@ -3320,14 +3320,14 @@ type accesscustompage =
 type accesscustompagewithouthtml =
     { ///Number of apps the custom page is assigned to.
       app_count: Option<``accessschemas-appcount``>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       ///Custom page name.
       name: ``accesscustom-pagescomponents-schemas-name``
       ///Custom page type.
       ``type``: ``accessschemas-type``
       ///UUID.
       uid: Option<accessuuid>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesscustompagewithouthtml with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesscustom-pagescomponents-schemas-name``, ``type``: ``accessschemas-type``): accesscustompagewithouthtml =
         { app_count = None
@@ -3386,7 +3386,7 @@ type accessdeleteauthenticatorresponse =
       messages: list<accessdeleteauthenticatorresponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<obj> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of accessdeleteauthenticatorresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<accessdeleteauthenticatorresponseErrors>,
                           messages: list<accessdeleteauthenticatorresponseMessages>,
@@ -3435,7 +3435,7 @@ type accessdeleteuserresponse =
       messages: list<accessdeleteuserresponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<obj> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of accessdeleteuserresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<accessdeleteuserresponseErrors>,
                           messages: list<accessdeleteuserresponseMessages>,
@@ -3513,9 +3513,9 @@ type accessemptyresponse =
 ///Matches everyone.
 type accesseveryonerule =
     { ///An empty object which matches on all users.
-      everyone: obj }
+      everyone: Map<string, obj> }
     ///Creates an instance of accesseveryonerule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (everyone: obj): accesseveryonerule = { everyone = everyone }
+    static member Create (everyone: Map<string, obj>): accesseveryonerule = { everyone = everyone }
 
 type Externalevaluation =
     { ///The API endpoint containing your business logic.
@@ -4513,7 +4513,7 @@ type ``accessidentity-providerType`` =
 
 type ``accessidentity-provider`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: obj
+      config: Map<string, obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4523,7 +4523,7 @@ type ``accessidentity-provider`` =
       ///The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
       ``type``: ``accessidentity-providerType`` }
     ///Creates an instance of accessidentity-provider with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (config: obj,
+    static member Create (config: Map<string, obj>,
                           name: ``accesscomponents-schemas-name``,
                           ``type``: ``accessidentity-providerType``): ``accessidentity-provider`` =
         { config = config
@@ -4532,8 +4532,7 @@ type ``accessidentity-provider`` =
           scim_config = None
           ``type`` = ``type`` }
 
-type ``accessidentity-providers`` = Map<string, obj>
-
+type ``accessidentity-providers`` = {code: int; message: string}
 type ``accessidentity-providerscomponents-schemas-responsecollectionErrorsSource`` =
     { pointer: Option<string> }
     ///Creates an instance of accessidentity-providerscomponents-schemas-responsecollectionErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
@@ -5528,7 +5527,7 @@ type accessoidcsaasapp =
       client_id: Option<string>
       ///The application client secret, only returned on POST request.
       client_secret: Option<string>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       custom_claims: Option<list<Customclaims>>
       ///The OIDC flows supported by this application
       grant_types: Option<list<Grant_types>>
@@ -5542,7 +5541,7 @@ type accessoidcsaasapp =
       refresh_token_options: Option<Refreshtokenoptions>
       ///Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
       scopes: Option<list<Scopes>>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessoidcsaasapp with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessoidcsaasapp =
         { access_token_lifetime = None
@@ -5878,7 +5877,7 @@ type accessorganizations =
       auth_domain: Option<accessauthdomain>
       ///When set to `true`, users skip the identity provider selection step during login.
       auto_redirect_to_identity: Option<accessautoredirecttoidentity>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       custom_pages: Option<accesscustompages>
       ///Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
       deny_unmatched_requests: Option<accessdenyunmatchedrequests>
@@ -5897,7 +5896,7 @@ type accessorganizations =
       session_duration: Option<accesssessionduration>
       ///A description of the reason why the UI read only field is being toggled.
       ui_read_only_toggle_reason: Option<accessuireadonlytogglereason>
-      updated_at: Option<obj>
+      updated_at: Option<System.DateTimeOffset>
       ///The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
       user_seat_expiration_inactive_time: Option<accessuserseatexpirationinactivetime>
       ///The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
@@ -7165,7 +7164,7 @@ type accesssaasprops =
       logo_url: Option<accesslogourl>
       ///The name of the application.
       name: Option<``accessappscomponents-schemas-name``>
-      saas_app: Option<obj>
+      saas_app: Option<Map<string, obj>>
       ///Configuration for provisioning to this application via SCIM. This is currently in closed beta.
       scim_config: Option<accessscimconfig>
       ///The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
@@ -7395,7 +7394,7 @@ type accesssamlsaasapp =
       auth_type: Option<accesssamlsaasappAuthtype>
       ///The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
       consumer_service_url: Option<string>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       custom_attributes: Option<list<Customattributes>>
       ///The URL that the user will be redirected to after a successful login for IDP initiated logins.
       default_relay_state: Option<string>
@@ -7413,7 +7412,7 @@ type accesssamlsaasapp =
       sp_entity_id: Option<string>
       ///The endpoint where your SaaS application will send login requests.
       sso_endpoint: Option<string>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesssamlsaasapp with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesssamlsaasapp =
         { auth_type = None
@@ -7816,7 +7815,7 @@ type ``accessschemas-createresponse`` =
 
 type ``accessschemas-deviceposturerule`` =
     { check: Option<accessdeviceposturecheck>
-      data: Option<obj>
+      data: Option<Map<string, obj>>
       description: Option<string>
       error: Option<string>
       id: Option<string>
@@ -8219,7 +8218,7 @@ type ``accessschemas-google-apps`` =
           ``type`` = None }
 
 type ``accessschemas-groups`` =
-    { created_at: Option<obj>
+    { created_at: Option<System.DateTimeOffset>
       ///Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
       exclude: Option<accessexclude>
       ///UUID.
@@ -8232,7 +8231,7 @@ type ``accessschemas-groups`` =
       name: Option<``accessgroupscomponents-schemas-name``>
       ///Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
       require: Option<accessrequire>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessschemas-groups with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-groups`` =
         { created_at = None
@@ -8368,7 +8367,7 @@ type ``accessschemas-identity-providerType`` =
 
 type ``accessschemas-identity-provider`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: obj
+      config: Map<string, obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8378,7 +8377,7 @@ type ``accessschemas-identity-provider`` =
       ///The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
       ``type``: ``accessschemas-identity-providerType`` }
     ///Creates an instance of accessschemas-identity-provider with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (config: obj,
+    static member Create (config: Map<string, obj>,
                           name: ``accesscomponents-schemas-name``,
                           ``type``: ``accessschemas-identity-providerType``): ``accessschemas-identity-provider`` =
         { config = config
@@ -9357,7 +9356,7 @@ type ``accessschemas-saasprops`` =
       logo_url: Option<accesslogourl>
       ///The name of the application.
       name: Option<``accessappscomponents-schemas-name``>
-      saas_app: Option<obj>
+      saas_app: Option<Map<string, obj>>
       ///The application type.
       ``type``: Option<string> }
     ///Creates an instance of accessschemas-saasprops with all optional fields initialized to None. The required fields are parameters of this function
@@ -9689,7 +9688,7 @@ type ``accessschemas-service-tokens`` =
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<``accessschemas-duration``>
       expires_at: Option<accesstimestamp>
-      id: Option<obj>
+      id: Option<string>
       last_seen_at: Option<accesstimestamp>
       ///The name of the service token.
       name: Option<``accessservice-tokenscomponents-schemas-name``>
@@ -10596,15 +10595,15 @@ type accessselfhostedprops =
 type ``accessservice-tokens`` =
     { ///The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
       client_id: Option<accessclientid>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<accessduration>
       expires_at: Option<accesstimestamp>
-      id: Option<obj>
-      last_seen_at: Option<obj>
+      id: Option<string>
+      last_seen_at: Option<System.DateTimeOffset>
       ///The name of the service token.
       name: Option<``accessschemas-name``>
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessservice-tokens with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessservice-tokens`` =
         { client_id = None
@@ -11052,10 +11051,10 @@ type accesssshprops =
 type accesstag =
     { ///The number of applications that have this tag
       app_count: Option<int>
-      created_at: Option<obj>
+      created_at: Option<System.DateTimeOffset>
       ///The name of the tag
       name: ``accesstagscomponents-schemas-name``
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesstag with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesstagscomponents-schemas-name``): accesstag =
         { app_count = None
@@ -11065,10 +11064,10 @@ type accesstag =
 
 ///A tag
 type accesstagwithoutappcount =
-    { created_at: Option<obj>
+    { created_at: Option<System.DateTimeOffset>
       ///The name of the tag
       name: ``accesstagscomponents-schemas-name``
-      updated_at: Option<obj> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesstagwithoutappcount with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesstagscomponents-schemas-name``): accesstagwithoutappcount =
         { created_at = None
@@ -11228,7 +11227,7 @@ type accesstargetcriteriaselfhostedapp =
           target_attributes = None
           protocol = None }
 
-type accessupdatedat = Map<string, obj>
+type accessupdatedat = System.DateTimeOffset
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type User_risk_score =

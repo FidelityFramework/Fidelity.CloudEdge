@@ -375,14 +375,14 @@ type ``waitingroomapi-response-collection`` =
           result_info = None }
 
 type ``waitingroomapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of waitingroomapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``waitingroomapi-response-common-failure`` =
         { errors = errors

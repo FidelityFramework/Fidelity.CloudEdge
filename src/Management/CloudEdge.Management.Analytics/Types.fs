@@ -41,14 +41,14 @@ type ``argo-analyticsapi-response-common`` =
           success = success }
 
 type ``argo-analyticsapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of argo-analyticsapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``argo-analyticsapi-response-common-failure`` =
         { errors = errors
@@ -100,13 +100,13 @@ type ``argo-analyticsresponsesingleMessages`` =
 type ``argo-analyticsresponsesingle`` =
     { errors: list<``argo-analyticsresponsesingleErrors``>
       messages: list<``argo-analyticsresponsesingleMessages``>
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of argo-analyticsresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``argo-analyticsresponsesingleErrors``>,
                           messages: list<``argo-analyticsresponsesingleMessages``>,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``argo-analyticsresponsesingle`` =
         { errors = errors
           messages = messages

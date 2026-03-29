@@ -4448,7 +4448,7 @@ type AiSearchInstanceChatCompletion_OK =
     { choices: list<Choices>
       chunks: list<Chunks>
       id: Option<string>
-      model: Option<string>
+      model: Option<obj>
       object: Option<string> }
 
 type AiSearchInstanceChatCompletion_NotFoundErrors = { code: float; message: string }

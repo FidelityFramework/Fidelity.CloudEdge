@@ -46,14 +46,14 @@ type Messages =
 type ``hyperdriveapi-response-collection`` =
     { errors: list<Errors>
       messages: list<Messages>
-      result: obj
+      result: Map<string, obj>
       ///Return the status of the API call success.
       success: bool
       result_info: Option<hyperdriveresultinfo> }
     ///Creates an instance of hyperdriveapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<Errors>,
                           messages: list<Messages>,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``hyperdriveapi-response-collection`` =
         { errors = errors
           messages = messages
@@ -78,13 +78,13 @@ type ``hyperdriveapi-response-commonMessages`` =
 type ``hyperdriveapi-response-common`` =
     { errors: list<``hyperdriveapi-response-commonErrors``>
       messages: list<``hyperdriveapi-response-commonMessages``>
-      result: obj
+      result: Map<string, obj>
       ///Return the status of the API call success.
       success: bool }
     ///Creates an instance of hyperdriveapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``hyperdriveapi-response-commonErrors``>,
                           messages: list<``hyperdriveapi-response-commonMessages``>,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``hyperdriveapi-response-common`` =
         { errors = errors
           messages = messages
@@ -92,14 +92,14 @@ type ``hyperdriveapi-response-common`` =
           success = success }
 
 type ``hyperdriveapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Return the status of the API call success.
       success: bool }
     ///Creates an instance of hyperdriveapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``hyperdriveapi-response-common-failure`` =
         { errors = errors
@@ -170,13 +170,13 @@ type ``hyperdrivehyperdrive-config`` =
       mtls: Option<``hyperdrivehyperdrive-mtls``>
       ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: ``hyperdrivehyperdrive-name``
-      origin: obj
+      origin: Map<string, obj>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
       origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
     ///Creates an instance of hyperdrivehyperdrive-config with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (id: hyperdriveidentifier,
                           name: ``hyperdrivehyperdrive-name``,
-                          origin: obj): ``hyperdrivehyperdrive-config`` =
+                          origin: Map<string, obj>): ``hyperdrivehyperdrive-config`` =
         { caching = None
           created_on = None
           id = id
@@ -406,13 +406,13 @@ type ``delete-hyperdriveresponseMessages`` =
 type ``delete-hyperdriveresponse`` =
     { errors: list<``delete-hyperdriveresponseErrors``>
       messages: list<``delete-hyperdriveresponseMessages``>
-      result: obj
+      result: Map<string, obj>
       ///Return the status of the API call success.
       success: bool }
     ///Creates an instance of delete-hyperdriveresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``delete-hyperdriveresponseErrors``>,
                           messages: list<``delete-hyperdriveresponseMessages``>,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``delete-hyperdriveresponse`` =
         { errors = errors
           messages = messages

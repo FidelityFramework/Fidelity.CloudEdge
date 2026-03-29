@@ -147,6 +147,11 @@ for service_key in $SERVICES; do
         dotnet fsi "$POSTPROCESSORS_DIR/auto-fix-types.fsx" "$GENERATED_DIR/Types.fs"
     fi
 
+    # Universal: resolve untyped (obj) fields using OpenAPI schema
+    print_info "Post-processing: resolve untyped fields..."
+    dotnet fsi "$POSTPROCESSORS_DIR/resolve-untyped-fields.fsx" \
+        "$GENERATED_DIR/Types.fs" "$SPEC_FILE"
+
     # Universal: fix incompatible query parameter types in Client.fs
     if [[ -f "$CLIENT_FS" ]]; then
         print_info "Post-processing: fix query param types..."

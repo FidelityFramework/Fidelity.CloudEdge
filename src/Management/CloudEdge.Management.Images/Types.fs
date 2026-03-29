@@ -137,14 +137,14 @@ type ``imagesapi-response-common`` =
           success = success }
 
 type ``imagesapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of imagesapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``imagesapi-response-common-failure`` =
         { errors = errors
@@ -195,13 +195,13 @@ type imagesdeletedresponseMessages =
 type imagesdeletedresponse =
     { errors: list<imagesdeletedresponseErrors>
       messages: list<imagesdeletedresponseMessages>
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of imagesdeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<imagesdeletedresponseErrors>,
                           messages: list<imagesdeletedresponseMessages>,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): imagesdeletedresponse =
         { errors = errors
           messages = messages
@@ -241,7 +241,7 @@ type imagesimagebasicupload =
       ///An optional custom unique identifier for your image.
       id: Option<string>
       ///User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
-      metadata: Option<obj>
+      metadata: Option<Map<string, obj>>
       ///Indicates whether the image requires a signature token for the access.
       requireSignedURLs: Option<bool>
       ///A URL to fetch an image from origin. Only needed when type is uploading from a URL.
@@ -263,7 +263,7 @@ type imagesimagedirectuploadrequestv2 =
       ///Optional Image Custom ID. Up to 1024 chars. Can include any number of subpaths, and utf8 characters. Cannot start nor end with a / (forward slash). Cannot be a UUID.
       id: Option<string>
       ///User modifiable key-value store. Can be used for keeping references to another system of record, for managing images.
-      metadata: Option<obj>
+      metadata: Option<Map<string, obj>>
       ///Indicates whether the image requires a signature token to be accessed.
       requireSignedURLs: Option<bool> }
     ///Creates an instance of imagesimagedirectuploadrequestv2 with all optional fields initialized to None. The required fields are parameters of this function
@@ -351,7 +351,7 @@ type imagesimagepatchrequest =
     { ///Can set the creator field with an internal user ID.
       creator: Option<string>
       ///User modifiable key-value store. Can be used for keeping references to another system of record for managing images. No change if not specified.
-      metadata: Option<obj>
+      metadata: Option<Map<string, obj>>
       ///Indicates whether the image can be accessed using only its UID. If set to `true`, a signed token needs to be generated with a signing key to view the image. Returns a new UID on a change. No change if not specified.
       requireSignedURLs: Option<bool> }
     ///Creates an instance of imagesimagepatchrequest with all optional fields initialized to None. The required fields are parameters of this function

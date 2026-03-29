@@ -142,14 +142,14 @@ type ``pagesapi-response-common`` =
           success = success }
 
 type ``pagesapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of pagesapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``pagesapi-response-common-failure`` =
         { errors = errors
@@ -1181,12 +1181,12 @@ type ``pages-project-delete-projectresponse`` =
       messages: list<``pages-project-delete-projectresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: obj }
+      result: Map<string, obj> }
     ///Creates an instance of pages-project-delete-projectresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``pages-project-delete-projectresponseErrors``>,
                           messages: list<``pages-project-delete-projectresponseMessages``>,
                           success: bool,
-                          result: obj): ``pages-project-delete-projectresponse`` =
+                          result: Map<string, obj>): ``pages-project-delete-projectresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -1449,12 +1449,12 @@ type ``pages-deployment-delete-deploymentresponse`` =
       messages: list<``pages-deployment-delete-deploymentresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: obj }
+      result: Map<string, obj> }
     ///Creates an instance of pages-deployment-delete-deploymentresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``pages-deployment-delete-deploymentresponseErrors``>,
                           messages: list<``pages-deployment-delete-deploymentresponseMessages``>,
                           success: bool,
-                          result: obj): ``pages-deployment-delete-deploymentresponse`` =
+                          result: Map<string, obj>): ``pages-deployment-delete-deploymentresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -1817,12 +1817,12 @@ type ``pages-domains-delete-domainresponse`` =
       messages: list<``pages-domains-delete-domainresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: obj }
+      result: Map<string, obj> }
     ///Creates an instance of pages-domains-delete-domainresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``pages-domains-delete-domainresponseErrors``>,
                           messages: list<``pages-domains-delete-domainresponseMessages``>,
                           success: bool,
-                          result: obj): ``pages-domains-delete-domainresponse`` =
+                          result: Map<string, obj>): ``pages-domains-delete-domainresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -1967,12 +1967,12 @@ type ``pages-purge-build-cacheresponse`` =
       messages: list<``pages-purge-build-cacheresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: obj }
+      result: Map<string, obj> }
     ///Creates an instance of pages-purge-build-cacheresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``pages-purge-build-cacheresponseErrors``>,
                           messages: list<``pages-purge-build-cacheresponseMessages``>,
                           success: bool,
-                          result: obj): ``pages-purge-build-cacheresponse`` =
+                          result: Map<string, obj>): ``pages-purge-build-cacheresponse`` =
         { errors = errors
           messages = messages
           success = success

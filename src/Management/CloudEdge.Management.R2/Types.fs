@@ -237,12 +237,12 @@ type ``r2-data-catalogapi-response-common-failureErrors`` =
 
 type ``r2-data-catalogapi-response-common-failure`` =
     { errors: Option<list<``r2-data-catalogapi-response-common-failureErrors``>>
-      messages: Option<list<obj>>
+      messages: list<Messages>
       success: Option<bool> }
     ///Creates an instance of r2-data-catalogapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogapi-response-common-failure`` =
         { errors = None
-          messages = None
+          messages = []
           success = None }
 
 type ``r2-data-catalogapi-response-singleErrors`` =
@@ -386,9 +386,9 @@ type ``r2-data-catalogcatalog-maintenance-update-request`` =
 ///Updates compaction configuration (all fields optional).
 type ``r2-data-catalogcompaction-update-params`` =
     { ///Updates the state optionally.
-      state: Option<obj>
+      state: Option<string>
       ///Updates the target file size optionally.
-      target_size_mb: Option<obj> }
+      target_size_mb: Option<string> }
     ///Creates an instance of r2-data-catalogcompaction-update-params with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogcompaction-update-params`` = { state = None; target_size_mb = None }
 
@@ -467,7 +467,7 @@ type ``r2-data-catalogsnapshot-expiration-update-params`` =
       ///Updates the minimum number of snapshots to retain optionally.
       min_snapshots_to_keep: Option<int64>
       ///Updates the state optionally.
-      state: Option<obj> }
+      state: Option<string> }
     ///Creates an instance of r2-data-catalogsnapshot-expiration-update-params with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogsnapshot-expiration-update-params`` =
         { max_snapshot_age = None
@@ -1754,13 +1754,13 @@ type r2v4responseErrors =
 type r2v4response =
     { errors: list<r2v4responseErrors>
       messages: r2messages
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of r2v4response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<r2v4responseErrors>,
                           messages: r2messages,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): r2v4response =
         { errors = errors
           messages = messages
@@ -1798,14 +1798,14 @@ type r2v4responselistErrors =
 type r2v4responselist =
     { errors: list<r2v4responselistErrors>
       messages: r2messages
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful.
       success: bool
       result_info: Option<r2resultinfo> }
     ///Creates an instance of r2v4responselist with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<r2v4responselistErrors>,
                           messages: r2messages,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): r2v4responselist =
         { errors = errors
           messages = messages

@@ -1168,14 +1168,14 @@ type ``dosapi-response-common`` =
           success = success }
 
 type ``dosapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of dosapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``dosapi-response-common-failure`` =
         { errors = errors
@@ -1976,14 +1976,14 @@ type ``magic-transitapi-response-common`` =
           success = success }
 
 type ``magic-transitapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of magic-transitapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``magic-transitapi-response-common-failure`` =
         { errors = errors
@@ -2319,14 +2319,14 @@ type ``magic-visibility-mnmapi-response-common`` =
           success = success }
 
 type ``magic-visibility-mnmapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magic-visibility-mnmapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``magic-visibility-mnmapi-response-common-failure`` =
         { errors = errors
@@ -2651,14 +2651,14 @@ type ``magic-visibility-pcapsapi-response-common`` =
           success = success }
 
 type ``magic-visibility-pcapsapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of magic-visibility-pcapsapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``magic-visibility-pcapsapi-response-common-failure`` =
         { errors = errors
@@ -3304,14 +3304,14 @@ type ``magicapi-response-common`` =
           success = success }
 
 type ``magicapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``magicapi-response-common-failure`` =
         { errors = errors
@@ -3574,13 +3574,13 @@ type ``magicapps-response-objectMessages`` =
 type ``magicapps-response-object`` =
     { errors: list<``magicapps-response-objectErrors``>
       messages: list<``magicapps-response-objectMessages``>
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicapps-response-object with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magicapps-response-objectErrors``>,
                           messages: list<``magicapps-response-objectMessages``>,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``magicapps-response-object`` =
         { errors = errors
           messages = messages
@@ -6406,7 +6406,7 @@ type mcnerror =
 type mcnerrormeta =
     { l10n_key: Option<string>
       loggable_error: Option<string>
-      template_data: Option<obj>
+      template_data: Option<Map<string, obj>>
       trace_id: Option<string> }
     ///Creates an instance of mcnerrormeta with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): mcnerrormeta =
@@ -6671,12 +6671,12 @@ type mcnproviderinitialsetupresponse =
     { messages: list<mcnerror>
       success: bool
       errors: list<mcnerror>
-      result: obj }
+      result: Map<string, obj> }
     ///Creates an instance of mcnproviderinitialsetupresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (messages: list<mcnerror>,
                           success: bool,
                           errors: list<mcnerror>,
-                          result: obj): mcnproviderinitialsetupresponse =
+                          result: Map<string, obj>): mcnproviderinitialsetupresponse =
         { messages = messages
           success = success
           errors = errors
@@ -6814,7 +6814,7 @@ type mcnrefreshcatalogsyncresponse =
 type mcnresourcedetails =
     { account_id: mcnaccountid
       cloud_type: mcncloudtype
-      config: obj
+      config: Map<string, obj>
       deployment_provider: mcnproviderid
       id: mcnresourceid
       managed: bool
@@ -6829,14 +6829,14 @@ type mcnresourcedetails =
       resource_group: string
       resource_type: mcnresourcetype
       sections: list<mcnresourcedetailssection>
-      state: obj
+      state: Map<string, obj>
       tags: Map<string, string>
       updated_at: string
       url: string }
     ///Creates an instance of mcnresourcedetails with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (account_id: mcnaccountid,
                           cloud_type: mcncloudtype,
-                          config: obj,
+                          config: Map<string, obj>,
                           deployment_provider: mcnproviderid,
                           id: mcnresourceid,
                           managed: bool,
@@ -6850,7 +6850,7 @@ type mcnresourcedetails =
                           resource_group: string,
                           resource_type: mcnresourcetype,
                           sections: list<mcnresourcedetailssection>,
-                          state: obj,
+                          state: Map<string, obj>,
                           tags: Map<string, string>,
                           updated_at: string,
                           url: string): mcnresourcedetails =
@@ -6893,7 +6893,7 @@ type mcnresourcedetailssection =
 type mcnresourcedetailssectionitem =
     { helpText: Option<string>
       name: Option<string>
-      value: Option<obj> }
+      value: Option<Map<string, obj>> }
     ///Creates an instance of mcnresourcedetailssectionitem with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): mcnresourcedetailssectionitem =
         { helpText = None

@@ -76,12 +76,12 @@ type Errors =
 
 type ``r2-data-catalogapi-response-common-failure`` =
     { errors: Option<list<Errors>>
-      messages: Option<list<obj>>
+      messages: list<Messages>
       success: Option<bool> }
     ///Creates an instance of r2-data-catalogapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogapi-response-common-failure`` =
         { errors = None
-          messages = None
+          messages = []
           success = None }
 
 type ``r2-data-catalogapi-response-singleErrors`` =
@@ -224,9 +224,9 @@ type ``r2-data-catalogcatalog-maintenance-update-request`` =
 ///Updates compaction configuration (all fields optional).
 type ``r2-data-catalogcompaction-update-params`` =
     { ///Updates the state optionally.
-      state: Option<obj>
+      state: Option<``r2-data-catalogcatalog-maintenance-state``>
       ///Updates the target file size optionally.
-      target_size_mb: Option<obj> }
+      target_size_mb: Option<float> }
     ///Creates an instance of r2-data-catalogcompaction-update-params with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogcompaction-update-params`` = { state = None; target_size_mb = None }
 
@@ -305,7 +305,7 @@ type ``r2-data-catalogsnapshot-expiration-update-params`` =
       ///Updates the minimum number of snapshots to retain optionally.
       min_snapshots_to_keep: Option<int64>
       ///Updates the state optionally.
-      state: Option<obj> }
+      state: Option<``r2-data-catalogcatalog-maintenance-state``> }
     ///Creates an instance of r2-data-catalogsnapshot-expiration-update-params with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``r2-data-catalogsnapshot-expiration-update-params`` =
         { max_snapshot_age = None
@@ -506,7 +506,7 @@ type ``store-credentialsresponse`` =
       messages: list<``store-credentialsresponseMessages``>
       ///Indicates whether the API call was successful.
       success: ``r2-data-catalogapi-response-success``
-      result: Option<obj> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of store-credentialsresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``store-credentialsresponseErrors``>,
                           messages: list<``store-credentialsresponseMessages``>,
@@ -814,7 +814,7 @@ type StoreCredentials =
 [<RequireQualifiedAccess>]
 type DisableCatalog =
     ///Catalog disabled successfully.
-    | NoContent of payload: obj
+    | NoContent of payload: ``r2-data-catalogapi-response-common-failure``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.

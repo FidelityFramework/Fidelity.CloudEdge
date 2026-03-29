@@ -223,14 +223,14 @@ type ``load-balancingapi-response-common`` =
           success = success }
 
 type ``load-balancingapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of load-balancingapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``load-balancingapi-response-common-failure`` =
         { errors = errors
@@ -285,12 +285,12 @@ type ``load-balancingcomponents-schemas-singleresponse`` =
       ///Whether the API call was successful.
       success: bool
       ///A list of countries and subdivisions mapped to a region.
-      result: obj }
+      result: Map<string, obj> }
     ///Creates an instance of load-balancingcomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``load-balancingcomponents-schemas-singleresponseErrors``>,
                           messages: list<``load-balancingcomponents-schemas-singleresponseMessages``>,
                           success: bool,
-                          result: obj): ``load-balancingcomponents-schemas-singleresponse`` =
+                          result: Map<string, obj>): ``load-balancingcomponents-schemas-singleresponse`` =
         { errors = errors
           messages = messages
           success = success
@@ -1138,12 +1138,12 @@ type ``load-balancingregioncomponents-schemas-responsecollection`` =
       messages: list<``load-balancingregioncomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: obj }
+      result: Map<string, obj> }
     ///Creates an instance of load-balancingregioncomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``load-balancingregioncomponents-schemas-responsecollectionErrors``>,
                           messages: list<``load-balancingregioncomponents-schemas-responsecollectionMessages``>,
                           success: bool,
-                          result: obj): ``load-balancingregioncomponents-schemas-responsecollection`` =
+                          result: Map<string, obj>): ``load-balancingregioncomponents-schemas-responsecollection`` =
         { errors = errors
           messages = messages
           success = success

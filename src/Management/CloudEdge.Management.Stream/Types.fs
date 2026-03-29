@@ -431,14 +431,14 @@ type ``streamapi-response-common`` =
           success = success }
 
 type ``streamapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of streamapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``streamapi-response-common-failure`` =
         { errors = errors
@@ -2240,7 +2240,7 @@ type streamwebhookresponsesingle =
       messages: list<streamwebhookresponsesingleMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<obj> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of streamwebhookresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<streamwebhookresponsesingleErrors>,
                           messages: list<streamwebhookresponsesingleMessages>,
@@ -2364,7 +2364,7 @@ type StreamVideosInitiateVideoUploadsUsingTus =
     ///Initiate video uploads using TUS response.
     | OK of payload: obj
     ///Initiate video uploads using TUS response failure.
-    | BadRequest of payload: obj
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideoClippingClipVideosGivenAStartAndEndTime =
@@ -2427,7 +2427,7 @@ type StreamLiveInputsDeleteALiveInput =
     ///Delete a live input response.
     | OK of payload: obj
     ///Delete a live input response failure.
-    | BadRequest of payload: obj
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsRetrieveALiveInput =
@@ -2476,7 +2476,7 @@ type StreamLiveInputsDeleteAnOutput =
     ///Delete an output response.
     | OK of payload: obj
     ///Delete an output response failure.
-    | BadRequest of payload: obj
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsUpdateAnOutput =
@@ -2546,7 +2546,7 @@ type StreamVideosDeleteVideo =
     ///Delete video response.
     | OK of payload: obj
     ///Delete video response failure.
-    | BadRequest of payload: obj
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosRetrieveVideoDetails =

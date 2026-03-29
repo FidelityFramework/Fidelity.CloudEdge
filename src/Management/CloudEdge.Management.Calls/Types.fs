@@ -82,14 +82,14 @@ type ``callsapi-response-common`` =
           success = success }
 
 type ``callsapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of callsapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``callsapi-response-common-failure`` =
         { errors = errors
@@ -582,7 +582,7 @@ type CallsAppsDeleteApp =
     ///Delete app response
     | OK of payload: callsappresponsesingle
     ///Delete app response failure
-    | BadRequest of payload: obj
+    | BadRequest of payload: ``callsapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CallsAppsRetrieveAppDetails =
@@ -615,7 +615,7 @@ type CallsDeleteTurnKey =
     ///Delete TURN key response
     | OK of payload: callsturnkeyresponsesingle
     ///Delete TURN key response failure
-    | BadRequest of payload: obj
+    | BadRequest of payload: ``callsapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CallsRetrieveTurnKeyDetails =

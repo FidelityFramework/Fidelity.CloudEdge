@@ -127,14 +127,14 @@ type ``vectorizeapi-response-common`` =
           success = success }
 
 type ``vectorizeapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of vectorizeapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``vectorizeapi-response-common-failure`` =
         { errors = errors
@@ -336,7 +336,7 @@ type ``vectorizeindex-preset-configuration`` =
 
 type ``vectorizeindex-query-request`` =
     { ///A metadata filter expression used to limit nearest neighbor results.
-      filter: Option<obj>
+      filter: Option<Map<string, obj>>
       ///Whether to return the metadata associated with the closest vectors.
       returnMetadata: Option<bool>
       ///Whether to return the values associated with the closest vectors.
@@ -388,7 +388,7 @@ type ReturnMetadata =
 
 type ``vectorizeindex-query-v2-request`` =
     { ///A metadata filter expression used to limit nearest neighbor results.
-      filter: Option<obj>
+      filter: Option<Map<string, obj>>
       ///Whether to return no metadata, indexed metadata or all metadata associated with the closest vectors.
       returnMetadata: Option<ReturnMetadata>
       ///Whether to return the values associated with the closest vectors.
@@ -576,13 +576,13 @@ type ``vectorize-delete-vectorize-indexresponseMessages`` =
 type ``vectorize-delete-vectorize-indexresponse`` =
     { errors: list<``vectorize-delete-vectorize-indexresponseErrors``>
       messages: list<``vectorize-delete-vectorize-indexresponseMessages``>
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of vectorize-delete-vectorize-indexresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``vectorize-delete-vectorize-indexresponseErrors``>,
                           messages: list<``vectorize-delete-vectorize-indexresponseMessages``>,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``vectorize-delete-vectorize-indexresponse`` =
         { errors = errors
           messages = messages

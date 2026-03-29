@@ -111,14 +111,14 @@ type ``workers-kvapi-response-common`` =
           success = success }
 
 type ``workers-kvapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of workers-kvapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``workers-kvapi-response-common-failure`` =
         { errors = errors
@@ -145,7 +145,7 @@ type ``workers-kvapi-response-common-no-result`` =
       messages: list<``workers-kvapi-response-common-no-resultMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<obj> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of workers-kvapi-response-common-no-result with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``workers-kvapi-response-common-no-resultErrors``>,
                           messages: list<``workers-kvapi-response-common-no-resultMessages``>,
@@ -194,9 +194,8 @@ type ``workers-kvkey`` =
           metadata = None
           name = name }
 
-type ``workers-kvlistmetadata`` = Map<string, obj>
-type ``workers-kvmetadata`` = Map<string, obj>
-
+type ``workers-kvlistmetadata`` = {code: int; message: string}
+type ``workers-kvmetadata`` = {code: int; message: string}
 type ``workers-kvnamespace`` =
     { ///Namespace identifier tag.
       id: ``workers-kvnamespaceidentifier``

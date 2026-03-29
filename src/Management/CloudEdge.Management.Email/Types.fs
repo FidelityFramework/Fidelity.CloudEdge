@@ -389,8 +389,8 @@ type ``email-securityDisplayName`` =
       name: Option<string>
       comments: Option<string>
       created_at: Option<System.DateTimeOffset>
-      directory_id: Option<obj>
-      directory_node_id: Option<obj>
+      directory_id: Option<string>
+      directory_node_id: Option<string>
       id: Option<int>
       last_modified: Option<System.DateTimeOffset>
       provenance: Option<string> }
@@ -2218,12 +2218,12 @@ type emailsecuritypostreclassifyresponse =
     { errors: list<``email-securityMessage``>
       messages: list<``email-securityMessage``>
       success: bool
-      result: obj }
+      result: Map<string, obj> }
     ///Creates an instance of emailsecuritypostreclassifyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``email-securityMessage``>,
                           messages: list<``email-securityMessage``>,
                           success: bool,
-                          result: obj): emailsecuritypostreclassifyresponse =
+                          result: Map<string, obj>): emailsecuritypostreclassifyresponse =
         { errors = errors
           messages = messages
           success = success

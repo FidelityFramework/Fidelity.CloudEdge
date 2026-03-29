@@ -239,14 +239,14 @@ type ``workers-kvapi-response-common`` =
           success = success }
 
 type ``workers-kvapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of workers-kvapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``workers-kvapi-response-common-failure`` =
         { errors = errors
@@ -273,7 +273,7 @@ type ``workers-kvapi-response-common-no-result`` =
       messages: list<``workers-kvapi-response-common-no-resultMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<obj> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of workers-kvapi-response-common-no-result with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``workers-kvapi-response-common-no-resultErrors``>,
                           messages: list<``workers-kvapi-response-common-no-resultMessages``>,
@@ -334,9 +334,8 @@ type ``workers-kvkey`` =
           metadata = None
           name = name }
 
-type ``workers-kvlistmetadata`` = Map<string, obj>
-type ``workers-kvmetadata`` = Map<string, obj>
-
+type ``workers-kvlistmetadata`` = {code: int; message: string}
+type ``workers-kvmetadata`` = {code: int; message: string}
 type ``workers-kvnamespace`` =
     { ///Namespace identifier tag.
       id: ``workers-kvnamespaceidentifier``
@@ -1639,7 +1638,7 @@ type workersWorker =
           updated_on = updated_on }
 
 type ``workersaccount-settings`` =
-    { default_usage_model: Option<string>
+    { default_usage_model: Option<obj>
       green_compute: Option<bool> }
     ///Creates an instance of workersaccount-settings with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``workersaccount-settings`` =
@@ -1759,14 +1758,14 @@ type ``workersapi-response-common`` =
           success = success }
 
 type ``workersapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of workersapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``workersapi-response-common-failure`` =
         { errors = errors
@@ -2087,7 +2086,7 @@ type workersbindingkinddurableobjectnamespace =
       environment: Option<string>
       ///A JavaScript variable name for the binding.
       name: workersbindingname
-      namespace_id: Option<obj>
+      namespace_id: Option<string>
       ///The script where the Durable Object is defined, if it is external to this Worker.
       script_name: Option<string>
       ///The kind of resource that the binding provides.
@@ -2170,13 +2169,13 @@ type workersbindingkindjsonType =
 
 type workersbindingkindjson =
     { ///JSON data to use.
-      json: obj
+      json: Map<string, obj>
       ///A JavaScript variable name for the binding.
       name: workersbindingname
       ///The kind of resource that the binding provides.
       ``type``: workersbindingkindjsonType }
     ///Creates an instance of workersbindingkindjson with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (json: obj,
+    static member Create (json: Map<string, obj>,
                           name: workersbindingname,
                           ``type``: workersbindingkindjsonType): workersbindingkindjson =
         { json = json
@@ -2399,13 +2398,13 @@ type Usages =
 
 type workersbindingkindsecretkey =
     { ///Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
-      algorithm: obj
+      algorithm: Map<string, obj>
       ///Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
       format: Format
       ///Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
       key_base64: Option<string>
       ///Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
-      key_jwk: Option<obj>
+      key_jwk: Option<Map<string, obj>>
       ///A JavaScript variable name for the binding.
       name: workersbindingname
       ///The kind of resource that the binding provides.
@@ -2413,7 +2412,7 @@ type workersbindingkindsecretkey =
       ///Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
       usages: list<Usages> }
     ///Creates an instance of workersbindingkindsecretkey with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (algorithm: obj,
+    static member Create (algorithm: Map<string, obj>,
                           format: Format,
                           name: workersbindingname,
                           ``type``: workersbindingkindsecretkeyType,
@@ -3371,7 +3370,7 @@ type workersroute =
       ///Name of the script to run if the route matches.
       script: Option<string> }
     ///Creates an instance of workersroute with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (id: obj, pattern: string): workersroute =
+    static member Create (id: string, pattern: string): workersroute =
         { id = id
           pattern = pattern
           script = None }
@@ -3900,10 +3899,10 @@ type workerssubdomain =
 
 type workerstail =
     { expires_at: string
-      id: obj
+      id: string
       url: string }
     ///Creates an instance of workerstail with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (expires_at: string, id: obj, url: string): workerstail =
+    static member Create (expires_at: string, id: string, url: string): workerstail =
         { expires_at = expires_at
           id = id
           url = url }
@@ -3961,7 +3960,7 @@ type ``workersupload-assets-response`` =
       messages: list<``workersupload-assets-responseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<obj> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of workersupload-assets-response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``workersupload-assets-responseErrors``>,
                           messages: list<``workersupload-assets-responseMessages``>,
