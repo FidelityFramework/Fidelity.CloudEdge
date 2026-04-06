@@ -1,5 +1,7 @@
 # Type Resolution Rules — Cloudflare OpenAPI Binding Generation
 
+> Continues the generation pipeline story from [03: Gap Analysis](03_gap_analysis.md) and [06: Tool Status](06_tool_status.md).
+
 ## Purpose
 
 This document defines the rules for resolving untyped JSON fields (`JObject`, `JToken`, `JArray` from Newtonsoft, or `obj` as placeholder) into proper F# types in generated Cloudflare API bindings.

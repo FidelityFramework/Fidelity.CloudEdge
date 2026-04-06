@@ -126,6 +126,40 @@ type CounterMsg = union {
 
 The framework generates serializers and deserializers at compile time (via Fable plugin or source generator), so there is no reflection or runtime schema discovery.
 
+### 3.4 Type Safety Across the Erasure Boundary
+
+The actor model requires that messages are correctly typed. A `CounterMsg` arriving at a `CounterActor` must be one of `Increment`, `Add of int`, or `GetCount`, with the correct payload for its case. In F#'s `MailboxProcessor`, this guarantee is trivial: messages are passed by reference within a single process, and the F# compiler verifies the discriminated union at compile time. The type information persists in the CLR's metadata at runtime. No serialization occurs; no boundary is crossed.
+
+In the Olivier model, messages cross process and network boundaries. The sender serializes a `CounterMsg` to bytes, writes those bytes to a WebSocket frame, and the receiving Durable Object's `webSocketMessage` handler deserializes the bytes back to a `CounterMsg`. The F# compiler's type guarantee does not cross this boundary. The CLR's type metadata does not exist on the receiving side; the handler runs in a JavaScript V8 isolate where there is no type system at runtime.
+
+This is the type erasure boundary. When F# compiles to JavaScript via Fable, discriminated unions become JavaScript objects with a `tag` field (an integer) and a `fields` array (untyped). The F# type `Add of amount: int` becomes, approximately, `{ tag: 1, fields: [42] }`. JavaScript imposes no constraint on what appears in `fields`. A malformed frame, a version-drifted sender, or a compromised intermediary could deliver `{ tag: 1, fields: ["not a number"] }`, and the JavaScript runtime would not object.
+
+JSON-based messaging systems accept this vulnerability and compensate with runtime validation: schema validators, type guards, parsing libraries that check every field against an expected shape. The validation is opt-in, after the fact, and proportional to message complexity. It is also redundant: the sender already knew the types. The validation exists solely because the transport discarded that knowledge.
+
+BAREWire does not discard it. The binary wire format encodes type structure in the layout of the bytes themselves, not in runtime metadata that can be stripped or ignored. The mechanism is specific:
+
+**Tag as positional index.** The message tag is a varint at a fixed position in the frame. It is not a string key that could be misspelled, omitted, or collide with another key. Tag 0 means `Increment`. Tag 1 means `Add`. Tag 2 means `GetCount`. The mapping is ordinal, derived from the discriminated union's case order, and fixed at compile time. A receiver that encounters tag 3 for a three-case union knows the frame is invalid without inspecting the payload; no parsing has occurred, no allocation has been performed, and the rejection is a single integer comparison.
+
+**Fixed payload layout per tag.** For tag 1 (`Add`), the bytes following the tag are a varint encoding an integer. There is no field name, no delimiter, no nested structure to traverse. The deserializer reads exactly the bytes that the serializer wrote, in the same order, with the same encoding. The layout is a function of the tag, and the tag is a function of the discriminated union definition. There is no ambiguity in how many bytes to consume or how to interpret them.
+
+**No schema negotiation at runtime.** The serializer and deserializer are generated from the same discriminated union definition at compile time. They agree on the tag-to-case mapping and the per-case payload layout because they were produced by the same code generation pass. The wire format does not carry schema metadata (no field names, no type descriptors, no version headers in the base protocol). The receiver does not discover the schema from the message; it was compiled with the schema.
+
+The consequence is that the binary protocol carries type information through the JavaScript runtime's type erasure boundary. The type safety of the original F# (or Clef) source is not preserved in the JavaScript objects that Fable (or JSIR) produces — JavaScript has no mechanism for this. It is preserved in the byte layout of the BAREWire frames that those JavaScript objects produce and consume. The wire format is the runtime type system.
+
+This is not a metaphor. Consider what a runtime type system does: it associates a value with a type tag, it constrains operations on the value to those consistent with the tag, and it rejects operations that violate the constraint. BAREWire's frame format does each of these:
+
+1. The message tag associates the payload with a discriminated union case (the "type").
+2. The fixed payload layout per tag constrains the deserializer to read the correct number of bytes with the correct encoding (the "operations").
+3. An unrecognized tag or a frame that terminates before the payload is complete is rejected at the transport level, before the actor's `Handle` dispatch (the "constraint violation").
+
+The trust model is therefore: **the sender's compiler verified the discriminated union; the serializer encoded that verified structure into the byte layout; the wire format preserves that structure through transport; the deserializer reconstructs the structure on the receiving side using the same schema the serializer used.** No step in this chain depends on JavaScript's type system. The binary protocol substitutes for it.
+
+**What this model does not provide.** BAREWire's structural encoding is not a substitute for authentication, authorization, or transport encryption. A correctly formatted BAREWire frame from an unauthorized sender is still a correctly formatted frame; the actor's `Handle` method will dispatch on it. The trust described here is structural: the message conforms to the declared type. It is not provenance-based: the message came from a legitimate sender. Transport security (TLS on the WebSocket, Cloudflare Access policies at the HTTP boundary) addresses provenance. BAREWire addresses structure. These are orthogonal concerns.
+
+**Version compatibility.** The base BAREWire protocol does not include version metadata in the frame header. If the sender's discriminated union has four cases and the receiver's has three, tag 3 arrives and the receiver rejects it as unrecognized. This is fail-fast behavior, not silent corruption: the receiver knows it cannot handle the message. Schema evolution (adding cases, changing payload layouts) requires a versioning strategy layered above the base protocol. The framework's approach to schema evolution is a deployment concern managed through the provisioning pipeline (08e), not a property of the wire format itself.
+
+**Relationship to JSIR and MLIR-level verification.** In the current architecture, the trust chain depends on the sender's serializer and the receiver's deserializer having been generated from the same discriminated union definition. This is an invariant maintained by the build system: both sides compile from the same F# source. In the planned Clef/Alex/JSIR architecture, this invariant is strengthened. BAREWire serialization is expressed as MLIR dialect ops in the shared middle-end, before the compilation pipeline forks to native (LLVM) or Worker (JSIR) targets. Both the native serializer and the JavaScript serializer are lowered from the same BAREWire ops. The byte layout is identical not because two separate compilers happened to agree, but because both lowering paths consumed the same IR representation. Cross-substrate message compatibility — a native Fidelity actor sending a BAREWire frame to a CloudEdge Durable Object — becomes a structural property of the compiler, not a property verified by testing. See [10: JSIR Strategic Assessment, §8.3](10_jsir_strategic_assessment.md) for the full treatment.
+
 ## 4. Actor Lifecycle
 
 ### 4.1 Activation
