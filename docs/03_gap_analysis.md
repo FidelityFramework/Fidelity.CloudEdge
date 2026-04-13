@@ -4,7 +4,7 @@
 
 ## Executive Summary
 
-Fidelity.CloudEdge has completed its generation pipeline maturity. All 32 management services are now active and generating from the Cloudflare OpenAPI spec via Hawaii, and both runtime binding targets (Worker.Context, AI) generate from `@cloudflare/workers-types` via Glutinum. The generation pipeline is config-driven through `services.json`, fully automated via bash scripts, and validated through structural tests (501 passing). A CI/CD workflow (`regenerate-bindings.yml`) handles weekly regeneration from upstream sources.
+Fidelity.CloudEdge has completed its generation pipeline maturity. All 32 management services are now active and generating from the Cloudflare OpenAPI spec via Hawaii, and both runtime binding targets (Worker.Context, AI) generate from `@cloudflare/workers-types` via Glutinum. The generation pipeline is config-driven through `services.json`, fully automated via bash scripts, and validated through structural tests (551 passing). A CI/CD workflow (`regenerate-bindings.yml`) handles weekly regeneration from upstream sources.
 
 The project has moved from "can we generate?" to "comprehensive platform coverage."
 
@@ -75,7 +75,7 @@ Both runtime targets compile cleanly. The preprocessor detects and breaks cyclic
 | Glutinum generation | ✅ | 2 targets passing |
 | Post-processor framework | ✅ | 3 parameterized post-processors, config-driven |
 | Project scaffolding | ✅ | Automated `.fsproj` creation and solution integration |
-| Structural validation | ✅ | 501 tests passing (Expecto) |
+| Structural validation | ✅ | 551 tests passing (Expecto) |
 | CI/CD regeneration | ✅ | Weekly schedule + manual dispatch, automated PR creation |
 
 ## Remaining Gaps
@@ -117,7 +117,7 @@ HelloWorker and SecureChat demonstrate basic usage. Additional samples targeting
 | Active management services | 32 / 32 | 32 / 32 |
 | Runtime binding targets | 2 / 2 | 2 / 2 |
 | Post-generation manual patches | 5 services | 0 (automated) |
-| Structural test assertions | 501 passing | Expand per service |
+| Structural test assertions | 551 passing | Expand per service |
 | Integration tests | 0 | Per active service |
 | CI/CD regeneration | Weekly | Weekly + on upstream release |
 | Version pegging | None | Per-generation manifest |

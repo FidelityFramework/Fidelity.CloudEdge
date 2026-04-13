@@ -28,7 +28,7 @@ This dual-substrate approach enables:
 #### Runtime Layer (In-Worker)
 - **Purpose**: Operations inside Cloudflare Workers
 - **Source**: TypeScript definitions via [Glutinum](https://github.com/glutinum-org/cli)
-- **Scope**: 727 types covering the complete `@cloudflare/workers-types` surface
+- **Scope**: 740+ types covering the complete `@cloudflare/workers-types` surface
 - **Usage**: Direct platform access with microsecond latency
 - **Actor Context**: Provides sequential execution guarantees for actor message processing
 
@@ -41,7 +41,7 @@ This dual-substrate approach enables:
 
 ## Service Coverage
 
-### Runtime Bindings (727 types)
+### Runtime Bindings (740+ types)
 
 The runtime surface is distributed across focused packages. `Worker.Context` provides the core Worker API and generated Glutinum bindings; each additional service ships as a separate package with its own `Types` and `Helpers` modules.
 
@@ -55,12 +55,12 @@ The runtime surface is distributed across focused packages. `Worker.Context` pro
 | `Worker.Context` | Networking | WebSocket (with hibernation), Encoding streams, FormData, Blob |
 | `Worker.Context` | Media | Images (transform, draw, upload), Media Transforms, Markdown conversion |
 | `Worker.Context` | Email | EmailMessage, EmailEvent, ForwardableEmailMessage, SendEmail |
-| `Worker.Context` | Compute | Containers, Workflows, Service Bindings, Cron Triggers |
+| `Worker.Context` | Compute | Workflows, Cron Triggers, Worker Loader (globalOutbound, streamingTails) |
 | `Worker.Context` | Observability | Tail, Trace, TraceLog, TraceMetrics, diagnostic channels |
 | `D1` | SQL Database | D1Database, D1PreparedStatement, D1Result\<'T\>, D1ExecResult |
 | `KV` | Key-Value Store | KVNamespace, KVPutOptions, KVListOptions, KVListResult, KVKey |
 | `R2` | Object Storage | R2Bucket, R2Object, R2ObjectBody, R2PutOptions, R2HTTPMetadata |
-| `DurableObjects` | Stateful Actors | DurableObjectId, DurableObjectStub, DurableObjectNamespace |
+| `DurableObjects` | Stateful Actors | DurableObjectId, DurableObjectStub, DurableObjectNamespace, DurableObjectFacets, Container, ContainerStartupOptions, ServiceBinding |
 | `Queues` | Messaging | Queue\<'Body\>, Message\<'Body\>, MessageBatch\<'Body\>, QueueSendOptions |
 | `AI` | AI/ML Inference | Workers AI (per-model typed I/O), AI Gateway, AI Search, AutoRAG |
 | `Vectorize` | Vector Search | VectorizeVector, VectorizeMatches, VectorMatch, VectorizeQueryOptions |
@@ -212,7 +212,7 @@ npx wrangler dev
 
 Both layers are generated from official Cloudflare specifications:
 
-- **Runtime**: `@cloudflare/workers-types` TypeScript definitions processed by [Glutinum](https://github.com/glutinum-org/cli), producing 727 F# types
+- **Runtime**: `@cloudflare/workers-types` TypeScript definitions processed by [Glutinum](https://github.com/glutinum-org/cli), producing 740+ F# types
 - **Management**: [Cloudflare OpenAPI spec](https://github.com/cloudflare/api-schemas) processed by [Hawaii](https://github.com/Zaid-Ajaj/Hawaii), producing 32 service clients
 
 The generation pipeline includes automated preprocessing (`preprocess-openapi.sh`) to handle Hawaii compatibility issues, type sanitization for underscore variants, and query parameter overload resolution. All 32 management services compile cleanly with the current pipeline.
@@ -223,7 +223,7 @@ See [generators/README.md](generators/README.md) for pipeline details and [docs/
 
 The test suite validates the full surface area:
 
-- **501 tests** across structural validation, client construction, serialization, and infrastructure checks
+- **551 tests** across structural validation, client construction, serialization, and infrastructure checks
 - All 32 management assemblies verified via reflection-based data-driven tests
 - JSON round-trip serialization with `Fable.Remoting.Json` + `Newtonsoft.Json`
 - OpenApiHttp infrastructure consistency across all services

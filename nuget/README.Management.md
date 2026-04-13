@@ -118,7 +118,7 @@ httpClient.DefaultRequestHeaders.Add("X-Auth-Email", email)
 
 - .NET Standard 2.0 compatible runtime (.NET 6+, .NET Framework 4.6.1+)
 - `System.Net.Http` for HTTP requests
-- `Newtonsoft.Json` and `Fable.Remoting.Json` (included as transitive dependencies)
+- `FSharp.SystemTextJson` (included as a transitive dependency)
 
 ## Related Package
 

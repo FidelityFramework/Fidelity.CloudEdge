@@ -128,7 +128,7 @@ This is what the investigation is for.
 
 The current Fidelity.CloudEdge pipeline uses external code generators to produce F# bindings from foreign type definitions:
 
-- **Glutinum**: TypeScript (`@cloudflare/workers-types`) → F# interfaces (Runtime Layer, 727 types)
+- **Glutinum**: TypeScript (`@cloudflare/workers-types`) → F# interfaces (Runtime Layer, 740+ types)
 - **Hawaii**: OpenAPI (Cloudflare API spec) → F# REST clients (Management Layer, 32 services)
 - **Xantham**: Additional binding generation
 
@@ -228,12 +228,12 @@ The documented decision to discourage `TryReceive` and reject `Scan`/`TryScan` (
 
 Fidelity.CloudEdge's dual-layer architecture (00, 01) separates:
 
-- **Runtime Layer**: In-Worker JavaScript interop (727 types from `@cloudflare/workers-types` via Glutinum). Runs inside V8 isolates. Zero-latency platform access.
+- **Runtime Layer**: In-Worker JavaScript interop (740+ types from `@cloudflare/workers-types` via Glutinum). Runs inside V8 isolates. Zero-latency platform access.
 - **Management Layer**: External REST clients (32 services from OpenAPI via Hawaii). Runs anywhere: browser, native, .NET.
 
 JSIR affects the Runtime Layer exclusively. The Management Layer is Fidelity.CloudEdge's own API client implementation, a set of pure F# REST clients built from Cloudflare's OpenAPI specifications. These clients handle all infrastructure provisioning, deployment, and orchestration without relying on any third-party CLI tooling. The planned `cfs` CLI and the code-first deployment pipeline (02_code_first_deployment.md) use these clients directly. Management operations do not execute inside Workers; they provision infrastructure externally via Fidelity.CloudEdge's own API surface. JSIR has no bearing on how the Management Layer is compiled.
 
-The Runtime Layer, however, is the direct JSIR target. Every runtime binding (`D1Database.prepare`, `KVNamespace.get`, `R2Bucket.put`, `DurableObjectState.storage`, `WebSocket.send`) is currently a Glutinum-generated F# interface that Fable compiles to JavaScript interop calls. In the Clef/JSIR pipeline, these become known external function signatures that the Alex lowering pass emits as `jsir.call_expression` ops targeting the correct Cloudflare API surface. The 727 runtime types become the type environment for the Worker-targeting lowering pass.
+The Runtime Layer, however, is the direct JSIR target. Every runtime binding (`D1Database.prepare`, `KVNamespace.get`, `R2Bucket.put`, `DurableObjectState.storage`, `WebSocket.send`) is currently a Glutinum-generated F# interface that Fable compiles to JavaScript interop calls. In the Clef/JSIR pipeline, these become known external function signatures that the Alex lowering pass emits as `jsir.call_expression` ops targeting the correct Cloudflare API surface. The 740+ runtime types become the type environment for the Worker-targeting lowering pass.
 
 This is a clean split. The Management Layer is compiled by its own appropriate toolchain (Fable today, Clef native eventually) and deploys Workers, provisions Queues, creates D1 databases, configures secrets, and orchestrates the full infrastructure lifecycle through Fidelity.CloudEdge's own REST clients, not through any external CLI. The Runtime Layer migrates from Fable/Glutinum to Clef/Alex/JSIR. The two layers never intersected at the compilation level; they share a namespace convention but not a compilation path.
 

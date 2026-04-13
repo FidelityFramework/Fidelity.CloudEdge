@@ -8,7 +8,7 @@
 
 Fidelity.CloudEdge.Runtime provides F# type bindings for the APIs available *inside* a running Cloudflare Worker. These bindings are designed for use with [Fable](https://fable.io/) to compile F# to JavaScript that runs on Cloudflare's edge network.
 
-The package includes 727 types generated from the official [@cloudflare/workers-types](https://github.com/cloudflare/workerd) TypeScript definitions using [Glutinum](https://github.com/glutinum-org/cli), plus hand-crafted helper modules for idiomatic F# usage.
+The package includes 740+ types generated from the official [@cloudflare/workers-types](https://github.com/cloudflare/workerd) TypeScript definitions using [Glutinum](https://github.com/glutinum-org/cli), plus hand-crafted helper modules for idiomatic F# usage.
 
 ## Supported Services
 
@@ -23,7 +23,7 @@ Each package below has its own `Types.fs` and `Helpers.fs` modules with idiomati
 | **D1** | `Fidelity.CloudEdge.D1` | D1Database, D1PreparedStatement, D1Result\<'T\>, D1ExecResult |
 | **KV** | `Fidelity.CloudEdge.KV` | KVNamespace, KVPutOptions, KVListOptions, KVListResult, KVKey |
 | **R2** | `Fidelity.CloudEdge.R2` | R2Bucket, R2Object, R2ObjectBody, R2PutOptions, R2HTTPMetadata |
-| **DurableObjects** | `Fidelity.CloudEdge.DurableObjects` | DurableObjectId, DurableObjectStub, DurableObjectNamespace |
+| **DurableObjects** | `Fidelity.CloudEdge.DurableObjects` | DurableObjectId, DurableObjectStub, DurableObjectNamespace, DurableObjectFacets, FacetStartupOptions, Container, ContainerStartupOptions, ServiceBinding |
 | **Queues** | `Fidelity.CloudEdge.Queues` | Queue\<'Body\>, Message\<'Body\>, MessageBatch\<'Body\>, QueueSendOptions |
 | **AI** | `Fidelity.CloudEdge.AI` | Per-model typed I/O for text generation, embeddings, image generation, speech, translation, classification, object detection |
 | **Vectorize** | `Fidelity.CloudEdge.Vectorize` | VectorizeVector, VectorizeMatches, VectorMatch, VectorizeQueryOptions |
@@ -47,7 +47,8 @@ Each package below has its own `Types.fs` and `Helpers.fs` modules with idiomati
 | **AI Gateway** | AiGateway routing, logging, and provider configuration |
 | **AI Search** | AiSearchInstance, search requests and responses |
 | **AutoRAG** | Automated retrieval-augmented generation with search and chat |
-| **Containers** | Container runtime with startup options |
+| **Containers** | Container runtime, startup options, egress interception (interceptOutboundHttp, interceptAllOutboundHttp, interceptOutboundHttps), directory and container snapshots |
+| **Durable Object Facets** | DurableObjectFacets for dynamic DO instantiation, FacetStartupOptions |
 | **Workflows** | Durable workflow instances, sleep/retry durations, error handling |
 | **Service Bindings** | Fetcher, Service types for service-to-service RPC |
 | **Cron Triggers** | ExportedHandlerScheduledHandler, SchedulerWaitOptions |
@@ -104,7 +105,7 @@ fable/                             F# sources for Fable compilation
     CloudEdge.Hyperdrive/            Database proxy (Types.fs + Helpers.fs)
 ```
 
-The 727 type count spans all 9 assemblies. `Worker.Context` accounts for the majority via its `Generated.fs` Glutinum output; the dedicated packages contribute focused, hand-crafted types with helper modules.
+The 740+ type count spans all 9 assemblies. `Worker.Context` accounts for the majority via its `Generated.fs` Glutinum output; the dedicated packages contribute focused, hand-crafted types with helper modules. The DurableObjects package includes hand-crafted bindings for Agents Week features (Durable Object Facets, Container egress interception, snapshots) that Glutinum's cycle-breaking cannot generate automatically.
 
 ## Requirements
 
