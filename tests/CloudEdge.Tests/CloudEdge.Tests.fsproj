@@ -39,6 +39,7 @@
     <!-- Runtime -->
     <ProjectReference Include="..\..\src\Runtime\CloudEdge.AI\CloudEdge.AI.fsproj" />
     <ProjectReference Include="..\..\src\Runtime\CloudEdge.Worker.Context\CloudEdge.Worker.Context.fsproj" />
+    <ProjectReference Include="..\..\src\Runtime\CloudEdge.DurableObjects\CloudEdge.DurableObjects.fsproj" />
 
     <!-- Management: Original 11 -->
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.D1\CloudEdge.Management.D1.fsproj" />

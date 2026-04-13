@@ -5,6 +5,7 @@ open Fable.Core
 open Fidelity.CloudEdge.Worker.Context
 open Fidelity.CloudEdge.Worker.Context.Helpers
 open Fidelity.CloudEdge.AI
+open Fidelity.CloudEdge.DurableObjects
 
 #if FABLE_COMPILER
 open Fable.Mocha
@@ -226,6 +227,115 @@ let tests =
                 let cacheControl = "no-store, must-revalidate"
                 Expect.stringContains cacheControl "no-store" "Should contain no-store"
                 Expect.stringContains cacheControl "must-revalidate" "Should contain must-revalidate"
+        ]
+
+        testList "Durable Object Facets Type Tests" [
+            testCase "DurableObjectFacets interface has get method" <| fun _ ->
+                let t = typeof<DurableObjectFacets>
+                let methods = t.GetMethods()
+                let hasGet = methods |> Array.exists (fun m -> m.Name = "get")
+                Expect.isTrue hasGet "DurableObjectFacets should have get method"
+
+            testCase "DurableObjectFacets interface has abort method" <| fun _ ->
+                let t = typeof<DurableObjectFacets>
+                let methods = t.GetMethods()
+                let hasAbort = methods |> Array.exists (fun m -> m.Name = "abort")
+                Expect.isTrue hasAbort "DurableObjectFacets should have abort method"
+
+            testCase "DurableObjectFacets interface has delete method" <| fun _ ->
+                let t = typeof<DurableObjectFacets>
+                let methods = t.GetMethods()
+                let hasDelete = methods |> Array.exists (fun m -> m.Name = "delete")
+                Expect.isTrue hasDelete "DurableObjectFacets should have delete method"
+
+            testCase "FacetStartupOptions has id property" <| fun _ ->
+                let t = typedefof<FacetStartupOptions<_>>
+                let props = t.GetProperties()
+                let hasId = props |> Array.exists (fun p -> p.Name = "id")
+                Expect.isTrue hasId "FacetStartupOptions should have id property"
+
+            testCase "FacetStartupOptions has class property" <| fun _ ->
+                let t = typedefof<FacetStartupOptions<_>>
+                let props = t.GetProperties()
+                let hasClass = props |> Array.exists (fun p -> p.Name = "class")
+                Expect.isTrue hasClass "FacetStartupOptions should have class property"
+        ]
+
+        testList "Container Egress Type Tests" [
+            testCase "Container interface has interceptOutboundHttp" <| fun _ ->
+                let t = typeof<Container>
+                let methods = t.GetMethods()
+                let hasIntercept = methods |> Array.exists (fun m -> m.Name = "interceptOutboundHttp")
+                Expect.isTrue hasIntercept "Container should have interceptOutboundHttp"
+
+            testCase "Container interface has interceptAllOutboundHttp" <| fun _ ->
+                let t = typeof<Container>
+                let methods = t.GetMethods()
+                let hasIntercept = methods |> Array.exists (fun m -> m.Name = "interceptAllOutboundHttp")
+                Expect.isTrue hasIntercept "Container should have interceptAllOutboundHttp"
+
+            testCase "Container interface has interceptOutboundHttps" <| fun _ ->
+                let t = typeof<Container>
+                let methods = t.GetMethods()
+                let hasIntercept = methods |> Array.exists (fun m -> m.Name = "interceptOutboundHttps")
+                Expect.isTrue hasIntercept "Container should have interceptOutboundHttps"
+
+            testCase "Container interface has snapshotDirectory" <| fun _ ->
+                let t = typeof<Container>
+                let methods = t.GetMethods()
+                let hasSnapshot = methods |> Array.exists (fun m -> m.Name = "snapshotDirectory")
+                Expect.isTrue hasSnapshot "Container should have snapshotDirectory"
+
+            testCase "Container interface has snapshotContainer" <| fun _ ->
+                let t = typeof<Container>
+                let methods = t.GetMethods()
+                let hasSnapshot = methods |> Array.exists (fun m -> m.Name = "snapshotContainer")
+                Expect.isTrue hasSnapshot "Container should have snapshotContainer"
+
+            testCase "Container interface has setInactivityTimeout" <| fun _ ->
+                let t = typeof<Container>
+                let methods = t.GetMethods()
+                let hasTimeout = methods |> Array.exists (fun m -> m.Name = "setInactivityTimeout")
+                Expect.isTrue hasTimeout "Container should have setInactivityTimeout"
+
+            testCase "ContainerStartupOptions has enableInternet property" <| fun _ ->
+                let t = typeof<ContainerStartupOptions>
+                let props = t.GetProperties()
+                let hasProp = props |> Array.exists (fun p -> p.Name = "enableInternet")
+                Expect.isTrue hasProp "ContainerStartupOptions should have enableInternet"
+
+            testCase "ContainerStartupOptions has entrypoint property" <| fun _ ->
+                let t = typeof<ContainerStartupOptions>
+                let props = t.GetProperties()
+                let hasProp = props |> Array.exists (fun p -> p.Name = "entrypoint")
+                Expect.isTrue hasProp "ContainerStartupOptions should have entrypoint"
+
+            testCase "ContainerDirectorySnapshot has required properties" <| fun _ ->
+                let t = typeof<ContainerDirectorySnapshot>
+                let props = t.GetProperties() |> Array.map (fun p -> p.Name) |> Set.ofArray
+                Expect.containsAll props (Set.ofList ["id"; "size"; "dir"]) "Should have id, size, dir"
+
+            testCase "ContainerSnapshot has required properties" <| fun _ ->
+                let t = typeof<ContainerSnapshot>
+                let props = t.GetProperties() |> Array.map (fun p -> p.Name) |> Set.ofArray
+                Expect.containsAll props (Set.ofList ["id"; "size"]) "Should have id, size"
+        ]
+
+        testList "ServiceBinding Type Tests" [
+            testCase "ServiceBinding interface has fetch with Request" <| fun _ ->
+                let t = typeof<ServiceBinding>
+                let methods = t.GetMethods()
+                let fetchMethods = methods |> Array.filter (fun m -> m.Name = "fetch")
+                Expect.isGreaterThan fetchMethods.Length 0 "ServiceBinding should have at least one fetch method"
+
+            testCase "ServiceBinding fetch returns Promise<Response>" <| fun _ ->
+                let t = typeof<ServiceBinding>
+                let methods = t.GetMethods()
+                let fetchMethod = methods |> Array.find (fun m -> m.Name = "fetch")
+                let returnType = fetchMethod.ReturnType
+                Expect.isTrue (returnType.IsGenericType) "Return type should be generic (Promise)"
+                let innerType = returnType.GetGenericArguments().[0]
+                Expect.equal innerType.Name "Response" "Should return Promise<Response>"
         ]
     ]
 

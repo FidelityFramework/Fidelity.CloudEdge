@@ -5,6 +5,19 @@ open Fable.Core.JsInterop
 open Fidelity.CloudEdge.Worker.Context
 open System
 
+/// Service binding for fetch-capable Workers (egress proxies, service bindings).
+/// Worker.Context.Fetcher<'T> carries an Rpc.EntrypointBranded constraint that
+/// does not apply to egress proxy and container bindings. This type provides
+/// the same fetch surface without the RPC brand constraint.
+[<AllowNullLiteral>]
+[<Interface>]
+type ServiceBinding =
+    /// Fetch with a Request object
+    abstract member fetch: request: Request -> JS.Promise<Response>
+
+    /// Fetch with a URL string
+    abstract member fetch: url: string -> JS.Promise<Response>
+
 /// Durable Object ID
 [<AllowNullLiteral>]
 [<Interface>]
@@ -202,6 +215,132 @@ type DurableObject =
 
     /// Handle WebSocket errors (optional)
     abstract member webSocketError: ws: WebSocket * error: obj -> JS.Promise<unit>
+
+/// Options for starting a facet (dynamic Durable Object)
+[<AllowNullLiteral>]
+[<Interface>]
+type FacetStartupOptions<'T> =
+    /// Optional ID for the facet instance
+    abstract member id: U2<DurableObjectId, string> option with get, set
+
+    /// The Durable Object class to instantiate
+    abstract member ``class``: obj with get, set
+
+/// Durable Object Facets — dynamic DO instantiation from within a DO
+[<AllowNullLiteral>]
+[<Interface>]
+type DurableObjectFacets =
+    /// Create or retrieve a named facet with startup options
+    abstract member get: name: string * getStartupOptions: (unit -> JS.Promise<FacetStartupOptions<'T>>) -> ServiceBinding
+
+    /// Abort a running facet by name
+    abstract member abort: name: string * reason: obj -> unit
+
+    /// Delete a facet by name
+    abstract member delete: name: string -> unit
+
+/// Container directory snapshot
+[<AllowNullLiteral>]
+[<Interface>]
+type ContainerDirectorySnapshot =
+    /// Snapshot ID
+    abstract member id: string with get
+
+    /// Size in bytes
+    abstract member size: float with get
+
+    /// Directory that was snapshotted
+    abstract member dir: string with get
+
+    /// Optional name for the snapshot
+    abstract member name: string option with get
+
+/// Options for directory snapshots
+[<AllowNullLiteral>]
+[<Interface>]
+type ContainerDirectorySnapshotOptions =
+    /// Directory to snapshot
+    abstract member dir: string with get, set
+
+    /// Optional name for the snapshot
+    abstract member name: string option with get, set
+
+/// Restore parameters for directory snapshots
+[<AllowNullLiteral>]
+[<Interface>]
+type ContainerDirectorySnapshotRestoreParams =
+    /// The snapshot to restore
+    abstract member snapshot: ContainerDirectorySnapshot with get, set
+
+    /// Optional mount point (defaults to original directory)
+    abstract member mountPoint: string option with get, set
+
+/// Container snapshot (full container state)
+[<AllowNullLiteral>]
+[<Interface>]
+type ContainerSnapshot =
+    /// Snapshot ID
+    abstract member id: string with get
+
+    /// Size in bytes
+    abstract member size: float with get
+
+/// Options for container snapshots
+[<AllowNullLiteral>]
+[<Interface>]
+type ContainerSnapshotOptions =
+    /// Optional name for the snapshot
+    abstract member name: string option with get, set
+
+/// Container startup options with egress control
+[<AllowNullLiteral>]
+[<Interface>]
+type ContainerStartupOptions =
+    /// Entrypoint command override
+    abstract member entrypoint: string[] option with get, set
+
+    /// Whether the container can access the internet
+    abstract member enableInternet: bool with get, set
+
+    /// Environment variables
+    abstract member env: obj option with get, set
+
+    /// Labels for the container
+    abstract member labels: obj option with get, set
+
+    /// Directory snapshots to restore on startup
+    abstract member directorySnapshots: ContainerDirectorySnapshotRestoreParams[] option with get, set
+
+    /// Container snapshot to restore on startup
+    abstract member containerSnapshot: ContainerSnapshot option with get, set
+
+/// Container instance with egress interception
+[<AllowNullLiteral>]
+[<Interface>]
+type Container =
+    /// Start the container
+    abstract member start: ?options: ContainerStartupOptions -> unit
+
+    /// Get a TCP port binding
+    abstract member getTcpPort: port: int -> ServiceBinding
+
+    /// Set inactivity timeout in milliseconds
+    abstract member setInactivityTimeout: durationMs: float -> JS.Promise<unit>
+
+    /// Intercept outbound HTTP to a specific address via a proxy Worker
+    abstract member interceptOutboundHttp: addr: string * binding: ServiceBinding -> JS.Promise<unit>
+
+    /// Intercept all outbound HTTP via a proxy Worker
+    abstract member interceptAllOutboundHttp: binding: ServiceBinding -> JS.Promise<unit>
+
+    /// Intercept outbound HTTPS to a specific address via a proxy Worker
+    abstract member interceptOutboundHttps: addr: string * binding: ServiceBinding -> JS.Promise<unit>
+
+    /// Snapshot a directory within the container
+    abstract member snapshotDirectory: options: ContainerDirectorySnapshotOptions -> JS.Promise<ContainerDirectorySnapshot>
+
+    /// Snapshot the entire container state
+    abstract member snapshotContainer: options: ContainerSnapshotOptions -> JS.Promise<ContainerSnapshot>
 
 /// Environment with Durable Object bindings
 [<AllowNullLiteral>]
