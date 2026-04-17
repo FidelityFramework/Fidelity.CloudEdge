@@ -25,20 +25,39 @@ fi
 
 SERVICE_NAME=$(get_service_name "$SERVICE_KEY")
 NAMESPACE=$(get_namespace "$SERVICE_KEY")
+TIER=$(get_tier "$SERVICE_KEY")
 
 if [[ -z "$SERVICE_NAME" ]]; then
     print_error "Unknown service: $SERVICE_KEY"
     exit 1
 fi
 
+# Tier-specific folder and namespace defaults
+case "$TIER" in
+    tenancy)
+        TIER_FOLDER="Tenancy"
+        TIER_NAMESPACE_PREFIX="Fidelity.CloudEdge.Tenancy"
+        PROJECT_NAME_PREFIX="CloudEdge.Tenancy"
+        ;;
+    management)
+        TIER_FOLDER="Management"
+        TIER_NAMESPACE_PREFIX="Fidelity.CloudEdge.Management"
+        PROJECT_NAME_PREFIX="CloudEdge.Management"
+        ;;
+    *)
+        print_error "Unknown tier: $TIER (expected 'management' or 'tenancy')"
+        exit 1
+        ;;
+esac
+
 if [[ -z "$NAMESPACE" ]]; then
-    NAMESPACE="Fidelity.CloudEdge.Management.${SERVICE_NAME}"
+    NAMESPACE="${TIER_NAMESPACE_PREFIX}.${SERVICE_NAME}"
 fi
 
 # ─── Paths ─────────────────────────────────────────────────────────
 
-PROJECT_NAME="CloudEdge.Management.${SERVICE_NAME}"
-PROJECT_DIR="$SRC_DIR/Management/$PROJECT_NAME"
+PROJECT_NAME="${PROJECT_NAME_PREFIX}.${SERVICE_NAME}"
+PROJECT_DIR="$SRC_DIR/$TIER_FOLDER/$PROJECT_NAME"
 FSPROJ_FILE="$PROJECT_DIR/${PROJECT_NAME}.fsproj"
 SLN_FILE="$PROJECT_ROOT/Fidelity.CloudEdge.sln"
 
@@ -84,7 +103,7 @@ if [[ -f "$SLN_FILE" ]]; then
     if grep -q "$PROJECT_NAME" "$SLN_FILE" 2>/dev/null; then
         print_info "Project already in solution"
     else
-        RELATIVE_PATH="src/Management/${PROJECT_NAME}/${PROJECT_NAME}.fsproj"
+        RELATIVE_PATH="src/${TIER_FOLDER}/${PROJECT_NAME}/${PROJECT_NAME}.fsproj"
         if dotnet sln "$SLN_FILE" add "$PROJECT_ROOT/$RELATIVE_PATH" 2>&1; then
             print_success "Added to Fidelity.CloudEdge.sln"
         else

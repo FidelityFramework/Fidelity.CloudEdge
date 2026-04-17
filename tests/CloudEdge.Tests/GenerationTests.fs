@@ -57,11 +57,14 @@ let private clientTakesHttpClient (clientType: Type) =
         |> Array.exists (fun p -> p.ParameterType = typeof<HttpClient>))
 
 let private getStringEnumTypes (asm: Assembly) =
+    // Detect StringEnum by attribute name to avoid cross-assembly type identity
+    // issues when Fable.Core is loaded from multiple contexts.
     getExportedTypes asm
     |> List.filter (fun t ->
         try
             Microsoft.FSharp.Reflection.FSharpType.IsUnion(t, BindingFlags.Public) &&
-            t.GetCustomAttributes(typeof<Fable.Core.StringEnumAttribute>, false).Length > 0
+            (t.GetCustomAttributes(false)
+             |> Array.exists (fun a -> a.GetType().FullName = "Fable.Core.StringEnumAttribute"))
         with _ -> false)
 
 let private hasFormatMethod (t: Type) =
@@ -104,6 +107,20 @@ let private managementAssemblies =
         "LoadBalancers",  typeof<Fidelity.CloudEdge.Management.LoadBalancers.LoadBalancersClient>.Assembly, "LoadBalancersClient"
         "WaitingRooms",   typeof<Fidelity.CloudEdge.Management.WaitingRooms.WaitingRoomsClient>.Assembly, "WaitingRoomsClient"
         "Magic",          typeof<Fidelity.CloudEdge.Management.Magic.MagicClient>.Assembly,         "MagicClient"
+        "Mesh",           typeof<Fidelity.CloudEdge.Management.Mesh.MeshClient>.Assembly,           "MeshClient"
+        "MoQ",            typeof<Fidelity.CloudEdge.Management.MoQ.MoQClient>.Assembly,             "MoQClient"
+        "SecurityCenter", typeof<Fidelity.CloudEdge.Management.SecurityCenter.SecurityCenterClient>.Assembly, "SecurityCenterClient"
+        "VulnScanner",    typeof<Fidelity.CloudEdge.Management.VulnScanner.VulnScannerClient>.Assembly, "VulnScannerClient"
+        "Registrar",      typeof<Fidelity.CloudEdge.Management.Registrar.RegistrarClient>.Assembly, "RegistrarClient"
+        "ResourceLibrary", typeof<Fidelity.CloudEdge.Management.ResourceLibrary.ResourceLibraryClient>.Assembly, "ResourceLibraryClient"
+        "EventNotifications", typeof<Fidelity.CloudEdge.Management.EventNotifications.EventNotificationsClient>.Assembly, "EventNotificationsClient"
+        "EventSubscriptions", typeof<Fidelity.CloudEdge.Management.EventSubscriptions.EventSubscriptionsClient>.Assembly, "EventSubscriptionsClient"
+    ]
+
+let private tenancyAssemblies =
+    [
+        "Tenants",       typeof<Fidelity.CloudEdge.Tenancy.Tenants.TenantsClient>.Assembly,          "TenantsClient"
+        "Organizations", typeof<Fidelity.CloudEdge.Tenancy.Organizations.OrganizationsClient>.Assembly, "OrganizationsClient"
     ]
 
 // ─── Per-Service Structural Tests (data-driven) ─────────────────
@@ -156,9 +173,13 @@ let private perServiceStructuralTests =
 let private crossServiceConsistencyTests =
     testList "Cross-Service Consistency" [
 
-        testCase "All 32 management assemblies are loaded" <| fun _ ->
-            Expect.equal managementAssemblies.Length 32
-                "Should have exactly 32 management assemblies registered"
+        testCase "All 40 management assemblies are loaded" <| fun _ ->
+            Expect.equal managementAssemblies.Length 40
+                "Should have exactly 40 management assemblies registered"
+
+        testCase "All 2 tenancy assemblies are loaded" <| fun _ ->
+            Expect.equal tenancyAssemblies.Length 2
+                "Should have exactly 2 tenancy assemblies registered"
 
         testCase "All assemblies have distinct names" <| fun _ ->
             let names = managementAssemblies |> List.map (fun (n, _, _) -> n)

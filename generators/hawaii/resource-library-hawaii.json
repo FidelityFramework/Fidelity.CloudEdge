@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/ResourceLibrary-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.ResourceLibrary",
+  "output": "./Generated-ResourceLibrary",
+  "namespace": "Fidelity.CloudEdge.Management.ResourceLibrary",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "ResourceLibraryManagementClient"
+}

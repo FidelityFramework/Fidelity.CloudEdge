@@ -1,0 +1,36 @@
+<!--
+    This file defines the NuGet package structure for the Fidelity.CloudEdge Tenancy library,
+    which provides F# clients for Cloudflare's cross-account Tenant and Organization APIs.
+    Tenancy is a distinct tier from Management: it operates above the account boundary and
+    is targeted at Managed Service Providers (MSPs), enterprise platform teams, and any
+    tooling that administers multiple Cloudflare accounts from a single control plane.
+-->
+<Project>
+  <Sdk Name="Microsoft.Build.NoTargets" Version="3.7.0" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Fidelity.CloudEdge.Tenancy</PackageId>
+    <Title>Fidelity.CloudEdge.Tenancy - F# Clients for Cloudflare Tenant and Organization APIs</Title>
+    <Description>F# clients for Cloudflare's cross-account Tenant and Organization APIs. Operates above the account boundary for Managed Service Providers (MSPs), enterprise platform teams, and multi-account operators. Covers: /tenants/{tenant_id}/* (accounts within a tenant, entitlements, memberships) and /organizations/* (org profile, members, shares, organization-level audit logs). Distinct from Fidelity.CloudEdge.Management which handles account-scoped resource management.</Description>
+    <PackageReadmeFile>README.Tenancy.md</PackageReadmeFile>
+    <PackageTags>fsharp;cloudflare;tenancy;msp;tenants;organizations;cross-account;api;client;audit</PackageTags>
+  </PropertyGroup>
+
+  <!-- Package Dependencies -->
+  <ItemGroup>
+    <PackageReference Include="FSharp.SystemTextJson" Version="1.3.13" />
+  </ItemGroup>
+
+  <!-- README -->
+  <ItemGroup>
+    <None Include="README.Tenancy.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- Tenancy tier: DLLs (2 services) -->
+  <ItemGroup>
+    <None Include="..\src\Tenancy\CloudEdge.Tenancy.Tenants\bin\Release\netstandard2.0\Fidelity.CloudEdge.Tenancy.Tenants.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Tenancy\CloudEdge.Tenancy.Organizations\bin\Release\netstandard2.0\Fidelity.CloudEdge.Tenancy.Organizations.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+  </ItemGroup>
+
+</Project>

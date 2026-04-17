@@ -184,7 +184,7 @@ jq "${JQ_ARGS[@]}" \
     paths: (.paths | to_entries | map(select(.key as $k | $matched[0] | index($k))) | from_entries),
     components: {
         schemas: (.components.schemas | to_entries | map(select(.key as $k | $schemas[0] | index($k))) | from_entries),
-        parameters: {},
+        parameters: (.components.parameters // {}),
         responses: {},
         examples: {},
         requestBodies: {},

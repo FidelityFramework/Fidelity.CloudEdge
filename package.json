@@ -21,7 +21,7 @@
     "@cloudflare/ai": "^1.0.63",
     "@cloudflare/pages-shared": "^0.13.75",
     "@cloudflare/vitest-pool-workers": "^0.5.39",
-    "@cloudflare/workers-types": "^4.20260413.1",
+    "@cloudflare/workers-types": "^4.20260417.1",
     "@types/node": "^22.10.2",
     "miniflare": "^3.20241106.2",
     "typescript": "^5.7.2",

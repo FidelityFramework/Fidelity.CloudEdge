@@ -219,11 +219,19 @@ for service_key in $SERVICES; do
         dotnet fsi "$POSTPROCESSORS_DIR/fix-list-separators.fsx" "$CLIENT_FS"
     fi
 
-    # Step 4: Deploy to src/Management/
-    TARGET_DIR="$SRC_DIR/Management/CloudEdge.Management.${SERVICE_NAME}"
+    # Step 4: Deploy to tier-appropriate src folder
+    TIER=$(get_tier "$service_key")
+    case "$TIER" in
+        tenancy)
+            TARGET_DIR="$SRC_DIR/Tenancy/CloudEdge.Tenancy.${SERVICE_NAME}"
+            ;;
+        *)
+            TARGET_DIR="$SRC_DIR/Management/CloudEdge.Management.${SERVICE_NAME}"
+            ;;
+    esac
 
     if [[ ! -d "$TARGET_DIR" ]]; then
-        print_info "Scaffolding new project: CloudEdge.Management.${SERVICE_NAME}"
+        print_info "Scaffolding new project: $(basename "$TARGET_DIR")"
         bash "$SCRIPTS_DIR/scaffold-management-project.sh" "$service_key"
     fi
 

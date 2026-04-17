@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/Tenants-openapi.json",
+  "project": "Fidelity.CloudEdge.Tenancy.Tenants",
+  "output": "./Generated-Tenants",
+  "namespace": "Fidelity.CloudEdge.Tenancy.Tenants",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "TenantsClient"
+}

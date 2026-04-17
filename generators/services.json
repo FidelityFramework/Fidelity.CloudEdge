@@ -463,6 +463,118 @@
       "namespace": "Fidelity.CloudEdge.Management.Mesh",
       "postProcessors": [],
       "status": "active"
+    },
+    "moq": {
+      "name": "MoQ",
+      "description": "Media over QUIC relay management — real-time pub/sub transport infrastructure for low-latency applications and cross-substrate actor communication",
+      "operationPrefix": "moq",
+      "pathPrefix": "/accounts/{account_id}/moq",
+      "pathPatterns": [],
+      "hawaiiConfig": "moq-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.MoQ",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "security-center": {
+      "name": "SecurityCenter",
+      "description": "Security Center insights, classification, context, and dismissal — account-scoped security posture observability",
+      "operationPrefix": "security_center",
+      "pathPrefix": "/accounts/{account_id}/security-center",
+      "pathPatterns": [],
+      "hawaiiConfig": "security-center-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.SecurityCenter",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "vuln-scanner": {
+      "name": "VulnScanner",
+      "description": "Vulnerability scanner — credential sets, scans, and target environments",
+      "operationPrefix": "vuln_scanner",
+      "pathPrefix": "/accounts/{account_id}/vuln_scanner",
+      "pathPatterns": [],
+      "hawaiiConfig": "vuln-scanner-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.VulnScanner",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "registrar": {
+      "name": "Registrar",
+      "description": "Domain registration — domain check, search, and registration lifecycle management",
+      "operationPrefix": "registrar",
+      "pathPrefix": "/accounts/{account_id}/registrar",
+      "pathPatterns": [],
+      "hawaiiConfig": "registrar-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Registrar",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "resource-library": {
+      "name": "ResourceLibrary",
+      "description": "Cloudflare Resource Library — applications and categories catalog",
+      "operationPrefix": "resource_library",
+      "pathPrefix": "/accounts/{account_id}/resource-library",
+      "pathPatterns": [],
+      "hawaiiConfig": "resource-library-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.ResourceLibrary",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "event-notifications": {
+      "name": "EventNotifications",
+      "description": "R2 event notifications — bucket event configuration and queue routing",
+      "operationPrefix": "event_notifications",
+      "pathPrefix": "/accounts/{account_id}/event_notifications",
+      "pathPatterns": [],
+      "hawaiiConfig": "event-notifications-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.EventNotifications",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "event-subscriptions": {
+      "name": "EventSubscriptions",
+      "description": "Generic event subscriptions — pub/sub subscription management",
+      "operationPrefix": "event_subscriptions",
+      "pathPrefix": "/accounts/{account_id}/event_subscriptions",
+      "pathPatterns": [],
+      "hawaiiConfig": "event-subscriptions-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.EventSubscriptions",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "tenants": {
+      "name": "Tenants",
+      "description": "Cloudflare Tenants — list accounts within a tenant, tenant entitlements, and tenant-level memberships (MSP control plane)",
+      "operationPrefix": "tenant",
+      "pathPrefix": "/tenants",
+      "pathPatterns": [],
+      "hawaiiConfig": "tenants-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Tenancy.Tenants",
+      "tier": "tenancy",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "organizations": {
+      "name": "Organizations",
+      "description": "Cloudflare Organizations — org profile, accounts, members, shares, and organization-level audit logs (cross-account administration)",
+      "operationPrefix": "organization",
+      "pathPatterns": [
+        "/organizations",
+        "/organizations/{organization_id}",
+        "/organizations/{organization_id}/accounts",
+        "/organizations/{organization_id}/logs/audit",
+        "/organizations/{organization_id}/members",
+        "/organizations/{organization_id}/members/{member_id}",
+        "/organizations/{organization_id}/members:batchCreate",
+        "/organizations/{organization_id}/profile",
+        "/organizations/{organization_id}/shares",
+        "/user/organizations",
+        "/user/organizations/{organization_id}"
+      ],
+      "hawaiiConfig": "organizations-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Tenancy.Organizations",
+      "tier": "tenancy",
+      "postProcessors": [],
+      "status": "active"
     }
   }
 }

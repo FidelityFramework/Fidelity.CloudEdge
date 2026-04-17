@@ -23,7 +23,15 @@ This dual-substrate approach enables:
 
 ## Architecture
 
-### CloudEdge Dual-Layer
+### Three-Tier Package Model
+
+Fidelity.CloudEdge mirrors the three structural path scopes in Cloudflare's API, shipping each as an independent NuGet package. Consumers install only the tiers their use case requires.
+
+| Tier | Path scope | Audience | Package |
+|------|-----------|----------|---------|
+| **Runtime** | In-Worker (no path) | Worker developers | `Fidelity.CloudEdge.Runtime` |
+| **Management** | `/accounts/{account_id}/*` | Individual developers, teams | `Fidelity.CloudEdge.Management` |
+| **Tenancy** | `/tenants/{tenant_id}/*`, `/organizations/*` | MSPs, platform teams | `Fidelity.CloudEdge.Tenancy` |
 
 #### Runtime Layer (In-Worker)
 - **Purpose**: Operations inside Cloudflare Workers
@@ -32,12 +40,19 @@ This dual-substrate approach enables:
 - **Usage**: Direct platform access with microsecond latency
 - **Actor Context**: Provides sequential execution guarantees for actor message processing
 
-#### Management Layer (External)
-- **Purpose**: Infrastructure provisioning, monitoring, and orchestration
+#### Management Layer (Account-Scoped)
+- **Purpose**: Infrastructure provisioning, monitoring, and orchestration within a single Cloudflare account
 - **Source**: OpenAPI specifications via [Hawaii](https://github.com/Zaid-Ajaj/Hawaii)
-- **Scope**: 33 service clients covering the full Cloudflare Management API
-- **Usage**: REST API clients for deployment tools and scripts
+- **Scope**: 39+ service clients covering account-scoped Cloudflare APIs (`/accounts/{account_id}/*`)
+- **Usage**: REST API clients for deployment tools and scripts operating on a developer's own account
 - **Framework Role**: Enables dynamic resource allocation for actor migrations
+
+#### Tenancy Layer (Cross-Account)
+- **Purpose**: Multi-tenant operations above the account boundary — organizations, tenants, and cross-account administration
+- **Source**: OpenAPI specifications via [Hawaii](https://github.com/Zaid-Ajaj/Hawaii)
+- **Scope**: Tenant and organization management APIs (`/tenants/{tenant_id}/*`, `/organizations/*`, `/user/organizations`)
+- **Audience**: Managed Service Providers (MSPs), enterprise platform teams, any tooling that operates across multiple Cloudflare accounts
+- **Independence**: Ships as a separate package; individual developers and teams operating a single account do not need to install it
 
 ## Service Coverage
 
@@ -66,7 +81,7 @@ The runtime surface is distributed across focused packages. `Worker.Context` pro
 | `Vectorize` | Vector Search | VectorizeVector, VectorizeMatches, VectorMatch, VectorizeQueryOptions |
 | `Hyperdrive` | Database Proxy | Hyperdrive, connection pooling, PostgreSQL/MySQL URL builders |
 
-### Management Clients (33 services)
+### Management Clients (40 services)
 
 | Category | Services |
 |----------|----------|
@@ -215,7 +230,7 @@ Both layers are generated from official Cloudflare specifications:
 - **Runtime**: `@cloudflare/workers-types` TypeScript definitions processed by [Glutinum](https://github.com/glutinum-org/cli), producing 740+ F# types
 - **Management**: [Cloudflare OpenAPI spec](https://github.com/cloudflare/api-schemas) processed by [Hawaii](https://github.com/Zaid-Ajaj/Hawaii), producing 33 service clients
 
-The generation pipeline includes automated preprocessing (`preprocess-openapi.sh`) to handle Hawaii compatibility issues, type sanitization for underscore variants, and query parameter overload resolution. All 33 management services compile cleanly with the current pipeline.
+The generation pipeline includes automated preprocessing (`preprocess-openapi.sh`) to handle Hawaii compatibility issues, type sanitization for underscore variants, and query parameter overload resolution. All 40 management services compile cleanly with the current pipeline.
 
 See [generators/README.md](generators/README.md) for pipeline details and [docs/03_gap_analysis.md](docs/03_gap_analysis.md) for service-level status.
 
@@ -223,8 +238,8 @@ See [generators/README.md](generators/README.md) for pipeline details and [docs/
 
 The test suite validates the full surface area:
 
-- **564 tests** across structural validation, client construction, serialization, and infrastructure checks
-- All 33 management assemblies verified via reflection-based data-driven tests
+- **686 tests** across structural validation, client construction, serialization, and infrastructure checks
+- All 40 management assemblies verified via reflection-based data-driven tests
 - JSON round-trip serialization with `Fable.Remoting.Json` + `Newtonsoft.Json`
 - OpenApiHttp infrastructure consistency across all services
 

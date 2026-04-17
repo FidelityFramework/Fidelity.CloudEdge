@@ -49,6 +49,16 @@ let private clientFactories: (string * (unit -> obj)) list =
         "WaitingRooms",    fun () -> Fidelity.CloudEdge.Management.WaitingRooms.WaitingRoomsClient(httpClient) :> obj
         "Magic",           fun () -> Fidelity.CloudEdge.Management.Magic.MagicClient(httpClient) :> obj
         "Mesh",            fun () -> Fidelity.CloudEdge.Management.Mesh.MeshClient(httpClient) :> obj
+        "MoQ",             fun () -> Fidelity.CloudEdge.Management.MoQ.MoQClient(httpClient) :> obj
+        "SecurityCenter",  fun () -> Fidelity.CloudEdge.Management.SecurityCenter.SecurityCenterClient(httpClient) :> obj
+        "VulnScanner",     fun () -> Fidelity.CloudEdge.Management.VulnScanner.VulnScannerClient(httpClient) :> obj
+        "Registrar",       fun () -> Fidelity.CloudEdge.Management.Registrar.RegistrarClient(httpClient) :> obj
+        "ResourceLibrary", fun () -> Fidelity.CloudEdge.Management.ResourceLibrary.ResourceLibraryClient(httpClient) :> obj
+        "EventNotifications", fun () -> Fidelity.CloudEdge.Management.EventNotifications.EventNotificationsClient(httpClient) :> obj
+        "EventSubscriptions", fun () -> Fidelity.CloudEdge.Management.EventSubscriptions.EventSubscriptionsClient(httpClient) :> obj
+        // Tenancy tier (cross-account)
+        "Tenants",         fun () -> Fidelity.CloudEdge.Tenancy.Tenants.TenantsClient(httpClient) :> obj
+        "Organizations",   fun () -> Fidelity.CloudEdge.Tenancy.Organizations.OrganizationsClient(httpClient) :> obj
     ]
 
 // ─── Reflection helpers ──────────────────────────────────────────
@@ -135,9 +145,9 @@ let private methodSignatureTests =
 let private apiSurfaceCoverageTests =
     testList "API Surface Coverage" [
 
-        testCase "All 33 clients are registered" <| fun _ ->
-            Expect.equal clientFactories.Length 33
-                "Should have 33 client factories registered"
+        testCase "All 42 clients are registered across Management and Tenancy tiers" <| fun _ ->
+            Expect.equal clientFactories.Length 42
+                "Should have 42 client factories registered (40 Management + 2 Tenancy)"
 
         testCase "Total async method count exceeds minimum threshold" <| fun _ ->
             let mutable totalMethods = 0

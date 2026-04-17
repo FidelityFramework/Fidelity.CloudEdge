@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/EventSubscriptions-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.EventSubscriptions",
+  "output": "./Generated-EventSubscriptions",
+  "namespace": "Fidelity.CloudEdge.Management.EventSubscriptions",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "EventSubscriptionsManagementClient"
+}

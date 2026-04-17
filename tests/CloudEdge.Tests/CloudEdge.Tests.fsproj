@@ -19,6 +19,7 @@
     <Compile Include="InfrastructureTests.fs" />
     <Compile Include="ResponseTypeTests.fs" />
     <Compile Include="PreprocessorTests.fs" />
+    <Compile Include="NewServicesTests.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
 
@@ -77,6 +78,17 @@
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.WaitingRooms\CloudEdge.Management.WaitingRooms.fsproj" />
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Magic\CloudEdge.Management.Magic.fsproj" />
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Mesh\CloudEdge.Management.Mesh.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.MoQ\CloudEdge.Management.MoQ.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.SecurityCenter\CloudEdge.Management.SecurityCenter.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.VulnScanner\CloudEdge.Management.VulnScanner.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Registrar\CloudEdge.Management.Registrar.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.ResourceLibrary\CloudEdge.Management.ResourceLibrary.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.EventNotifications\CloudEdge.Management.EventNotifications.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.EventSubscriptions\CloudEdge.Management.EventSubscriptions.fsproj" />
+
+    <!-- Tenancy tier -->
+    <ProjectReference Include="..\..\src\Tenancy\CloudEdge.Tenancy.Tenants\CloudEdge.Tenancy.Tenants.fsproj" />
+    <ProjectReference Include="..\..\src\Tenancy\CloudEdge.Tenancy.Organizations\CloudEdge.Tenancy.Organizations.fsproj" />
   </ItemGroup>
 
 </Project>

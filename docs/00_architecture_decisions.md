@@ -62,18 +62,31 @@ type D1ManagementClient =
 
 ## Key Architectural Decisions
 
-### Decision 1: Separate Runtime from Management ✅
+### Decision 1: Three-Tier Package Architecture ✅
 
-**Rationale**: These APIs serve fundamentally different purposes and have different execution contexts.
+**Rationale**: The Cloudflare API has three structurally distinct path scopes that correspond to three distinct audiences. Each tier gets its own top-level package so consumers install only what their use case requires.
 
-| Aspect | Runtime APIs | Management APIs |
-|--------|--------------|-----------------|
-| Execution Context | Inside Worker (V8) | External (any platform) |
-| Protocol | JavaScript interop | HTTP/REST |
-| Authentication | Worker bindings | API tokens |
-| Latency | Microseconds | Network RTT |
-| Use Case | Data operations | Infrastructure setup |
-| Compilation | Fable only | Fable, Fidelity, or .NET |
+| Tier | Path scope | Audience | Package |
+|------|-----------|----------|---------|
+| **Runtime** | In-Worker JavaScript interop (no path) | Worker developers | `Fidelity.CloudEdge.Runtime` |
+| **Management** | `/accounts/{account_id}/*` — account-scoped | Developers operating their own Cloudflare account | `Fidelity.CloudEdge.Management` |
+| **Tenancy** | `/tenants/{tenant_id}/*`, `/organizations/*`, `/user/organizations` — above-account | MSPs, platform teams, multi-account operators | `Fidelity.CloudEdge.Tenancy` |
+
+The three tiers differ in execution context, protocol, authentication, and audience:
+
+| Aspect | Runtime | Management | Tenancy |
+|--------|---------|------------|---------|
+| Execution Context | Inside Worker (V8) | External (any platform) | External (any platform) |
+| Protocol | JavaScript interop | HTTP/REST | HTTP/REST |
+| Authentication | Worker bindings | Account-scoped API token | Tenant/org-scoped API token |
+| Latency | Microseconds | Network RTT | Network RTT |
+| Use Case | In-Worker data operations | Account resource management | Cross-account tenant management |
+| Typical consumer | Individual developer | Individual or team | Managed service provider (MSP), platform team |
+| Compilation | Fable only | Fable, Fidelity, or .NET | Fable, Fidelity, or .NET |
+
+**Why Tenancy is a separate package, not a Management namespace**: An individual developer shipping a Worker has no reason to install tenant management code. An MSP managing 50 customer accounts has tenant management as their primary surface. Keeping these concerns in separate NuGet packages makes the dependency graph reflect the actual usage pattern — and keeps the Management package's install footprint unchanged for the common case.
+
+**Why three tiers, not more**: The `Fidelity.CloudEdge.Runtime` / `Management` / `Tenancy` split reflects the actual structural boundaries in the Cloudflare API. Further subdivision (e.g., splitting Management by domain — Storage, Networking, AI, etc.) would be organizational taste, not a reflection of API structure. The framework keeps the package boundaries aligned with API-level distinctions.
 
 ### Decision 2: Use Hawaii for OpenAPI Generation ✅
 
@@ -86,24 +99,33 @@ type D1ManagementClient =
 
 ### Decision 3: Project Organization by Service ✅
 
-**Rationale**: Each Cloudflare service gets its own project for better modularity.
+**Rationale**: Each Cloudflare service gets its own project for better modularity. Projects are grouped into three top-level folders matching the three-tier architecture.
 
 ```
 Fidelity.CloudEdge/
 ├── src/
 │   ├── Runtime/                    # In-Worker APIs
-│   │   ├── Fidelity.CloudEdge.Worker.Context/
-│   │   ├── Fidelity.CloudEdge.D1/
-│   │   ├── Fidelity.CloudEdge.R2/
-│   │   ├── Fidelity.CloudEdge.KV/
-│   │   └── Fidelity.CloudEdge.AI/
+│   │   ├── CloudEdge.Worker.Context/
+│   │   ├── CloudEdge.D1/
+│   │   ├── CloudEdge.R2/
+│   │   ├── CloudEdge.KV/
+│   │   ├── CloudEdge.DurableObjects/
+│   │   └── CloudEdge.AI/
 │   │
-│   └── Management/                 # REST APIs
-│       ├── Fidelity.CloudEdge.Management.D1/
-│       ├── Fidelity.CloudEdge.Management.R2/
-│       ├── Fidelity.CloudEdge.Management.KV/
-│       └── Fidelity.CloudEdge.Management.Analytics/
+│   ├── Management/                 # Account-scoped REST APIs
+│   │   ├── CloudEdge.Management.D1/
+│   │   ├── CloudEdge.Management.R2/
+│   │   ├── CloudEdge.Management.KV/
+│   │   ├── CloudEdge.Management.MoQ/
+│   │   ├── CloudEdge.Management.Mesh/
+│   │   └── ...
+│   │
+│   └── Tenancy/                    # Cross-account / tenant-level REST APIs
+│       ├── CloudEdge.Tenancy.Tenants/
+│       └── CloudEdge.Tenancy.Organizations/
 ```
+
+The folder structure mirrors the NuGet package structure. Each tier ships as an independent NuGet package so a consumer's dependency graph reflects which tiers their code actually uses.
 
 ### Decision 4: Pure F# Portability for Management APIs ✅
 

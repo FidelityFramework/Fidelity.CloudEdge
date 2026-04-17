@@ -17,6 +17,7 @@ let main args =
             InfrastructureTests.tests
             ResponseTypeTests.tests
             PreprocessorTests.tests
+            NewServicesTests.tests
         ]
 
     runTestsWithCLIArgs [] args allTests

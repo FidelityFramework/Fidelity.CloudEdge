@@ -121,6 +121,7 @@ pipeline "Fidelity.CloudEdge NuGet" {
     stage "Pack" {
         run "dotnet pack Fidelity.CloudEdge.Runtime.proj -c Release -o out"
         run "dotnet pack Fidelity.CloudEdge.Management.proj -c Release -o out"
+        run "dotnet pack Fidelity.CloudEdge.Tenancy.proj -c Release -o out"
     }
 
     runIfOnlySpecified false

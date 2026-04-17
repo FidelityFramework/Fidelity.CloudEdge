@@ -9,7 +9,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Fidelity.CloudEdge.Management</PackageId>
     <Title>Fidelity.CloudEdge.Management - F# Clients for Cloudflare Management APIs</Title>
-    <Description>F# clients for the full Cloudflare Management API surface: D1, R2, KV, Workers, Pages, Queues, Vectorize, Hyperdrive, Durable Objects, Analytics, Logs, AI, AI Gateway, AI Search, AutoRAG, Containers, Workflows, Pipelines, Browser Rendering, Stream, Images, R2 Catalog, Secrets Store, Tunnels, Access, Gateway, Email, Calls, Builds, Load Balancers, Waiting Rooms, and Magic Transit. 32 service clients for managing Cloudflare resources from .NET.</Description>
+    <Description>F# clients for the full Cloudflare account-scoped Management API surface (40 services): D1, R2, KV, Workers, Pages, Queues, Vectorize, Hyperdrive, Durable Objects, Analytics, Logs, AI, AI Gateway, AI Search, AutoRAG, Containers, Workflows, Pipelines, Browser Rendering, Stream, Images, R2 Catalog, Secrets Store, Tunnels, Access, Gateway, Email, Calls, Builds, Load Balancers, Waiting Rooms, Magic Transit, Mesh (WARP Connector), MoQ (Media over QUIC), Security Center, Vuln Scanner, Registrar, Resource Library, Event Notifications, and Event Subscriptions. For cross-account / tenant administration, see Fidelity.CloudEdge.Tenancy.</Description>
     <PackageReadmeFile>README.Management.md</PackageReadmeFile>
     <PackageTags>fsharp;cloudflare;management;api;client;d1;r2;kv;workers;pages;queues;vectorize;hyperdrive;durable-objects;analytics;logs;ai;containers;tunnels;access;gateway;email;stream;images</PackageTags>
   </PropertyGroup>
@@ -61,6 +61,18 @@
     <None Include="..\src\Management\CloudEdge.Management.LoadBalancers\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.LoadBalancers.dll" Pack="true" PackagePath="lib\netstandard2.0" />
     <None Include="..\src\Management\CloudEdge.Management.WaitingRooms\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.WaitingRooms.dll" Pack="true" PackagePath="lib\netstandard2.0" />
     <None Include="..\src\Management\CloudEdge.Management.Magic\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Magic.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+
+    <!-- 0.1.13: Mesh (WARP Connector) -->
+    <None Include="..\src\Management\CloudEdge.Management.Mesh\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Mesh.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+
+    <!-- 0.2.0: Agents Week additions — MoQ, Security Center, Vuln Scanner, Registrar, Resource Library, Event Notifications, Event Subscriptions -->
+    <None Include="..\src\Management\CloudEdge.Management.MoQ\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.MoQ.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.SecurityCenter\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.SecurityCenter.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.VulnScanner\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.VulnScanner.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.Registrar\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Registrar.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.ResourceLibrary\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.ResourceLibrary.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.EventNotifications\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.EventNotifications.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.EventSubscriptions\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.EventSubscriptions.dll" Pack="true" PackagePath="lib\netstandard2.0" />
   </ItemGroup>
 
 </Project>

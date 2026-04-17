@@ -3,7 +3,8 @@
 This folder contains the build scripts and configuration for creating the Fidelity.CloudEdge NuGet packages:
 
 - **Fidelity.CloudEdge.Runtime** - F# and Fable bindings for Cloudflare Workers Runtime APIs
-- **Fidelity.CloudEdge.Management** - F# clients for Cloudflare Management APIs
+- **Fidelity.CloudEdge.Management** - F# clients for Cloudflare account-scoped Management APIs
+- **Fidelity.CloudEdge.Tenancy** - F# clients for cross-account Tenant and Organization APIs (MSP/platform teams)
 
 ## Building the Packages
 
@@ -16,14 +17,14 @@ dotnet fsi build.fsx
 This will:
 1. Build all projects in Release mode
 2. Generate the unified `Fidelity.CloudEdge.Runtime.fsproj` for Fable
-3. Create both NuGet packages in `out/`
+3. Create all three NuGet packages (Runtime, Management, Tenancy) in `out/`
 
 ## Changing the Version
 
 Edit `Directory.Build.props` and update the `<Version>` element:
 
 ```xml
-<Version>0.1.13</Version>
+<Version>0.2.0</Version>
 ```
 
 The version is shared by both packages. It can also be overridden at pack time via `/p:PackageVersion=x.y.z`. The GitHub Actions workflow (`nuget-publish.yml`) extracts the version from the git tag automatically.
@@ -105,7 +106,7 @@ Fidelity.CloudEdge.Management.{version}.nupkg
 └── README.md
 ```
 
-### Projects Included (33 services)
+### Projects Included (40 services)
 
 - `Fidelity.CloudEdge.Management.Access` - Zero Trust Access management
 - `Fidelity.CloudEdge.Management.AI` - Workers AI management
@@ -128,6 +129,34 @@ Fidelity.CloudEdge.Management.{version}.nupkg
 - `Fidelity.CloudEdge.Management.Logs` - Logs management
 - `Fidelity.CloudEdge.Management.Magic` - Magic Transit management
 - `Fidelity.CloudEdge.Management.Mesh` - Cloudflare Mesh (WARP Connector) Zero Trust overlay management
+- `Fidelity.CloudEdge.Management.MoQ` - Media over QUIC relay management
+- `Fidelity.CloudEdge.Management.SecurityCenter` - Security Center insights and classification
+- `Fidelity.CloudEdge.Management.VulnScanner` - Vulnerability scanner with credential sets
+- `Fidelity.CloudEdge.Management.Registrar` - Domain registration
+- `Fidelity.CloudEdge.Management.ResourceLibrary` - Applications and categories catalog
+- `Fidelity.CloudEdge.Management.EventNotifications` - R2 bucket event notifications
+- `Fidelity.CloudEdge.Management.EventSubscriptions` - Generic event subscriptions
+
+---
+
+## Fidelity.CloudEdge.Tenancy
+
+The `Fidelity.CloudEdge.Tenancy` package provides F# clients for Cloudflare's **cross-account** Tenant and Organization APIs. This is a distinct tier targeted at Managed Service Providers (MSPs) and enterprise platform teams operating across multiple Cloudflare accounts.
+
+### Package Structure
+
+```
+Fidelity.CloudEdge.Tenancy.{version}.nupkg
+├── lib/netstandard2.0/
+│   ├── Fidelity.CloudEdge.Tenancy.Tenants.dll
+│   └── Fidelity.CloudEdge.Tenancy.Organizations.dll
+└── README.Tenancy.md
+```
+
+### Projects Included (2 services)
+
+- `Fidelity.CloudEdge.Tenancy.Tenants` - Tenant-level operations (`/tenants/{tenant_id}/*`) — accounts, entitlements, memberships
+- `Fidelity.CloudEdge.Tenancy.Organizations` - Organization-level operations (`/organizations/*`, `/user/organizations`) — org profile, accounts, members, shares, org-level audit logs
 - `Fidelity.CloudEdge.Management.Pages` - Pages management
 - `Fidelity.CloudEdge.Management.Pipelines` - Pipelines management
 - `Fidelity.CloudEdge.Management.Queues` - Queues management
@@ -149,6 +178,7 @@ Fidelity.CloudEdge.Management.{version}.nupkg
 |------|-------------|
 | `build.fsx` | Fun.Build script for building and packing |
 | `Fidelity.CloudEdge.Runtime.proj` | Runtime package definition (version, metadata, contents) |
-| `Fidelity.CloudEdge.Management.proj` | Management package definition (version, metadata, contents) |
+| `Fidelity.CloudEdge.Management.proj` | Management package definition (account-scoped services) |
+| `Fidelity.CloudEdge.Tenancy.proj` | Tenancy package definition (cross-account MSP services) |
 | `obj/Fidelity.CloudEdge.Runtime.fsproj` | Auto-generated unified Fable project (in obj/) |
 | `out/` | Output folder for .nupkg files (gitignored) |

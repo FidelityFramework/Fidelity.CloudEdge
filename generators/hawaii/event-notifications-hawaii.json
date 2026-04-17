@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/EventNotifications-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.EventNotifications",
+  "output": "./Generated-EventNotifications",
+  "namespace": "Fidelity.CloudEdge.Management.EventNotifications",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "EventNotificationsManagementClient"
+}

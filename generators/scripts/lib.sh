@@ -97,6 +97,17 @@ get_namespace() {
     get_service_prop "$1" "namespace"
 }
 
+# Get the architectural tier for a service (management | tenancy). Defaults to management.
+get_tier() {
+    local tier
+    tier=$(get_service_prop "$1" "tier")
+    if [[ -z "$tier" ]]; then
+        echo "management"
+    else
+        echo "$tier"
+    fi
+}
+
 # Get the operation prefix for schema matching
 get_operation_prefix() {
     get_service_prop "$1" "operationPrefix"
@@ -200,13 +211,27 @@ ensure_glutinum() {
 
 # ─── File Operations ──────────────────────────────────────────────
 
-# Copy generated files from hawaii output to src/Management project
+# Copy generated files from hawaii output to the tier-appropriate src project
 deploy_generated_files() {
     local service_key="$1"
     local service_name
     service_name=$(get_service_name "$service_key")
+    local tier
+    tier=$(get_tier "$service_key")
     local source_dir="$HAWAII_DIR/Generated-${service_name}"
-    local target_dir="$SRC_DIR/Management/CloudEdge.Management.${service_name}"
+    local target_dir
+    local project_name
+
+    case "$tier" in
+        tenancy)
+            project_name="CloudEdge.Tenancy.${service_name}"
+            target_dir="$SRC_DIR/Tenancy/${project_name}"
+            ;;
+        *)
+            project_name="CloudEdge.Management.${service_name}"
+            target_dir="$SRC_DIR/Management/${project_name}"
+            ;;
+    esac
 
     if [[ ! -d "$source_dir" ]]; then
         print_error "Generated directory not found: $source_dir"
@@ -223,7 +248,7 @@ deploy_generated_files() {
         fi
     done
 
-    print_success "Deployed $count files to CloudEdge.Management.${service_name}"
+    print_success "Deployed $count files to ${project_name}"
 }
 
 # ─── Retry Logic ───────────────────────────────────────────────────

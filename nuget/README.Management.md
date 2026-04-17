@@ -8,9 +8,9 @@
 
 Fidelity.CloudEdge.Management provides F# client libraries for Cloudflare's REST Management APIs. Use these to programmatically create, configure, and manage Cloudflare resources from any .NET application, whether that is deployment scripts, admin tools, CI/CD pipelines, or backend services.
 
-All 33 clients are generated from the official [Cloudflare OpenAPI specification](https://github.com/cloudflare/api-schemas) using [Hawaii](https://github.com/Zaid-Ajaj/Hawaii).
+All 40 clients are generated from the official [Cloudflare OpenAPI specification](https://github.com/cloudflare/api-schemas) using [Hawaii](https://github.com/Zaid-Ajaj/Hawaii).
 
-## Supported Services (33)
+## Supported Services (40)
 
 ### Compute and Storage
 
@@ -62,18 +62,34 @@ All 33 clients are generated from the official [Cloudflare OpenAPI specification
 | **Gateway** | `Fidelity.CloudEdge.Management.Gateway` | Zero Trust Gateway DNS and HTTP filtering |
 | **Tunnels** | `Fidelity.CloudEdge.Management.Tunnels` | Cloudflare Tunnel (`cfd_tunnel`) management for inbound exposure |
 | **Mesh** | `Fidelity.CloudEdge.Management.Mesh` | Cloudflare Mesh (formerly WARP Connector) — Zero Trust bidirectional overlay; account-scoped, MSP-compatible via per-tenant API tokens |
+| **MoQ** | `Fidelity.CloudEdge.Management.MoQ` | Media over QUIC relay management — real-time pub/sub transport for low-latency applications and cross-substrate actor communication |
+| **Security Center** | `Fidelity.CloudEdge.Management.SecurityCenter` | Security Center insights, classification, context, and dismissal (account + zone scope) |
+| **Vuln Scanner** | `Fidelity.CloudEdge.Management.VulnScanner` | Vulnerability scanning with credential sets, scans, and target environments |
 | **Load Balancers** | `Fidelity.CloudEdge.Management.LoadBalancers` | Load balancer pools and monitors |
 | **Waiting Rooms** | `Fidelity.CloudEdge.Management.WaitingRooms` | Virtual waiting room configuration |
 | **Magic** | `Fidelity.CloudEdge.Management.Magic` | Magic Transit and WAN configuration |
 | **Email** | `Fidelity.CloudEdge.Management.Email` | Email Routing rules and configuration |
 
-### Observability and Platform
+### Domains and Catalog
 
 | Service | Namespace | Description |
 |---------|-----------|-------------|
+| **Registrar** | `Fidelity.CloudEdge.Management.Registrar` | Domain registration — check, search, and registration lifecycle |
+| **Resource Library** | `Fidelity.CloudEdge.Management.ResourceLibrary` | Applications and categories catalog |
+
+### Events and Observability
+
+| Service | Namespace | Description |
+|---------|-----------|-------------|
+| **Event Notifications** | `Fidelity.CloudEdge.Management.EventNotifications` | R2 bucket event notifications and queue routing |
+| **Event Subscriptions** | `Fidelity.CloudEdge.Management.EventSubscriptions` | Generic event subscription management |
 | **Analytics** | `Fidelity.CloudEdge.Management.Analytics` | Query analytics data |
 | **Logs** | `Fidelity.CloudEdge.Management.Logs` | Logpush and log retrieval |
 | **Builds** | `Fidelity.CloudEdge.Management.Builds` | Build and deployment management |
+
+### Cross-Account Administration (Separate Package)
+
+For cross-account operations (Tenants, Organizations), install **[Fidelity.CloudEdge.Tenancy](https://www.nuget.org/packages/Fidelity.CloudEdge.Tenancy)**. It is a separate NuGet package targeted at MSPs and enterprise platform teams.
 
 ## Installation
 
