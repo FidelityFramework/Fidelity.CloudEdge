@@ -48,6 +48,7 @@ let private clientFactories: (string * (unit -> obj)) list =
         "LoadBalancers",   fun () -> Fidelity.CloudEdge.Management.LoadBalancers.LoadBalancersClient(httpClient) :> obj
         "WaitingRooms",    fun () -> Fidelity.CloudEdge.Management.WaitingRooms.WaitingRoomsClient(httpClient) :> obj
         "Magic",           fun () -> Fidelity.CloudEdge.Management.Magic.MagicClient(httpClient) :> obj
+        "Mesh",            fun () -> Fidelity.CloudEdge.Management.Mesh.MeshClient(httpClient) :> obj
     ]
 
 // ─── Reflection helpers ──────────────────────────────────────────
@@ -134,9 +135,9 @@ let private methodSignatureTests =
 let private apiSurfaceCoverageTests =
     testList "API Surface Coverage" [
 
-        testCase "All 32 clients are registered" <| fun _ ->
-            Expect.equal clientFactories.Length 32
-                "Should have 32 client factories registered"
+        testCase "All 33 clients are registered" <| fun _ ->
+            Expect.equal clientFactories.Length 33
+                "Should have 33 client factories registered"
 
         testCase "Total async method count exceeds minimum threshold" <| fun _ ->
             let mutable totalMethods = 0

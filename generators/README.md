@@ -6,7 +6,7 @@ Code generation tooling for Fidelity.CloudEdge, driven by a central service regi
 
 ```
 generators/
-├── services.json                  # Master service registry (32 services)
+├── services.json                  # Master service registry (33 services)
 ├── scripts/                       # Orchestration and utility scripts
 │   ├── generate-management.sh     # Management API generation pipeline
 │   ├── generate-runtime.sh        # Runtime binding generation pipeline

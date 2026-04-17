@@ -210,6 +210,7 @@ let private infrastructureConsistencyTests =
                 "Containers", typeof<Fidelity.CloudEdge.Management.Containers.ContainersClient>.Assembly
                 "Builds", typeof<Fidelity.CloudEdge.Management.Builds.BuildsClient>.Assembly
                 "Magic", typeof<Fidelity.CloudEdge.Management.Magic.MagicClient>.Assembly
+                "Mesh", typeof<Fidelity.CloudEdge.Management.Mesh.MeshClient>.Assembly
             ]
             for (name, asm) in assemblies do
                 let hasOpenApiHttp =

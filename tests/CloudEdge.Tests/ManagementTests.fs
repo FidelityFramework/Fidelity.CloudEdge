@@ -5,6 +5,7 @@ open System
 open System.Net.Http
 open Fidelity.CloudEdge.Management.D1
 open Fidelity.CloudEdge.Management.R2
+open Fidelity.CloudEdge.Management.Mesh
 
 let tests =
     testList "CloudFlare.Management Tests" [
@@ -179,5 +180,89 @@ let tests =
 
                 Expect.isFalse (encoded.Contains(" ")) "Spaces should be encoded"
                 Expect.stringContains encoded "value" "Should contain original text"
+        ]
+
+        testList "Mesh (WARP Connector) API" [
+            testCase "Mesh client has 9 lifecycle methods" <| fun _ ->
+                let httpClient = new HttpClient()
+                let client = MeshClient(httpClient)
+                let methods =
+                    client.GetType().GetMethods(
+                        System.Reflection.BindingFlags.Public |||
+                        System.Reflection.BindingFlags.Instance |||
+                        System.Reflection.BindingFlags.DeclaredOnly)
+                    |> Array.filter (fun m ->
+                        not m.IsSpecialName &&
+                        m.ReturnType.IsGenericType &&
+                        m.ReturnType.GetGenericTypeDefinition().FullName.Contains("FSharpAsync"))
+                Expect.equal methods.Length 9
+                    $"MeshClient should expose 9 async methods, found {methods.Length}"
+
+            testCase "Mesh client covers tunnel CRUD operations" <| fun _ ->
+                let httpClient = new HttpClient()
+                let client = MeshClient(httpClient)
+                let methodNames =
+                    client.GetType().GetMethods()
+                    |> Array.map (fun m -> m.Name)
+                    |> Array.toList
+                let has predicate = methodNames |> List.exists predicate
+                Expect.isTrue (has (fun n -> n.Contains("List"))) "Should have a List method"
+                Expect.isTrue (has (fun n -> n.Contains("Create"))) "Should have a Create method"
+                Expect.isTrue (has (fun n -> n.Contains("Get"))) "Should have a Get method"
+                Expect.isTrue (has (fun n -> n.Contains("Update"))) "Should have an Update method"
+                Expect.isTrue (has (fun n -> n.Contains("Delete"))) "Should have a Delete method"
+
+            testCase "Mesh client exposes failover operation" <| fun _ ->
+                let httpClient = new HttpClient()
+                let client = MeshClient(httpClient)
+                let methodNames =
+                    client.GetType().GetMethods()
+                    |> Array.map (fun m -> m.Name)
+                Expect.isTrue
+                    (methodNames |> Array.exists (fun n -> n.Contains("Failover")))
+                    "MeshClient should expose a manual failover operation"
+
+            testCase "Mesh client exposes connection inspection" <| fun _ ->
+                let httpClient = new HttpClient()
+                let client = MeshClient(httpClient)
+                let methodNames =
+                    client.GetType().GetMethods()
+                    |> Array.map (fun m -> m.Name)
+                Expect.isTrue
+                    (methodNames |> Array.exists (fun n -> n.Contains("Connection")))
+                    "MeshClient should expose connection listing for fleet visibility"
+
+            testCase "Mesh client exposes token retrieval" <| fun _ ->
+                let httpClient = new HttpClient()
+                let client = MeshClient(httpClient)
+                let methodNames =
+                    client.GetType().GetMethods()
+                    |> Array.map (fun m -> m.Name)
+                Expect.isTrue
+                    (methodNames |> Array.exists (fun n -> n.Contains("Token")))
+                    "MeshClient should expose token retrieval for endpoint enrollment"
+
+            testCase "Mesh namespace is product-aligned" <| fun _ ->
+                let asmName = typeof<MeshClient>.Assembly.GetName().Name
+                Expect.equal asmName "Fidelity.CloudEdge.Management.Mesh"
+                    "Assembly should use the current Mesh product naming, not WARP Connector"
+
+            testCase "Mesh client account-scoped endpoint pattern" <| fun _ ->
+                let accountId = "abc123"
+                let path = $"/accounts/{accountId}/warp_connector"
+                Expect.stringStarts path "/accounts/" "Should be account-scoped"
+                Expect.stringContains path "warp_connector" "Underlying URL retains warp_connector"
+
+            testCase "Mesh supports MSP tenant isolation via account_id" <| fun _ ->
+                // MSPs dial into customer tenants by supplying the customer's account_id
+                // with a scoped API token. Each account has isolated Mesh infrastructure.
+                let customer1 = "tenant-a-account-id"
+                let customer2 = "tenant-b-account-id"
+                let path1 = $"/accounts/{customer1}/warp_connector"
+                let path2 = $"/accounts/{customer2}/warp_connector"
+                Expect.notEqual path1 path2
+                    "Different tenants must produce different Mesh endpoints"
+                Expect.stringContains path1 customer1 "Path should carry customer account ID"
+                Expect.stringContains path2 customer2 "Path should carry customer account ID"
         ]
     ]

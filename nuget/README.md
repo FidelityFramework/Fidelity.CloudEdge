@@ -23,7 +23,7 @@ This will:
 Edit `Directory.Build.props` and update the `<Version>` element:
 
 ```xml
-<Version>0.1.12</Version>
+<Version>0.1.13</Version>
 ```
 
 The version is shared by both packages. It can also be overridden at pack time via `/p:PackageVersion=x.y.z`. The GitHub Actions workflow (`nuget-publish.yml`) extracts the version from the git tag automatically.
@@ -105,7 +105,7 @@ Fidelity.CloudEdge.Management.{version}.nupkg
 └── README.md
 ```
 
-### Projects Included (32 services)
+### Projects Included (33 services)
 
 - `Fidelity.CloudEdge.Management.Access` - Zero Trust Access management
 - `Fidelity.CloudEdge.Management.AI` - Workers AI management
@@ -127,6 +127,7 @@ Fidelity.CloudEdge.Management.{version}.nupkg
 - `Fidelity.CloudEdge.Management.LoadBalancers` - Load Balancers management
 - `Fidelity.CloudEdge.Management.Logs` - Logs management
 - `Fidelity.CloudEdge.Management.Magic` - Magic Transit management
+- `Fidelity.CloudEdge.Management.Mesh` - Cloudflare Mesh (WARP Connector) Zero Trust overlay management
 - `Fidelity.CloudEdge.Management.Pages` - Pages management
 - `Fidelity.CloudEdge.Management.Pipelines` - Pipelines management
 - `Fidelity.CloudEdge.Management.Queues` - Queues management

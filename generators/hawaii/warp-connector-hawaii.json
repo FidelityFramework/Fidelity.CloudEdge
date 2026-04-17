@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/Mesh-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.Mesh",
+  "output": "./Generated-Mesh",
+  "namespace": "Fidelity.CloudEdge.Management.Mesh",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "MeshClient"
+}

@@ -452,6 +452,17 @@
       "namespace": "Fidelity.CloudEdge.Management.Magic",
       "postProcessors": [],
       "status": "active"
+    },
+    "warp-connector": {
+      "name": "Mesh",
+      "description": "Cloudflare Mesh (formerly WARP Connector) — Zero Trust bidirectional overlay management",
+      "operationPrefix": "warp_connector",
+      "pathPrefix": "/accounts/{account_id}/warp_connector",
+      "pathPatterns": [],
+      "hawaiiConfig": "warp-connector-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Mesh",
+      "postProcessors": [],
+      "status": "active"
     }
   }
 }

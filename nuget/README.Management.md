@@ -8,9 +8,9 @@
 
 Fidelity.CloudEdge.Management provides F# client libraries for Cloudflare's REST Management APIs. Use these to programmatically create, configure, and manage Cloudflare resources from any .NET application, whether that is deployment scripts, admin tools, CI/CD pipelines, or backend services.
 
-All 32 clients are generated from the official [Cloudflare OpenAPI specification](https://github.com/cloudflare/api-schemas) using [Hawaii](https://github.com/Zaid-Ajaj/Hawaii).
+All 33 clients are generated from the official [Cloudflare OpenAPI specification](https://github.com/cloudflare/api-schemas) using [Hawaii](https://github.com/Zaid-Ajaj/Hawaii).
 
-## Supported Services (32)
+## Supported Services (33)
 
 ### Compute and Storage
 
@@ -60,7 +60,8 @@ All 32 clients are generated from the official [Cloudflare OpenAPI specification
 |---------|-----------|-------------|
 | **Access** | `Fidelity.CloudEdge.Management.Access` | Zero Trust Access policies and applications |
 | **Gateway** | `Fidelity.CloudEdge.Management.Gateway` | Zero Trust Gateway DNS and HTTP filtering |
-| **Tunnels** | `Fidelity.CloudEdge.Management.Tunnels` | Cloudflare Tunnel management |
+| **Tunnels** | `Fidelity.CloudEdge.Management.Tunnels` | Cloudflare Tunnel (`cfd_tunnel`) management for inbound exposure |
+| **Mesh** | `Fidelity.CloudEdge.Management.Mesh` | Cloudflare Mesh (formerly WARP Connector) — Zero Trust bidirectional overlay; account-scoped, MSP-compatible via per-tenant API tokens |
 | **Load Balancers** | `Fidelity.CloudEdge.Management.LoadBalancers` | Load balancer pools and monitors |
 | **Waiting Rooms** | `Fidelity.CloudEdge.Management.WaitingRooms` | Virtual waiting room configuration |
 | **Magic** | `Fidelity.CloudEdge.Management.Magic` | Magic Transit and WAN configuration |

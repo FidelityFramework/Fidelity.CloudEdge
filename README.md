@@ -35,7 +35,7 @@ This dual-substrate approach enables:
 #### Management Layer (External)
 - **Purpose**: Infrastructure provisioning, monitoring, and orchestration
 - **Source**: OpenAPI specifications via [Hawaii](https://github.com/Zaid-Ajaj/Hawaii)
-- **Scope**: 32 service clients covering the full Cloudflare Management API
+- **Scope**: 33 service clients covering the full Cloudflare Management API
 - **Usage**: REST API clients for deployment tools and scripts
 - **Framework Role**: Enables dynamic resource allocation for actor migrations
 
@@ -66,7 +66,7 @@ The runtime surface is distributed across focused packages. `Worker.Context` pro
 | `Vectorize` | Vector Search | VectorizeVector, VectorizeMatches, VectorMatch, VectorizeQueryOptions |
 | `Hyperdrive` | Database Proxy | Hyperdrive, connection pooling, PostgreSQL/MySQL URL builders |
 
-### Management Clients (32 services)
+### Management Clients (33 services)
 
 | Category | Services |
 |----------|----------|
@@ -74,7 +74,7 @@ The runtime surface is distributed across focused packages. `Worker.Context` pro
 | **AI and ML** | AI, AI Gateway, AI Search, AutoRAG, Vectorize |
 | **Orchestration** | Workflows, Pipelines |
 | **Media** | Stream, Images, Browser Rendering, Calls |
-| **Networking and Security** | Access, Gateway, Tunnels, Load Balancers, Waiting Rooms, Magic Transit, Email |
+| **Networking and Security** | Access, Gateway, Tunnels, Mesh (WARP Connector), Load Balancers, Waiting Rooms, Magic Transit, Email |
 | **Observability and Platform** | Analytics, Logs, Builds |
 
 ## Installation
@@ -213,9 +213,9 @@ npx wrangler dev
 Both layers are generated from official Cloudflare specifications:
 
 - **Runtime**: `@cloudflare/workers-types` TypeScript definitions processed by [Glutinum](https://github.com/glutinum-org/cli), producing 740+ F# types
-- **Management**: [Cloudflare OpenAPI spec](https://github.com/cloudflare/api-schemas) processed by [Hawaii](https://github.com/Zaid-Ajaj/Hawaii), producing 32 service clients
+- **Management**: [Cloudflare OpenAPI spec](https://github.com/cloudflare/api-schemas) processed by [Hawaii](https://github.com/Zaid-Ajaj/Hawaii), producing 33 service clients
 
-The generation pipeline includes automated preprocessing (`preprocess-openapi.sh`) to handle Hawaii compatibility issues, type sanitization for underscore variants, and query parameter overload resolution. All 32 management services compile cleanly with the current pipeline.
+The generation pipeline includes automated preprocessing (`preprocess-openapi.sh`) to handle Hawaii compatibility issues, type sanitization for underscore variants, and query parameter overload resolution. All 33 management services compile cleanly with the current pipeline.
 
 See [generators/README.md](generators/README.md) for pipeline details and [docs/03_gap_analysis.md](docs/03_gap_analysis.md) for service-level status.
 
@@ -223,8 +223,8 @@ See [generators/README.md](generators/README.md) for pipeline details and [docs/
 
 The test suite validates the full surface area:
 
-- **551 tests** across structural validation, client construction, serialization, and infrastructure checks
-- All 32 management assemblies verified via reflection-based data-driven tests
+- **564 tests** across structural validation, client construction, serialization, and infrastructure checks
+- All 33 management assemblies verified via reflection-based data-driven tests
 - JSON round-trip serialization with `Fable.Remoting.Json` + `Newtonsoft.Json`
 - OpenApiHttp infrastructure consistency across all services
 

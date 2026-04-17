@@ -76,6 +76,7 @@
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.LoadBalancers\CloudEdge.Management.LoadBalancers.fsproj" />
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.WaitingRooms\CloudEdge.Management.WaitingRooms.fsproj" />
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Magic\CloudEdge.Management.Magic.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Mesh\CloudEdge.Management.Mesh.fsproj" />
   </ItemGroup>
 
 </Project>

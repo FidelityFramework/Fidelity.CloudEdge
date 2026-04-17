@@ -129,7 +129,7 @@ This is what the investigation is for.
 The current Fidelity.CloudEdge pipeline uses external code generators to produce F# bindings from foreign type definitions:
 
 - **Glutinum**: TypeScript (`@cloudflare/workers-types`) → F# interfaces (Runtime Layer, 740+ types)
-- **Hawaii**: OpenAPI (Cloudflare API spec) → F# REST clients (Management Layer, 32 services)
+- **Hawaii**: OpenAPI (Cloudflare API spec) → F# REST clients (Management Layer, 33 services)
 - **Xantham**: Additional binding generation
 
 In the Clef world, these tools are replaced by the **Transpose** feature in the Atelier IDE. Transpose is a one-time conversion: it reads foreign type definitions (TypeScript, OpenAPI, or other languages) and ports them into Clef. After conversion, the result is a Clef library, maintained as Clef. The foreign source is an input to the conversion, not a live dependency.
@@ -229,7 +229,7 @@ The documented decision to discourage `TryReceive` and reject `Scan`/`TryScan` (
 Fidelity.CloudEdge's dual-layer architecture (00, 01) separates:
 
 - **Runtime Layer**: In-Worker JavaScript interop (740+ types from `@cloudflare/workers-types` via Glutinum). Runs inside V8 isolates. Zero-latency platform access.
-- **Management Layer**: External REST clients (32 services from OpenAPI via Hawaii). Runs anywhere: browser, native, .NET.
+- **Management Layer**: External REST clients (33 services from OpenAPI via Hawaii). Runs anywhere: browser, native, .NET.
 
 JSIR affects the Runtime Layer exclusively. The Management Layer is Fidelity.CloudEdge's own API client implementation, a set of pure F# REST clients built from Cloudflare's OpenAPI specifications. These clients handle all infrastructure provisioning, deployment, and orchestration without relying on any third-party CLI tooling. The planned `cfs` CLI and the code-first deployment pipeline (02_code_first_deployment.md) use these clients directly. Management operations do not execute inside Workers; they provision infrastructure externally via Fidelity.CloudEdge's own API surface. JSIR has no bearing on how the Management Layer is compiled.
 

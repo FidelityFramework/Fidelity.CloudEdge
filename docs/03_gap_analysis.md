@@ -4,7 +4,7 @@
 
 ## Executive Summary
 
-Fidelity.CloudEdge has completed its generation pipeline maturity. All 32 management services are now active and generating from the Cloudflare OpenAPI spec via Hawaii, and both runtime binding targets (Worker.Context, AI) generate from `@cloudflare/workers-types` via Glutinum. The generation pipeline is config-driven through `services.json`, fully automated via bash scripts, and validated through structural tests (551 passing). A CI/CD workflow (`regenerate-bindings.yml`) handles weekly regeneration from upstream sources.
+Fidelity.CloudEdge has completed its generation pipeline maturity. All 33 management services are now active and generating from the Cloudflare OpenAPI spec via Hawaii, and both runtime binding targets (Worker.Context, AI) generate from `@cloudflare/workers-types` via Glutinum. The generation pipeline is config-driven through `services.json`, fully automated via bash scripts, and validated through structural tests (564 passing). A CI/CD workflow (`regenerate-bindings.yml`) handles weekly regeneration from upstream sources.
 
 The project has moved from "can we generate?" to "comprehensive platform coverage."
 
@@ -53,6 +53,7 @@ The project has moved from "can we generate?" to "comprehensive platform coverag
 | Load Balancers | `load-balancers` | ✅ Active | None | |
 | Waiting Rooms | `waiting-rooms` | ✅ Active | None | |
 | Magic | `magic` | ✅ Active | None | |
+| Mesh | `warp-connector` | ✅ Active | None | Cloudflare Mesh (formerly WARP Connector); namespace product-aligned, URL retains `warp_connector` |
 
 ### Runtime Bindings (Glutinum-Generated)
 
@@ -67,11 +68,11 @@ Both runtime targets compile cleanly. The preprocessor detects and breaks cyclic
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| `services.json` registry | ✅ | 32 services configured |
+| `services.json` registry | ✅ | 33 services configured |
 | OpenAPI spec extraction | ✅ | `jq`-based, supports `pathPatterns` and `pathPrefix` |
 | OpenAPI preprocessing | ✅ | Fixes Hawaii NullRef on empty schema entries |
 | TypeScript preprocessing | ✅ | Cycle breaking, intersection simplification |
-| Hawaii generation | ✅ | 32 services passing |
+| Hawaii generation | ✅ | 33 services passing |
 | Glutinum generation | ✅ | 2 targets passing |
 | Post-processor framework | ✅ | 3 parameterized post-processors, config-driven |
 | Project scaffolding | ✅ | Automated `.fsproj` creation and solution integration |
@@ -114,10 +115,10 @@ HelloWorker and SecureChat demonstrate basic usage. Additional samples targeting
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| Active management services | 32 / 32 | 32 / 32 |
+| Active management services | 33 / 33 | 33 / 33 |
 | Runtime binding targets | 2 / 2 | 2 / 2 |
 | Post-generation manual patches | 5 services | 0 (automated) |
-| Structural test assertions | 551 passing | Expand per service |
+| Structural test assertions | 564 passing | Expand per service |
 | Integration tests | 0 | Per active service |
 | CI/CD regeneration | Weekly | Weekly + on upstream release |
 | Version pegging | None | Per-generation manifest |

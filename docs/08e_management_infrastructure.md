@@ -8,7 +8,7 @@ The actor model described in documents 08a through 08d operates at runtime on Cl
 
 However, runtime bindings presuppose that the underlying infrastructure has been provisioned. A Queue must exist before a Prospero can pivot messages into it. A KV namespace must exist before a dead-letter handler can write failed messages. An Analytics Engine dataset must exist before instrumentation can emit data points. A Logpush job must be configured before structured events flow to an external sink.
 
-`Fidelity.CloudEdge.Management.*` provides the control plane for this provisioning. The 32 management service bindings cover the full Cloudflare API surface, and a subset of them map directly to actor model infrastructure concerns. This document identifies those mappings and describes how the management layer enables programmatic provisioning of the backplane services that the actor model depends on.
+`Fidelity.CloudEdge.Management.*` provides the control plane for this provisioning. The 33 management service bindings cover the full Cloudflare API surface, and a subset of them map directly to actor model infrastructure concerns. This document identifies those mappings and describes how the management layer enables programmatic provisioning of the backplane services that the actor model depends on.
 
 The relationship is unidirectional: the actor runtime consumes infrastructure that the management layer provisions. The management layer does not participate in message processing, supervision, or actor lifecycle. It is invoked during deployment, scaling decisions, or operational configuration; not during steady-state message dispatch.
 
