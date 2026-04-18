@@ -6,7 +6,7 @@
 
 ## Context
 
-On April 6, 2026, Google published an RFC to upstream JSIR (JavaScript Intermediate Representation) into MLIR. JSIR is an MLIR dialect that represents JavaScript with full AST fidelity, supporting lossless round-trip conversion between JavaScript source, ESTree AST, and MLIR ops. Google has used JSIR in production internally for Hermes bytecode decompilation, JavaScript deobfuscation, and malicious code detection. The RFC was posted to the LLVM Discourse by Zhixun Tan of Google's compiler team.
+On April 6, 2026, Google published an RFC to upstream JSIR (JavaScript Intermediate Representation) into MLIR. JSIR is an MLIR dialect that represents JavaScript with full AST fidelity, supporting lossless round-trip conversion between JavaScript source, Babel AST, and MLIR ops. Google has used JSIR in production internally for Hermes bytecode decompilation, JavaScript deobfuscation, and malicious code detection. The RFC was posted to the LLVM Discourse by Zhixun Tan of Google's compiler team.
 
 Repository: https://github.com/google/jsira
 RFC: https://discourse.llvm.org/t/rfc-jsir-a-high-level-ir-for-javascript/90456
@@ -16,7 +16,7 @@ License: Apache-2.0
 
 ## 1. What JSIR Is
 
-JSIR is an out-of-tree MLIR dialect that maintains a nearly 1:1 mapping with ESTree AST nodes. It uses MLIR regions to model JavaScript control flow structures (if/while/logical short-circuit), distinguishes l-values (`jsir.identifier_ref`) from r-values (`jsir.identifier`), and achieves 99.9%+ fidelity on round-trip conversion (source to AST to JSIR and back) across billions of samples at Google.
+JSIR is an out-of-tree MLIR dialect that maintains a nearly 1:1 mapping with Babel AST nodes. It uses MLIR regions to model JavaScript control flow structures (if/while/logical short-circuit), distinguishes l-values (`jsir.identifier_ref`) from r-values (`jsir.identifier`), and achieves 99.9%+ fidelity on round-trip conversion (source to AST to JSIR and back) across billions of samples at Google.
 
 ### Core Design Properties
 
@@ -72,11 +72,15 @@ The WAMI project demonstrated compilation to WebAssembly through MLIR dialects (
 
 ### js_of_ocaml and Fable
 
-The ML-family-to-JavaScript compilation path is well-trodden. js_of_ocaml compiles OCaml bytecode to JavaScript. Fable compiles F# AST to JavaScript. The transformations required (pattern matching to switch/if chains, algebraic data types to object construction, tail calls, currying) are thoroughly understood. These serve as direct blueprints for writing MLIR lowering passes that target JSIR.
+The ML-family-to-JavaScript compilation path is well-trodden, and the most direct architectural precedent for Composer's JSIR backend is js_of_ocaml (Jérôme Vouillon and Vincent Balat, PPS/CNRS Paris Diderot, 2010). js_of_ocaml compiles OCaml bytecode to JavaScript by lifting bytecode into an internal SSA-style IR (`Code.program`), running a suite of optimization passes over that IR (dead code, tail-call, flow analysis, CPS transformation for effect handlers, closure generation), and emitting JavaScript through a conventional compiler back end. In 2024 the same project shipped `wasm_of_ocaml`, a WebAssembly backend that shares `Code.program` with the JavaScript backend — the multi-target-from-shared-IR pattern that Composer generalizes over MLIR.
+
+Fable compiles F# AST to JavaScript and was inspired by js_of_ocaml, but made a different tactical choice, working at the source AST level rather than over a post-compile IR for F# Compiler Service integration reasons.
+
+The transformations required by either approach (pattern matching to switch/if chains, algebraic data types to object construction, tail calls, currying) are thoroughly understood. These serve as direct blueprints for writing MLIR lowering passes that target JSIR. See [Composer/docs/javascript-targeting/01_two_models.md](../../Composer/docs/javascript-targeting/01_two_models.md) for the detailed comparison.
 
 ### Partas.Solid
 
-Partas.Solid provides JSX bindings from F#, demonstrating that JSX is a source-level concern handled through typed DSL embeddings, not an IR-level concern. JSX desugars to function calls. The IR (JSIR) only needs to represent the desugared JavaScript.
+Partas.Solid provides JSX bindings from F# through Fable's compilation pipeline. It is a pattern for how typed DSL embeddings surface framework idioms to a statically typed language. JSIR's operation set covers the desugared JavaScript that any JSX-based framework ultimately compiles to, whether the JSX surface is handled upstream by the source compiler or by a framework-specific JSX transform. JSIR itself does not model JSX; its role is to represent the post-transform JavaScript.
 
 ---
 
@@ -148,7 +152,14 @@ The mailbox processor instrumentation pattern in Fidelity.CloudEdge, where the F
 
 ### JSX and SolidJS
 
-JSX is not an IR concern. It is a backend emission concern. Solid's reactive primitives (`createSignal`, `createEffect`, `createMemo`) are JavaScript function calls. A Clef-level reactive construct (signal, effect, memo) lowers through a Solid-aware Alex pass that emits the correct call patterns as JSIR ops. Partas.Solid already demonstrates this model at the source language level. An additional set of back-end transforms can produce JSX syntax in the final output if desired for readability.
+JSX is a source-level surface that the source compiler transforms before the resulting JavaScript reaches JSIR. JSIR has no JSX operations in its dialect. Solid's reactive primitives (`createSignal`, `createEffect`, `createMemo`) are ordinary JavaScript function calls, and JSIR represents them as such.
+
+The two coexisting models on this axis are described in detail in Composer's [javascript-targeting/](../../Composer/docs/javascript-targeting/) documentation:
+
+- **The F#/.NET model.** JSX is authored in the source language via Partas.Solid and lowered to JavaScript by Fable. JSIR is not in this pipeline. This is the current mechanism behind WrenHello and the Fidelity.CloudEdge Fable frontends.
+- **The fully decomposed AST model.** A Clef reactive surface (signals and effects as first-class constructs) is witnessed into Babel-AST-shaped JSIR ops (function calls to `createSignal`/`createEffect`) by Alex, then printed as JavaScript by `jsir_gen --passes=hir2ast,ast2source`. JSX does not appear in the emitted source; the framework idioms do.
+
+The distinction is orthogonal to Solid itself. Solid remains `solid-js` from npm in both models. What differs is where the source language boundary sits.
 
 ---
 
@@ -346,6 +357,56 @@ The documented implementation phases (08a) map to JSIR integration as follows:
 | **Phase 6: Cross-Substrate** (BAREWire bridge, unified ActorRef, MoQ) | Requires manual alignment between native and Fable-compiled serializers. | Single BAREWire dialect in MLIR. Structural verification before lowering fork. Byte-identical wire format guaranteed by construction. |
 
 Phase 6 is where JSIR delivers the most value. Cross-substrate coherence is the hardest problem in the current architecture because it depends on two separate compilation paths (Fidelity native and Fable) producing byte-compatible BAREWire output. With both paths originating from the same MLIR representation, this compatibility becomes a property of the IR, not of testing.
+
+### 8.10 JSIR as an Emission Substrate; Codata Carries the Extension Surface
+
+JSIR is a substrate — an MLIR dialect defined by Google's `google/jsir` project. It catalogs operations (`jsir.numeric_literal`, `jsir.call_expression`, `jshir.if_statement`, and the rest) that represent JavaScript at the AST level of abstraction inside the MLIR infrastructure.
+
+Composer uses one specific pathway through the JSIR substrate. The pathway: **Alex analyzes the PSG and witnesses JSIR ops out of it, then the `hir2ast,ast2source` pass sequence in JSIR's existing pipeline transforms those ops into JavaScript source.** Composer integrates with `google/jsir` at the HIR stage — the JSIR ops Alex produces are the input to that stage, and the transformation to JavaScript is JSIR's native capability.
+
+**The Composer pathway**:
+
+1. CCS compiles Clef source to PSG; codata (dimensional annotations, coeffect classifications, escape annotations, BAREWire schema declarations, Layer 3 library contributions) attaches to PSG nodes during construction.
+2. Baker applies target-aware selective saturation, preparing the PSG for the JavaScript target.
+3. **Alex** traverses the saturated PSG with the Zipper. Alex's Witnesses (`JsirLiteralWitness`, `JsirActorWitness`, `JsirBAREWireWitness`, `WorkerModuleWitness`, and the rest of the set specified in Composer's `JSIR_Backend_Design.md` §5.2) observe PSG nodes and the codata attached to them. Each Witness, per the Elements/Patterns/Witnesses architecture documented in `Alex_Architecture_Overview.md`, composes MLIR emission through shared Patterns and Elements and produces JSIR ops.
+4. The JSIR ops enter `google/jsir`'s existing pipeline at the HIR stage.
+5. JSIR's `hir2ast,ast2source` pass sequence transforms the ops to JavaScript source.
+6. Source maps emit alongside, tracing JavaScript positions back through JSIR's MLIR locations to the originating Clef source.
+
+**The architecture is layered by ownership**:
+
+| Layer | Role | Owner |
+|:------|:-----|:------|
+| Clef source | Developer intent with typed codata annotations | Application developer |
+| CCS | Clef → PSG | Composer frontend |
+| Baker | Target-aware selective saturation | Composer middle-end |
+| Alex | PSG traversal via Zipper; Witnesses observe codata and emit JSIR ops | Composer middle-end |
+| JSIR | MLIR dialect defining the op catalog | Google `google/jsir` |
+| `hir2ast,ast2source` pass sequence | JSIR → Babel AST → JavaScript source | Google `google/jsir` |
+| JavaScript / JSX modules | Deployable artifact | Downstream toolchain |
+
+The JSIR dialect and its transformation passes are Google's. Alex and its Witnesses are Composer's. The framework's integration point is the emission boundary where Alex produces JSIR ops that enter the `google/jsir` pipeline at the HIR stage.
+
+**Where codata lives**: attached to PSG nodes during CCS construction and enriched during Baker's saturation. Dimensional annotations, coeffect classifications, escape annotations, and BAREWire schema declarations ride the PSG. Layer 3 library contributions (pattern signature declarations, synthesis schemas, BAREWire message type definitions) attach as additional codata to the types and modules the library exports. All of this is PSG-local; codata is a property of the PSG that Alex reads, not a separate channel that reaches JSIR independently.
+
+**What Alex's Witnesses do with codata**: during the Zipper traversal, each Witness matches against a PSG node pattern via XParsec. When a Witness matches, it reads the codata attached to that node and the attached subgraph, composes MLIR emission through shared Elements and Patterns, and produces JSIR ops. The codata informs which ops to emit and how to parameterize them. Library-contributed codata participates in exactly this mechanism — a synthesis schema attached to a pattern-declared type tells the relevant Witness (for example `JsirActorWitness`) how to shape the Durable Object class structure that gets emitted as JSIR ops for the Cloudflare target.
+
+**What the JSIR ops Alex produces represent**: the structural form of the JavaScript the compilation is producing, expressed as MLIR ops. JSIR is expressive enough to capture BAREWire codec functions (DataView operations), Durable Object class structures (method definitions, `webSocketMessage` handlers), SolidJS reactive patterns (`createSignal`, `createEffect` call sequences), and idiomatic control flow (region-based `if`/`while`/`switch`). Alex's Witnesses produce these ops from the codata-enriched PSG; JSIR's `hir2ast,ast2source` passes transform them into JavaScript source.
+
+**Verification scope**: the decidability guarantees established by DTS, DMM, and PHG hold over the PSG and the elaboration that attaches codata to it. They are preserved through Alex's traversal because Witnesses observe codata rather than rewriting it. Once Alex produces JSIR ops, those ops faithfully represent the verified PSG state at the JavaScript target's level of abstraction. JSIR itself carries no independent verification; the correctness of the final JavaScript follows from the correctness of the PSG-level verification and the faithfulness of Alex's emission. The JavaScript that JSIR's transformation passes produce is a structural projection of the verified IR, which is what the framework actually commits to.
+
+**Consequences for the Cloudflare-targeting story**:
+
+- **Data-driven service surface**: `services.json` and the OpenAPI spec drive the generated bindings. For the Horizon 1 (current) F# pipeline, Hawaii consumes this data. For the Horizon 2 Composer pipeline, the equivalent path is Farscape + Transpose producing Clef bindings. Both pipelines are data-driven at the Cloudflare API surface.
+- **Layer 3 library contributions**: a library like the future `Fidelity.Platform.Edge.Cloudflare` attaches codata to its exported types — pattern declarations that `JsirActorWitness` and `WorkerModuleWitness` observe during the Zipper traversal, synthesis schemas that shape the emitted DO classes, BAREWire schema bundles that `JsirBAREWireWitness` reads to produce codec functions. The library's contribution reaches Alex through the codata channel that already carries every other compilation-relevant property.
+- **Witnessed patterns**: the emission logic for recognized patterns lives in Alex — specifically, in the Elements, Patterns, and Witnesses directories specified in `JSIR_Backend_Design.md` §5.2. Decidability reasoning applies uniformly to library-declared patterns and compiler-native patterns because both reach Alex as codata-annotated PSG nodes.
+- **Per-target Witness sets**: Composer's backends (CPU/LLVM, FPGA/CIRCT, NPU/AIE, JS/JSIR) each have their own Witness set producing target-specific MLIR ops from the shared PSG. Additional JavaScript-emitting scenarios (a WREN Stack frontend, an embedded-WebView deployment) extend the JS Witness set. `WorkerModuleWitness` activates when `Fidelity.CloudEdge` is in scope; a hypothetical `WrenViewModuleWitness` would activate for WebView-embedded modules; both use the shared Elements and Patterns that define the JSIR op vocabulary.
+
+**Consequences for high-frequency Cloudflare evolution**: service additions land as data updates to the API surface. New actor-shaped primitives (Durable Object Facets from Agents Week is the concrete recent example) land as library-attached codata within the existing actor pattern category, consumed by the existing `JsirActorWitness`. New pattern *categories* — primitives requiring novel verification logic — land in Alex as new Witnesses, because new categories require new emission logic and, where relevant, new decidability proofs at the PSG level.
+
+**Consequences for the witness pattern** (the broader framework sense of "witness target," not Alex's Witness modules): each target substrate (native, Cloudflare, browser, WREN Stack, FPGA) receives codata-annotated PSG output through its respective Alex Witness set. The Witnesses for different targets share the PSG, the codata channel, and the verification scope. Target-specific emission differs in which MLIR dialect ops the Witnesses produce (LLVM ops for native, JSIR ops for JavaScript, CIRCT ops for FPGA, AIE ops for NPU). The substrate-agnostic-actors-with-verified-message-protocols claim holds because all target Witnesses observe the same codata-enriched PSG.
+
+**The separation**: PSG-level verification completes before Alex's traversal begins. Alex's Witnesses produce JSIR ops faithful to the PSG state. JSIR's `hir2ast,ast2source` passes transform those ops to JavaScript. The JavaScript deploys. The framework's verification commitments meet JavaScript's runtime semantics at the wire formats — HTTP calls for bindings, WebSocket frames for actors, MoQ tracks for cross-substrate pub/sub, DOM calls for UI — with BAREWire's structural encoding carrying the typed contract across JavaScript's dynamic-typing boundary. The architecture separates along a set of named layers, each with a defined owner.
 
 ---
 

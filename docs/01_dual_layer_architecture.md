@@ -38,8 +38,8 @@ let handleRequest (request: Request) (env: Env) =
     async {
         // env.DATABASE is a D1Database binding from wrangler.toml
         let db = env.DATABASE
-
-        // Direct database operations via JavaScript interop
+ar
+        // Direct database operations via JavaScript interopy" e 
         let! result =
             db.prepare("SELECT * FROM users WHERE id = ?")
               .bind(userId)

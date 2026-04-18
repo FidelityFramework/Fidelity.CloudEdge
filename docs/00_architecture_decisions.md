@@ -169,6 +169,43 @@ type D1ManagementClient =
 3. Creates focused specs (45KB - 217KB each)
 4. Preserves all dependencies and references
 
+### Decision 6: Library Extension via PSG Codata ✅
+
+**Commitment**: Library contributions to compilation flow through the PSG codata channel. Libraries attach annotations to nodes, the middle-end interprets those annotations during elaboration, and target back-ends consume the annotated IR at synthesis.
+
+**Rationale**: Composer's verification chain (DTS dimensional types, DMM coeffect classification, PHG grade inference) is decidable-by-construction because every property that informs compilation is represented as codata attached to PSG nodes. Dimensional annotations, coeffect classifications, and escape annotations already ride this channel. Library-contributed pattern declarations and synthesis schemas ride the same channel with the same structural properties. The framework's central thesis ([decidable-by-construction](../arxiv/2603.25414)) rests on the codata channel being the uniform extension surface for compilation-relevant information.
+
+**Mechanism**: Codata has five structural properties that make it a sound extension surface:
+
+- Codata attaches to nodes, preserving graph structure
+- Codata is consumed by passes, leaving pass definitions in compiler control
+- Codata is structure-preserving under transformation
+- Codata composition is accumulation — multiple sources merge by union
+- Codata constraints (decidable, structure-preserving, finite) preserve the verification chain across library contributions
+
+**Layer 3 library contributions**: A Layer 3 library (e.g., a future `Fidelity.Platform.Edge.Cloudflare`) contributes:
+
+- **Pattern signature declarations** — markers like `[<RecognizedPattern("Actor")>]` that the compiler recognizes during elaboration
+- **Synthesis schemas** — declarative templates for infrastructure artifacts emitted per pattern per target
+- **Type definitions for standard patterns** — base classes, marker interfaces, attribute conventions
+- **Default implementations** — inheritable or composable by target code
+- **BAREWire schema bundles** — shared types across substrates
+
+These contributions are source code whose compilation-facing role is declarative. The compiler reads what the library declares; the library itself executes as user code, not as compiler internals.
+
+**Where the boundary sits**: Pass implementations, verification rules, IR manipulation, and code generation are compiler-owned. This is where the decidability guarantees are established and enforced. Library contributions end at declaration; transformation begins at the compiler.
+
+**Operational consequences**:
+
+- High-frequency churn — Cloudflare service additions, OpenAPI schema evolution — lands as data updates to `services.json` and the spec. The compiler's Cloudflare back-end consumes the updated data on the next build.
+- Medium-frequency evolution — new library-defined patterns within existing categories (e.g., `FacetActor` as another shape of actor) — lands as Layer 3 library updates. The compiler's existing pattern-category machinery handles new instances without modification.
+- Low-frequency architectural evolution — new pattern categories requiring new verification logic — lands as compiler updates. New categories bring their own decidability proofs into the middle-end.
+- Multi-target back-end variation (Cloudflare wing, browser wing, native wing) is build-time composition. Each wing is a combination of dialects, lowering passes, and synthesis backends assembled from shared kit pieces.
+
+**Boundary statement**: A Layer 3 library is a bundle of source code whose primary contribution to compilation is codata attached to the types, modules, and patterns it exports. The compiler consumes that codata during PSG elaboration, propagates it through the refinement chain, and interprets it at synthesis.
+
+See [10: JSIR Strategic Assessment §8.10](10_jsir_strategic_assessment.md) for how this commitment shapes JSIR-targeted compilation specifically.
+
 ## Implementation Pipeline
 
 ### Runtime API Generation (Glutinum)
