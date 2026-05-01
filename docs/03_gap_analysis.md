@@ -132,7 +132,7 @@ Multi-tenant workflow dispatch (`createDynamicWorkflowEntrypoint`, `wrapWorkflow
 
 **G6. TypeScript→F# generation pipeline standardization on Xantham (cross-cutting)**
 
-Per [00 Decision 7](00_architecture_decisions.md), Fidelity.CloudEdge is migrating its runtime TypeScript→F# binding generation from Glutinum to Xantham. This is a tooling-pipeline gap rather than a Cloudflare-surface gap, but it materially affects how every other runtime binding gap is closed and how prior compensations (~330 lines of pre/post-processing across 3 languages) are retired.
+Per [00 Decision 7](00_architecture_decisions.md), Fidelity.CloudEdge is migrating its runtime TypeScript→F# binding generation from Glutinum to Xantham. The foundational analysis comparing the two tools and their architectural fit is in [12_xantham_glutinum_replacement_assessment.md](12_xantham_glutinum_replacement_assessment.md). This is a tooling-pipeline gap rather than a Cloudflare-surface gap, but it materially affects how every other runtime binding gap is closed and how prior compensations (~330 lines of pre/post-processing across 3 languages) are retired.
 
 **Migration sequence (5 ordered steps):**
 
