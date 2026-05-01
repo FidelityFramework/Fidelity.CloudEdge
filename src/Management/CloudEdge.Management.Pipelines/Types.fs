@@ -756,10 +756,15 @@ type PostV4AccountsByAccountIdPipelinesV1Pipelines =
     ///Indicates an error in creating a Pipeline.
     | BadRequest of payload: obj
 
+type DeleteV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId_OK =
+    { result: obj
+      ///Indicates whether the API call was successful.
+      success: ``cloudflare-pipelinesworker-pipelines-common-success`` }
+
 [<RequireQualifiedAccess>]
 type DeleteV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId =
     ///Indicates a successfully deleted Pipeline.
-    | OK of payload: obj
+    | OK of payload: DeleteV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId_OK
     ///Indicates an error in listing Pipelines.
     | BadRequest of payload: obj
 
@@ -786,6 +791,8 @@ type Tables =
 
 type GetV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId_OKResult =
     { created_at: string
+      ///Indicates the reason for the failure of the Pipeline.
+      failure_reason: Option<string>
       ///Indicates a unique identifier for this pipeline.
       id: string
       modified_at: string
@@ -916,10 +923,15 @@ type PostV4AccountsByAccountIdPipelinesV1Sinks =
     ///Indicates an error in creating a Sink.
     | BadRequest of payload: obj
 
+type DeleteV4AccountsByAccountIdPipelinesV1SinksBySinkId_OK =
+    { result: obj
+      ///Indicates whether the API call was successful.
+      success: ``cloudflare-pipelinesworker-pipelines-common-success`` }
+
 [<RequireQualifiedAccess>]
 type DeleteV4AccountsByAccountIdPipelinesV1SinksBySinkId =
     ///Indicates a successfully deleted Sink.
-    | OK of payload: obj
+    | OK of payload: DeleteV4AccountsByAccountIdPipelinesV1SinksBySinkId_OK
     ///Indicates an error in listing Sinks.
     | BadRequest of payload: obj
 
@@ -1096,10 +1108,15 @@ type PostV4AccountsByAccountIdPipelinesV1Streams =
     ///Indicates an error in creating a Stream.
     | BadRequest of payload: obj
 
+type DeleteV4AccountsByAccountIdPipelinesV1StreamsByStreamId_OK =
+    { result: obj
+      ///Indicates whether the API call was successful.
+      success: ``cloudflare-pipelinesworker-pipelines-common-success`` }
+
 [<RequireQualifiedAccess>]
 type DeleteV4AccountsByAccountIdPipelinesV1StreamsByStreamId =
     ///Indicates a successfully deleted Stream.
-    | OK of payload: obj
+    | OK of payload: DeleteV4AccountsByAccountIdPipelinesV1StreamsByStreamId_OK
     ///Indicates an error in listing Streams.
     | BadRequest of payload: obj
 

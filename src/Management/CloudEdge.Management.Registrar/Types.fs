@@ -127,14 +127,14 @@ type ``registrar-apiapi-response-common`` =
           success = success }
 
 type ``registrar-apiapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of registrar-apiapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``registrar-apiapi-response-common-failure`` =
         { errors = errors
@@ -485,13 +485,13 @@ type ``registrar-apidomainresponsesingleMessages`` =
 type ``registrar-apidomainresponsesingle`` =
     { errors: list<``registrar-apidomainresponsesingleErrors``>
       messages: list<``registrar-apidomainresponsesingleMessages``>
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of registrar-apidomainresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``registrar-apidomainresponsesingleErrors``>,
                           messages: list<``registrar-apidomainresponsesingleMessages``>,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``registrar-apidomainresponsesingle`` =
         { errors = errors
           messages = messages
@@ -1194,7 +1194,7 @@ type ``registrar-apiworkflowstatus`` =
       ///Workflow-specific data for this workflow.
       ///The workflow subject is identified by `context.domain_name` for
       ///domain-centric workflows.
-      context: Option<obj>
+      context: Option<Map<string, obj>>
       created_at: System.DateTimeOffset
       error: Option<obj>
       links: ``registrar-apiworkflowlinks``

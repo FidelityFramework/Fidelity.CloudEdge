@@ -150,6 +150,13 @@ type RegistrarClient(httpClient: HttpClient) =
     ///pages.
     ///</summary>
     ///<param name="accountId">Cloudflare account ID.</param>
+    ///<param name="cursor">
+    ///Opaque token from a previous response's `result_info.cursor`.
+    ///Pass this value to fetch the next page of results. Omit (or
+    ///pass an empty string) for the first page.
+    ///</param>
+    ///<param name="perPage">Number of items to return per page.</param>
+    ///<param name="direction">Sort direction for results. Defaults to ascending order.</param>
     ///<param name="sortBy">
     ///Column to sort results by. Defaults to registration date
     ///(`registry_created_at`) when omitted.
@@ -158,12 +165,21 @@ type RegistrarClient(httpClient: HttpClient) =
     member this.RegistrarDomainRegistrationList
         (
             accountId: string,
+            ?cursor: string,
+            ?perPage: int,
+            ?direction: string,
             ?sortBy: string,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
+                  if cursor.IsSome then
+                      RequestPart.query ("cursor", cursor.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value)
+                  if direction.IsSome then
+                      RequestPart.query ("direction", direction.Value)
                   if sortBy.IsSome then
                       RequestPart.query ("sort_by", sortBy.Value) ]
 

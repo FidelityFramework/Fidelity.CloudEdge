@@ -57,10 +57,10 @@ type ``organizations-apiBoolAllocation`` =
         { ``type`` = ``type``; value = value }
 
 type ``organizations-apiEntitlement`` =
-    { allocation: Newtonsoft.Json.Linq.JToken
+    { allocation: obj
       feature: ``organizations-apiFeature`` }
     ///Creates an instance of organizations-apiEntitlement with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (allocation: Newtonsoft.Json.Linq.JToken, feature: ``organizations-apiFeature``): ``organizations-apiEntitlement`` =
+    static member Create (allocation: obj, feature: ``organizations-apiFeature``): ``organizations-apiEntitlement`` =
         { allocation = allocation
           feature = feature }
 
@@ -105,7 +105,7 @@ type ``organizations-apiMaxCountAllocation`` =
         { ``type`` = ``type``; value = value }
 
 type ``organizations-apiNullAllocation`` =
-    { value: Option<Newtonsoft.Json.Linq.JObject> }
+    { value: Option<obj> }
     ///Creates an instance of organizations-apiNullAllocation with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``organizations-apiNullAllocation`` = { value = None }
 
@@ -139,7 +139,7 @@ type ``organizations-apiTenant`` =
       tenant_labels: list<string>
       tenant_metadata: Tenantmetadata
       tenant_name: string
-      tenant_network: Newtonsoft.Json.Linq.JObject
+      tenant_network: Map<string, obj>
       tenant_status: string
       tenant_tag: string
       tenant_type: string
@@ -151,7 +151,7 @@ type ``organizations-apiTenant`` =
                           tenant_labels: list<string>,
                           tenant_metadata: Tenantmetadata,
                           tenant_name: string,
-                          tenant_network: Newtonsoft.Json.Linq.JObject,
+                          tenant_network: Map<string, obj>,
                           tenant_status: string,
                           tenant_tag: string,
                           tenant_type: string,
@@ -180,14 +180,14 @@ type ``organizations-apiTenantMembership`` =
           user_tag = user_tag }
 
 type ``organizations-apiTenantUnit`` =
-    { unit_memberships: Newtonsoft.Json.Linq.JArray
-      unit_metadata: Newtonsoft.Json.Linq.JObject
+    { unit_memberships: obj
+      unit_metadata: Map<string, obj>
       unit_name: string
       unit_status: string
       unit_tag: string }
     ///Creates an instance of organizations-apiTenantUnit with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (unit_memberships: Newtonsoft.Json.Linq.JArray,
-                          unit_metadata: Newtonsoft.Json.Linq.JObject,
+    static member Create (unit_memberships: list<obj>,
+                          unit_metadata: Map<string, obj>,
                           unit_name: string,
                           unit_status: string,
                           unit_tag: string): ``organizations-apiTenantUnit`` =
@@ -200,7 +200,7 @@ type ``organizations-apiTenantUnit`` =
 type ``organizations-apiV4ErrorResponse`` =
     { errors: list<``organizations-apiV4Message``>
       messages: list<``organizations-apiV4Message``>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+      result: Option<Map<string, obj>>
       success: bool }
     ///Creates an instance of organizations-apiV4ErrorResponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``organizations-apiV4Message``>,
@@ -219,7 +219,7 @@ type ``organizations-apiV4Message`` =
         { code = code; message = message }
 
 type TenantsRetrieveTenant_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: ``organizations-apiTenant``
       success: bool }
@@ -232,7 +232,7 @@ type TenantsRetrieveTenant =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type TenantsValidAccountTypes_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: list<string>
       success: bool }
@@ -245,7 +245,7 @@ type TenantsValidAccountTypes =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type TenantsListAccounts_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: list<``organizations-apiAccount``>
       success: bool }
@@ -258,7 +258,7 @@ type TenantsListAccounts =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type TenantsListEntitlements_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: ``organizations-apiInnateEntitlements``
       success: bool }
@@ -271,7 +271,7 @@ type TenantsListEntitlements =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type TenantsListMemberships_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: list<``organizations-apiTenantMembership``>
       success: bool }

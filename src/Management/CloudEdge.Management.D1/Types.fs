@@ -304,7 +304,7 @@ type ``d1single-query`` =
 
 ///Response from a time travel restore operation.
 type ``d1time-travel-restore-response`` =
-    { bookmark: Option<string>
+    { bookmark: Option<obj>
       ///A message describing the result of the restore operation.
       message: Option<string>
       previous_bookmark: Option<string> }

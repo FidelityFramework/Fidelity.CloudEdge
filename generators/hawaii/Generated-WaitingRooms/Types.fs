@@ -353,13 +353,16 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``waitingroomapi-response-collection`` =
     { errors: Option<list<Errors>>
@@ -375,15 +378,15 @@ type ``waitingroomapi-response-collection`` =
           result_info = None }
 
 type ``waitingroomapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of waitingroomapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``waitingroomapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -391,7 +394,7 @@ type ``waitingroomapi-response-common-failure`` =
           success = success }
 
 type ``waitingroomapi-response-single`` =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: Option<obj> }
     ///Creates an instance of waitingroomapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``waitingroomapi-response-single`` = { result = None }
 
@@ -549,13 +552,16 @@ type waitingroomeventresponsecollectionResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of waitingroomeventresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): waitingroomeventresponsecollectionResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type waitingroomeventresponsecollection =
     { errors: list<waitingroomeventresponsecollectionErrors>
@@ -639,7 +645,7 @@ type waitingroompatchrule =
       ///Criteria defining when there is a match for the current rule.
       expression: waitingroomruleexpression
       ///Reorder the position of a rule
-      position: Option<Newtonsoft.Json.Linq.JObject> }
+      position: Option<obj> }
     ///Creates an instance of waitingroompatchrule with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (action: waitingroomruleaction, expression: waitingroomruleexpression): waitingroompatchrule =
         { action = action
@@ -954,13 +960,16 @@ type waitingroomresponsecollectionResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of waitingroomresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): waitingroomresponsecollectionResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type waitingroomresponsecollection =
     { errors: list<waitingroomresponsecollectionErrors>
@@ -1045,13 +1054,16 @@ type waitingroomrulesresponsecollectionResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of waitingroomrulesresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): waitingroomrulesresponsecollectionResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type waitingroomrulesresponsecollection =
     { errors: list<waitingroomrulesresponsecollectionErrors>
@@ -1396,7 +1408,9 @@ type WaitingRoomListWaitingRooms_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomListWaitingRooms_BadRequest =
     { errors: Option<list<WaitingRoomListWaitingRooms_BadRequestErrors>>
@@ -1415,8 +1429,8 @@ type WaitingRoomListWaitingRooms =
 
 type WaitingRoomCreateWaitingRoom_BadRequest =
     { result: Option<waitingroomwaitingroom>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1433,8 +1447,8 @@ type WaitingRoomCreateACustomWaitingRoomPagePreview_BadRequestResult =
 
 type WaitingRoomCreateACustomWaitingRoomPagePreview_BadRequest =
     { result: Option<WaitingRoomCreateACustomWaitingRoomPagePreview_BadRequestResult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1453,8 +1467,8 @@ type WaitingRoomGetZoneSettings_BadRequestResult =
 
 type WaitingRoomGetZoneSettings_BadRequest =
     { result: Option<WaitingRoomGetZoneSettings_BadRequestResult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1473,8 +1487,8 @@ type WaitingRoomPatchZoneSettings_BadRequestResult =
 
 type WaitingRoomPatchZoneSettings_BadRequest =
     { result: Option<WaitingRoomPatchZoneSettings_BadRequestResult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1493,8 +1507,8 @@ type WaitingRoomUpdateZoneSettings_BadRequestResult =
 
 type WaitingRoomUpdateZoneSettings_BadRequest =
     { result: Option<WaitingRoomUpdateZoneSettings_BadRequestResult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1510,8 +1524,8 @@ type WaitingRoomDeleteWaitingRoom_BadRequestResult =
 
 type WaitingRoomDeleteWaitingRoom_BadRequest =
     { result: Option<WaitingRoomDeleteWaitingRoom_BadRequestResult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1524,8 +1538,8 @@ type WaitingRoomDeleteWaitingRoom =
 
 type WaitingRoomWaitingRoomDetails_BadRequest =
     { result: Option<waitingroomwaitingroom>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1538,8 +1552,8 @@ type WaitingRoomWaitingRoomDetails =
 
 type WaitingRoomPatchWaitingRoom_BadRequest =
     { result: Option<waitingroomwaitingroom>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1552,8 +1566,8 @@ type WaitingRoomPatchWaitingRoom =
 
 type WaitingRoomUpdateWaitingRoom_BadRequest =
     { result: Option<waitingroomwaitingroom>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1588,7 +1602,9 @@ type WaitingRoomListEvents_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomListEvents_BadRequest =
     { errors: Option<list<WaitingRoomListEvents_BadRequestErrors>>
@@ -1607,8 +1623,8 @@ type WaitingRoomListEvents =
 
 type WaitingRoomCreateEvent_BadRequest =
     { result: Option<waitingroomeventresult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1623,8 +1639,8 @@ type WaitingRoomDeleteEvent_BadRequestResult = { id: Option<waitingroomeventid> 
 
 type WaitingRoomDeleteEvent_BadRequest =
     { result: Option<WaitingRoomDeleteEvent_BadRequestResult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1637,8 +1653,8 @@ type WaitingRoomDeleteEvent =
 
 type WaitingRoomEventDetails_BadRequest =
     { result: Option<waitingroomeventresult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1651,8 +1667,8 @@ type WaitingRoomEventDetails =
 
 type WaitingRoomPatchEvent_BadRequest =
     { result: Option<waitingroomeventresult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1665,8 +1681,8 @@ type WaitingRoomPatchEvent =
 
 type WaitingRoomUpdateEvent_BadRequest =
     { result: Option<waitingroomeventresult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1679,8 +1695,8 @@ type WaitingRoomUpdateEvent =
 
 type WaitingRoomPreviewActiveEventDetails_BadRequest =
     { result: Option<waitingroomeventdetailsresult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 
@@ -1715,7 +1731,9 @@ type WaitingRoomListWaitingRoomRules_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomListWaitingRoomRules_BadRequest =
     { errors: Option<list<WaitingRoomListWaitingRoomRules_BadRequestErrors>>
@@ -1756,7 +1774,9 @@ type WaitingRoomCreateWaitingRoomRule_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomCreateWaitingRoomRule_BadRequest =
     { errors: Option<list<WaitingRoomCreateWaitingRoomRule_BadRequestErrors>>
@@ -1797,7 +1817,9 @@ type WaitingRoomReplaceWaitingRoomRules_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomReplaceWaitingRoomRules_BadRequest =
     { errors: Option<list<WaitingRoomReplaceWaitingRoomRules_BadRequestErrors>>
@@ -1838,7 +1860,9 @@ type WaitingRoomDeleteWaitingRoomRule_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomDeleteWaitingRoomRule_BadRequest =
     { errors: Option<list<WaitingRoomDeleteWaitingRoomRule_BadRequestErrors>>
@@ -1879,7 +1903,9 @@ type WaitingRoomPatchWaitingRoomRule_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomPatchWaitingRoomRule_BadRequest =
     { errors: Option<list<WaitingRoomPatchWaitingRoomRule_BadRequestErrors>>
@@ -1905,8 +1931,8 @@ type WaitingRoomGetWaitingRoomStatus_BadRequestResult =
 
 type WaitingRoomGetWaitingRoomStatus_BadRequest =
     { result: Option<WaitingRoomGetWaitingRoomStatus_BadRequestResult>
-      errors: Option<Newtonsoft.Json.Linq.JToken>
-      messages: Option<Newtonsoft.Json.Linq.JToken>
+      errors: Option<obj>
+      messages: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
 

@@ -223,6 +223,7 @@ type ``zero-trust-gatewayschemas-type`` =
     | [<CompiledName "CATEGORY">] CATEGORY
     | [<CompiledName "LOCATION">] LOCATION
     | [<CompiledName "DEVICE">] DEVICE
+    | [<CompiledName "AAGUID">] AAGUID
     member this.Format() =
         match this with
         | SERIAL -> "SERIAL"
@@ -233,6 +234,7 @@ type ``zero-trust-gatewayschemas-type`` =
         | CATEGORY -> "CATEGORY"
         | LOCATION -> "LOCATION"
         | DEVICE -> "DEVICE"
+        | AAGUID -> "AAGUID"
 
 ///Identify the API resource with a UUID.
 type ``zero-trust-gatewayschemas-uuid`` = string
@@ -354,7 +356,6 @@ type ``zero-trust-gatewayapi-response-common`` =
 
 type ``zero-trust-gatewayapi-response-common-failureErrors`` = {code: int; message: string}
 type ``zero-trust-gatewayapi-response-common-failureMessages`` = {code: int; message: string}
-
 type ``zero-trust-gatewayapi-response-common-failure`` =
     { errors: ``zero-trust-gatewayapi-response-common-failureErrors``
       messages: ``zero-trust-gatewayapi-response-common-failureMessages``
@@ -1785,7 +1786,7 @@ type Bisoadmincontrols =
       dd: Option<bool>
       ///Set to false to enable keyboard usage. Only applies when `version == "v1"`.
       dk: Option<bool>
-      ///Configure download behavior. When set to remote_only, users can view downloads but cannot save them. Applies only when version == "v2".
+      ///Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == "v2".
       download: Option<Download>
       ///Set to false to enable printing. Only applies when `version == "v1"`.
       dp: Option<bool>
@@ -1800,7 +1801,9 @@ type Bisoadmincontrols =
       ///Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == "v2".
       upload: Option<Upload>
       ///Indicate which version of the browser isolation controls should apply.
-      version: Option<Version> }
+      version: Option<Version>
+      ///Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+      wm_id: Option<System.Guid> }
     ///Creates an instance of Bisoadmincontrols with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Bisoadmincontrols =
         { copy = None
@@ -1814,7 +1817,8 @@ type Bisoadmincontrols =
           paste = None
           printing = None
           upload = None
-          version = None }
+          version = None
+          wm_id = None }
 
 ///Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
 type Blockpage =
@@ -2451,7 +2455,6 @@ type ZeroTrustApplicationsReviewStatusList_BadRequestErrors = { code: int; messa
 type ZeroTrustApplicationsReviewStatusList_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustApplicationsReviewStatusListBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustApplicationsReviewStatusListBadRequest = {code: int; message: string}
-
 type ZeroTrustApplicationsReviewStatusList_BadRequest =
     { errors: Option<list<ZeroTrustApplicationsReviewStatusList_BadRequestErrors>>
       messages: Option<list<ZeroTrustApplicationsReviewStatusList_BadRequestMessages>>
@@ -2485,7 +2488,6 @@ type ZeroTrustApplicationsReviewStatusUpdate_BadRequestErrors = { code: int; mes
 type ZeroTrustApplicationsReviewStatusUpdate_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustApplicationsReviewStatusUpdateBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustApplicationsReviewStatusUpdateBadRequest = {code: int; message: string}
-
 type ZeroTrustApplicationsReviewStatusUpdate_BadRequest =
     { errors: Option<list<ZeroTrustApplicationsReviewStatusUpdate_BadRequestErrors>>
       messages: Option<list<ZeroTrustApplicationsReviewStatusUpdate_BadRequestMessages>>
@@ -2504,7 +2506,6 @@ type ZeroTrustGetAuditSshSettings_BadRequestErrors = { code: int; message: strin
 type ZeroTrustGetAuditSshSettings_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGetAuditSshSettingsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGetAuditSshSettingsBadRequest = {code: int; message: string}
-
 type ZeroTrustGetAuditSshSettings_BadRequest =
     { errors: Option<list<ZeroTrustGetAuditSshSettings_BadRequestErrors>>
       messages: Option<list<ZeroTrustGetAuditSshSettings_BadRequestMessages>>
@@ -2530,7 +2531,6 @@ type ZeroTrustUpdateAuditSshSettings_BadRequestErrors = { code: int; message: st
 type ZeroTrustUpdateAuditSshSettings_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustUpdateAuditSshSettingsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustUpdateAuditSshSettingsBadRequest = {code: int; message: string}
-
 type ZeroTrustUpdateAuditSshSettings_BadRequest =
     { errors: Option<list<ZeroTrustUpdateAuditSshSettings_BadRequestErrors>>
       messages: Option<list<ZeroTrustUpdateAuditSshSettings_BadRequestMessages>>
@@ -2549,7 +2549,6 @@ type ZeroTrustRotateSshAccountSeed_BadRequestErrors = { code: int; message: stri
 type ZeroTrustRotateSshAccountSeed_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustRotateSshAccountSeedBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustRotateSshAccountSeedBadRequest = {code: int; message: string}
-
 type ZeroTrustRotateSshAccountSeed_BadRequest =
     { errors: Option<list<ZeroTrustRotateSshAccountSeed_BadRequestErrors>>
       messages: Option<list<ZeroTrustRotateSshAccountSeed_BadRequestMessages>>
@@ -2568,7 +2567,6 @@ type ZeroTrustGatewayCategoriesListCategories_BadRequestErrors = { code: int; me
 type ZeroTrustGatewayCategoriesListCategories_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayCategoriesListCategoriesBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayCategoriesListCategoriesBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayCategoriesListCategories_BadRequest =
     { errors: Option<list<ZeroTrustGatewayCategoriesListCategories_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayCategoriesListCategories_BadRequestMessages>>
@@ -2588,7 +2586,6 @@ type ZeroTrustCertificatesListZeroTrustCertificates_BadRequestErrors = { code: i
 type ZeroTrustCertificatesListZeroTrustCertificates_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustCertificatesListZeroTrustCertificatesBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustCertificatesListZeroTrustCertificatesBadRequest = {code: int; message: string}
-
 type ZeroTrustCertificatesListZeroTrustCertificates_BadRequest =
     { errors: Option<list<ZeroTrustCertificatesListZeroTrustCertificates_BadRequestErrors>>
       messages: Option<list<ZeroTrustCertificatesListZeroTrustCertificates_BadRequestMessages>>
@@ -2608,7 +2605,6 @@ type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestErrors = { code: 
 type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustCertificatesCreateZeroTrustCertificateBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustCertificatesCreateZeroTrustCertificateBadRequest = {code: int; message: string}
-
 type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequest =
     { errors: Option<list<ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestErrors>>
       messages: Option<list<ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestMessages>>
@@ -2634,7 +2630,6 @@ type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestErrors = { code:
 type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustCertificatesZeroTrustCertificateDetailsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustCertificatesZeroTrustCertificateDetailsBadRequest = {code: int; message: string}
-
 type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequest =
     { errors: Option<list<ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestErrors>>
       messages: Option<list<ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestMessages>>
@@ -2659,7 +2654,6 @@ type ZeroTrustCertificatesActivateZeroTrustCertificate =
 type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestErrors = { code: int; message: string }
 type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustCertificatesDeactivateZeroTrustCertificateBadRequest = {code: int; message: string}
-
 type MessagesFromZeroTrustCertificatesDeactivateZeroTrustCertificateBadRequest =
     {code: int; message: string}
 type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequest =
@@ -2708,7 +2702,6 @@ type ZeroTrustListsListZeroTrustLists_BadRequestErrors = { code: int; message: s
 type ZeroTrustListsListZeroTrustLists_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustListsListZeroTrustListsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustListsListZeroTrustListsBadRequest = {code: int; message: string}
-
 type ZeroTrustListsListZeroTrustLists_BadRequest =
     { errors: Option<list<ZeroTrustListsListZeroTrustLists_BadRequestErrors>>
       messages: Option<list<ZeroTrustListsListZeroTrustLists_BadRequestMessages>>
@@ -2774,7 +2767,6 @@ type ZeroTrustListsCreateZeroTrustList_BadRequestResult =
 
 type ErrorsFromZeroTrustListsCreateZeroTrustListBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustListsCreateZeroTrustListBadRequest = {code: int; message: string}
-
 type ZeroTrustListsCreateZeroTrustList_BadRequest =
     { errors: Option<list<ZeroTrustListsCreateZeroTrustList_BadRequestErrors>>
       messages: Option<list<ZeroTrustListsCreateZeroTrustList_BadRequestMessages>>
@@ -2793,7 +2785,6 @@ type ZeroTrustListsDeleteZeroTrustList_BadRequestErrors = { code: int; message: 
 type ZeroTrustListsDeleteZeroTrustList_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustListsDeleteZeroTrustListBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustListsDeleteZeroTrustListBadRequest = {code: int; message: string}
-
 type ZeroTrustListsDeleteZeroTrustList_BadRequest =
     { errors: Option<list<ZeroTrustListsDeleteZeroTrustList_BadRequestErrors>>
       messages: Option<list<ZeroTrustListsDeleteZeroTrustList_BadRequestMessages>>
@@ -2812,7 +2803,6 @@ type ZeroTrustListsZeroTrustListDetails_BadRequestErrors = { code: int; message:
 type ZeroTrustListsZeroTrustListDetails_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustListsZeroTrustListDetailsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustListsZeroTrustListDetailsBadRequest = {code: int; message: string}
-
 type ZeroTrustListsZeroTrustListDetails_BadRequest =
     { errors: Option<list<ZeroTrustListsZeroTrustListDetails_BadRequestErrors>>
       messages: Option<list<ZeroTrustListsZeroTrustListDetails_BadRequestMessages>>
@@ -2847,7 +2837,6 @@ type ZeroTrustListsPatchZeroTrustList_BadRequestErrors = { code: int; message: s
 type ZeroTrustListsPatchZeroTrustList_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustListsPatchZeroTrustListBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustListsPatchZeroTrustListBadRequest = {code: int; message: string}
-
 type ZeroTrustListsPatchZeroTrustList_BadRequest =
     { errors: Option<list<ZeroTrustListsPatchZeroTrustList_BadRequestErrors>>
       messages: Option<list<ZeroTrustListsPatchZeroTrustList_BadRequestMessages>>
@@ -2887,7 +2876,6 @@ type ZeroTrustListsUpdateZeroTrustList_BadRequestErrors = { code: int; message: 
 type ZeroTrustListsUpdateZeroTrustList_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustListsUpdateZeroTrustListBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustListsUpdateZeroTrustListBadRequest = {code: int; message: string}
-
 type ZeroTrustListsUpdateZeroTrustList_BadRequest =
     { errors: Option<list<ZeroTrustListsUpdateZeroTrustList_BadRequestErrors>>
       messages: Option<list<ZeroTrustListsUpdateZeroTrustList_BadRequestMessages>>
@@ -2917,7 +2905,6 @@ type ZeroTrustListsZeroTrustListItems_BadRequestResultinfo =
 
 type ErrorsFromZeroTrustListsZeroTrustListItemsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustListsZeroTrustListItemsBadRequest = {code: int; message: string}
-
 type ZeroTrustListsZeroTrustListItems_BadRequest =
     { errors: Option<list<ZeroTrustListsZeroTrustListItems_BadRequestErrors>>
       messages: Option<list<ZeroTrustListsZeroTrustListItems_BadRequestMessages>>
@@ -3115,7 +3102,6 @@ type ZeroTrustGatewayPacfilesList_BadRequestResult =
 
 type ErrorsFromZeroTrustGatewayPacfilesListBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayPacfilesListBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayPacfilesList_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesList_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayPacfilesList_BadRequestMessages>>
@@ -3152,7 +3138,6 @@ type ZeroTrustGatewayPacfilesCreatePacfile_BadRequestErrors = { code: int; messa
 type ZeroTrustGatewayPacfilesCreatePacfile_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayPacfilesCreatePacfileBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayPacfilesCreatePacfileBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayPacfilesCreatePacfile_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesCreatePacfile_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayPacfilesCreatePacfile_BadRequestMessages>>
@@ -3171,7 +3156,6 @@ type ZeroTrustGatewayPacfilesDelete_BadRequestErrors = { code: int; message: str
 type ZeroTrustGatewayPacfilesDelete_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayPacfilesDeleteBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayPacfilesDeleteBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayPacfilesDelete_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesDelete_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayPacfilesDelete_BadRequestMessages>>
@@ -3190,7 +3174,6 @@ type ZeroTrustGatewayPacfilesDetails_BadRequestErrors = { code: int; message: st
 type ZeroTrustGatewayPacfilesDetails_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayPacfilesDetailsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayPacfilesDetailsBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayPacfilesDetails_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesDetails_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayPacfilesDetails_BadRequestMessages>>
@@ -3224,7 +3207,6 @@ type ZeroTrustGatewayPacfilesUpdate_BadRequestErrors = { code: int; message: str
 type ZeroTrustGatewayPacfilesUpdate_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayPacfilesUpdateBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayPacfilesUpdateBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayPacfilesUpdate_BadRequest =
     { errors: Option<list<ZeroTrustGatewayPacfilesUpdate_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayPacfilesUpdate_BadRequestMessages>>
@@ -3243,7 +3225,6 @@ type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestErrors = { code:
 type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayProxyEndpointsListProxyEndpointsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayProxyEndpointsListProxyEndpointsBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestMessages>>
@@ -3263,7 +3244,6 @@ type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestErrors = { code
 type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayProxyEndpointsCreateProxyEndpointBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayProxyEndpointsCreateProxyEndpointBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestMessages>>
@@ -3282,7 +3262,6 @@ type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestErrors = { code
 type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayProxyEndpointsDeleteProxyEndpointBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayProxyEndpointsDeleteProxyEndpointBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestMessages>>
@@ -3301,7 +3280,6 @@ type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestErrors = { cod
 type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayProxyEndpointsProxyEndpointDetailsBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayProxyEndpointsProxyEndpointDetailsBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestMessages>>
@@ -3328,7 +3306,6 @@ type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestErrors = { code
 type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayProxyEndpointsUpdateProxyEndpointBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayProxyEndpointsUpdateProxyEndpointBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequest =
     { errors: Option<list<ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestMessages>>
@@ -3347,7 +3324,6 @@ type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestErrors = { code: i
 type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayRulesListZeroTrustGatewayRulesBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayRulesListZeroTrustGatewayRulesBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequest =
     { errors: Option<list<ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestMessages>>
@@ -3422,7 +3398,6 @@ type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestErrors = { code: 
 type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayRulesCreateZeroTrustGatewayRuleBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayRulesCreateZeroTrustGatewayRuleBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequest =
     { errors: Option<list<ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestMessages>>
@@ -3440,7 +3415,6 @@ type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule =
 type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestErrors = { code: int; message: string }
 type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayRulesListZeroTrustGatewayRulesTenantBadRequest = {code: int; message: string}
-
 type MessagesFromZeroTrustGatewayRulesListZeroTrustGatewayRulesTenantBadRequest =
     {code: int; message: string}
 type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequest =
@@ -3462,7 +3436,6 @@ type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestErrors = { code: 
 type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestMessages = { code: int; message: string }
 type ErrorsFromZeroTrustGatewayRulesDeleteZeroTrustGatewayRuleBadRequest = {code: int; message: string}
 type MessagesFromZeroTrustGatewayRulesDeleteZeroTrustGatewayRuleBadRequest = {code: int; message: string}
-
 type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequest =
     { errors: Option<list<ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestErrors>>
       messages: Option<list<ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestMessages>>

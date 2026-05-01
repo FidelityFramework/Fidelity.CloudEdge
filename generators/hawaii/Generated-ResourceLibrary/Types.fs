@@ -177,15 +177,15 @@ type ``alexandriaapi-response-common`` =
           success = success }
 
 type alexandriaapiresponsecommonfailure =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Indicates whether the API call was successful.
       success: bool }
     ///Creates an instance of alexandriaapiresponsecommonfailure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): alexandriaapiresponsecommonfailure =
         { errors = errors
           messages = messages
@@ -196,7 +196,7 @@ type alexandriaapplication =
     { ///Confidence score for the application. Returns -1 when no score is available.
       application_confidence_score: alexandriaapplicationconfidencescore
       ///Returns the score composition breakdown for the application.
-      application_score_composition: Option<Newtonsoft.Json.Linq.JObject>
+      application_score_composition: Option<obj>
       ///Returns the application source.
       application_source: alexandriaapplicationsource
       ///Returns the application type.

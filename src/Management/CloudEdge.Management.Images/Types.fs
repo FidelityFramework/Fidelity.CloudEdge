@@ -402,6 +402,36 @@ type imagesimagevariantdefinition =
           neverRequireSignedURLs = None
           options = options }
 
+type imagesimagevariantflatresponseErrors =
+    { code: int
+      message: string }
+    ///Creates an instance of imagesimagevariantflatresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): imagesimagevariantflatresponseErrors =
+        { code = code; message = message }
+
+type imagesimagevariantflatresponseMessages =
+    { code: int
+      message: string }
+    ///Creates an instance of imagesimagevariantflatresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): imagesimagevariantflatresponseMessages =
+        { code = code; message = message }
+
+type imagesimagevariantflatresponse =
+    { errors: list<imagesimagevariantflatresponseErrors>
+      messages: list<imagesimagevariantflatresponseMessages>
+      result: imagesimagevariantdefinition
+      ///Whether the API call was successful
+      success: bool }
+    ///Creates an instance of imagesimagevariantflatresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<imagesimagevariantflatresponseErrors>,
+                          messages: list<imagesimagevariantflatresponseMessages>,
+                          result: imagesimagevariantdefinition,
+                          success: bool): imagesimagevariantflatresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
 type imagesimagevariantlistresponseErrors =
     { code: int
       message: string }
@@ -707,6 +737,13 @@ type CloudflareImagesVariantsUpdateAVariant =
     ///Update a variant response
     | OK of payload: imagesimagevariantsimpleresponse
     ///Update a variant response failure
+    | BadRequest of payload: string
+
+[<RequireQualifiedAccess>]
+type CloudflareImagesVariantsVariantDetailsFlat =
+    ///Variant details flat response
+    | OK of payload: imagesimagevariantflatresponse
+    ///Variant details flat response failure
     | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]

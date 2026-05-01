@@ -240,10 +240,10 @@ type Resource =
       id: Option<string>
       ///The Cloudflare product associated with the resource.
       product: Option<string>
-      request: Option<Newtonsoft.Json.Linq.JObject>
-      response: Option<Newtonsoft.Json.Linq.JObject>
+      request: Option<obj>
+      response: Option<obj>
       ///The scope of the resource.
-      scope: Option<Newtonsoft.Json.Linq.JObject>
+      scope: Option<obj>
       ///The type of the resource.
       ``type``: Option<string> }
     ///Creates an instance of Resource with all optional fields initialized to None. The required fields are parameters of this function
@@ -258,7 +258,7 @@ type Resource =
 type ``aaaaudit-logs-v2-org`` =
     { ///Provides information about the action performed.
       action: Option<``aaaaudit-log-action``>
-      actor: Option<Newtonsoft.Json.Linq.JToken>
+      actor: Option<obj>
       ///A unique identifier for the audit log entry.
       id: Option<``aaaschemas-identifier``>
       ///Contains organization related information.
@@ -422,15 +422,15 @@ type ``iamapi-response-common`` =
           success = success }
 
 type ``iamapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of iamapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``iamapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -607,7 +607,7 @@ type iamsingleorganizationresponse =
       messages: list<iamsingleorganizationresponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of iamsingleorganizationresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<iamsingleorganizationresponseErrors>,
                           messages: list<iamsingleorganizationresponseMessages>,
@@ -748,14 +748,14 @@ type Parent =
 ///References an Organization in the Cloudflare data model.
 type ``organizations-apiOrganization`` =
     { create_time: System.DateTimeOffset
-      id: Newtonsoft.Json.Linq.JToken
+      id: string
       meta: Map<string, string>
       name: string
       parent: Option<Parent>
       profile: Option<``organizations-apiProfile``> }
     ///Creates an instance of organizations-apiOrganization with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (create_time: System.DateTimeOffset,
-                          id: Newtonsoft.Json.Linq.JToken,
+                          id: string,
                           meta: Map<string, string>,
                           name: string): ``organizations-apiOrganization`` =
         { create_time = create_time
@@ -816,12 +816,12 @@ type ``organizations-apiProfile`` =
           external_metadata = external_metadata }
 
 type ``organizations-apiProfileResponse`` =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: ``organizations-apiProfile``
       success: bool }
     ///Creates an instance of organizations-apiProfileResponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JArray,
+    static member Create (errors: list<obj>,
                           messages: list<``organizations-apiV4Message``>,
                           result: ``organizations-apiProfile``,
                           success: bool): ``organizations-apiProfileResponse`` =
@@ -833,7 +833,7 @@ type ``organizations-apiProfileResponse`` =
 type ``organizations-apiV4ErrorResponse`` =
     { errors: list<``organizations-apiV4Message``>
       messages: list<``organizations-apiV4Message``>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+      result: Option<Map<string, obj>>
       success: bool }
     ///Creates an instance of organizations-apiV4ErrorResponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``organizations-apiV4Message``>,
@@ -853,7 +853,7 @@ type ``organizations-apiV4Message`` =
 
 type ``resource-sharingapi-response-collection`` =
     { errors: Option<``resource-sharingv4errors``>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool>
       result_info: Option<``resource-sharingresultinfo``> }
@@ -866,7 +866,7 @@ type ``resource-sharingapi-response-collection`` =
 
 type ``resource-sharingapi-response-common`` =
     { errors: ``resource-sharingv4errors``
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of resource-sharingapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
@@ -876,12 +876,12 @@ type ``resource-sharingapi-response-common`` =
           success = success }
 
 type ``resource-sharingapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: obj
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of resource-sharingapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken, result: Newtonsoft.Json.Linq.JObject, success: bool): ``resource-sharingapi-response-common-failure`` =
+    static member Create (errors: list<Errors>, result: obj, success: bool): ``resource-sharingapi-response-common-failure`` =
         { errors = errors
           result = result
           success = success }
@@ -965,7 +965,7 @@ type ``resource-sharingshareresourceobject`` =
       ///Share Resource identifier.
       id: ``resource-sharingresourceid``
       ///Resource Metadata.
-      meta: Newtonsoft.Json.Linq.JObject
+      meta: obj
       ///When the share was modified.
       modified: ``resource-sharingmodified``
       ///Account identifier.
@@ -981,7 +981,7 @@ type ``resource-sharingshareresourceobject`` =
     ///Creates an instance of resource-sharingshareresourceobject with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (created: ``resource-sharingcreated``,
                           id: ``resource-sharingresourceid``,
-                          meta: Newtonsoft.Json.Linq.JObject,
+                          meta: obj,
                           modified: ``resource-sharingmodified``,
                           resource_account_id: ``resource-sharingaccountid``,
                           resource_id: ``resource-sharingresourceresourceid``,
@@ -1018,7 +1018,7 @@ type ``resource-sharingv4error`` =
     static member Create (code: int, message: string): ``resource-sharingv4error`` = { code = code; message = message }
 
 type OrganizationListOrganizations_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: list<``organizations-apiOrganization``>
       result_info: ``organizations-apiPageTokenResultInfo``
@@ -1032,7 +1032,7 @@ type OrganizationListOrganizations =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type OrganizationsCreateUserOrganization_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       ///References an Organization in the Cloudflare data model.
       result: ``organizations-apiOrganization``
@@ -1046,7 +1046,7 @@ type OrganizationsCreateUserOrganization =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type OrganizationsDelete_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: ``organizations-apiDeleteOrganizationResponse``
       success: bool }
@@ -1059,7 +1059,7 @@ type OrganizationsDelete =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type OrganizationsRetrieve_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       ///References an Organization in the Cloudflare data model.
       result: ``organizations-apiOrganization``
@@ -1073,7 +1073,7 @@ type OrganizationsRetrieve =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type OrganizationsModify_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       ///References an Organization in the Cloudflare data model.
       result: ``organizations-apiOrganization``
@@ -1087,7 +1087,7 @@ type OrganizationsModify =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type OrganizationsGetAccounts_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: list<``organizations-apiAccount``>
       result_info: ``organizations-apiPageTokenResultInfo``
@@ -1108,7 +1108,7 @@ type AuditLogsV2GetOrganizationAuditLogs =
     | BadRequest of payload: ``aaaschemas-api-response-common-failure``
 
 type MembersList_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: list<``organizations-apiMember``>
       result_info: ``organizations-apiPageTokenResultInfo``
@@ -1122,7 +1122,7 @@ type MembersList =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type MembersCreate_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: ``organizations-apiMember``
       success: bool }
@@ -1143,12 +1143,12 @@ type MembersDeletePayload =
 [<RequireQualifiedAccess>]
 type MembersDelete =
     ///There is no content to send for this request, but the headers may be useful.
-    | NoContent of payload: Newtonsoft.Json.Linq.JToken
+    | NoContent of payload: obj
     ///An unexpected error response.
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type MembersRetrieve_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: ``organizations-apiMember``
       success: bool }
@@ -1161,7 +1161,7 @@ type MembersRetrieve =
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 
 type MembersBatchCreate_OK =
-    { errors: Newtonsoft.Json.Linq.JArray
+    { errors: obj
       messages: list<``organizations-apiV4Message``>
       result: list<``organizations-apiMember``>
       success: bool }
@@ -1183,7 +1183,7 @@ type OrganizationsGetProfile =
 [<RequireQualifiedAccess>]
 type OrganizationsModifyProfile =
     ///There is no content to send for this request, but the headers may be useful.
-    | NoContent of payload: Newtonsoft.Json.Linq.JToken
+    | NoContent of payload: obj
     ///An unexpected error response.
     | BadRequest of payload: ``organizations-apiV4ErrorResponse``
 

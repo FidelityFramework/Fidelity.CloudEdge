@@ -32,7 +32,7 @@ type ``mqqueue-pull-batchArrayItem`` =
       id: Option<string>
       ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
       lease_id: Option<``mqlease-id``>
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       timestamp_ms: Option<float> }
     ///Creates an instance of mqqueue-pull-batchArrayItem with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``mqqueue-pull-batchArrayItem`` =
@@ -202,7 +202,7 @@ type Contenttype =
         | Json -> "json"
 
 type ``mqqueue-message-json`` =
-    { body: Option<Newtonsoft.Json.Linq.JObject>
+    { body: Option<obj>
       content_type: Option<Contenttype> }
     ///Creates an instance of mqqueue-message-json with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``mqqueue-message-json`` = { body = None; content_type = None }
@@ -219,6 +219,20 @@ type ``mqqueue-message-text`` =
       content_type: Option<``mqqueue-message-textContenttype``> }
     ///Creates an instance of mqqueue-message-text with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``mqqueue-message-text`` = { body = None; content_type = None }
+
+///Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.
+type ``mqqueue-metrics`` =
+    { ///The size in bytes of unacknowledged messages in the queue.
+      backlog_bytes: float
+      ///The number of unacknowledged messages in the queue.
+      backlog_count: float
+      ///Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown.
+      oldest_message_timestamp_ms: float }
+    ///Creates an instance of mqqueue-metrics with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (backlog_bytes: float, backlog_count: float, oldest_message_timestamp_ms: float): ``mqqueue-metrics`` =
+        { backlog_bytes = backlog_bytes
+          backlog_count = backlog_count
+          oldest_message_timestamp_ms = oldest_message_timestamp_ms }
 
 type ``mqqueue-settings`` =
     { ///Number of seconds to delay delivery of all messages to consumers.
@@ -542,7 +556,7 @@ type ``queues-create-consumerresponse`` =
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       ///Response body representing a consumer
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of queues-create-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``queues-create-consumerresponse`` =
         { errors = None
@@ -563,7 +577,7 @@ type ``queues-get-consumerresponse`` =
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       ///Response body representing a consumer
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of queues-get-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``queues-get-consumerresponse`` =
         { errors = None
@@ -584,9 +598,40 @@ type ``queues-update-consumerresponse`` =
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       ///Response body representing a consumer
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of queues-update-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``queues-update-consumerresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
+type ``queues-push-messageresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-push-messageresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-push-messageresponseErrors`` =
+        { code = code; message = message }
+
+type Metadata =
+    { ///Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.
+      metrics: Option<``mqqueue-metrics``> }
+    ///Creates an instance of Metadata with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Metadata = { metrics = None }
+
+type ``queues-push-messageresponseResult`` =
+    { metadata: Option<Metadata> }
+    ///Creates an instance of queues-push-messageresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-push-messageresponseResult`` = { metadata = None }
+
+type ``queues-push-messageresponse`` =
+    { errors: Option<list<``queues-push-messageresponseErrors``>>
+      messages: Option<``mqapi-v4-message``>
+      ///Indicates if the API call was successful or not.
+      success: Option<bool>
+      result: Option<``queues-push-messageresponseResult``> }
+    ///Creates an instance of queues-push-messageresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-push-messageresponse`` =
         { errors = None
           messages = None
           success = None
@@ -604,7 +649,8 @@ type ``queues-ack-messagesresponseResult`` =
       ackCount: Option<float>
       ///The number of messages that were succesfully retried.
       retryCount: Option<float>
-      warnings: Option<list<string>> }
+      ///Map of lease IDs to warning messages encountered during acknowledgement.
+      warnings: Option<Map<string, string>> }
     ///Creates an instance of queues-ack-messagesresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``queues-ack-messagesresponseResult`` =
         { ackCount = None
@@ -624,6 +670,37 @@ type ``queues-ack-messagesresponse`` =
           success = None
           result = None }
 
+type ``queues-push-messagesresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-push-messagesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-push-messagesresponseErrors`` =
+        { code = code; message = message }
+
+type ``queues-push-messagesresponseResultMetadata`` =
+    { ///Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.
+      metrics: Option<``mqqueue-metrics``> }
+    ///Creates an instance of queues-push-messagesresponseResultMetadata with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-push-messagesresponseResultMetadata`` = { metrics = None }
+
+type ``queues-push-messagesresponseResult`` =
+    { metadata: Option<``queues-push-messagesresponseResultMetadata``> }
+    ///Creates an instance of queues-push-messagesresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-push-messagesresponseResult`` = { metadata = None }
+
+type ``queues-push-messagesresponse`` =
+    { errors: Option<list<``queues-push-messagesresponseErrors``>>
+      messages: Option<``mqapi-v4-message``>
+      ///Indicates if the API call was successful or not.
+      success: Option<bool>
+      result: Option<``queues-push-messagesresponseResult``> }
+    ///Creates an instance of queues-push-messagesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-push-messagesresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
 type ``queues-pull-messagesresponseErrors`` =
     { code: int
       message: string }
@@ -637,7 +714,7 @@ type Messages =
       id: Option<string>
       ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
       lease_id: Option<``mqlease-id``>
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       timestamp_ms: Option<float> }
     ///Creates an instance of Messages with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Messages =
@@ -648,14 +725,22 @@ type Messages =
           metadata = None
           timestamp_ms = None }
 
+type ``queues-pull-messagesresponseResultMetadata`` =
+    { ///Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues.
+      metrics: Option<``mqqueue-metrics``> }
+    ///Creates an instance of queues-pull-messagesresponseResultMetadata with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-pull-messagesresponseResultMetadata`` = { metrics = None }
+
 type ``queues-pull-messagesresponseResult`` =
-    { ///The number of unacknowledged messages in the queue
+    { ///The number of unacknowledged messages in the queue.
       message_backlog_count: Option<float>
-      messages: Option<list<Messages>> }
+      messages: Option<list<Messages>>
+      metadata: Option<``queues-pull-messagesresponseResultMetadata``> }
     ///Creates an instance of queues-pull-messagesresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``queues-pull-messagesresponseResult`` =
         { message_backlog_count = None
-          messages = None }
+          messages = None
+          metadata = None }
 
 type ``queues-pull-messagesresponse`` =
     { errors: Option<list<``queues-pull-messagesresponseErrors``>>
@@ -824,8 +909,8 @@ type QueuesUpdateConsumer =
 
 [<RequireQualifiedAccess>]
 type QueuesPushMessage =
-    ///Successful message ingestion
-    | OK of payload: ``mqapi-v4-success``
+    ///Successful message ingestion.
+    | OK of payload: ``queues-push-messageresponse``
     ///Failure response
     | BadRequest of payload: ``mqapi-v4-failure``
 
@@ -860,8 +945,8 @@ type QueuesAckMessages =
 
 [<RequireQualifiedAccess>]
 type QueuesPushMessages =
-    ///Successful batch ingestion
-    | OK of payload: ``mqapi-v4-success``
+    ///Successful batch ingestion.
+    | OK of payload: ``queues-push-messagesresponse``
     ///Failure response
     | BadRequest of payload: ``mqapi-v4-failure``
 

@@ -13,11 +13,13 @@ type magic_identifier = magicidentifier
 type bytes = string
 type check = string
 type colo = string
+type custom = string
 type flow = string
 type ``magicacl-subnet`` = string
 type magicapp = string
 type node = string
 type results = string
+type tunnel = string
 
 ///Identifier.
 type dosidentifier = string
@@ -1099,13 +1101,16 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``dosapi-response-collection`` =
     { errors: Option<list<Errors>>
@@ -1168,15 +1173,15 @@ type ``dosapi-response-common`` =
           success = success }
 
 type ``dosapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of dosapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``dosapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -1225,13 +1230,16 @@ type ``dosdns-protection-rule-list-responseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of dosdns-protection-rule-list-responseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``dosdns-protection-rule-list-responseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``dosdns-protection-rule-list-response`` =
     { errors: list<``dosdns-protection-rule-list-responseErrors``>
@@ -1341,13 +1349,16 @@ type ``dosexpression-filter-list-responseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of dosexpression-filter-list-responseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``dosexpression-filter-list-responseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``dosexpression-filter-list-response`` =
     { errors: list<``dosexpression-filter-list-responseErrors``>
@@ -1457,13 +1468,16 @@ type ``dosinfra-prefix-list-responseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of dosinfra-prefix-list-responseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``dosinfra-prefix-list-responseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``dosinfra-prefix-list-response`` =
     { errors: list<``dosinfra-prefix-list-responseErrors``>
@@ -1573,13 +1587,16 @@ type ``dosprefix-list-responseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of dosprefix-list-responseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``dosprefix-list-responseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``dosprefix-list-response`` =
     { errors: list<``dosprefix-list-responseErrors``>
@@ -1738,13 +1755,16 @@ type ``dossyn-protection-rule-list-responseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of dossyn-protection-rule-list-responseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``dossyn-protection-rule-list-responseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``dossyn-protection-rule-list-response`` =
     { errors: list<``dossyn-protection-rule-list-responseErrors``>
@@ -1854,13 +1874,16 @@ type ``dostcp-flow-protection-rule-list-responseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of dostcp-flow-protection-rule-list-responseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``dostcp-flow-protection-rule-list-responseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``dostcp-flow-protection-rule-list-response`` =
     { errors: list<``dostcp-flow-protection-rule-list-responseErrors``>
@@ -1976,15 +1999,15 @@ type ``magic-transitapi-response-common`` =
           success = success }
 
 type ``magic-transitapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of magic-transitapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``magic-transitapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -2005,7 +2028,7 @@ type ``magic-transitcoloresult`` =
       error: Option<``magic-transiterror``>
       hops: Option<list<``magic-transithopresult``>>
       ///Aggregated statistics from all hops about the target.
-      target_summary: Option<Newtonsoft.Json.Linq.JObject>
+      target_summary: Option<obj>
       ///Total time of traceroute in ms.
       traceroute_time_ms: Option<``magic-transittraceroutetimems``> }
     ///Creates an instance of magic-transitcoloresult with all optional fields initialized to None. The required fields are parameters of this function
@@ -2276,7 +2299,7 @@ type ``magic-visibility-mnmapi-response-collectionMessages`` =
 type ``magic-visibility-mnmapi-response-collection`` =
     { errors: Option<list<``magic-visibility-mnmapi-response-collectionErrors``>>
       messages: Option<list<``magic-visibility-mnmapi-response-collectionMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool>
       result_info: Option<``magic-visibility-mnmresultinfo``> }
@@ -2305,13 +2328,13 @@ type ``magic-visibility-mnmapi-response-commonMessages`` =
 type ``magic-visibility-mnmapi-response-common`` =
     { errors: list<``magic-visibility-mnmapi-response-commonErrors``>
       messages: list<``magic-visibility-mnmapi-response-commonMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magic-visibility-mnmapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magic-visibility-mnmapi-response-commonErrors``>,
                           messages: list<``magic-visibility-mnmapi-response-commonMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``magic-visibility-mnmapi-response-common`` =
         { errors = errors
           messages = messages
@@ -2319,15 +2342,15 @@ type ``magic-visibility-mnmapi-response-common`` =
           success = success }
 
 type ``magic-visibility-mnmapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magic-visibility-mnmapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``magic-visibility-mnmapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -2351,7 +2374,7 @@ type ``magic-visibility-mnmapi-response-singleMessages`` =
 type ``magic-visibility-mnmapi-response-single`` =
     { errors: Option<list<``magic-visibility-mnmapi-response-singleErrors``>>
       messages: Option<list<``magic-visibility-mnmapi-response-singleMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool> }
     ///Creates an instance of magic-visibility-mnmapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
@@ -2395,7 +2418,7 @@ type ``magic-visibility-mnmmnmconfigsingleresponseMessages`` =
 type ``magic-visibility-mnmmnmconfigsingleresponse`` =
     { errors: Option<list<``magic-visibility-mnmmnmconfigsingleresponseErrors``>>
       messages: Option<list<``magic-visibility-mnmmnmconfigsingleresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool> }
     ///Creates an instance of magic-visibility-mnmmnmconfigsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
@@ -2427,7 +2450,7 @@ type ``magic-visibility-mnmmnmrule`` =
       ///The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
       duration: Option<``magic-visibility-mnmmnmruleduration``>
       ///The id of the rule. Must be unique.
-      id: Option<``magic-visibility-mnmruleidentifier``>
+      id: ``magic-visibility-mnmruleidentifier``
       ///The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
       name: ``magic-visibility-mnmmnmrulename``
       ///The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
@@ -2443,13 +2466,14 @@ type ``magic-visibility-mnmmnmrule`` =
       zscore_target: Option<``magic-visibility-mnmmnmrulezscoretarget``> }
     ///Creates an instance of magic-visibility-mnmmnmrule with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (automatic_advertisement: ``magic-visibility-mnmmnmruleautomaticadvertisement``,
+                          id: ``magic-visibility-mnmruleidentifier``,
                           name: ``magic-visibility-mnmmnmrulename``,
                           prefixes: ``magic-visibility-mnmmnmruleipprefixes``,
                           ``type``: ``magic-visibility-mnmmnmruletype``): ``magic-visibility-mnmmnmrule`` =
         { automatic_advertisement = automatic_advertisement
           bandwidth_threshold = None
           duration = None
-          id = None
+          id = id
           name = name
           packet_threshold = None
           prefix_match = None
@@ -2482,7 +2506,7 @@ type ``magic-visibility-mnmmnmruleadvertisementsingleresponseMessages`` =
 type ``magic-visibility-mnmmnmruleadvertisementsingleresponse`` =
     { errors: Option<list<``magic-visibility-mnmmnmruleadvertisementsingleresponseErrors``>>
       messages: Option<list<``magic-visibility-mnmmnmruleadvertisementsingleresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool> }
     ///Creates an instance of magic-visibility-mnmmnmruleadvertisementsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
@@ -2491,6 +2515,42 @@ type ``magic-visibility-mnmmnmruleadvertisementsingleresponse`` =
           messages = None
           result = None
           success = None }
+
+type ``magic-visibility-mnmmnmrulecreate`` =
+    { ///Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
+      automatic_advertisement: ``magic-visibility-mnmmnmruleautomaticadvertisement``
+      ///The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+      bandwidth_threshold: Option<``magic-visibility-mnmmnmrulebandwidththreshold``>
+      ///The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+      duration: Option<``magic-visibility-mnmmnmruleduration``>
+      ///The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
+      name: ``magic-visibility-mnmmnmrulename``
+      ///The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+      packet_threshold: Option<``magic-visibility-mnmmnmrulepacketthreshold``>
+      ///Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+      prefix_match: Option<``magic-visibility-mnmmnmruleprefixmatch``>
+      prefixes: ``magic-visibility-mnmmnmruleipprefixes``
+      ///MNM rule type.
+      ``type``: ``magic-visibility-mnmmnmruletype``
+      ///Level of sensitivity set for zscore rules.
+      zscore_sensitivity: Option<``magic-visibility-mnmmnmrulezscoresensitivity``>
+      ///Target of the zscore rule analysis.
+      zscore_target: Option<``magic-visibility-mnmmnmrulezscoretarget``> }
+    ///Creates an instance of magic-visibility-mnmmnmrulecreate with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (automatic_advertisement: ``magic-visibility-mnmmnmruleautomaticadvertisement``,
+                          name: ``magic-visibility-mnmmnmrulename``,
+                          prefixes: ``magic-visibility-mnmmnmruleipprefixes``,
+                          ``type``: ``magic-visibility-mnmmnmruletype``): ``magic-visibility-mnmmnmrulecreate`` =
+        { automatic_advertisement = automatic_advertisement
+          bandwidth_threshold = None
+          duration = None
+          name = name
+          packet_threshold = None
+          prefix_match = None
+          prefixes = prefixes
+          ``type`` = ``type``
+          zscore_sensitivity = None
+          zscore_target = None }
 
 type ``magic-visibility-mnmmnmrulescollectionresponseErrors`` =
     { code: int
@@ -2509,7 +2569,7 @@ type ``magic-visibility-mnmmnmrulescollectionresponseMessages`` =
 type ``magic-visibility-mnmmnmrulescollectionresponse`` =
     { errors: Option<list<``magic-visibility-mnmmnmrulescollectionresponseErrors``>>
       messages: Option<list<``magic-visibility-mnmmnmrulescollectionresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool>
       result_info: Option<``magic-visibility-mnmresultinfo``> }
@@ -2538,7 +2598,7 @@ type ``magic-visibility-mnmmnmrulessingleresponseMessages`` =
 type ``magic-visibility-mnmmnmrulessingleresponse`` =
     { errors: Option<list<``magic-visibility-mnmmnmrulessingleresponseErrors``>>
       messages: Option<list<``magic-visibility-mnmmnmrulessingleresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool> }
     ///Creates an instance of magic-visibility-mnmmnmrulessingleresponse with all optional fields initialized to None. The required fields are parameters of this function
@@ -2565,7 +2625,7 @@ type ``magic-visibility-mnmmnmvpcflowssingleresponseMessages`` =
 type ``magic-visibility-mnmmnmvpcflowssingleresponse`` =
     { errors: Option<list<``magic-visibility-mnmmnmvpcflowssingleresponseErrors``>>
       messages: Option<list<``magic-visibility-mnmmnmvpcflowssingleresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool> }
     ///Creates an instance of magic-visibility-mnmmnmvpcflowssingleresponse with all optional fields initialized to None. The required fields are parameters of this function
@@ -2608,7 +2668,7 @@ type ``magic-visibility-pcapsapi-response-collectionMessages`` =
 type ``magic-visibility-pcapsapi-response-collection`` =
     { errors: Option<list<``magic-visibility-pcapsapi-response-collectionErrors``>>
       messages: Option<list<``magic-visibility-pcapsapi-response-collectionMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool>
       result_info: Option<``magic-visibility-pcapsresultinfo``> }
@@ -2637,13 +2697,13 @@ type ``magic-visibility-pcapsapi-response-commonMessages`` =
 type ``magic-visibility-pcapsapi-response-common`` =
     { errors: list<``magic-visibility-pcapsapi-response-commonErrors``>
       messages: list<``magic-visibility-pcapsapi-response-commonMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of magic-visibility-pcapsapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magic-visibility-pcapsapi-response-commonErrors``>,
                           messages: list<``magic-visibility-pcapsapi-response-commonMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``magic-visibility-pcapsapi-response-common`` =
         { errors = errors
           messages = messages
@@ -2651,15 +2711,15 @@ type ``magic-visibility-pcapsapi-response-common`` =
           success = success }
 
 type ``magic-visibility-pcapsapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of magic-visibility-pcapsapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``magic-visibility-pcapsapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -2683,7 +2743,7 @@ type ``magic-visibility-pcapsapi-response-singleMessages`` =
 type ``magic-visibility-pcapsapi-response-single`` =
     { errors: Option<list<``magic-visibility-pcapsapi-response-singleErrors``>>
       messages: Option<list<``magic-visibility-pcapsapi-response-singleMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
     ///Creates an instance of magic-visibility-pcapsapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
@@ -2710,7 +2770,7 @@ type ``magic-visibility-pcapspcapscollectionresponseMessages`` =
 type ``magic-visibility-pcapspcapscollectionresponse`` =
     { errors: Option<list<``magic-visibility-pcapspcapscollectionresponseErrors``>>
       messages: Option<list<``magic-visibility-pcapspcapscollectionresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool>
       result_info: Option<``magic-visibility-pcapsresultinfo``> }
@@ -2759,7 +2819,7 @@ type ``magic-visibility-pcapspcapsownershipcollectionMessages`` =
 type ``magic-visibility-pcapspcapsownershipcollection`` =
     { errors: Option<list<``magic-visibility-pcapspcapsownershipcollectionErrors``>>
       messages: Option<list<``magic-visibility-pcapspcapsownershipcollectionMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool>
       result_info: Option<``magic-visibility-pcapsresultinfo``> }
@@ -2832,7 +2892,7 @@ type ``magic-visibility-pcapspcapsownershipsingleresponseMessages`` =
 type ``magic-visibility-pcapspcapsownershipsingleresponse`` =
     { errors: Option<list<``magic-visibility-pcapspcapsownershipsingleresponseErrors``>>
       messages: Option<list<``magic-visibility-pcapspcapsownershipsingleresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
     ///Creates an instance of magic-visibility-pcapspcapsownershipsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
@@ -2998,7 +3058,7 @@ type ``magic-visibility-pcapspcapssingleresponseMessages`` =
 type ``magic-visibility-pcapspcapssingleresponse`` =
     { errors: Option<list<``magic-visibility-pcapspcapssingleresponseErrors``>>
       messages: Option<list<``magic-visibility-pcapspcapssingleresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful.
       success: Option<bool> }
     ///Creates an instance of magic-visibility-pcapspcapssingleresponse with all optional fields initialized to None. The required fields are parameters of this function
@@ -3290,13 +3350,13 @@ type ``magicapi-response-commonMessages`` =
 type ``magicapi-response-common`` =
     { errors: list<``magicapi-response-commonErrors``>
       messages: list<``magicapi-response-commonMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magicapi-response-commonErrors``>,
                           messages: list<``magicapi-response-commonMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``magicapi-response-common`` =
         { errors = errors
           messages = messages
@@ -3304,15 +3364,15 @@ type ``magicapi-response-common`` =
           success = success }
 
 type ``magicapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``magicapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -3336,7 +3396,7 @@ type ``magicapi-response-singleMessages`` =
 type ``magicapi-response-single`` =
     { errors: Option<list<``magicapi-response-singleErrors``>>
       messages: Option<list<``magicapi-response-singleMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool> }
     ///Creates an instance of magicapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
@@ -3574,13 +3634,13 @@ type ``magicapps-response-objectMessages`` =
 type ``magicapps-response-object`` =
     { errors: list<``magicapps-response-objectErrors``>
       messages: list<``magicapps-response-objectMessages``>
-      result: Newtonsoft.Json.Linq.JObject
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicapps-response-object with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magicapps-response-objectErrors``>,
                           messages: list<``magicapps-response-objectMessages``>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: Map<string, obj>,
                           success: bool): ``magicapps-response-object`` =
         { errors = errors
           messages = messages
@@ -3689,13 +3749,13 @@ type ``magiccomponents-schemas-modifiedtunnelscollectionresponseMessages`` =
 type ``magiccomponents-schemas-modifiedtunnelscollectionresponse`` =
     { errors: list<``magiccomponents-schemas-modifiedtunnelscollectionresponseErrors``>
       messages: list<``magiccomponents-schemas-modifiedtunnelscollectionresponseMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magiccomponents-schemas-modifiedtunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magiccomponents-schemas-modifiedtunnelscollectionresponseErrors``>,
                           messages: list<``magiccomponents-schemas-modifiedtunnelscollectionresponseMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``magiccomponents-schemas-modifiedtunnelscollectionresponse`` =
         { errors = errors
           messages = messages
@@ -3792,13 +3852,13 @@ type ``magiccomponents-schemas-tunnelscollectionresponseMessages`` =
 type ``magiccomponents-schemas-tunnelscollectionresponse`` =
     { errors: list<``magiccomponents-schemas-tunnelscollectionresponseErrors``>
       messages: list<``magiccomponents-schemas-tunnelscollectionresponseMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magiccomponents-schemas-tunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magiccomponents-schemas-tunnelscollectionresponseErrors``>,
                           messages: list<``magiccomponents-schemas-tunnelscollectionresponseMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``magiccomponents-schemas-tunnelscollectionresponse`` =
         { errors = errors
           messages = messages
@@ -3806,7 +3866,7 @@ type ``magiccomponents-schemas-tunnelscollectionresponse`` =
           success = success }
 
 type magiccreategretunnelrequest =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       bgp: Option<magicbgpconfig>
       ///The IP address assigned to the Cloudflare side of the GRE tunnel.
@@ -3815,7 +3875,7 @@ type magiccreategretunnelrequest =
       customer_gre_endpoint: magiccustomergreendpoint
       ///An optional description of the GRE tunnel.
       description: Option<``magicschemas-description``>
-      health_check: Option<Newtonsoft.Json.Linq.JToken>
+      health_check: Option<obj>
       ///A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
       interface_address: magicinterfaceaddress
       ///A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
@@ -3936,6 +3996,37 @@ type magiccustomremoteidentities =
     ///Creates an instance of magiccustomremoteidentities with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): magiccustomremoteidentities = { fqdn_id = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Type =
+    | [<CompiledName "text">] Text
+    | [<CompiledName "hex">] Hex
+    | [<CompiledName "ip">] Ip
+    | [<CompiledName "byte">] Byte
+    | [<CompiledName "short">] Short
+    | [<CompiledName "integer">] Integer
+    member this.Format() =
+        match this with
+        | Text -> "text"
+        | Hex -> "hex"
+        | Ip -> "ip"
+        | Byte -> "byte"
+        | Short -> "short"
+        | Integer -> "integer"
+
+///A custom DHCP option to include in DHCP responses.
+type magicdhcpoption =
+    { ///DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.
+      code: int
+      ///The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).
+      ``type``: Type
+      ///The option value, interpreted according to the type field.
+      value: string }
+    ///Creates an instance of magicdhcpoption with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, ``type``: Type, value: string): magicdhcpoption =
+        { code = code
+          ``type`` = ``type``
+          value = value }
+
 ///The configuration specific to GRE interconnects.
 type magicgre =
     { ///The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.
@@ -3944,7 +4035,7 @@ type magicgre =
     static member Create (): magicgre = { cloudflare_endpoint = None }
 
 type ``magicgre-tunnel`` =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       bgp: Option<magicbgpconfig>
       bgp_status: Option<magicbgpstatuswithstate>
@@ -3956,7 +4047,7 @@ type ``magicgre-tunnel`` =
       customer_gre_endpoint: magiccustomergreendpoint
       ///An optional description of the GRE tunnel.
       description: Option<``magicschemas-description``>
-      health_check: Option<Newtonsoft.Json.Linq.JToken>
+      health_check: Option<obj>
       ///Identifier
       id: ``magicschemas-identifier``
       ///A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
@@ -3994,7 +4085,7 @@ type ``magicgre-tunnel`` =
           ttl = None }
 
 type magicgretunneladdsinglerequest =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       ///The IP address assigned to the Cloudflare side of the GRE tunnel.
       cloudflare_gre_endpoint: magiccloudflaregreendpoint
@@ -4002,7 +4093,7 @@ type magicgretunneladdsinglerequest =
       customer_gre_endpoint: magiccustomergreendpoint
       ///An optional description of the GRE tunnel.
       description: Option<``magicschemas-description``>
-      health_check: Option<Newtonsoft.Json.Linq.JToken>
+      health_check: Option<obj>
       ///A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
       interface_address: magicinterfaceaddress
       ///A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
@@ -4030,7 +4121,7 @@ type magicgretunneladdsinglerequest =
           ttl = None }
 
 type magicgretunnelupdaterequest =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       ///The IP address assigned to the Cloudflare side of the GRE tunnel.
       cloudflare_gre_endpoint: Option<magiccloudflaregreendpoint>
@@ -4038,7 +4129,7 @@ type magicgretunnelupdaterequest =
       customer_gre_endpoint: Option<magiccustomergreendpoint>
       ///An optional description of the GRE tunnel.
       description: Option<``magicschemas-description``>
-      health_check: Option<Newtonsoft.Json.Linq.JToken>
+      health_check: Option<obj>
       ///A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
       interface_address: Option<magicinterfaceaddress>
       ///A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
@@ -4074,7 +4165,7 @@ type Rate =
         | High -> "high"
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type Type =
+type magichealthcheckbaseType =
     | [<CompiledName "reply">] Reply
     | [<CompiledName "request">] Request
     member this.Format() =
@@ -4088,9 +4179,9 @@ type magichealthcheckbase =
       ///How frequent the health check is run. The default value is `mid`.
       rate: Option<Rate>
       ///The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-      target: Option<Newtonsoft.Json.Linq.JToken>
+      target: Option<obj>
       ///The type of healthcheck to run, reply or request. The default value is `reply`.
-      ``type``: Option<Type> }
+      ``type``: Option<magichealthcheckbaseType> }
     ///Creates an instance of magichealthcheckbase with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): magichealthcheckbase =
         { enabled = None
@@ -4108,7 +4199,7 @@ type magichealthchecktarget =
     static member Create (): magichealthchecktarget = { effective = None; saved = None }
 
 type magicinterconnect =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       ///The name of the interconnect. The name cannot share a name with other tunnels.
       colo_name: Option<``magiccomponents-schemas-name``>
@@ -4130,7 +4221,8 @@ type magicinterconnect =
       ///The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.
       mtu: Option<``magicschemas-mtu``>
       ///The name of the interconnect. The name cannot share a name with other tunnels.
-      name: Option<``magiccomponents-schemas-name``> }
+      name: Option<``magiccomponents-schemas-name``>
+      virtual_port_reservation_id: Option<string> }
     ///Creates an instance of magicinterconnect with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): magicinterconnect =
         { automatic_return_routing = None
@@ -4144,7 +4236,8 @@ type magicinterconnect =
           interface_address6 = None
           modified_on = None
           mtu = None
-          name = None }
+          name = None
+          virtual_port_reservation_id = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type magicinterconnecthealthcheckRate =
@@ -4172,7 +4265,7 @@ type magicinterconnecthealthcheck =
       ///How frequent the health check is run. The default value is `mid`.
       rate: Option<magicinterconnecthealthcheckRate>
       ///The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-      target: Option<Newtonsoft.Json.Linq.JToken>
+      target: Option<obj>
       ///The type of healthcheck to run, reply or request. The default value is `reply`.
       ``type``: Option<magicinterconnecthealthcheckType> }
     ///Creates an instance of magicinterconnecthealthcheck with all optional fields initialized to None. The required fields are parameters of this function
@@ -4183,7 +4276,7 @@ type magicinterconnecthealthcheck =
           ``type`` = None }
 
 type magicinterconnecttunnelupdaterequest =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       ///An optional description of the interconnect.
       description: Option<``magicinterconnectcomponents-schemas-description``>
@@ -4195,7 +4288,9 @@ type magicinterconnecttunnelupdaterequest =
       ///A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
       interface_address6: Option<magicinterfaceaddress6>
       ///The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.
-      mtu: Option<``magicschemas-mtu``> }
+      mtu: Option<``magicschemas-mtu``>
+      ///The name of the interconnect. The name cannot share a name with other tunnels.
+      name: Option<``magiccomponents-schemas-name``> }
     ///Creates an instance of magicinterconnecttunnelupdaterequest with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): magicinterconnecttunnelupdaterequest =
         { automatic_return_routing = None
@@ -4204,12 +4299,13 @@ type magicinterconnecttunnelupdaterequest =
           health_check = None
           interface_address = None
           interface_address6 = None
-          mtu = None }
+          mtu = None
+          name = None }
 
 type ``magicipsec-tunnel`` =
     { ///When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
       allow_null_cipher: Option<magicallownullcipher>
-      ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+      ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       bgp: Option<magicbgpconfig>
       bgp_status: Option<magicbgpstatuswithstate>
@@ -4222,7 +4318,7 @@ type ``magicipsec-tunnel`` =
       customer_endpoint: Option<magiccustomeripsecendpoint>
       ///An optional description forthe IPsec tunnel.
       description: Option<``magiccomponents-schemas-description``>
-      health_check: Option<Newtonsoft.Json.Linq.JToken>
+      health_check: Option<obj>
       ///Identifier
       id: ``magicschemas-identifier``
       ///A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
@@ -4261,7 +4357,7 @@ type ``magicipsec-tunnel`` =
           replay_protection = None }
 
 type magicipsectunneladdrequest =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       bgp: Option<magicbgpconfig>
       ///The IP address assigned to the Cloudflare side of the IPsec tunnel.
@@ -4271,7 +4367,7 @@ type magicipsectunneladdrequest =
       customer_endpoint: Option<magiccustomeripsecendpoint>
       ///An optional description forthe IPsec tunnel.
       description: Option<``magiccomponents-schemas-description``>
-      health_check: Option<Newtonsoft.Json.Linq.JToken>
+      health_check: Option<obj>
       ///A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
       interface_address: Option<magicinterfaceaddress>
       ///A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
@@ -4298,7 +4394,7 @@ type magicipsectunneladdrequest =
           replay_protection = None }
 
 type magicipsectunneladdsinglerequest =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       bgp: Option<magicbgpconfig>
       ///The IP address assigned to the Cloudflare side of the IPsec tunnel.
@@ -4308,7 +4404,7 @@ type magicipsectunneladdsinglerequest =
       customer_endpoint: Option<magiccustomeripsecendpoint>
       ///An optional description forthe IPsec tunnel.
       description: Option<``magiccomponents-schemas-description``>
-      health_check: Option<Newtonsoft.Json.Linq.JToken>
+      health_check: Option<obj>
       ///A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
       interface_address: magicinterfaceaddress
       ///A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
@@ -4337,7 +4433,7 @@ type magicipsectunneladdsinglerequest =
           replay_protection = None }
 
 type magicipsectunnelupdaterequest =
-    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+    { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
       automatic_return_routing: Option<magicautomaticreturnrouting>
       bgp: Option<magicbgpconfig>
       ///The IP address assigned to the Cloudflare side of the IPsec tunnel.
@@ -4347,7 +4443,7 @@ type magicipsectunnelupdaterequest =
       customer_endpoint: Option<magiccustomeripsecendpoint>
       ///An optional description forthe IPsec tunnel.
       description: Option<``magiccomponents-schemas-description``>
-      health_check: Option<Newtonsoft.Json.Linq.JToken>
+      health_check: Option<obj>
       ///A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
       interface_address: Option<magicinterfaceaddress>
       ///A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
@@ -4464,7 +4560,9 @@ type magiclandhcprelay =
     static member Create (): magiclandhcprelay = { server_addresses = None }
 
 type magiclandhcpserver =
-    { ///A valid IPv4 address.
+    { ///Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+      dhcp_options: Option<list<magicdhcpoption>>
+      ///A valid IPv4 address.
       dhcp_pool_end: Option<``magicip-address``>
       ///A valid IPv4 address.
       dhcp_pool_start: Option<``magicip-address``>
@@ -4475,7 +4573,8 @@ type magiclandhcpserver =
       reservations: Option<Map<string, string>> }
     ///Creates an instance of magiclandhcpserver with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): magiclandhcpserver =
-        { dhcp_pool_end = None
+        { dhcp_options = None
+          dhcp_pool_end = None
           dhcp_pool_start = None
           dns_server = None
           dns_servers = None
@@ -4683,13 +4782,13 @@ type magicmodifiedtunnelscollectionresponseMessages =
 type magicmodifiedtunnelscollectionresponse =
     { errors: list<magicmodifiedtunnelscollectionresponseErrors>
       messages: list<magicmodifiedtunnelscollectionresponseMessages>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicmodifiedtunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<magicmodifiedtunnelscollectionresponseErrors>,
                           messages: list<magicmodifiedtunnelscollectionresponseMessages>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): magicmodifiedtunnelscollectionresponse =
         { errors = errors
           messages = messages
@@ -4713,13 +4812,13 @@ type magicmultipleroutedeleteresponseMessages =
 type magicmultipleroutedeleteresponse =
     { errors: list<magicmultipleroutedeleteresponseErrors>
       messages: list<magicmultipleroutedeleteresponseMessages>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicmultipleroutedeleteresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<magicmultipleroutedeleteresponseErrors>,
                           messages: list<magicmultipleroutedeleteresponseMessages>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): magicmultipleroutedeleteresponse =
         { errors = errors
           messages = messages
@@ -4743,13 +4842,13 @@ type magicmultipleroutemodifiedresponseMessages =
 type magicmultipleroutemodifiedresponse =
     { errors: list<magicmultipleroutemodifiedresponseErrors>
       messages: list<magicmultipleroutemodifiedresponseMessages>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicmultipleroutemodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<magicmultipleroutemodifiedresponseErrors>,
                           messages: list<magicmultipleroutemodifiedresponseMessages>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): magicmultipleroutemodifiedresponse =
         { errors = errors
           messages = messages
@@ -4849,13 +4948,13 @@ type magicpskgenerationresponseMessages =
 type magicpskgenerationresponse =
     { errors: list<magicpskgenerationresponseErrors>
       messages: list<magicpskgenerationresponseMessages>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicpskgenerationresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<magicpskgenerationresponseErrors>,
                           messages: list<magicpskgenerationresponseMessages>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): magicpskgenerationresponse =
         { errors = errors
           messages = messages
@@ -5124,13 +5223,13 @@ type magicroutescollectionresponseMessages =
 type magicroutescollectionresponse =
     { errors: list<magicroutescollectionresponseErrors>
       messages: list<magicroutescollectionresponseMessages>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicroutescollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<magicroutescollectionresponseErrors>,
                           messages: list<magicroutescollectionresponseMessages>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): magicroutescollectionresponse =
         { errors = errors
           messages = messages
@@ -5184,13 +5283,13 @@ type ``magicschemas-modifiedtunnelscollectionresponseMessages`` =
 type ``magicschemas-modifiedtunnelscollectionresponse`` =
     { errors: list<``magicschemas-modifiedtunnelscollectionresponseErrors``>
       messages: list<``magicschemas-modifiedtunnelscollectionresponseMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicschemas-modifiedtunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magicschemas-modifiedtunnelscollectionresponseErrors``>,
                           messages: list<``magicschemas-modifiedtunnelscollectionresponseMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``magicschemas-modifiedtunnelscollectionresponse`` =
         { errors = errors
           messages = messages
@@ -5325,13 +5424,13 @@ type ``magicschemas-tunnelscollectionresponseMessages`` =
 type ``magicschemas-tunnelscollectionresponse`` =
     { errors: list<``magicschemas-tunnelscollectionresponseErrors``>
       messages: list<``magicschemas-tunnelscollectionresponseMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magicschemas-tunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``magicschemas-tunnelscollectionresponseErrors``>,
                           messages: list<``magicschemas-tunnelscollectionresponseMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``magicschemas-tunnelscollectionresponse`` =
         { errors = errors
           messages = messages
@@ -5614,7 +5713,7 @@ type magictunnelhealthcheck =
       ///How frequent the health check is run. The default value is `mid`.
       rate: Option<magictunnelhealthcheckRate>
       ///The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-      target: Option<Newtonsoft.Json.Linq.JToken>
+      target: Option<obj>
       ///The type of healthcheck to run, reply or request. The default value is `reply`.
       ``type``: Option<magictunnelhealthcheckType>
       ///The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
@@ -5717,13 +5816,13 @@ type magictunnelscollectionresponseMessages =
 type magictunnelscollectionresponse =
     { errors: list<magictunnelscollectionresponseErrors>
       messages: list<magictunnelscollectionresponseMessages>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of magictunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<magictunnelscollectionresponseErrors>,
                           messages: list<magictunnelscollectionresponseMessages>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): magictunnelscollectionresponse =
         { errors = errors
           messages = messages
@@ -5965,7 +6064,7 @@ type mcnbadresponse =
     { messages: Option<list<mcnerror>>
       success: Option<bool>
       errors: Option<list<mcnerror>>
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of mcnbadresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): mcnbadresponse =
         { messages = None
@@ -6406,7 +6505,7 @@ type mcnerror =
 type mcnerrormeta =
     { l10n_key: Option<string>
       loggable_error: Option<string>
-      template_data: Option<Newtonsoft.Json.Linq.JObject>
+      template_data: Option<Map<string, obj>>
       trace_id: Option<string> }
     ///Creates an instance of mcnerrormeta with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): mcnerrormeta =
@@ -6486,9 +6585,9 @@ type mcngoodresponsecollection =
 
 type mcnlistitem =
     { item_type: string
-      list: Newtonsoft.Json.Linq.JArray }
+      list: list<obj> }
     ///Creates an instance of mcnlistitem with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (item_type: string, list: Newtonsoft.Json.Linq.JArray): mcnlistitem =
+    static member Create (item_type: string, list: list<obj>): mcnlistitem =
         { item_type = item_type; list = list }
 
 type mcnlistonrampsresponse =
@@ -6671,12 +6770,12 @@ type mcnproviderinitialsetupresponse =
     { messages: list<mcnerror>
       success: bool
       errors: list<mcnerror>
-      result: Newtonsoft.Json.Linq.JObject }
+      result: Map<string, obj> }
     ///Creates an instance of mcnproviderinitialsetupresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (messages: list<mcnerror>,
                           success: bool,
                           errors: list<mcnerror>,
-                          result: Newtonsoft.Json.Linq.JObject): mcnproviderinitialsetupresponse =
+                          result: Map<string, obj>): mcnproviderinitialsetupresponse =
         { messages = messages
           success = success
           errors = errors
@@ -6814,7 +6913,7 @@ type mcnrefreshcatalogsyncresponse =
 type mcnresourcedetails =
     { account_id: mcnaccountid
       cloud_type: mcncloudtype
-      config: Newtonsoft.Json.Linq.JObject
+      config: Map<string, obj>
       deployment_provider: mcnproviderid
       id: mcnresourceid
       managed: bool
@@ -6829,14 +6928,14 @@ type mcnresourcedetails =
       resource_group: string
       resource_type: mcnresourcetype
       sections: list<mcnresourcedetailssection>
-      state: Newtonsoft.Json.Linq.JObject
+      state: Map<string, obj>
       tags: Map<string, string>
       updated_at: string
       url: string }
     ///Creates an instance of mcnresourcedetails with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (account_id: mcnaccountid,
                           cloud_type: mcncloudtype,
-                          config: Newtonsoft.Json.Linq.JObject,
+                          config: Map<string, obj>,
                           deployment_provider: mcnproviderid,
                           id: mcnresourceid,
                           managed: bool,
@@ -6850,7 +6949,7 @@ type mcnresourcedetails =
                           resource_group: string,
                           resource_type: mcnresourcetype,
                           sections: list<mcnresourcedetailssection>,
-                          state: Newtonsoft.Json.Linq.JObject,
+                          state: Map<string, obj>,
                           tags: Map<string, string>,
                           updated_at: string,
                           url: string): mcnresourcedetails =
@@ -6893,7 +6992,7 @@ type mcnresourcedetailssection =
 type mcnresourcedetailssectionitem =
     { helpText: Option<string>
       name: Option<string>
-      value: Option<Newtonsoft.Json.Linq.JObject> }
+      value: Option<Map<string, obj>> }
     ///Creates an instance of mcnresourcedetailssectionitem with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): mcnresourcedetailssectionitem =
         { helpText = None
@@ -7156,7 +7255,7 @@ type mconnbadresponse =
     { messages: Option<list<mconncodedmessage>>
       success: Option<bool>
       errors: Option<list<mconncodedmessage>>
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of mconnbadresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): mconnbadresponse =
         { messages = None
@@ -7351,11 +7450,24 @@ type mconncustomerconnectorupdateresponse =
           errors = errors
           result = result }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type mconncustomerdeviceType =
+    | [<CompiledName "MANAGED">] MANAGED
+    | [<CompiledName "LICENSED">] LICENSED
+    member this.Format() =
+        match this with
+        | MANAGED -> "MANAGED"
+        | LICENSED -> "LICENSED"
+
 type mconncustomerdevice =
     { id: mconnuuid
-      serial_number: Option<string> }
+      serial_number: Option<string>
+      ``type``: Option<mconncustomerdeviceType> }
     ///Creates an instance of mconncustomerdevice with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (id: mconnuuid): mconncustomerdevice = { id = id; serial_number = None }
+    static member Create (id: mconnuuid): mconncustomerdevice =
+        { id = id
+          serial_number = None
+          ``type`` = None }
 
 ///Exactly one of id, serial_number, or provision_license must be provided.
 type mconncustomerdeviceoptions =
@@ -7511,14 +7623,16 @@ type mconngoodresponse =
 
 ///Recorded Event
 type mconnrecordedevent =
-    { e: Newtonsoft.Json.Linq.JObject
+    { e: obj
       ///Sequence number, used to order events with the same timestamp
       n: float
       ///Time the Event was recorded (seconds since the Unix epoch)
-      t: float }
+      t: float
+      ///Version
+      v: Option<string> }
     ///Creates an instance of mconnrecordedevent with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (e: Newtonsoft.Json.Linq.JObject, n: float, t: float): mconnrecordedevent =
-        { e = e; n = n; t = t }
+    static member Create (e: obj, n: float, t: float): mconnrecordedevent =
+        { e = e; n = n; t = t; v = None }
 
 type mconnresponse =
     { messages: list<mconncodedmessage>
@@ -7569,8 +7683,12 @@ type mconnsnapshot =
       cpu_time_system_ms: Option<float>
       ///Time spent in user mode (milliseconds)
       cpu_time_user_ms: Option<float>
+      ///Number of network operations applied during state transition
+      delta: Option<float>
       dhcp_leases: Option<list<mconnsnapshotdhcplease>>
       disks: Option<list<mconnsnapshotdisk>>
+      ///Simulated number of network operations applied during state transition
+      epsilon: Option<float>
       ///Name of high availability state
       ha_state: Option<string>
       ///Numeric value associated with high availability state (0 = disabled, 1 = active, 2 = standby, 3 = stopped, 4 = fault)
@@ -7722,6 +7840,8 @@ type mconnsnapshot =
       memory_z_swapped_bytes: Option<float>
       mounts: Option<list<mconnsnapshotmount>>
       netdevs: Option<list<mconnsnapshotnetdev>>
+      ///Platform identifier
+      platform: Option<string>
       ///Number of ICMP Address Mask Reply messages received
       snmp_icmp_in_addr_mask_reps: Option<float>
       ///Number of ICMP Address Mask Request messages received
@@ -7889,8 +8009,10 @@ type mconnsnapshot =
           cpu_time_steal_ms = None
           cpu_time_system_ms = None
           cpu_time_user_ms = None
+          delta = None
           dhcp_leases = None
           disks = None
+          epsilon = None
           ha_state = None
           ha_value = None
           interfaces = None
@@ -7968,6 +8090,7 @@ type mconnsnapshot =
           memory_z_swapped_bytes = None
           mounts = None
           netdevs = None
+          platform = None
           snmp_icmp_in_addr_mask_reps = None
           snmp_icmp_in_addr_masks = None
           snmp_icmp_in_csum_errors = None
@@ -8053,8 +8176,6 @@ type mconnsnapshotbond =
 type mconnsnapshotdhcplease =
     { ///Client ID of the device the IP Address was leased to
       client_id: string
-      ///Connector identifier
-      connector_id: Option<string>
       ///Expiry time of the DHCP lease (seconds since the Unix epoch)
       expiry_time: float
       ///Hostname of the device the IP Address was leased to
@@ -8073,7 +8194,6 @@ type mconnsnapshotdhcplease =
                           ip_address: string,
                           mac_address: string): mconnsnapshotdhcplease =
         { client_id = client_id
-          connector_id = None
           expiry_time = expiry_time
           hostname = hostname
           interface_name = interface_name
@@ -8082,9 +8202,7 @@ type mconnsnapshotdhcplease =
 
 ///Snapshot Disk
 type mconnsnapshotdisk =
-    { ///Connector identifier
-      connector_id: Option<string>
-      ///Discards completed successfully
+    { ///Discards completed successfully
       discards: Option<float>
       ///Discards merged
       discards_merged: Option<float>
@@ -8139,8 +8257,7 @@ type mconnsnapshotdisk =
                           weighted_time_in_progress_ms: float,
                           writes: float,
                           writes_merged: float): mconnsnapshotdisk =
-        { connector_id = None
-          discards = None
+        { discards = None
           discards_merged = None
           flushes = None
           in_progress = in_progress
@@ -8163,9 +8280,7 @@ type mconnsnapshotdisk =
 
 ///Snapshot Interface
 type mconnsnapshotinterface =
-    { ///Connector identifier
-      connector_id: Option<string>
-      ip_addresses: Option<list<mconnsnapshotinterfaceaddress>>
+    { ip_addresses: Option<list<mconnsnapshotinterfaceaddress>>
       ///Name of the network interface
       name: string
       ///UP/DOWN state of the network interface
@@ -8174,24 +8289,20 @@ type mconnsnapshotinterface =
       speed: Option<float> }
     ///Creates an instance of mconnsnapshotinterface with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: string, operstate: string): mconnsnapshotinterface =
-        { connector_id = None
-          ip_addresses = None
+        { ip_addresses = None
           name = name
           operstate = operstate
           speed = None }
 
 ///Snapshot Interface Address
 type mconnsnapshotinterfaceaddress =
-    { ///Connector identifier
-      connector_id: Option<string>
-      ///Name of the network interface
+    { ///Name of the network interface
       interface_name: string
       ///IP address of the network interface
       ip_address: string }
     ///Creates an instance of mconnsnapshotinterfaceaddress with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (interface_name: string, ip_address: string): mconnsnapshotinterfaceaddress =
-        { connector_id = None
-          interface_name = interface_name
+        { interface_name = interface_name
           ip_address = ip_address }
 
 type mconnsnapshotmetadata =
@@ -8206,8 +8317,8 @@ type mconnsnapshotmetadata =
 type mconnsnapshotmount =
     { ///Available disk size (bytes)
       available_bytes: Option<float>
-      ///Connector identifier
-      connector_id: Option<string>
+      ///Available inodes on filesystem
+      available_inodes: Option<float>
       ///File system on disk (EXT4, NTFS, etc.)
       file_system: string
       ///Determines whether the disk is read-only
@@ -8221,24 +8332,25 @@ type mconnsnapshotmount =
       ///Name of the disk mount
       name: string
       ///Total disk size (bytes)
-      total_bytes: Option<float> }
+      total_bytes: Option<float>
+      ///Total inodes on filesystem
+      total_inodes: Option<float> }
     ///Creates an instance of mconnsnapshotmount with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (file_system: string, kind: string, mount_point: string, name: string): mconnsnapshotmount =
         { available_bytes = None
-          connector_id = None
+          available_inodes = None
           file_system = file_system
           is_read_only = None
           is_removable = None
           kind = kind
           mount_point = mount_point
           name = name
-          total_bytes = None }
+          total_bytes = None
+          total_inodes = None }
 
 ///Snapshot Netdev
 type mconnsnapshotnetdev =
-    { ///Connector identifier
-      connector_id: Option<string>
-      ///Name of the network device
+    { ///Name of the network device
       name: string
       ///Total bytes received
       recv_bytes: float
@@ -8290,8 +8402,7 @@ type mconnsnapshotnetdev =
                           sent_errs: float,
                           sent_fifo: float,
                           sent_packets: float): mconnsnapshotnetdev =
-        { connector_id = None
-          name = name
+        { name = name
           recv_bytes = recv_bytes
           recv_compressed = recv_compressed
           recv_drop = recv_drop
@@ -8311,9 +8422,7 @@ type mconnsnapshotnetdev =
 
 ///Snapshot Thermal
 type mconnsnapshotthermal =
-    { ///Connector identifier
-      connector_id: Option<string>
-      ///Critical failure temperature of the component (degrees Celsius)
+    { ///Critical failure temperature of the component (degrees Celsius)
       critical_celcius: Option<float>
       ///Current temperature of the component (degrees Celsius)
       current_celcius: Option<float>
@@ -8323,17 +8432,14 @@ type mconnsnapshotthermal =
       max_celcius: Option<float> }
     ///Creates an instance of mconnsnapshotthermal with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (label: string): mconnsnapshotthermal =
-        { connector_id = None
-          critical_celcius = None
+        { critical_celcius = None
           current_celcius = None
           label = label
           max_celcius = None }
 
 ///Snapshot Tunnels
 type mconnsnapshottunnel =
-    { ///Connector identifier
-      connector_id: Option<string>
-      ///Name of tunnel health state (unknown, healthy, degraded, down)
+    { ///Name of tunnel health state (unknown, healthy, degraded, down)
       health_state: string
       ///Numeric value associated with tunnel state (0 = unknown, 1 = healthy, 2 = degraded, 3 = down)
       health_value: float
@@ -8349,8 +8455,7 @@ type mconnsnapshottunnel =
       tunnel_id: string }
     ///Creates an instance of mconnsnapshottunnel with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (health_state: string, health_value: float, interface_name: string, tunnel_id: string): mconnsnapshottunnel =
-        { connector_id = None
-          health_state = health_state
+        { health_state = health_state
           health_value = health_value
           interface_name = interface_name
           probed_mtu = None

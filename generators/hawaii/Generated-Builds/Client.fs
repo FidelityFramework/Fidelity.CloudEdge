@@ -18,9 +18,10 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Retrieve account limits and usage information
     ///</summary>
-    member this.GetAccountLimits(?cancellationToken: CancellationToken) =
+    member this.GetAccountLimits(accountId: string, ?cancellationToken: CancellationToken) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -35,10 +36,11 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Retrieve builds for specific version IDs
     ///</summary>
-    member this.GetBuildsByVersionIds(versionIds: string, ?cancellationToken: CancellationToken) =
+    member this.GetBuildsByVersionIds(accountId: string, versionIds: string, ?cancellationToken: CancellationToken) =
         async {
             let requestParts =
-                [ RequestPart.query ("version_ids", versionIds) ]
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.query ("version_ids", versionIds) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/builds/builds" requestParts cancellationToken
@@ -49,10 +51,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Retrieve the most recent builds for multiple worker scripts
     ///</summary>
-    member this.GetLatestBuildsByScripts(externalScriptIds: string, ?cancellationToken: CancellationToken) =
+    member this.GetLatestBuildsByScripts
+        (
+            accountId: string,
+            externalScriptIds: string,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ RequestPart.query ("external_script_ids", externalScriptIds) ]
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.query ("external_script_ids", externalScriptIds) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -67,9 +75,11 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Retrieve detailed information about a specific build
     ///</summary>
-    member this.GetBuildByUuid(?cancellationToken: CancellationToken) =
+    member this.GetBuildByUuid(accountId: string, buildUuid: System.Guid, ?cancellationToken: CancellationToken) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("build_uuid", buildUuid) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -86,9 +96,11 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Cancel a running or queued build
     ///</summary>
-    member this.CancelBuildByUuid(?cancellationToken: CancellationToken) =
+    member this.CancelBuildByUuid(accountId: string, buildUuid: System.Guid, ?cancellationToken: CancellationToken) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("build_uuid", buildUuid) ]
 
             let! (status, content) =
                 OpenApiHttp.putAsync
@@ -105,10 +117,18 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Retrieve logs for a specific build with cursor-based pagination
     ///</summary>
-    member this.GetBuildLogs(?cursor: string, ?cancellationToken: CancellationToken) =
+    member this.GetBuildLogs
+        (
+            accountId: string,
+            buildUuid: System.Guid,
+            ?cursor: string,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ if cursor.IsSome then
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("build_uuid", buildUuid)
+                  if cursor.IsSome then
                       RequestPart.query ("cursor", cursor.Value) ]
 
             let! (status, content) =
@@ -126,9 +146,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Upsert a repository connection for CI/CD integration
     ///</summary>
-    member this.UpsertRepoConnection(body: buildsUpsertRepoConnectionRequest, ?cancellationToken: CancellationToken) =
+    member this.UpsertRepoConnection
+        (
+            accountId: string,
+            body: buildsUpsertRepoConnectionRequest,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = [ RequestPart.jsonContent body ]
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.putAsync
@@ -143,9 +170,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Remove a repository connection
     ///</summary>
-    member this.DeleteRepoConnection(?cancellationToken: CancellationToken) =
+    member this.DeleteRepoConnection
+        (
+            accountId: string,
+            repoConnectionUuid: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("repo_connection_uuid", repoConnectionUuid) ]
 
             let! (status, content) =
                 OpenApiHttp.deleteAsync
@@ -162,6 +196,7 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Analyze repository for automatic configuration detection
     ///</summary>
+    ///<param name="accountId"></param>
     ///<param name="providerType">SCM provider type</param>
     ///<param name="providerAccountId"></param>
     ///<param name="repoId"></param>
@@ -170,6 +205,7 @@ type BuildsClient(httpClient: HttpClient) =
     ///<param name="cancellationToken"></param>
     member this.GetWorkerConfigAutofill
         (
+            accountId: string,
             providerType: string,
             providerAccountId: string,
             repoId: string,
@@ -179,7 +215,8 @@ type BuildsClient(httpClient: HttpClient) =
         ) =
         async {
             let requestParts =
-                [ RequestPart.path ("provider_type", providerType)
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("provider_type", providerType)
                   RequestPart.path ("provider_account_id", providerAccountId)
                   RequestPart.path ("repo_id", repoId)
                   RequestPart.query ("branch", branch)
@@ -199,9 +236,18 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Get all build tokens with pagination
     ///</summary>
-    member this.ListBuildTokens(?cancellationToken: CancellationToken) =
+    ///<param name="accountId"></param>
+    ///<param name="page">Page number for pagination</param>
+    ///<param name="perPage">Number of items per page</param>
+    ///<param name="cancellationToken"></param>
+    member this.ListBuildTokens(accountId: string, ?page: int, ?perPage: int, ?cancellationToken: CancellationToken) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/builds/tokens" requestParts cancellationToken
@@ -212,9 +258,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Create a new build authentication token
     ///</summary>
-    member this.CreateBuildToken(body: buildsCreateBuildTokenRequest, ?cancellationToken: CancellationToken) =
+    member this.CreateBuildToken
+        (
+            accountId: string,
+            body: buildsCreateBuildTokenRequest,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = [ RequestPart.jsonContent body ]
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/builds/tokens" requestParts cancellationToken
@@ -225,10 +278,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Remove a build authentication token
     ///</summary>
-    member this.DeleteBuildToken(buildTokenUuid: System.Guid, ?cancellationToken: CancellationToken) =
+    member this.DeleteBuildToken
+        (
+            accountId: string,
+            buildTokenUuid: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ RequestPart.path ("build_token_uuid", buildTokenUuid) ]
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("build_token_uuid", buildTokenUuid) ]
 
             let! (status, content) =
                 OpenApiHttp.deleteAsync
@@ -245,9 +304,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Create a new CI/CD trigger
     ///</summary>
-    member this.CreateTrigger(body: buildsCreateTriggerRequest, ?cancellationToken: CancellationToken) =
+    member this.CreateTrigger
+        (
+            accountId: string,
+            body: buildsCreateTriggerRequest,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = [ RequestPart.jsonContent body ]
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/builds/triggers" requestParts cancellationToken
@@ -258,9 +324,11 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Remove a CI/CD trigger
     ///</summary>
-    member this.DeleteTrigger(?cancellationToken: CancellationToken) =
+    member this.DeleteTrigger(accountId: string, triggerUuid: System.Guid, ?cancellationToken: CancellationToken) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("trigger_uuid", triggerUuid) ]
 
             let! (status, content) =
                 OpenApiHttp.deleteAsync
@@ -277,9 +345,18 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Update an existing CI/CD trigger
     ///</summary>
-    member this.UpdateTrigger(body: buildsUpdateTriggerRequest, ?cancellationToken: CancellationToken) =
+    member this.UpdateTrigger
+        (
+            accountId: string,
+            triggerUuid: System.Guid,
+            body: buildsUpdateTriggerRequest,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = [ RequestPart.jsonContent body ]
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("trigger_uuid", triggerUuid)
+                  RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.patchAsync
@@ -296,9 +373,18 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Trigger a manual build for a specific trigger
     ///</summary>
-    member this.CreateManualBuild(body: buildsCreateBuildRequest, ?cancellationToken: CancellationToken) =
+    member this.CreateManualBuild
+        (
+            accountId: string,
+            triggerUuid: System.Guid,
+            body: buildsCreateBuildRequest,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = [ RequestPart.jsonContent body ]
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("trigger_uuid", triggerUuid)
+                  RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.postAsync
@@ -313,9 +399,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Get all environment variables for a trigger
     ///</summary>
-    member this.ListEnvironmentVariables(?cancellationToken: CancellationToken) =
+    member this.ListEnvironmentVariables
+        (
+            accountId: string,
+            triggerUuid: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("trigger_uuid", triggerUuid) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -330,9 +423,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Create or update environment variables for a trigger
     ///</summary>
-    member this.UpsertEnvironmentVariables(?cancellationToken: CancellationToken) =
+    member this.UpsertEnvironmentVariables
+        (
+            accountId: string,
+            triggerUuid: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("trigger_uuid", triggerUuid) ]
 
             let! (status, content) =
                 OpenApiHttp.patchAsync
@@ -349,10 +449,18 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Remove a specific environment variable from a trigger
     ///</summary>
-    member this.DeleteEnvironmentVariable(environmentVariableKey: string, ?cancellationToken: CancellationToken) =
+    member this.DeleteEnvironmentVariable
+        (
+            accountId: string,
+            triggerUuid: System.Guid,
+            environmentVariableKey: string,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ RequestPart.path ("environment_variable_key", environmentVariableKey) ]
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("trigger_uuid", triggerUuid)
+                  RequestPart.path ("environment_variable_key", environmentVariableKey) ]
 
             let! (status, content) =
                 OpenApiHttp.deleteAsync
@@ -369,9 +477,11 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Clear the build cache for a specific trigger
     ///</summary>
-    member this.PurgeBuildCache(?cancellationToken: CancellationToken) =
+    member this.PurgeBuildCache(accountId: string, triggerUuid: System.Guid, ?cancellationToken: CancellationToken) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("trigger_uuid", triggerUuid) ]
 
             let! (status, content) =
                 OpenApiHttp.postAsync
@@ -388,10 +498,27 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Get all builds for a specific worker script with pagination
     ///</summary>
-    member this.ListBuildsByScript(externalScriptId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId"></param>
+    ///<param name="externalScriptId"></param>
+    ///<param name="page">Page number for pagination</param>
+    ///<param name="perPage">Number of items per page</param>
+    ///<param name="cancellationToken"></param>
+    member this.ListBuildsByScript
+        (
+            accountId: string,
+            externalScriptId: string,
+            ?page: int,
+            ?perPage: int,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ RequestPart.path ("external_script_id", externalScriptId) ]
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("external_script_id", externalScriptId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -406,10 +533,16 @@ type BuildsClient(httpClient: HttpClient) =
     ///<summary>
     ///Get all triggers for a specific worker script
     ///</summary>
-    member this.ListTriggersByScript(externalScriptId: string, ?cancellationToken: CancellationToken) =
+    member this.ListTriggersByScript
+        (
+            accountId: string,
+            externalScriptId: string,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ RequestPart.path ("external_script_id", externalScriptId) ]
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("external_script_id", externalScriptId) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -419,4 +552,161 @@ type BuildsClient(httpClient: HttpClient) =
                     cancellationToken
 
             return ListTriggersByScript.OK(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Get all deploy hooks for a specific worker script.
+    ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="scriptName">Human-readable name of the worker.</param>
+    ///<param name="cancellationToken"></param>
+    member this.ListDeployHooks(accountId: string, scriptName: string, ?cancellationToken: CancellationToken) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("script_name", scriptName) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks"
+                    requestParts
+                    cancellationToken
+
+            return ListDeployHooks.OK(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Create a new deploy hook for a worker script.
+    ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="scriptName">Human-readable name of the worker.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
+    member this.CreateDeployHook
+        (
+            accountId: string,
+            scriptName: string,
+            body: buildsCreateDeployHookRequest,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("script_name", scriptName)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return CreateDeployHook.OK(Serializer.deserialize content)
+            | 400 -> return CreateDeployHook.BadRequest(Serializer.deserialize content)
+            | 404 -> return CreateDeployHook.NotFound(Serializer.deserialize content)
+            | _ -> return CreateDeployHook.Conflict(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Delete a deploy hook.
+    ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="scriptName">Human-readable name of the worker.</param>
+    ///<param name="deployHookUuid">Deploy hook UUID</param>
+    ///<param name="cancellationToken"></param>
+    member this.DeleteDeployHook
+        (
+            accountId: string,
+            scriptName: string,
+            deployHookUuid: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("script_name", scriptName)
+                  RequestPart.path ("deploy_hook_uuid", deployHookUuid) ]
+
+            let! (status, content) =
+                OpenApiHttp.deleteAsync
+                    httpClient
+                    "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return DeleteDeployHook.OK(Serializer.deserialize content)
+            | _ -> return DeleteDeployHook.NotFound(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Get details of a specific deploy hook.
+    ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="scriptName">Human-readable name of the worker.</param>
+    ///<param name="deployHookUuid">Deploy hook UUID</param>
+    ///<param name="cancellationToken"></param>
+    member this.GetDeployHook
+        (
+            accountId: string,
+            scriptName: string,
+            deployHookUuid: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("script_name", scriptName)
+                  RequestPart.path ("deploy_hook_uuid", deployHookUuid) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return GetDeployHook.OK(Serializer.deserialize content)
+            | _ -> return GetDeployHook.NotFound(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Update an existing deploy hook.
+    ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="scriptName">Human-readable name of the worker.</param>
+    ///<param name="deployHookUuid">Deploy hook UUID</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
+    member this.UpdateDeployHook
+        (
+            accountId: string,
+            scriptName: string,
+            deployHookUuid: System.Guid,
+            body: buildsCreateDeployHookRequest,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("script_name", scriptName)
+                  RequestPart.path ("deploy_hook_uuid", deployHookUuid)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.putAsync
+                    httpClient
+                    "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return UpdateDeployHook.OK(Serializer.deserialize content)
+            | 400 -> return UpdateDeployHook.BadRequest(Serializer.deserialize content)
+            | 404 -> return UpdateDeployHook.NotFound(Serializer.deserialize content)
+            | _ -> return UpdateDeployHook.Conflict(Serializer.deserialize content)
         }

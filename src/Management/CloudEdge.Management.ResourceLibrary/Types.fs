@@ -177,14 +177,14 @@ type ``alexandriaapi-response-common`` =
           success = success }
 
 type alexandriaapiresponsecommonfailure =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Indicates whether the API call was successful.
       success: bool }
     ///Creates an instance of alexandriaapiresponsecommonfailure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): alexandriaapiresponsecommonfailure =
         { errors = errors

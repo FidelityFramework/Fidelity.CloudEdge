@@ -422,14 +422,14 @@ type ``iamapi-response-common`` =
           success = success }
 
 type ``iamapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of iamapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``iamapi-response-common-failure`` =
         { errors = errors
@@ -607,7 +607,7 @@ type iamsingleorganizationresponse =
       messages: list<iamsingleorganizationresponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<obj> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of iamsingleorganizationresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<iamsingleorganizationresponseErrors>,
                           messages: list<iamsingleorganizationresponseMessages>,
@@ -748,14 +748,14 @@ type Parent =
 ///References an Organization in the Cloudflare data model.
 type ``organizations-apiOrganization`` =
     { create_time: System.DateTimeOffset
-      id: obj
+      id: string
       meta: Map<string, string>
       name: string
       parent: Option<Parent>
       profile: Option<``organizations-apiProfile``> }
     ///Creates an instance of organizations-apiOrganization with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (create_time: System.DateTimeOffset,
-                          id: obj,
+                          id: string,
                           meta: Map<string, string>,
                           name: string): ``organizations-apiOrganization`` =
         { create_time = create_time
@@ -821,7 +821,7 @@ type ``organizations-apiProfileResponse`` =
       result: ``organizations-apiProfile``
       success: bool }
     ///Creates an instance of organizations-apiProfileResponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
+    static member Create (errors: list<obj>,
                           messages: list<``organizations-apiV4Message``>,
                           result: ``organizations-apiProfile``,
                           success: bool): ``organizations-apiProfileResponse`` =
@@ -833,7 +833,7 @@ type ``organizations-apiProfileResponse`` =
 type ``organizations-apiV4ErrorResponse`` =
     { errors: list<``organizations-apiV4Message``>
       messages: list<``organizations-apiV4Message``>
-      result: Option<obj>
+      result: Option<Map<string, obj>>
       success: bool }
     ///Creates an instance of organizations-apiV4ErrorResponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``organizations-apiV4Message``>,
@@ -881,7 +881,7 @@ type ``resource-sharingapi-response-common-failure`` =
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of resource-sharingapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj, result: obj, success: bool): ``resource-sharingapi-response-common-failure`` =
+    static member Create (errors: list<Errors>, result: obj, success: bool): ``resource-sharingapi-response-common-failure`` =
         { errors = errors
           result = result
           success = success }

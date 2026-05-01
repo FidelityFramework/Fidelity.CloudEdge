@@ -18,6 +18,8 @@ let main args =
             ResponseTypeTests.tests
             PreprocessorTests.tests
             NewServicesTests.tests
+            RuntimeTypesRefreshTests.tests
+            AgentsBindingTests.tests
         ]
 
     runTestsWithCLIArgs [] args allTests

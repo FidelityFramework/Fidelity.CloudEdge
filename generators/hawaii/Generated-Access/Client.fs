@@ -16,7 +16,7 @@ open Fidelity.CloudEdge.Management.Access.Http
 ///Totally new to Cloudflare? [Start here](https://developers.cloudflare.com/fundamentals/get-started/).
 type AccessClient(httpClient: HttpClient) =
     ///<summary>
-    ///List MCP Portals
+    ///Lists all MCP portals configured for the account.
     ///</summary>
     member this.McpPortalsApiListPortals
         (
@@ -49,7 +49,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Create a new MCP Portal
+    ///Creates a new MCP portal for managing AI tool access through Cloudflare Access.
     ///</summary>
     member this.McpPortalsApiCreatePortals
         (
@@ -75,7 +75,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Delete a MCP Portal
+    ///Deletes an MCP portal from the account.
     ///</summary>
     member this.McpPortalsApiDeletePortals(accountId: string, id: string, ?cancellationToken: CancellationToken) =
         async {
@@ -117,7 +117,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Update a MCP Portal
+    ///Updates an MCP portal configuration.
     ///</summary>
     member this.McpPortalsApiUpdatePortals
         (
@@ -146,7 +146,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///List MCP Servers
+    ///Lists all MCP portals configured for the account.
     ///</summary>
     member this.McpPortalsApiListServers
         (
@@ -179,7 +179,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Create a new MCP Server
+    ///Creates a new MCP portal for managing AI tool access through Cloudflare Access.
     ///</summary>
     member this.McpPortalsApiCreateServers
         (
@@ -205,7 +205,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Delete a MCP Server
+    ///Deletes an MCP portal from the account.
     ///</summary>
     member this.McpPortalsApiDeleteServers(accountId: string, id: string, ?cancellationToken: CancellationToken) =
         async {
@@ -226,7 +226,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Read the details of a MCP Server
+    ///Retrieves gateway configuration for MCP portals.
     ///</summary>
     member this.McpPortalsApiFetchServers(accountId: string, id: string, ?cancellationToken: CancellationToken) =
         async {
@@ -247,7 +247,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Update a MCP Server
+    ///Updates an MCP portal configuration.
     ///</summary>
     member this.McpPortalsApiUpdateServers
         (
@@ -276,7 +276,7 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Sync MCP Server Capabilities
+    ///Syncs an MCP server's tool catalog with the portal.
     ///</summary>
     member this.McpPortalsApiSyncServer(id: string, accountId: string, ?cancellationToken: CancellationToken) =
         async {
@@ -308,6 +308,8 @@ type AccessClient(httpClient: HttpClient) =
             ?targetAttributes: string,
             ?exact: bool,
             ?search: string,
+            ?page: int,
+            ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -324,7 +326,11 @@ type AccessClient(httpClient: HttpClient) =
                   if exact.IsSome then
                       RequestPart.query ("exact", exact.Value)
                   if search.IsSome then
-                      RequestPart.query ("search", search.Value) ]
+                      RequestPart.query ("search", search.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/apps" requestParts cancellationToken
@@ -362,12 +368,15 @@ type AccessClient(httpClient: HttpClient) =
     member this.AccessShortLivedCertificateCAsListShortLivedCertificateCAs
         (
             accountId: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -562,12 +571,14 @@ type AccessClient(httpClient: HttpClient) =
     ///</summary>
     ///<param name="appId">The application ID.</param>
     ///<param name="accountId"></param>
+    ///<param name="page"></param>
     ///<param name="perPage"></param>
     ///<param name="cancellationToken"></param>
     member this.AccessPoliciesListAccessAppPolicies
         (
             appId: string,
             accountId: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
@@ -575,6 +586,8 @@ type AccessClient(httpClient: HttpClient) =
             let requestParts =
                 [ RequestPart.path ("app_id", appId)
                   RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -866,17 +879,40 @@ type AccessClient(httpClient: HttpClient) =
         }
 
     ///<summary>
+    ///Returns a list of Authenticator Device AAGUIDs for MFA configuration.
+    ///</summary>
+    member this.AccessAuthenticatorDeviceAaguidsList(accountId: string, ?cancellationToken: CancellationToken) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/access/authenticator_device_aaguids"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return AccessAuthenticatorDeviceAaguidsList.OK(Serializer.deserialize content)
+            | _ -> return AccessAuthenticatorDeviceAaguidsList.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
     ///Lists all mTLS root certificates.
     ///</summary>
     member this.AccessMtlsAuthenticationListMtlsCertificates
         (
             accountId: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -1062,12 +1098,15 @@ type AccessClient(httpClient: HttpClient) =
     member this.AccessCustomPagesListCustomPages
         (
             accountId: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -1263,6 +1302,8 @@ type AccessClient(httpClient: HttpClient) =
             accountId: string,
             ?name: string,
             ?search: string,
+            ?page: int,
+            ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -1271,7 +1312,11 @@ type AccessClient(httpClient: HttpClient) =
                   if name.IsSome then
                       RequestPart.query ("name", name.Value)
                   if search.IsSome then
-                      RequestPart.query ("search", search.Value) ]
+                      RequestPart.query ("search", search.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/groups" requestParts cancellationToken
@@ -1390,6 +1435,7 @@ type AccessClient(httpClient: HttpClient) =
         (
             accountId: string,
             ?scimEnabled: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
@@ -1398,6 +1444,8 @@ type AccessClient(httpClient: HttpClient) =
                 [ RequestPart.path ("account_id", accountId)
                   if scimEnabled.IsSome then
                       RequestPart.query ("scim_enabled", scimEnabled.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -1532,6 +1580,7 @@ type AccessClient(httpClient: HttpClient) =
             ?cfResourceId: string,
             ?idpResourceId: string,
             ?name: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
@@ -1545,6 +1594,8 @@ type AccessClient(httpClient: HttpClient) =
                       RequestPart.query ("idp_resource_id", idpResourceId.Value)
                   if name.IsSome then
                       RequestPart.query ("name", name.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -1572,6 +1623,7 @@ type AccessClient(httpClient: HttpClient) =
             ?username: string,
             ?email: string,
             ?name: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
@@ -1589,6 +1641,8 @@ type AccessClient(httpClient: HttpClient) =
                       RequestPart.query ("email", email.Value)
                   if name.IsSome then
                       RequestPart.query ("name", name.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -1675,6 +1729,7 @@ type AccessClient(httpClient: HttpClient) =
     ///<param name="direction">The chronological sorting order for the logs.</param>
     ///<param name="since">The earliest event timestamp to query.</param>
     ///<param name="until">The latest event timestamp to query.</param>
+    ///<param name="page"></param>
     ///<param name="perPage"></param>
     ///<param name="email">
     ///Filter by user email. Defaults to substring matching. To force exact matching, set `email_exact=true`.
@@ -1683,6 +1738,19 @@ type AccessClient(httpClient: HttpClient) =
     ///</param>
     ///<param name="emailExact">When true, `email` is matched exactly instead of substring matching.</param>
     ///<param name="userId">Filter by user UUID.</param>
+    ///<param name="allowedOp">Operator for the `allowed` filter.</param>
+    ///<param name="countryCodeOp">Operator for the `country_code` filter.</param>
+    ///<param name="appTypeOp">Operator for the `app_type` filter.</param>
+    ///<param name="appUidOp">Operator for the `app_uid` filter.</param>
+    ///<param name="rayIdOp">Operator for the `ray_id` filter.</param>
+    ///<param name="emailOp">Operator for the `email` filter.</param>
+    ///<param name="idpOp">Operator for the `idp` filter.</param>
+    ///<param name="nonIdentityOp">Operator for the `non_identity` filter.</param>
+    ///<param name="userIdOp">Operator for the `user_id` filter.</param>
+    ///<param name="fields">
+    ///Comma-separated list of fields to include in the response.
+    ///When omitted, all fields are returned.
+    ///</param>
     ///<param name="cancellationToken"></param>
     member this.AccessAuthenticationLogsGetAccessAuthenticationLogs
         (
@@ -1691,10 +1759,21 @@ type AccessClient(httpClient: HttpClient) =
             ?direction: string,
             ?since: System.DateTimeOffset,
             ?until: System.DateTimeOffset,
+            ?page: int,
             ?perPage: int,
             ?email: string,
             ?emailExact: bool,
             ?userId: System.Guid,
+            ?allowedOp: string,
+            ?countryCodeOp: string,
+            ?appTypeOp: string,
+            ?appUidOp: string,
+            ?rayIdOp: string,
+            ?emailOp: string,
+            ?idpOp: string,
+            ?nonIdentityOp: string,
+            ?userIdOp: string,
+            ?fields: string,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -1708,6 +1787,8 @@ type AccessClient(httpClient: HttpClient) =
                       RequestPart.query ("since", since.Value)
                   if until.IsSome then
                       RequestPart.query ("until", until.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value)
                   if email.IsSome then
@@ -1715,7 +1796,27 @@ type AccessClient(httpClient: HttpClient) =
                   if emailExact.IsSome then
                       RequestPart.query ("email_exact", emailExact.Value)
                   if userId.IsSome then
-                      RequestPart.query ("user_id", userId.Value) ]
+                      RequestPart.query ("user_id", userId.Value)
+                  if allowedOp.IsSome then
+                      RequestPart.query ("allowedOp", allowedOp.Value)
+                  if countryCodeOp.IsSome then
+                      RequestPart.query ("country_codeOp", countryCodeOp.Value)
+                  if appTypeOp.IsSome then
+                      RequestPart.query ("app_typeOp", appTypeOp.Value)
+                  if appUidOp.IsSome then
+                      RequestPart.query ("app_uidOp", appUidOp.Value)
+                  if rayIdOp.IsSome then
+                      RequestPart.query ("ray_idOp", rayIdOp.Value)
+                  if emailOp.IsSome then
+                      RequestPart.query ("emailOp", emailOp.Value)
+                  if idpOp.IsSome then
+                      RequestPart.query ("idpOp", idpOp.Value)
+                  if nonIdentityOp.IsSome then
+                      RequestPart.query ("non_identityOp", nonIdentityOp.Value)
+                  if userIdOp.IsSome then
+                      RequestPart.query ("user_idOp", userIdOp.Value)
+                  if fields.IsSome then
+                      RequestPart.query ("fields", fields.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -1747,6 +1848,7 @@ type AccessClient(httpClient: HttpClient) =
             ?resourceGroupName: string,
             ?cfResourceId: string,
             ?idpResourceId: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
@@ -1776,6 +1878,8 @@ type AccessClient(httpClient: HttpClient) =
                       RequestPart.query ("cf_resource_id", cfResourceId.Value)
                   if idpResourceId.IsSome then
                       RequestPart.query ("idp_resource_id", idpResourceId.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -1969,12 +2073,15 @@ type AccessClient(httpClient: HttpClient) =
     member this.AccessPoliciesListAccessReusablePolicies
         (
             accountId: string,
+            ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -2140,6 +2247,7 @@ type AccessClient(httpClient: HttpClient) =
     ///</summary>
     ///<param name="accountId"></param>
     ///<param name="policyTestId"></param>
+    ///<param name="page"></param>
     ///<param name="perPage"></param>
     ///<param name="status">Filter users by their policy evaluation status.</param>
     ///<param name="cancellationToken"></param>
@@ -2147,6 +2255,7 @@ type AccessClient(httpClient: HttpClient) =
         (
             accountId: string,
             policyTestId: string,
+            ?page: int,
             ?perPage: int,
             ?status: string,
             ?cancellationToken: CancellationToken
@@ -2155,6 +2264,8 @@ type AccessClient(httpClient: HttpClient) =
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
                   RequestPart.path ("policy_test_id", policyTestId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value)
                   if status.IsSome then
@@ -2202,6 +2313,8 @@ type AccessClient(httpClient: HttpClient) =
             accountId: string,
             ?name: string,
             ?search: string,
+            ?page: int,
+            ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -2210,7 +2323,11 @@ type AccessClient(httpClient: HttpClient) =
                   if name.IsSome then
                       RequestPart.query ("name", name.Value)
                   if search.IsSome then
-                      RequestPart.query ("search", search.Value) ]
+                      RequestPart.query ("search", search.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -2387,10 +2504,18 @@ type AccessClient(httpClient: HttpClient) =
     ///<summary>
     ///List tags
     ///</summary>
-    member this.AccessTagsListTags(accountId: string, ?perPage: int, ?cancellationToken: CancellationToken) =
+    member this.AccessTagsListTags
+        (
+            accountId: string,
+            ?page: int,
+            ?perPage: int,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value) ]
 
@@ -2502,6 +2627,8 @@ type AccessClient(httpClient: HttpClient) =
             ?name: string,
             ?email: string,
             ?search: string,
+            ?page: int,
+            ?perPage: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -2512,7 +2639,11 @@ type AccessClient(httpClient: HttpClient) =
                   if email.IsSome then
                       RequestPart.query ("email", email.Value)
                   if search.IsSome then
-                      RequestPart.query ("search", search.Value) ]
+                      RequestPart.query ("search", search.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/users" requestParts cancellationToken

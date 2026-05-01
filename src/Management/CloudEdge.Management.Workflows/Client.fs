@@ -126,10 +126,10 @@ type WorkflowsClient(httpClient: HttpClient) =
     ///</summary>
     ///<param name="workflowName"></param>
     ///<param name="accountId"></param>
-    ///<param name="page">`page` and `cursor` are mutually exclusive, use one or the other.</param>
+    ///<param name="page"></param>
     ///<param name="perPage"></param>
-    ///<param name="cursor">`page` and `cursor` are mutually exclusive, use one or the other.</param>
-    ///<param name="direction">should only be used when `cursor` is used, defines a new direction for the cursor</param>
+    ///<param name="cursor">Opaque token for cursor-based pagination. Mutually exclusive with `page`.</param>
+    ///<param name="direction">Defines the direction for cursor-based pagination.</param>
     ///<param name="status"></param>
     ///<param name="dateStart">Accepts ISO 8601 with no timezone offsets and in UTC.</param>
     ///<param name="dateEnd">Accepts ISO 8601 with no timezone offsets and in UTC.</param>

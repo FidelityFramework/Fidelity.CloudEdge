@@ -20,6 +20,8 @@
     <Compile Include="ResponseTypeTests.fs" />
     <Compile Include="PreprocessorTests.fs" />
     <Compile Include="NewServicesTests.fs" />
+    <Compile Include="RuntimeTypesRefreshTests.fs" />
+    <Compile Include="AgentsBindingTests.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
 
@@ -41,6 +43,8 @@
     <ProjectReference Include="..\..\src\Runtime\CloudEdge.AI\CloudEdge.AI.fsproj" />
     <ProjectReference Include="..\..\src\Runtime\CloudEdge.Worker.Context\CloudEdge.Worker.Context.fsproj" />
     <ProjectReference Include="..\..\src\Runtime\CloudEdge.DurableObjects\CloudEdge.DurableObjects.fsproj" />
+    <ProjectReference Include="..\..\src\Runtime\CloudEdge.Agents\CloudEdge.Agents.fsproj" />
+    <ProjectReference Include="..\..\src\Runtime\CloudEdge.DynamicWorkflows\CloudEdge.DynamicWorkflows.fsproj" />
 
     <!-- Management: Original 11 -->
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.D1\CloudEdge.Management.D1.fsproj" />

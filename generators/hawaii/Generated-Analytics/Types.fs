@@ -27,13 +27,13 @@ type Messages =
 type ``argo-analyticsapi-response-common`` =
     { errors: list<Errors>
       messages: list<Messages>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of argo-analyticsapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<Errors>,
                           messages: list<Messages>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``argo-analyticsapi-response-common`` =
         { errors = errors
           messages = messages
@@ -41,15 +41,15 @@ type ``argo-analyticsapi-response-common`` =
           success = success }
 
 type ``argo-analyticsapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of argo-analyticsapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``argo-analyticsapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -73,7 +73,7 @@ type ``argo-analyticsapi-response-singleMessages`` =
 type ``argo-analyticsapi-response-single`` =
     { errors: Option<list<``argo-analyticsapi-response-singleErrors``>>
       messages: Option<list<``argo-analyticsapi-response-singleMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool> }
     ///Creates an instance of argo-analyticsapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
@@ -100,13 +100,13 @@ type ``argo-analyticsresponsesingleMessages`` =
 type ``argo-analyticsresponsesingle`` =
     { errors: list<``argo-analyticsresponsesingleErrors``>
       messages: list<``argo-analyticsresponsesingleMessages``>
-      result: Newtonsoft.Json.Linq.JObject
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of argo-analyticsresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``argo-analyticsresponsesingleErrors``>,
                           messages: list<``argo-analyticsresponsesingleMessages``>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: Map<string, obj>,
                           success: bool): ``argo-analyticsresponsesingle`` =
         { errors = errors
           messages = messages

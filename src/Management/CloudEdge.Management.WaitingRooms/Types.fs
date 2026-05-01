@@ -353,13 +353,16 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``waitingroomapi-response-collection`` =
     { errors: Option<list<Errors>>
@@ -549,13 +552,16 @@ type waitingroomeventresponsecollectionResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of waitingroomeventresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): waitingroomeventresponsecollectionResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type waitingroomeventresponsecollection =
     { errors: list<waitingroomeventresponsecollectionErrors>
@@ -954,13 +960,16 @@ type waitingroomresponsecollectionResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of waitingroomresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): waitingroomresponsecollectionResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type waitingroomresponsecollection =
     { errors: list<waitingroomresponsecollectionErrors>
@@ -1045,13 +1054,16 @@ type waitingroomrulesresponsecollectionResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of waitingroomrulesresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): waitingroomrulesresponsecollectionResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type waitingroomrulesresponsecollection =
     { errors: list<waitingroomrulesresponsecollectionErrors>
@@ -1396,7 +1408,9 @@ type WaitingRoomListWaitingRooms_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomListWaitingRooms_BadRequest =
     { errors: Option<list<WaitingRoomListWaitingRooms_BadRequestErrors>>
@@ -1588,7 +1602,9 @@ type WaitingRoomListEvents_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomListEvents_BadRequest =
     { errors: Option<list<WaitingRoomListEvents_BadRequestErrors>>
@@ -1715,7 +1731,9 @@ type WaitingRoomListWaitingRoomRules_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomListWaitingRoomRules_BadRequest =
     { errors: Option<list<WaitingRoomListWaitingRoomRules_BadRequestErrors>>
@@ -1756,7 +1774,9 @@ type WaitingRoomCreateWaitingRoomRule_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomCreateWaitingRoomRule_BadRequest =
     { errors: Option<list<WaitingRoomCreateWaitingRoomRule_BadRequestErrors>>
@@ -1797,7 +1817,9 @@ type WaitingRoomReplaceWaitingRoomRules_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomReplaceWaitingRoomRules_BadRequest =
     { errors: Option<list<WaitingRoomReplaceWaitingRoomRules_BadRequestErrors>>
@@ -1838,7 +1860,9 @@ type WaitingRoomDeleteWaitingRoomRule_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomDeleteWaitingRoomRule_BadRequest =
     { errors: Option<list<WaitingRoomDeleteWaitingRoomRule_BadRequestErrors>>
@@ -1879,7 +1903,9 @@ type WaitingRoomPatchWaitingRoomRule_BadRequestResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
 
 type WaitingRoomPatchWaitingRoomRule_BadRequest =
     { errors: Option<list<WaitingRoomPatchWaitingRoomRule_BadRequestErrors>>

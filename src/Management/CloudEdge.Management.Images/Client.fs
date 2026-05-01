@@ -250,6 +250,32 @@ type ImagesClient(httpClient: HttpClient) =
         }
 
     ///<summary>
+    ///Fetch details for a single variant with properties at the top level of the result.
+    ///</summary>
+    member this.CloudflareImagesVariantsVariantDetailsFlat
+        (
+            variantId: string,
+            accountId: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("variant_id", variantId)
+                  RequestPart.path ("account_id", accountId) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/images/v1/variants/{variant_id}/flat"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return CloudflareImagesVariantsVariantDetailsFlat.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesVariantsVariantDetailsFlat.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
     ///Delete an image on Cloudflare Images. On success, all copies of the image are deleted and purged from cache.
     ///</summary>
     member this.CloudflareImagesDeleteImage(imageId: string, accountId: string, ?cancellationToken: CancellationToken) =

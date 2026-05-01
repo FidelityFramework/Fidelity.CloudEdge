@@ -115,13 +115,13 @@ type Messages =
 type ``d1api-response-common`` =
     { errors: list<Errors>
       messages: list<Messages>
-      result: Newtonsoft.Json.Linq.JObject
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of d1api-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<Errors>,
                           messages: list<Messages>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: Map<string, obj>,
                           success: bool): ``d1api-response-common`` =
         { errors = errors
           messages = messages
@@ -129,15 +129,15 @@ type ``d1api-response-common`` =
           success = success }
 
 type ``d1api-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of d1api-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``d1api-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -263,7 +263,7 @@ type ``d1query-meta`` =
 
 type ``d1query-result-response`` =
     { meta: Option<``d1query-meta``>
-      results: Option<Newtonsoft.Json.Linq.JArray>
+      results: Option<list<obj>>
       success: Option<bool> }
     ///Creates an instance of d1query-result-response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``d1query-result-response`` =
@@ -304,10 +304,10 @@ type ``d1single-query`` =
 
 ///Response from a time travel restore operation.
 type ``d1time-travel-restore-response`` =
-    { bookmark: Option<Newtonsoft.Json.Linq.JToken>
+    { bookmark: Option<obj>
       ///A message describing the result of the restore operation.
       message: Option<string>
-      previous_bookmark: Option<Newtonsoft.Json.Linq.JToken> }
+      previous_bookmark: Option<string> }
     ///Creates an instance of d1time-travel-restore-response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``d1time-travel-restore-response`` =
         { bookmark = None
@@ -410,13 +410,13 @@ type ``d1-delete-databaseresponseMessages`` =
 type ``d1-delete-databaseresponse`` =
     { errors: list<``d1-delete-databaseresponseErrors``>
       messages: list<``d1-delete-databaseresponseMessages``>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of d1-delete-databaseresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``d1-delete-databaseresponseErrors``>,
                           messages: list<``d1-delete-databaseresponseMessages``>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): ``d1-delete-databaseresponse`` =
         { errors = errors
           messages = messages

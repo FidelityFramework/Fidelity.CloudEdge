@@ -17,56 +17,24 @@ open Fidelity.CloudEdge.Management.Email.Http
 type EmailClient(httpClient: HttpClient) =
     ///<summary>
     ///Returns information for each email that matches the search parameter(s).
-    ///If the search takes too long, the endpoint returns 202 with a Location header
-    ///pointing to a polling endpoint where results can be retrieved once ready.
     ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="start">
-    ///The beginning of the search date range.
-    ///Defaults to `now - 30 days` if not provided.
-    ///</param>
-    ///<param name="end">
-    ///The end of the search date range.
-    ///Defaults to `now` if not provided.
-    ///</param>
-    ///<param name="query">
-    ///The space-delimited term used in the query. The search is case-insensitive.
-    ///The content of the following email metadata fields are searched:
-    ///* alert_id
-    ///* CC
-    ///* From (envelope_from)
-    ///* From Name
-    ///* final_disposition
-    ///* md5 hash (of any attachment)
-    ///* sha1 hash (of any attachment)
-    ///* sha256 hash (of any attachment)
-    ///* name (of any attachment)
-    ///* Reason
-    ///* Received DateTime (yyyy-mm-ddThh:mm:ss)
-    ///* Sent DateTime (yyyy-mm-ddThh:mm:ss)
-    ///* ReplyTo
-    ///* To (envelope_to)
-    ///* To Name
-    ///* Message-ID
-    ///* smtp_helo_server_ip
-    ///* smtp_previous_hop_ip
-    ///* x_originating_ip
-    ///* Subject
-    ///</param>
-    ///<param name="detectionsOnly">Determines if the search results will include detections or not.</param>
-    ///<param name="actionLog">Determines if the message action log is included in the response.</param>
-    ///<param name="finalDisposition">The dispositions the search filters by.</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="start">The beginning of the search date range. Defaults to `now - 30 days`.</param>
+    ///<param name="end">The end of the search date range. Defaults to `now`.</param>
+    ///<param name="query">Space-delimited search term. Case-insensitive.</param>
+    ///<param name="detectionsOnly">Whether to include only detections in search results.</param>
+    ///<param name="actionLog">Whether to include the message action log in the response.</param>
+    ///<param name="finalDisposition">Dispositions to filter by.</param>
     ///<param name="metric"></param>
-    ///<param name="messageAction">The message actions the search filters by.</param>
-    ///<param name="recipient">Filter by recipient. Matches either an email address or a domain.</param>
-    ///<param name="sender">Filter by sender. Matches either an email address or a domain.</param>
+    ///<param name="messageAction">Message actions to filter by.</param>
+    ///<param name="recipient"></param>
+    ///<param name="sender"></param>
     ///<param name="alertId"></param>
-    ///<param name="domain">Filter by a domain found in the email: sender domain, recipient domain, or a domain in a link.</param>
+    ///<param name="domain">Sender domains to filter by.</param>
     ///<param name="messageId"></param>
-    ///<param name="subject">Search for messages containing individual keywords in any order within the subject.</param>
-    ///<param name="exactSubject">Search for messages with an exact subject match.</param>
+    ///<param name="subject"></param>
     ///<param name="cursor"></param>
-    ///<param name="perPage">The number of results per page.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
     ///<param name="cancellationToken"></param>
     member this.EmailSecurityInvestigate
         (
@@ -85,7 +53,6 @@ type EmailClient(httpClient: HttpClient) =
             ?domain: string,
             ?messageId: string,
             ?subject: string,
-            ?exactSubject: string,
             ?cursor: string,
             ?perPage: int,
             ?cancellationToken: CancellationToken
@@ -121,8 +88,6 @@ type EmailClient(httpClient: HttpClient) =
                       RequestPart.query ("message_id", messageId.Value)
                   if subject.IsSome then
                       RequestPart.query ("subject", subject.Value)
-                  if exactSubject.IsSome then
-                      RequestPart.query ("exact_subject", exactSubject.Value)
                   if cursor.IsSome then
                       RequestPart.query ("cursor", cursor.Value)
                   if perPage.IsSome then
@@ -142,12 +107,15 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Maximum batch size: 1000 messages per request
+    ///Moves multiple messages to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration.
     ///</summary>
-    member this.EmailSecurityPostBulkMessageMove
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityPostBulkMove
         (
             accountId: string,
-            body: EmailSecurityPostBulkMessageMovePayload,
+            body: EmailSecurityPostBulkMovePayload,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -163,14 +131,16 @@ type EmailClient(httpClient: HttpClient) =
                     cancellationToken
 
             match int status with
-            | 200 -> return EmailSecurityPostBulkMessageMove.OK(Serializer.deserialize content)
-            | _ -> return EmailSecurityPostBulkMessageMove.BadRequest(Serializer.deserialize content)
+            | 200 -> return EmailSecurityPostBulkMove.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityPostBulkMove.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
-    ///Generates a preview of an email message for safe viewing without executing any
-    ///embedded content.
+    ///Generates a preview image for a message that was not flagged as a detection. Useful for investigating benign messages. Returns a base64-encoded PNG screenshot of the email body.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityPostPreview
         (
             accountId: string,
@@ -195,10 +165,10 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Releases a quarantined email message, allowing it to be delivered to the recipient.
+    ///Releases one or more quarantined messages, delivering them to the intended recipients. Use when a message was incorrectly quarantined. Returns delivery status for each recipient.
     ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="body">A list of messages identfied by their `postfix_id`s that should be released.</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body"></param>
     ///<param name="cancellationToken"></param>
     member this.EmailSecurityPostRelease(accountId: string, body: list<string>, ?cancellationToken: CancellationToken) =
         async {
@@ -219,19 +189,33 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Retrieves detailed information about a specific email message, including headers,
-    ///metadata, and security scan results.
+    ///Retrieves comprehensive details for a specific email message including headers, recipients, sender information, and current quarantine status. Use the investigate_id from search results to fetch detailed information.
     ///</summary>
-    member this.EmailSecurityGetMessage(accountId: string, postfixId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="investigateId"></param>
+    ///<param name="submission">
+    ///When true, search the submissions datastore only. When false or omitted, search the
+    ///regular datastore only.
+    ///</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityGetMessage
+        (
+            accountId: string,
+            investigateId: string,
+            ?submission: bool,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("postfix_id", postfixId) ]
+                  RequestPart.path ("investigate_id", investigateId)
+                  if submission.IsSome then
+                      RequestPart.query ("submission", submission.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/investigate/{postfix_id}"
+                    "/accounts/{account_id}/email-security/investigate/{investigate_id}"
                     requestParts
                     cancellationToken
 
@@ -241,23 +225,55 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Returns detection details such as threat categories and sender information for non-benign messages.
+    ///Returns the list of post-delivery actions (moves, quarantine releases, previews, etc.) that have been applied to a specific email message.
     ///</summary>
-    member this.EmailSecurityGetMessageDetections
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="investigateId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityGetMessageActionLog
         (
             accountId: string,
-            postfixId: string,
+            investigateId: string,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("postfix_id", postfixId) ]
+                  RequestPart.path ("investigate_id", investigateId) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/investigate/{postfix_id}/detections"
+                    "/accounts/{account_id}/email-security/investigate/{investigate_id}/action_log"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityGetMessageActionLog.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityGetMessageActionLog.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Returns detection details such as threat categories and sender information for non-benign messages.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="investigateId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityGetMessageDetections
+        (
+            accountId: string,
+            investigateId: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("investigate_id", investigateId) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/investigate/{investigate_id}/detections"
                     requestParts
                     cancellationToken
 
@@ -267,25 +283,29 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Moves a single email message to a different folder or changes its quarantine status.
+    ///Moves a single message to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="investigateId"></param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityPostMessageMove
         (
             accountId: string,
-            postfixId: string,
+            investigateId: string,
             body: EmailSecurityPostMessageMovePayload,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("postfix_id", postfixId)
+                  RequestPart.path ("investigate_id", investigateId)
                   RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.postAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/investigate/{postfix_id}/move"
+                    "/accounts/{account_id}/email-security/investigate/{investigate_id}/move"
                     requestParts
                     cancellationToken
 
@@ -297,21 +317,24 @@ type EmailClient(httpClient: HttpClient) =
     ///<summary>
     ///Returns a preview of the message body as a base64 encoded PNG image for non-benign messages.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="investigateId"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityGetMessagePreview
         (
             accountId: string,
-            postfixId: string,
+            investigateId: string,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("postfix_id", postfixId) ]
+                  RequestPart.path ("investigate_id", investigateId) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/investigate/{postfix_id}/preview"
+                    "/accounts/{account_id}/email-security/investigate/{investigate_id}/preview"
                     requestParts
                     cancellationToken
 
@@ -323,21 +346,24 @@ type EmailClient(httpClient: HttpClient) =
     ///<summary>
     ///Returns the raw eml of any non-benign message.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="investigateId"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityGetMessageRaw
         (
             accountId: string,
-            postfixId: string,
+            investigateId: string,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("postfix_id", postfixId) ]
+                  RequestPart.path ("investigate_id", investigateId) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/investigate/{postfix_id}/raw"
+                    "/accounts/{account_id}/email-security/investigate/{investigate_id}/raw"
                     requestParts
                     cancellationToken
 
@@ -347,26 +373,29 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Submits an email message for reclassification, updating its threat assessment
-    ///based on new analysis.
+    ///Submits a request to reclassify an email's disposition. Use for reporting false positives or false negatives. Optionally provide the raw EML content for reanalysis. The reclassification is processed asynchronously.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="investigateId"></param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityPostReclassify
         (
             accountId: string,
-            postfixId: string,
-            body: EmailSecurityPostReclassifyPayload,
+            investigateId: string,
+            body: ``email-securityReclassifyRequest``,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("postfix_id", postfixId)
+                  RequestPart.path ("investigate_id", investigateId)
                   RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.postAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/investigate/{postfix_id}/reclassify"
+                    "/accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify"
                     requestParts
                     cancellationToken
 
@@ -376,24 +405,26 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Gets the delivery trace for an email message, showing its path through email
-    ///security processing.
+    ///Retrieves delivery and processing trace information for an email message. Shows the delivery path, retraction history, and move operations performed on the message. Useful for debugging delivery issues.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="investigateId"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityGetMessageTrace
         (
             accountId: string,
-            postfixId: string,
+            investigateId: string,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("postfix_id", postfixId) ]
+                  RequestPart.path ("investigate_id", investigateId) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/investigate/{postfix_id}/trace"
+                    "/accounts/{account_id}/email-security/investigate/{investigate_id}/trace"
                     requestParts
                     cancellationToken
 
@@ -403,12 +434,11 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Retrieves `PhishGuard` reports showing phishing attempts and suspicious email patterns
-    ///detected.
+    ///Retrieves PhishGuard security alert reports for a specified date range. Reports include detected threats, dispositions, and contextual information. Use for security monitoring and threat analysis.
     ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="start">The beginning of the search date range (RFC3339 format).</param>
-    ///<param name="end">The end of the search date range (RFC3339 format).</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="start">Start of the time range (RFC3339). Takes precedence over from_date.</param>
+    ///<param name="end">End of the time range (RFC3339). Takes precedence over to_date.</param>
     ///<param name="cancellationToken"></param>
     member this.EmailSecurityGetPhishguardReports
         (
@@ -438,23 +468,18 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Lists, searches, and sorts an account’s email allow policies.
+    ///Returns a paginated list of email allow policies. These policies exempt matching emails from security detection, allowing them to bypass disposition actions. Supports filtering by pattern type and policy attributes.
     ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="page">The page number of paginated results.</param>
-    ///<param name="perPage">The number of results per page.</param>
-    ///<param name="order">The field to sort by.</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="page">Current page within paginated list of results.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
+    ///<param name="search">Search term for filtering records. Behavior may change.</param>
+    ///<param name="order">Field to sort by.</param>
     ///<param name="direction">The sorting direction.</param>
-    ///<param name="search">
-    ///Allows searching in multiple properties of a record simultaneously.
-    ///This parameter is intended for human users, not automation. Its exact
-    ///behavior is intentionally left unspecified and is subject to change
-    ///in the future.
-    ///</param>
-    ///<param name="isTrustedSender"></param>
-    ///<param name="isExemptRecipient"></param>
-    ///<param name="isAcceptableSender"></param>
-    ///<param name="verifySender"></param>
+    ///<param name="isExemptRecipient">Filter to show only policies where messages to the recipient bypass all detections.</param>
+    ///<param name="isTrustedSender">Filter to show only policies where messages from the sender bypass all detections and link following.</param>
+    ///<param name="isAcceptableSender">Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).</param>
+    ///<param name="verifySender">Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.</param>
     ///<param name="patternType"></param>
     ///<param name="pattern"></param>
     ///<param name="cancellationToken"></param>
@@ -463,11 +488,11 @@ type EmailClient(httpClient: HttpClient) =
             accountId: string,
             ?page: int,
             ?perPage: int,
+            ?search: string,
             ?order: string,
             ?direction: string,
-            ?search: string,
-            ?isTrustedSender: bool,
             ?isExemptRecipient: bool,
+            ?isTrustedSender: bool,
             ?isAcceptableSender: bool,
             ?verifySender: bool,
             ?patternType: string,
@@ -481,16 +506,16 @@ type EmailClient(httpClient: HttpClient) =
                       RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value)
+                  if search.IsSome then
+                      RequestPart.query ("search", search.Value)
                   if order.IsSome then
                       RequestPart.query ("order", order.Value)
                   if direction.IsSome then
                       RequestPart.query ("direction", direction.Value)
-                  if search.IsSome then
-                      RequestPart.query ("search", search.Value)
-                  if isTrustedSender.IsSome then
-                      RequestPart.query ("is_trusted_sender", isTrustedSender.Value)
                   if isExemptRecipient.IsSome then
                       RequestPart.query ("is_exempt_recipient", isExemptRecipient.Value)
+                  if isTrustedSender.IsSome then
+                      RequestPart.query ("is_trusted_sender", isTrustedSender.Value)
                   if isAcceptableSender.IsSome then
                       RequestPart.query ("is_acceptable_sender", isAcceptableSender.Value)
                   if verifySender.IsSome then
@@ -513,9 +538,11 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Creates a new email allow policy that permits specific senders, domains, or patterns
-    ///to bypass security scanning.
+    ///Creates a new allow policy that exempts matching emails from security detections. Use with caution as this bypasses email security scanning. Policies can match on sender patterns and apply to specific detections or all detections.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body">Create an allow policy</param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityCreateAllowPolicy
         (
             accountId: string,
@@ -540,8 +567,13 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Send a Batch of Allow Policies API calls to be executed together.
+    ///Execute multiple operations atomically. All four operation arrays
+    ///(deletes, patches, puts, posts) are required and executed in order.
+    ///Send empty arrays for unused operations.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityBatchAllowPolicies
         (
             accountId: string,
@@ -566,13 +598,15 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Removes an email allow policy. Previously allowed senders will be subject to normal
-    ///security scanning.
+    ///Removes an allow policy. After deletion, emails matching this pattern will be subject to normal security scanning and disposition actions.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="policyId"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityDeleteAllowPolicy
         (
             accountId: string,
-            policyId: int,
+            policyId: System.Guid,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -593,10 +627,17 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Retrieves details for a specific email allow policy, including its matching criteria
-    ///and scope.
+    ///Retrieves details for a specific allow policy including its pattern, dispositions that are exempted, and whether it applies to all detections.
     ///</summary>
-    member this.EmailSecurityGetAllowPolicy(accountId: string, policyId: int, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="policyId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityGetAllowPolicy
+        (
+            accountId: string,
+            policyId: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
@@ -615,12 +656,16 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Updates an existing email allow policy, modifying its matching criteria or scope.
+    ///Updates an existing allow policy. Only provided fields will be modified. Changes take effect for new emails matching the pattern.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="policyId"></param>
+    ///<param name="body">Update an allow policy</param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityUpdateAllowPolicy
         (
             accountId: string,
-            policyId: int,
+            policyId: System.Guid,
             body: ``email-securityUpdateAllowPolicy``,
             ?cancellationToken: CancellationToken
         ) =
@@ -643,30 +688,25 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Lists all blocked sender entries with their patterns and block reasons.
+    ///Returns a paginated list of blocked email sender patterns. These patterns prevent emails from matching senders from being delivered. Supports filtering by pattern type and searching across patterns.
     ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="page">The page number of paginated results.</param>
-    ///<param name="perPage">The number of results per page.</param>
-    ///<param name="order">The field to sort by.</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="page">Current page within paginated list of results.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
+    ///<param name="search">Search term for filtering records. Behavior may change.</param>
+    ///<param name="order">Field to sort by.</param>
     ///<param name="direction">The sorting direction.</param>
-    ///<param name="search">
-    ///Allows searching in multiple properties of a record simultaneously.
-    ///This parameter is intended for human users, not automation. Its exact
-    ///behavior is intentionally left unspecified and is subject to change
-    ///in the future.
-    ///</param>
-    ///<param name="patternType"></param>
-    ///<param name="pattern"></param>
+    ///<param name="patternType">Filter by pattern type.</param>
+    ///<param name="pattern">Filter by pattern value.</param>
     ///<param name="cancellationToken"></param>
     member this.EmailSecurityListBlockedSenders
         (
             accountId: string,
             ?page: int,
             ?perPage: int,
+            ?search: string,
             ?order: string,
             ?direction: string,
-            ?search: string,
             ?patternType: string,
             ?pattern: string,
             ?cancellationToken: CancellationToken
@@ -678,12 +718,12 @@ type EmailClient(httpClient: HttpClient) =
                       RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value)
+                  if search.IsSome then
+                      RequestPart.query ("search", search.Value)
                   if order.IsSome then
                       RequestPart.query ("order", order.Value)
                   if direction.IsSome then
                       RequestPart.query ("direction", direction.Value)
-                  if search.IsSome then
-                      RequestPart.query ("search", search.Value)
                   if patternType.IsSome then
                       RequestPart.query ("pattern_type", patternType.Value)
                   if pattern.IsSome then
@@ -702,9 +742,11 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Adds a sender pattern to the email block list, preventing messages from matching
-    ///senders from being delivered.
+    ///Creates a new blocked sender pattern. Emails matching this pattern will be blocked from delivery. Patterns can be email addresses, domains, or IP addresses, and support regular expressions.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body">Create a blocked sender pattern</param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityCreateBlockedSender
         (
             accountId: string,
@@ -729,8 +771,13 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Send a Batch of Block Senders API calls to be executed together.
+    ///Execute multiple operations atomically. All four operation arrays
+    ///(deletes, patches, puts, posts) are required and executed in order.
+    ///Send empty arrays for unused operations.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityBatchBlockedSenders
         (
             accountId: string,
@@ -755,13 +802,15 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Removes a sender from the email block list, allowing their messages to be delivered
-    ///normally.
+    ///Removes a blocked sender pattern. After deletion, emails from this sender will no longer be automatically blocked based on this rule.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="patternId"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityDeleteBlockedSender
         (
             accountId: string,
-            patternId: int,
+            patternId: System.Guid,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -782,13 +831,15 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Gets information about a specific blocked sender entry, including the pattern and
-    ///block reason.
+    ///Retrieves details for a specific blocked sender pattern including its pattern type, value, and metadata.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="patternId"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityGetBlockedSender
         (
             accountId: string,
-            patternId: int,
+            patternId: System.Guid,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -809,12 +860,16 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Modifies a blocked sender entry, updating its pattern or block reason.
+    ///Updates an existing blocked sender pattern. Only provided fields will be modified. The pattern will continue blocking emails until deleted.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="patternId"></param>
+    ///<param name="body">Update a blocked sender pattern</param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityUpdateBlockedSender
         (
             accountId: string,
-            patternId: int,
+            patternId: System.Guid,
             body: ``email-securityUpdateBlockedSender``,
             ?cancellationToken: CancellationToken
         ) =
@@ -837,62 +892,33 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Bulk removes multiple domains from email security configuration in a single request.
+    ///Returns a paginated list of email domains protected by Email Security. Includes domain configuration, delivery modes, and authorization status. Supports filtering by delivery mode and integration ID.
     ///</summary>
-    member this.EmailSecurityDeleteDomains
-        (
-            accountId: string,
-            body: EmailSecurityDeleteDomainsPayload,
-            ?cancellationToken: CancellationToken
-        ) =
-        async {
-            let requestParts =
-                [ RequestPart.path ("account_id", accountId)
-                  RequestPart.jsonContent body ]
-
-            let! (status, content) =
-                OpenApiHttp.deleteAsync
-                    httpClient
-                    "/accounts/{account_id}/email-security/settings/domains"
-                    requestParts
-                    cancellationToken
-
-            match int status with
-            | 200 -> return EmailSecurityDeleteDomains.OK(Serializer.deserialize content)
-            | _ -> return EmailSecurityDeleteDomains.BadRequest(Serializer.deserialize content)
-        }
-
-    ///<summary>
-    ///Lists, searches, and sorts an account’s email domains.
-    ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="page">The page number of paginated results.</param>
-    ///<param name="perPage">The number of results per page.</param>
-    ///<param name="order">The field to sort by.</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="page">Current page within paginated list of results.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
+    ///<param name="search">Search term for filtering records. Behavior may change.</param>
+    ///<param name="order">Field to sort by.</param>
     ///<param name="direction">The sorting direction.</param>
-    ///<param name="search">
-    ///Allows searching in multiple properties of a record simultaneously.
-    ///This parameter is intended for human users, not automation. Its exact
-    ///behavior is intentionally left unspecified and is subject to change
-    ///in the future.
-    ///</param>
-    ///<param name="allowedDeliveryMode">Filters response to domains with the provided delivery mode.</param>
-    ///<param name="domain">Filters results by the provided domains, allowing for multiple occurrences.</param>
-    ///<param name="activeDeliveryMode">Filters response to domains with the currently active delivery mode.</param>
-    ///<param name="integrationId">Filters response to domains with the provided integration ID.</param>
+    ///<param name="allowedDeliveryMode">Delivery mode to filter by.</param>
+    ///<param name="domain">Domain names to filter by.</param>
+    ///<param name="activeDeliveryMode">Currently active delivery mode to filter by.</param>
+    ///<param name="integrationId">Integration ID to filter by.</param>
+    ///<param name="status">Filters response to domains with the provided status.</param>
     ///<param name="cancellationToken"></param>
     member this.EmailSecurityListDomains
         (
             accountId: string,
             ?page: int,
             ?perPage: int,
+            ?search: string,
             ?order: string,
             ?direction: string,
-            ?search: string,
             ?allowedDeliveryMode: string,
             ?domain: list<string>,
             ?activeDeliveryMode: string,
             ?integrationId: System.Guid,
+            ?status: string,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -902,12 +928,12 @@ type EmailClient(httpClient: HttpClient) =
                       RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value)
+                  if search.IsSome then
+                      RequestPart.query ("search", search.Value)
                   if order.IsSome then
                       RequestPart.query ("order", order.Value)
                   if direction.IsSome then
                       RequestPart.query ("direction", direction.Value)
-                  if search.IsSome then
-                      RequestPart.query ("search", search.Value)
                   if allowedDeliveryMode.IsSome then
                       RequestPart.query ("allowed_delivery_mode", allowedDeliveryMode.Value)
                   if domain.IsSome then
@@ -915,7 +941,9 @@ type EmailClient(httpClient: HttpClient) =
                   if activeDeliveryMode.IsSome then
                       RequestPart.query ("active_delivery_mode", activeDeliveryMode.Value)
                   if integrationId.IsSome then
-                      RequestPart.query ("integration_id", integrationId.Value) ]
+                      RequestPart.query ("integration_id", integrationId.Value)
+                  if status.IsSome then
+                      RequestPart.query ("status", status.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -930,9 +958,17 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Unprotect an email domain
+    ///Removes email security protection from a domain. After deletion, emails for this domain will no longer be processed by Email Security. This action cannot be undone.
     ///</summary>
-    member this.EmailSecurityDeleteDomain(accountId: string, domainId: int, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="domainId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityDeleteDomain
+        (
+            accountId: string,
+            domainId: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
@@ -951,9 +987,17 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Gets configuration details for a specific domain in email security.
+    ///Retrieves detailed information for a specific protected email domain including its delivery configuration, SPF/DMARC status, and authorization state.
     ///</summary>
-    member this.EmailSecurityGetDomain(accountId: string, domainId: int, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="domainId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityGetDomain
+        (
+            accountId: string,
+            domainId: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
@@ -972,13 +1016,17 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Updates configuration for a domain in email security.
+    ///Updates configuration for a protected email domain. Only provided fields will be modified. Changes affect delivery mode, security settings, and regional processing.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="domainId"></param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityUpdateDomain
         (
             accountId: string,
-            domainId: int,
-            body: EmailSecurityUpdateDomainPayload,
+            domainId: System.Guid,
+            body: ``email-securityUpdateDomain``,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -1000,29 +1048,24 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Lists, searches, and sorts entries in the impersonation registry.
+    ///Returns a paginated list of protected identities in the impersonation registry. These entries define identities and email addresses to protect from impersonation attacks. Can be manually added or automatically synced from directory integrations.
     ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="page">The page number of paginated results.</param>
-    ///<param name="perPage">The number of results per page.</param>
-    ///<param name="order">The field to sort by.</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="page">Current page within paginated list of results.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
+    ///<param name="search">Search term for filtering records. Behavior may change.</param>
+    ///<param name="order">Field to sort by.</param>
     ///<param name="direction">The sorting direction.</param>
-    ///<param name="search">
-    ///Allows searching in multiple properties of a record simultaneously.
-    ///This parameter is intended for human users, not automation. Its exact
-    ///behavior is intentionally left unspecified and is subject to change
-    ///in the future.
-    ///</param>
     ///<param name="provenance"></param>
     ///<param name="cancellationToken"></param>
-    member this.EmailSecurityListDisplayNames
+    member this.EmailSecurityListImpersonationRegistry
         (
             accountId: string,
             ?page: int,
             ?perPage: int,
+            ?search: string,
             ?order: string,
             ?direction: string,
-            ?search: string,
             ?provenance: string,
             ?cancellationToken: CancellationToken
         ) =
@@ -1033,12 +1076,12 @@ type EmailClient(httpClient: HttpClient) =
                       RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value)
+                  if search.IsSome then
+                      RequestPart.query ("search", search.Value)
                   if order.IsSome then
                       RequestPart.query ("order", order.Value)
                   if direction.IsSome then
                       RequestPart.query ("direction", direction.Value)
-                  if search.IsSome then
-                      RequestPart.query ("search", search.Value)
                   if provenance.IsSome then
                       RequestPart.query ("provenance", provenance.Value) ]
 
@@ -1050,17 +1093,20 @@ type EmailClient(httpClient: HttpClient) =
                     cancellationToken
 
             match int status with
-            | 200 -> return EmailSecurityListDisplayNames.OK(Serializer.deserialize content)
-            | _ -> return EmailSecurityListDisplayNames.BadRequest(Serializer.deserialize content)
+            | 200 -> return EmailSecurityListImpersonationRegistry.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityListImpersonationRegistry.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
-    ///Creates a display name entry for email security impersonation protection.
+    ///Creates a new entry in the impersonation registry to protect against impersonation. Emails attempting to impersonate this identity will be flagged. Supports regex patterns for flexible email matching.
     ///</summary>
-    member this.EmailSecurityCreateDisplayName
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body">Create an impersonation registry entry</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityCreateImpersonationRegistry
         (
             accountId: string,
-            body: ``email-securityCreateDisplayName``,
+            body: ``email-securityCreateImpersonationRegistry``,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -1076,93 +1122,181 @@ type EmailClient(httpClient: HttpClient) =
                     cancellationToken
 
             match int status with
-            | 201 -> return EmailSecurityCreateDisplayName.Created(Serializer.deserialize content)
-            | _ -> return EmailSecurityCreateDisplayName.BadRequest(Serializer.deserialize content)
+            | 201 -> return EmailSecurityCreateImpersonationRegistry.Created(Serializer.deserialize content)
+            | _ -> return EmailSecurityCreateImpersonationRegistry.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
-    ///Removes a display name from impersonation protection monitoring.
+    ///Removes an entry from the impersonation registry. After deletion, this identity will no longer be protected from impersonation.
     ///</summary>
-    member this.EmailSecurityDeleteDisplayName
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="impersonationRegistryId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityDeleteImpersonationRegistry
         (
             accountId: string,
-            displayNameId: int,
+            impersonationRegistryId: System.Guid,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("display_name_id", displayNameId) ]
+                  RequestPart.path ("impersonation_registry_id", impersonationRegistryId) ]
 
             let! (status, content) =
                 OpenApiHttp.deleteAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}"
+                    "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}"
                     requestParts
                     cancellationToken
 
             match int status with
-            | 200 -> return EmailSecurityDeleteDisplayName.OK(Serializer.deserialize content)
-            | _ -> return EmailSecurityDeleteDisplayName.BadRequest(Serializer.deserialize content)
+            | 200 -> return EmailSecurityDeleteImpersonationRegistry.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityDeleteImpersonationRegistry.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
-    ///Retrieves a display name entry used for impersonation protection.
+    ///Retrieves details for a specific impersonation registry entry including the protected identity, email pattern, and synchronization source if directory-synced.
     ///</summary>
-    member this.EmailSecurityGetDisplayName
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="impersonationRegistryId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityGetImpersonationRegistry
         (
             accountId: string,
-            displayNameId: int,
+            impersonationRegistryId: System.Guid,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("display_name_id", displayNameId) ]
+                  RequestPart.path ("impersonation_registry_id", impersonationRegistryId) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}"
+                    "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}"
                     requestParts
                     cancellationToken
 
             match int status with
-            | 200 -> return EmailSecurityGetDisplayName.OK(Serializer.deserialize content)
-            | _ -> return EmailSecurityGetDisplayName.BadRequest(Serializer.deserialize content)
+            | 200 -> return EmailSecurityGetImpersonationRegistry.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityGetImpersonationRegistry.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
-    ///Updates a display name entry used for impersonation protection.
+    ///Updates an existing impersonation registry entry. Only provided fields will be modified. Directory-synced entries can't be updated.
     ///</summary>
-    member this.EmailSecurityUpdateDisplayName
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="impersonationRegistryId"></param>
+    ///<param name="body">Update an impersonation registry entry</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityUpdateImpersonationRegistry
         (
             accountId: string,
-            displayNameId: int,
-            body: EmailSecurityUpdateDisplayNamePayload,
+            impersonationRegistryId: System.Guid,
+            body: ``email-securityUpdateImpersonationRegistry``,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("display_name_id", displayNameId)
+                  RequestPart.path ("impersonation_registry_id", impersonationRegistryId)
                   RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.patchAsync
                     httpClient
-                    "/accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}"
+                    "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}"
                     requestParts
                     cancellationToken
 
             match int status with
-            | 200 -> return EmailSecurityUpdateDisplayName.OK(Serializer.deserialize content)
-            | _ -> return EmailSecurityUpdateDisplayName.BadRequest(Serializer.deserialize content)
+            | 200 -> return EmailSecurityUpdateImpersonationRegistry.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityUpdateImpersonationRegistry.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
-    ///Send a Batch of `sending_domain_restrictions` API calls to be executed together.
+    ///Returns a paginated list of sending domain restrictions. These restrictions enforce TLS requirements for emails from specific domains. Mail without TLS from restricted domains will be dropped unless the subdomain is in the exclude list. Supports sorting and searching.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="page">Current page within paginated list of results.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
+    ///<param name="search">Search term for filtering records. Behavior may change.</param>
+    ///<param name="order">Field to sort by.</param>
+    ///<param name="direction">The sorting direction.</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityListSendingDomainRestrictions
+        (
+            accountId: string,
+            ?page: int,
+            ?perPage: int,
+            ?search: string,
+            ?order: string,
+            ?direction: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value)
+                  if search.IsSome then
+                      RequestPart.query ("search", search.Value)
+                  if order.IsSome then
+                      RequestPart.query ("order", order.Value)
+                  if direction.IsSome then
+                      RequestPart.query ("direction", direction.Value) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/sending_domain_restrictions"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityListSendingDomainRestrictions.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityListSendingDomainRestrictions.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Creates a new sending domain restriction to enforce TLS requirements for a domain. Emails without TLS from this domain will be dropped unless the subdomain is in the exclude list.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body">Create a sending domain restriction.</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityCreateSendingDomainRestriction
+        (
+            accountId: string,
+            body: ``email-securityCreateSendingDomainRestriction``,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/sending_domain_restrictions"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 201 -> return EmailSecurityCreateSendingDomainRestriction.Created(Serializer.deserialize content)
+            | _ -> return EmailSecurityCreateSendingDomainRestriction.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Executes multiple delete operations on sending domain restrictions atomically. All operations succeed or fail together as a transaction. Currently only supports batch deletion. Removes TLS enforcement requirements for the specified domains.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityBatchSendingDomainRestrictions
         (
             accountId: string,
@@ -1187,21 +1321,106 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Lists, searches, and sorts an account’s trusted email domains.
+    ///Removes a sending domain restriction. After deletion, TLS will no longer be enforced for emails from this domain.
     ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="page">The page number of paginated results.</param>
-    ///<param name="perPage">The number of results per page.</param>
-    ///<param name="order">The field to sort by.</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="sendingDomainRestrictionId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityDeleteSendingDomainRestriction
+        (
+            accountId: string,
+            sendingDomainRestrictionId: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("sending_domain_restriction_id", sendingDomainRestrictionId) ]
+
+            let! (status, content) =
+                OpenApiHttp.deleteAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityDeleteSendingDomainRestriction.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityDeleteSendingDomainRestriction.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Retrieves details for a specific sending domain restriction including the domain requiring TLS and any excluded subdomains exempt from the TLS requirement.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="sendingDomainRestrictionId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityGetSendingDomainRestriction
+        (
+            accountId: string,
+            sendingDomainRestrictionId: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("sending_domain_restriction_id", sendingDomainRestrictionId) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityGetSendingDomainRestriction.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityGetSendingDomainRestriction.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Updates an existing sending domain restriction. Only provided fields will be modified. Changes affect which domains require TLS and which subdomains are excluded.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="sendingDomainRestrictionId"></param>
+    ///<param name="body">Update a sending domain restriction.</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityUpdateSendingDomainRestriction
+        (
+            accountId: string,
+            sendingDomainRestrictionId: System.Guid,
+            body: ``email-securityUpdateSendingDomainRestriction``,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("sending_domain_restriction_id", sendingDomainRestrictionId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.patchAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityUpdateSendingDomainRestriction.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityUpdateSendingDomainRestriction.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Returns a paginated list of trusted domain patterns. Trusted domains prevent false positives for recently registered domains and lookalike domain detections. Patterns can use regular expressions for flexible matching.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="page">Current page within paginated list of results.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
+    ///<param name="search">Search term for filtering records. Behavior may change.</param>
+    ///<param name="order">Field to sort by.</param>
     ///<param name="direction">The sorting direction.</param>
-    ///<param name="search">
-    ///Allows searching in multiple properties of a record simultaneously.
-    ///This parameter is intended for human users, not automation. Its exact
-    ///behavior is intentionally left unspecified and is subject to change
-    ///in the future.
-    ///</param>
-    ///<param name="isRecent"></param>
-    ///<param name="isSimilarity"></param>
+    ///<param name="isRecent">Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.</param>
+    ///<param name="isSimilarity">Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.</param>
     ///<param name="pattern"></param>
     ///<param name="cancellationToken"></param>
     member this.EmailSecurityListTrustedDomains
@@ -1209,9 +1428,9 @@ type EmailClient(httpClient: HttpClient) =
             accountId: string,
             ?page: int,
             ?perPage: int,
+            ?search: string,
             ?order: string,
             ?direction: string,
-            ?search: string,
             ?isRecent: bool,
             ?isSimilarity: bool,
             ?pattern: string,
@@ -1224,12 +1443,12 @@ type EmailClient(httpClient: HttpClient) =
                       RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
                       RequestPart.query ("per_page", perPage.Value)
+                  if search.IsSome then
+                      RequestPart.query ("search", search.Value)
                   if order.IsSome then
                       RequestPart.query ("order", order.Value)
                   if direction.IsSome then
                       RequestPart.query ("direction", direction.Value)
-                  if search.IsSome then
-                      RequestPart.query ("search", search.Value)
                   if isRecent.IsSome then
                       RequestPart.query ("is_recent", isRecent.Value)
                   if isSimilarity.IsSome then
@@ -1250,13 +1469,21 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Adds a domain to the trusted domains list for email security, reducing false positive
-    ///detections.
+    ///Creates a new trusted domain pattern. Use for partner domains or approved senders that should bypass recent domain registration and similarity checks. Configure whether it prevents recent domain or spoof dispositions.
     ///</summary>
-    member this.EmailSecurityCreateTrustedDomain(accountId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body">Create a trusted domain</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityCreateTrustedDomain
+        (
+            accountId: string,
+            body: ``email-securityCreateTrustedDomain``,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ RequestPart.path ("account_id", accountId) ]
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.postAsync
@@ -1271,8 +1498,13 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Send a Batch of Trusted Domains API calls to be executed together.
+    ///Execute multiple operations atomically. All four operation arrays
+    ///(deletes, patches, puts, posts) are required and executed in order.
+    ///Send empty arrays for unused operations.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityBatchTrustedDomains
         (
             accountId: string,
@@ -1297,13 +1529,15 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Removes a domain from the trusted domains list, subjecting it to normal security
-    ///scanning.
+    ///Removes a trusted domain pattern. After deletion, emails from this domain will be subject to normal recent domain and similarity checks.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="trustedDomainId"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityDeleteTrustedDomain
         (
             accountId: string,
-            trustedDomainId: int,
+            trustedDomainId: System.Guid,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -1324,12 +1558,15 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Gets information about a specific trusted domain entry.
+    ///Retrieves details for a specific trusted domain pattern including its pattern value, whether it uses regex matching, and which detection types it affects.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="trustedDomainId"></param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityGetTrustedDomain
         (
             accountId: string,
-            trustedDomainId: int,
+            trustedDomainId: System.Guid,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -1350,13 +1587,17 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Modifies a trusted domain entry's configuration.
+    ///Updates an existing trusted domain pattern. Only provided fields will be modified. Changes take effect for new emails matching the pattern.
     ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="trustedDomainId"></param>
+    ///<param name="body">Update a trusted domain</param>
+    ///<param name="cancellationToken"></param>
     member this.EmailSecurityUpdateTrustedDomain
         (
             accountId: string,
-            trustedDomainId: int,
-            body: EmailSecurityUpdateTrustedDomainPayload,
+            trustedDomainId: System.Guid,
+            body: ``email-securityUpdateTrustedDomain``,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -1378,17 +1619,164 @@ type EmailClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///This endpoint returns information for submissions to made to reclassify emails.
+    ///Returns a paginated list of URL rewrite ignore patterns for the account. URLs matching these patterns will not be rewritten.
     ///</summary>
-    ///<param name="accountId"></param>
-    ///<param name="start">
-    ///The beginning of the search date range.
-    ///Defaults to `now - 30 days` if not provided.
-    ///</param>
-    ///<param name="end">
-    ///The end of the search date range.
-    ///Defaults to `now` if not provided.
-    ///</param>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="page">Current page within paginated list of results.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityListUrlIgnorePatterns
+        (
+            accountId: string,
+            ?page: int,
+            ?perPage: int,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/url_ignore_patterns"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityListUrlIgnorePatterns.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityListUrlIgnorePatterns.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Creates a new URL rewrite ignore pattern. URLs matching this pattern will not be rewritten.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body">Create a URL ignore pattern for URLs that should not be rewritten.</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityCreateUrlIgnorePattern
+        (
+            accountId: string,
+            body: ``email-securityCreateUrlIgnorePattern``,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/url_ignore_patterns"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 201 -> return EmailSecurityCreateUrlIgnorePattern.Created(Serializer.deserialize content)
+            | _ -> return EmailSecurityCreateUrlIgnorePattern.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Send a Batch of URL Ignore Patterns API calls to be executed together.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityBatchUrlIgnorePatterns
+        (
+            accountId: string,
+            body: EmailSecurityBatchUrlIgnorePatternsPayload,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/url_ignore_patterns/batch"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityBatchUrlIgnorePatterns.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityBatchUrlIgnorePatterns.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Removes a URL rewrite ignore pattern. After deletion, URLs matching this pattern will be rewritten again.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="patternId"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityDeleteUrlIgnorePattern
+        (
+            accountId: string,
+            patternId: System.Guid,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("pattern_id", patternId) ]
+
+            let! (status, content) =
+                OpenApiHttp.deleteAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityDeleteUrlIgnorePattern.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityDeleteUrlIgnorePattern.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Updates an existing URL rewrite ignore pattern. Only provided fields will be modified.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="patternId"></param>
+    ///<param name="body">Update a URL rewrite ignore pattern. Only provided fields will be modified.</param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSecurityUpdateUrlIgnorePattern
+        (
+            accountId: string,
+            patternId: System.Guid,
+            body: ``email-securityUpdateUrlIgnorePattern``,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("pattern_id", patternId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.patchAsync
+                    httpClient
+                    "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSecurityUpdateUrlIgnorePattern.OK(Serializer.deserialize content)
+            | _ -> return EmailSecurityUpdateUrlIgnorePattern.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Returns information for submissions made to reclassify emails. Shows the status, outcome, and disposition changes for reclassification requests made by users or the security team. Useful for tracking false positive/negative reports.
+    ///</summary>
+    ///<param name="accountId">Account identifier tag.</param>
+    ///<param name="start">The beginning of the search date range. Defaults to `now - 30 days`.</param>
+    ///<param name="end">The end of the search date range. Defaults to `now`.</param>
     ///<param name="type"></param>
     ///<param name="submissionId"></param>
     ///<param name="originalDisposition"></param>
@@ -1396,9 +1784,8 @@ type EmailClient(httpClient: HttpClient) =
     ///<param name="outcomeDisposition"></param>
     ///<param name="status"></param>
     ///<param name="query"></param>
-    ///<param name="customerStatus"></param>
-    ///<param name="page">The page number of paginated results.</param>
-    ///<param name="perPage">The number of results per page.</param>
+    ///<param name="page">Current page within paginated list of results.</param>
+    ///<param name="perPage">The number of results per page. Maximum value is 1000.</param>
     ///<param name="cancellationToken"></param>
     member this.EmailSecuritySubmissions
         (
@@ -1412,7 +1799,6 @@ type EmailClient(httpClient: HttpClient) =
             ?outcomeDisposition: string,
             ?status: string,
             ?query: string,
-            ?customerStatus: string,
             ?page: int,
             ?perPage: int,
             ?cancellationToken: CancellationToken
@@ -1438,8 +1824,6 @@ type EmailClient(httpClient: HttpClient) =
                       RequestPart.query ("status", status.Value)
                   if query.IsSome then
                       RequestPart.query ("query", query.Value)
-                  if customerStatus.IsSome then
-                      RequestPart.query ("customer_status", customerStatus.Value)
                   if page.IsSome then
                       RequestPart.query ("page", page.Value)
                   if perPage.IsSome then
@@ -1561,4 +1945,340 @@ type EmailClient(httpClient: HttpClient) =
                     cancellationToken
 
             return EmailRoutingDestinationAddressesGetADestinationAddress.OK(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///List account email suppressions
+    ///</summary>
+    member this.GetPublicListSuppressionRouting
+        (
+            accountId: string,
+            ?page: int,
+            ?perPage: int,
+            ?order: string,
+            ?direction: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value)
+                  if order.IsSome then
+                      RequestPart.query ("order", order.Value)
+                  if direction.IsSome then
+                      RequestPart.query ("direction", direction.Value) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email/routing/suppression"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return GetPublicListSuppressionRouting.OK(Serializer.deserialize content)
+            | _ -> return GetPublicListSuppressionRouting.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Create account email suppression
+    ///</summary>
+    member this.PostPublicNewSuppressionRouting
+        (
+            accountId: string,
+            body: PostPublicNewSuppressionRoutingPayload,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/email/routing/suppression"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return PostPublicNewSuppressionRouting.OK(Serializer.deserialize content)
+            | _ -> return PostPublicNewSuppressionRouting.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Delete account email suppression
+    ///</summary>
+    member this.DeletePublicDeleteSuppressionRouting
+        (
+            accountId: string,
+            suppressionId: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("suppression_id", suppressionId) ]
+
+            let! (status, content) =
+                OpenApiHttp.deleteAsync
+                    httpClient
+                    "/accounts/{account_id}/email/routing/suppression/{suppression_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return DeletePublicDeleteSuppressionRouting.OK(Serializer.deserialize content)
+            | _ -> return DeletePublicDeleteSuppressionRouting.NotFound(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Get account email suppression
+    ///</summary>
+    member this.GetPublicGetSuppressionRouting
+        (
+            accountId: string,
+            suppressionId: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("suppression_id", suppressionId) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email/routing/suppression/{suppression_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return GetPublicGetSuppressionRouting.OK(Serializer.deserialize content)
+            | _ -> return GetPublicGetSuppressionRouting.NotFound(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Get feedback emails statistics
+    ///</summary>
+    member this.GetPublicFeedbackStatus
+        (
+            accountId: string,
+            ?startAt: System.DateTimeOffset,
+            ?endAt: System.DateTimeOffset,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  if startAt.IsSome then
+                      RequestPart.query ("start_at", startAt.Value)
+                  if endAt.IsSome then
+                      RequestPart.query ("end_at", endAt.Value) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email/sending/feedback"
+                    requestParts
+                    cancellationToken
+
+            return GetPublicFeedbackStatus.OK(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Returns the current daily sending quota for the account. Null when the quota is not yet available.
+    ///</summary>
+    member this.EmailSendingGetSendingLimits(accountId: string, ?cancellationToken: CancellationToken) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email/sending/limits"
+                    requestParts
+                    cancellationToken
+
+            return EmailSendingGetSendingLimits.OK(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Send an email
+    ///</summary>
+    ///<param name="accountId">Identifier of the account.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSendingAccountSendBuilder
+        (
+            accountId: string,
+            body: ``email-sendingEmailBuilder``,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/email/sending/send"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSendingAccountSendBuilder.OK(Serializer.deserialize content)
+            | 400 -> return EmailSendingAccountSendBuilder.BadRequest(Serializer.deserialize content)
+            | 403 -> return EmailSendingAccountSendBuilder.Forbidden(Serializer.deserialize content)
+            | _ -> return EmailSendingAccountSendBuilder.InternalServerError(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Send a raw MIME email
+    ///</summary>
+    ///<param name="accountId">Identifier of the account.</param>
+    ///<param name="body"></param>
+    ///<param name="cancellationToken"></param>
+    member this.EmailSendingAccountSendRawMessage
+        (
+            accountId: string,
+            body: ``email-sendingSendRawRequest``,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/email/sending/send_raw"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return EmailSendingAccountSendRawMessage.OK(Serializer.deserialize content)
+            | 400 -> return EmailSendingAccountSendRawMessage.BadRequest(Serializer.deserialize content)
+            | 403 -> return EmailSendingAccountSendRawMessage.Forbidden(Serializer.deserialize content)
+            | _ -> return EmailSendingAccountSendRawMessage.InternalServerError(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///List account email suppressions
+    ///</summary>
+    member this.GetPublicListSuppressionSending
+        (
+            accountId: string,
+            ?page: int,
+            ?perPage: int,
+            ?order: string,
+            ?direction: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value)
+                  if order.IsSome then
+                      RequestPart.query ("order", order.Value)
+                  if direction.IsSome then
+                      RequestPart.query ("direction", direction.Value) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email/sending/suppression"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return GetPublicListSuppressionSending.OK(Serializer.deserialize content)
+            | _ -> return GetPublicListSuppressionSending.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Create account email suppression
+    ///</summary>
+    member this.PostPublicNewSuppressionSending
+        (
+            accountId: string,
+            body: PostPublicNewSuppressionSendingPayload,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.jsonContent body ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/email/sending/suppression"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return PostPublicNewSuppressionSending.OK(Serializer.deserialize content)
+            | _ -> return PostPublicNewSuppressionSending.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Delete account email suppression
+    ///</summary>
+    member this.DeletePublicDeleteSuppressionSending
+        (
+            accountId: string,
+            suppressionId: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("suppression_id", suppressionId) ]
+
+            let! (status, content) =
+                OpenApiHttp.deleteAsync
+                    httpClient
+                    "/accounts/{account_id}/email/sending/suppression/{suppression_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return DeletePublicDeleteSuppressionSending.OK(Serializer.deserialize content)
+            | _ -> return DeletePublicDeleteSuppressionSending.NotFound(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Get account email suppression
+    ///</summary>
+    member this.GetPublicGetSuppressionSending
+        (
+            accountId: string,
+            suppressionId: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("suppression_id", suppressionId) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/email/sending/suppression/{suppression_id}"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return GetPublicGetSuppressionSending.OK(Serializer.deserialize content)
+            | _ -> return GetPublicGetSuppressionSending.NotFound(Serializer.deserialize content)
         }

@@ -3,6 +3,7 @@ namespace rec Fidelity.CloudEdge.Management.Workers.Types
 // Auto-generated type aliases (Hawaii normalization fix)
 type ``workers-kv_key_name_bulk`` = ``workers-kvkeynamebulk``
 type workers_compatibility_flag = workerscompatibilityflag
+type workers_container_item = workerscontaineritem
 type workers_tag = workerstag
 type workers_tail_consumers_script = workerstailconsumersscript
 
@@ -11,6 +12,7 @@ type allowed = string
 type classes = string
 type cloud = string
 type destinations = string
+type events = string
 type files = string
 type handlers = string
 type keys = string
@@ -33,8 +35,7 @@ type ``workers-kvbulkwriteArrayItem`` =
       expiration_ttl: Option<``workers-kvexpirationttl``>
       ///A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
       key: ``workers-kvkeynamebulk``
-      ///Arbitrary JSON that is associated with a key.
-      metadata: Option<``workers-kvlistmetadata``>
+      metadata: Option<obj>
       ///A UTF-8 encoded string to be stored, up to 25 MiB in length.
       value: string }
     ///Creates an instance of workers-kvbulkwriteArrayItem with all optional fields initialized to None. The required fields are parameters of this function
@@ -70,8 +71,6 @@ type ``workers-kvmessages`` = list<``workers-kvmessagesArrayItem``>
 type ``workers-kvnamespaceidentifier`` = string
 ///A human-readable string name for a Namespace.
 type ``workers-kvnamespacetitle`` = string
-///Identifer of the account.
-type workersaccountidentifier = string
 ///A JavaScript variable name for the binding.
 type workersbindingname = string
 type workersbindings = list<workers_binding_item>
@@ -80,22 +79,19 @@ type workerscompatibilitydate = string
 ///Flag that enables or disables a specific feature in the Workers runtime.
 type workerscompatibilityflag = string
 type workerscompatibilityflags = list<workers_compatibility_flag>
+type workerscontainers = list<workers_container_item>
 ///When the script was created.
 type workerscreatedon = System.DateTimeOffset
 ///Opaque token indicating the position from which to continue when requesting the next set of records. A valid value for the cursor can be obtained from the cursors object in the result_info structure.
 type workerscursor = string
 ///Name of the Workers for Platforms dispatch namespace.
 type workersdispatchnamespacename = string
-///Identifer of the Worker Domain.
-type workersdomainidentifier = string
 ///Optional environment if the Worker utilizes one.
 type workersenvironment = string
 ///Hashed script content, can be used in a If-None-Match header when updating.
 type workersetag = string
 type workershasassets = bool
 type workershasmodules = bool
-///Hostname of the Worker Domain.
-type workershostname = string
 ///Identifier.
 type workersidentifier = string
 type workerslogpush = bool
@@ -145,14 +141,10 @@ type workersplacementstatus =
         | UNSUPPORTED_APPLICATION -> "UNSUPPORTED_APPLICATION"
         | INSUFFICIENT_INVOCATIONS -> "INSUFFICIENT_INVOCATIONS"
 
-///Worker environment associated with the zone and hostname.
-type ``workersschemas-environment`` = string
 ///ID of the namespace.
 type ``workersschemas-id`` = string
 ///Name of the script.
 type ``workersschemas-scriptname`` = string
-///Worker service associated with the zone and hostname.
-type ``workersschemas-service`` = string
 type workersscriptcount = int
 ///Name of the script, used in URLs and route configuration.
 type workersscriptname = string
@@ -181,10 +173,6 @@ type workersusagemodel =
 ///API Resource UUID tag.
 type workersuuid = string
 type workersversionidentifier = string
-///Identifier of the zone.
-type workerszoneidentifier = string
-///Name of the zone.
-type workerszonename = string
 
 type Errors =
     { code: int
@@ -199,16 +187,16 @@ type Messages =
     static member Create (code: int, message: string): Messages = { code = code; message = message }
 
 type ``workers-kvapi-response-collection`` =
-    { errors: list<Errors>
-      messages: list<Messages>
+    { errors: Option<list<Errors>>
+      messages: Option<list<Messages>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       result_info: Option<``workers-kvresultinfo``> }
     ///Creates an instance of workers-kvapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<Errors>, messages: list<Messages>, success: bool): ``workers-kvapi-response-collection`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workers-kvapi-response-collection`` =
+        { errors = None
+          messages = None
+          success = None
           result_info = None }
 
 type ``workers-kvapi-response-commonErrors`` =
@@ -269,18 +257,16 @@ type ``workers-kvapi-response-common-no-resultMessages`` =
         { code = code; message = message }
 
 type ``workers-kvapi-response-common-no-result`` =
-    { errors: list<``workers-kvapi-response-common-no-resultErrors``>
-      messages: list<``workers-kvapi-response-common-no-resultMessages``>
+    { errors: Option<list<``workers-kvapi-response-common-no-resultErrors``>>
+      messages: Option<list<``workers-kvapi-response-common-no-resultMessages``>>
       ///Whether the API call was successful.
-      success: bool
-      result: Option<Map<string, obj>> }
+      success: Option<bool>
+      result: Option<obj> }
     ///Creates an instance of workers-kvapi-response-common-no-result with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workers-kvapi-response-common-no-resultErrors``>,
-                          messages: list<``workers-kvapi-response-common-no-resultMessages``>,
-                          success: bool): ``workers-kvapi-response-common-no-result`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workers-kvapi-response-common-no-result`` =
+        { errors = None
+          messages = None
+          success = None
           result = None }
 
 type ``workers-kvbulk-get-result`` =
@@ -324,8 +310,7 @@ type ``workers-kvcursorresultinfo`` =
 type ``workers-kvkey`` =
     { ///The time, measured in number of seconds since the UNIX epoch, at which the key will expire. This property is omitted for keys that will not expire.
       expiration: Option<float>
-      ///Arbitrary JSON that is associated with a key.
-      metadata: Option<``workers-kvlistmetadata``>
+      metadata: Option<obj>
       ///A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
       name: ``workers-kvkeyname`` }
     ///Creates an instance of workers-kvkey with all optional fields initialized to None. The required fields are parameters of this function
@@ -365,7 +350,107 @@ type ``workers-kvresultinfo`` =
           per_page = None
           total_count = None }
 
-///The statistics object contains information about query performance from the database, it does not include any network latency
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Kind =
+    | [<CompiledName "filter">] Filter
+    member this.Format() =
+        match this with
+        | Filter -> "filter"
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Operation =
+    | [<CompiledName "includes">] Includes
+    | [<CompiledName "not_includes">] Not_includes
+    | [<CompiledName "starts_with">] Starts_with
+    | [<CompiledName "regex">] Regex
+    | [<CompiledName "exists">] Exists
+    | [<CompiledName "is_null">] Is_null
+    | [<CompiledName "in">] In
+    | [<CompiledName "not_in">] Not_in
+    | [<CompiledName "eq">] Eq
+    | [<CompiledName "neq">] Neq
+    | [<CompiledName "gt">] Gt
+    | [<CompiledName "gte">] Gte
+    | [<CompiledName "lt">] Lt
+    | [<CompiledName "lte">] Lte
+    | [<CompiledName "=">] Equal
+    | [<CompiledName "!=">] NotEqual
+    | [<CompiledName ">">] GreaterThan
+    | [<CompiledName ">=">] GreaterThanOrEqual
+    | [<CompiledName "<">] LessThan
+    | [<CompiledName "<=">] LessThanOrEqual
+    | [<CompiledName "INCLUDES">] INCLUDES
+    | [<CompiledName "DOES_NOT_INCLUDE">] DOES_NOT_INCLUDE
+    | [<CompiledName "MATCH_REGEX">] MATCH_REGEX
+    | [<CompiledName "EXISTS">] EXISTS
+    | [<CompiledName "DOES_NOT_EXIST">] DOES_NOT_EXIST
+    | [<CompiledName "IN">] IN
+    | [<CompiledName "NOT_IN">] NOT_IN
+    | [<CompiledName "STARTS_WITH">] STARTS_WITH
+    member this.Format() =
+        match this with
+        | Includes -> "includes"
+        | Not_includes -> "not_includes"
+        | Starts_with -> "starts_with"
+        | Regex -> "regex"
+        | Exists -> "exists"
+        | Is_null -> "is_null"
+        | In -> "in"
+        | Not_in -> "not_in"
+        | Eq -> "eq"
+        | Neq -> "neq"
+        | Gt -> "gt"
+        | Gte -> "gte"
+        | Lt -> "lt"
+        | Lte -> "lte"
+        | Equal -> "="
+        | NotEqual -> "!="
+        | GreaterThan -> ">"
+        | GreaterThanOrEqual -> ">="
+        | LessThan -> "<"
+        | LessThanOrEqual -> "<="
+        | INCLUDES -> "INCLUDES"
+        | DOES_NOT_INCLUDE -> "DOES_NOT_INCLUDE"
+        | MATCH_REGEX -> "MATCH_REGEX"
+        | EXISTS -> "EXISTS"
+        | DOES_NOT_EXIST -> "DOES_NOT_EXIST"
+        | IN -> "IN"
+        | NOT_IN -> "NOT_IN"
+        | STARTS_WITH -> "STARTS_WITH"
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Type =
+    | [<CompiledName "string">] String
+    | [<CompiledName "number">] Number
+    | [<CompiledName "boolean">] Boolean
+    member this.Format() =
+        match this with
+        | String -> "string"
+        | Number -> "number"
+        | Boolean -> "boolean"
+
+///A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.
+type ``workers-observabilityfilterleaf`` =
+    { ///Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.
+      key: string
+      ///Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.
+      kind: Option<Kind>
+      ///Comparison operator. String operators: includes, not_includes, starts_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.
+      operation: Operation
+      ///Data type of the filter field. Must match the actual type of the key being filtered.
+      ``type``: Type
+      ///Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).
+      value: Option<obj> }
+    ///Creates an instance of workers-observabilityfilterleaf with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (key: string, operation: Operation, ``type``: Type): ``workers-observabilityfilterleaf`` =
+        { key = key
+          kind = None
+          operation = operation
+          ``type`` = ``type``
+          value = None }
+
+type ``workers-observabilityfilternode`` = {code: int; message: string}
+///Query performance statistics from the database. Includes execution time, rows scanned, and bytes read. Does not include network latency.
 type ``workers-observabilityperformanceinformation`` =
     { ///The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1
       abr_level: Option<float>
@@ -480,90 +565,6 @@ type FilterCombination =
         | OR -> "OR"
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type Operation =
-    | [<CompiledName "includes">] Includes
-    | [<CompiledName "not_includes">] Not_includes
-    | [<CompiledName "starts_with">] Starts_with
-    | [<CompiledName "regex">] Regex
-    | [<CompiledName "exists">] Exists
-    | [<CompiledName "is_null">] Is_null
-    | [<CompiledName "in">] In
-    | [<CompiledName "not_in">] Not_in
-    | [<CompiledName "eq">] Eq
-    | [<CompiledName "neq">] Neq
-    | [<CompiledName "gt">] Gt
-    | [<CompiledName "gte">] Gte
-    | [<CompiledName "lt">] Lt
-    | [<CompiledName "lte">] Lte
-    | [<CompiledName "=">] Equal
-    | [<CompiledName "!=">] NotEqual
-    | [<CompiledName ">">] GreaterThan
-    | [<CompiledName ">=">] GreaterThanOrEqual
-    | [<CompiledName "<">] LessThan
-    | [<CompiledName "<=">] LessThanOrEqual
-    | [<CompiledName "INCLUDES">] INCLUDES
-    | [<CompiledName "DOES_NOT_INCLUDE">] DOES_NOT_INCLUDE
-    | [<CompiledName "MATCH_REGEX">] MATCH_REGEX
-    | [<CompiledName "EXISTS">] EXISTS
-    | [<CompiledName "DOES_NOT_EXIST">] DOES_NOT_EXIST
-    | [<CompiledName "IN">] IN
-    | [<CompiledName "NOT_IN">] NOT_IN
-    | [<CompiledName "STARTS_WITH">] STARTS_WITH
-    member this.Format() =
-        match this with
-        | Includes -> "includes"
-        | Not_includes -> "not_includes"
-        | Starts_with -> "starts_with"
-        | Regex -> "regex"
-        | Exists -> "exists"
-        | Is_null -> "is_null"
-        | In -> "in"
-        | Not_in -> "not_in"
-        | Eq -> "eq"
-        | Neq -> "neq"
-        | Gt -> "gt"
-        | Gte -> "gte"
-        | Lt -> "lt"
-        | Lte -> "lte"
-        | Equal -> "="
-        | NotEqual -> "!="
-        | GreaterThan -> ">"
-        | GreaterThanOrEqual -> ">="
-        | LessThan -> "<"
-        | LessThanOrEqual -> "<="
-        | INCLUDES -> "INCLUDES"
-        | DOES_NOT_INCLUDE -> "DOES_NOT_INCLUDE"
-        | MATCH_REGEX -> "MATCH_REGEX"
-        | EXISTS -> "EXISTS"
-        | DOES_NOT_EXIST -> "DOES_NOT_EXIST"
-        | IN -> "IN"
-        | NOT_IN -> "NOT_IN"
-        | STARTS_WITH -> "STARTS_WITH"
-
-[<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type Type =
-    | [<CompiledName "string">] String
-    | [<CompiledName "number">] Number
-    | [<CompiledName "boolean">] Boolean
-    member this.Format() =
-        match this with
-        | String -> "string"
-        | Number -> "number"
-        | Boolean -> "boolean"
-
-type Filters =
-    { key: string
-      operation: Operation
-      ``type``: Type
-      value: Option<obj> }
-    ///Creates an instance of Filters with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (key: string, operation: Operation, ``type``: Type): Filters =
-        { key = key
-          operation = operation
-          ``type`` = ``type``
-          value = None }
-
-[<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type GroupBysType =
     | [<CompiledName "string">] String
     | [<CompiledName "number">] Number
@@ -643,8 +644,8 @@ type Parameters =
       datasets: Option<list<string>>
       ///Set a Flag to describe how to combine the filters on the query.
       filterCombination: Option<FilterCombination>
-      ///Configure the Filters to apply to the query.
-      filters: Option<list<Filters>>
+      ///Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.
+      filters: Option<list<``workers-observabilityfilternode``>>
       ///Define how to group the results of the query.
       groupBys: Option<list<GroupBys>>
       ///Configure the Having clauses that filter on calculations in the query result.
@@ -668,42 +669,71 @@ type Parameters =
           orderBy = None }
 
 type ``workers-observabilityquery`` =
-    { created: string
+    { ///If the query wasn't explcitly saved
+      adhoc: bool
+      created: string
+      createdBy: string
       description: string
-      ///ID of your environment
-      environmentId: string
-      ///Flag for alerts automatically created
-      generated: bool
-      ///ID of the query
       id: string
       ///Query name
       name: string
       parameters: Parameters
       updated: string
-      userId: string
-      ///ID of your workspace
-      workspaceId: string }
+      updatedBy: string }
     ///Creates an instance of workers-observabilityquery with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (created: string,
+    static member Create (adhoc: bool,
+                          created: string,
+                          createdBy: string,
                           description: string,
-                          environmentId: string,
-                          generated: bool,
                           id: string,
                           name: string,
                           parameters: Parameters,
                           updated: string,
-                          userId: string,
-                          workspaceId: string): ``workers-observabilityquery`` =
-        { created = created
+                          updatedBy: string): ``workers-observabilityquery`` =
+        { adhoc = adhoc
+          created = created
+          createdBy = createdBy
           description = description
-          environmentId = environmentId
-          generated = generated
           id = id
           name = name
           parameters = parameters
           updated = updated
-          userId = userId
-          workspaceId = workspaceId }
+          updatedBy = updatedBy }
+
+type Agents =
+    { ///Class name of the Durable Object agent.
+      agentClass: string
+      ///Breakdown of event counts by event type.
+      eventTypeCounts: Map<string, float>
+      ///Timestamp of the earliest event from this agent in the queried window (Unix epoch ms).
+      firstEventMs: float
+      ///Whether the agent emitted any error events in the queried window.
+      hasErrors: bool
+      ///Timestamp of the most recent event from this agent (Unix epoch ms).
+      lastEventMs: float
+      ///Durable Object namespace the agent belongs to.
+      ``namespace``: string
+      ///Worker service name that hosts this agent.
+      service: string
+      ///Total number of events emitted by this agent in the queried window.
+      totalEvents: float }
+    ///Creates an instance of Agents with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (agentClass: string,
+                          eventTypeCounts: Map<string, float>,
+                          firstEventMs: float,
+                          hasErrors: bool,
+                          lastEventMs: float,
+                          ``namespace``: string,
+                          service: string,
+                          totalEvents: float): Agents =
+        { agentClass = agentClass
+          eventTypeCounts = eventTypeCounts
+          firstEventMs = firstEventMs
+          hasErrors = hasErrors
+          lastEventMs = lastEventMs
+          ``namespace`` = ``namespace``
+          service = service
+          totalEvents = totalEvents }
 
 type Groups =
     { key: string
@@ -733,24 +763,19 @@ type DataGroups =
 
 type Data =
     { count: float
-      firstSeen: string
+      firstSeen: Option<string>
       groups: Option<list<DataGroups>>
       interval: float
-      lastSeen: string
+      lastSeen: Option<string>
       sampleInterval: float
       value: float }
     ///Creates an instance of Data with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (count: float,
-                          firstSeen: string,
-                          interval: float,
-                          lastSeen: string,
-                          sampleInterval: float,
-                          value: float): Data =
+    static member Create (count: float, interval: float, sampleInterval: float, value: float): Data =
         { count = count
-          firstSeen = firstSeen
+          firstSeen = None
           groups = None
           interval = interval
-          lastSeen = lastSeen
+          lastSeen = None
           sampleInterval = sampleInterval
           value = value }
 
@@ -802,24 +827,19 @@ type CompareSeriesDataGroups =
 
 type CompareSeriesData =
     { count: float
-      firstSeen: string
+      firstSeen: Option<string>
       groups: Option<list<CompareSeriesDataGroups>>
       interval: float
-      lastSeen: string
+      lastSeen: Option<string>
       sampleInterval: float
       value: float }
     ///Creates an instance of CompareSeriesData with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (count: float,
-                          firstSeen: string,
-                          interval: float,
-                          lastSeen: string,
-                          sampleInterval: float,
-                          value: float): CompareSeriesData =
+    static member Create (count: float, interval: float, sampleInterval: float, value: float): CompareSeriesData =
         { count = count
-          firstSeen = firstSeen
+          firstSeen = None
           groups = None
           interval = interval
-          lastSeen = lastSeen
+          lastSeen = None
           sampleInterval = sampleInterval
           value = value }
 
@@ -842,7 +862,9 @@ type Compare =
           series = series }
 
 type Fields =
-    { key: string
+    { ///Field name present in the matched events.
+      key: string
+      ///Data type of the field (string, number, or boolean).
       ``type``: string }
     ///Creates an instance of Fields with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (key: string, ``type``: string): Fields = { key = key; ``type`` = ``type`` }
@@ -872,10 +894,15 @@ type EventsSeries =
     ///Creates an instance of EventsSeries with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (data: list<EventsSeriesData>, time: string): EventsSeries = { data = data; time = time }
 
+///Individual event results. Present when the query view is 'events'. Contains the matching log lines and their metadata.
 type Events =
-    { count: Option<float>
+    { ///Total number of events matching the query (may exceed the number returned due to limits).
+      count: Option<float>
+      ///List of individual telemetry events matching the query.
       events: Option<list<``workers-observabilitytelemetryevent``>>
+      ///List of fields discovered in the matched events. Useful for building dynamic UIs.
       fields: Option<list<Fields>>
+      ///Time-series data for the matched events, bucketed by the query granularity.
       series: Option<list<EventsSeries>> }
     ///Creates an instance of Events with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Events =
@@ -884,54 +911,24 @@ type Events =
           fields = None
           series = None }
 
-type PatternsSeriesDataGroups =
-    { key: string
-      value: obj }
-    ///Creates an instance of PatternsSeriesDataGroups with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (key: string, value: obj): PatternsSeriesDataGroups =
-        { key = key; value = value }
-
-type PatternsSeriesData =
-    { count: float
-      groups: Option<list<PatternsSeriesDataGroups>>
-      interval: float
-      sampleInterval: float
-      value: float }
-    ///Creates an instance of PatternsSeriesData with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (count: float, interval: float, sampleInterval: float, value: float): PatternsSeriesData =
-        { count = count
-          groups = None
-          interval = interval
-          sampleInterval = sampleInterval
-          value = value }
-
-type PatternsSeries =
-    { data: PatternsSeriesData
-      time: string }
-    ///Creates an instance of PatternsSeries with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (data: PatternsSeriesData, time: string): PatternsSeries = { data = data; time = time }
-
-type Patterns =
-    { count: float
-      pattern: string
-      series: list<PatternsSeries>
-      service: string }
-    ///Creates an instance of Patterns with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (count: float, pattern: string, series: list<PatternsSeries>, service: string): Patterns =
-        { count = count
-          pattern = pattern
-          series = series
-          service = service }
-
 type Traces =
-    { errors: Option<list<string>>
+    { ///Error messages encountered during the trace, if any.
+      errors: Option<list<string>>
+      ///Name of the root span that initiated the trace.
       rootSpanName: string
+      ///Logical transaction name for the root span.
       rootTransactionName: string
+      ///List of Worker services involved in the trace.
       service: list<string>
+      ///Total number of spans in the trace.
       spans: float
+      ///Total duration of the trace in milliseconds.
       traceDurationMs: float
+      ///Trace end time as a Unix epoch in milliseconds.
       traceEndMs: float
+      ///Unique identifier for the distributed trace.
       traceId: string
+      ///Trace start time as a Unix epoch in milliseconds.
       traceStartMs: float }
     ///Creates an instance of Traces with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (rootSpanName: string,
@@ -952,29 +949,37 @@ type Traces =
           traceId = traceId
           traceStartMs = traceStartMs }
 
+///Complete results of a query run. The populated fields depend on the requested view type (events, calculations, invocations, traces, or agents).
 type ``workers-observabilityqueryresults`` =
-    { calculations: Option<list<``workers-observabilityqueryresultsCalculations``>>
+    { ///Durable Object agent summaries. Present when the query view is 'agents'. Each entry represents an agent with its event counts and status.
+      agents: Option<list<Agents>>
+      ///Aggregated calculation results. Present when the query view is 'calculations'. Contains computed metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series data.
+      calculations: Option<list<``workers-observabilityqueryresultsCalculations``>>
+      ///Comparison calculation results from the previous time period. Present when the compare option is enabled. Same structure as calculations.
       compare: Option<list<Compare>>
+      ///Individual event results. Present when the query view is 'events'. Contains the matching log lines and their metadata.
       events: Option<Events>
+      ///Events grouped by invocation (request ID). Present when the query view is 'invocations'. Each key is a request ID mapping to all events from that invocation.
       invocations: Option<Map<string, list<``workers-observabilitytelemetryevent``>>>
-      patterns: Option<list<Patterns>>
-      ///A Workers Observability Query Object
+      ///The query run metadata including the query definition, execution status, and timeframe.
       run: ``workers-observabilityqueryrun``
-      ///The statistics object contains information about query performance from the database, it does not include any network latency
+      ///Query performance statistics from the database. Includes execution time, rows scanned, and bytes read. Does not include network latency.
       statistics: ``workers-observabilityperformanceinformation``
+      ///Trace summaries matching the query. Present when the query view is 'traces'. Each entry represents a distributed trace with its spans, duration, and services involved.
       traces: Option<list<Traces>> }
     ///Creates an instance of workers-observabilityqueryresults with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (run: ``workers-observabilityqueryrun``,
                           statistics: ``workers-observabilityperformanceinformation``): ``workers-observabilityqueryresults`` =
-        { calculations = None
+        { agents = None
+          calculations = None
           compare = None
           events = None
           invocations = None
-          patterns = None
           run = run
           statistics = statistics
           traces = None }
 
+///Query performance statistics from the database (does not include network latency).
 type Statistics =
     { ///The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1
       abr_level: Option<float>
@@ -1009,26 +1014,36 @@ type Timeframe =
     ///Creates an instance of Timeframe with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (from: float, ``to``: float): Timeframe = { from = from; ``to`` = ``to`` }
 
-///A Workers Observability Query Object
+///The query run metadata including the query definition, execution status, and timeframe.
 type ``workers-observabilityqueryrun`` =
-    { accountId: string
+    { ///Cloudflare account ID that owns this query run.
+      accountId: string
+      ///ISO-8601 timestamp when the query run was created.
       created: Option<string>
+      ///Whether this was a dry run (results not persisted).
       dry: bool
+      ///Number of time-series buckets used for the query. Higher values produce more detailed series data.
       granularity: float
+      ///Unique identifier for this query run.
       id: string
-      query: ``workers-observabilityquery``
+      ///A saved query definition with its parameters, metadata, and ownership information.
+      query: obj
+      ///Query performance statistics from the database (does not include network latency).
       statistics: Option<Statistics>
+      ///Current execution status of the query run.
       status: Status
       ///Time range for the query execution
       timeframe: Timeframe
+      ///ISO-8601 timestamp when the query run was last updated.
       updated: Option<string>
+      ///ID of the user who initiated the query run.
       userId: string }
     ///Creates an instance of workers-observabilityqueryrun with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (accountId: string,
                           dry: bool,
                           granularity: float,
                           id: string,
-                          query: ``workers-observabilityquery``,
+                          query: obj,
                           status: Status,
                           timeframe: Timeframe,
                           userId: string): ``workers-observabilityqueryrun`` =
@@ -1044,37 +1059,69 @@ type ``workers-observabilityqueryrun`` =
           updated = None
           userId = userId }
 
+///Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.
 type Dollar_metadata =
-    { account: Option<string>
+    { ///Cloudflare account identifier.
+      account: Option<string>
+      ///Cloudflare product that generated this event (e.g. workers, pages).
       cloudService: Option<string>
+      ///Whether this was a cold start (1) or warm invocation (0).
       coldStart: Option<int>
+      ///Estimated cost units for this invocation.
       cost: Option<int>
+      ///Span duration in milliseconds.
       duration: Option<int>
+      ///Span end time as a Unix epoch in milliseconds.
       endTime: Option<int>
+      ///Error message, present when the log represents an error.
       error: Option<string>
+      ///Templatized version of the error message used for grouping similar errors.
       errorTemplate: Option<string>
+      ///Content-based fingerprint used to group similar events.
       fingerprint: Option<string>
+      ///Unique event ID. Use as the cursor value for offset-based pagination.
       id: string
+      ///Log level (e.g. log, debug, info, warn, error).
       level: Option<string>
+      ///Log message text.
       message: Option<string>
+      ///Templatized version of the log message used for grouping similar messages.
       messageTemplate: Option<string>
+      ///Metric name when the event represents a metric data point.
       metricName: Option<string>
+      ///Origin of the event (e.g. fetch, scheduled, queue).
       origin: Option<string>
+      ///Span ID of the parent span in the trace hierarchy.
       parentSpanId: Option<string>
+      ///Infrastructure provider identifier.
       provider: Option<string>
+      ///Cloudflare data center / region that handled the request.
       region: Option<string>
+      ///Cloudflare request ID that ties all logs from a single invocation together.
       requestId: Option<string>
+      ///Worker script name that produced this event.
       service: Option<string>
+      ///Span ID for this individual unit of work within a trace.
       spanId: Option<string>
+      ///Human-readable name for this span.
       spanName: Option<string>
+      ///Stack / deployment identifier.
       stackId: Option<string>
+      ///Span start time as a Unix epoch in milliseconds.
       startTime: Option<int>
+      ///HTTP response status code returned by the Worker.
       statusCode: Option<int>
+      ///Total duration of the entire trace in milliseconds.
       traceDuration: Option<int>
+      ///Distributed trace ID linking spans across services.
       traceId: Option<string>
+      ///Logical transaction name for this request.
       transactionName: Option<string>
+      ///What triggered the invocation (e.g. GET /users, POST /orders, queue message).
       trigger: Option<string>
+      ///Event type classifier (e.g. cf-worker-event, cf-worker-log).
       ``type``: Option<string>
+      ///Request URL that triggered the Worker invocation.
       url: Option<string> }
     ///Creates an instance of $metadata with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (id: string): Dollar_metadata =
@@ -1110,15 +1157,19 @@ type Dollar_metadata =
           ``type`` = None
           url = None }
 
-///The data structure of a telemetry event
+///A single telemetry event representing a log line, span, or metric data point emitted by a Worker.
 type ``workers-observabilitytelemetryevent`` =
-    { ///Cloudflare Containers event information enriches your logs so you can easily identify and debug issues.
+    { ///Cloudflare Containers event information that enriches your logs for identifying and debugging issues.
       Dollar_containers: Option<obj>
+      ///Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.
       Dollar_metadata: Dollar_metadata
-      ///Cloudflare Workers event information enriches your logs so you can easily identify and debug issues.
+      ///Cloudflare Workers event information that enriches your logs for identifying and debugging issues.
       Dollar_workers: Option<obj>
+      ///The dataset this event belongs to (e.g. cloudflare-workers).
       dataset: string
+      ///Raw log payload. May be a string or a structured object depending on how the log was emitted.
       source: obj
+      ///Event timestamp as a Unix epoch in milliseconds.
       timestamp: int }
     ///Creates an instance of workers-observabilitytelemetryevent with all optional fields initialized to None. The required fields are parameters of this function
     static member Create ((``$metadata``): Dollar_metadata,
@@ -1131,6 +1182,33 @@ type ``workers-observabilitytelemetryevent`` =
           dataset = dataset
           source = source
           timestamp = timestamp }
+
+type workersDomain =
+    { ///ID of the TLS certificate issued for the domain.
+      cert_id: System.Guid
+      ///Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
+      hostname: string
+      ///Immutable ID of the domain.
+      id: string
+      ///Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
+      service: string
+      ///ID of the zone containing the domain hostname.
+      zone_id: string
+      ///Name of the zone containing the domain hostname.
+      zone_name: string }
+    ///Creates an instance of workersDomain with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (cert_id: System.Guid,
+                          hostname: string,
+                          id: string,
+                          service: string,
+                          zone_id: string,
+                          zone_name: string): workersDomain =
+        { cert_id = cert_id
+          hostname = hostname
+          id = id
+          service = service
+          zone_id = zone_id
+          zone_name = zone_name }
 
 [<RequireQualifiedAccess>]
 type Code =
@@ -1315,9 +1393,9 @@ type workersErrorWorkerTagLimit =
 
 ///Metadata about the version.
 type Annotations =
-    { ///Human-readable message about the version.
+    { ///Human-readable message about the version. Truncated to 1000 bytes if longer.
       ``workers/message``: Option<string>
-      ///User-provided identifier for the version.
+      ///User-provided identifier for the version. Maximum 100 bytes.
       ``workers/tag``: Option<string>
       ///Operation that triggered the creation of the version.
       ``workers/triggered_by``: Option<string> }
@@ -1374,9 +1452,11 @@ type Assets =
 ///Resource limits enforced at runtime.
 type Limits =
     { ///CPU time limit in milliseconds.
-      cpu_ms: int }
+      cpu_ms: Option<int>
+      ///Subrequest limit per request.
+      subrequests: Option<int> }
     ///Creates an instance of Limits with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (cpu_ms: int): Limits = { cpu_ms = cpu_ms }
+    static member Create (): Limits = { cpu_ms = None; subrequests = None }
 
 type Modules =
     { ///The base64-encoded module content.
@@ -1405,6 +1485,8 @@ type workersVersion =
       compatibility_date: Option<workerscompatibilitydate>
       ///Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
       compatibility_flags: Option<workerscompatibilityflags>
+      ///List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+      containers: Option<workerscontainers>
       ///When the version was created.
       created_on: System.DateTimeOffset
       ///Version identifier.
@@ -1413,6 +1495,8 @@ type workersVersion =
       limits: Option<Limits>
       ///The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
       main_module: Option<string>
+      ///Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+      migration_tag: Option<string>
       ///Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
       migrations: Option<obj>
       ///Code, sourcemaps, and other content used at runtime.
@@ -1438,10 +1522,12 @@ type workersVersion =
           bindings = None
           compatibility_date = None
           compatibility_flags = None
+          containers = None
           created_on = created_on
           id = id
           limits = None
           main_module = None
+          migration_tag = None
           migrations = None
           modules = None
           number = number
@@ -1452,17 +1538,40 @@ type workersVersion =
 
 ///Log settings for the Worker.
 type Logs =
-    { ///Whether logs are enabled for the Worker.
+    { ///A list of destinations where logs will be exported to.
+      destinations: Option<list<string>>
+      ///Whether logs are enabled for the Worker.
       enabled: Option<bool>
       ///The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
       head_sampling_rate: Option<float>
       ///Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
-      invocation_logs: Option<bool> }
+      invocation_logs: Option<bool>
+      ///Whether log persistence is enabled for the Worker.
+      persist: Option<bool> }
     ///Creates an instance of Logs with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Logs =
-        { enabled = None
+        { destinations = None
+          enabled = None
           head_sampling_rate = None
-          invocation_logs = None }
+          invocation_logs = None
+          persist = None }
+
+///Trace settings for the Worker.
+type ObservabilityTraces =
+    { ///A list of destinations where traces will be exported to.
+      destinations: Option<list<string>>
+      ///Whether traces are enabled for the Worker.
+      enabled: Option<bool>
+      ///The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+      head_sampling_rate: Option<float>
+      ///Whether trace persistence is enabled for the Worker.
+      persist: Option<bool> }
+    ///Creates an instance of ObservabilityTraces with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ObservabilityTraces =
+        { destinations = None
+          enabled = None
+          head_sampling_rate = None
+          persist = None }
 
 ///Observability settings for the Worker.
 type Observability =
@@ -1471,12 +1580,15 @@ type Observability =
       ///The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
       head_sampling_rate: Option<float>
       ///Log settings for the Worker.
-      logs: Option<Logs> }
+      logs: Option<Logs>
+      ///Trace settings for the Worker.
+      traces: Option<ObservabilityTraces> }
     ///Creates an instance of Observability with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Observability =
         { enabled = None
           head_sampling_rate = None
-          logs = None }
+          logs = None
+          traces = None }
 
 type Dispatchnamespaceoutbounds =
     { ///ID of the dispatch namespace.
@@ -1638,7 +1750,7 @@ type workersWorker =
           updated_on = updated_on }
 
 type ``workersaccount-settings`` =
-    { default_usage_model: Option<obj>
+    { default_usage_model: Option<string>
       green_compute: Option<bool> }
     ///Creates an instance of workersaccount-settings with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``workersaccount-settings`` =
@@ -1687,27 +1799,28 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``workersapi-response-collection`` =
-    { errors: list<``workersapi-response-collectionErrors``>
-      messages: list<``workersapi-response-collectionMessages``>
+    { errors: Option<list<``workersapi-response-collectionErrors``>>
+      messages: Option<list<``workersapi-response-collectionMessages``>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       result_info: Option<Resultinfo> }
     ///Creates an instance of workersapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersapi-response-collectionErrors``>,
-                          messages: list<``workersapi-response-collectionMessages``>,
-                          success: bool): ``workersapi-response-collection`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workersapi-response-collection`` =
+        { errors = None
+          messages = None
+          success = None
           result_info = None }
 
 type ``workersapi-response-commonErrorsSource`` =
@@ -1936,6 +2049,51 @@ type workersbindingkindai =
         { name = name; ``type`` = ``type`` }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type workersbindingkindaisearchType =
+    | [<CompiledName "ai_search">] Ai_search
+    member this.Format() =
+        match this with
+        | Ai_search -> "ai_search"
+
+type workersbindingkindaisearch =
+    { ///The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+      instance_name: string
+      ///A JavaScript variable name for the binding.
+      name: workersbindingname
+      ///The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
+      ``namespace``: Option<string>
+      ///The kind of resource that the binding provides.
+      ``type``: workersbindingkindaisearchType }
+    ///Creates an instance of workersbindingkindaisearch with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (instance_name: string, name: workersbindingname, ``type``: workersbindingkindaisearchType): workersbindingkindaisearch =
+        { instance_name = instance_name
+          name = name
+          ``namespace`` = None
+          ``type`` = ``type`` }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type workersbindingkindaisearchnamespaceType =
+    | [<CompiledName "ai_search_namespace">] Ai_search_namespace
+    member this.Format() =
+        match this with
+        | Ai_search_namespace -> "ai_search_namespace"
+
+type workersbindingkindaisearchnamespace =
+    { ///A JavaScript variable name for the binding.
+      name: workersbindingname
+      ///The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+      ``namespace``: string
+      ///The kind of resource that the binding provides.
+      ``type``: workersbindingkindaisearchnamespaceType }
+    ///Creates an instance of workersbindingkindaisearchnamespace with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: workersbindingname,
+                          ``namespace``: string,
+                          ``type``: workersbindingkindaisearchnamespaceType): workersbindingkindaisearchnamespace =
+        { name = name
+          ``namespace`` = ``namespace``
+          ``type`` = ``type`` }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type workersbindingkindanalyticsengineType =
     | [<CompiledName "analytics_engine">] Analytics_engine
     member this.Format() =
@@ -1996,14 +2154,14 @@ type workersbindingkindd1Type =
 
 type workersbindingkindd1 =
     { ///Identifier of the D1 database to bind to.
-      id: string
+      database_id: string
       ///A JavaScript variable name for the binding.
       name: workersbindingname
       ///The kind of resource that the binding provides.
       ``type``: workersbindingkindd1Type }
     ///Creates an instance of workersbindingkindd1 with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (id: string, name: workersbindingname, ``type``: workersbindingkindd1Type): workersbindingkindd1 =
-        { id = id
+    static member Create (database_id: string, name: workersbindingname, ``type``: workersbindingkindd1Type): workersbindingkindd1 =
+        { database_id = database_id
           name = name
           ``type`` = ``type`` }
 
@@ -2099,6 +2257,26 @@ type workersbindingkinddurableobjectnamespace =
           name = name
           namespace_id = None
           script_name = None
+          ``type`` = ``type`` }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type workersbindingkindflagshipType =
+    | [<CompiledName "flagship">] Flagship
+    member this.Format() =
+        match this with
+        | Flagship -> "flagship"
+
+type workersbindingkindflagship =
+    { ///ID of the Flagship app to bind to for feature flag evaluation.
+      app_id: string
+      ///A JavaScript variable name for the binding.
+      name: workersbindingname
+      ///The kind of resource that the binding provides.
+      ``type``: workersbindingkindflagshipType }
+    ///Creates an instance of workersbindingkindflagship with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (app_id: string, name: workersbindingname, ``type``: workersbindingkindflagshipType): workersbindingkindflagship =
+        { app_id = app_id
+          name = name
           ``type`` = ``type`` }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -2203,6 +2381,22 @@ type workersbindingkindkvnamespace =
         { name = name
           namespace_id = namespace_id
           ``type`` = ``type`` }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type workersbindingkindmediaType =
+    | [<CompiledName "media">] Media
+    member this.Format() =
+        match this with
+        | Media -> "media"
+
+type workersbindingkindmedia =
+    { ///A JavaScript variable name for the binding.
+      name: workersbindingname
+      ///The kind of resource that the binding provides.
+      ``type``: workersbindingkindmediaType }
+    ///Creates an instance of workersbindingkindmedia with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: workersbindingname, ``type``: workersbindingkindmediaType): workersbindingkindmedia =
+        { name = name; ``type`` = ``type`` }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type workersbindingkindmtlscertificateType =
@@ -2324,10 +2518,15 @@ type workersbindingkindr2bucket =
 type Simple =
     { ///The limit (requests per period).
       limit: float
+      ///Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+      mitigation_timeout: Option<int>
       ///The period in seconds.
       period: int }
     ///Creates an instance of Simple with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (limit: float, period: int): Simple = { limit = limit; period = period }
+    static member Create (limit: float, period: int): Simple =
+        { limit = limit
+          mitigation_timeout = None
+          period = period }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type workersbindingkindratelimitType =
@@ -2569,6 +2768,29 @@ type workersbindingkindversionmetadata =
         { name = name; ``type`` = ``type`` }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type workersbindingkindvpcnetworkType =
+    | [<CompiledName "vpc_network">] Vpc_network
+    member this.Format() =
+        match this with
+        | Vpc_network -> "vpc_network"
+
+type workersbindingkindvpcnetwork =
+    { ///A JavaScript variable name for the binding.
+      name: workersbindingname
+      ///Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+      network_id: Option<string>
+      ///UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+      tunnel_id: Option<string>
+      ///The kind of resource that the binding provides.
+      ``type``: workersbindingkindvpcnetworkType }
+    ///Creates an instance of workersbindingkindvpcnetwork with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: workersbindingname, ``type``: workersbindingkindvpcnetworkType): workersbindingkindvpcnetwork =
+        { name = name
+          network_id = None
+          tunnel_id = None
+          ``type`` = ``type`` }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type workersbindingkindvpcserviceType =
     | [<CompiledName "vpc_service">] Vpc_service
     member this.Format() =
@@ -2664,19 +2886,24 @@ type Result =
     static member Create (): Result = { jwt = None }
 
 type ``workerscompleted-upload-assets-response`` =
-    { errors: list<``workerscompleted-upload-assets-responseErrors``>
-      messages: list<``workerscompleted-upload-assets-responseMessages``>
+    { errors: Option<list<``workerscompleted-upload-assets-responseErrors``>>
+      messages: Option<list<``workerscompleted-upload-assets-responseMessages``>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       result: Option<Result> }
     ///Creates an instance of workerscompleted-upload-assets-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workerscompleted-upload-assets-responseErrors``>,
-                          messages: list<``workerscompleted-upload-assets-responseMessages``>,
-                          success: bool): ``workerscompleted-upload-assets-response`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workerscompleted-upload-assets-response`` =
+        { errors = None
+          messages = None
+          success = None
           result = None }
+
+///Container configuration for a Worker.
+type workerscontaineritem =
+    { ///Select which Durable Object class should get this container attached.
+      class_name: string }
+    ///Creates an instance of workerscontaineritem with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (class_name: string): workerscontaineritem = { class_name = class_name }
 
 type ``workerscreate-assets-upload-session-object`` =
     { ///A manifest ([path]: {hash, size}) map of files to upload. As an example, `/blog/hello-world.html` would be a valid path key.
@@ -2728,22 +2955,20 @@ type ``workerscreate-assets-upload-session-responseResult`` =
     static member Create (): ``workerscreate-assets-upload-session-responseResult`` = { buckets = None; jwt = None }
 
 type ``workerscreate-assets-upload-session-response`` =
-    { errors: list<``workerscreate-assets-upload-session-responseErrors``>
-      messages: list<``workerscreate-assets-upload-session-responseMessages``>
+    { errors: Option<list<``workerscreate-assets-upload-session-responseErrors``>>
+      messages: Option<list<``workerscreate-assets-upload-session-responseMessages``>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       result: Option<``workerscreate-assets-upload-session-responseResult``> }
     ///Creates an instance of workerscreate-assets-upload-session-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workerscreate-assets-upload-session-responseErrors``>,
-                          messages: list<``workerscreate-assets-upload-session-responseMessages``>,
-                          success: bool): ``workerscreate-assets-upload-session-response`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workerscreate-assets-upload-session-response`` =
+        { errors = None
+          messages = None
+          success = None
           result = None }
 
 type workersdeploymentAnnotations =
-    { ///Human-readable message about the deployment. Truncated to 100 bytes.
+    { ///Human-readable message about the deployment. Truncated to 1000 bytes if longer.
       ``workers/message``: Option<string>
       ///Operation that triggered the creation of the deployment.
       ``workers/triggered_by``: Option<string> }
@@ -2785,129 +3010,14 @@ type workersdeployment =
           strategy = strategy
           versions = versions }
 
-type workersdomain =
-    { ///Hostname of the Worker Domain.
-      hostname: Option<workershostname>
-      ///Identifer of the Worker Domain.
-      id: Option<workersdomainidentifier>
-      ///Worker service associated with the zone and hostname.
-      service: Option<``workersschemas-service``>
-      ///Identifier of the zone.
-      zone_id: Option<workerszoneidentifier>
-      ///Name of the zone.
-      zone_name: Option<workerszonename> }
-    ///Creates an instance of workersdomain with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): workersdomain =
-        { hostname = None
-          id = None
-          service = None
-          zone_id = None
-          zone_name = None }
-
-type ``workersdomain-response-collectionErrorsSource`` =
-    { pointer: Option<string> }
-    ///Creates an instance of workersdomain-response-collectionErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``workersdomain-response-collectionErrorsSource`` = { pointer = None }
-
-type ``workersdomain-response-collectionErrors`` =
-    { code: int
-      documentation_url: Option<string>
-      message: string
-      source: Option<``workersdomain-response-collectionErrorsSource``> }
-    ///Creates an instance of workersdomain-response-collectionErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): ``workersdomain-response-collectionErrors`` =
-        { code = code
-          documentation_url = None
-          message = message
-          source = None }
-
-type ``workersdomain-response-collectionMessagesSource`` =
-    { pointer: Option<string> }
-    ///Creates an instance of workersdomain-response-collectionMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``workersdomain-response-collectionMessagesSource`` = { pointer = None }
-
-type ``workersdomain-response-collectionMessages`` =
-    { code: int
-      documentation_url: Option<string>
-      message: string
-      source: Option<``workersdomain-response-collectionMessagesSource``> }
-    ///Creates an instance of workersdomain-response-collectionMessages with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): ``workersdomain-response-collectionMessages`` =
-        { code = code
-          documentation_url = None
-          message = message
-          source = None }
-
-type ``workersdomain-response-collection`` =
-    { errors: list<``workersdomain-response-collectionErrors``>
-      messages: list<``workersdomain-response-collectionMessages``>
-      ///Whether the API call was successful.
-      success: bool
-      result: Option<list<workersdomain>> }
-    ///Creates an instance of workersdomain-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersdomain-response-collectionErrors``>,
-                          messages: list<``workersdomain-response-collectionMessages``>,
-                          success: bool): ``workersdomain-response-collection`` =
-        { errors = errors
-          messages = messages
-          success = success
-          result = None }
-
-type ``workersdomain-response-singleErrorsSource`` =
-    { pointer: Option<string> }
-    ///Creates an instance of workersdomain-response-singleErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``workersdomain-response-singleErrorsSource`` = { pointer = None }
-
-type ``workersdomain-response-singleErrors`` =
-    { code: int
-      documentation_url: Option<string>
-      message: string
-      source: Option<``workersdomain-response-singleErrorsSource``> }
-    ///Creates an instance of workersdomain-response-singleErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): ``workersdomain-response-singleErrors`` =
-        { code = code
-          documentation_url = None
-          message = message
-          source = None }
-
-type ``workersdomain-response-singleMessagesSource`` =
-    { pointer: Option<string> }
-    ///Creates an instance of workersdomain-response-singleMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``workersdomain-response-singleMessagesSource`` = { pointer = None }
-
-type ``workersdomain-response-singleMessages`` =
-    { code: int
-      documentation_url: Option<string>
-      message: string
-      source: Option<``workersdomain-response-singleMessagesSource``> }
-    ///Creates an instance of workersdomain-response-singleMessages with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): ``workersdomain-response-singleMessages`` =
-        { code = code
-          documentation_url = None
-          message = message
-          source = None }
-
-type ``workersdomain-response-single`` =
-    { errors: list<``workersdomain-response-singleErrors``>
-      messages: list<``workersdomain-response-singleMessages``>
-      ///Whether the API call was successful.
-      success: bool
-      result: Option<workersdomain> }
-    ///Creates an instance of workersdomain-response-single with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersdomain-response-singleErrors``>,
-                          messages: list<``workersdomain-response-singleMessages``>,
-                          success: bool): ``workersdomain-response-single`` =
-        { errors = errors
-          messages = messages
-          success = success
-          result = None }
-
 ///Limits to apply for this Worker.
 type workerslimits =
     { ///The amount of CPU time this Worker can use in milliseconds.
-      cpu_ms: Option<int> }
+      cpu_ms: Option<int>
+      ///The number of subrequests this Worker can make per request.
+      subrequests: Option<int> }
     ///Creates an instance of workerslimits with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): workerslimits = { cpu_ms = None }
+    static member Create (): workerslimits = { cpu_ms = None; subrequests = None }
 
 type ``workersmanifest-value`` =
     { ///The hash of the file.
@@ -2986,6 +3096,7 @@ type Metadata =
       migrations: Option<obj>
       ///Observability settings for the Worker.
       observability: Option<workersobservability>
+      ///Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
       placement: Option<workersplacementinfo>
       ///List of strings to use as tags for this Worker.
       tags: Option<list<string>>
@@ -3082,18 +3193,16 @@ type ``workersnamespace-list-responseMessages`` =
           source = None }
 
 type ``workersnamespace-list-response`` =
-    { errors: list<``workersnamespace-list-responseErrors``>
-      messages: list<``workersnamespace-list-responseMessages``>
+    { errors: Option<list<``workersnamespace-list-responseErrors``>>
+      messages: Option<list<``workersnamespace-list-responseMessages``>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       result: Option<list<``workersnamespace-response``>> }
     ///Creates an instance of workersnamespace-list-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersnamespace-list-responseErrors``>,
-                          messages: list<``workersnamespace-list-responseMessages``>,
-                          success: bool): ``workersnamespace-list-response`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workersnamespace-list-response`` =
+        { errors = None
+          messages = None
+          success = None
           result = None }
 
 type ``workersnamespace-response`` =
@@ -3224,21 +3333,18 @@ type ``workersnamespace-script-response-singleMessages`` =
           source = None }
 
 type ``workersnamespace-script-response-single`` =
-    { errors: list<``workersnamespace-script-response-singleErrors``>
-      messages: list<``workersnamespace-script-response-singleMessages``>
+    { errors: Option<list<``workersnamespace-script-response-singleErrors``>>
+      messages: Option<list<``workersnamespace-script-response-singleMessages``>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       ///Details about a worker uploaded to a Workers for Platforms namespace.
-      result: ``workersnamespace-script-response`` }
+      result: Option<``workersnamespace-script-response``> }
     ///Creates an instance of workersnamespace-script-response-single with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersnamespace-script-response-singleErrors``>,
-                          messages: list<``workersnamespace-script-response-singleMessages``>,
-                          success: bool,
-                          result: ``workersnamespace-script-response``): ``workersnamespace-script-response-single`` =
-        { errors = errors
-          messages = messages
-          success = success
-          result = result }
+    static member Create (): ``workersnamespace-script-response-single`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
 type ``workersnamespace-single-responseErrorsSource`` =
     { pointer: Option<string> }
@@ -3275,18 +3381,16 @@ type ``workersnamespace-single-responseMessages`` =
           source = None }
 
 type ``workersnamespace-single-response`` =
-    { errors: list<``workersnamespace-single-responseErrors``>
-      messages: list<``workersnamespace-single-responseMessages``>
+    { errors: Option<list<``workersnamespace-single-responseErrors``>>
+      messages: Option<list<``workersnamespace-single-responseMessages``>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       result: Option<``workersnamespace-response``> }
     ///Creates an instance of workersnamespace-single-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersnamespace-single-responseErrors``>,
-                          messages: list<``workersnamespace-single-responseMessages``>,
-                          success: bool): ``workersnamespace-single-response`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workersnamespace-single-response`` =
+        { errors = None
+          messages = None
+          success = None
           result = None }
 
 type workersobject =
@@ -3317,6 +3421,23 @@ type workersobservabilityLogs =
           invocation_logs = invocation_logs
           persist = None }
 
+///Trace settings for the Worker.
+type workersobservabilityTraces =
+    { ///A list of destinations where traces will be exported to.
+      destinations: Option<list<string>>
+      ///Whether traces are enabled for the Worker.
+      enabled: Option<bool>
+      ///The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+      head_sampling_rate: Option<float>
+      ///Whether trace persistence is enabled for the Worker.
+      persist: Option<bool> }
+    ///Creates an instance of workersobservabilityTraces with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): workersobservabilityTraces =
+        { destinations = None
+          enabled = None
+          head_sampling_rate = None
+          persist = None }
+
 ///Observability settings for the Worker.
 type workersobservability =
     { ///Whether observability is enabled for the Worker.
@@ -3324,12 +3445,15 @@ type workersobservability =
       ///The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
       head_sampling_rate: Option<float>
       ///Log settings for the Worker.
-      logs: Option<workersobservabilityLogs> }
+      logs: Option<workersobservabilityLogs>
+      ///Trace settings for the Worker.
+      traces: Option<workersobservabilityTraces> }
     ///Creates an instance of workersobservability with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (enabled: bool): workersobservability =
         { enabled = enabled
           head_sampling_rate = None
-          logs = None }
+          logs = None
+          traces = None }
 
 type ``workersplacement-provider`` =
     { ///The cloud provider identifier.
@@ -3353,6 +3477,7 @@ type ``workersplacement-regions-response`` =
     static member Create (providers: list<``workersplacement-provider``>): ``workersplacement-regions-response`` =
         { providers = providers }
 
+///Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 type workersplacementinfo =
     { ///The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
       last_analyzed_at: Option<System.DateTimeOffset>
@@ -3392,9 +3517,9 @@ type ``workersschemas-subdomain`` =
 
 ///Annotations for the Worker version. Annotations are not inherited across settings updates; omitting this field means the new version will have no annotations.
 type ``workersscript-and-version-settings-itemAnnotations`` =
-    { ///Human-readable message about the version.
+    { ///Human-readable message about the version. Truncated to 1000 bytes if longer.
       ``workers/message``: Option<string>
-      ///User-provided identifier for the version.
+      ///User-provided identifier for the version. Maximum 100 bytes.
       ``workers/tag``: Option<string>
       ///Operation that triggered the creation of the version. This is read-only and set by the server.
       ``workers/triggered_by``: Option<string> }
@@ -3468,20 +3593,17 @@ type ``workersscript-and-version-settings-responseMessages`` =
           source = None }
 
 type ``workersscript-and-version-settings-response`` =
-    { errors: list<``workersscript-and-version-settings-responseErrors``>
-      messages: list<``workersscript-and-version-settings-responseMessages``>
+    { errors: Option<list<``workersscript-and-version-settings-responseErrors``>>
+      messages: Option<list<``workersscript-and-version-settings-responseMessages``>>
       ///Whether the API call was successful.
-      success: bool
-      result: ``workersscript-and-version-settings-item`` }
+      success: Option<bool>
+      result: Option<``workersscript-and-version-settings-item``> }
     ///Creates an instance of workersscript-and-version-settings-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersscript-and-version-settings-responseErrors``>,
-                          messages: list<``workersscript-and-version-settings-responseMessages``>,
-                          success: bool,
-                          result: ``workersscript-and-version-settings-item``): ``workersscript-and-version-settings-response`` =
-        { errors = errors
-          messages = messages
-          success = success
-          result = result }
+    static member Create (): ``workersscript-and-version-settings-response`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
 type Namedhandlers =
     { ///The names of handlers exported as part of the named export.
@@ -3520,6 +3642,7 @@ type ``workersscript-response`` =
       named_handlers: Option<list<Namedhandlers>>
       ///Observability settings for the Worker.
       observability: Option<workersobservability>
+      ///Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
       placement: Option<workersplacementinfo>
       placement_mode: Option<obj>
       placement_status: Option<obj>
@@ -3692,6 +3815,7 @@ type ``workersscript-response-upload`` =
       named_handlers: Option<list<``workersscript-response-uploadNamedhandlers``>>
       ///Observability settings for the Worker.
       observability: Option<workersobservability>
+      ///Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
       placement: Option<workersplacementinfo>
       placement_mode: Option<obj>
       placement_status: Option<obj>
@@ -3705,9 +3829,9 @@ type ``workersscript-response-upload`` =
       usage_model: Option<workersusagemodel>
       ///The entry point for the script.
       entry_point: Option<string>
-      startup_time_ms: int }
+      startup_time_ms: Option<int> }
     ///Creates an instance of workersscript-response-upload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (startup_time_ms: int): ``workersscript-response-upload`` =
+    static member Create (): ``workersscript-response-upload`` =
         { compatibility_date = None
           compatibility_flags = None
           created_on = None
@@ -3730,7 +3854,7 @@ type ``workersscript-response-upload`` =
           tail_consumers = None
           usage_model = None
           entry_point = None
-          startup_time_ms = startup_time_ms }
+          startup_time_ms = None }
 
 type ``workersscript-response-upload-singleErrorsSource`` =
     { pointer: Option<string> }
@@ -3767,20 +3891,17 @@ type ``workersscript-response-upload-singleMessages`` =
           source = None }
 
 type ``workersscript-response-upload-single`` =
-    { errors: list<``workersscript-response-upload-singleErrors``>
-      messages: list<``workersscript-response-upload-singleMessages``>
+    { errors: Option<list<``workersscript-response-upload-singleErrors``>>
+      messages: Option<list<``workersscript-response-upload-singleMessages``>>
       ///Whether the API call was successful.
-      success: bool
-      result: ``workersscript-response-upload`` }
+      success: Option<bool>
+      result: Option<obj> }
     ///Creates an instance of workersscript-response-upload-single with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersscript-response-upload-singleErrors``>,
-                          messages: list<``workersscript-response-upload-singleMessages``>,
-                          success: bool,
-                          result: ``workersscript-response-upload``): ``workersscript-response-upload-single`` =
-        { errors = errors
-          messages = messages
-          success = success
-          result = result }
+    static member Create (): ``workersscript-response-upload-single`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
 type ``workersscript-settings-item`` =
     { ///Whether Logpush is turned on for the Worker.
@@ -3831,20 +3952,17 @@ type ``workersscript-settings-responseMessages`` =
           source = None }
 
 type ``workersscript-settings-response`` =
-    { errors: list<``workersscript-settings-responseErrors``>
-      messages: list<``workersscript-settings-responseMessages``>
+    { errors: Option<list<``workersscript-settings-responseErrors``>>
+      messages: Option<list<``workersscript-settings-responseMessages``>>
       ///Whether the API call was successful.
-      success: bool
-      result: ``workersscript-settings-item`` }
+      success: Option<bool>
+      result: Option<``workersscript-settings-item``> }
     ///Creates an instance of workersscript-settings-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersscript-settings-responseErrors``>,
-                          messages: list<``workersscript-settings-responseMessages``>,
-                          success: bool,
-                          result: ``workersscript-settings-item``): ``workersscript-settings-response`` =
-        { errors = errors
-          messages = messages
-          success = success
-          result = result }
+    static member Create (): ``workersscript-settings-response`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
 type workerssinglestepmigrationsRenamedclasses =
     { from: Option<string>
@@ -3862,6 +3980,7 @@ type workerssinglestepmigrationsTransferredclasses =
           from_script = None
           ``to`` = None }
 
+///A single set of migrations to apply.
 type workerssinglestepmigrations =
     { ///Tag to set as the latest migration tag.
       new_tag: Option<string>
@@ -3956,18 +4075,16 @@ type ``workersupload-assets-responseMessages`` =
           source = None }
 
 type ``workersupload-assets-response`` =
-    { errors: list<``workersupload-assets-responseErrors``>
-      messages: list<``workersupload-assets-responseMessages``>
+    { errors: Option<list<``workersupload-assets-responseErrors``>>
+      messages: Option<list<``workersupload-assets-responseMessages``>>
       ///Whether the API call was successful.
-      success: bool
-      result: Option<Map<string, obj>> }
+      success: Option<bool>
+      result: Option<obj> }
     ///Creates an instance of workersupload-assets-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<``workersupload-assets-responseErrors``>,
-                          messages: list<``workersupload-assets-responseMessages``>,
-                          success: bool): ``workersupload-assets-response`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workersupload-assets-response`` =
+        { errors = None
+          messages = None
+          success = None
           result = None }
 
 type ``workersusage-model-responseErrorsSource`` =
@@ -4163,13 +4280,13 @@ type ``workersversion-item-full`` =
       metadata: Option<``workersversion-item-fullMetadata``>
       ///Sequential version number.
       number: Option<float>
-      resources: Resources }
+      resources: Option<Resources> }
     ///Creates an instance of workersversion-item-full with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (resources: Resources): ``workersversion-item-full`` =
+    static member Create (): ``workersversion-item-full`` =
         { id = None
           metadata = None
           number = None
-          resources = resources }
+          resources = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ``workersversion-item-shortMetadataSource`` =
@@ -4357,15 +4474,15 @@ type ``workersversion-item-uploaded`` =
       metadata: Option<``workersversion-item-uploadedMetadata``>
       ///Sequential version number.
       number: Option<float>
-      resources: ``workersversion-item-uploadedResources``
+      resources: Option<``workersversion-item-uploadedResources``>
       ///Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
       startup_time_ms: Option<int> }
     ///Creates an instance of workersversion-item-uploaded with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (resources: ``workersversion-item-uploadedResources``): ``workersversion-item-uploaded`` =
+    static member Create (): ``workersversion-item-uploaded`` =
         { id = None
           metadata = None
           number = None
-          resources = resources
+          resources = None
           startup_time_ms = None }
 
 type ``workersversions-list-responseErrorsSource`` =
@@ -4462,12 +4579,12 @@ type ``workersversions-single-response`` =
       messages: list<``workersversions-single-responseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: ``workersversion-item-full`` }
+      result: obj }
     ///Creates an instance of workersversions-single-response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``workersversions-single-responseErrors``>,
                           messages: list<``workersversions-single-responseMessages``>,
                           success: bool,
-                          result: ``workersversion-item-full``): ``workersversions-single-response`` =
+                          result: obj): ``workersversions-single-response`` =
         { errors = errors
           messages = messages
           success = success
@@ -4512,12 +4629,12 @@ type ``workersversions-upload-response`` =
       messages: list<``workersversions-upload-responseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: ``workersversion-item-uploaded`` }
+      result: obj }
     ///Creates an instance of workersversions-upload-response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``workersversions-upload-responseErrors``>,
                           messages: list<``workersversions-upload-responseMessages``>,
                           success: bool,
-                          result: ``workersversion-item-uploaded``): ``workersversions-upload-response`` =
+                          result: obj): ``workersversions-upload-response`` =
         { errors = errors
           messages = messages
           success = success
@@ -4562,12 +4679,12 @@ type ``worker-script-upload-worker-moduleresponse`` =
       messages: list<``worker-script-upload-worker-moduleresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: ``workersscript-response-upload`` }
+      result: obj }
     ///Creates an instance of worker-script-upload-worker-moduleresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``worker-script-upload-worker-moduleresponseErrors``>,
                           messages: list<``worker-script-upload-worker-moduleresponseMessages``>,
                           success: bool,
-                          result: ``workersscript-response-upload``): ``worker-script-upload-worker-moduleresponse`` =
+                          result: obj): ``worker-script-upload-worker-moduleresponse`` =
         { errors = errors
           messages = messages
           success = success

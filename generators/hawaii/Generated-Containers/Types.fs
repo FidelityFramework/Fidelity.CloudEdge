@@ -8,10 +8,12 @@ type minutes = string
 type ccImageRegistryPermissions =
     | [<CompiledName "pull">] Pull
     | [<CompiledName "push">] Push
+    | [<CompiledName "library_push">] Library_push
     member this.Format() =
         match this with
         | Pull -> "pull"
         | Push -> "push"
+        | Library_push -> "library_push"
 
 ///Specifies the configuration for the image registry credential to create.
 type ccImageRegistryCredentialsConfiguration =
@@ -25,14 +27,15 @@ type ccImageRegistryCredentialsConfiguration =
 
 [<RequireQualifiedAccess>]
 type PublicListApplications =
-    | OK of payload: Newtonsoft.Json.Linq.JToken
-    | Unauthorized of payload: Newtonsoft.Json.Linq.JToken
-    | InternalServerError of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
+    | Unauthorized of payload: obj
+    | InternalServerError of payload: obj
 
 [<RequireQualifiedAccess>]
 type GenerateImageRegistryCredentials =
-    | Created of payload: Newtonsoft.Json.Linq.JToken
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
-    | NotFound of payload: Newtonsoft.Json.Linq.JToken
-    | Conflict of payload: Newtonsoft.Json.Linq.JToken
-    | InternalServerError of payload: Newtonsoft.Json.Linq.JToken
+    | Created of payload: obj
+    | BadRequest of payload: obj
+    | Forbidden of payload: obj
+    | NotFound of payload: obj
+    | Conflict of payload: obj
+    | InternalServerError of payload: obj

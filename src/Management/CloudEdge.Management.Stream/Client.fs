@@ -18,6 +18,23 @@ type StreamClient(httpClient: HttpClient) =
     ///<summary>
     ///Lists up to 1000 videos from a single request. For a specific range, refer to the optional parameters.
     ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="status"></param>
+    ///<param name="creator"></param>
+    ///<param name="type"></param>
+    ///<param name="asc"></param>
+    ///<param name="videoName"></param>
+    ///<param name="search"></param>
+    ///<param name="start"></param>
+    ///<param name="end"></param>
+    ///<param name="includeCounts"></param>
+    ///<param name="id">Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.</param>
+    ///<param name="name">Filter by video name/UID(s). Can be a single name or a comma-separated list.</param>
+    ///<param name="liveInputId">Filter by live input ID to find videos associated with a specific live stream.</param>
+    ///<param name="before">Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).</param>
+    ///<param name="after">Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).</param>
+    ///<param name="limit">Maximum number of videos to return (default 1000, max 1000).</param>
+    ///<param name="cancellationToken"></param>
     member this.StreamVideosListVideos
         (
             accountId: string,
@@ -30,6 +47,12 @@ type StreamClient(httpClient: HttpClient) =
             ?start: System.DateTimeOffset,
             ?``end``: System.DateTimeOffset,
             ?includeCounts: bool,
+            ?id: string,
+            ?name: string,
+            ?liveInputId: string,
+            ?before: System.DateTimeOffset,
+            ?after: System.DateTimeOffset,
+            ?limit: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -52,7 +75,19 @@ type StreamClient(httpClient: HttpClient) =
                   if ``end``.IsSome then
                       RequestPart.query ("end", ``end``.Value)
                   if includeCounts.IsSome then
-                      RequestPart.query ("include_counts", includeCounts.Value) ]
+                      RequestPart.query ("include_counts", includeCounts.Value)
+                  if id.IsSome then
+                      RequestPart.query ("id", id.Value)
+                  if name.IsSome then
+                      RequestPart.query ("name", name.Value)
+                  if liveInputId.IsSome then
+                      RequestPart.query ("live_input_id", liveInputId.Value)
+                  if before.IsSome then
+                      RequestPart.query ("before", before.Value)
+                  if after.IsSome then
+                      RequestPart.query ("after", after.Value)
+                  if limit.IsSome then
+                      RequestPart.query ("limit", limit.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/stream" requestParts cancellationToken
@@ -91,7 +126,7 @@ type StreamClient(httpClient: HttpClient) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/stream" requestParts cancellationToken
 
             match int status with
-            | 200 -> return StreamVideosInitiateVideoUploadsUsingTus.OK(Serializer.deserialize content)
+            | 201 -> return StreamVideosInitiateVideoUploadsUsingTus.Created(Serializer.deserialize content)
             | _ -> return StreamVideosInitiateVideoUploadsUsingTus.BadRequest(Serializer.deserialize content)
         }
 
@@ -120,6 +155,10 @@ type StreamClient(httpClient: HttpClient) =
     ///<summary>
     ///Uploads a video to Stream from a provided URL.
     ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="body">Copy upload request. Provide `input` (preferred) or `url` (deprecated).</param>
+    ///<param name="uploadCreator"></param>
+    ///<param name="cancellationToken"></param>
     member this.StreamVideosUploadVideosFromAUrl
         (
             accountId: string,
@@ -585,7 +624,7 @@ type StreamClient(httpClient: HttpClient) =
     member this.StreamWatermarkProfileCreateWatermarkProfilesViaBasicUpload
         (
             accountId: string,
-            body: streamwatermarkbasicupload,
+            body: StreamWatermarkProfileCreateWatermarkProfilesViaBasicUploadPayload,
             ?cancellationToken: CancellationToken
         ) =
         async {

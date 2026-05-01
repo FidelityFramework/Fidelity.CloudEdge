@@ -50,6 +50,11 @@ let parseArgs (args: string[]) =
         | s when not (s.StartsWith("--")) && typesFile = "" ->
             typesFile <- s
             i <- i + 1
+        | other when other.StartsWith("--") ->
+            // Silently ignore unrecognized flags. This guards against fsi
+            // passing through locale flags like --preferreduilang:en-US
+            // that we don't care about.
+            i <- i + 1
         | other ->
             eprintfn "Unknown argument: %s" other
             exit 1

@@ -209,7 +209,7 @@ type ``mqevent-subscription`` =
       ///Name of the subscription
       name: string
       ///Source configuration for the subscription
-      source: Newtonsoft.Json.Linq.JObject }
+      source: obj }
     ///Creates an instance of mqevent-subscription with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (created_at: System.DateTimeOffset,
                           destination: ``mqevent-destination-queue``,
@@ -218,7 +218,7 @@ type ``mqevent-subscription`` =
                           id: string,
                           modified_at: System.DateTimeOffset,
                           name: string,
-                          source: Newtonsoft.Json.Linq.JObject): ``mqevent-subscription`` =
+                          source: obj): ``mqevent-subscription`` =
         { created_at = created_at
           destination = destination
           enabled = enabled
@@ -357,7 +357,7 @@ type SubscriptionsList =
     | BadRequest of payload: ``mqapi-v4-failure``
 
 type SubscriptionsCreatePayload =
-    { destination: Option<Newtonsoft.Json.Linq.JToken>
+    { destination: Option<obj>
       ///Whether the subscription is active
       enabled: Option<bool>
       ///List of event types this subscription handles
@@ -365,7 +365,7 @@ type SubscriptionsCreatePayload =
       ///Name of the subscription
       name: Option<string>
       ///Source configuration for the subscription
-      source: Option<Newtonsoft.Json.Linq.JObject> }
+      source: Option<obj> }
     ///Creates an instance of SubscriptionsCreatePayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): SubscriptionsCreatePayload =
         { destination = None
@@ -398,7 +398,7 @@ type SubscriptionsGet =
     | NotFound of payload: ``mqapi-v4-failure``
 
 type SubscriptionsPatchPayload =
-    { destination: Option<Newtonsoft.Json.Linq.JToken>
+    { destination: Option<obj>
       ///Whether the subscription is active
       enabled: Option<bool>
       ///List of event types this subscription handles

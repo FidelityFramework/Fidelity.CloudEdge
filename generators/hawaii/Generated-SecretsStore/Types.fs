@@ -2,6 +2,7 @@ namespace rec Fidelity.CloudEdge.Management.SecretsStore.Types
 
 // Auto-generated stub types (missing from Hawaii output)
 type results = string
+type secret = string
 type secrets = string
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -54,7 +55,7 @@ type ``secrets-storestoreidentifier`` = string
 ///The name of the store
 type ``secrets-storestorename`` = string
 type ``secrets-storeusage`` = float
-///The value of the secret. Note that this is 'write only' - no API reponse will provide this value, it is only used to create/modify secrets.
+///The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
 type ``secrets-storevalue`` = string
 
 type ErrorsSource =
@@ -99,13 +100,16 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``secrets-storeapi-response-collection`` =
     { errors: Option<list<Errors>>
@@ -168,20 +172,65 @@ type ``secrets-storeapi-response-common`` =
           success = success }
 
 type ``secrets-storeapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of secrets-storeapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``secrets-storeapi-response-common-failure`` =
         { errors = errors
           messages = messages
           result = result
           success = success }
+
+type ``secrets-storeapi-response-singleErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of secrets-storeapi-response-singleErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``secrets-storeapi-response-singleErrorsSource`` = { pointer = None }
+
+type ``secrets-storeapi-response-singleErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``secrets-storeapi-response-singleErrorsSource``> }
+    ///Creates an instance of secrets-storeapi-response-singleErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``secrets-storeapi-response-singleErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``secrets-storeapi-response-singleMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of secrets-storeapi-response-singleMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``secrets-storeapi-response-singleMessagesSource`` = { pointer = None }
+
+type ``secrets-storeapi-response-singleMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``secrets-storeapi-response-singleMessagesSource``> }
+    ///Creates an instance of secrets-storeapi-response-singleMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``secrets-storeapi-response-singleMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``secrets-storeapi-response-single`` =
+    { errors: Option<list<``secrets-storeapi-response-singleErrors``>>
+      messages: Option<list<``secrets-storeapi-response-singleMessages``>>
+      ///Whether the API call was successful.
+      success: Option<bool> }
+    ///Creates an instance of secrets-storeapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``secrets-storeapi-response-single`` =
+        { errors = None
+          messages = None
+          success = None }
 
 type ``secrets-storecreateSecretObject`` =
     { ///Freeform text describing the secret
@@ -190,7 +239,7 @@ type ``secrets-storecreateSecretObject`` =
       name: ``secrets-storesecretname``
       ///The list of services that can use this secret.
       scopes: ``secrets-storescopes``
-      ///The value of the secret. Note that this is 'write only' - no API reponse will provide this value, it is only used to create/modify secrets.
+      ///The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
       value: ``secrets-storevalue`` }
     ///Creates an instance of secrets-storecreateSecretObject with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``secrets-storesecretname``,
@@ -207,11 +256,62 @@ type ``secrets-storecreateStoreObject`` =
     ///Creates an instance of secrets-storecreateStoreObject with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``secrets-storestorename``): ``secrets-storecreateStoreObject`` = { name = name }
 
-type ``secrets-storedeleteSecretObject`` =
-    { ///Secret identifier tag.
-      id: ``secrets-storeidentifier`` }
-    ///Creates an instance of secrets-storedeleteSecretObject with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (id: ``secrets-storeidentifier``): ``secrets-storedeleteSecretObject`` = { id = id }
+///Request body for bulk deleting secrets
+type ``secrets-storedeleteSecretsRequest`` =
+    { ///List of secret identifier tags to delete.
+      ids: list<``secrets-storeidentifier``> }
+    ///Creates an instance of secrets-storedeleteSecretsRequest with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (ids: list<``secrets-storeidentifier``>): ``secrets-storedeleteSecretsRequest`` = { ids = ids }
+
+type ``secrets-storedeleteresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of secrets-storedeleteresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``secrets-storedeleteresponseErrorsSource`` = { pointer = None }
+
+type ``secrets-storedeleteresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``secrets-storedeleteresponseErrorsSource``> }
+    ///Creates an instance of secrets-storedeleteresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``secrets-storedeleteresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``secrets-storedeleteresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of secrets-storedeleteresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``secrets-storedeleteresponseMessagesSource`` = { pointer = None }
+
+type ``secrets-storedeleteresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``secrets-storedeleteresponseMessagesSource``> }
+    ///Creates an instance of secrets-storedeleteresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``secrets-storedeleteresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``secrets-storedeleteresponse`` =
+    { errors: list<``secrets-storedeleteresponseErrors``>
+      messages: list<``secrets-storedeleteresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      ///Result is null for delete operations.
+      result: Option<Map<string, obj>> }
+    ///Creates an instance of secrets-storedeleteresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``secrets-storedeleteresponseErrors``>,
+                          messages: list<``secrets-storedeleteresponseMessages``>,
+                          success: bool): ``secrets-storedeleteresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
 
 type ``secrets-storeduplicateSecretObject`` =
     { ///Freeform text describing the secret
@@ -230,9 +330,14 @@ type ``secrets-storepatchSecretObject`` =
     { ///Freeform text describing the secret
       comment: Option<``secrets-storecomment``>
       ///The list of services that can use this secret.
-      scopes: Option<``secrets-storescopes``> }
+      scopes: Option<``secrets-storescopes``>
+      ///The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
+      value: Option<``secrets-storevalue``> }
     ///Creates an instance of secrets-storepatchSecretObject with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``secrets-storepatchSecretObject`` = { comment = None; scopes = None }
+    static member Create (): ``secrets-storepatchSecretObject`` =
+        { comment = None
+          scopes = None
+          value = None }
 
 type ``secrets-storequotaresponseErrorsSource`` =
     { pointer: Option<string> }
@@ -276,13 +381,16 @@ type ``secrets-storequotaresponseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of secrets-storequotaresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``secrets-storequotaresponseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``secrets-storequotaresponse`` =
     { errors: list<``secrets-storequotaresponseErrors``>
@@ -290,7 +398,7 @@ type ``secrets-storequotaresponse`` =
       ///Whether the API call was successful.
       success: bool
       result_info: Option<``secrets-storequotaresponseResultinfo``>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of secrets-storequotaresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``secrets-storequotaresponseErrors``>,
                           messages: list<``secrets-storequotaresponseMessages``>,
@@ -312,6 +420,8 @@ type ``secrets-storesecretObject`` =
       modified: ``secrets-storemodified``
       ///The name of the secret
       name: ``secrets-storesecretname``
+      ///The list of services that can use this secret.
+      scopes: Option<``secrets-storescopes``>
       status: ``secrets-storeSecretStatus``
       ///Store Identifier
       store_id: ``secrets-storestoreidentifier`` }
@@ -327,6 +437,7 @@ type ``secrets-storesecretObject`` =
           id = id
           modified = modified
           name = name
+          scopes = None
           status = status
           store_id = store_id }
 
@@ -372,13 +483,16 @@ type ``secrets-storesecretresponseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of secrets-storesecretresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``secrets-storesecretresponseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``secrets-storesecretresponse`` =
     { errors: list<``secrets-storesecretresponseErrors``>
@@ -386,7 +500,7 @@ type ``secrets-storesecretresponse`` =
       ///Whether the API call was successful.
       success: bool
       result_info: Option<``secrets-storesecretresponseResultinfo``>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of secrets-storesecretresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``secrets-storesecretresponseErrors``>,
                           messages: list<``secrets-storesecretresponseMessages``>,
@@ -398,9 +512,9 @@ type ``secrets-storesecretresponse`` =
           result = None }
 
 type ``secrets-storesecretsUsageObject`` =
-    { secrets: Newtonsoft.Json.Linq.JToken }
+    { secrets: obj }
     ///Creates an instance of secrets-storesecretsUsageObject with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (secrets: Newtonsoft.Json.Linq.JToken): ``secrets-storesecretsUsageObject`` =
+    static member Create (secrets: obj): ``secrets-storesecretsUsageObject`` =
         { secrets = secrets }
 
 type ``secrets-storesecretsresponsecollectionErrorsSource`` =
@@ -445,13 +559,16 @@ type ``secrets-storesecretsresponsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of secrets-storesecretsresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``secrets-storesecretsresponsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``secrets-storesecretsresponsecollection`` =
     { errors: list<``secrets-storesecretsresponsecollectionErrors``>
@@ -471,7 +588,9 @@ type ``secrets-storesecretsresponsecollection`` =
           result = None }
 
 type ``secrets-storestoreObject`` =
-    { ///Whenthe secret was created.
+    { ///Account Identifier
+      account_id: Option<``secrets-storeaccountidentifier``>
+      ///Whenthe secret was created.
       created: ``secrets-storecreated``
       ///Store Identifier
       id: ``secrets-storestoreidentifier``
@@ -484,7 +603,8 @@ type ``secrets-storestoreObject`` =
                           id: ``secrets-storestoreidentifier``,
                           modified: ``secrets-storemodified``,
                           name: ``secrets-storestorename``): ``secrets-storestoreObject`` =
-        { created = created
+        { account_id = None
+          created = created
           id = id
           modified = modified
           name = name }
@@ -531,13 +651,16 @@ type ``secrets-storestoreresponseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of secrets-storestoreresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``secrets-storestoreresponseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``secrets-storestoreresponse`` =
     { errors: list<``secrets-storestoreresponseErrors``>
@@ -545,7 +668,7 @@ type ``secrets-storestoreresponse`` =
       ///Whether the API call was successful.
       success: bool
       result_info: Option<``secrets-storestoreresponseResultinfo``>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of secrets-storestoreresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``secrets-storestoreresponseErrors``>,
                           messages: list<``secrets-storestoreresponseMessages``>,
@@ -598,13 +721,16 @@ type ``secrets-storestoresresponsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of secrets-storestoresresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``secrets-storestoresresponsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``secrets-storestoresresponsecollection`` =
     { errors: list<``secrets-storestoresresponsecollectionErrors``>
@@ -649,15 +775,15 @@ type SecretsStoreList =
 [<RequireQualifiedAccess>]
 type SecretsStoreCreate =
     ///store details
-    | OK of payload: ``secrets-storestoresresponsecollection``
-    ///List store secrets response failure
+    | OK of payload: ``secrets-storestoreresponse``
+    ///Create store response failure
     | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreDeleteById =
-    ///store details
-    | OK of payload: ``secrets-storestoreresponse``
-    ///failure
+    ///Store deleted
+    | OK of payload: ``secrets-storedeleteresponse``
+    ///Delete store failure
     | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
@@ -669,9 +795,9 @@ type SecretsStoreGetStoreById =
 
 [<RequireQualifiedAccess>]
 type SecretsStoreDeleteBulk =
-    ///secret detail
-    | OK of payload: ``secrets-storesecretsresponsecollection``
-    ///List store secrets response failure
+    ///Secrets deletion accepted
+    | Accepted of payload: ``secrets-storedeleteresponse``
+    ///Delete secrets response failure
     | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
@@ -690,9 +816,9 @@ type SecretsStoreSecretCreate =
 
 [<RequireQualifiedAccess>]
 type SecretsStoreSecretDeleteById =
-    ///secret detail
-    | OK of payload: ``secrets-storesecretresponse``
-    ///failure
+    ///Secret deletion accepted
+    | Accepted of payload: ``secrets-storedeleteresponse``
+    ///Delete secret failure
     | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]

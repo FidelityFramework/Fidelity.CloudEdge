@@ -2,6 +2,7 @@ namespace rec Fidelity.CloudEdge.Management.Stream.Types
 
 // Auto-generated stub types (missing from Hawaii output)
 type access = string
+type audio = string
 
 ///The account identifier tag.
 type streamaccountidentifier = string
@@ -431,15 +432,15 @@ type ``streamapi-response-common`` =
           success = success }
 
 type ``streamapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of streamapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``streamapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -552,7 +553,7 @@ type streamclipResponseSingle =
       messages: list<streamclipResponseSingleMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<streamvideos> }
     ///Creates an instance of streamclipResponseSingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<streamclipResponseSingleErrors>,
                           messages: list<streamclipResponseSingleMessages>,
@@ -576,7 +577,7 @@ type streamclipping =
       ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
       maxDurationSeconds: Option<streammaxDurationSeconds>
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///The date and time the live input was last modified.
       modified: Option<streamliveinputmodified>
       playback: Option<streamplayback>
@@ -625,7 +626,7 @@ type streamcreateinputrequest =
       ///Indicates whether the live input is enabled and can accept streams.
       enabled: Option<streamliveinputenabled>
       ///A user modifiable key-value store used to reference other systems of record for managing live inputs.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
       recording: Option<streamliveinputrecordingsettings> }
     ///Creates an instance of streamcreateinputrequest with all optional fields initialized to None. The required fields are parameters of this function
@@ -708,7 +709,7 @@ type streamdirectuploadrequest =
       ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
       maxDurationSeconds: streammaxDurationSeconds
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
       requireSignedURLs: Option<streamrequireSignedURLs>
       ///Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
@@ -794,15 +795,15 @@ type streamdirectuploadresponse =
 
 type streamdownloads =
     { ///Indicates the progress as a percentage between 0 and 100.
-      percentComplete: Option<streamdownloadpercentcomplete>
+      percentComplete: streamdownloadpercentcomplete
       ///The status of a generated download.
-      status: Option<streamdownloadstatus>
+      status: streamdownloadstatus
       ///The URL to access the generated download.
       url: Option<streamdownloadurl> }
     ///Creates an instance of streamdownloads with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamdownloads =
-        { percentComplete = None
-          status = None
+    static member Create (percentComplete: streamdownloadpercentcomplete, status: streamdownloadstatus): streamdownloads =
+        { percentComplete = percentComplete
+          status = status
           url = None }
 
 type streamdownloadsresponseErrorsSource =
@@ -842,9 +843,9 @@ type streamdownloadsresponseMessages =
 ///An object with download type keys. Each key is optional and only present if that download type has been created.
 type streamdownloadsresponseResult =
     { ///The audio-only download. Only present if this download type has been created.
-      audio: Option<Newtonsoft.Json.Linq.JToken>
+      audio: Option<obj>
       ///The default video download. Only present if this download type has been created.
-      ``default``: Option<Newtonsoft.Json.Linq.JToken> }
+      ``default``: Option<obj> }
     ///Creates an instance of streamdownloadsresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): streamdownloadsresponseResult = { audio = None; ``default`` = None }
 
@@ -859,55 +860,6 @@ type streamdownloadsresponse =
     static member Create (errors: list<streamdownloadsresponseErrors>,
                           messages: list<streamdownloadsresponseMessages>,
                           success: bool): streamdownloadsresponse =
-        { errors = errors
-          messages = messages
-          success = success
-          result = None }
-
-type streamdownloadsresponsesingleErrorsSource =
-    { pointer: Option<string> }
-    ///Creates an instance of streamdownloadsresponsesingleErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamdownloadsresponsesingleErrorsSource = { pointer = None }
-
-type streamdownloadsresponsesingleErrors =
-    { code: int
-      documentation_url: Option<string>
-      message: string
-      source: Option<streamdownloadsresponsesingleErrorsSource> }
-    ///Creates an instance of streamdownloadsresponsesingleErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): streamdownloadsresponsesingleErrors =
-        { code = code
-          documentation_url = None
-          message = message
-          source = None }
-
-type streamdownloadsresponsesingleMessagesSource =
-    { pointer: Option<string> }
-    ///Creates an instance of streamdownloadsresponsesingleMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamdownloadsresponsesingleMessagesSource = { pointer = None }
-
-type streamdownloadsresponsesingleMessages =
-    { code: int
-      documentation_url: Option<string>
-      message: string
-      source: Option<streamdownloadsresponsesingleMessagesSource> }
-    ///Creates an instance of streamdownloadsresponsesingleMessages with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): streamdownloadsresponsesingleMessages =
-        { code = code
-          documentation_url = None
-          message = message
-          source = None }
-
-type streamdownloadsresponsesingle =
-    { errors: list<streamdownloadsresponsesingleErrors>
-      messages: list<streamdownloadsresponsesingleMessages>
-      ///Whether the API call was successful.
-      success: bool
-      result: Option<streamdownloads> }
-    ///Creates an instance of streamdownloadsresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<streamdownloadsresponsesingleErrors>,
-                          messages: list<streamdownloadsresponsesingleMessages>,
-                          success: bool): streamdownloadsresponsesingle =
         { errors = errors
           messages = messages
           success = success
@@ -1046,9 +998,14 @@ type streamkeyresponsecollectionResult =
     { ///The date and time a signing key was created.
       created: Option<streamsigningkeycreated>
       ///Identifier.
-      id: Option<``streamschemas-identifier``> }
+      id: Option<``streamschemas-identifier``>
+      ///The unique identifier for the signing key.
+      key_id: Option<string> }
     ///Creates an instance of streamkeyresponsecollectionResult with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamkeyresponsecollectionResult = { created = None; id = None }
+    static member Create (): streamkeyresponsecollectionResult =
+        { created = None
+          id = None
+          key_id = None }
 
 type streamkeyresponsecollection =
     { errors: list<streamkeyresponsecollectionErrors>
@@ -1213,12 +1170,18 @@ type streamlistAudioTrackResponseMessages =
           message = message
           source = None }
 
+type streamlistAudioTrackResponseResult =
+    { ///Array of audio tracks for the video.
+      audio: Option<list<streamadditionalAudio>> }
+    ///Creates an instance of streamlistAudioTrackResponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): streamlistAudioTrackResponseResult = { audio = None }
+
 type streamlistAudioTrackResponse =
     { errors: list<streamlistAudioTrackResponseErrors>
       messages: list<streamlistAudioTrackResponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<list<streamadditionalAudio>> }
+      result: Option<streamlistAudioTrackResponseResult> }
     ///Creates an instance of streamlistAudioTrackResponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<streamlistAudioTrackResponseErrors>,
                           messages: list<streamlistAudioTrackResponseMessages>,
@@ -1237,7 +1200,7 @@ type streamliveinput =
       ///Indicates whether the live input is enabled and can accept streams.
       enabled: Option<streamliveinputenabled>
       ///A user modifiable key-value store used to reference other systems of record for managing live inputs.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///The date and time the live input was last modified.
       modified: Option<streamliveinputmodified>
       ///Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -1283,7 +1246,7 @@ type streamliveinputobjectwithouturl =
       ///Indicates whether the live input is enabled and can accept streams.
       enabled: Option<streamliveinputenabled>
       ///A user modifiable key-value store used to reference other systems of record for managing live inputs.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///The date and time the live input was last modified.
       modified: Option<streamliveinputmodified>
       ///A unique identifier for a live input.
@@ -1549,7 +1512,7 @@ type streamoutputresponsesingle =
       messages: list<streamoutputresponsesingleMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of streamoutputresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<streamoutputresponsesingleErrors>,
                           messages: list<streamoutputresponsesingleMessages>,
@@ -1597,6 +1560,13 @@ type streamplaybackwebrtc =
     ///Creates an instance of streamplaybackwebrtc with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): streamplaybackwebrtc = { url = None }
 
+///Optional flags for the signed token.
+type Flags =
+    { ///Whether to return the original video without transformations.
+      original: Option<bool> }
+    ///Creates an instance of Flags with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Flags = { original = None }
+
 type streamsignedtokenrequest =
     { ///The optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access rules are evaluated from first to last. If a rule matches, the associated action is applied and no further rules are evaluated.
       accessRules: Option<list<streamaccessRules>>
@@ -1604,6 +1574,8 @@ type streamsignedtokenrequest =
       downloadable: Option<bool>
       ///The optional unix epoch timestamp that specficies the time after a token is not accepted. The maximum time specification is 24 hours from issuing time. If this field is not set, the default is one hour after issuing.
       exp: Option<int>
+      ///Optional flags for the signed token.
+      flags: Option<Flags>
       ///The optional ID of a Stream signing key. If present, the `pem` field is also required.
       id: Option<string>
       ///The optional unix epoch timestamp that specifies the time before a the token is not accepted. If this field is not set, the default is one hour before issuing.
@@ -1615,6 +1587,7 @@ type streamsignedtokenrequest =
         { accessRules = None
           downloadable = None
           exp = None
+          flags = None
           id = None
           nbf = None
           pem = None }
@@ -1711,8 +1684,8 @@ type streamstorageuseresponseMessages =
 type streamstorageuseresponseResult =
     { ///A user-defined identifier for the media creator.
       creator: Option<streamcreator>
-      ///The total minutes of video content stored in the account.
-      totalStorageMinutes: Option<int>
+      ///The total minutes of video content stored in the account. May contain decimal values.
+      totalStorageMinutes: Option<float32>
       ///The storage capacity alloted for the account.
       totalStorageMinutesLimit: Option<int>
       ///The total count of videos associated with the account.
@@ -1747,7 +1720,7 @@ type streamupdateinputrequest =
       ///Indicates whether the live input is enabled and can accept streams.
       enabled: Option<streamliveinputenabled>
       ///A user modifiable key-value store used to reference other systems of record for managing live inputs.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
       recording: Option<streamliveinputrecordingsettings> }
     ///Creates an instance of streamupdateinputrequest with all optional fields initialized to None. The required fields are parameters of this function
@@ -1773,14 +1746,22 @@ type streamvideoClipStandard =
       creator: Option<streamcreator>
       ///Specifies the end time for the video clip in seconds.
       endTimeSeconds: streamendtimeseconds
-      ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
-      maxDurationSeconds: Option<streammaxDurationSeconds>
+      ///A video's URL. Preferred over 'url'.
+      input: Option<string>
+      ///A user modifiable key-value store used to reference other systems of record for managing videos.
+      meta: Option<obj>
+      ///A name for the video.
+      name: Option<string>
       ///Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
       requireSignedURLs: Option<streamrequireSignedURLs>
+      ///Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
+      scheduledDeletion: Option<streamscheduledDeletion>
       ///Specifies the start time for the video clip in seconds.
       startTimeSeconds: streamstarttimeseconds
       ///The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
       thumbnailTimestampPct: Option<streamthumbnailTimestampPct>
+      ///A video's URL (legacy field, use 'input' instead).
+      url: Option<string>
       watermark: Option<streamwatermarkAtUpload> }
     ///Creates an instance of streamvideoClipStandard with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (clippedFromVideoUID: streamclippedfromvideouid,
@@ -1790,37 +1771,48 @@ type streamvideoClipStandard =
           clippedFromVideoUID = clippedFromVideoUID
           creator = None
           endTimeSeconds = endTimeSeconds
-          maxDurationSeconds = None
+          input = None
+          meta = None
+          name = None
           requireSignedURLs = None
+          scheduledDeletion = None
           startTimeSeconds = startTimeSeconds
           thumbnailTimestampPct = None
+          url = None
           watermark = None }
 
+///Copy upload request. Provide `input` (preferred) or `url` (deprecated).
 type streamvideocopyrequest =
     { ///Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
       allowedOrigins: Option<streamallowedOrigins>
       ///A user-defined identifier for the media creator.
       creator: Option<streamcreator>
+      ///A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This is the preferred field over `url`.
+      input: Option<string>
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
+      ///A video's name. Used for legacy compatibility.
+      name: Option<string>
       ///Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
       requireSignedURLs: Option<streamrequireSignedURLs>
       ///Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
       scheduledDeletion: Option<streamscheduledDeletion>
       ///The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
       thumbnailTimestampPct: Option<streamthumbnailTimestampPct>
-      ///A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.
-      url: string
+      ///A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This field is deprecated in favor of `input`.
+      url: Option<string>
       watermark: Option<streamwatermarkatupload> }
     ///Creates an instance of streamvideocopyrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (url: string): streamvideocopyrequest =
+    static member Create (): streamvideocopyrequest =
         { allowedOrigins = None
           creator = None
+          input = None
           meta = None
+          name = None
           requireSignedURLs = None
           scheduledDeletion = None
           thumbnailTimestampPct = None
-          url = url
+          url = None
           watermark = None }
 
 type streamvideoresponsecollectionErrorsSource =
@@ -1927,6 +1919,19 @@ type streamvideoresponsesingle =
           success = success
           result = None }
 
+///Public details for the video including title, share link, channel link, and logo.
+type PublicDetails =
+    { channel_link: Option<string>
+      logo: Option<string>
+      share_link: Option<string>
+      title: Option<string> }
+    ///Creates an instance of PublicDetails with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): PublicDetails =
+        { channel_link = None
+          logo = None
+          share_link = None
+          title = None }
+
 type streamvideoupdate =
     { ///Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
       allowedOrigins: Option<streamallowedOrigins>
@@ -1935,13 +1940,17 @@ type streamvideoupdate =
       ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
       maxDurationSeconds: Option<streammaxDurationSeconds>
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
+      ///Public details for the video including title, share link, channel link, and logo.
+      publicDetails: Option<PublicDetails>
       ///Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
       requireSignedURLs: Option<streamrequireSignedURLs>
       ///Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
       scheduledDeletion: Option<streamscheduledDeletion>
       ///The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
       thumbnailTimestampPct: Option<streamthumbnailTimestampPct>
+      ///The unique identifier for the video. Can be used to verify the video being updated.
+      uid: Option<string>
       ///The date and time when the video upload URL is no longer valid for direct user uploads.
       uploadExpiry: Option<streamoneTimeUploadExpiry> }
     ///Creates an instance of streamvideoupdate with all optional fields initialized to None. The required fields are parameters of this function
@@ -1950,14 +1959,33 @@ type streamvideoupdate =
           creator = None
           maxDurationSeconds = None
           meta = None
+          publicDetails = None
           requireSignedURLs = None
           scheduledDeletion = None
           thumbnailTimestampPct = None
+          uid = None
           uploadExpiry = None }
+
+///Public details for the video including title, share link, channel link, and logo.
+type streamvideosPublicDetails =
+    { channel_link: Option<string>
+      logo: Option<string>
+      media_id: Option<int>
+      share_link: Option<string>
+      title: Option<string> }
+    ///Creates an instance of streamvideosPublicDetails with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): streamvideosPublicDetails =
+        { channel_link = None
+          logo = None
+          media_id = None
+          share_link = None
+          title = None }
 
 type streamvideos =
     { ///Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
       allowedOrigins: Option<streamallowedOrigins>
+      ///The unique identifier of the source video this video was clipped from.
+      clippedFrom: Option<string>
       ///The date and time the media item was created.
       created: Option<streamcreated>
       ///A user-defined identifier for the media creator.
@@ -1969,13 +1997,17 @@ type streamvideos =
       liveInput: Option<streamliveInput>
       ///The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
       maxDurationSeconds: Option<streammaxDurationSeconds>
+      ///The maximum size in bytes for the video upload.
+      maxSizeBytes: Option<int64>
       ///A user modifiable key-value store used to reference other systems of record for managing videos.
-      meta: Option<Newtonsoft.Json.Linq.JObject>
+      meta: Option<obj>
       ///The date and time the media item was last modified.
       modified: Option<streammodified>
       playback: Option<streamplayback>
       ///The video's preview page URI. This field is omitted until encoding is complete.
       preview: Option<streampreview>
+      ///Public details for the video including title, share link, channel link, and logo.
+      publicDetails: Option<streamvideosPublicDetails>
       ///Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
       readyToStream: Option<streamreadyToStream>
       ///Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -1987,7 +2019,7 @@ type streamvideos =
       ///The size of the media item in bytes.
       size: Option<streamsize>
       ///Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
-      status: Option<Newtonsoft.Json.Linq.JToken>
+      status: Option<obj>
       ///The media item's thumbnail URI. This field is omitted until encoding is complete.
       thumbnail: Option<streamthumbnailurl>
       ///The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
@@ -2002,16 +2034,19 @@ type streamvideos =
     ///Creates an instance of streamvideos with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): streamvideos =
         { allowedOrigins = None
+          clippedFrom = None
           created = None
           creator = None
           duration = None
           input = None
           liveInput = None
           maxDurationSeconds = None
+          maxSizeBytes = None
           meta = None
           modified = None
           playback = None
           preview = None
+          publicDetails = None
           readyToStream = None
           readyToStreamAt = None
           requireSignedURLs = None
@@ -2196,10 +2231,13 @@ type streamwatermarks =
 
 type streamwebhookrequest =
     { ///The URL where webhooks will be sent.
-      notificationUrl: streamnotificationUrl }
+      notificationUrl: Option<streamnotificationUrl>
+      ///The URL where webhooks will be sent.
+      notification_url: Option<string> }
     ///Creates an instance of streamwebhookrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (notificationUrl: streamnotificationUrl): streamwebhookrequest =
-        { notificationUrl = notificationUrl }
+    static member Create (): streamwebhookrequest =
+        { notificationUrl = None
+          notification_url = None }
 
 type streamwebhookresponsesingleErrorsSource =
     { pointer: Option<string> }
@@ -2235,12 +2273,28 @@ type streamwebhookresponsesingleMessages =
           message = message
           source = None }
 
+type streamwebhookresponsesingleResult =
+    { ///The date and time the webhook was last modified.
+      modified: Option<System.DateTimeOffset>
+      ///The URL where webhooks will be sent.
+      notificationUrl: Option<string>
+      ///The URL where webhooks will be sent.
+      notification_url: Option<string>
+      ///The secret used to verify webhook signatures.
+      secret: Option<string> }
+    ///Creates an instance of streamwebhookresponsesingleResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): streamwebhookresponsesingleResult =
+        { modified = None
+          notificationUrl = None
+          notification_url = None
+          secret = None }
+
 type streamwebhookresponsesingle =
     { errors: list<streamwebhookresponsesingleErrors>
       messages: list<streamwebhookresponsesingleMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<streamwebhookresponsesingleResult> }
     ///Creates an instance of streamwebhookresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<streamwebhookresponsesingleErrors>,
                           messages: list<streamwebhookresponsesingleMessages>,
@@ -2361,10 +2415,10 @@ type StreamVideosListVideos =
 
 [<RequireQualifiedAccess>]
 type StreamVideosInitiateVideoUploadsUsingTus =
-    ///Initiate video uploads using TUS response.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Initiate video uploads using TUS response. Returns a 201 Created status with Location header for TUS uploads.
+    | Created of payload: obj
     ///Initiate video uploads using TUS response failure.
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideoClippingClipVideosGivenAStartAndEndTime =
@@ -2425,9 +2479,9 @@ type StreamLiveInputsCreateALiveInput =
 [<RequireQualifiedAccess>]
 type StreamLiveInputsDeleteALiveInput =
     ///Delete a live input response.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Delete a live input response failure.
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsRetrieveALiveInput =
@@ -2474,9 +2528,9 @@ type ``StreamLiveInputsCreateANewOutput,ConnectedToALiveInput`` =
 [<RequireQualifiedAccess>]
 type StreamLiveInputsDeleteAnOutput =
     ///Delete an output response.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Delete an output response failure.
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsUpdateAnOutput =
@@ -2498,6 +2552,28 @@ type StreamWatermarkProfileListWatermarkProfiles =
     | OK of payload: streamwatermarkresponsecollection
     ///List watermark profiles response failure.
     | BadRequest of payload: ``streamapi-response-common-failure``
+
+type StreamWatermarkProfileCreateWatermarkProfilesViaBasicUploadPayload =
+    { ///A short description of the watermark profile.
+      name: Option<streamname>
+      ///The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
+      opacity: Option<streamopacity>
+      ///The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
+      padding: Option<streampadding>
+      ///The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
+      position: Option<streamposition>
+      ///The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.
+      scale: Option<streamscale>
+      ///URL of the watermark image to copy.
+      url: Option<string> }
+    ///Creates an instance of StreamWatermarkProfileCreateWatermarkProfilesViaBasicUploadPayload with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): StreamWatermarkProfileCreateWatermarkProfilesViaBasicUploadPayload =
+        { name = None
+          opacity = None
+          padding = None
+          position = None
+          scale = None
+          url = None }
 
 [<RequireQualifiedAccess>]
 type StreamWatermarkProfileCreateWatermarkProfilesViaBasicUpload =
@@ -2544,9 +2620,9 @@ type StreamWebhookCreateWebhooks =
 [<RequireQualifiedAccess>]
 type StreamVideosDeleteVideo =
     ///Delete video response.
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Delete video response failure.
-    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosRetrieveVideoDetails =
@@ -2649,7 +2725,7 @@ type StreamMP4DownloadsListDownloads =
 [<RequireQualifiedAccess>]
 type StreamMP4DownloadsCreateDownloads =
     ///Create downloads response.
-    | OK of payload: streamdownloadsresponsesingle
+    | OK of payload: streamdownloadsresponse
     ///Create downloads response failure.
     | BadRequest of payload: ``streamapi-response-common-failure``
 

@@ -33,6 +33,8 @@ type unspecified = string
 type uri = string
 type your = string
 
+///The Authenticator Attestation GUID (AAGUID) uniquely identifying a FIDO2 authenticator model
+type accessaaguid = System.Guid
 type accessaccessseat = bool
 ///The event that occurred, such as a login attempt.
 type accessaction = string
@@ -98,6 +100,8 @@ type accessassociatedhostnames = list<string>
 type accessaud = string
 ///The unique subdomain assigned to your Zero Trust organization.
 type accessauthdomain = string
+///The human-readable name of the FIDO2 authenticator
+type ``accessauthenticator-device-aaguidscomponents-schemas-name`` = string
 ///The unique identifier for the MFA device.
 type accessauthenticatorid = string
 type accessautoredirecttoidentity = bool
@@ -834,13 +838,16 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type Metadata =
     { apps: Option<Map<string, string>>
@@ -933,13 +940,16 @@ type ``accessapi-response-collectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessapi-response-collectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessapi-response-collectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessapi-response-collection`` =
     { errors: Option<list<``accessapi-response-collectionErrors``>>
@@ -1161,13 +1171,16 @@ type ``accessapp-policiescomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessapp-policiescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessapp-policiescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessapp-policiescomponents-schemas-responsecollection`` =
     { errors: list<``accessapp-policiescomponents-schemas-responsecollectionErrors``>
@@ -1401,7 +1414,7 @@ type accessapppolicyresponse =
           precedence = None }
 
 type accessappreqembeddedpolicies =
-    { ///The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+    { ///The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. Reusable and inline policies are mutually exclusive.
       policies: Option<list<string>> }
     ///Creates an instance of accessappreqembeddedpolicies with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessappreqembeddedpolicies = { policies = None }
@@ -1508,13 +1521,16 @@ type ``accessappscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessappscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessappscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessappscomponents-schemas-responsecollection`` =
     { errors: list<``accessappscomponents-schemas-responsecollectionErrors``>
@@ -1575,13 +1591,16 @@ type ``accessappscomponents-schemas-responsecollection-2Resultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessappscomponents-schemas-responsecollection-2Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessappscomponents-schemas-responsecollection-2Resultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessappscomponents-schemas-responsecollection-2`` =
     { errors: Option<list<``accessappscomponents-schemas-responsecollection-2Errors``>>
@@ -1725,6 +1744,88 @@ type accessauthenticationmethodrule =
     { auth_method: Authmethod }
     ///Creates an instance of accessauthenticationmethodrule with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (auth_method: Authmethod): accessauthenticationmethodrule = { auth_method = auth_method }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrorsSource`` =
+        { pointer = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrorsSource``> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessagesSource`` =
+        { pointer = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessagesSource``> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionResultinfo`` =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionResultinfo`` =
+        { count = None
+          page = None
+          per_page = None
+          total_count = None
+          total_pages = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollection`` =
+    { errors: list<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result_info: Option<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionResultinfo``>
+      result: Option<list<accessauthenticatordeviceaaguid>> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result_info = None
+          result = None }
+
+///A FIDO2 authenticator device AAGUID entry
+type accessauthenticatordeviceaaguid =
+    { ///The Authenticator Attestation GUID (AAGUID) uniquely identifying a FIDO2 authenticator model
+      aaguid: accessaaguid
+      ///The human-readable name of the FIDO2 authenticator
+      name: ``accessauthenticator-device-aaguidscomponents-schemas-name`` }
+    ///Creates an instance of accessauthenticatordeviceaaguid with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (aaguid: accessaaguid, name: ``accessauthenticator-device-aaguidscomponents-schemas-name``): accessauthenticatordeviceaaguid =
+        { aaguid = aaguid; name = name }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type Identityupdatebehavior =
@@ -2047,13 +2148,16 @@ type ``accessbookmarkscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessbookmarkscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessbookmarkscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessbookmarkscomponents-schemas-responsecollection`` =
     { errors: list<``accessbookmarkscomponents-schemas-responsecollectionErrors``>
@@ -2229,13 +2333,16 @@ type ``accesscacomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscacomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscacomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscacomponents-schemas-responsecollection`` =
     { errors: list<``accesscacomponents-schemas-responsecollectionErrors``>
@@ -2296,13 +2403,16 @@ type ``accesscacomponents-schemas-responsecollection-2Resultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscacomponents-schemas-responsecollection-2Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscacomponents-schemas-responsecollection-2Resultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscacomponents-schemas-responsecollection-2`` =
     { errors: Option<list<``accesscacomponents-schemas-responsecollection-2Errors``>>
@@ -2574,13 +2684,16 @@ type ``accesscertificatescomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscertificatescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscertificatescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscertificatescomponents-schemas-responsecollection`` =
     { errors: list<``accesscertificatescomponents-schemas-responsecollectionErrors``>
@@ -2643,13 +2756,16 @@ type ``accesscertificatescomponents-schemas-responsecollection-2Resultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscertificatescomponents-schemas-responsecollection-2Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscertificatescomponents-schemas-responsecollection-2Resultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscertificatescomponents-schemas-responsecollection-2`` =
     { errors: Option<list<``accesscertificatescomponents-schemas-responsecollection-2Errors``>>
@@ -2917,13 +3033,16 @@ type ``accesscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscomponents-schemas-responsecollection`` =
     { errors: list<``accesscomponents-schemas-responsecollectionErrors``>
@@ -3162,7 +3281,7 @@ type accesscreateresponse =
           success = success
           result = None }
 
-type accesscreatedat = System.DateTimeOffset
+type accesscreatedat = Map<string, obj>
 
 type ``accesscustom-claims-support`` =
     { ///Custom claims
@@ -3218,13 +3337,16 @@ type ``accesscustom-pagescomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscustom-pagescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscustom-pagescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscustom-pagescomponents-schemas-responsecollection`` =
     { errors: list<``accesscustom-pagescomponents-schemas-responsecollectionErrors``>
@@ -3662,13 +3784,16 @@ type accessfailedloginresponseResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessfailedloginresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessfailedloginresponseResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessfailedloginresponseResult =
     { expiration: Option<int>
@@ -3766,13 +3891,16 @@ type ``accessgatewaycacomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessgatewaycacomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessgatewaycacomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessgatewaycacomponents-schemas-responsecollection`` =
     { errors: list<``accessgatewaycacomponents-schemas-responsecollectionErrors``>
@@ -4195,13 +4323,16 @@ type ``accessgroupscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessgroupscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessgroupscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessgroupscomponents-schemas-responsecollection`` =
     { errors: Option<list<``accessgroupscomponents-schemas-responsecollectionErrors``>>
@@ -4577,13 +4708,16 @@ type ``accessidentity-providerscomponents-schemas-responsecollectionResultinfo``
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessidentity-providerscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessidentity-providerscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessidentity-providerscomponents-schemas-responsecollection`` =
     { errors: Option<list<``accessidentity-providerscomponents-schemas-responsecollectionErrors``>>
@@ -4661,6 +4795,27 @@ type accessinfraapprespembeddedpolicies =
     ///Creates an instance of accessinfraapprespembeddedpolicies with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessinfraapprespembeddedpolicies = { policies = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Allowed_authenticators =
+    | [<CompiledName "ssh_piv_key">] Ssh_piv_key
+    member this.Format() =
+        match this with
+        | Ssh_piv_key -> "ssh_piv_key"
+
+///Configures multi-factor authentication (MFA) settings for infrastructure applications.
+type accessinframfaconfig =
+    { ///Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+      allowed_authenticators: Option<list<Allowed_authenticators>>
+      ///Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
+      mfa_disabled: Option<bool>
+      ///Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples: `5m` or `24h`.
+      session_duration: Option<string> }
+    ///Creates an instance of accessinframfaconfig with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): accessinframfaconfig =
+        { allowed_authenticators = None
+          mfa_disabled = None
+          session_duration = None }
+
 type accessinfrapolicyreq =
     { ///The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
       decision: Option<accessdecision>
@@ -4673,7 +4828,9 @@ type accessinfrapolicyreq =
       ///Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
       require: Option<``accessschemas-require``>
       ///The rules that define how users may connect to the targets secured by your application.
-      connection_rules: Option<accessconnectionrulesinfra> }
+      connection_rules: Option<accessconnectionrulesinfra>
+      ///Configures multi-factor authentication (MFA) settings for infrastructure applications.
+      mfa_config: Option<accessinframfaconfig> }
     ///Creates an instance of accessinfrapolicyreq with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessinfrapolicyreq =
         { decision = None
@@ -4681,7 +4838,8 @@ type accessinfrapolicyreq =
           ``include`` = None
           name = None
           require = None
-          connection_rules = None }
+          connection_rules = None
+          mfa_config = None }
 
 type accessinfrapolicyresp =
     { created_at: Option<accesstimestamp>
@@ -4699,7 +4857,9 @@ type accessinfrapolicyresp =
       require: Option<``accessschemas-require``>
       updated_at: Option<accesstimestamp>
       ///The rules that define how users may connect to the targets secured by your application.
-      connection_rules: Option<accessconnectionrulesinfra> }
+      connection_rules: Option<accessconnectionrulesinfra>
+      ///Configures multi-factor authentication (MFA) settings for infrastructure applications.
+      mfa_config: Option<accessinframfaconfig> }
     ///Creates an instance of accessinfrapolicyresp with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessinfrapolicyresp =
         { created_at = None
@@ -4710,7 +4870,8 @@ type accessinfrapolicyresp =
           name = None
           require = None
           updated_at = None
-          connection_rules = None }
+          connection_rules = None
+          mfa_config = None }
 
 type accessinfraprops =
     { ///The name of the application.
@@ -5198,7 +5359,7 @@ type accessmeta =
     static member Create (): accessmeta = { created = None; lastModified = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type Allowed_authenticators =
+type accessmfaconfigAllowed_authenticators =
     | [<CompiledName "totp">] Totp
     | [<CompiledName "biometrics">] Biometrics
     | [<CompiledName "security_key">] Security_key
@@ -5211,7 +5372,7 @@ type Allowed_authenticators =
 ///Configures multi-factor authentication (MFA) settings.
 type accessmfaconfig =
     { ///Lists the MFA methods that users can authenticate with.
-      allowed_authenticators: Option<list<Allowed_authenticators>>
+      allowed_authenticators: Option<list<accessmfaconfigAllowed_authenticators>>
       ///Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
       mfa_disabled: Option<bool>
       ///Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
@@ -5221,6 +5382,68 @@ type accessmfaconfig =
         { allowed_authenticators = None
           mfa_disabled = None
           session_duration = None }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Pinpolicy =
+    | [<CompiledName "never">] Never
+    | [<CompiledName "once">] Once
+    | [<CompiledName "always">] Always
+    member this.Format() =
+        match this with
+        | Never -> "never"
+        | Once -> "once"
+        | Always -> "always"
+
+[<RequireQualifiedAccess>]
+type Ssh_key_size =
+    | Ssh_key_size256 = 256
+    | Ssh_key_size384 = 384
+    | Ssh_key_size521 = 521
+    | Ssh_key_size2048 = 2048
+    | Ssh_key_size3072 = 3072
+    | Ssh_key_size4096 = 4096
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Ssh_key_type =
+    | [<CompiledName "ecdsa">] Ecdsa
+    | [<CompiledName "ed25519">] Ed25519
+    | [<CompiledName "rsa">] Rsa
+    member this.Format() =
+        match this with
+        | Ecdsa -> "ecdsa"
+        | Ed25519 -> "ed25519"
+        | Rsa -> "rsa"
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Touchpolicy =
+    | [<CompiledName "never">] Never
+    | [<CompiledName "always">] Always
+    | [<CompiledName "cached">] Cached
+    member this.Format() =
+        match this with
+        | Never -> "never"
+        | Always -> "always"
+        | Cached -> "cached"
+
+///Configures SSH PIV key requirements for MFA using hardware security keys.
+type accessmfasshpivkeyrequirements =
+    { ///Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
+      pin_policy: Option<Pinpolicy>
+      ///Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      require_fips_device: Option<bool>
+      ///Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
+      ssh_key_size: Option<list<Ssh_key_size>>
+      ///Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.
+      ssh_key_type: Option<list<Ssh_key_type>>
+      ///Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).
+      touch_policy: Option<Touchpolicy> }
+    ///Creates an instance of accessmfasshpivkeyrequirements with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): accessmfasshpivkeyrequirements =
+        { pin_policy = None
+          require_fips_device = None
+          ssh_key_size = None
+          ssh_key_type = None
+          touch_policy = None }
 
 type accessnameresponseErrorsSource =
     { pointer: Option<string> }
@@ -5853,21 +6076,29 @@ type accessorgmfaconfigAllowed_authenticators =
     | [<CompiledName "totp">] Totp
     | [<CompiledName "biometrics">] Biometrics
     | [<CompiledName "security_key">] Security_key
+    | [<CompiledName "ssh_piv_key">] Ssh_piv_key
     member this.Format() =
         match this with
         | Totp -> "totp"
         | Biometrics -> "biometrics"
         | Security_key -> "security_key"
+        | Ssh_piv_key -> "ssh_piv_key"
 
 ///Configures multi-factor authentication (MFA) settings for an organization.
 type accessorgmfaconfig =
     { ///Lists the MFA methods that users can authenticate with.
       allowed_authenticators: Option<list<accessorgmfaconfigAllowed_authenticators>>
+      ///Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+      amr_matching_session_duration: Option<string>
+      ///Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+      required_aaguids: Option<System.Guid>
       ///Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
       session_duration: Option<string> }
     ///Creates an instance of accessorgmfaconfig with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessorgmfaconfig =
         { allowed_authenticators = None
+          amr_matching_session_duration = None
+          required_aaguids = None
           session_duration = None }
 
 type accessorganizations =
@@ -5890,6 +6121,8 @@ type accessorganizations =
       mfa_config: Option<accessorgmfaconfig>
       ///Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
       mfa_required_for_all_apps: Option<accessmfarequiredforallapps>
+      ///Configures SSH PIV key requirements for MFA using hardware security keys.
+      mfa_ssh_piv_key_requirements: Option<accessmfasshpivkeyrequirements>
       ///The name of your Zero Trust organization.
       name: Option<accessname>
       ///The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -5914,6 +6147,7 @@ type accessorganizations =
           login_design = None
           mfa_config = None
           mfa_required_for_all_apps = None
+          mfa_ssh_piv_key_requirements = None
           name = None
           session_duration = None
           ui_read_only_toggle_reason = None
@@ -6140,13 +6374,16 @@ type ``accesspoliciescomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesspoliciescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesspoliciescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesspoliciescomponents-schemas-responsecollection`` =
     { errors: Option<list<``accesspoliciescomponents-schemas-responsecollectionErrors``>>
@@ -6250,7 +6487,7 @@ type Appstate =
       aud: Option<string>
       hostname: Option<string>
       name: Option<string>
-      policies: Option<list<obj>>
+      policies: Option<obj>
       status: Option<string> }
     ///Creates an instance of Appstate with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Appstate =
@@ -6793,13 +7030,16 @@ type accessresponsecollectionResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessresponsecollectionResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessresponsecollection =
     { errors: list<accessresponsecollectionErrors>
@@ -6860,13 +7100,16 @@ type accessresponsecollectionhostnamesResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessresponsecollectionhostnamesResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessresponsecollectionhostnamesResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessresponsecollectionhostnames =
     { errors: list<accessresponsecollectionhostnamesErrors>
@@ -7020,13 +7263,16 @@ type ``accessreusable-policiescomponents-schemas-responsecollectionResultinfo`` 
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessreusable-policiescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessreusable-policiescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessreusable-policiescomponents-schemas-responsecollection`` =
     { errors: list<``accessreusable-policiescomponents-schemas-responsecollectionErrors``>
@@ -8218,7 +8464,7 @@ type ``accessschemas-google-apps`` =
           ``type`` = None }
 
 type ``accessschemas-groups`` =
-    { created_at: Option<System.DateTimeOffset>
+    { created_at: Option<obj>
       ///Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
       exclude: Option<accessexclude>
       ///UUID.
@@ -9255,13 +9501,16 @@ type ``accessschemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessschemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessschemas-responsecollection`` =
     { errors: list<``accessschemas-responsecollectionErrors``>
@@ -9322,13 +9571,16 @@ type ``accessschemas-responsecollectionhostnamesResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessschemas-responsecollectionhostnamesResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-responsecollectionhostnamesResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessschemas-responsecollectionhostnames`` =
     { errors: Option<list<``accessschemas-responsecollectionhostnamesErrors``>>
@@ -10238,13 +10490,16 @@ type accessscimgroupsresponseResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessscimgroupsresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessscimgroupsresponseResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessscimgroupsresponse =
     { errors: list<accessscimgroupsresponseErrors>
@@ -10305,13 +10560,16 @@ type accessscimupdatelogsresponseResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessscimupdatelogsresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessscimupdatelogsresponseResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessscimupdatelogsresponse =
     { errors: list<accessscimupdatelogsresponseErrors>
@@ -10372,13 +10630,16 @@ type accessscimusersresponseResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessscimusersresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessscimusersresponseResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessscimusersresponse =
     { errors: list<accessscimusersresponseErrors>
@@ -10469,13 +10730,16 @@ type ``accessseatscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessseatscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessseatscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessseatscomponents-schemas-responsecollection`` =
     { errors: list<``accessseatscomponents-schemas-responsecollectionErrors``>
@@ -10659,13 +10923,16 @@ type ``accessservice-tokenscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessservice-tokenscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessservice-tokenscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessservice-tokenscomponents-schemas-responsecollection`` =
     { errors: Option<list<``accessservice-tokenscomponents-schemas-responsecollectionErrors``>>
@@ -11064,7 +11331,7 @@ type accesstag =
 
 ///A tag
 type accesstagwithoutappcount =
-    { created_at: Option<System.DateTimeOffset>
+    { created_at: Option<obj>
       ///The name of the tag
       name: ``accesstagscomponents-schemas-name``
       updated_at: Option<System.DateTimeOffset> }
@@ -11116,13 +11383,16 @@ type ``accesstagscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesstagscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesstagscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesstagscomponents-schemas-responsecollection`` =
     { errors: list<``accesstagscomponents-schemas-responsecollectionErrors``>
@@ -11227,7 +11497,7 @@ type accesstargetcriteriaselfhostedapp =
           target_attributes = None
           protocol = None }
 
-type accessupdatedat = System.DateTimeOffset
+type accessupdatedat = Map<string, obj>
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type User_risk_score =
@@ -11786,8 +12056,57 @@ type ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsr
           success = success
           result = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type ServersAuthtype =
+    | [<CompiledName "oauth">] Oauth
+    | [<CompiledName "bearer">] Bearer
+    | [<CompiledName "unauthenticated">] Unauthenticated
+    member this.Format() =
+        match this with
+        | Oauth -> "oauth"
+        | Bearer -> "bearer"
+        | Unauthenticated -> "unauthenticated"
+
+type Updatedprompts =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type Updatedtools =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type Servers =
+    { auth_type: ServersAuthtype
+      created_at: Option<System.DateTimeOffset>
+      created_by: Option<string>
+      default_disabled: Option<bool>
+      description: Option<string>
+      error: Option<string>
+      hostname: string
+      ///server id
+      id: string
+      last_successful_sync: Option<System.DateTimeOffset>
+      last_synced: Option<System.DateTimeOffset>
+      modified_at: Option<System.DateTimeOffset>
+      modified_by: Option<string>
+      name: string
+      on_behalf: Option<bool>
+      prompts: obj
+      status: Option<string>
+      tools: obj
+      updated_prompts: Option<list<Updatedprompts>>
+      updated_tools: Option<list<Updatedtools>> }
+
 type McpPortalsApiListPortals_OKResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -11797,7 +12116,8 @@ type McpPortalsApiListPortals_OKResult =
       modified_by: Option<string>
       name: string
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
-      secure_web_gateway: Option<bool> }
+      secure_web_gateway: Option<bool>
+      servers: list<Servers> }
 
 type McpPortalsApiListPortals_OK =
     { result: list<McpPortalsApiListPortals_OKResult>
@@ -11817,35 +12137,39 @@ type McpPortalsApiListPortals =
     ///Bad Request
     | BadRequest of payload: McpPortalsApiListPortals_BadRequest
 
-type Updatedprompts =
-    { description: Option<string>
+type McpPortalsApiCreatePortalsPayloadServersUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
       enabled: Option<bool>
       name: string }
-    ///Creates an instance of Updatedprompts with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (name: string): Updatedprompts =
-        { description = None
+    ///Creates an instance of McpPortalsApiCreatePortalsPayloadServersUpdatedprompts with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiCreatePortalsPayloadServersUpdatedprompts =
+        { alias = None
+          description = None
           enabled = None
           name = name }
 
-type Updatedtools =
-    { description: Option<string>
+type McpPortalsApiCreatePortalsPayloadServersUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
       enabled: Option<bool>
       name: string }
-    ///Creates an instance of Updatedtools with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (name: string): Updatedtools =
-        { description = None
+    ///Creates an instance of McpPortalsApiCreatePortalsPayloadServersUpdatedtools with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiCreatePortalsPayloadServersUpdatedtools =
+        { alias = None
+          description = None
           enabled = None
           name = name }
 
-type Servers =
+type McpPortalsApiCreatePortalsPayloadServers =
     { default_disabled: Option<bool>
       on_behalf: Option<bool>
       ///server id
       server_id: string
-      updated_prompts: Option<list<Updatedprompts>>
-      updated_tools: Option<list<Updatedtools>> }
-    ///Creates an instance of Servers with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (server_id: string): Servers =
+      updated_prompts: Option<list<McpPortalsApiCreatePortalsPayloadServersUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiCreatePortalsPayloadServersUpdatedtools>> }
+    ///Creates an instance of McpPortalsApiCreatePortalsPayloadServers with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (server_id: string): McpPortalsApiCreatePortalsPayloadServers =
         { default_disabled = None
           on_behalf = None
           server_id = server_id
@@ -11853,25 +12177,77 @@ type Servers =
           updated_tools = None }
 
 type McpPortalsApiCreatePortalsPayload =
-    { description: Option<string>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      description: Option<string>
       hostname: string
       ///portal id
       id: string
       name: string
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
       secure_web_gateway: Option<bool>
-      servers: Option<list<Servers>> }
+      servers: Option<list<McpPortalsApiCreatePortalsPayloadServers>> }
     ///Creates an instance of McpPortalsApiCreatePortalsPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (hostname: string, id: string, name: string): McpPortalsApiCreatePortalsPayload =
-        { description = None
+        { allow_code_mode = None
+          description = None
           hostname = hostname
           id = id
           name = name
           secure_web_gateway = None
           servers = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type McpPortalsApiCreatePortals_CreatedResultServersAuthtype =
+    | [<CompiledName "oauth">] Oauth
+    | [<CompiledName "bearer">] Bearer
+    | [<CompiledName "unauthenticated">] Unauthenticated
+    member this.Format() =
+        match this with
+        | Oauth -> "oauth"
+        | Bearer -> "bearer"
+        | Unauthenticated -> "unauthenticated"
+
+type McpPortalsApiCreatePortals_CreatedResultServersUpdatedprompts =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiCreatePortals_CreatedResultServersUpdatedtools =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiCreatePortals_CreatedResultServers =
+    { auth_type: McpPortalsApiCreatePortals_CreatedResultServersAuthtype
+      created_at: Option<System.DateTimeOffset>
+      created_by: Option<string>
+      default_disabled: Option<bool>
+      description: Option<string>
+      error: Option<string>
+      hostname: string
+      ///server id
+      id: string
+      last_successful_sync: Option<System.DateTimeOffset>
+      last_synced: Option<System.DateTimeOffset>
+      modified_at: Option<System.DateTimeOffset>
+      modified_by: Option<string>
+      name: string
+      on_behalf: Option<bool>
+      prompts: obj
+      status: Option<string>
+      tools: obj
+      updated_prompts: Option<list<McpPortalsApiCreatePortals_CreatedResultServersUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiCreatePortals_CreatedResultServersUpdatedtools>> }
+
 type McpPortalsApiCreatePortals_CreatedResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -11881,7 +12257,8 @@ type McpPortalsApiCreatePortals_CreatedResult =
       modified_by: Option<string>
       name: string
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
-      secure_web_gateway: Option<bool> }
+      secure_web_gateway: Option<bool>
+      servers: list<McpPortalsApiCreatePortals_CreatedResultServers> }
 
 type McpPortalsApiCreatePortals_Created =
     { result: McpPortalsApiCreatePortals_CreatedResult
@@ -11904,7 +12281,9 @@ type McpPortalsApiCreatePortals =
     | BadRequest of payload: McpPortalsApiCreatePortals_BadRequest
 
 type McpPortalsApiDeletePortals_OKResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -11944,6 +12323,20 @@ type McpPortalsApiFetchGateways_OKResultServersAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiFetchGateways_OKResultServersUpdatedprompts =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiFetchGateways_OKResultServersUpdatedtools =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
 type McpPortalsApiFetchGateways_OKResultServers =
     { auth_type: McpPortalsApiFetchGateways_OKResultServersAuthtype
       created_at: Option<System.DateTimeOffset>
@@ -11960,14 +12353,16 @@ type McpPortalsApiFetchGateways_OKResultServers =
       modified_by: Option<string>
       name: string
       on_behalf: Option<bool>
-      prompts: list<obj>
+      prompts: obj
       status: Option<string>
-      tools: list<obj>
-      updated_prompts: list<obj>
-      updated_tools: list<obj> }
+      tools: obj
+      updated_prompts: Option<list<McpPortalsApiFetchGateways_OKResultServersUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiFetchGateways_OKResultServersUpdatedtools>> }
 
 type McpPortalsApiFetchGateways_OKResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -11998,22 +12393,26 @@ type McpPortalsApiFetchGateways =
     | NotFound of payload: McpPortalsApiFetchGateways_NotFound
 
 type McpPortalsApiUpdatePortalsPayloadServersUpdatedprompts =
-    { description: Option<string>
+    { alias: Option<string>
+      description: Option<string>
       enabled: Option<bool>
       name: string }
     ///Creates an instance of McpPortalsApiUpdatePortalsPayloadServersUpdatedprompts with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: string): McpPortalsApiUpdatePortalsPayloadServersUpdatedprompts =
-        { description = None
+        { alias = None
+          description = None
           enabled = None
           name = name }
 
 type McpPortalsApiUpdatePortalsPayloadServersUpdatedtools =
-    { description: Option<string>
+    { alias: Option<string>
+      description: Option<string>
       enabled: Option<bool>
       name: string }
     ///Creates an instance of McpPortalsApiUpdatePortalsPayloadServersUpdatedtools with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: string): McpPortalsApiUpdatePortalsPayloadServersUpdatedtools =
-        { description = None
+        { alias = None
+          description = None
           enabled = None
           name = name }
 
@@ -12033,7 +12432,9 @@ type McpPortalsApiUpdatePortalsPayloadServers =
           updated_tools = None }
 
 type McpPortalsApiUpdatePortalsPayload =
-    { description: Option<string>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      description: Option<string>
       hostname: Option<string>
       name: Option<string>
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
@@ -12041,14 +12442,64 @@ type McpPortalsApiUpdatePortalsPayload =
       servers: Option<list<McpPortalsApiUpdatePortalsPayloadServers>> }
     ///Creates an instance of McpPortalsApiUpdatePortalsPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): McpPortalsApiUpdatePortalsPayload =
-        { description = None
+        { allow_code_mode = None
+          description = None
           hostname = None
           name = None
           secure_web_gateway = None
           servers = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type McpPortalsApiUpdatePortals_OKResultServersAuthtype =
+    | [<CompiledName "oauth">] Oauth
+    | [<CompiledName "bearer">] Bearer
+    | [<CompiledName "unauthenticated">] Unauthenticated
+    member this.Format() =
+        match this with
+        | Oauth -> "oauth"
+        | Bearer -> "bearer"
+        | Unauthenticated -> "unauthenticated"
+
+type McpPortalsApiUpdatePortals_OKResultServersUpdatedprompts =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiUpdatePortals_OKResultServersUpdatedtools =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiUpdatePortals_OKResultServers =
+    { auth_type: McpPortalsApiUpdatePortals_OKResultServersAuthtype
+      created_at: Option<System.DateTimeOffset>
+      created_by: Option<string>
+      default_disabled: Option<bool>
+      description: Option<string>
+      error: Option<string>
+      hostname: string
+      ///server id
+      id: string
+      last_successful_sync: Option<System.DateTimeOffset>
+      last_synced: Option<System.DateTimeOffset>
+      modified_at: Option<System.DateTimeOffset>
+      modified_by: Option<string>
+      name: string
+      on_behalf: Option<bool>
+      prompts: obj
+      status: Option<string>
+      tools: obj
+      updated_prompts: Option<list<McpPortalsApiUpdatePortals_OKResultServersUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiUpdatePortals_OKResultServersUpdatedtools>> }
+
 type McpPortalsApiUpdatePortals_OKResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -12058,7 +12509,8 @@ type McpPortalsApiUpdatePortals_OKResult =
       modified_by: Option<string>
       name: string
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
-      secure_web_gateway: Option<bool> }
+      secure_web_gateway: Option<bool>
+      servers: list<McpPortalsApiUpdatePortals_OKResultServers> }
 
 type McpPortalsApiUpdatePortals_OK =
     { result: McpPortalsApiUpdatePortals_OKResult
@@ -12099,6 +12551,18 @@ type McpPortalsApiListServers_OKResultAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiListServers_OKResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiListServers_OKResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
 type McpPortalsApiListServers_OKResult =
     { auth_type: McpPortalsApiListServers_OKResultAuthtype
       created_at: Option<System.DateTimeOffset>
@@ -12113,9 +12577,11 @@ type McpPortalsApiListServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: list<obj>
+      prompts: obj
       status: Option<string>
-      tools: list<obj> }
+      tools: obj
+      updated_prompts: Option<list<McpPortalsApiListServers_OKResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiListServers_OKResultUpdatedtools>> }
 
 type McpPortalsApiListServers_OK =
     { result: list<McpPortalsApiListServers_OKResult>
@@ -12146,6 +12612,30 @@ type McpPortalsApiCreateServersPayloadAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiCreateServersPayloadUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+    ///Creates an instance of McpPortalsApiCreateServersPayloadUpdatedprompts with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiCreateServersPayloadUpdatedprompts =
+        { alias = None
+          description = None
+          enabled = None
+          name = name }
+
+type McpPortalsApiCreateServersPayloadUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+    ///Creates an instance of McpPortalsApiCreateServersPayloadUpdatedtools with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiCreateServersPayloadUpdatedtools =
+        { alias = None
+          description = None
+          enabled = None
+          name = name }
+
 type McpPortalsApiCreateServersPayload =
     { auth_credentials: Option<string>
       auth_type: McpPortalsApiCreateServersPayloadAuthtype
@@ -12153,7 +12643,9 @@ type McpPortalsApiCreateServersPayload =
       hostname: string
       ///server id
       id: string
-      name: string }
+      name: string
+      updated_prompts: Option<list<McpPortalsApiCreateServersPayloadUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiCreateServersPayloadUpdatedtools>> }
     ///Creates an instance of McpPortalsApiCreateServersPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (auth_type: McpPortalsApiCreateServersPayloadAuthtype,
                           hostname: string,
@@ -12164,7 +12656,9 @@ type McpPortalsApiCreateServersPayload =
           description = None
           hostname = hostname
           id = id
-          name = name }
+          name = name
+          updated_prompts = None
+          updated_tools = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type McpPortalsApiCreateServers_CreatedResultAuthtype =
@@ -12176,6 +12670,18 @@ type McpPortalsApiCreateServers_CreatedResultAuthtype =
         | Oauth -> "oauth"
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
+
+type McpPortalsApiCreateServers_CreatedResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiCreateServers_CreatedResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
 
 type McpPortalsApiCreateServers_CreatedResult =
     { auth_type: McpPortalsApiCreateServers_CreatedResultAuthtype
@@ -12193,7 +12699,9 @@ type McpPortalsApiCreateServers_CreatedResult =
       name: string
       prompts: list<obj>
       status: Option<string>
-      tools: list<obj> }
+      tools: list<obj>
+      updated_prompts: Option<list<McpPortalsApiCreateServers_CreatedResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiCreateServers_CreatedResultUpdatedtools>> }
 
 type McpPortalsApiCreateServers_Created =
     { result: McpPortalsApiCreateServers_CreatedResult
@@ -12226,6 +12734,18 @@ type McpPortalsApiDeleteServers_OKResultAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiDeleteServers_OKResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiDeleteServers_OKResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
 type McpPortalsApiDeleteServers_OKResult =
     { auth_type: McpPortalsApiDeleteServers_OKResultAuthtype
       created_at: Option<System.DateTimeOffset>
@@ -12242,7 +12762,9 @@ type McpPortalsApiDeleteServers_OKResult =
       name: string
       prompts: list<obj>
       status: Option<string>
-      tools: list<obj> }
+      tools: list<obj>
+      updated_prompts: Option<list<McpPortalsApiDeleteServers_OKResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiDeleteServers_OKResultUpdatedtools>> }
 
 type McpPortalsApiDeleteServers_OK =
     { result: McpPortalsApiDeleteServers_OKResult
@@ -12272,6 +12794,18 @@ type McpPortalsApiFetchServers_OKResultAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiFetchServers_OKResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiFetchServers_OKResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
 type McpPortalsApiFetchServers_OKResult =
     { auth_type: McpPortalsApiFetchServers_OKResultAuthtype
       created_at: Option<System.DateTimeOffset>
@@ -12288,7 +12822,9 @@ type McpPortalsApiFetchServers_OKResult =
       name: string
       prompts: list<obj>
       status: Option<string>
-      tools: list<obj> }
+      tools: list<obj>
+      updated_prompts: Option<list<McpPortalsApiFetchServers_OKResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiFetchServers_OKResultUpdatedtools>> }
 
 type McpPortalsApiFetchServers_OK =
     { result: McpPortalsApiFetchServers_OKResult
@@ -12307,15 +12843,43 @@ type McpPortalsApiFetchServers =
     ///Not Found
     | NotFound of payload: McpPortalsApiFetchServers_NotFound
 
+type McpPortalsApiUpdateServersPayloadUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+    ///Creates an instance of McpPortalsApiUpdateServersPayloadUpdatedprompts with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiUpdateServersPayloadUpdatedprompts =
+        { alias = None
+          description = None
+          enabled = None
+          name = name }
+
+type McpPortalsApiUpdateServersPayloadUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+    ///Creates an instance of McpPortalsApiUpdateServersPayloadUpdatedtools with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiUpdateServersPayloadUpdatedtools =
+        { alias = None
+          description = None
+          enabled = None
+          name = name }
+
 type McpPortalsApiUpdateServersPayload =
     { auth_credentials: Option<string>
       description: Option<string>
-      name: Option<string> }
+      name: Option<string>
+      updated_prompts: Option<list<McpPortalsApiUpdateServersPayloadUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiUpdateServersPayloadUpdatedtools>> }
     ///Creates an instance of McpPortalsApiUpdateServersPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): McpPortalsApiUpdateServersPayload =
         { auth_credentials = None
           description = None
-          name = None }
+          name = None
+          updated_prompts = None
+          updated_tools = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type McpPortalsApiUpdateServers_OKResultAuthtype =
@@ -12327,6 +12891,18 @@ type McpPortalsApiUpdateServers_OKResultAuthtype =
         | Oauth -> "oauth"
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
+
+type McpPortalsApiUpdateServers_OKResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiUpdateServers_OKResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
 
 type McpPortalsApiUpdateServers_OKResult =
     { auth_type: McpPortalsApiUpdateServers_OKResultAuthtype
@@ -12344,7 +12920,9 @@ type McpPortalsApiUpdateServers_OKResult =
       name: string
       prompts: list<obj>
       status: Option<string>
-      tools: list<obj> }
+      tools: list<obj>
+      updated_prompts: Option<list<McpPortalsApiUpdateServers_OKResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiUpdateServers_OKResultUpdatedtools>> }
 
 type McpPortalsApiUpdateServers_OK =
     { result: McpPortalsApiUpdateServers_OKResult
@@ -12521,6 +13099,13 @@ type AccessApplicationsTestAccessPolicies =
     ///Test Access policies response
     | OK of payload: accesspolicycheckresponse
     ///Test Access policies response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
+
+[<RequireQualifiedAccess>]
+type AccessAuthenticatorDeviceAaguidsList =
+    ///List authenticator device AAGUIDs response
+    | OK of payload: ``accessauthenticator-device-aaguidscomponents-schemas-responsecollection``
+    ///List authenticator device AAGUIDs response failure
     | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]

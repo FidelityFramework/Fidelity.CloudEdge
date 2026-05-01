@@ -44,21 +44,18 @@ type Messages =
     static member Create (code: int, message: string): Messages = { code = code; message = message }
 
 type ``hyperdriveapi-response-collection`` =
-    { errors: list<Errors>
-      messages: list<Messages>
-      result: Map<string, obj>
+    { errors: Option<list<Errors>>
+      messages: Option<list<Messages>>
+      result: Option<obj>
       ///Return the status of the API call success.
-      success: bool
+      success: Option<bool>
       result_info: Option<hyperdriveresultinfo> }
     ///Creates an instance of hyperdriveapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<Errors>,
-                          messages: list<Messages>,
-                          result: Map<string, obj>,
-                          success: bool): ``hyperdriveapi-response-collection`` =
-        { errors = errors
-          messages = messages
-          result = result
-          success = success
+    static member Create (): ``hyperdriveapi-response-collection`` =
+        { errors = None
+          messages = None
+          result = None
+          success = None
           result_info = None }
 
 type ``hyperdriveapi-response-commonErrors`` =
@@ -167,11 +164,15 @@ type ``hyperdrivehyperdrive-config`` =
       id: hyperdriveidentifier
       ///Defines the last modified time of the Hyperdrive configuration.
       modified_on: Option<System.DateTimeOffset>
+      ///mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
       mtls: Option<``hyperdrivehyperdrive-mtls``>
       ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: ``hyperdrivehyperdrive-name``
       origin: Map<string, obj>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+      ///Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts.
+      ///If not specified, defaults to 20 for free tier and 60 for paid tier.
+      ///Contact Cloudflare if you need a higher limit.
       origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
     ///Creates an instance of hyperdrivehyperdrive-config with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (id: hyperdriveidentifier,
@@ -190,11 +191,15 @@ type Origin = Map<string, obj>
 
 type ``hyperdrivehyperdrive-config-patch`` =
     { caching: Option<obj>
+      ///mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
       mtls: Option<``hyperdrivehyperdrive-mtls``>
       ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: Option<``hyperdrivehyperdrive-name``>
       origin: Option<Origin>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+      ///Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts.
+      ///If not specified, defaults to 20 for free tier and 60 for paid tier.
+      ///Contact Cloudflare if you need a higher limit.
       origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
     ///Creates an instance of hyperdrivehyperdrive-config-patch with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``hyperdrivehyperdrive-config-patch`` =
@@ -212,11 +217,15 @@ type ``hyperdrivehyperdrive-config-response`` =
       id: Option<hyperdriveidentifier>
       ///Defines the last modified time of the Hyperdrive configuration.
       modified_on: Option<System.DateTimeOffset>
+      ///mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
       mtls: Option<``hyperdrivehyperdrive-mtls``>
       ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: Option<``hyperdrivehyperdrive-name``>
       origin: Option<obj>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+      ///Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts.
+      ///If not specified, defaults to 20 for free tier and 60 for paid tier.
+      ///Contact Cloudflare if you need a higher limit.
       origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
     ///Creates an instance of hyperdrivehyperdrive-config-response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (caching: obj): ``hyperdrivehyperdrive-config-response`` =
@@ -261,6 +270,7 @@ type ``hyperdrivehyperdrive-database-full`` =
           scheme = scheme
           user = user }
 
+///mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 type ``hyperdrivehyperdrive-mtls`` =
     { ///Define CA certificate ID obtained after uploading CA cert.
       ca_certificate_id: Option<string>
@@ -326,6 +336,13 @@ type hyperdriveresultinfo =
           page = None
           per_page = None
           total_count = None }
+
+///Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.
+type ``hyperdrivevpc-service-origin`` =
+    { ///The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+      service_id: string }
+    ///Creates an instance of hyperdrivevpc-service-origin with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (service_id: string): ``hyperdrivevpc-service-origin`` = { service_id = service_id }
 
 type ``list-hyperdriveresponseErrors`` =
     { code: int

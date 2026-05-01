@@ -16,7 +16,7 @@ open Fidelity.CloudEdge.Management.Analytics.Http
 ///Totally new to Cloudflare? [Start here](https://developers.cloudflare.com/fundamentals/get-started/).
 type AnalyticsClient(httpClient: HttpClient) =
     ///<summary>
-    ///Argo Analytics for a zone
+    ///Retrieves aggregate Argo Smart Routing analytics for a zone, including latency improvements, bandwidth savings, and routing statistics.
     ///</summary>
     member this.ArgoAnalyticsForZoneArgoAnalyticsForAZone
         (

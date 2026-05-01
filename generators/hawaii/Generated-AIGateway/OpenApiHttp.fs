@@ -5,18 +5,17 @@ open System.Net.Http
 open System.Globalization
 open System.Collections.Generic
 open System.Text
-open Fable.Remoting.Json
+open System.Text.Json
+open System.Text.Json.Serialization
 open System.Threading
 
 
 module Serializer =
-    open Newtonsoft.Json
-    let converter = FableJsonConverter() :> JsonConverter
-    let settings = JsonSerializerSettings(Converters=[| converter |])
-    settings.DateParseHandling <- DateParseHandling.None
-    settings.NullValueHandling <- NullValueHandling.Ignore
-    let serialize<'t> (value: 't) = JsonConvert.SerializeObject(value, settings)
-    let deserialize<'t> (content: string) = JsonConvert.DeserializeObject<'t>(content, settings)
+    let options = System.Text.Json.JsonSerializerOptions()
+    options.Converters.Add(JsonFSharpConverter())
+    options.DefaultIgnoreCondition <- JsonIgnoreCondition.WhenWritingNull
+    let serialize<'t> (value: 't) = System.Text.Json.JsonSerializer.Serialize(value, options)
+    let deserialize<'t> (content: string) = System.Text.Json.JsonSerializer.Deserialize<'t>(content, options)
 
 [<RequireQualifiedAccess>]
 type OpenApiValue =

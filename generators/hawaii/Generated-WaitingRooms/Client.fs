@@ -18,9 +18,24 @@ type WaitingRoomsClient(httpClient: HttpClient) =
     ///<summary>
     ///Lists waiting rooms for zone.
     ///</summary>
-    member this.WaitingRoomListWaitingRooms(zoneId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="zoneId"></param>
+    ///<param name="page">Page number of paginated results.</param>
+    ///<param name="perPage">Maximum number of results per page. Must be a multiple of 5.</param>
+    ///<param name="cancellationToken"></param>
+    member this.WaitingRoomListWaitingRooms
+        (
+            zoneId: string,
+            ?page: float,
+            ?perPage: float,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = [ RequestPart.path ("zone_id", zoneId) ]
+            let requestParts =
+                [ RequestPart.path ("zone_id", zoneId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/zones/{zone_id}/waiting_rooms" requestParts cancellationToken
@@ -90,7 +105,7 @@ type WaitingRoomsClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Get zone-level Waiting Room settings
+    ///Gets the zone-level Waiting Room settings that apply as defaults to all waiting rooms on the zone.
     ///</summary>
     member this.WaitingRoomGetZoneSettings(zoneId: string, ?cancellationToken: CancellationToken) =
         async {
@@ -105,7 +120,7 @@ type WaitingRoomsClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Patch zone-level Waiting Room settings
+    ///Partially updates zone-level Waiting Room settings using PATCH semantics.
     ///</summary>
     member this.WaitingRoomPatchZoneSettings
         (
@@ -131,7 +146,7 @@ type WaitingRoomsClient(httpClient: HttpClient) =
         }
 
     ///<summary>
-    ///Update zone-level Waiting Room settings
+    ///Fully updates zone-level Waiting Room settings, replacing the existing configuration.
     ///</summary>
     member this.WaitingRoomUpdateZoneSettings
         (
@@ -263,11 +278,27 @@ type WaitingRoomsClient(httpClient: HttpClient) =
     ///<summary>
     ///Lists events for a waiting room.
     ///</summary>
-    member this.WaitingRoomListEvents(waitingRoomId: string, zoneId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="waitingRoomId"></param>
+    ///<param name="zoneId"></param>
+    ///<param name="page">Page number of paginated results.</param>
+    ///<param name="perPage">Maximum number of results per page. Must be a multiple of 5.</param>
+    ///<param name="cancellationToken"></param>
+    member this.WaitingRoomListEvents
+        (
+            waitingRoomId: string,
+            zoneId: string,
+            ?page: float,
+            ?perPage: float,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
                 [ RequestPart.path ("waiting_room_id", waitingRoomId)
-                  RequestPart.path ("zone_id", zoneId) ]
+                  RequestPart.path ("zone_id", zoneId)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync

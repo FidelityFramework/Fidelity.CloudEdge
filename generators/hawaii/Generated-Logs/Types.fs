@@ -117,15 +117,15 @@ type ``logcontrolapi-response-common`` =
           success = success }
 
 type ``logcontrolapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of logcontrolapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``logcontrolapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -292,15 +292,15 @@ type logcontrolretentionflagresponsesingle =
           result = None }
 
 type ``logshareapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of logshareapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``logshareapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -353,7 +353,7 @@ type ``delete-accounts-accountid-logs-control-cmb-configresponse`` =
       messages: list<``delete-accounts-accountid-logs-control-cmb-configresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<obj> }
     ///Creates an instance of delete-accounts-accountid-logs-control-cmb-configresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``delete-accounts-accountid-logs-control-cmb-configresponseErrors``>,
                           messages: list<``delete-accounts-accountid-logs-control-cmb-configresponseMessages``>,

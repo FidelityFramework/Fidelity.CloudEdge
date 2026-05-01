@@ -18,9 +18,96 @@ type OrganizationsClient(httpClient: HttpClient) =
     ///<summary>
     ///Retrieve a list of organizations a particular user has access to. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)
     ///</summary>
-    member this.OrganizationListOrganizations(?cancellationToken: CancellationToken) =
+    ///<param name="id">
+    ///Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
+    ///by repeating the query value.
+    ///</param>
+    ///<param name="name">
+    ///(case-sensitive) Filter the list of organizations to where the name is equal to a
+    ///particular string.
+    ///</param>
+    ///<param name="nameStartsWith">
+    ///(case-insensitive) Filter the list of organizations to where the name starts with a
+    ///particular string.
+    ///</param>
+    ///<param name="nameEndsWith">
+    ///(case-insensitive) Filter the list of organizations to where the name ends with a particular
+    ///string.
+    ///</param>
+    ///<param name="nameContains">
+    ///(case-insensitive) Filter the list of organizations to where the name contains a particular
+    ///string.
+    ///</param>
+    ///<param name="containingAccount">
+    ///Filter the list of organizations to the ones that contain this particular
+    ///account.
+    ///</param>
+    ///<param name="containingUser">
+    ///Filter the list of organizations to the ones that contain this particular
+    ///user.
+    ///IMPORTANT: Just because an organization "contains" a user is not a
+    ///representation of any authorization or privilege to manage any resources
+    ///therein. An organization "containing" a user simply means the user is managed by
+    ///that organization.
+    ///</param>
+    ///<param name="containingOrganization">
+    ///Filter the list of organizations to the ones that contain this particular
+    ///organization.
+    ///</param>
+    ///<param name="parentId">
+    ///Filter the list of organizations to the ones that are a sub-organization
+    ///of the specified organization.
+    ///"null" is a valid value to provide for this parameter. It means "where
+    ///an organization has no parent (i.e. it is a 'root' organization)."
+    ///</param>
+    ///<param name="pageToken">
+    ///An opaque token returned from the last list response that when
+    ///provided will retrieve the next page.
+    ///Parameters used to filter the retrieved list must remain in subsequent
+    ///requests with a page token.
+    ///</param>
+    ///<param name="pageSize">The amount of items to return. Defaults to 10.</param>
+    ///<param name="cancellationToken"></param>
+    member this.OrganizationListOrganizations
+        (
+            ?id: list<string>,
+            ?name: string,
+            ?nameStartsWith: string,
+            ?nameEndsWith: string,
+            ?nameContains: string,
+            ?containingAccount: string,
+            ?containingUser: string,
+            ?containingOrganization: string,
+            ?parentId: string,
+            ?pageToken: string,
+            ?pageSize: int,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
-            let requestParts = []
+            let requestParts =
+                [ if id.IsSome then
+                      RequestPart.query ("id", id.Value)
+                  if name.IsSome then
+                      RequestPart.query ("name", name.Value)
+                  if nameStartsWith.IsSome then
+                      RequestPart.query ("name.startsWith", nameStartsWith.Value)
+                  if nameEndsWith.IsSome then
+                      RequestPart.query ("name.endsWith", nameEndsWith.Value)
+                  if nameContains.IsSome then
+                      RequestPart.query ("name.contains", nameContains.Value)
+                  if containingAccount.IsSome then
+                      RequestPart.query ("containing.account", containingAccount.Value)
+                  if containingUser.IsSome then
+                      RequestPart.query ("containing.user", containingUser.Value)
+                  if containingOrganization.IsSome then
+                      RequestPart.query ("containing.organization", containingOrganization.Value)
+                  if parentId.IsSome then
+                      RequestPart.query ("parent.id", parentId.Value)
+                  if pageToken.IsSome then
+                      RequestPart.query ("page_token", pageToken.Value)
+                  if pageSize.IsSome then
+                      RequestPart.query ("page_size", pageSize.Value) ]
+
             let! (status, content) = OpenApiHttp.getAsync httpClient "/organizations" requestParts cancellationToken
 
             match int status with
@@ -137,6 +224,13 @@ type OrganizationsClient(httpClient: HttpClient) =
     ///Sort direction for the order_by field. Valid values: `asc`, `desc`.
     ///Defaults to `asc` when order_by is specified.
     ///</param>
+    ///<param name="pageToken">
+    ///An opaque token returned from the last list response that when
+    ///provided will retrieve the next page.
+    ///Parameters used to filter the retrieved list must remain in subsequent
+    ///requests with a page token.
+    ///</param>
+    ///<param name="pageSize">The amount of items to return. Defaults to 10.</param>
     ///<param name="cancellationToken"></param>
     member this.OrganizationsGetAccounts
         (
@@ -147,6 +241,8 @@ type OrganizationsClient(httpClient: HttpClient) =
             ?nameContains: string,
             ?orderBy: string,
             ?direction: string,
+            ?pageToken: string,
+            ?pageSize: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -163,7 +259,11 @@ type OrganizationsClient(httpClient: HttpClient) =
                   if orderBy.IsSome then
                       RequestPart.query ("order_by", orderBy.Value)
                   if direction.IsSome then
-                      RequestPart.query ("direction", direction.Value) ]
+                      RequestPart.query ("direction", direction.Value)
+                  if pageToken.IsSome then
+                      RequestPart.query ("page_token", pageToken.Value)
+                  if pageSize.IsSome then
+                      RequestPart.query ("page_size", pageSize.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -374,6 +474,13 @@ type OrganizationsClient(httpClient: HttpClient) =
     ///<param name="userEmailContains">Filter the list of memberships for a specific email that contains a substring.</param>
     ///<param name="userEmailStartsWith">Filter the list of memberships for a specific email that starts with a substring.</param>
     ///<param name="userEmailEndsWith">Filter the list of memberships for a specific email that ends with a substring.</param>
+    ///<param name="pageToken">
+    ///An opaque token returned from the last list response that when
+    ///provided will retrieve the next page.
+    ///Parameters used to filter the retrieved list must remain in subsequent
+    ///requests with a page token.
+    ///</param>
+    ///<param name="pageSize">The amount of items to return. Defaults to 10.</param>
     ///<param name="cancellationToken"></param>
     member this.MembersList
         (
@@ -383,6 +490,8 @@ type OrganizationsClient(httpClient: HttpClient) =
             ?userEmailContains: string,
             ?userEmailStartsWith: string,
             ?userEmailEndsWith: string,
+            ?pageToken: string,
+            ?pageSize: int,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -397,7 +506,11 @@ type OrganizationsClient(httpClient: HttpClient) =
                   if userEmailStartsWith.IsSome then
                       RequestPart.query ("user.email.startsWith", userEmailStartsWith.Value)
                   if userEmailEndsWith.IsSome then
-                      RequestPart.query ("user.email.endsWith", userEmailEndsWith.Value) ]
+                      RequestPart.query ("user.email.endsWith", userEmailEndsWith.Value)
+                  if pageToken.IsSome then
+                      RequestPart.query ("page_token", pageToken.Value)
+                  if pageSize.IsSome then
+                      RequestPart.query ("page_size", pageSize.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -563,10 +676,48 @@ type OrganizationsClient(httpClient: HttpClient) =
     ///<summary>
     ///Lists all organization shares.
     ///</summary>
-    member this.OrganizationSharesList(organizationId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="organizationId"></param>
+    ///<param name="status">Filter shares by status.</param>
+    ///<param name="kind">Filter shares by kind.</param>
+    ///<param name="targetType">Filter shares by target_type.</param>
+    ///<param name="resourceTypes">Filter share resources by resource_types.</param>
+    ///<param name="order">Order shares by values in the given field.</param>
+    ///<param name="direction">Direction to sort objects.</param>
+    ///<param name="page">Page number.</param>
+    ///<param name="perPage">Number of objects to return per page.</param>
+    ///<param name="cancellationToken"></param>
+    member this.OrganizationSharesList
+        (
+            organizationId: string,
+            ?status: string,
+            ?kind: string,
+            ?targetType: string,
+            ?resourceTypes: list<string>,
+            ?order: string,
+            ?direction: string,
+            ?page: int,
+            ?perPage: int,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ RequestPart.path ("organization_id", organizationId) ]
+                [ RequestPart.path ("organization_id", organizationId)
+                  if status.IsSome then
+                      RequestPart.query ("status", status.Value)
+                  if kind.IsSome then
+                      RequestPart.query ("kind", kind.Value)
+                  if targetType.IsSome then
+                      RequestPart.query ("target_type", targetType.Value)
+                  if resourceTypes.IsSome then
+                      RequestPart.query ("resource_types", resourceTypes.Value)
+                  if order.IsSome then
+                      RequestPart.query ("order", order.Value)
+                  if direction.IsSome then
+                      RequestPart.query ("direction", direction.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/organizations/{organization_id}/shares" requestParts cancellationToken

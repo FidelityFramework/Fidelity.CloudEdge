@@ -84,11 +84,15 @@ type buildscreatedon = System.DateTimeOffset
 type buildscursor = string
 type buildsdeletedon = System.DateTimeOffset
 type buildsdeploycommand = string
+///Deploy hook name (1-58 characters).
+type buildsdeployhookname = string
+///Deploy hook UUID.
+type buildsdeployhookuuid = System.Guid
 ///Environment variable key.
 type buildsenvironmentvariablekey = string
-///External script identifier.
+///System-generated worker script tag.
 type buildsexternalscriptid = string
-///Comma-separated list of external script IDs (max 20).
+///Comma-separated list of system-generated worker script tags (max 20).
 type buildsexternalscriptids = string
 type buildsissecret = bool
 type buildsmodifiedon = System.DateTimeOffset
@@ -105,6 +109,8 @@ type buildsrepoid = string
 type buildsreponame = string
 ///Root directory path.
 type buildsrootdirectory = string
+///Human-readable name of the worker.
+type buildsscriptname = string
 type buildsstoppedon = System.DateTimeOffset
 type buildstriggername = string
 ///Trigger UUID.
@@ -163,7 +169,7 @@ type Trigger =
       created_on: Option<buildscreatedon>
       deleted_on: Option<buildsdeletedon>
       deploy_command: Option<buildsdeploycommand>
-      ///External script identifier.
+      ///System-generated worker script tag.
       external_script_id: Option<buildsexternalscriptid>
       modified_on: Option<buildsmodifiedon>
       path_excludes: Option<buildspathexcludes>
@@ -357,6 +363,16 @@ type buildsCreateBuildTokenResponse =
           cloudflare_token_id = None
           owner_type = None }
 
+type buildsCreateDeployHookRequest =
+    { ///Git branch name.
+      branch: buildsbranch
+      ///Deploy hook name (1-58 characters).
+      deploy_hook_name: buildsdeployhookname }
+    ///Creates an instance of buildsCreateDeployHookRequest with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (branch: buildsbranch, deploy_hook_name: buildsdeployhookname): buildsCreateDeployHookRequest =
+        { branch = branch
+          deploy_hook_name = deploy_hook_name }
+
 type buildsCreateTriggerRequest =
     { branch_excludes: buildsbranchexcludes
       branch_includes: buildsbranchincludes
@@ -365,7 +381,7 @@ type buildsCreateTriggerRequest =
       ///Build token UUID.
       build_token_uuid: buildsbuildtokenuuid
       deploy_command: buildsdeploycommand
-      ///External script identifier.
+      ///System-generated worker script tag.
       external_script_id: buildsexternalscriptid
       path_excludes: buildspathexcludes
       path_includes: buildspathincludes
@@ -398,6 +414,53 @@ type buildsCreateTriggerRequest =
           repo_connection_uuid = repo_connection_uuid
           root_directory = root_directory
           trigger_name = trigger_name }
+
+type buildsDeployHookResponse =
+    { ///Git branch name.
+      branch: Option<buildsbranch>
+      created_on: Option<buildscreatedon>
+      ///Deploy hook name (1-58 characters).
+      deploy_hook_name: Option<buildsdeployhookname>
+      ///Deploy hook UUID.
+      deploy_hook_uuid: Option<buildsdeployhookuuid>
+      ///System-generated worker script tag.
+      external_script_id: Option<buildsexternalscriptid>
+      modified_on: Option<buildsmodifiedon> }
+    ///Creates an instance of buildsDeployHookResponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): buildsDeployHookResponse =
+        { branch = None
+          created_on = None
+          deploy_hook_name = None
+          deploy_hook_uuid = None
+          external_script_id = None
+          modified_on = None }
+
+type Latestbuild =
+    { created_on: Option<buildscreatedon> }
+    ///Creates an instance of Latestbuild with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Latestbuild = { created_on = None }
+
+type buildsDetailedDeployHookResponse =
+    { ///Git branch name.
+      branch: Option<buildsbranch>
+      created_on: Option<buildscreatedon>
+      ///Deploy hook name (1-58 characters).
+      deploy_hook_name: Option<buildsdeployhookname>
+      ///Deploy hook UUID.
+      deploy_hook_uuid: Option<buildsdeployhookuuid>
+      ///System-generated worker script tag.
+      external_script_id: Option<buildsexternalscriptid>
+      latest_build: Option<Latestbuild>
+      modified_on: Option<buildsmodifiedon> }
+    ///Creates an instance of buildsDetailedDeployHookResponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): buildsDetailedDeployHookResponse =
+        { branch = None
+          created_on = None
+          deploy_hook_name = None
+          deploy_hook_uuid = None
+          external_script_id = None
+          latest_build = None
+          modified_on = None }
 
 type buildsErrorResponseErrors =
     { code: Option<int>
@@ -469,6 +532,20 @@ type buildsPaginationInfo =
           total_count = None
           total_pages = None }
 
+type buildsTriggerDeployHookResponse =
+    { ///True if a pending build already exists for this branch
+      already_exists: Option<bool>
+      ///Build UUID.
+      build_uuid: Option<buildsbuilduuid>
+      created_on: Option<buildscreatedon>
+      status: Option<buildsBuildStatus> }
+    ///Creates an instance of buildsTriggerDeployHookResponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): buildsTriggerDeployHookResponse =
+        { already_exists = None
+          build_uuid = None
+          created_on = None
+          status = None }
+
 type buildsTriggerResponse =
     { branch_excludes: Option<buildsbranchexcludes>
       branch_includes: Option<buildsbranchincludes>
@@ -480,7 +557,7 @@ type buildsTriggerResponse =
       created_on: Option<buildscreatedon>
       deleted_on: Option<buildsdeletedon>
       deploy_command: Option<buildsdeploycommand>
-      ///External script identifier.
+      ///System-generated worker script tag.
       external_script_id: Option<buildsexternalscriptid>
       modified_on: Option<buildsmodifiedon>
       path_excludes: Option<buildspathexcludes>
@@ -973,6 +1050,121 @@ type listTriggersByScriptresponse =
           result_info = None
           success = success }
 
+type listDeployHooksresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of listDeployHooksresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): listDeployHooksresponseErrors = { code = None; message = None }
+
+type listDeployHooksresponse =
+    { errors: list<listDeployHooksresponseErrors>
+      messages: list<string>
+      result: list<buildsDetailedDeployHookResponse>
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of listDeployHooksresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<listDeployHooksresponseErrors>,
+                          messages: list<string>,
+                          result: list<buildsDetailedDeployHookResponse>,
+                          success: bool): listDeployHooksresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type createDeployHookresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of createDeployHookresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): createDeployHookresponseErrors = { code = None; message = None }
+
+type createDeployHookresponse =
+    { errors: list<createDeployHookresponseErrors>
+      messages: list<string>
+      result: buildsDeployHookResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of createDeployHookresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<createDeployHookresponseErrors>,
+                          messages: list<string>,
+                          result: buildsDeployHookResponse,
+                          success: bool): createDeployHookresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type deleteDeployHookresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of deleteDeployHookresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): deleteDeployHookresponseErrors = { code = None; message = None }
+
+type deleteDeployHookresponse =
+    { errors: list<deleteDeployHookresponseErrors>
+      messages: list<string>
+      result: buildsDeployHookResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of deleteDeployHookresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<deleteDeployHookresponseErrors>,
+                          messages: list<string>,
+                          result: buildsDeployHookResponse,
+                          success: bool): deleteDeployHookresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type getDeployHookresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of getDeployHookresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): getDeployHookresponseErrors = { code = None; message = None }
+
+type getDeployHookresponse =
+    { errors: list<getDeployHookresponseErrors>
+      messages: list<string>
+      result: buildsDeployHookResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of getDeployHookresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<getDeployHookresponseErrors>,
+                          messages: list<string>,
+                          result: buildsDeployHookResponse,
+                          success: bool): getDeployHookresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type updateDeployHookresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of updateDeployHookresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): updateDeployHookresponseErrors = { code = None; message = None }
+
+type updateDeployHookresponse =
+    { errors: list<updateDeployHookresponseErrors>
+      messages: list<string>
+      result: buildsDeployHookResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of updateDeployHookresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<updateDeployHookresponseErrors>,
+                          messages: list<string>,
+                          result: buildsDeployHookResponse,
+                          success: bool): updateDeployHookresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
 [<RequireQualifiedAccess>]
 type GetAccountLimits =
     ///Account limits retrieved successfully
@@ -1087,3 +1279,36 @@ type ListBuildsByScript =
 type ListTriggersByScript =
     ///Triggers retrieved successfully
     | OK of payload: listTriggersByScriptresponse
+
+[<RequireQualifiedAccess>]
+type ListDeployHooks =
+    ///Deploy hooks retrieved successfully
+    | OK of payload: listDeployHooksresponse
+
+[<RequireQualifiedAccess>]
+type CreateDeployHook =
+    ///Deploy hook created successfully
+    | OK of payload: createDeployHookresponse
+    | BadRequest of payload: obj
+    | NotFound of payload: obj
+    | Conflict of payload: obj
+
+[<RequireQualifiedAccess>]
+type DeleteDeployHook =
+    ///Deploy hook deleted successfully
+    | OK of payload: deleteDeployHookresponse
+    | NotFound of payload: obj
+
+[<RequireQualifiedAccess>]
+type GetDeployHook =
+    ///Deploy hook retrieved successfully
+    | OK of payload: getDeployHookresponse
+    | NotFound of payload: obj
+
+[<RequireQualifiedAccess>]
+type UpdateDeployHook =
+    ///Deploy hook updated successfully
+    | OK of payload: updateDeployHookresponse
+    | BadRequest of payload: obj
+    | NotFound of payload: obj
+    | Conflict of payload: obj

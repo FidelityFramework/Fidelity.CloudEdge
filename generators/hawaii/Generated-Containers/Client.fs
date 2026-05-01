@@ -18,13 +18,21 @@ type ContainersClient(httpClient: HttpClient) =
     ///<summary>
     ///Lists all the container applications that are associated with your account.
     ///</summary>
+    ///<param name="accountId">Account identifier.</param>
     ///<param name="name">Filter containers by name</param>
     ///<param name="image">Filter containers by image</param>
     ///<param name="cancellationToken"></param>
-    member this.PublicListApplications(?name: string, ?image: string, ?cancellationToken: CancellationToken) =
+    member this.PublicListApplications
+        (
+            accountId: string,
+            ?name: string,
+            ?image: string,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ if name.IsSome then
+                [ RequestPart.path ("account_id", accountId)
+                  if name.IsSome then
                       RequestPart.query ("name", name.Value)
                   if image.IsSome then
                       RequestPart.query ("image", image.Value) ]
@@ -41,18 +49,21 @@ type ContainersClient(httpClient: HttpClient) =
     ///<summary>
     ///Generates temporary credentials for accessing Cloudflare's container image registry. Used for pulling and pushing container images.
     ///</summary>
+    ///<param name="accountId">Account identifier.</param>
     ///<param name="domain"></param>
     ///<param name="body">Specifies the configuration for the image registry credential to create.</param>
     ///<param name="cancellationToken"></param>
     member this.GenerateImageRegistryCredentials
         (
+            accountId: string,
             domain: string,
             body: ccImageRegistryCredentialsConfiguration,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
-                [ RequestPart.path ("domain", domain)
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("domain", domain)
                   RequestPart.jsonContent body ]
 
             let! (status, content) =
@@ -65,6 +76,7 @@ type ContainersClient(httpClient: HttpClient) =
             match int status with
             | 201 -> return GenerateImageRegistryCredentials.Created(Serializer.deserialize content)
             | 400 -> return GenerateImageRegistryCredentials.BadRequest(Serializer.deserialize content)
+            | 403 -> return GenerateImageRegistryCredentials.Forbidden(Serializer.deserialize content)
             | 404 -> return GenerateImageRegistryCredentials.NotFound(Serializer.deserialize content)
             | 409 -> return GenerateImageRegistryCredentials.Conflict(Serializer.deserialize content)
             | _ -> return GenerateImageRegistryCredentials.InternalServerError(Serializer.deserialize content)

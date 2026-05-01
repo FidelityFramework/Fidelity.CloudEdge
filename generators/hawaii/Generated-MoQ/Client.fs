@@ -70,7 +70,7 @@ type MoQClient(httpClient: HttpClient) =
     ///<param name="accountId">Cloudflare account identifier.</param>
     ///<param name="relayId">Relay unique identifier (32 hex characters).</param>
     ///<param name="cancellationToken"></param>
-    member this.DeleteAccountsMoqRelay(accountId: string, relayId: string, ?cancellationToken: CancellationToken) =
+    member this.DeleteAccountsMoqRelays(accountId: string, relayId: string, ?cancellationToken: CancellationToken) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
@@ -84,10 +84,10 @@ type MoQClient(httpClient: HttpClient) =
                     cancellationToken
 
             match int status with
-            | 200 -> return DeleteAccountsMoqRelay.OK(Serializer.deserialize content)
-            | 400 -> return DeleteAccountsMoqRelay.BadRequest(Serializer.deserialize content)
-            | 404 -> return DeleteAccountsMoqRelay.NotFound(Serializer.deserialize content)
-            | _ -> return DeleteAccountsMoqRelay.InternalServerError(Serializer.deserialize content)
+            | 200 -> return DeleteAccountsMoqRelays.OK(Serializer.deserialize content)
+            | 400 -> return DeleteAccountsMoqRelays.BadRequest(Serializer.deserialize content)
+            | 404 -> return DeleteAccountsMoqRelays.NotFound(Serializer.deserialize content)
+            | _ -> return DeleteAccountsMoqRelays.InternalServerError(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -97,7 +97,7 @@ type MoQClient(httpClient: HttpClient) =
     ///<param name="accountId">Cloudflare account identifier.</param>
     ///<param name="relayId">Relay unique identifier (32 hex characters).</param>
     ///<param name="cancellationToken"></param>
-    member this.GetAccountsMoqRelay(accountId: string, relayId: string, ?cancellationToken: CancellationToken) =
+    member this.GetAccountsMoqRelays(accountId: string, relayId: string, ?cancellationToken: CancellationToken) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
@@ -111,10 +111,10 @@ type MoQClient(httpClient: HttpClient) =
                     cancellationToken
 
             match int status with
-            | 200 -> return GetAccountsMoqRelay.OK(Serializer.deserialize content)
-            | 400 -> return GetAccountsMoqRelay.BadRequest(Serializer.deserialize content)
-            | 404 -> return GetAccountsMoqRelay.NotFound(Serializer.deserialize content)
-            | _ -> return GetAccountsMoqRelay.InternalServerError(Serializer.deserialize content)
+            | 200 -> return GetGetAccountsMoqRelays.OK(Serializer.deserialize content)
+            | 400 -> return GetGetAccountsMoqRelays.BadRequest(Serializer.deserialize content)
+            | 404 -> return GetGetAccountsMoqRelays.NotFound(Serializer.deserialize content)
+            | _ -> return GetGetAccountsMoqRelays.InternalServerError(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -127,11 +127,11 @@ type MoQClient(httpClient: HttpClient) =
     ///<param name="relayId">Relay unique identifier (32 hex characters).</param>
     ///<param name="body"></param>
     ///<param name="cancellationToken"></param>
-    member this.PutAccountsMoqRelay
+    member this.PutAccountsMoqRelays
         (
             accountId: string,
             relayId: string,
-            body: PutAccountsMoqRelayPayload,
+            body: PutAccountsMoqRelaysPayload,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -148,10 +148,10 @@ type MoQClient(httpClient: HttpClient) =
                     cancellationToken
 
             match int status with
-            | 200 -> return PutAccountsMoqRelay.OK(Serializer.deserialize content)
-            | 400 -> return PutAccountsMoqRelay.BadRequest(Serializer.deserialize content)
-            | 404 -> return PutAccountsMoqRelay.NotFound(Serializer.deserialize content)
-            | _ -> return PutAccountsMoqRelay.InternalServerError(Serializer.deserialize content)
+            | 200 -> return PutAccountsMoqRelays.OK(Serializer.deserialize content)
+            | 400 -> return PutAccountsMoqRelays.BadRequest(Serializer.deserialize content)
+            | 404 -> return PutAccountsMoqRelays.NotFound(Serializer.deserialize content)
+            | _ -> return PutAccountsMoqRelays.InternalServerError(Serializer.deserialize content)
         }
 
     ///<summary>

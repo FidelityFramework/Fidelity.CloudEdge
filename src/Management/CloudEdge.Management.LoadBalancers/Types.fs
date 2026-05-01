@@ -91,6 +91,7 @@ type ``load-balancingname`` = string
 type ``load-balancingnetworks`` = list<string>
 ///This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 type ``load-balancingnotificationemail`` = string
+type ``load-balancingoriginflattencname`` = bool
 type ``load-balancingoriginport`` = int
 type ``load-balancingorigins`` = list<``load-balancing_origin``>
 ///The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `""` is accepted.
@@ -825,6 +826,8 @@ type ``load-balancingorigin`` =
       disabled_at: Option<``load-balancingdisabledat``>
       ///Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
       enabled: Option<``load-balancingschemas-enabled``>
+      ///Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting.
+      flatten_cname: Option<``load-balancingoriginflattencname``>
       ///The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.
       header: Option<``load-balancingschemas-header``>
       ///A human-identifiable name for the origin.
@@ -842,6 +845,7 @@ type ``load-balancingorigin`` =
         { address = None
           disabled_at = None
           enabled = None
+          flatten_cname = None
           header = None
           name = None
           port = None

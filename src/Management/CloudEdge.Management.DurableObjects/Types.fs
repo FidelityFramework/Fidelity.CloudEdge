@@ -71,13 +71,16 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``workersapi-response-collection`` =
     { errors: Option<list<Errors>>
@@ -219,13 +222,16 @@ type ``durable-objects-namespace-list-namespacesresponseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of durable-objects-namespace-list-namespacesresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``durable-objects-namespace-list-namespacesresponseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``durable-objects-namespace-list-namespacesresponse`` =
     { errors: list<``durable-objects-namespace-list-namespacesresponseErrors``>

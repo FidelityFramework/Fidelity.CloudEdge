@@ -20,7 +20,7 @@ type ``workers-kvbulkwriteArrayItem`` =
       expiration_ttl: Option<``workers-kvexpirationttl``>
       ///A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
       key: ``workers-kvkeynamebulk``
-      metadata: Option<Newtonsoft.Json.Linq.JToken>
+      metadata: Option<obj>
       ///A UTF-8 encoded string to be stored, up to 25 MiB in length.
       value: string }
     ///Creates an instance of workers-kvbulkwriteArrayItem with all optional fields initialized to None. The required fields are parameters of this function
@@ -110,15 +110,15 @@ type ``workers-kvapi-response-common`` =
           success = success }
 
 type ``workers-kvapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of workers-kvapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``workers-kvapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -144,7 +144,7 @@ type ``workers-kvapi-response-common-no-result`` =
       messages: list<``workers-kvapi-response-common-no-resultMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of workers-kvapi-response-common-no-result with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``workers-kvapi-response-common-no-resultErrors``>,
                           messages: list<``workers-kvapi-response-common-no-resultMessages``>,
@@ -183,7 +183,7 @@ type ``workers-kvcursorresultinfo`` =
 type ``workers-kvkey`` =
     { ///The time, measured in number of seconds since the UNIX epoch, at which the key will expire. This property is omitted for keys that will not expire.
       expiration: Option<float>
-      metadata: Option<Newtonsoft.Json.Linq.JToken>
+      metadata: Option<obj>
       ///A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
       name: ``workers-kvkeyname`` }
     ///Creates an instance of workers-kvkey with all optional fields initialized to None. The required fields are parameters of this function
@@ -192,9 +192,8 @@ type ``workers-kvkey`` =
           metadata = None
           name = name }
 
-type ``workers-kvlistmetadata`` = Map<string, Newtonsoft.Json.Linq.JToken>
-type ``workers-kvmetadata`` = Map<string, Newtonsoft.Json.Linq.JToken>
-
+type ``workers-kvlistmetadata`` = {code: int; message: string}
+type ``workers-kvmetadata`` = {code: int; message: string}
 type ``workers-kvnamespace`` =
     { ///Namespace identifier tag.
       id: ``workers-kvnamespaceidentifier``
@@ -451,7 +450,7 @@ type ``workers-kv-namespace-read-the-metadata-for-a-keyresponse`` =
       messages: list<``workers-kv-namespace-read-the-metadata-for-a-keyresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of workers-kv-namespace-read-the-metadata-for-a-keyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``workers-kv-namespace-read-the-metadata-for-a-keyresponseErrors``>,
                           messages: list<``workers-kv-namespace-read-the-metadata-for-a-keyresponseMessages``>,

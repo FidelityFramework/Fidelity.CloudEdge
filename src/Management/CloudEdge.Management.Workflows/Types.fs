@@ -28,7 +28,8 @@ type Resultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorListWorkflows_OK =
     { errors: list<Errors>
@@ -69,7 +70,8 @@ type WorDeleteWorkflow_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDeleteWorkflow_OK =
     { errors: list<WorDeleteWorkflow_OKErrors>
@@ -131,7 +133,8 @@ type WorGetWorkflowDetails_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorGetWorkflowDetails_OK =
     { errors: list<WorGetWorkflowDetails_OKErrors>
@@ -200,7 +203,8 @@ type WorCreateOrModifyWorkflow_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorCreateOrModifyWorkflow_OK =
     { errors: list<WorCreateOrModifyWorkflow_OKErrors>
@@ -261,9 +265,8 @@ type WorListWorkflowInstances_OKResult =
 type WorListWorkflowInstances_OKResultinfo =
     { count: float
       cursor: Option<string>
-      page: Option<float>
       per_page: float
-      total_count: float }
+      total_pages: Option<float> }
 
 type WorListWorkflowInstances_OK =
     { errors: list<WorListWorkflowInstances_OKErrors>
@@ -352,7 +355,8 @@ type WorCreateNewWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorCreateNewWorkflowInstance_OK =
     { errors: list<WorCreateNewWorkflowInstance_OKErrors>
@@ -442,7 +446,8 @@ type WorBatchCreateWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorBatchCreateWorkflowInstance_OK =
     { errors: list<WorBatchCreateWorkflowInstance_OKErrors>
@@ -497,7 +502,8 @@ type WorBatchTerminateWorkflowInstances_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorBatchTerminateWorkflowInstances_OK =
     { errors: list<WorBatchTerminateWorkflowInstances_OKErrors>
@@ -551,7 +557,8 @@ type WorStatusTerminateWorkflowInstances_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorStatusTerminateWorkflowInstances_OK =
     { errors: list<WorStatusTerminateWorkflowInstances_OKErrors>
@@ -646,7 +653,8 @@ type WorDescribeWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDescribeWorkflowInstance_OK =
     { errors: list<WorDescribeWorkflowInstance_OKErrors>
@@ -688,7 +696,8 @@ type WorSendEventWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorSendEventWorkflowInstance_OK =
     { errors: list<WorSendEventWorkflowInstance_OKErrors>
@@ -723,6 +732,28 @@ type WorSendEventWorkflowInstance =
     | NotFound of payload: WorSendEventWorkflowInstance_NotFound
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Type =
+    | [<CompiledName "do">] Do
+    | [<CompiledName "sleep">] Sleep
+    | [<CompiledName "waitForEvent">] WaitForEvent
+    member this.Format() =
+        match this with
+        | Do -> "do"
+        | Sleep -> "sleep"
+        | WaitForEvent -> "waitForEvent"
+
+///Step to restart from. Only applicable when status is "restart".
+type From =
+    { count: Option<int>
+      name: string
+      ``type``: Option<Type> }
+    ///Creates an instance of From with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): From =
+        { count = None
+          name = name
+          ``type`` = None }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type WorChangeStatusWorkflowInstancePayloadStatus =
     | [<CompiledName "resume">] Resume
     | [<CompiledName "pause">] Pause
@@ -736,11 +767,13 @@ type WorChangeStatusWorkflowInstancePayloadStatus =
         | Restart -> "restart"
 
 type WorChangeStatusWorkflowInstancePayload =
-    { ///Apply action to instance.
+    { ///Step to restart from. Only applicable when status is "restart".
+      from: Option<From>
+      ///Apply action to instance.
       status: WorChangeStatusWorkflowInstancePayloadStatus }
     ///Creates an instance of WorChangeStatusWorkflowInstancePayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (status: WorChangeStatusWorkflowInstancePayloadStatus): WorChangeStatusWorkflowInstancePayload =
-        { status = status }
+        { from = None; status = status }
 
 type WorChangeStatusWorkflowInstance_OKErrors = { code: float; message: string }
 type WorChangeStatusWorkflowInstance_OKMessages = { code: float; message: string }
@@ -776,7 +809,8 @@ type WorChangeStatusWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorChangeStatusWorkflowInstance_OK =
     { errors: list<WorChangeStatusWorkflowInstance_OKErrors>
@@ -822,6 +856,16 @@ type WorChangeStatusWorkflowInstance =
 
 type WorListWorkflowVersions_OKErrors = { code: float; message: string }
 type WorListWorkflowVersions_OKMessages = { code: float; message: string }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Language =
+    | [<CompiledName "javascript">] Javascript
+    | [<CompiledName "python">] Python
+    member this.Format() =
+        match this with
+        | Javascript -> "javascript"
+        | Python -> "python"
+
 type WorListWorkflowVersions_OKResultLimits = { steps: Option<int> }
 
 type WorListWorkflowVersions_OKResult =
@@ -829,6 +873,8 @@ type WorListWorkflowVersions_OKResult =
       created_on: System.DateTimeOffset
       has_dag: bool
       id: System.Guid
+      ///The programming language of the workflow implementation
+      language: Language
       limits: Option<WorListWorkflowVersions_OKResultLimits>
       modified_on: System.DateTimeOffset
       workflow_id: System.Guid }
@@ -838,7 +884,8 @@ type WorListWorkflowVersions_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorListWorkflowVersions_OK =
     { errors: list<WorListWorkflowVersions_OKErrors>
@@ -864,6 +911,16 @@ type WorListWorkflowVersions =
 
 type WorDescribeWorkflowVersions_OKErrors = { code: float; message: string }
 type WorDescribeWorkflowVersions_OKMessages = { code: float; message: string }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type WorDescribeWorkflowVersions_OKResultLanguage =
+    | [<CompiledName "javascript">] Javascript
+    | [<CompiledName "python">] Python
+    member this.Format() =
+        match this with
+        | Javascript -> "javascript"
+        | Python -> "python"
+
 type WorDescribeWorkflowVersions_OKResultLimits = { steps: Option<int> }
 
 type WorDescribeWorkflowVersions_OKResult =
@@ -871,6 +928,8 @@ type WorDescribeWorkflowVersions_OKResult =
       created_on: System.DateTimeOffset
       has_dag: bool
       id: System.Guid
+      ///The programming language of the workflow implementation
+      language: WorDescribeWorkflowVersions_OKResultLanguage
       limits: Option<WorDescribeWorkflowVersions_OKResultLimits>
       modified_on: System.DateTimeOffset
       workflow_id: System.Guid }
@@ -880,7 +939,8 @@ type WorDescribeWorkflowVersions_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDescribeWorkflowVersions_OK =
     { errors: list<WorDescribeWorkflowVersions_OKErrors>
@@ -930,7 +990,8 @@ type WorDescribeWorkflowVersionsDag_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDescribeWorkflowVersionsDag_OK =
     { errors: list<WorDescribeWorkflowVersionsDag_OKErrors>
@@ -957,10 +1018,25 @@ type WorDescribeWorkflowVersionsDag =
 type WorDescribeWorkflowVersionsGraph_OKErrors = { code: float; message: string }
 type WorDescribeWorkflowVersionsGraph_OKMessages = { code: float; message: string }
 
+///A parsed workflow entrypoint with its step graph.
+type Workflow =
+    { class_name: string
+      functions: Map<string, string>
+      nodes: list<string>
+      ///Shape descriptor for JSON payloads.
+      payload: Option<obj> }
+
+///Versioned workflow graph payload.
+type Graph =
+    { version: float
+      ///A parsed workflow entrypoint with its step graph.
+      workflow: Workflow }
+
 type WorDescribeWorkflowVersionsGraph_OKResult =
     { class_name: string
       created_on: System.DateTimeOffset
-      dag: obj
+      ///Versioned workflow graph payload.
+      graph: Graph
       id: System.Guid
       modified_on: System.DateTimeOffset
       workflow_id: System.Guid }
@@ -970,7 +1046,8 @@ type WorDescribeWorkflowVersionsGraph_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDescribeWorkflowVersionsGraph_OK =
     { errors: list<WorDescribeWorkflowVersionsGraph_OKErrors>

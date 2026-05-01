@@ -33,6 +33,8 @@ type unspecified = string
 type uri = string
 type your = string
 
+///The Authenticator Attestation GUID (AAGUID) uniquely identifying a FIDO2 authenticator model
+type accessaaguid = System.Guid
 type accessaccessseat = bool
 ///The event that occurred, such as a login attempt.
 type accessaction = string
@@ -98,6 +100,8 @@ type accessassociatedhostnames = list<string>
 type accessaud = string
 ///The unique subdomain assigned to your Zero Trust organization.
 type accessauthdomain = string
+///The human-readable name of the FIDO2 authenticator
+type ``accessauthenticator-device-aaguidscomponents-schemas-name`` = string
 ///The unique identifier for the MFA device.
 type accessauthenticatorid = string
 type accessautoredirecttoidentity = bool
@@ -834,13 +838,16 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type Metadata =
     { apps: Option<Map<string, string>>
@@ -886,9 +893,9 @@ type accessactivesessionsresponse =
 ///Matches any valid Access Service Token
 type accessanyvalidservicetokenrule =
     { ///An empty object which matches on all service tokens.
-      any_valid_service_token: Newtonsoft.Json.Linq.JObject }
+      any_valid_service_token: Map<string, obj> }
     ///Creates an instance of accessanyvalidservicetokenrule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (any_valid_service_token: Newtonsoft.Json.Linq.JObject): accessanyvalidservicetokenrule =
+    static member Create (any_valid_service_token: Map<string, obj>): accessanyvalidservicetokenrule =
         { any_valid_service_token = any_valid_service_token }
 
 type ``accessapi-response-collectionErrorsSource`` =
@@ -933,13 +940,16 @@ type ``accessapi-response-collectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessapi-response-collectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessapi-response-collectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessapi-response-collection`` =
     { errors: Option<list<``accessapi-response-collectionErrors``>>
@@ -1002,15 +1012,15 @@ type ``accessapi-response-common`` =
           success = success }
 
 type ``accessapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of accessapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``accessapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -1161,13 +1171,16 @@ type ``accessapp-policiescomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessapp-policiescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessapp-policiescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessapp-policiescomponents-schemas-responsecollection`` =
     { errors: list<``accessapp-policiescomponents-schemas-responsecollectionErrors``>
@@ -1401,7 +1414,7 @@ type accessapppolicyresponse =
           precedence = None }
 
 type accessappreqembeddedpolicies =
-    { ///The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+    { ///The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. Reusable and inline policies are mutually exclusive.
       policies: Option<list<string>> }
     ///Creates an instance of accessappreqembeddedpolicies with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessappreqembeddedpolicies = { policies = None }
@@ -1464,7 +1477,7 @@ type accessapprovalgroup =
           email_addresses = None
           email_list_uuid = None }
 
-type accessapps = Map<string, Newtonsoft.Json.Linq.JToken>
+type accessapps = Map<string, obj>
 
 type ``accessappscomponents-schemas-responsecollectionErrorsSource`` =
     { pointer: Option<string> }
@@ -1508,13 +1521,16 @@ type ``accessappscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessappscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessappscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessappscomponents-schemas-responsecollection`` =
     { errors: list<``accessappscomponents-schemas-responsecollectionErrors``>
@@ -1575,13 +1591,16 @@ type ``accessappscomponents-schemas-responsecollection-2Resultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessappscomponents-schemas-responsecollection-2Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessappscomponents-schemas-responsecollection-2Resultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessappscomponents-schemas-responsecollection-2`` =
     { errors: Option<list<``accessappscomponents-schemas-responsecollection-2Errors``>>
@@ -1637,7 +1656,7 @@ type ``accessappscomponents-schemas-singleresponse`` =
       messages: list<``accessappscomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of accessappscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``accessappscomponents-schemas-singleresponseErrors``>,
                           messages: list<``accessappscomponents-schemas-singleresponseMessages``>,
@@ -1725,6 +1744,88 @@ type accessauthenticationmethodrule =
     { auth_method: Authmethod }
     ///Creates an instance of accessauthenticationmethodrule with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (auth_method: Authmethod): accessauthenticationmethodrule = { auth_method = auth_method }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrorsSource`` =
+        { pointer = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrorsSource``> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessagesSource`` =
+        { pointer = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessagesSource``> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionResultinfo`` =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionResultinfo`` =
+        { count = None
+          page = None
+          per_page = None
+          total_count = None
+          total_pages = None }
+
+type ``accessauthenticator-device-aaguidscomponents-schemas-responsecollection`` =
+    { errors: list<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result_info: Option<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionResultinfo``>
+      result: Option<list<accessauthenticatordeviceaaguid>> }
+    ///Creates an instance of accessauthenticator-device-aaguidscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessauthenticator-device-aaguidscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessauthenticator-device-aaguidscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result_info = None
+          result = None }
+
+///A FIDO2 authenticator device AAGUID entry
+type accessauthenticatordeviceaaguid =
+    { ///The Authenticator Attestation GUID (AAGUID) uniquely identifying a FIDO2 authenticator model
+      aaguid: accessaaguid
+      ///The human-readable name of the FIDO2 authenticator
+      name: ``accessauthenticator-device-aaguidscomponents-schemas-name`` }
+    ///Creates an instance of accessauthenticatordeviceaaguid with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (aaguid: accessaaguid, name: ``accessauthenticator-device-aaguidscomponents-schemas-name``): accessauthenticatordeviceaaguid =
+        { aaguid = aaguid; name = name }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type Identityupdatebehavior =
@@ -1834,7 +1935,7 @@ type Config =
 
 type accessazureAD =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -1918,10 +2019,10 @@ type accessbasepolicyresp =
 type accessbasicappresponseprops =
     { ///Audience tag.
       aud: Option<``accessschemas-aud``>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       ///UUID.
       id: Option<accessuuid>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessbasicappresponseprops with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessbasicappresponseprops =
         { aud = None
@@ -1985,7 +2086,7 @@ type accessbookmarkprops =
 type accessbookmarks =
     { ///Displays the application in the App Launcher.
       app_launcher_visible: Option<``accessschemas-applaunchervisible``>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       ///The domain of the Bookmark application.
       domain: Option<``accessschemas-domain``>
       ///The unique identifier for the Bookmark application.
@@ -1994,7 +2095,7 @@ type accessbookmarks =
       logo_url: Option<``accessschemas-logourl``>
       ///The name of the Bookmark application.
       name: Option<``accessbookmarkscomponents-schemas-name``>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessbookmarks with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessbookmarks =
         { app_launcher_visible = None
@@ -2047,13 +2148,16 @@ type ``accessbookmarkscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessbookmarkscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessbookmarkscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessbookmarkscomponents-schemas-responsecollection`` =
     { errors: list<``accessbookmarkscomponents-schemas-responsecollectionErrors``>
@@ -2229,13 +2333,16 @@ type ``accesscacomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscacomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscacomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscacomponents-schemas-responsecollection`` =
     { errors: list<``accesscacomponents-schemas-responsecollectionErrors``>
@@ -2296,13 +2403,16 @@ type ``accesscacomponents-schemas-responsecollection-2Resultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscacomponents-schemas-responsecollection-2Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscacomponents-schemas-responsecollection-2Resultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscacomponents-schemas-responsecollection-2`` =
     { errors: Option<list<``accesscacomponents-schemas-responsecollection-2Errors``>>
@@ -2484,7 +2594,7 @@ type accesscentrifyType =
 
 type accesscentrify =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -2503,15 +2613,15 @@ type accesscentrify =
 
 ///Matches any valid client certificate.
 type accesscertificaterule =
-    { certificate: Newtonsoft.Json.Linq.JObject }
+    { certificate: obj }
     ///Creates an instance of accesscertificaterule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (certificate: Newtonsoft.Json.Linq.JObject): accesscertificaterule =
+    static member Create (certificate: Map<string, obj>): accesscertificaterule =
         { certificate = certificate }
 
 type accesscertificates =
     { ///The hostnames of the applications that will use this certificate.
       associated_hostnames: Option<accessassociatedhostnames>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       expires_on: Option<accesstimestamp>
       ///The MD5 fingerprint of the certificate.
       fingerprint: Option<accessfingerprint>
@@ -2519,7 +2629,7 @@ type accesscertificates =
       id: Option<string>
       ///The name of the certificate.
       name: Option<``accesscertificatescomponents-schemas-name``>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesscertificates with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesscertificates =
         { associated_hostnames = None
@@ -2574,13 +2684,16 @@ type ``accesscertificatescomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscertificatescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscertificatescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscertificatescomponents-schemas-responsecollection`` =
     { errors: list<``accesscertificatescomponents-schemas-responsecollectionErrors``>
@@ -2643,13 +2756,16 @@ type ``accesscertificatescomponents-schemas-responsecollection-2Resultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscertificatescomponents-schemas-responsecollection-2Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscertificatescomponents-schemas-responsecollection-2Resultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscertificatescomponents-schemas-responsecollection-2`` =
     { errors: Option<list<``accesscertificatescomponents-schemas-responsecollection-2Errors``>>
@@ -2783,7 +2899,7 @@ type ``accesscomponents-schemas-certificates`` =
       ///The MD5 fingerprint of the certificate.
       fingerprint: Option<accessfingerprint>
       ///The ID of the application that will use this certificate.
-      id: Option<Newtonsoft.Json.Linq.JToken>
+      id: Option<string>
       ///The name of the certificate.
       name: Option<``accesscertificatescomponents-schemas-name-2``>
       updated_at: Option<accesstimestamp> }
@@ -2917,13 +3033,16 @@ type ``accesscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscomponents-schemas-responsecollection`` =
     { errors: list<``accesscomponents-schemas-responsecollectionErrors``>
@@ -3129,14 +3248,14 @@ type accesscreateresponseResult =
       client_id: Option<accessclientid>
       ///The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
       client_secret: Option<accessclientsecret>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<accessduration>
       ///The ID of the service token.
       id: Option<string>
       ///The name of the service token.
       name: Option<``accessschemas-name``>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesscreateresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesscreateresponseResult =
         { client_id = None
@@ -3162,7 +3281,7 @@ type accesscreateresponse =
           success = success
           result = None }
 
-type accesscreatedat = Map<string, Newtonsoft.Json.Linq.JToken>
+type accesscreatedat = Map<string, obj>
 
 type ``accesscustom-claims-support`` =
     { ///Custom claims
@@ -3218,13 +3337,16 @@ type ``accesscustom-pagescomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesscustom-pagescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesscustom-pagescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesscustom-pagescomponents-schemas-responsecollection`` =
     { errors: list<``accesscustom-pagescomponents-schemas-responsecollectionErrors``>
@@ -3295,7 +3417,7 @@ type ``accesscustom-pagescomponents-schemas-singleresponse`` =
 type accesscustompage =
     { ///Number of apps the custom page is assigned to.
       app_count: Option<``accessschemas-appcount``>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       ///Custom page HTML.
       custom_html: string
       ///Custom page name.
@@ -3304,7 +3426,7 @@ type accesscustompage =
       ``type``: ``accessschemas-type``
       ///UUID.
       uid: Option<accessuuid>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesscustompage with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (custom_html: string,
                           name: ``accesscustom-pagescomponents-schemas-name``,
@@ -3320,14 +3442,14 @@ type accesscustompage =
 type accesscustompagewithouthtml =
     { ///Number of apps the custom page is assigned to.
       app_count: Option<``accessschemas-appcount``>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       ///Custom page name.
       name: ``accesscustom-pagescomponents-schemas-name``
       ///Custom page type.
       ``type``: ``accessschemas-type``
       ///UUID.
       uid: Option<accessuuid>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesscustompagewithouthtml with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesscustom-pagescomponents-schemas-name``, ``type``: ``accessschemas-type``): accesscustompagewithouthtml =
         { app_count = None
@@ -3386,7 +3508,7 @@ type accessdeleteauthenticatorresponse =
       messages: list<accessdeleteauthenticatorresponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of accessdeleteauthenticatorresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<accessdeleteauthenticatorresponseErrors>,
                           messages: list<accessdeleteauthenticatorresponseMessages>,
@@ -3435,7 +3557,7 @@ type accessdeleteuserresponse =
       messages: list<accessdeleteuserresponseMessages>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of accessdeleteuserresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<accessdeleteuserresponseErrors>,
                           messages: list<accessdeleteuserresponseMessages>,
@@ -3513,9 +3635,9 @@ type accessemptyresponse =
 ///Matches everyone.
 type accesseveryonerule =
     { ///An empty object which matches on all users.
-      everyone: Newtonsoft.Json.Linq.JObject }
+      everyone: Map<string, obj> }
     ///Creates an instance of accesseveryonerule with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (everyone: Newtonsoft.Json.Linq.JObject): accesseveryonerule = { everyone = everyone }
+    static member Create (everyone: Map<string, obj>): accesseveryonerule = { everyone = everyone }
 
 type Externalevaluation =
     { ///The API endpoint containing your business logic.
@@ -3603,7 +3725,7 @@ type accessfacebookType =
 
 type accessfacebook =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -3662,17 +3784,20 @@ type accessfailedloginresponseResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessfailedloginresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessfailedloginresponseResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessfailedloginresponseResult =
     { expiration: Option<int>
-      metadata: Option<Newtonsoft.Json.Linq.JObject> }
+      metadata: Option<obj> }
     ///Creates an instance of accessfailedloginresponseResult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessfailedloginresponseResult = { expiration = None; metadata = None }
 
@@ -3766,13 +3891,16 @@ type ``accessgatewaycacomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessgatewaycacomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessgatewaycacomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessgatewaycacomponents-schemas-responsecollection`` =
     { errors: list<``accessgatewaycacomponents-schemas-responsecollectionErrors``>
@@ -3924,7 +4052,7 @@ type accessgithubType =
 
 type accessgithub =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4031,7 +4159,7 @@ type accessgoogleType =
 
 type accessgoogle =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4117,7 +4245,7 @@ type ``accessgoogle-appsType`` =
 
 type ``accessgoogle-apps`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4195,13 +4323,16 @@ type ``accessgroupscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessgroupscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessgroupscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessgroupscomponents-schemas-responsecollection`` =
     { errors: Option<list<``accessgroupscomponents-schemas-responsecollectionErrors``>>
@@ -4513,7 +4644,7 @@ type ``accessidentity-providerType`` =
 
 type ``accessidentity-provider`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Newtonsoft.Json.Linq.JObject
+      config: Map<string, obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -4523,7 +4654,7 @@ type ``accessidentity-provider`` =
       ///The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
       ``type``: ``accessidentity-providerType`` }
     ///Creates an instance of accessidentity-provider with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (config: Newtonsoft.Json.Linq.JObject,
+    static member Create (config: Map<string, obj>,
                           name: ``accesscomponents-schemas-name``,
                           ``type``: ``accessidentity-providerType``): ``accessidentity-provider`` =
         { config = config
@@ -4532,8 +4663,7 @@ type ``accessidentity-provider`` =
           scim_config = None
           ``type`` = ``type`` }
 
-type ``accessidentity-providers`` = Map<string, Newtonsoft.Json.Linq.JToken>
-
+type ``accessidentity-providers`` = {code: int; message: string}
 type ``accessidentity-providerscomponents-schemas-responsecollectionErrorsSource`` =
     { pointer: Option<string> }
     ///Creates an instance of accessidentity-providerscomponents-schemas-responsecollectionErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
@@ -4578,13 +4708,16 @@ type ``accessidentity-providerscomponents-schemas-responsecollectionResultinfo``
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessidentity-providerscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessidentity-providerscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessidentity-providerscomponents-schemas-responsecollection`` =
     { errors: Option<list<``accessidentity-providerscomponents-schemas-responsecollectionErrors``>>
@@ -4642,7 +4775,7 @@ type ``accessidentity-providerscomponents-schemas-singleresponse`` =
       messages: Option<list<``accessidentity-providerscomponents-schemas-singleresponseMessages``>>
       ///Whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of accessidentity-providerscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessidentity-providerscomponents-schemas-singleresponse`` =
         { errors = None
@@ -4662,6 +4795,27 @@ type accessinfraapprespembeddedpolicies =
     ///Creates an instance of accessinfraapprespembeddedpolicies with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessinfraapprespembeddedpolicies = { policies = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Allowed_authenticators =
+    | [<CompiledName "ssh_piv_key">] Ssh_piv_key
+    member this.Format() =
+        match this with
+        | Ssh_piv_key -> "ssh_piv_key"
+
+///Configures multi-factor authentication (MFA) settings for infrastructure applications.
+type accessinframfaconfig =
+    { ///Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+      allowed_authenticators: Option<list<Allowed_authenticators>>
+      ///Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
+      mfa_disabled: Option<bool>
+      ///Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples: `5m` or `24h`.
+      session_duration: Option<string> }
+    ///Creates an instance of accessinframfaconfig with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): accessinframfaconfig =
+        { allowed_authenticators = None
+          mfa_disabled = None
+          session_duration = None }
+
 type accessinfrapolicyreq =
     { ///The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
       decision: Option<accessdecision>
@@ -4674,7 +4828,9 @@ type accessinfrapolicyreq =
       ///Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
       require: Option<``accessschemas-require``>
       ///The rules that define how users may connect to the targets secured by your application.
-      connection_rules: Option<accessconnectionrulesinfra> }
+      connection_rules: Option<accessconnectionrulesinfra>
+      ///Configures multi-factor authentication (MFA) settings for infrastructure applications.
+      mfa_config: Option<accessinframfaconfig> }
     ///Creates an instance of accessinfrapolicyreq with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessinfrapolicyreq =
         { decision = None
@@ -4682,7 +4838,8 @@ type accessinfrapolicyreq =
           ``include`` = None
           name = None
           require = None
-          connection_rules = None }
+          connection_rules = None
+          mfa_config = None }
 
 type accessinfrapolicyresp =
     { created_at: Option<accesstimestamp>
@@ -4700,7 +4857,9 @@ type accessinfrapolicyresp =
       require: Option<``accessschemas-require``>
       updated_at: Option<accesstimestamp>
       ///The rules that define how users may connect to the targets secured by your application.
-      connection_rules: Option<accessconnectionrulesinfra> }
+      connection_rules: Option<accessconnectionrulesinfra>
+      ///Configures multi-factor authentication (MFA) settings for infrastructure applications.
+      mfa_config: Option<accessinframfaconfig> }
     ///Creates an instance of accessinfrapolicyresp with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessinfrapolicyresp =
         { created_at = None
@@ -4711,7 +4870,8 @@ type accessinfrapolicyresp =
           name = None
           require = None
           updated_at = None
-          connection_rules = None }
+          connection_rules = None
+          mfa_config = None }
 
 type accessinfraprops =
     { ///The name of the application.
@@ -5022,7 +5182,7 @@ type accesslinkedinType =
 
 type accesslinkedin =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5199,7 +5359,7 @@ type accessmeta =
     static member Create (): accessmeta = { created = None; lastModified = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type Allowed_authenticators =
+type accessmfaconfigAllowed_authenticators =
     | [<CompiledName "totp">] Totp
     | [<CompiledName "biometrics">] Biometrics
     | [<CompiledName "security_key">] Security_key
@@ -5212,7 +5372,7 @@ type Allowed_authenticators =
 ///Configures multi-factor authentication (MFA) settings.
 type accessmfaconfig =
     { ///Lists the MFA methods that users can authenticate with.
-      allowed_authenticators: Option<list<Allowed_authenticators>>
+      allowed_authenticators: Option<list<accessmfaconfigAllowed_authenticators>>
       ///Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
       mfa_disabled: Option<bool>
       ///Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
@@ -5222,6 +5382,68 @@ type accessmfaconfig =
         { allowed_authenticators = None
           mfa_disabled = None
           session_duration = None }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Pinpolicy =
+    | [<CompiledName "never">] Never
+    | [<CompiledName "once">] Once
+    | [<CompiledName "always">] Always
+    member this.Format() =
+        match this with
+        | Never -> "never"
+        | Once -> "once"
+        | Always -> "always"
+
+[<RequireQualifiedAccess>]
+type Ssh_key_size =
+    | Ssh_key_size256 = 256
+    | Ssh_key_size384 = 384
+    | Ssh_key_size521 = 521
+    | Ssh_key_size2048 = 2048
+    | Ssh_key_size3072 = 3072
+    | Ssh_key_size4096 = 4096
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Ssh_key_type =
+    | [<CompiledName "ecdsa">] Ecdsa
+    | [<CompiledName "ed25519">] Ed25519
+    | [<CompiledName "rsa">] Rsa
+    member this.Format() =
+        match this with
+        | Ecdsa -> "ecdsa"
+        | Ed25519 -> "ed25519"
+        | Rsa -> "rsa"
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Touchpolicy =
+    | [<CompiledName "never">] Never
+    | [<CompiledName "always">] Always
+    | [<CompiledName "cached">] Cached
+    member this.Format() =
+        match this with
+        | Never -> "never"
+        | Always -> "always"
+        | Cached -> "cached"
+
+///Configures SSH PIV key requirements for MFA using hardware security keys.
+type accessmfasshpivkeyrequirements =
+    { ///Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
+      pin_policy: Option<Pinpolicy>
+      ///Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      require_fips_device: Option<bool>
+      ///Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
+      ssh_key_size: Option<list<Ssh_key_size>>
+      ///Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.
+      ssh_key_type: Option<list<Ssh_key_type>>
+      ///Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).
+      touch_policy: Option<Touchpolicy> }
+    ///Creates an instance of accessmfasshpivkeyrequirements with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): accessmfasshpivkeyrequirements =
+        { pin_policy = None
+          require_fips_device = None
+          ssh_key_size = None
+          ssh_key_type = None
+          touch_policy = None }
 
 type accessnameresponseErrorsSource =
     { pointer: Option<string> }
@@ -5389,7 +5611,7 @@ type accessoidcType =
 
 type accessoidc =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5528,7 +5750,7 @@ type accessoidcsaasapp =
       client_id: Option<string>
       ///The application client secret, only returned on POST request.
       client_secret: Option<string>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       custom_claims: Option<list<Customclaims>>
       ///The OIDC flows supported by this application
       grant_types: Option<list<Grant_types>>
@@ -5542,7 +5764,7 @@ type accessoidcsaasapp =
       refresh_token_options: Option<Refreshtokenoptions>
       ///Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
       scopes: Option<list<Scopes>>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessoidcsaasapp with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessoidcsaasapp =
         { access_token_lifetime = None
@@ -5631,7 +5853,7 @@ type accessoktaType =
 
 type accessokta =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5734,7 +5956,7 @@ type accessoneloginType =
 
 type accessonelogin =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5832,7 +6054,7 @@ type TypeFromaccessonetimepin =
 
 type accessonetimepin =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -5854,21 +6076,29 @@ type accessorgmfaconfigAllowed_authenticators =
     | [<CompiledName "totp">] Totp
     | [<CompiledName "biometrics">] Biometrics
     | [<CompiledName "security_key">] Security_key
+    | [<CompiledName "ssh_piv_key">] Ssh_piv_key
     member this.Format() =
         match this with
         | Totp -> "totp"
         | Biometrics -> "biometrics"
         | Security_key -> "security_key"
+        | Ssh_piv_key -> "ssh_piv_key"
 
 ///Configures multi-factor authentication (MFA) settings for an organization.
 type accessorgmfaconfig =
     { ///Lists the MFA methods that users can authenticate with.
       allowed_authenticators: Option<list<accessorgmfaconfigAllowed_authenticators>>
+      ///Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+      amr_matching_session_duration: Option<string>
+      ///Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+      required_aaguids: Option<System.Guid>
       ///Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
       session_duration: Option<string> }
     ///Creates an instance of accessorgmfaconfig with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessorgmfaconfig =
         { allowed_authenticators = None
+          amr_matching_session_duration = None
+          required_aaguids = None
           session_duration = None }
 
 type accessorganizations =
@@ -5878,7 +6108,7 @@ type accessorganizations =
       auth_domain: Option<accessauthdomain>
       ///When set to `true`, users skip the identity provider selection step during login.
       auto_redirect_to_identity: Option<accessautoredirecttoidentity>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       custom_pages: Option<accesscustompages>
       ///Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
       deny_unmatched_requests: Option<accessdenyunmatchedrequests>
@@ -5891,13 +6121,15 @@ type accessorganizations =
       mfa_config: Option<accessorgmfaconfig>
       ///Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
       mfa_required_for_all_apps: Option<accessmfarequiredforallapps>
+      ///Configures SSH PIV key requirements for MFA using hardware security keys.
+      mfa_ssh_piv_key_requirements: Option<accessmfasshpivkeyrequirements>
       ///The name of your Zero Trust organization.
       name: Option<accessname>
       ///The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
       session_duration: Option<accesssessionduration>
       ///A description of the reason why the UI read only field is being toggled.
       ui_read_only_toggle_reason: Option<accessuireadonlytogglereason>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken>
+      updated_at: Option<System.DateTimeOffset>
       ///The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
       user_seat_expiration_inactive_time: Option<accessuserseatexpirationinactivetime>
       ///The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
@@ -5915,6 +6147,7 @@ type accessorganizations =
           login_design = None
           mfa_config = None
           mfa_required_for_all_apps = None
+          mfa_ssh_piv_key_requirements = None
           name = None
           session_duration = None
           ui_read_only_toggle_reason = None
@@ -6038,7 +6271,7 @@ type accesspingoneType =
 
 type accesspingone =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -6141,13 +6374,16 @@ type ``accesspoliciescomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesspoliciescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesspoliciescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesspoliciescomponents-schemas-responsecollection`` =
     { errors: Option<list<``accesspoliciescomponents-schemas-responsecollectionErrors``>>
@@ -6251,7 +6487,7 @@ type Appstate =
       aud: Option<string>
       hostname: Option<string>
       name: Option<string>
-      policies: Option<Newtonsoft.Json.Linq.JArray>
+      policies: Option<obj>
       status: Option<string> }
     ///Creates an instance of Appstate with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Appstate =
@@ -6269,7 +6505,7 @@ type UseridentityGeo =
 
 type Useridentity =
     { account_id: Option<string>
-      device_sessions: Option<Newtonsoft.Json.Linq.JObject>
+      device_sessions: Option<obj>
       email: Option<string>
       geo: Option<UseridentityGeo>
       iat: Option<int>
@@ -6794,13 +7030,16 @@ type accessresponsecollectionResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessresponsecollectionResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessresponsecollection =
     { errors: list<accessresponsecollectionErrors>
@@ -6861,13 +7100,16 @@ type accessresponsecollectionhostnamesResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessresponsecollectionhostnamesResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessresponsecollectionhostnamesResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessresponsecollectionhostnames =
     { errors: list<accessresponsecollectionhostnamesErrors>
@@ -7021,13 +7263,16 @@ type ``accessreusable-policiescomponents-schemas-responsecollectionResultinfo`` 
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessreusable-policiescomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessreusable-policiescomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessreusable-policiescomponents-schemas-responsecollection`` =
     { errors: list<``accessreusable-policiescomponents-schemas-responsecollectionErrors``>
@@ -7165,7 +7410,7 @@ type accesssaasprops =
       logo_url: Option<accesslogourl>
       ///The name of the application.
       name: Option<``accessappscomponents-schemas-name``>
-      saas_app: Option<Newtonsoft.Json.Linq.JObject>
+      saas_app: Option<Map<string, obj>>
       ///Configuration for provisioning to this application via SCIM. This is currently in closed beta.
       scim_config: Option<accessscimconfig>
       ///The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
@@ -7289,7 +7534,7 @@ type accesssamlConfig =
 
 type accesssaml =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -7395,7 +7640,7 @@ type accesssamlsaasapp =
       auth_type: Option<accesssamlsaasappAuthtype>
       ///The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
       consumer_service_url: Option<string>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       custom_attributes: Option<list<Customattributes>>
       ///The URL that the user will be redirected to after a successful login for IDP initiated logins.
       default_relay_state: Option<string>
@@ -7413,7 +7658,7 @@ type accesssamlsaasapp =
       sp_entity_id: Option<string>
       ///The endpoint where your SaaS application will send login requests.
       sso_endpoint: Option<string>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesssamlsaasapp with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accesssamlsaasapp =
         { auth_type = None
@@ -7535,7 +7780,7 @@ type ``accessschemas-azureADType`` =
 
 type ``accessschemas-azureAD`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -7592,9 +7837,9 @@ type ``accessschemas-bisoprops`` =
           ``type`` = None }
 
 type ``accessschemas-bookmarkprops`` =
-    { app_launcher_visible: Option<Newtonsoft.Json.Linq.JToken>
+    { app_launcher_visible: Option<obj>
       ///The URL or domain of the bookmark.
-      domain: Newtonsoft.Json.Linq.JToken
+      domain: obj
       ///The image URL for the logo shown in the App Launcher dashboard.
       logo_url: Option<accesslogourl>
       ///The name of the application.
@@ -7602,7 +7847,7 @@ type ``accessschemas-bookmarkprops`` =
       ///The application type.
       ``type``: string }
     ///Creates an instance of accessschemas-bookmarkprops with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (domain: Newtonsoft.Json.Linq.JToken, ``type``: string): ``accessschemas-bookmarkprops`` =
+    static member Create (domain: obj, ``type``: string): ``accessschemas-bookmarkprops`` =
         { app_launcher_visible = None
           domain = domain
           logo_url = None
@@ -7691,7 +7936,7 @@ type ``accessschemas-centrifyType`` =
 
 type ``accessschemas-centrify`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -7806,7 +8051,7 @@ type ``accessschemas-createresponse`` =
       messages: Option<list<``accessschemas-createresponseMessages``>>
       ///Whether the API call was successful.
       success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of accessschemas-createresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-createresponse`` =
         { errors = None
@@ -7816,7 +8061,7 @@ type ``accessschemas-createresponse`` =
 
 type ``accessschemas-deviceposturerule`` =
     { check: Option<accessdeviceposturecheck>
-      data: Option<Newtonsoft.Json.Linq.JObject>
+      data: Option<Map<string, obj>>
       description: Option<string>
       error: Option<string>
       id: Option<string>
@@ -7837,7 +8082,7 @@ type ``accessschemas-deviceposturerule`` =
           ``type`` = None }
 
 type ``accessschemas-emptyresponse`` =
-    { result: Option<Newtonsoft.Json.Linq.JObject>
+    { result: Option<obj>
       success: Option<bool> }
     ///Creates an instance of accessschemas-emptyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-emptyresponse`` = { result = None; success = None }
@@ -7911,7 +8156,7 @@ type ``accessschemas-facebookType`` =
 
 type ``accessschemas-facebook`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8029,7 +8274,7 @@ type ``accessschemas-githubType`` =
 
 type ``accessschemas-github`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8115,7 +8360,7 @@ type ``accessschemas-googleType`` =
 
 type ``accessschemas-google`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8201,7 +8446,7 @@ type ``accessschemas-google-appsType`` =
 
 type ``accessschemas-google-apps`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8219,7 +8464,7 @@ type ``accessschemas-google-apps`` =
           ``type`` = None }
 
 type ``accessschemas-groups`` =
-    { created_at: Option<Newtonsoft.Json.Linq.JToken>
+    { created_at: Option<obj>
       ///Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
       exclude: Option<accessexclude>
       ///UUID.
@@ -8232,7 +8477,7 @@ type ``accessschemas-groups`` =
       name: Option<``accessgroupscomponents-schemas-name``>
       ///Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
       require: Option<accessrequire>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessschemas-groups with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-groups`` =
         { created_at = None
@@ -8368,7 +8613,7 @@ type ``accessschemas-identity-providerType`` =
 
 type ``accessschemas-identity-provider`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Newtonsoft.Json.Linq.JObject
+      config: Map<string, obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8378,7 +8623,7 @@ type ``accessschemas-identity-provider`` =
       ///The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
       ``type``: ``accessschemas-identity-providerType`` }
     ///Creates an instance of accessschemas-identity-provider with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (config: Newtonsoft.Json.Linq.JObject,
+    static member Create (config: Map<string, obj>,
                           name: ``accesscomponents-schemas-name``,
                           ``type``: ``accessschemas-identity-providerType``): ``accessschemas-identity-provider`` =
         { config = config
@@ -8456,7 +8701,7 @@ type ``accessschemas-linkedinType`` =
 
 type ``accessschemas-linkedin`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8561,7 +8806,7 @@ type ``accessschemas-oidcType`` =
 
 type ``accessschemas-oidc`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8792,7 +9037,7 @@ type ``accessschemas-oktaType`` =
 
 type ``accessschemas-okta`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8878,7 +9123,7 @@ type ``accessschemas-oneloginType`` =
 
 type ``accessschemas-onelogin`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -8976,7 +9221,7 @@ type ``TypeFromaccessschemas-onetimepin`` =
 
 type ``accessschemas-onetimepin`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -9003,7 +9248,7 @@ type ``accessschemas-organizations`` =
       deny_unmatched_requests_exempted_zone_names: Option<accessdenyunmatchedrequestsexemptedzonenames>
       ///Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
       is_ui_read_only: Option<``accessschemas-isuireadonly``>
-      login_design: Option<Newtonsoft.Json.Linq.JToken>
+      login_design: Option<obj>
       ///The name of your Zero Trust organization.
       name: Option<``accessorganizationscomponents-schemas-name``>
       ///A description of the reason why the UI read only field is being toggled.
@@ -9093,7 +9338,7 @@ type ``accessschemas-pingoneType`` =
 
 type ``accessschemas-pingone`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -9168,7 +9413,7 @@ type ``accessschemas-policycheckresponseResultUseridentityGeo`` =
 
 type ``accessschemas-policycheckresponseResultUseridentity`` =
     { account_id: Option<string>
-      device_sessions: Option<Newtonsoft.Json.Linq.JObject>
+      device_sessions: Option<obj>
       email: Option<string>
       geo: Option<``accessschemas-policycheckresponseResultUseridentityGeo``>
       iat: Option<int>
@@ -9256,13 +9501,16 @@ type ``accessschemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessschemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessschemas-responsecollection`` =
     { errors: list<``accessschemas-responsecollectionErrors``>
@@ -9323,13 +9571,16 @@ type ``accessschemas-responsecollectionhostnamesResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessschemas-responsecollectionhostnamesResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessschemas-responsecollectionhostnamesResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessschemas-responsecollectionhostnames`` =
     { errors: Option<list<``accessschemas-responsecollectionhostnamesErrors``>>
@@ -9357,7 +9608,7 @@ type ``accessschemas-saasprops`` =
       logo_url: Option<accesslogourl>
       ///The name of the application.
       name: Option<``accessappscomponents-schemas-name``>
-      saas_app: Option<Newtonsoft.Json.Linq.JObject>
+      saas_app: Option<Map<string, obj>>
       ///The application type.
       ``type``: Option<string> }
     ///Creates an instance of accessschemas-saasprops with all optional fields initialized to None. The required fields are parameters of this function
@@ -9474,7 +9725,7 @@ type ``accessschemas-samlConfig`` =
 
 type ``accessschemas-saml`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -9583,7 +9834,7 @@ type ``accessschemas-samlsaasapp`` =
 
 ///Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 type ``accessschemas-scimconfig`` =
-    { authentication: Option<Newtonsoft.Json.Linq.JToken>
+    { authentication: Option<obj>
       ///If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
       deactivate_on_delete: Option<bool>
       ///Whether SCIM provisioning is turned on for this application.
@@ -9689,7 +9940,7 @@ type ``accessschemas-service-tokens`` =
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<``accessschemas-duration``>
       expires_at: Option<accesstimestamp>
-      id: Option<Newtonsoft.Json.Linq.JToken>
+      id: Option<string>
       last_seen_at: Option<accesstimestamp>
       ///The name of the service token.
       name: Option<``accessservice-tokenscomponents-schemas-name``>
@@ -10017,7 +10268,7 @@ type ``accessschemas-yandexType`` =
 
 type ``accessschemas-yandex`` =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -10036,7 +10287,7 @@ type ``accessschemas-yandex`` =
 
 ///Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 type accessscimconfig =
-    { authentication: Option<Newtonsoft.Json.Linq.JToken>
+    { authentication: Option<obj>
       ///If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
       deactivate_on_delete: Option<bool>
       ///Whether SCIM provisioning is turned on for this application.
@@ -10239,13 +10490,16 @@ type accessscimgroupsresponseResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessscimgroupsresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessscimgroupsresponseResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessscimgroupsresponse =
     { errors: list<accessscimgroupsresponseErrors>
@@ -10306,13 +10560,16 @@ type accessscimupdatelogsresponseResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessscimupdatelogsresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessscimupdatelogsresponseResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessscimupdatelogsresponse =
     { errors: list<accessscimupdatelogsresponseErrors>
@@ -10373,13 +10630,16 @@ type accessscimusersresponseResultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessscimusersresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): accessscimusersresponseResultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type accessscimusersresponse =
     { errors: list<accessscimusersresponseErrors>
@@ -10470,13 +10730,16 @@ type ``accessseatscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessseatscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessseatscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessseatscomponents-schemas-responsecollection`` =
     { errors: list<``accessseatscomponents-schemas-responsecollectionErrors``>
@@ -10596,15 +10859,15 @@ type accessselfhostedprops =
 type ``accessservice-tokens`` =
     { ///The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
       client_id: Option<accessclientid>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       ///The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
       duration: Option<accessduration>
       expires_at: Option<accesstimestamp>
-      id: Option<Newtonsoft.Json.Linq.JToken>
-      last_seen_at: Option<Newtonsoft.Json.Linq.JToken>
+      id: Option<string>
+      last_seen_at: Option<System.DateTimeOffset>
       ///The name of the service token.
       name: Option<``accessschemas-name``>
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accessservice-tokens with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessservice-tokens`` =
         { client_id = None
@@ -10660,13 +10923,16 @@ type ``accessservice-tokenscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accessservice-tokenscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessservice-tokenscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accessservice-tokenscomponents-schemas-responsecollection`` =
     { errors: Option<list<``accessservice-tokenscomponents-schemas-responsecollectionErrors``>>
@@ -11052,10 +11318,10 @@ type accesssshprops =
 type accesstag =
     { ///The number of applications that have this tag
       app_count: Option<int>
-      created_at: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: Option<System.DateTimeOffset>
       ///The name of the tag
       name: ``accesstagscomponents-schemas-name``
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesstag with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesstagscomponents-schemas-name``): accesstag =
         { app_count = None
@@ -11065,10 +11331,10 @@ type accesstag =
 
 ///A tag
 type accesstagwithoutappcount =
-    { created_at: Option<Newtonsoft.Json.Linq.JToken>
+    { created_at: Option<obj>
       ///The name of the tag
       name: ``accesstagscomponents-schemas-name``
-      updated_at: Option<Newtonsoft.Json.Linq.JToken> }
+      updated_at: Option<System.DateTimeOffset> }
     ///Creates an instance of accesstagwithoutappcount with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: ``accesstagscomponents-schemas-name``): accesstagwithoutappcount =
         { created_at = None
@@ -11117,13 +11383,16 @@ type ``accesstagscomponents-schemas-responsecollectionResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of accesstagscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accesstagscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``accesstagscomponents-schemas-responsecollection`` =
     { errors: list<``accesstagscomponents-schemas-responsecollectionErrors``>
@@ -11228,7 +11497,7 @@ type accesstargetcriteriaselfhostedapp =
           target_attributes = None
           protocol = None }
 
-type accessupdatedat = Map<string, Newtonsoft.Json.Linq.JToken>
+type accessupdatedat = Map<string, obj>
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type User_risk_score =
@@ -11328,10 +11597,10 @@ type ``accessuserscomponents-schemas-responsecollectionMessages`` =
           source = None }
 
 type ``accessuserscomponents-schemas-responsecollectionResultinfo`` =
-    { count: Option<Newtonsoft.Json.Linq.JToken>
-      page: Option<Newtonsoft.Json.Linq.JToken>
-      per_page: Option<Newtonsoft.Json.Linq.JToken>
-      total_count: Option<Newtonsoft.Json.Linq.JToken> }
+    { count: Option<obj>
+      page: Option<obj>
+      per_page: Option<obj>
+      total_count: Option<obj> }
     ///Creates an instance of accessuserscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessuserscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
@@ -11554,7 +11823,7 @@ type accessyandexType =
 
 type accessyandex =
     { ///The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-      config: Option<Newtonsoft.Json.Linq.JObject>
+      config: Option<obj>
       ///UUID.
       id: Option<accessuuid>
       ///The name of the identity provider, shown to users on the login page.
@@ -11610,7 +11879,7 @@ type ``access-applications-add-an-applicationresponse`` =
       messages: list<``access-applications-add-an-applicationresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of access-applications-add-an-applicationresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``access-applications-add-an-applicationresponseErrors``>,
                           messages: list<``access-applications-add-an-applicationresponseMessages``>,
@@ -11661,7 +11930,7 @@ type ``access-applications-update-an-access-applicationresponse`` =
       messages: list<``access-applications-update-an-access-applicationresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      result: Option<obj> }
     ///Creates an instance of access-applications-update-an-access-applicationresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``access-applications-update-an-access-applicationresponseErrors``>,
                           messages: list<``access-applications-update-an-access-applicationresponseMessages``>,
@@ -11787,8 +12056,57 @@ type ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsr
           success = success
           result = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type ServersAuthtype =
+    | [<CompiledName "oauth">] Oauth
+    | [<CompiledName "bearer">] Bearer
+    | [<CompiledName "unauthenticated">] Unauthenticated
+    member this.Format() =
+        match this with
+        | Oauth -> "oauth"
+        | Bearer -> "bearer"
+        | Unauthenticated -> "unauthenticated"
+
+type Updatedprompts =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type Updatedtools =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type Servers =
+    { auth_type: ServersAuthtype
+      created_at: Option<System.DateTimeOffset>
+      created_by: Option<string>
+      default_disabled: Option<bool>
+      description: Option<string>
+      error: Option<string>
+      hostname: string
+      ///server id
+      id: string
+      last_successful_sync: Option<System.DateTimeOffset>
+      last_synced: Option<System.DateTimeOffset>
+      modified_at: Option<System.DateTimeOffset>
+      modified_by: Option<string>
+      name: string
+      on_behalf: Option<bool>
+      prompts: obj
+      status: Option<string>
+      tools: obj
+      updated_prompts: Option<list<Updatedprompts>>
+      updated_tools: Option<list<Updatedtools>> }
+
 type McpPortalsApiListPortals_OKResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -11798,7 +12116,8 @@ type McpPortalsApiListPortals_OKResult =
       modified_by: Option<string>
       name: string
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
-      secure_web_gateway: Option<bool> }
+      secure_web_gateway: Option<bool>
+      servers: list<Servers> }
 
 type McpPortalsApiListPortals_OK =
     { result: list<McpPortalsApiListPortals_OKResult>
@@ -11808,7 +12127,7 @@ type McpPortalsApiListPortals_BadRequestErrors = { message: string }
 
 type McpPortalsApiListPortals_BadRequest =
     { errors: list<McpPortalsApiListPortals_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -11818,35 +12137,39 @@ type McpPortalsApiListPortals =
     ///Bad Request
     | BadRequest of payload: McpPortalsApiListPortals_BadRequest
 
-type Updatedprompts =
-    { description: Option<string>
+type McpPortalsApiCreatePortalsPayloadServersUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
       enabled: Option<bool>
       name: string }
-    ///Creates an instance of Updatedprompts with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (name: string): Updatedprompts =
-        { description = None
+    ///Creates an instance of McpPortalsApiCreatePortalsPayloadServersUpdatedprompts with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiCreatePortalsPayloadServersUpdatedprompts =
+        { alias = None
+          description = None
           enabled = None
           name = name }
 
-type Updatedtools =
-    { description: Option<string>
+type McpPortalsApiCreatePortalsPayloadServersUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
       enabled: Option<bool>
       name: string }
-    ///Creates an instance of Updatedtools with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (name: string): Updatedtools =
-        { description = None
+    ///Creates an instance of McpPortalsApiCreatePortalsPayloadServersUpdatedtools with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiCreatePortalsPayloadServersUpdatedtools =
+        { alias = None
+          description = None
           enabled = None
           name = name }
 
-type Servers =
+type McpPortalsApiCreatePortalsPayloadServers =
     { default_disabled: Option<bool>
       on_behalf: Option<bool>
       ///server id
       server_id: string
-      updated_prompts: Option<list<Updatedprompts>>
-      updated_tools: Option<list<Updatedtools>> }
-    ///Creates an instance of Servers with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (server_id: string): Servers =
+      updated_prompts: Option<list<McpPortalsApiCreatePortalsPayloadServersUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiCreatePortalsPayloadServersUpdatedtools>> }
+    ///Creates an instance of McpPortalsApiCreatePortalsPayloadServers with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (server_id: string): McpPortalsApiCreatePortalsPayloadServers =
         { default_disabled = None
           on_behalf = None
           server_id = server_id
@@ -11854,25 +12177,77 @@ type Servers =
           updated_tools = None }
 
 type McpPortalsApiCreatePortalsPayload =
-    { description: Option<string>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      description: Option<string>
       hostname: string
       ///portal id
       id: string
       name: string
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
       secure_web_gateway: Option<bool>
-      servers: Option<list<Servers>> }
+      servers: Option<list<McpPortalsApiCreatePortalsPayloadServers>> }
     ///Creates an instance of McpPortalsApiCreatePortalsPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (hostname: string, id: string, name: string): McpPortalsApiCreatePortalsPayload =
-        { description = None
+        { allow_code_mode = None
+          description = None
           hostname = hostname
           id = id
           name = name
           secure_web_gateway = None
           servers = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type McpPortalsApiCreatePortals_CreatedResultServersAuthtype =
+    | [<CompiledName "oauth">] Oauth
+    | [<CompiledName "bearer">] Bearer
+    | [<CompiledName "unauthenticated">] Unauthenticated
+    member this.Format() =
+        match this with
+        | Oauth -> "oauth"
+        | Bearer -> "bearer"
+        | Unauthenticated -> "unauthenticated"
+
+type McpPortalsApiCreatePortals_CreatedResultServersUpdatedprompts =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiCreatePortals_CreatedResultServersUpdatedtools =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiCreatePortals_CreatedResultServers =
+    { auth_type: McpPortalsApiCreatePortals_CreatedResultServersAuthtype
+      created_at: Option<System.DateTimeOffset>
+      created_by: Option<string>
+      default_disabled: Option<bool>
+      description: Option<string>
+      error: Option<string>
+      hostname: string
+      ///server id
+      id: string
+      last_successful_sync: Option<System.DateTimeOffset>
+      last_synced: Option<System.DateTimeOffset>
+      modified_at: Option<System.DateTimeOffset>
+      modified_by: Option<string>
+      name: string
+      on_behalf: Option<bool>
+      prompts: obj
+      status: Option<string>
+      tools: obj
+      updated_prompts: Option<list<McpPortalsApiCreatePortals_CreatedResultServersUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiCreatePortals_CreatedResultServersUpdatedtools>> }
+
 type McpPortalsApiCreatePortals_CreatedResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -11882,7 +12257,8 @@ type McpPortalsApiCreatePortals_CreatedResult =
       modified_by: Option<string>
       name: string
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
-      secure_web_gateway: Option<bool> }
+      secure_web_gateway: Option<bool>
+      servers: list<McpPortalsApiCreatePortals_CreatedResultServers> }
 
 type McpPortalsApiCreatePortals_Created =
     { result: McpPortalsApiCreatePortals_CreatedResult
@@ -11905,7 +12281,9 @@ type McpPortalsApiCreatePortals =
     | BadRequest of payload: McpPortalsApiCreatePortals_BadRequest
 
 type McpPortalsApiDeletePortals_OKResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -11945,6 +12323,20 @@ type McpPortalsApiFetchGateways_OKResultServersAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiFetchGateways_OKResultServersUpdatedprompts =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiFetchGateways_OKResultServersUpdatedtools =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
 type McpPortalsApiFetchGateways_OKResultServers =
     { auth_type: McpPortalsApiFetchGateways_OKResultServersAuthtype
       created_at: Option<System.DateTimeOffset>
@@ -11961,14 +12353,16 @@ type McpPortalsApiFetchGateways_OKResultServers =
       modified_by: Option<string>
       name: string
       on_behalf: Option<bool>
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: obj
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray
-      updated_prompts: Newtonsoft.Json.Linq.JArray
-      updated_tools: Newtonsoft.Json.Linq.JArray }
+      tools: obj
+      updated_prompts: Option<list<McpPortalsApiFetchGateways_OKResultServersUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiFetchGateways_OKResultServersUpdatedtools>> }
 
 type McpPortalsApiFetchGateways_OKResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -11999,22 +12393,26 @@ type McpPortalsApiFetchGateways =
     | NotFound of payload: McpPortalsApiFetchGateways_NotFound
 
 type McpPortalsApiUpdatePortalsPayloadServersUpdatedprompts =
-    { description: Option<string>
+    { alias: Option<string>
+      description: Option<string>
       enabled: Option<bool>
       name: string }
     ///Creates an instance of McpPortalsApiUpdatePortalsPayloadServersUpdatedprompts with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: string): McpPortalsApiUpdatePortalsPayloadServersUpdatedprompts =
-        { description = None
+        { alias = None
+          description = None
           enabled = None
           name = name }
 
 type McpPortalsApiUpdatePortalsPayloadServersUpdatedtools =
-    { description: Option<string>
+    { alias: Option<string>
+      description: Option<string>
       enabled: Option<bool>
       name: string }
     ///Creates an instance of McpPortalsApiUpdatePortalsPayloadServersUpdatedtools with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (name: string): McpPortalsApiUpdatePortalsPayloadServersUpdatedtools =
-        { description = None
+        { alias = None
+          description = None
           enabled = None
           name = name }
 
@@ -12034,7 +12432,9 @@ type McpPortalsApiUpdatePortalsPayloadServers =
           updated_tools = None }
 
 type McpPortalsApiUpdatePortalsPayload =
-    { description: Option<string>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      description: Option<string>
       hostname: Option<string>
       name: Option<string>
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
@@ -12042,14 +12442,64 @@ type McpPortalsApiUpdatePortalsPayload =
       servers: Option<list<McpPortalsApiUpdatePortalsPayloadServers>> }
     ///Creates an instance of McpPortalsApiUpdatePortalsPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): McpPortalsApiUpdatePortalsPayload =
-        { description = None
+        { allow_code_mode = None
+          description = None
           hostname = None
           name = None
           secure_web_gateway = None
           servers = None }
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type McpPortalsApiUpdatePortals_OKResultServersAuthtype =
+    | [<CompiledName "oauth">] Oauth
+    | [<CompiledName "bearer">] Bearer
+    | [<CompiledName "unauthenticated">] Unauthenticated
+    member this.Format() =
+        match this with
+        | Oauth -> "oauth"
+        | Bearer -> "bearer"
+        | Unauthenticated -> "unauthenticated"
+
+type McpPortalsApiUpdatePortals_OKResultServersUpdatedprompts =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiUpdatePortals_OKResultServersUpdatedtools =
+    { description: Option<string>
+      enabled: Option<bool>
+      name: string
+      portal_alias: Option<string>
+      server_alias: Option<string> }
+
+type McpPortalsApiUpdatePortals_OKResultServers =
+    { auth_type: McpPortalsApiUpdatePortals_OKResultServersAuthtype
+      created_at: Option<System.DateTimeOffset>
+      created_by: Option<string>
+      default_disabled: Option<bool>
+      description: Option<string>
+      error: Option<string>
+      hostname: string
+      ///server id
+      id: string
+      last_successful_sync: Option<System.DateTimeOffset>
+      last_synced: Option<System.DateTimeOffset>
+      modified_at: Option<System.DateTimeOffset>
+      modified_by: Option<string>
+      name: string
+      on_behalf: Option<bool>
+      prompts: obj
+      status: Option<string>
+      tools: obj
+      updated_prompts: Option<list<McpPortalsApiUpdatePortals_OKResultServersUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiUpdatePortals_OKResultServersUpdatedtools>> }
+
 type McpPortalsApiUpdatePortals_OKResult =
-    { created_at: Option<System.DateTimeOffset>
+    { ///Allow remote code execution in Dynamic Workers (beta)
+      allow_code_mode: Option<bool>
+      created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
       description: Option<string>
       hostname: string
@@ -12059,7 +12509,8 @@ type McpPortalsApiUpdatePortals_OKResult =
       modified_by: Option<string>
       name: string
       ///Route outbound MCP traffic through Zero Trust Secure Web Gateway
-      secure_web_gateway: Option<bool> }
+      secure_web_gateway: Option<bool>
+      servers: list<McpPortalsApiUpdatePortals_OKResultServers> }
 
 type McpPortalsApiUpdatePortals_OK =
     { result: McpPortalsApiUpdatePortals_OKResult
@@ -12100,6 +12551,18 @@ type McpPortalsApiListServers_OKResultAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiListServers_OKResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiListServers_OKResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
 type McpPortalsApiListServers_OKResult =
     { auth_type: McpPortalsApiListServers_OKResultAuthtype
       created_at: Option<System.DateTimeOffset>
@@ -12114,9 +12577,11 @@ type McpPortalsApiListServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: obj
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: obj
+      updated_prompts: Option<list<McpPortalsApiListServers_OKResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiListServers_OKResultUpdatedtools>> }
 
 type McpPortalsApiListServers_OK =
     { result: list<McpPortalsApiListServers_OKResult>
@@ -12126,7 +12591,7 @@ type McpPortalsApiListServers_BadRequestErrors = { message: string }
 
 type McpPortalsApiListServers_BadRequest =
     { errors: list<McpPortalsApiListServers_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -12147,6 +12612,30 @@ type McpPortalsApiCreateServersPayloadAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiCreateServersPayloadUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+    ///Creates an instance of McpPortalsApiCreateServersPayloadUpdatedprompts with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiCreateServersPayloadUpdatedprompts =
+        { alias = None
+          description = None
+          enabled = None
+          name = name }
+
+type McpPortalsApiCreateServersPayloadUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+    ///Creates an instance of McpPortalsApiCreateServersPayloadUpdatedtools with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiCreateServersPayloadUpdatedtools =
+        { alias = None
+          description = None
+          enabled = None
+          name = name }
+
 type McpPortalsApiCreateServersPayload =
     { auth_credentials: Option<string>
       auth_type: McpPortalsApiCreateServersPayloadAuthtype
@@ -12154,7 +12643,9 @@ type McpPortalsApiCreateServersPayload =
       hostname: string
       ///server id
       id: string
-      name: string }
+      name: string
+      updated_prompts: Option<list<McpPortalsApiCreateServersPayloadUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiCreateServersPayloadUpdatedtools>> }
     ///Creates an instance of McpPortalsApiCreateServersPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (auth_type: McpPortalsApiCreateServersPayloadAuthtype,
                           hostname: string,
@@ -12165,7 +12656,9 @@ type McpPortalsApiCreateServersPayload =
           description = None
           hostname = hostname
           id = id
-          name = name }
+          name = name
+          updated_prompts = None
+          updated_tools = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type McpPortalsApiCreateServers_CreatedResultAuthtype =
@@ -12177,6 +12670,18 @@ type McpPortalsApiCreateServers_CreatedResultAuthtype =
         | Oauth -> "oauth"
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
+
+type McpPortalsApiCreateServers_CreatedResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiCreateServers_CreatedResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
 
 type McpPortalsApiCreateServers_CreatedResult =
     { auth_type: McpPortalsApiCreateServers_CreatedResultAuthtype
@@ -12192,9 +12697,11 @@ type McpPortalsApiCreateServers_CreatedResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj>
+      updated_prompts: Option<list<McpPortalsApiCreateServers_CreatedResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiCreateServers_CreatedResultUpdatedtools>> }
 
 type McpPortalsApiCreateServers_Created =
     { result: McpPortalsApiCreateServers_CreatedResult
@@ -12227,6 +12734,18 @@ type McpPortalsApiDeleteServers_OKResultAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiDeleteServers_OKResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiDeleteServers_OKResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
 type McpPortalsApiDeleteServers_OKResult =
     { auth_type: McpPortalsApiDeleteServers_OKResultAuthtype
       created_at: Option<System.DateTimeOffset>
@@ -12241,9 +12760,11 @@ type McpPortalsApiDeleteServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj>
+      updated_prompts: Option<list<McpPortalsApiDeleteServers_OKResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiDeleteServers_OKResultUpdatedtools>> }
 
 type McpPortalsApiDeleteServers_OK =
     { result: McpPortalsApiDeleteServers_OKResult
@@ -12273,6 +12794,18 @@ type McpPortalsApiFetchServers_OKResultAuthtype =
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
 
+type McpPortalsApiFetchServers_OKResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiFetchServers_OKResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
 type McpPortalsApiFetchServers_OKResult =
     { auth_type: McpPortalsApiFetchServers_OKResultAuthtype
       created_at: Option<System.DateTimeOffset>
@@ -12287,9 +12820,11 @@ type McpPortalsApiFetchServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj>
+      updated_prompts: Option<list<McpPortalsApiFetchServers_OKResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiFetchServers_OKResultUpdatedtools>> }
 
 type McpPortalsApiFetchServers_OK =
     { result: McpPortalsApiFetchServers_OKResult
@@ -12308,15 +12843,43 @@ type McpPortalsApiFetchServers =
     ///Not Found
     | NotFound of payload: McpPortalsApiFetchServers_NotFound
 
+type McpPortalsApiUpdateServersPayloadUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+    ///Creates an instance of McpPortalsApiUpdateServersPayloadUpdatedprompts with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiUpdateServersPayloadUpdatedprompts =
+        { alias = None
+          description = None
+          enabled = None
+          name = name }
+
+type McpPortalsApiUpdateServersPayloadUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+    ///Creates an instance of McpPortalsApiUpdateServersPayloadUpdatedtools with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): McpPortalsApiUpdateServersPayloadUpdatedtools =
+        { alias = None
+          description = None
+          enabled = None
+          name = name }
+
 type McpPortalsApiUpdateServersPayload =
     { auth_credentials: Option<string>
       description: Option<string>
-      name: Option<string> }
+      name: Option<string>
+      updated_prompts: Option<list<McpPortalsApiUpdateServersPayloadUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiUpdateServersPayloadUpdatedtools>> }
     ///Creates an instance of McpPortalsApiUpdateServersPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): McpPortalsApiUpdateServersPayload =
         { auth_credentials = None
           description = None
-          name = None }
+          name = None
+          updated_prompts = None
+          updated_tools = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type McpPortalsApiUpdateServers_OKResultAuthtype =
@@ -12328,6 +12891,18 @@ type McpPortalsApiUpdateServers_OKResultAuthtype =
         | Oauth -> "oauth"
         | Bearer -> "bearer"
         | Unauthenticated -> "unauthenticated"
+
+type McpPortalsApiUpdateServers_OKResultUpdatedprompts =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
+
+type McpPortalsApiUpdateServers_OKResultUpdatedtools =
+    { alias: Option<string>
+      description: Option<string>
+      enabled: Option<bool>
+      name: string }
 
 type McpPortalsApiUpdateServers_OKResult =
     { auth_type: McpPortalsApiUpdateServers_OKResultAuthtype
@@ -12343,9 +12918,11 @@ type McpPortalsApiUpdateServers_OKResult =
       modified_at: Option<System.DateTimeOffset>
       modified_by: Option<string>
       name: string
-      prompts: Newtonsoft.Json.Linq.JArray
+      prompts: list<obj>
       status: Option<string>
-      tools: Newtonsoft.Json.Linq.JArray }
+      tools: list<obj>
+      updated_prompts: Option<list<McpPortalsApiUpdateServers_OKResultUpdatedprompts>>
+      updated_tools: Option<list<McpPortalsApiUpdateServers_OKResultUpdatedtools>> }
 
 type McpPortalsApiUpdateServers_OK =
     { result: McpPortalsApiUpdateServers_OKResult
@@ -12376,7 +12953,7 @@ type McpPortalsApiUpdateServers =
     | NotFound of payload: McpPortalsApiUpdateServers_NotFound
 
 type McpPortalsApiSyncServer_OK =
-    { result: Newtonsoft.Json.Linq.JObject
+    { result: obj
       success: bool }
 
 type McpPortalsApiSyncServer_NotFoundErrors = { code: float; message: string }
@@ -12522,6 +13099,13 @@ type AccessApplicationsTestAccessPolicies =
     ///Test Access policies response
     | OK of payload: accesspolicycheckresponse
     ///Test Access policies response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
+
+[<RequireQualifiedAccess>]
+type AccessAuthenticatorDeviceAaguidsList =
+    ///List authenticator device AAGUIDs response
+    | OK of payload: ``accessauthenticator-device-aaguidscomponents-schemas-responsecollection``
+    ///List authenticator device AAGUIDs response failure
     | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]

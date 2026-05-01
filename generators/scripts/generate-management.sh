@@ -16,6 +16,11 @@ source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 # Ensure dotnet global tools are on PATH
 export PATH="$HOME/.dotnet/tools:$PATH"
 
+# Suppress DOTNET_CLI_UI_LANGUAGE leakage into fsi script args.
+# When this env var is set, dotnet fsi passes --preferreduilang:en-US through
+# to user scripts, breaking arg parsers in the post-processors.
+unset DOTNET_CLI_UI_LANGUAGE
+
 # ─── Arguments ─────────────────────────────────────────────────────
 
 SINGLE_SERVICE=""
@@ -145,6 +150,21 @@ for service_key in $SERVICES; do
         dotnet fsi "$POSTPROCESSORS_DIR/auto-fix-types.fsx" "$GENERATED_DIR/Types.fs" "$CLIENT_FS"
     else
         dotnet fsi "$POSTPROCESSORS_DIR/auto-fix-types.fsx" "$GENERATED_DIR/Types.fs"
+    fi
+
+    # Universal: replace Newtonsoft.Json.Linq.* with obj (System.Text.Json migration)
+    print_info "Post-processing: replace Newtonsoft refs with obj..."
+    if [[ -f "$CLIENT_FS" ]]; then
+        dotnet fsi "$POSTPROCESSORS_DIR/replace-newtonsoft.fsx" "$GENERATED_DIR/Types.fs" "$CLIENT_FS"
+    else
+        dotnet fsi "$POSTPROCESSORS_DIR/replace-newtonsoft.fsx" "$GENERATED_DIR/Types.fs"
+    fi
+
+    # Universal: migrate OpenApiHttp.fs from Newtonsoft.Json + Fable.Remoting.Json to System.Text.Json
+    OPENAPIHTTP_FS="$GENERATED_DIR/OpenApiHttp.fs"
+    if [[ -f "$OPENAPIHTTP_FS" ]]; then
+        print_info "Post-processing: migrate OpenApiHttp.fs to System.Text.Json..."
+        dotnet fsi "$POSTPROCESSORS_DIR/migrate-to-system-text-json.fsx" "$OPENAPIHTTP_FS"
     fi
 
     # Universal: resolve untyped (obj) fields using OpenAPI schema

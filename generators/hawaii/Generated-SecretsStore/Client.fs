@@ -38,10 +38,32 @@ type SecretsStoreClient(httpClient: HttpClient) =
     ///<summary>
     ///Lists all the stores in an account
     ///</summary>
-    member this.SecretsStoreList(accountId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId"></param>
+    ///<param name="direction">Direction to sort objects</param>
+    ///<param name="page">Page number</param>
+    ///<param name="perPage">Number of objects to return per page</param>
+    ///<param name="order">Order secrets by values in the given field</param>
+    ///<param name="cancellationToken"></param>
+    member this.SecretsStoreList
+        (
+            accountId: string,
+            ?direction: string,
+            ?page: int,
+            ?perPage: int,
+            ?order: string,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
-                [ RequestPart.path ("account_id", accountId) ]
+                [ RequestPart.path ("account_id", accountId)
+                  if direction.IsSome then
+                      RequestPart.query ("direction", direction.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value)
+                  if order.IsSome then
+                      RequestPart.query ("order", order.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -61,7 +83,7 @@ type SecretsStoreClient(httpClient: HttpClient) =
     member this.SecretsStoreCreate
         (
             accountId: string,
-            body: list<``secrets-storecreateStoreObject``>,
+            body: ``secrets-storecreateStoreObject``,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -126,11 +148,15 @@ type SecretsStoreClient(httpClient: HttpClient) =
     ///<summary>
     ///Deletes one or more secrets
     ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="storeId"></param>
+    ///<param name="body">Request body for bulk deleting secrets</param>
+    ///<param name="cancellationToken"></param>
     member this.SecretsStoreDeleteBulk
         (
             accountId: string,
             storeId: string,
-            body: list<``secrets-storedeleteSecretObject``>,
+            body: ``secrets-storedeleteSecretsRequest``,
             ?cancellationToken: CancellationToken
         ) =
         async {
@@ -147,18 +173,50 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     cancellationToken
 
             match int status with
-            | 200 -> return SecretsStoreDeleteBulk.OK(Serializer.deserialize content)
+            | 202 -> return SecretsStoreDeleteBulk.Accepted(Serializer.deserialize content)
             | _ -> return SecretsStoreDeleteBulk.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
     ///Lists all store secrets
     ///</summary>
-    member this.SecretsStoreSecretsList(accountId: string, storeId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId"></param>
+    ///<param name="storeId"></param>
+    ///<param name="direction">Direction to sort objects</param>
+    ///<param name="page">Page number</param>
+    ///<param name="perPage">Number of objects to return per page</param>
+    ///<param name="search">Search secrets using a filter string, filtering across name and comment</param>
+    ///<param name="order">Order secrets by values in the given field</param>
+    ///<param name="scopes">Only secrets with the given scopes will be returned</param>
+    ///<param name="cancellationToken"></param>
+    member this.SecretsStoreSecretsList
+        (
+            accountId: string,
+            storeId: string,
+            ?direction: string,
+            ?page: int,
+            ?perPage: int,
+            ?search: string,
+            ?order: string,
+            ?scopes: list<``secrets-storescopes``>,
+            ?cancellationToken: CancellationToken
+        ) =
         async {
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
-                  RequestPart.path ("store_id", storeId) ]
+                  RequestPart.path ("store_id", storeId)
+                  if direction.IsSome then
+                      RequestPart.query ("direction", direction.Value)
+                  if page.IsSome then
+                      RequestPart.query ("page", page.Value)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value)
+                  if search.IsSome then
+                      RequestPart.query ("search", search.Value)
+                  if order.IsSome then
+                      RequestPart.query ("order", order.Value)
+                  if scopes.IsSome then
+                      RequestPart.query ("scopes", scopes.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync
@@ -224,7 +282,7 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     cancellationToken
 
             match int status with
-            | 200 -> return SecretsStoreSecretDeleteById.OK(Serializer.deserialize content)
+            | 202 -> return SecretsStoreSecretDeleteById.Accepted(Serializer.deserialize content)
             | _ -> return SecretsStoreSecretDeleteById.BadRequest(Serializer.deserialize content)
         }
 

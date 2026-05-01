@@ -209,13 +209,16 @@ type PagesClient(httpClient: HttpClient) =
             deploymentId: string,
             projectName: string,
             accountId: string,
+            ?force: bool,
             ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("deployment_id", deploymentId)
                   RequestPart.path ("project_name", projectName)
-                  RequestPart.path ("account_id", accountId) ]
+                  RequestPart.path ("account_id", accountId)
+                  if force.IsSome then
+                      RequestPart.query ("force", force.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.deleteAsync

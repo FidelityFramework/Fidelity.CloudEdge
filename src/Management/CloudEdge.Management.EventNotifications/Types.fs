@@ -93,13 +93,13 @@ type Errors =
 type r2v4response =
     { errors: list<Errors>
       messages: r2messages
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of r2v4response with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<Errors>,
                           messages: r2messages,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): r2v4response =
         { errors = errors
           messages = messages
@@ -161,13 +161,13 @@ type ``r2-event-notification-delete-configresponseErrors`` =
 type ``r2-event-notification-delete-configresponse`` =
     { errors: list<``r2-event-notification-delete-configresponseErrors``>
       messages: r2messages
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of r2-event-notification-delete-configresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``r2-event-notification-delete-configresponseErrors``>,
                           messages: r2messages,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``r2-event-notification-delete-configresponse`` =
         { errors = errors
           messages = messages
@@ -207,13 +207,13 @@ type ``r2-put-event-notification-configresponseErrors`` =
 type ``r2-put-event-notification-configresponse`` =
     { errors: list<``r2-put-event-notification-configresponseErrors``>
       messages: r2messages
-      result: obj
+      result: Map<string, obj>
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of r2-put-event-notification-configresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``r2-put-event-notification-configresponseErrors``>,
                           messages: r2messages,
-                          result: obj,
+                          result: Map<string, obj>,
                           success: bool): ``r2-put-event-notification-configresponse`` =
         { errors = errors
           messages = messages

@@ -28,7 +28,8 @@ type Resultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorListWorkflows_OK =
     { errors: list<Errors>
@@ -42,7 +43,7 @@ type WorListWorkflows_BadRequestErrors = { code: float; message: string }
 type WorListWorkflows_BadRequest =
     { errors: list<WorListWorkflows_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -69,7 +70,8 @@ type WorDeleteWorkflow_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDeleteWorkflow_OK =
     { errors: list<WorDeleteWorkflow_OKErrors>
@@ -83,7 +85,7 @@ type WorDeleteWorkflow_BadRequestErrors = { code: float; message: string }
 type WorDeleteWorkflow_BadRequest =
     { errors: list<WorDeleteWorkflow_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorDeleteWorkflow_NotFoundErrors = { code: float; message: string }
@@ -91,7 +93,7 @@ type WorDeleteWorkflow_NotFoundErrors = { code: float; message: string }
 type WorDeleteWorkflow_NotFound =
     { errors: list<WorDeleteWorkflow_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -131,7 +133,8 @@ type WorGetWorkflowDetails_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorGetWorkflowDetails_OK =
     { errors: list<WorGetWorkflowDetails_OKErrors>
@@ -145,7 +148,7 @@ type WorGetWorkflowDetails_BadRequestErrors = { code: float; message: string }
 type WorGetWorkflowDetails_BadRequest =
     { errors: list<WorGetWorkflowDetails_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorGetWorkflowDetails_NotFoundErrors = { code: float; message: string }
@@ -153,7 +156,7 @@ type WorGetWorkflowDetails_NotFoundErrors = { code: float; message: string }
 type WorGetWorkflowDetails_NotFound =
     { errors: list<WorGetWorkflowDetails_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -200,7 +203,8 @@ type WorCreateOrModifyWorkflow_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorCreateOrModifyWorkflow_OK =
     { errors: list<WorCreateOrModifyWorkflow_OKErrors>
@@ -214,7 +218,7 @@ type WorCreateOrModifyWorkflow_BadRequestErrors = { code: float; message: string
 type WorCreateOrModifyWorkflow_BadRequest =
     { errors: list<WorCreateOrModifyWorkflow_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -261,9 +265,8 @@ type WorListWorkflowInstances_OKResult =
 type WorListWorkflowInstances_OKResultinfo =
     { count: float
       cursor: Option<string>
-      page: Option<float>
       per_page: float
-      total_count: float }
+      total_pages: Option<float> }
 
 type WorListWorkflowInstances_OK =
     { errors: list<WorListWorkflowInstances_OKErrors>
@@ -277,7 +280,7 @@ type WorListWorkflowInstances_BadRequestErrors = { code: float; message: string 
 type WorListWorkflowInstances_BadRequest =
     { errors: list<WorListWorkflowInstances_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 type WorListWorkflowInstances_NotFoundErrors = { code: float; message: string }
@@ -285,7 +288,7 @@ type WorListWorkflowInstances_NotFoundErrors = { code: float; message: string }
 type WorListWorkflowInstances_NotFound =
     { errors: list<WorListWorkflowInstances_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -299,9 +302,9 @@ type WorListWorkflowInstances =
 
 type Instanceretention =
     { ///Specifies the duration in milliseconds or as a string like '5 minutes'.
-      error_retention: Option<Newtonsoft.Json.Linq.JToken>
+      error_retention: Option<obj>
       ///Specifies the duration in milliseconds or as a string like '5 minutes'.
-      success_retention: Option<Newtonsoft.Json.Linq.JToken> }
+      success_retention: Option<obj> }
     ///Creates an instance of Instanceretention with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Instanceretention =
         { error_retention = None
@@ -310,7 +313,7 @@ type Instanceretention =
 type WorCreateNewWorkflowInstancePayload =
     { instance_id: Option<string>
       instance_retention: Option<Instanceretention>
-      ``params``: Option<Newtonsoft.Json.Linq.JObject> }
+      ``params``: Option<obj> }
     ///Creates an instance of WorCreateNewWorkflowInstancePayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): WorCreateNewWorkflowInstancePayload =
         { instance_id = None
@@ -352,7 +355,8 @@ type WorCreateNewWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorCreateNewWorkflowInstance_OK =
     { errors: list<WorCreateNewWorkflowInstance_OKErrors>
@@ -366,7 +370,7 @@ type WorCreateNewWorkflowInstance_BadRequestErrors = { code: float; message: str
 type WorCreateNewWorkflowInstance_BadRequest =
     { errors: list<WorCreateNewWorkflowInstance_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorCreateNewWorkflowInstance_NotFoundErrors = { code: float; message: string }
@@ -374,7 +378,7 @@ type WorCreateNewWorkflowInstance_NotFoundErrors = { code: float; message: strin
 type WorCreateNewWorkflowInstance_NotFound =
     { errors: list<WorCreateNewWorkflowInstance_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -388,9 +392,9 @@ type WorCreateNewWorkflowInstance =
 
 type WorBatchCreateWorkflowInstancePayloadArrayItemInstanceretention =
     { ///Specifies the duration in milliseconds or as a string like '5 minutes'.
-      error_retention: Option<Newtonsoft.Json.Linq.JToken>
+      error_retention: Option<obj>
       ///Specifies the duration in milliseconds or as a string like '5 minutes'.
-      success_retention: Option<Newtonsoft.Json.Linq.JToken> }
+      success_retention: Option<obj> }
     ///Creates an instance of WorBatchCreateWorkflowInstancePayloadArrayItemInstanceretention with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): WorBatchCreateWorkflowInstancePayloadArrayItemInstanceretention =
         { error_retention = None
@@ -399,7 +403,7 @@ type WorBatchCreateWorkflowInstancePayloadArrayItemInstanceretention =
 type WorBatchCreateWorkflowInstancePayloadArrayItem =
     { instance_id: Option<string>
       instance_retention: Option<WorBatchCreateWorkflowInstancePayloadArrayItemInstanceretention>
-      ``params``: Option<Newtonsoft.Json.Linq.JObject> }
+      ``params``: Option<obj> }
     ///Creates an instance of WorBatchCreateWorkflowInstancePayloadArrayItem with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): WorBatchCreateWorkflowInstancePayloadArrayItem =
         { instance_id = None
@@ -442,7 +446,8 @@ type WorBatchCreateWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorBatchCreateWorkflowInstance_OK =
     { errors: list<WorBatchCreateWorkflowInstance_OKErrors>
@@ -456,7 +461,7 @@ type WorBatchCreateWorkflowInstance_BadRequestErrors = { code: float; message: s
 type WorBatchCreateWorkflowInstance_BadRequest =
     { errors: list<WorBatchCreateWorkflowInstance_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 type WorBatchCreateWorkflowInstance_NotFoundErrors = { code: float; message: string }
@@ -464,7 +469,7 @@ type WorBatchCreateWorkflowInstance_NotFoundErrors = { code: float; message: str
 type WorBatchCreateWorkflowInstance_NotFound =
     { errors: list<WorBatchCreateWorkflowInstance_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -497,7 +502,8 @@ type WorBatchTerminateWorkflowInstances_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorBatchTerminateWorkflowInstances_OK =
     { errors: list<WorBatchTerminateWorkflowInstances_OKErrors>
@@ -511,7 +517,7 @@ type WorBatchTerminateWorkflowInstances_BadRequestErrors = { code: float; messag
 type WorBatchTerminateWorkflowInstances_BadRequest =
     { errors: list<WorBatchTerminateWorkflowInstances_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorBatchTerminateWorkflowInstances_NotFoundErrors = { code: float; message: string }
@@ -519,7 +525,7 @@ type WorBatchTerminateWorkflowInstances_NotFoundErrors = { code: float; message:
 type WorBatchTerminateWorkflowInstances_NotFound =
     { errors: list<WorBatchTerminateWorkflowInstances_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -551,7 +557,8 @@ type WorStatusTerminateWorkflowInstances_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorStatusTerminateWorkflowInstances_OK =
     { errors: list<WorStatusTerminateWorkflowInstances_OKErrors>
@@ -565,7 +572,7 @@ type WorStatusTerminateWorkflowInstances_BadRequestErrors = { code: float; messa
 type WorStatusTerminateWorkflowInstances_BadRequest =
     { errors: list<WorStatusTerminateWorkflowInstances_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorStatusTerminateWorkflowInstances_NotFoundErrors = { code: float; message: string }
@@ -573,7 +580,7 @@ type WorStatusTerminateWorkflowInstances_NotFoundErrors = { code: float; message
 type WorStatusTerminateWorkflowInstances_NotFound =
     { errors: list<WorStatusTerminateWorkflowInstances_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -630,8 +637,8 @@ type Trigger = { source: Source }
 type WorDescribeWorkflowInstance_OKResult =
     { ``end``: System.DateTimeOffset
       error: Error
-      output: Newtonsoft.Json.Linq.JToken
-      ``params``: Newtonsoft.Json.Linq.JObject
+      output: obj
+      ``params``: obj
       queued: System.DateTimeOffset
       start: System.DateTimeOffset
       status: WorDescribeWorkflowInstance_OKResultStatus
@@ -646,7 +653,8 @@ type WorDescribeWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDescribeWorkflowInstance_OK =
     { errors: list<WorDescribeWorkflowInstance_OKErrors>
@@ -660,7 +668,7 @@ type WorDescribeWorkflowInstance_BadRequestErrors = { code: float; message: stri
 type WorDescribeWorkflowInstance_BadRequest =
     { errors: list<WorDescribeWorkflowInstance_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorDescribeWorkflowInstance_NotFoundErrors = { code: float; message: string }
@@ -668,7 +676,7 @@ type WorDescribeWorkflowInstance_NotFoundErrors = { code: float; message: string
 type WorDescribeWorkflowInstance_NotFound =
     { errors: list<WorDescribeWorkflowInstance_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -688,12 +696,13 @@ type WorSendEventWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorSendEventWorkflowInstance_OK =
     { errors: list<WorSendEventWorkflowInstance_OKErrors>
       messages: list<WorSendEventWorkflowInstance_OKMessages>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+      result: Option<Map<string, obj>>
       result_info: Option<WorSendEventWorkflowInstance_OKResultinfo>
       success: bool }
 
@@ -702,7 +711,7 @@ type WorSendEventWorkflowInstance_BadRequestErrors = { code: float; message: str
 type WorSendEventWorkflowInstance_BadRequest =
     { errors: list<WorSendEventWorkflowInstance_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: Map<string, obj>
       success: bool }
 
 type WorSendEventWorkflowInstance_NotFoundErrors = { code: float; message: string }
@@ -710,7 +719,7 @@ type WorSendEventWorkflowInstance_NotFoundErrors = { code: float; message: strin
 type WorSendEventWorkflowInstance_NotFound =
     { errors: list<WorSendEventWorkflowInstance_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: Map<string, obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -721,6 +730,28 @@ type WorSendEventWorkflowInstance =
     | BadRequest of payload: WorSendEventWorkflowInstance_BadRequest
     ///Workflow not found.
     | NotFound of payload: WorSendEventWorkflowInstance_NotFound
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Type =
+    | [<CompiledName "do">] Do
+    | [<CompiledName "sleep">] Sleep
+    | [<CompiledName "waitForEvent">] WaitForEvent
+    member this.Format() =
+        match this with
+        | Do -> "do"
+        | Sleep -> "sleep"
+        | WaitForEvent -> "waitForEvent"
+
+///Step to restart from. Only applicable when status is "restart".
+type From =
+    { count: Option<int>
+      name: string
+      ``type``: Option<Type> }
+    ///Creates an instance of From with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (name: string): From =
+        { count = None
+          name = name
+          ``type`` = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type WorChangeStatusWorkflowInstancePayloadStatus =
@@ -736,11 +767,13 @@ type WorChangeStatusWorkflowInstancePayloadStatus =
         | Restart -> "restart"
 
 type WorChangeStatusWorkflowInstancePayload =
-    { ///Apply action to instance.
+    { ///Step to restart from. Only applicable when status is "restart".
+      from: Option<From>
+      ///Apply action to instance.
       status: WorChangeStatusWorkflowInstancePayloadStatus }
     ///Creates an instance of WorChangeStatusWorkflowInstancePayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (status: WorChangeStatusWorkflowInstancePayloadStatus): WorChangeStatusWorkflowInstancePayload =
-        { status = status }
+        { from = None; status = status }
 
 type WorChangeStatusWorkflowInstance_OKErrors = { code: float; message: string }
 type WorChangeStatusWorkflowInstance_OKMessages = { code: float; message: string }
@@ -776,7 +809,8 @@ type WorChangeStatusWorkflowInstance_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorChangeStatusWorkflowInstance_OK =
     { errors: list<WorChangeStatusWorkflowInstance_OKErrors>
@@ -790,7 +824,7 @@ type WorChangeStatusWorkflowInstance_BadRequestErrors = { code: float; message: 
 type WorChangeStatusWorkflowInstance_BadRequest =
     { errors: list<WorChangeStatusWorkflowInstance_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorChangeStatusWorkflowInstance_NotFoundErrors = { code: float; message: string }
@@ -798,7 +832,7 @@ type WorChangeStatusWorkflowInstance_NotFoundErrors = { code: float; message: st
 type WorChangeStatusWorkflowInstance_NotFound =
     { errors: list<WorChangeStatusWorkflowInstance_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorChangeStatusWorkflowInstance_ConflictErrors = { code: float; message: string }
@@ -806,7 +840,7 @@ type WorChangeStatusWorkflowInstance_ConflictErrors = { code: float; message: st
 type WorChangeStatusWorkflowInstance_Conflict =
     { errors: list<WorChangeStatusWorkflowInstance_ConflictErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -822,6 +856,16 @@ type WorChangeStatusWorkflowInstance =
 
 type WorListWorkflowVersions_OKErrors = { code: float; message: string }
 type WorListWorkflowVersions_OKMessages = { code: float; message: string }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Language =
+    | [<CompiledName "javascript">] Javascript
+    | [<CompiledName "python">] Python
+    member this.Format() =
+        match this with
+        | Javascript -> "javascript"
+        | Python -> "python"
+
 type WorListWorkflowVersions_OKResultLimits = { steps: Option<int> }
 
 type WorListWorkflowVersions_OKResult =
@@ -829,6 +873,8 @@ type WorListWorkflowVersions_OKResult =
       created_on: System.DateTimeOffset
       has_dag: bool
       id: System.Guid
+      ///The programming language of the workflow implementation
+      language: Language
       limits: Option<WorListWorkflowVersions_OKResultLimits>
       modified_on: System.DateTimeOffset
       workflow_id: System.Guid }
@@ -838,7 +884,8 @@ type WorListWorkflowVersions_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorListWorkflowVersions_OK =
     { errors: list<WorListWorkflowVersions_OKErrors>
@@ -852,7 +899,7 @@ type WorListWorkflowVersions_BadRequestErrors = { code: float; message: string }
 type WorListWorkflowVersions_BadRequest =
     { errors: list<WorListWorkflowVersions_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -864,6 +911,16 @@ type WorListWorkflowVersions =
 
 type WorDescribeWorkflowVersions_OKErrors = { code: float; message: string }
 type WorDescribeWorkflowVersions_OKMessages = { code: float; message: string }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type WorDescribeWorkflowVersions_OKResultLanguage =
+    | [<CompiledName "javascript">] Javascript
+    | [<CompiledName "python">] Python
+    member this.Format() =
+        match this with
+        | Javascript -> "javascript"
+        | Python -> "python"
+
 type WorDescribeWorkflowVersions_OKResultLimits = { steps: Option<int> }
 
 type WorDescribeWorkflowVersions_OKResult =
@@ -871,6 +928,8 @@ type WorDescribeWorkflowVersions_OKResult =
       created_on: System.DateTimeOffset
       has_dag: bool
       id: System.Guid
+      ///The programming language of the workflow implementation
+      language: WorDescribeWorkflowVersions_OKResultLanguage
       limits: Option<WorDescribeWorkflowVersions_OKResultLimits>
       modified_on: System.DateTimeOffset
       workflow_id: System.Guid }
@@ -880,7 +939,8 @@ type WorDescribeWorkflowVersions_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDescribeWorkflowVersions_OK =
     { errors: list<WorDescribeWorkflowVersions_OKErrors>
@@ -894,7 +954,7 @@ type WorDescribeWorkflowVersions_BadRequestErrors = { code: float; message: stri
 type WorDescribeWorkflowVersions_BadRequest =
     { errors: list<WorDescribeWorkflowVersions_BadRequestErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 type WorDescribeWorkflowVersions_NotFoundErrors = { code: float; message: string }
@@ -902,7 +962,7 @@ type WorDescribeWorkflowVersions_NotFoundErrors = { code: float; message: string
 type WorDescribeWorkflowVersions_NotFound =
     { errors: list<WorDescribeWorkflowVersions_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -920,7 +980,7 @@ type WorDescribeWorkflowVersionsDag_OKMessages = { code: float; message: string 
 type WorDescribeWorkflowVersionsDag_OKResult =
     { class_name: string
       created_on: System.DateTimeOffset
-      dag: Newtonsoft.Json.Linq.JObject
+      dag: obj
       id: System.Guid
       modified_on: System.DateTimeOffset
       workflow_id: System.Guid }
@@ -930,7 +990,8 @@ type WorDescribeWorkflowVersionsDag_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDescribeWorkflowVersionsDag_OK =
     { errors: list<WorDescribeWorkflowVersionsDag_OKErrors>
@@ -944,7 +1005,7 @@ type WorDescribeWorkflowVersionsDag_NotFoundErrors = { code: float; message: str
 type WorDescribeWorkflowVersionsDag_NotFound =
     { errors: list<WorDescribeWorkflowVersionsDag_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -957,10 +1018,25 @@ type WorDescribeWorkflowVersionsDag =
 type WorDescribeWorkflowVersionsGraph_OKErrors = { code: float; message: string }
 type WorDescribeWorkflowVersionsGraph_OKMessages = { code: float; message: string }
 
+///A parsed workflow entrypoint with its step graph.
+type Workflow =
+    { class_name: string
+      functions: Map<string, string>
+      nodes: list<string>
+      ///Shape descriptor for JSON payloads.
+      payload: Option<obj> }
+
+///Versioned workflow graph payload.
+type Graph =
+    { version: float
+      ///A parsed workflow entrypoint with its step graph.
+      workflow: Workflow }
+
 type WorDescribeWorkflowVersionsGraph_OKResult =
     { class_name: string
       created_on: System.DateTimeOffset
-      dag: Newtonsoft.Json.Linq.JObject
+      ///Versioned workflow graph payload.
+      graph: Graph
       id: System.Guid
       modified_on: System.DateTimeOffset
       workflow_id: System.Guid }
@@ -970,7 +1046,8 @@ type WorDescribeWorkflowVersionsGraph_OKResultinfo =
       cursor: Option<string>
       page: Option<float>
       per_page: float
-      total_count: float }
+      total_count: float
+      total_pages: Option<float> }
 
 type WorDescribeWorkflowVersionsGraph_OK =
     { errors: list<WorDescribeWorkflowVersionsGraph_OKErrors>
@@ -984,7 +1061,7 @@ type WorDescribeWorkflowVersionsGraph_NotFoundErrors = { code: float; message: s
 type WorDescribeWorkflowVersionsGraph_NotFound =
     { errors: list<WorDescribeWorkflowVersionsGraph_NotFoundErrors>
       messages: list<string>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]

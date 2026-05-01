@@ -79,6 +79,60 @@ type SecurityCenterClient(httpClient: HttpClient) =
         }
 
     ///<summary>
+    ///Lists audit log entries for all Security Center insights in the account, showing changes to insight status and classification.
+    ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="perPage">Number of results per page.</param>
+    ///<param name="cursor">Opaque cursor for pagination. Use the cursor value from result_info of the previous response.</param>
+    ///<param name="fieldChanged">Filter by the field that was changed.</param>
+    ///<param name="changedBy">Filter by the actor that made the change.</param>
+    ///<param name="since">Filter entries changed at or after this timestamp (RFC 3339).</param>
+    ///<param name="before">Filter entries changed before this timestamp (RFC 3339).</param>
+    ///<param name="order">Sort order for results. Use 'asc' for oldest first or 'desc' for newest first.</param>
+    ///<param name="cancellationToken"></param>
+    member this.GetSecurityCenterAccountAuditLog
+        (
+            accountId: string,
+            ?perPage: int,
+            ?cursor: string,
+            ?fieldChanged: string,
+            ?changedBy: string,
+            ?since: System.DateTimeOffset,
+            ?before: System.DateTimeOffset,
+            ?order: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value)
+                  if cursor.IsSome then
+                      RequestPart.query ("cursor", cursor.Value)
+                  if fieldChanged.IsSome then
+                      RequestPart.query ("field_changed", fieldChanged.Value)
+                  if changedBy.IsSome then
+                      RequestPart.query ("changed_by", changedBy.Value)
+                  if since.IsSome then
+                      RequestPart.query ("since", since.Value)
+                  if before.IsSome then
+                      RequestPart.query ("before", before.Value)
+                  if order.IsSome then
+                      RequestPart.query ("order", order.Value) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/security-center/insights/audit-log"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return GetSecurityCenterAccountAuditLog.OK(Serializer.deserialize content)
+            | _ -> return GetSecurityCenterAccountAuditLog.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
     ///Retrieves Security Center insight counts aggregated by classification class.
     ///</summary>
     member this.GetSecurityCenterInsightCountsByClass
@@ -133,6 +187,46 @@ type SecurityCenterClient(httpClient: HttpClient) =
             match int status with
             | 200 -> return GetSecurityCenterInsightCountsByClass.OK(Serializer.deserialize content)
             | _ -> return GetSecurityCenterInsightCountsByClass.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Returns the most recent on-demand scans for the account, up to a maximum of 5. Each scan includes its ID, start time, and current status. This includes both account-wide and zone-scoped scans.
+    ///</summary>
+    member this.GetSecurityCenterAccountScans(accountId: string, ?cancellationToken: CancellationToken) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/security-center/insights/scans"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return GetSecurityCenterAccountScans.OK(Serializer.deserialize content)
+            | _ -> return GetSecurityCenterAccountScans.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Initiates an on-demand security scan for the entire account, scanning all zones associated with the account. Rate limited to 5 scans per account per 24-hour window.
+    ///</summary>
+    member this.StartSecurityCenterAccountScan(accountId: string, ?cancellationToken: CancellationToken) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId) ]
+
+            let! (status, content) =
+                OpenApiHttp.postAsync
+                    httpClient
+                    "/accounts/{account_id}/security-center/insights/scans"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return StartSecurityCenterAccountScan.OK(Serializer.deserialize content)
+            | _ -> return StartSecurityCenterAccountScan.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -247,6 +341,63 @@ type SecurityCenterClient(httpClient: HttpClient) =
             match int status with
             | 200 -> return GetSecurityCenterInsightCountsByType.OK(Serializer.deserialize content)
             | _ -> return GetSecurityCenterInsightCountsByType.BadRequest(Serializer.deserialize content)
+        }
+
+    ///<summary>
+    ///Lists audit log entries for a specific Security Center insight, showing changes to its status and classification over time.
+    ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="issueId"></param>
+    ///<param name="perPage">Number of results per page.</param>
+    ///<param name="cursor">Opaque cursor for pagination. Use the cursor value from result_info of the previous response.</param>
+    ///<param name="fieldChanged">Filter by the field that was changed.</param>
+    ///<param name="changedBy">Filter by the actor that made the change.</param>
+    ///<param name="since">Filter entries changed at or after this timestamp (RFC 3339).</param>
+    ///<param name="before">Filter entries changed before this timestamp (RFC 3339).</param>
+    ///<param name="order">Sort order for results. Use 'asc' for oldest first or 'desc' for newest first.</param>
+    ///<param name="cancellationToken"></param>
+    member this.GetSecurityCenterIssueAuditLog
+        (
+            accountId: string,
+            issueId: string,
+            ?perPage: int,
+            ?cursor: string,
+            ?fieldChanged: string,
+            ?changedBy: string,
+            ?since: System.DateTimeOffset,
+            ?before: System.DateTimeOffset,
+            ?order: string,
+            ?cancellationToken: CancellationToken
+        ) =
+        async {
+            let requestParts =
+                [ RequestPart.path ("account_id", accountId)
+                  RequestPart.path ("issue_id", issueId)
+                  if perPage.IsSome then
+                      RequestPart.query ("per_page", perPage.Value)
+                  if cursor.IsSome then
+                      RequestPart.query ("cursor", cursor.Value)
+                  if fieldChanged.IsSome then
+                      RequestPart.query ("field_changed", fieldChanged.Value)
+                  if changedBy.IsSome then
+                      RequestPart.query ("changed_by", changedBy.Value)
+                  if since.IsSome then
+                      RequestPart.query ("since", since.Value)
+                  if before.IsSome then
+                      RequestPart.query ("before", before.Value)
+                  if order.IsSome then
+                      RequestPart.query ("order", order.Value) ]
+
+            let! (status, content) =
+                OpenApiHttp.getAsync
+                    httpClient
+                    "/accounts/{account_id}/security-center/insights/{issue_id}/audit-log"
+                    requestParts
+                    cancellationToken
+
+            match int status with
+            | 200 -> return GetSecurityCenterIssueAuditLog.OK(Serializer.deserialize content)
+            | _ -> return GetSecurityCenterIssueAuditLog.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>

@@ -84,7 +84,7 @@ type Messages =
 type ``registrar-apiapi-response-collection`` =
     { errors: Option<list<Errors>>
       messages: Option<list<Messages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool>
       result_info: Option<``registrar-apiresultinfo``> }
@@ -113,13 +113,13 @@ type ``registrar-apiapi-response-commonMessages`` =
 type ``registrar-apiapi-response-common`` =
     { errors: list<``registrar-apiapi-response-commonErrors``>
       messages: list<``registrar-apiapi-response-commonMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of registrar-apiapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``registrar-apiapi-response-commonErrors``>,
                           messages: list<``registrar-apiapi-response-commonMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``registrar-apiapi-response-common`` =
         { errors = errors
           messages = messages
@@ -127,15 +127,15 @@ type ``registrar-apiapi-response-common`` =
           success = success }
 
 type ``registrar-apiapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of registrar-apiapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``registrar-apiapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -159,7 +159,7 @@ type ``registrar-apiapi-response-singleMessages`` =
 type ``registrar-apiapi-response-single`` =
     { errors: Option<list<``registrar-apiapi-response-singleErrors``>>
       messages: Option<list<``registrar-apiapi-response-singleMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool> }
     ///Creates an instance of registrar-apiapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
@@ -412,13 +412,13 @@ type ``registrar-apidomainproperties`` =
       ///Shows whether a registrar lock is in place for a domain.
       locked: Option<``registrar-apilocked``>
       ///Shows contact information for domain registrant.
-      registrant_contact: Option<Newtonsoft.Json.Linq.JToken>
+      registrant_contact: Option<obj>
       ///A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
       registry_statuses: Option<``registrar-apiregistrystatuses``>
       ///Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
       supported_tld: Option<``registrar-apisupportedtld``>
       ///Statuses for domain transfers into Cloudflare Registrar.
-      transfer_in: Option<Newtonsoft.Json.Linq.JToken>
+      transfer_in: Option<obj>
       ///Last updated.
       updated_at: Option<``registrar-apiupdatedat``> }
     ///Creates an instance of registrar-apidomainproperties with all optional fields initialized to None. The required fields are parameters of this function
@@ -485,13 +485,13 @@ type ``registrar-apidomainresponsesingleMessages`` =
 type ``registrar-apidomainresponsesingle`` =
     { errors: list<``registrar-apidomainresponsesingleErrors``>
       messages: list<``registrar-apidomainresponsesingleMessages``>
-      result: Newtonsoft.Json.Linq.JObject
+      result: Map<string, obj>
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of registrar-apidomainresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``registrar-apidomainresponsesingleErrors``>,
                           messages: list<``registrar-apidomainresponsesingleMessages``>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: Map<string, obj>,
                           success: bool): ``registrar-apidomainresponsesingle`` =
         { errors = errors
           messages = messages
@@ -630,13 +630,13 @@ type ``registrar-apidomains`` =
       ///Shows whether a registrar lock is in place for a domain.
       locked: Option<``registrar-apilocked``>
       ///Shows contact information for domain registrant.
-      registrant_contact: Option<Newtonsoft.Json.Linq.JToken>
+      registrant_contact: Option<obj>
       ///A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
       registry_statuses: Option<``registrar-apiregistrystatuses``>
       ///Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
       supported_tld: Option<``registrar-apisupportedtld``>
       ///Statuses for domain transfers into Cloudflare Registrar.
-      transfer_in: Option<Newtonsoft.Json.Linq.JToken>
+      transfer_in: Option<obj>
       ///Last updated.
       updated_at: Option<``registrar-apiupdatedat``> }
     ///Creates an instance of registrar-apidomains with all optional fields initialized to None. The required fields are parameters of this function
@@ -1194,9 +1194,9 @@ type ``registrar-apiworkflowstatus`` =
       ///Workflow-specific data for this workflow.
       ///The workflow subject is identified by `context.domain_name` for
       ///domain-centric workflows.
-      context: Option<Newtonsoft.Json.Linq.JObject>
+      context: Option<Map<string, obj>>
       created_at: System.DateTimeOffset
-      error: Option<Newtonsoft.Json.Linq.JToken>
+      error: Option<obj>
       links: ``registrar-apiworkflowlinks``
       ///Workflow lifecycle state.
       ///- `pending`: Workflow has been created but not yet started processing.

@@ -25,7 +25,7 @@ type Errors = { message: string }
 
 type AigConfigListEvaluators_BadRequest =
     { errors: list<Errors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -68,6 +68,17 @@ type Ratelimitingtechnique =
         | Fixed -> "fixed"
         | Sliding -> "sliding"
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Retrybackoff =
+    | [<CompiledName "constant">] Constant
+    | [<CompiledName "linear">] Linear
+    | [<CompiledName "exponential">] Exponential
+    member this.Format() =
+        match this with
+        | Constant -> "constant"
+        | Linear -> "linear"
+        | Exponential -> "exponential"
+
 type Usageevents = { payload: string }
 
 type Stripe =
@@ -77,11 +88,9 @@ type Stripe =
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type Workersaibillingmode =
     | [<CompiledName "postpaid">] Postpaid
-    | [<CompiledName "unified">] Unified
     member this.Format() =
         match this with
         | Postpaid -> "postpaid"
-        | Unified -> "unified"
 
 type AigConfigListGateway_OKResult =
     { authentication: Option<bool>
@@ -89,7 +98,7 @@ type AigConfigListGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -101,10 +110,16 @@ type AigConfigListGateway_OKResult =
       otel: Option<list<Otel>>
       rate_limiting_interval: int
       rate_limiting_limit: int
-      rate_limiting_technique: Ratelimitingtechnique
+      rate_limiting_technique: Option<Ratelimitingtechnique>
+      ///Backoff strategy for retry delays
+      retry_backoff: Option<Retrybackoff>
+      ///Delay between retry attempts in milliseconds (0-5000)
+      retry_delay: Option<int>
+      ///Maximum number of retry attempts for failed requests (1-5)
+      retry_max_attempts: Option<int>
       store_id: Option<string>
       stripe: Option<Stripe>
-      ///Controls how Workers AI inference calls routed through this gateway are billed
+      ///Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
       workers_ai_billing_mode: Option<Workersaibillingmode>
       zdr: Option<bool> }
 
@@ -116,7 +131,7 @@ type AigConfigListGateway_BadRequestErrors = { message: string }
 
 type AigConfigListGateway_BadRequest =
     { errors: list<AigConfigListGateway_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -145,13 +160,22 @@ type AigConfigCreateGatewayPayloadRatelimitingtechnique =
         | Sliding -> "sliding"
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type AigConfigCreateGatewayPayloadRetrybackoff =
+    | [<CompiledName "constant">] Constant
+    | [<CompiledName "linear">] Linear
+    | [<CompiledName "exponential">] Exponential
+    member this.Format() =
+        match this with
+        | Constant -> "constant"
+        | Linear -> "linear"
+        | Exponential -> "exponential"
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type AigConfigCreateGatewayPayloadWorkersaibillingmode =
     | [<CompiledName "postpaid">] Postpaid
-    | [<CompiledName "unified">] Unified
     member this.Format() =
         match this with
         | Postpaid -> "postpaid"
-        | Unified -> "unified"
 
 type AigConfigCreateGatewayPayload =
     { authentication: Option<bool>
@@ -166,8 +190,14 @@ type AigConfigCreateGatewayPayload =
       logpush_public_key: Option<string>
       rate_limiting_interval: int
       rate_limiting_limit: int
-      rate_limiting_technique: AigConfigCreateGatewayPayloadRatelimitingtechnique
-      ///Controls how Workers AI inference calls routed through this gateway are billed
+      rate_limiting_technique: Option<AigConfigCreateGatewayPayloadRatelimitingtechnique>
+      ///Backoff strategy for retry delays
+      retry_backoff: Option<AigConfigCreateGatewayPayloadRetrybackoff>
+      ///Delay between retry attempts in milliseconds (0-5000)
+      retry_delay: Option<int>
+      ///Maximum number of retry attempts for failed requests (1-5)
+      retry_max_attempts: Option<int>
+      ///Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
       workers_ai_billing_mode: Option<AigConfigCreateGatewayPayloadWorkersaibillingmode>
       zdr: Option<bool> }
     ///Creates an instance of AigConfigCreateGatewayPayload with all optional fields initialized to None. The required fields are parameters of this function
@@ -176,8 +206,7 @@ type AigConfigCreateGatewayPayload =
                           collect_logs: bool,
                           id: string,
                           rate_limiting_interval: int,
-                          rate_limiting_limit: int,
-                          rate_limiting_technique: AigConfigCreateGatewayPayloadRatelimitingtechnique): AigConfigCreateGatewayPayload =
+                          rate_limiting_limit: int): AigConfigCreateGatewayPayload =
         { authentication = None
           cache_invalidate_on_update = cache_invalidate_on_update
           cache_ttl = cache_ttl
@@ -189,7 +218,10 @@ type AigConfigCreateGatewayPayload =
           logpush_public_key = None
           rate_limiting_interval = rate_limiting_interval
           rate_limiting_limit = rate_limiting_limit
-          rate_limiting_technique = rate_limiting_technique
+          rate_limiting_technique = None
+          retry_backoff = None
+          retry_delay = None
+          retry_max_attempts = None
           workers_ai_billing_mode = None
           zdr = None }
 
@@ -226,6 +258,17 @@ type AigConfigCreateGateway_OKResultRatelimitingtechnique =
         | Fixed -> "fixed"
         | Sliding -> "sliding"
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type AigConfigCreateGateway_OKResultRetrybackoff =
+    | [<CompiledName "constant">] Constant
+    | [<CompiledName "linear">] Linear
+    | [<CompiledName "exponential">] Exponential
+    member this.Format() =
+        match this with
+        | Constant -> "constant"
+        | Linear -> "linear"
+        | Exponential -> "exponential"
+
 type AigConfigCreateGateway_OKResultStripeUsageevents = { payload: string }
 
 type AigConfigCreateGateway_OKResultStripe =
@@ -235,11 +278,9 @@ type AigConfigCreateGateway_OKResultStripe =
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type AigConfigCreateGateway_OKResultWorkersaibillingmode =
     | [<CompiledName "postpaid">] Postpaid
-    | [<CompiledName "unified">] Unified
     member this.Format() =
         match this with
         | Postpaid -> "postpaid"
-        | Unified -> "unified"
 
 type AigConfigCreateGateway_OKResult =
     { authentication: Option<bool>
@@ -247,7 +288,7 @@ type AigConfigCreateGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -259,10 +300,16 @@ type AigConfigCreateGateway_OKResult =
       otel: Option<list<AigConfigCreateGateway_OKResultOtel>>
       rate_limiting_interval: int
       rate_limiting_limit: int
-      rate_limiting_technique: AigConfigCreateGateway_OKResultRatelimitingtechnique
+      rate_limiting_technique: Option<AigConfigCreateGateway_OKResultRatelimitingtechnique>
+      ///Backoff strategy for retry delays
+      retry_backoff: Option<AigConfigCreateGateway_OKResultRetrybackoff>
+      ///Delay between retry attempts in milliseconds (0-5000)
+      retry_delay: Option<int>
+      ///Maximum number of retry attempts for failed requests (1-5)
+      retry_max_attempts: Option<int>
       store_id: Option<string>
       stripe: Option<AigConfigCreateGateway_OKResultStripe>
-      ///Controls how Workers AI inference calls routed through this gateway are billed
+      ///Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
       workers_ai_billing_mode: Option<AigConfigCreateGateway_OKResultWorkersaibillingmode>
       zdr: Option<bool> }
 
@@ -353,7 +400,7 @@ type AigConfigListDataset_BadRequestErrors = { message: string }
 
 type AigConfigListDataset_BadRequest =
     { errors: list<AigConfigListDataset_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -905,7 +952,7 @@ type AigConfigListEvaluations_BadRequestErrors = { message: string }
 
 type AigConfigListEvaluations_BadRequest =
     { errors: list<AigConfigListEvaluations_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1236,7 +1283,7 @@ type AigConfigDeleteGatewayLogs_BadRequestErrors = { message: string }
 
 type AigConfigDeleteGatewayLogs_BadRequest =
     { errors: list<AigConfigDeleteGatewayLogs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1292,7 +1339,7 @@ type AigConfigListGatewayLogs_BadRequestErrors = { message: string }
 
 type AigConfigListGatewayLogs_BadRequest =
     { errors: list<AigConfigListGatewayLogs_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1357,7 +1404,7 @@ type AigConfigPatchGatewayLogPayload =
           score = None }
 
 type AigConfigPatchGatewayLog_OK =
-    { result: Newtonsoft.Json.Linq.JObject
+    { result: obj
       success: bool }
 
 type AigConfigPatchGatewayLog_NotFoundErrors = { code: float; message: string }
@@ -1382,7 +1429,7 @@ type AigConfigGetGatewayLogRequest_NotFound =
 [<RequireQualifiedAccess>]
 type AigConfigGetGatewayLogRequest =
     ///Returns the request body from a specific log
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Not Found
     | NotFound of payload: AigConfigGetGatewayLogRequest_NotFound
 
@@ -1395,7 +1442,7 @@ type AigConfigGetGatewayLogResponse_NotFound =
 [<RequireQualifiedAccess>]
 type AigConfigGetGatewayLogResponse =
     ///Returns the response body from a specific log
-    | OK of payload: Newtonsoft.Json.Linq.JToken
+    | OK of payload: obj
     ///Not Found
     | NotFound of payload: AigConfigGetGatewayLogResponse_NotFound
 
@@ -1420,7 +1467,7 @@ type AigConfigListProviders_BadRequestErrors = { message: string }
 
 type AigConfigListProviders_BadRequest =
     { errors: list<AigConfigListProviders_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1558,8 +1605,7 @@ type AigConfigUpdateProviders =
     | NotFound of payload: AigConfigUpdateProviders_NotFound
 
 type Deployment =
-    { comment: Option<string>
-      created_at: string
+    { created_at: string
       deployment_id: string
       version_id: string }
 
@@ -1574,7 +1620,6 @@ type Active =
 
 type Version =
     { active: Active
-      comment: Option<string>
       created_at: string
       data: string
       version_id: string }
@@ -1602,7 +1647,7 @@ type AigConfigListGatewayDynamicRoutes_BadRequestErrors = { message: string }
 
 type AigConfigListGatewayDynamicRoutes_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRoutes_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1620,8 +1665,7 @@ type AigConfigPostGatewayDynamicRoutePayload =
         { elements = elements; name = name }
 
 type AigConfigPostGatewayDynamicRoute_OKResultDeployment =
-    { comment: Option<string>
-      created_at: string
+    { created_at: string
       deployment_id: string
       version_id: string }
 
@@ -1636,7 +1680,6 @@ type AigConfigPostGatewayDynamicRoute_OKResultVersionActive =
 
 type AigConfigPostGatewayDynamicRoute_OKResultVersion =
     { active: AigConfigPostGatewayDynamicRoute_OKResultVersionActive
-      comment: Option<string>
       created_at: string
       data: string
       version_id: string }
@@ -1659,7 +1702,7 @@ type AigConfigPostGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigPostGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1685,7 +1728,7 @@ type AigConfigDeleteGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigDeleteGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigDeleteGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1696,8 +1739,7 @@ type AigConfigDeleteGatewayDynamicRoute =
     | BadRequest of payload: AigConfigDeleteGatewayDynamicRoute_BadRequest
 
 type AigConfigGetGatewayDynamicRoute_OKResultDeployment =
-    { comment: Option<string>
-      created_at: string
+    { created_at: string
       deployment_id: string
       version_id: string }
 
@@ -1712,7 +1754,6 @@ type AigConfigGetGatewayDynamicRoute_OKResultVersionActive =
 
 type AigConfigGetGatewayDynamicRoute_OKResultVersion =
     { active: AigConfigGetGatewayDynamicRoute_OKResultVersionActive
-      comment: Option<string>
       created_at: string
       data: string
       version_id: string }
@@ -1735,7 +1776,7 @@ type AigConfigGetGatewayDynamicRoute_BadRequestErrors = { message: string }
 
 type AigConfigGetGatewayDynamicRoute_BadRequest =
     { errors: list<AigConfigGetGatewayDynamicRoute_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1751,8 +1792,7 @@ type AigConfigUpdateGatewayDynamicRoutePayload =
     static member Create (name: string): AigConfigUpdateGatewayDynamicRoutePayload = { name = name }
 
 type RouteDeployment =
-    { comment: Option<string>
-      created_at: string
+    { created_at: string
       deployment_id: string
       version_id: string }
 
@@ -1767,7 +1807,6 @@ type RouteVersionActive =
 
 type RouteVersion =
     { active: RouteVersionActive
-      comment: Option<string>
       created_at: string
       data: string
       version_id: string }
@@ -1806,8 +1845,7 @@ type AigConfigUpdateGatewayDynamicRoute =
     | BadRequest of payload: AigConfigUpdateGatewayDynamicRoute_BadRequest
 
 type Deployments =
-    { comment: Option<string>
-      created_at: string
+    { created_at: string
       deployment_id: string
       version_id: string }
 
@@ -1826,7 +1864,7 @@ type AigConfigListGatewayDynamicRouteDeployments_BadRequestErrors = { message: s
 
 type AigConfigListGatewayDynamicRouteDeployments_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRouteDeployments_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1837,12 +1875,10 @@ type AigConfigListGatewayDynamicRouteDeployments =
     | BadRequest of payload: AigConfigListGatewayDynamicRouteDeployments_BadRequest
 
 type AigConfigPostGatewayDynamicRouteDeploymentPayload =
-    { comment: string
-      version_id: string }
+    { version_id: string }
     ///Creates an instance of AigConfigPostGatewayDynamicRouteDeploymentPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (comment: string, version_id: string): AigConfigPostGatewayDynamicRouteDeploymentPayload =
-        { comment = comment
-          version_id = version_id }
+    static member Create (version_id: string): AigConfigPostGatewayDynamicRouteDeploymentPayload =
+        { version_id = version_id }
 
 type AigConfigPostGatewayDynamicRouteDeployment_OKResult =
     { created_at: System.DateTimeOffset
@@ -1860,7 +1896,7 @@ type AigConfigPostGatewayDynamicRouteDeployment_BadRequestErrors = { message: st
 
 type AigConfigPostGatewayDynamicRouteDeployment_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRouteDeployment_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1881,7 +1917,6 @@ type VersionsActive =
 
 type Versions =
     { active: VersionsActive
-      comment: Option<string>
       created_at: string
       data: string
       version_id: string }
@@ -1901,7 +1936,7 @@ type AigConfigListGatewayDynamicRouteVersions_BadRequestErrors = { message: stri
 
 type AigConfigListGatewayDynamicRouteVersions_BadRequest =
     { errors: list<AigConfigListGatewayDynamicRouteVersions_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: list<obj>
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1912,12 +1947,10 @@ type AigConfigListGatewayDynamicRouteVersions =
     | BadRequest of payload: AigConfigListGatewayDynamicRouteVersions_BadRequest
 
 type AigConfigPostGatewayDynamicRouteVersionPayload =
-    { comment: string
-      elements: list<string> }
+    { elements: list<string> }
     ///Creates an instance of AigConfigPostGatewayDynamicRouteVersionPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (comment: string, elements: list<string>): AigConfigPostGatewayDynamicRouteVersionPayload =
-        { comment = comment
-          elements = elements }
+    static member Create (elements: list<string>): AigConfigPostGatewayDynamicRouteVersionPayload =
+        { elements = elements }
 
 type AigConfigPostGatewayDynamicRouteVersion_OKResult =
     { created_at: System.DateTimeOffset
@@ -1935,7 +1968,7 @@ type AigConfigPostGatewayDynamicRouteVersion_BadRequestErrors = { message: strin
 
 type AigConfigPostGatewayDynamicRouteVersion_BadRequest =
     { errors: list<AigConfigPostGatewayDynamicRouteVersion_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1956,7 +1989,6 @@ type AigConfigGetGatewayDynamicRouteVersion_OKResultActive =
 
 type AigConfigGetGatewayDynamicRouteVersion_OKResult =
     { active: AigConfigGetGatewayDynamicRouteVersion_OKResultActive
-      comment: Option<string>
       created_at: string
       data: string
       elements: list<string>
@@ -1974,7 +2006,7 @@ type AigConfigGetGatewayDynamicRouteVersion_BadRequestErrors = { message: string
 
 type AigConfigGetGatewayDynamicRouteVersion_BadRequest =
     { errors: list<AigConfigGetGatewayDynamicRouteVersion_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -1989,7 +2021,7 @@ type AigConfigGetGatewayUrl_BadRequestErrors = { message: string }
 
 type AigConfigGetGatewayUrl_BadRequest =
     { errors: list<AigConfigGetGatewayUrl_BadRequestErrors>
-      result: Newtonsoft.Json.Linq.JObject
+      result: string
       success: bool }
 
 [<RequireQualifiedAccess>]
@@ -2032,6 +2064,17 @@ type AigConfigDeleteGateway_OKResultRatelimitingtechnique =
         | Fixed -> "fixed"
         | Sliding -> "sliding"
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type AigConfigDeleteGateway_OKResultRetrybackoff =
+    | [<CompiledName "constant">] Constant
+    | [<CompiledName "linear">] Linear
+    | [<CompiledName "exponential">] Exponential
+    member this.Format() =
+        match this with
+        | Constant -> "constant"
+        | Linear -> "linear"
+        | Exponential -> "exponential"
+
 type AigConfigDeleteGateway_OKResultStripeUsageevents = { payload: string }
 
 type AigConfigDeleteGateway_OKResultStripe =
@@ -2041,11 +2084,9 @@ type AigConfigDeleteGateway_OKResultStripe =
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type AigConfigDeleteGateway_OKResultWorkersaibillingmode =
     | [<CompiledName "postpaid">] Postpaid
-    | [<CompiledName "unified">] Unified
     member this.Format() =
         match this with
         | Postpaid -> "postpaid"
-        | Unified -> "unified"
 
 type AigConfigDeleteGateway_OKResult =
     { authentication: Option<bool>
@@ -2053,7 +2094,7 @@ type AigConfigDeleteGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -2065,10 +2106,16 @@ type AigConfigDeleteGateway_OKResult =
       otel: Option<list<AigConfigDeleteGateway_OKResultOtel>>
       rate_limiting_interval: int
       rate_limiting_limit: int
-      rate_limiting_technique: AigConfigDeleteGateway_OKResultRatelimitingtechnique
+      rate_limiting_technique: Option<AigConfigDeleteGateway_OKResultRatelimitingtechnique>
+      ///Backoff strategy for retry delays
+      retry_backoff: Option<AigConfigDeleteGateway_OKResultRetrybackoff>
+      ///Delay between retry attempts in milliseconds (0-5000)
+      retry_delay: Option<int>
+      ///Maximum number of retry attempts for failed requests (1-5)
+      retry_max_attempts: Option<int>
       store_id: Option<string>
       stripe: Option<AigConfigDeleteGateway_OKResultStripe>
-      ///Controls how Workers AI inference calls routed through this gateway are billed
+      ///Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
       workers_ai_billing_mode: Option<AigConfigDeleteGateway_OKResultWorkersaibillingmode>
       zdr: Option<bool> }
 
@@ -2122,6 +2169,17 @@ type AigConfigFetchGateway_OKResultRatelimitingtechnique =
         | Fixed -> "fixed"
         | Sliding -> "sliding"
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type AigConfigFetchGateway_OKResultRetrybackoff =
+    | [<CompiledName "constant">] Constant
+    | [<CompiledName "linear">] Linear
+    | [<CompiledName "exponential">] Exponential
+    member this.Format() =
+        match this with
+        | Constant -> "constant"
+        | Linear -> "linear"
+        | Exponential -> "exponential"
+
 type AigConfigFetchGateway_OKResultStripeUsageevents = { payload: string }
 
 type AigConfigFetchGateway_OKResultStripe =
@@ -2131,11 +2189,9 @@ type AigConfigFetchGateway_OKResultStripe =
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type AigConfigFetchGateway_OKResultWorkersaibillingmode =
     | [<CompiledName "postpaid">] Postpaid
-    | [<CompiledName "unified">] Unified
     member this.Format() =
         match this with
         | Postpaid -> "postpaid"
-        | Unified -> "unified"
 
 type AigConfigFetchGateway_OKResult =
     { authentication: Option<bool>
@@ -2143,7 +2199,7 @@ type AigConfigFetchGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -2155,10 +2211,16 @@ type AigConfigFetchGateway_OKResult =
       otel: Option<list<AigConfigFetchGateway_OKResultOtel>>
       rate_limiting_interval: int
       rate_limiting_limit: int
-      rate_limiting_technique: AigConfigFetchGateway_OKResultRatelimitingtechnique
+      rate_limiting_technique: Option<AigConfigFetchGateway_OKResultRatelimitingtechnique>
+      ///Backoff strategy for retry delays
+      retry_backoff: Option<AigConfigFetchGateway_OKResultRetrybackoff>
+      ///Delay between retry attempts in milliseconds (0-5000)
+      retry_delay: Option<int>
+      ///Maximum number of retry attempts for failed requests (1-5)
+      retry_max_attempts: Option<int>
       store_id: Option<string>
       stripe: Option<AigConfigFetchGateway_OKResultStripe>
-      ///Controls how Workers AI inference calls routed through this gateway are billed
+      ///Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
       workers_ai_billing_mode: Option<AigConfigFetchGateway_OKResultWorkersaibillingmode>
       zdr: Option<bool> }
 
@@ -2218,6 +2280,17 @@ type AigConfigUpdateGatewayPayloadRatelimitingtechnique =
         | Fixed -> "fixed"
         | Sliding -> "sliding"
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type AigConfigUpdateGatewayPayloadRetrybackoff =
+    | [<CompiledName "constant">] Constant
+    | [<CompiledName "linear">] Linear
+    | [<CompiledName "exponential">] Exponential
+    member this.Format() =
+        match this with
+        | Constant -> "constant"
+        | Linear -> "linear"
+        | Exponential -> "exponential"
+
 type AigConfigUpdateGatewayPayloadStripeUsageevents =
     { payload: string }
     ///Creates an instance of AigConfigUpdateGatewayPayloadStripeUsageevents with all optional fields initialized to None. The required fields are parameters of this function
@@ -2234,18 +2307,16 @@ type AigConfigUpdateGatewayPayloadStripe =
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type AigConfigUpdateGatewayPayloadWorkersaibillingmode =
     | [<CompiledName "postpaid">] Postpaid
-    | [<CompiledName "unified">] Unified
     member this.Format() =
         match this with
         | Postpaid -> "postpaid"
-        | Unified -> "unified"
 
 type AigConfigUpdateGatewayPayload =
     { authentication: Option<bool>
       cache_invalidate_on_update: bool
       cache_ttl: int
       collect_logs: bool
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       log_management: Option<int>
       log_management_strategy: Option<AigConfigUpdateGatewayPayloadLogmanagementstrategy>
       logpush: Option<bool>
@@ -2253,10 +2324,16 @@ type AigConfigUpdateGatewayPayload =
       otel: Option<list<AigConfigUpdateGatewayPayloadOtel>>
       rate_limiting_interval: int
       rate_limiting_limit: int
-      rate_limiting_technique: AigConfigUpdateGatewayPayloadRatelimitingtechnique
+      rate_limiting_technique: Option<AigConfigUpdateGatewayPayloadRatelimitingtechnique>
+      ///Backoff strategy for retry delays
+      retry_backoff: Option<AigConfigUpdateGatewayPayloadRetrybackoff>
+      ///Delay between retry attempts in milliseconds (0-5000)
+      retry_delay: Option<int>
+      ///Maximum number of retry attempts for failed requests (1-5)
+      retry_max_attempts: Option<int>
       store_id: Option<string>
       stripe: Option<AigConfigUpdateGatewayPayloadStripe>
-      ///Controls how Workers AI inference calls routed through this gateway are billed
+      ///Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
       workers_ai_billing_mode: Option<AigConfigUpdateGatewayPayloadWorkersaibillingmode>
       zdr: Option<bool> }
     ///Creates an instance of AigConfigUpdateGatewayPayload with all optional fields initialized to None. The required fields are parameters of this function
@@ -2264,8 +2341,7 @@ type AigConfigUpdateGatewayPayload =
                           cache_ttl: int,
                           collect_logs: bool,
                           rate_limiting_interval: int,
-                          rate_limiting_limit: int,
-                          rate_limiting_technique: AigConfigUpdateGatewayPayloadRatelimitingtechnique): AigConfigUpdateGatewayPayload =
+                          rate_limiting_limit: int): AigConfigUpdateGatewayPayload =
         { authentication = None
           cache_invalidate_on_update = cache_invalidate_on_update
           cache_ttl = cache_ttl
@@ -2278,7 +2354,10 @@ type AigConfigUpdateGatewayPayload =
           otel = None
           rate_limiting_interval = rate_limiting_interval
           rate_limiting_limit = rate_limiting_limit
-          rate_limiting_technique = rate_limiting_technique
+          rate_limiting_technique = None
+          retry_backoff = None
+          retry_delay = None
+          retry_max_attempts = None
           store_id = None
           stripe = None
           workers_ai_billing_mode = None
@@ -2317,6 +2396,17 @@ type AigConfigUpdateGateway_OKResultRatelimitingtechnique =
         | Fixed -> "fixed"
         | Sliding -> "sliding"
 
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type AigConfigUpdateGateway_OKResultRetrybackoff =
+    | [<CompiledName "constant">] Constant
+    | [<CompiledName "linear">] Linear
+    | [<CompiledName "exponential">] Exponential
+    member this.Format() =
+        match this with
+        | Constant -> "constant"
+        | Linear -> "linear"
+        | Exponential -> "exponential"
+
 type AigConfigUpdateGateway_OKResultStripeUsageevents = { payload: string }
 
 type AigConfigUpdateGateway_OKResultStripe =
@@ -2326,11 +2416,9 @@ type AigConfigUpdateGateway_OKResultStripe =
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type AigConfigUpdateGateway_OKResultWorkersaibillingmode =
     | [<CompiledName "postpaid">] Postpaid
-    | [<CompiledName "unified">] Unified
     member this.Format() =
         match this with
         | Postpaid -> "postpaid"
-        | Unified -> "unified"
 
 type AigConfigUpdateGateway_OKResult =
     { authentication: Option<bool>
@@ -2338,7 +2426,7 @@ type AigConfigUpdateGateway_OKResult =
       cache_ttl: int
       collect_logs: bool
       created_at: System.DateTimeOffset
-      dlp: Option<Newtonsoft.Json.Linq.JToken>
+      dlp: Option<obj>
       ///gateway id
       id: string
       is_default: Option<bool>
@@ -2350,10 +2438,16 @@ type AigConfigUpdateGateway_OKResult =
       otel: Option<list<AigConfigUpdateGateway_OKResultOtel>>
       rate_limiting_interval: int
       rate_limiting_limit: int
-      rate_limiting_technique: AigConfigUpdateGateway_OKResultRatelimitingtechnique
+      rate_limiting_technique: Option<AigConfigUpdateGateway_OKResultRatelimitingtechnique>
+      ///Backoff strategy for retry delays
+      retry_backoff: Option<AigConfigUpdateGateway_OKResultRetrybackoff>
+      ///Delay between retry attempts in milliseconds (0-5000)
+      retry_delay: Option<int>
+      ///Maximum number of retry attempts for failed requests (1-5)
+      retry_max_attempts: Option<int>
       store_id: Option<string>
       stripe: Option<AigConfigUpdateGateway_OKResultStripe>
-      ///Controls how Workers AI inference calls routed through this gateway are billed
+      ///Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
       workers_ai_billing_mode: Option<AigConfigUpdateGateway_OKResultWorkersaibillingmode>
       zdr: Option<bool> }
 

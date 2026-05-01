@@ -73,25 +73,28 @@ type Resultinfo =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Resultinfo =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``pagesapi-response-collection`` =
-    { errors: list<Errors>
-      messages: list<Messages>
+    { errors: Option<list<Errors>>
+      messages: Option<list<Messages>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       result_info: Option<Resultinfo> }
     ///Creates an instance of pagesapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<Errors>, messages: list<Messages>, success: bool): ``pagesapi-response-collection`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``pagesapi-response-collection`` =
+        { errors = None
+          messages = None
+          success = None
           result_info = None }
 
 type ``pagesapi-response-commonErrorsSource`` =
@@ -1066,13 +1069,16 @@ type ``pages-project-get-projectsresponseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of pages-project-get-projectsresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``pages-project-get-projectsresponseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``pages-project-get-projectsresponse`` =
     { errors: list<``pages-project-get-projectsresponseErrors``>
@@ -1334,13 +1340,16 @@ type ``pages-deployment-get-deploymentsresponseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of pages-deployment-get-deploymentsresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``pages-deployment-get-deploymentsresponseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``pages-deployment-get-deploymentsresponse`` =
     { errors: list<``pages-deployment-get-deploymentsresponseErrors``>
@@ -1702,13 +1711,16 @@ type ``pages-domains-get-domainsresponseResultinfo`` =
       ///Number of results per page of results.
       per_page: Option<float>
       ///Total results available without any search parameters.
-      total_count: Option<float> }
+      total_count: Option<float>
+      ///The number of total pages in the entire result set.
+      total_pages: Option<float> }
     ///Creates an instance of pages-domains-get-domainsresponseResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``pages-domains-get-domainsresponseResultinfo`` =
         { count = None
           page = None
           per_page = None
-          total_count = None }
+          total_count = None
+          total_pages = None }
 
 type ``pages-domains-get-domainsresponse`` =
     { errors: list<``pages-domains-get-domainsresponseErrors``>

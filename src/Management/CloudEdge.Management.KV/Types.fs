@@ -20,8 +20,7 @@ type ``workers-kvbulkwriteArrayItem`` =
       expiration_ttl: Option<``workers-kvexpirationttl``>
       ///A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
       key: ``workers-kvkeynamebulk``
-      ///Arbitrary JSON that is associated with a key.
-      metadata: Option<``workers-kvlistmetadata``>
+      metadata: Option<obj>
       ///A UTF-8 encoded string to be stored, up to 25 MiB in length.
       value: string }
     ///Creates an instance of workers-kvbulkwriteArrayItem with all optional fields initialized to None. The required fields are parameters of this function
@@ -71,16 +70,16 @@ type Messages =
     static member Create (code: int, message: string): Messages = { code = code; message = message }
 
 type ``workers-kvapi-response-collection`` =
-    { errors: list<Errors>
-      messages: list<Messages>
+    { errors: Option<list<Errors>>
+      messages: Option<list<Messages>>
       ///Whether the API call was successful.
-      success: bool
+      success: Option<bool>
       result_info: Option<``workers-kvresultinfo``> }
     ///Creates an instance of workers-kvapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<Errors>, messages: list<Messages>, success: bool): ``workers-kvapi-response-collection`` =
-        { errors = errors
-          messages = messages
-          success = success
+    static member Create (): ``workers-kvapi-response-collection`` =
+        { errors = None
+          messages = None
+          success = None
           result_info = None }
 
 type ``workers-kvapi-response-commonErrors`` =
@@ -184,8 +183,7 @@ type ``workers-kvcursorresultinfo`` =
 type ``workers-kvkey`` =
     { ///The time, measured in number of seconds since the UNIX epoch, at which the key will expire. This property is omitted for keys that will not expire.
       expiration: Option<float>
-      ///Arbitrary JSON that is associated with a key.
-      metadata: Option<``workers-kvlistmetadata``>
+      metadata: Option<obj>
       ///A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
       name: ``workers-kvkeyname`` }
     ///Creates an instance of workers-kvkey with all optional fields initialized to None. The required fields are parameters of this function
@@ -452,8 +450,7 @@ type ``workers-kv-namespace-read-the-metadata-for-a-keyresponse`` =
       messages: list<``workers-kv-namespace-read-the-metadata-for-a-keyresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      ///Arbitrary JSON that is associated with a key.
-      result: Option<``workers-kvlistmetadata``> }
+      result: Option<obj> }
     ///Creates an instance of workers-kv-namespace-read-the-metadata-for-a-keyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``workers-kv-namespace-read-the-metadata-for-a-keyresponseErrors``>,
                           messages: list<``workers-kv-namespace-read-the-metadata-for-a-keyresponseMessages``>,

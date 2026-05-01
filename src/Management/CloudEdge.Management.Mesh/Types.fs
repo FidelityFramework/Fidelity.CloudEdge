@@ -165,14 +165,14 @@ type ``tunnelapi-response-common`` =
           success = success }
 
 type ``tunnelapi-response-common-failure`` =
-    { errors: obj
-      messages: obj
+    { errors: list<Errors>
+      messages: list<Messages>
       result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of tunnelapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: obj,
-                          messages: obj,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
                           result: obj,
                           success: bool): ``tunnelapi-response-common-failure`` =
         { errors = errors
@@ -238,7 +238,7 @@ type ``tunnelschemas-connection`` =
       ///Timestamp of when the connection was established.
       opened_at: Option<System.DateTimeOffset>
       ///The public IP address of the host running cloudflared.
-      origin_ip: Option<obj>
+      origin_ip: Option<string>
       ///UUID of the Cloudflare Tunnel connection.
       uuid: Option<tunnelconnectionid> }
     ///Creates an instance of tunnelschemas-connection with all optional fields initialized to None. The required fields are parameters of this function
@@ -264,7 +264,7 @@ type ``tunnelschemas-warp-connector-connection`` =
       ///Timestamp of when the connection was established.
       opened_at: Option<System.DateTimeOffset>
       ///The public IP address of the host running WARP Connector.
-      origin_ip: Option<obj> }
+      origin_ip: Option<string> }
     ///Creates an instance of tunnelschemas-warp-connector-connection with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``tunnelschemas-warp-connector-connection`` =
         { client_id = None

@@ -122,7 +122,7 @@ type Messages =
 type ``tunnelapi-response-collection`` =
     { errors: Option<list<Errors>>
       messages: Option<list<Messages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+      result: Option<obj>
       ///Whether the API call was successful
       success: Option<bool>
       result_info: Option<tunnelresultinfo> }
@@ -151,13 +151,13 @@ type ``tunnelapi-response-commonMessages`` =
 type ``tunnelapi-response-common`` =
     { errors: list<``tunnelapi-response-commonErrors``>
       messages: list<``tunnelapi-response-commonMessages``>
-      result: Newtonsoft.Json.Linq.JToken
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of tunnelapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``tunnelapi-response-commonErrors``>,
                           messages: list<``tunnelapi-response-commonMessages``>,
-                          result: Newtonsoft.Json.Linq.JToken,
+                          result: obj,
                           success: bool): ``tunnelapi-response-common`` =
         { errors = errors
           messages = messages
@@ -165,15 +165,15 @@ type ``tunnelapi-response-common`` =
           success = success }
 
 type ``tunnelapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of tunnelapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``tunnelapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -195,13 +195,13 @@ type tunnelemptyresponseMessages =
 type tunnelemptyresponse =
     { errors: list<tunnelemptyresponseErrors>
       messages: list<tunnelemptyresponseMessages>
-      result: Newtonsoft.Json.Linq.JObject
+      result: obj
       ///Whether the API call was successful
       success: bool }
     ///Creates an instance of tunnelemptyresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<tunnelemptyresponseErrors>,
                           messages: list<tunnelemptyresponseMessages>,
-                          result: Newtonsoft.Json.Linq.JObject,
+                          result: obj,
                           success: bool): tunnelemptyresponse =
         { errors = errors
           messages = messages
@@ -238,7 +238,7 @@ type ``tunnelschemas-connection`` =
       ///Timestamp of when the connection was established.
       opened_at: Option<System.DateTimeOffset>
       ///The public IP address of the host running cloudflared.
-      origin_ip: Option<Newtonsoft.Json.Linq.JToken>
+      origin_ip: Option<string>
       ///UUID of the Cloudflare Tunnel connection.
       uuid: Option<tunnelconnectionid> }
     ///Creates an instance of tunnelschemas-connection with all optional fields initialized to None. The required fields are parameters of this function
@@ -264,7 +264,7 @@ type ``tunnelschemas-warp-connector-connection`` =
       ///Timestamp of when the connection was established.
       opened_at: Option<System.DateTimeOffset>
       ///The public IP address of the host running WARP Connector.
-      origin_ip: Option<Newtonsoft.Json.Linq.JToken> }
+      origin_ip: Option<string> }
     ///Creates an instance of tunnelschemas-warp-connector-connection with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``tunnelschemas-warp-connector-connection`` =
         { client_id = None
@@ -472,7 +472,7 @@ type tunnelwarpconnectortunnel =
       ///UUID of the tunnel.
       id: Option<tunneltunnelid>
       ///Metadata associated with the tunnel.
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      metadata: Option<obj>
       ///A user-friendly name for a tunnel.
       name: Option<tunneltunnelname>
       ///The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).

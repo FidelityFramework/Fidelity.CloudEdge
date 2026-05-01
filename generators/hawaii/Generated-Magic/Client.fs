@@ -2703,10 +2703,15 @@ type MagicClient(httpClient: HttpClient) =
     ///<summary>
     ///List Connectors
     ///</summary>
-    member this.MconnConnectorList(accountId: string, ?cancellationToken: CancellationToken) =
+    ///<param name="accountId"></param>
+    ///<param name="deviceType">Filter connectors by device type.</param>
+    ///<param name="cancellationToken"></param>
+    member this.MconnConnectorList(accountId: string, ?deviceType: string, ?cancellationToken: CancellationToken) =
         async {
             let requestParts =
-                [ RequestPart.path ("account_id", accountId) ]
+                [ RequestPart.path ("account_id", accountId)
+                  if deviceType.IsSome then
+                      RequestPart.query ("device_type", deviceType.Value) ]
 
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/magic/connectors" requestParts cancellationToken

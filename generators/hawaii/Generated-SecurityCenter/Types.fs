@@ -129,15 +129,15 @@ type ``security-centerapi-response-common`` =
           success = success }
 
 type ``security-centerapi-response-common-failure`` =
-    { errors: Newtonsoft.Json.Linq.JToken
-      messages: Newtonsoft.Json.Linq.JToken
-      result: Newtonsoft.Json.Linq.JObject
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: obj
       ///Whether the API call was successful.
       success: bool }
     ///Creates an instance of security-centerapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: Newtonsoft.Json.Linq.JToken,
-                          messages: Newtonsoft.Json.Linq.JToken,
-                          result: Newtonsoft.Json.Linq.JObject,
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: obj,
                           success: bool): ``security-centerapi-response-common-failure`` =
         { errors = errors
           messages = messages
@@ -188,6 +188,110 @@ type ``security-centerapi-response-single`` =
         { errors = None
           messages = None
           success = None }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type Fieldchanged =
+    | [<CompiledName "status">] Status
+    | [<CompiledName "user_classification">] User_classification
+    member this.Format() =
+        match this with
+        | Status -> "status"
+        | User_classification -> "user_classification"
+
+type ``security-centerauditLog`` =
+    { ///The timestamp when the change occurred.
+      changed_at: Option<System.DateTimeOffset>
+      ///The actor that made the change. 'system' for automated changes, or a user identifier.
+      changed_by: Option<string>
+      ///The value of the field after the change. Null if the field was cleared.
+      current_value: Option<string>
+      ///The field that was changed.
+      field_changed: Option<Fieldchanged>
+      ///UUIDv7 identifier for the audit log entry, time-ordered.
+      id: Option<System.Guid>
+      ///The ID of the insight this audit log entry relates to.
+      issue_id: Option<string>
+      ///The value of the field before the change. Null if the field was not previously set.
+      previous_value: Option<string>
+      ///Optional rationale provided for the change.
+      rationale: Option<string>
+      ///The zone ID associated with the insight. Only present for zone-level insights.
+      zone_id: Option<int64> }
+    ///Creates an instance of security-centerauditLog with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``security-centerauditLog`` =
+        { changed_at = None
+          changed_by = None
+          current_value = None
+          field_changed = None
+          id = None
+          issue_id = None
+          previous_value = None
+          rationale = None
+          zone_id = None }
+
+type ``security-centerauditLogResponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of security-centerauditLogResponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``security-centerauditLogResponseErrorsSource`` = { pointer = None }
+
+type ``security-centerauditLogResponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``security-centerauditLogResponseErrorsSource``> }
+    ///Creates an instance of security-centerauditLogResponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``security-centerauditLogResponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``security-centerauditLogResponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of security-centerauditLogResponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``security-centerauditLogResponseMessagesSource`` = { pointer = None }
+
+type ``security-centerauditLogResponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``security-centerauditLogResponseMessagesSource``> }
+    ///Creates an instance of security-centerauditLogResponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``security-centerauditLogResponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type Resultinfo =
+    { ///The number of items in the current result set.
+      count: Option<int>
+      ///Opaque cursor for the next page of results. Absent when there are no more results.
+      cursor: Option<string>
+      ///The requested number of items per page.
+      per_page: Option<int> }
+    ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Resultinfo =
+        { count = None
+          cursor = None
+          per_page = None }
+
+type ``security-centerauditLogResponse`` =
+    { errors: list<``security-centerauditLogResponseErrors``>
+      messages: list<``security-centerauditLogResponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<list<``security-centerauditLog``>>
+      result_info: Option<Resultinfo> }
+    ///Creates an instance of security-centerauditLogResponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``security-centerauditLogResponseErrors``>,
+                          messages: list<``security-centerauditLogResponseMessages``>,
+                          success: bool): ``security-centerauditLogResponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None
+          result_info = None }
 
 type Payload =
     { ///Describes the method used to detect insight.
@@ -252,6 +356,36 @@ type ``security-centerissue`` =
           subject = None
           timestamp = None
           user_classification = None }
+
+type ``security-centernewScanResponse`` =
+    { ///An opaque identifier for the initiated scan.
+      scan_id: Option<string> }
+    ///Creates an instance of security-centernewScanResponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``security-centernewScanResponse`` = { scan_id = None }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type ``security-centerscanStatusResponseStatus`` =
+    | [<CompiledName "in_progress">] In_progress
+    | [<CompiledName "completed">] Completed
+    member this.Format() =
+        match this with
+        | In_progress -> "in_progress"
+        | Completed -> "completed"
+
+type ``security-centerscanStatusResponse`` =
+    { ///An opaque identifier for the scan.
+      scan_id: string
+      ///The time at which the scan was started, in RFC 3339 format.
+      started_at: System.DateTimeOffset
+      ///The current status of the scan.
+      status: ``security-centerscanStatusResponseStatus`` }
+    ///Creates an instance of security-centerscanStatusResponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (scan_id: string,
+                          started_at: System.DateTimeOffset,
+                          status: ``security-centerscanStatusResponseStatus``): ``security-centerscanStatusResponse`` =
+        { scan_id = scan_id
+          started_at = started_at
+          status = status }
 
 type ``security-centeruserClassificationUpdate`` =
     { ///User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.
@@ -382,6 +516,104 @@ type ``get-security-center-insightsresponse`` =
           success = success
           result = None }
 
+type ``get-security-center-account-scansresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of get-security-center-account-scansresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``get-security-center-account-scansresponseErrorsSource`` = { pointer = None }
+
+type ``get-security-center-account-scansresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``get-security-center-account-scansresponseErrorsSource``> }
+    ///Creates an instance of get-security-center-account-scansresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-security-center-account-scansresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``get-security-center-account-scansresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of get-security-center-account-scansresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``get-security-center-account-scansresponseMessagesSource`` = { pointer = None }
+
+type ``get-security-center-account-scansresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``get-security-center-account-scansresponseMessagesSource``> }
+    ///Creates an instance of get-security-center-account-scansresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-security-center-account-scansresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``get-security-center-account-scansresponse`` =
+    { errors: list<``get-security-center-account-scansresponseErrors``>
+      messages: list<``get-security-center-account-scansresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<list<``security-centerscanStatusResponse``>> }
+    ///Creates an instance of get-security-center-account-scansresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``get-security-center-account-scansresponseErrors``>,
+                          messages: list<``get-security-center-account-scansresponseMessages``>,
+                          success: bool): ``get-security-center-account-scansresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``start-security-center-account-scanresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of start-security-center-account-scanresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``start-security-center-account-scanresponseErrorsSource`` = { pointer = None }
+
+type ``start-security-center-account-scanresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``start-security-center-account-scanresponseErrorsSource``> }
+    ///Creates an instance of start-security-center-account-scanresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``start-security-center-account-scanresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``start-security-center-account-scanresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of start-security-center-account-scanresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``start-security-center-account-scanresponseMessagesSource`` = { pointer = None }
+
+type ``start-security-center-account-scanresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``start-security-center-account-scanresponseMessagesSource``> }
+    ///Creates an instance of start-security-center-account-scanresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``start-security-center-account-scanresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``start-security-center-account-scanresponse`` =
+    { errors: list<``start-security-center-account-scanresponseErrors``>
+      messages: list<``start-security-center-account-scanresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<``security-centernewScanResponse``> }
+    ///Creates an instance of start-security-center-account-scanresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``start-security-center-account-scanresponseErrors``>,
+                          messages: list<``start-security-center-account-scanresponseMessages``>,
+                          success: bool): ``start-security-center-account-scanresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
 type ``get-security-center-insight-contextresponseErrorsSource`` =
     { pointer: Option<string> }
     ///Creates an instance of get-security-center-insight-contextresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
@@ -421,7 +653,7 @@ type ``get-security-center-insight-contextresponse`` =
       messages: list<``get-security-center-insight-contextresponseMessages``>
       ///Whether the API call was successful.
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of get-security-center-insight-contextresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``get-security-center-insight-contextresponseErrors``>,
                           messages: list<``get-security-center-insight-contextresponseMessages``>,
@@ -439,9 +671,30 @@ type GetSecurityCenterInsights =
     | BadRequest of payload: ``security-centerapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
+type GetSecurityCenterAccountAuditLog =
+    ///The request was successful.
+    | OK of payload: ``security-centerauditLogResponse``
+    ///A client error occurred.
+    | BadRequest of payload: ``security-centerapi-response-common-failure``
+
+[<RequireQualifiedAccess>]
 type GetSecurityCenterInsightCountsByClass =
     ///The request was successful.
     | OK of payload: ``security-centervalueCountsResponse``
+    ///A client error occurred.
+    | BadRequest of payload: ``security-centerapi-response-common-failure``
+
+[<RequireQualifiedAccess>]
+type GetSecurityCenterAccountScans =
+    ///The request was successful.
+    | OK of payload: ``get-security-center-account-scansresponse``
+    ///A client error occurred.
+    | BadRequest of payload: ``security-centerapi-response-common-failure``
+
+[<RequireQualifiedAccess>]
+type StartSecurityCenterAccountScan =
+    ///The request was successful.
+    | OK of payload: ``start-security-center-account-scanresponse``
     ///A client error occurred.
     | BadRequest of payload: ``security-centerapi-response-common-failure``
 
@@ -456,6 +709,13 @@ type GetSecurityCenterInsightCountsBySeverity =
 type GetSecurityCenterInsightCountsByType =
     ///The request was successful.
     | OK of payload: ``security-centervalueCountsResponse``
+    ///A client error occurred.
+    | BadRequest of payload: ``security-centerapi-response-common-failure``
+
+[<RequireQualifiedAccess>]
+type GetSecurityCenterIssueAuditLog =
+    ///The request was successful.
+    | OK of payload: ``security-centerauditLogResponse``
     ///A client error occurred.
     | BadRequest of payload: ``security-centerapi-response-common-failure``
 

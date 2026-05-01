@@ -15,6 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Fable.Core" Version="4.3.0" />
     <PackageReference Include="Fable.Promise" Version="3.2.0" />
+    <PackageReference Include="Glutinum.Types" Version="0.1.0" />
   </ItemGroup>
 
 </Project>

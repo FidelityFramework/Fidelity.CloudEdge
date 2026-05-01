@@ -128,9 +128,13 @@ The Agents framework (Agent base class, Think chat subclass, lifecycle hooks, `@
 
 Multi-tenant workflow dispatch (`createDynamicWorkflowEntrypoint`, `wrapWorkflowBinding`, `dispatchWorkflow`, `DurableWorkflowBinding`). Roughly 300 lines of TypeScript on the Cloudflare side. Glutinum binding target. The use case is platforms that route workflow execution to per-tenant code at runtime — a pattern that previously had to be hand-rolled in any non-Cloudflare stack.
 
-**G5. Dynamic Workers management endpoints (if exposed)**
+**G5. Dynamic Workers management endpoints — NOT EXPOSED IN OPENAPI**
 
-The Dynamic Workers product (open beta on Workers Paid plan since March 24, 2026) provides isolate-based sandbox execution for AI-generated code. If the Cloudflare OpenAPI spec exposes Dynamic Workers management operations (provisioning, quota configuration, registration), these become a new Hawaii-generated service. To verify: scan the current OpenAPI spec for `dynamic-workers` paths.
+Investigation result (May 2026): a scan of the current Cloudflare OpenAPI spec (`https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.json`, 1838 paths total) found no `dynamic-workers` paths and no isolate-management endpoints. The Dynamic Workers product (open beta on Workers Paid plan since March 24, 2026) is configured through wrangler.jsonc directives and the new `cf` unified CLI rather than through REST APIs. There is no management binding to add for this gap — the gap is intentionally outside the OpenAPI surface.
+
+The closest related surface that *is* in OpenAPI is Workers-for-Platforms dispatch namespaces (`/accounts/{account_id}/workers/dispatch/namespaces/...`) — these are tenant-isolated Worker script management and were already covered by the existing Workers binding. The Workers script secrets endpoints (newly documented in the spec) are also covered by the Workers binding's regeneration in G2.
+
+**Status:** G5 closed as "no new binding needed; existing Workers binding covers adjacent W4P and secrets surface."
 
 ### Pipeline Improvements (orthogonal to coverage)
 

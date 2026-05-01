@@ -400,7 +400,7 @@ type AIGatewayClient(httpClient: HttpClient) =
             gatewayId: string,
             ?orderBy: string,
             ?orderByDirection: string,
-            ?filters: string,
+            ?filters: list<obj>,
             ?limit: int,
             ?cancellationToken: CancellationToken
         ) =
@@ -441,7 +441,7 @@ type AIGatewayClient(httpClient: HttpClient) =
             ?perPage: int,
             ?orderBy: string,
             ?orderByDirection: string,
-            ?filters: string,
+            ?filters: list<obj>,
             ?metaInfo: bool,
             ?direction: string,
             ?startDate: System.DateTimeOffset,

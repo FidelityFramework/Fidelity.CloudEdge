@@ -139,7 +139,7 @@ type ``organizations-apiTenant`` =
       tenant_labels: list<string>
       tenant_metadata: Tenantmetadata
       tenant_name: string
-      tenant_network: obj
+      tenant_network: Map<string, obj>
       tenant_status: string
       tenant_tag: string
       tenant_type: string
@@ -151,7 +151,7 @@ type ``organizations-apiTenant`` =
                           tenant_labels: list<string>,
                           tenant_metadata: Tenantmetadata,
                           tenant_name: string,
-                          tenant_network: obj,
+                          tenant_network: Map<string, obj>,
                           tenant_status: string,
                           tenant_tag: string,
                           tenant_type: string,
@@ -181,13 +181,13 @@ type ``organizations-apiTenantMembership`` =
 
 type ``organizations-apiTenantUnit`` =
     { unit_memberships: obj
-      unit_metadata: obj
+      unit_metadata: Map<string, obj>
       unit_name: string
       unit_status: string
       unit_tag: string }
     ///Creates an instance of organizations-apiTenantUnit with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (unit_memberships: obj,
-                          unit_metadata: obj,
+    static member Create (unit_memberships: list<obj>,
+                          unit_metadata: Map<string, obj>,
                           unit_name: string,
                           unit_status: string,
                           unit_tag: string): ``organizations-apiTenantUnit`` =
@@ -200,7 +200,7 @@ type ``organizations-apiTenantUnit`` =
 type ``organizations-apiV4ErrorResponse`` =
     { errors: list<``organizations-apiV4Message``>
       messages: list<``organizations-apiV4Message``>
-      result: Option<obj>
+      result: Option<Map<string, obj>>
       success: bool }
     ///Creates an instance of organizations-apiV4ErrorResponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``organizations-apiV4Message``>,

@@ -46,12 +46,12 @@ type ``moqapi-response-errorErrors`` =
 
 type ``moqapi-response-error`` =
     { errors: list<``moqapi-response-errorErrors``>
-      messages: Newtonsoft.Json.Linq.JArray
-      result: Option<Newtonsoft.Json.Linq.JObject>
+      messages: list<obj>
+      result: Option<Map<string, obj>>
       success: bool }
     ///Creates an instance of moqapi-response-error with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<``moqapi-response-errorErrors``>,
-                          messages: Newtonsoft.Json.Linq.JArray,
+                          messages: list<obj>,
                           success: bool): ``moqapi-response-error`` =
         { errors = errors
           messages = messages
@@ -249,7 +249,7 @@ type deleteaccountsaccountidmoqrelaysrelayidresponse =
     { errors: list<deleteaccountsaccountidmoqrelaysrelayidresponseErrors>
       messages: list<deleteaccountsaccountidmoqrelaysrelayidresponseMessages>
       success: bool
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+      result: Option<Map<string, obj>> }
     ///Creates an instance of deleteaccountsaccountidmoqrelaysrelayidresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (errors: list<deleteaccountsaccountidmoqrelaysrelayidresponseErrors>,
                           messages: list<deleteaccountsaccountidmoqrelaysrelayidresponseMessages>,
@@ -368,7 +368,7 @@ type PostAccountsMoqRelays =
     | InternalServerError of payload: ``moqapi-response-error``
 
 [<RequireQualifiedAccess>]
-type DeleteAccountsMoqRelay =
+type DeleteAccountsMoqRelays =
     ///Relay deleted successfully.
     | OK of payload: deleteaccountsaccountidmoqrelaysrelayidresponse
     ///Error 21003: Relay ID should be 32 hex characters.
@@ -379,7 +379,7 @@ type DeleteAccountsMoqRelay =
     | InternalServerError of payload: ``moqapi-response-error``
 
 [<RequireQualifiedAccess>]
-type GetAccountsMoqRelay =
+type GetGetAccountsMoqRelays =
     ///Relay retrieved successfully.
     | OK of payload: getaccountsaccountidmoqrelaysrelayidresponse
     ///Error 21003: Relay ID should be 32 hex characters.
@@ -389,15 +389,15 @@ type GetAccountsMoqRelay =
     ///Error 21006: Unexpected server error.
     | InternalServerError of payload: ``moqapi-response-error``
 
-type PutAccountsMoqRelayPayload =
+type PutAccountsMoqRelaysPayload =
     { ///origin_fallback and lingering_subscribe are mutually exclusive.
       config: Option<moqrelayconfig>
       name: Option<string> }
-    ///Creates an instance of PutAccountsMoqRelayPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): PutAccountsMoqRelayPayload = { config = None; name = None }
+    ///Creates an instance of PutAccountsMoqRelaysPayload with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): PutAccountsMoqRelaysPayload = { config = None; name = None }
 
 [<RequireQualifiedAccess>]
-type PutAccountsMoqRelay =
+type PutAccountsMoqRelays =
     ///Relay updated successfully.
     | OK of payload: putaccountsaccountidmoqrelaysrelayidresponse
     ///Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21009 (origin_fallback and lingering_subscribe are mutually exclusive), 21011 (name must not be empty).
