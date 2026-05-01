@@ -1,6 +1,8 @@
 # Fidelity.CloudEdge Actor Model: MailboxProcessor Intercept
 
 > Part of the [Actor Model Design](08a_actor_model_overview.md) series.
+>
+> **Implementation note.** This document describes the F# source-level API mapping from `MailboxProcessor<'Msg>` to `Olivier<'Msg>`. That mapping is preserved across the implementation rebase documented in [08f_agents_overlay_design.md](08f_agents_overlay_design.md): on the Cloudflare side, Olivier-extending classes lower to generated classes that extend Cloudflare's `Agent<Env, State>` rather than the raw `DurableObject` base class. The source-level migration shown here is unchanged. What changed is that hibernation, state persistence, WebSocket lifecycle, and RPC machinery come from Cloudflare's `@cloudflare/agents` framework rather than being reimplemented in Fidelity's binding layer. Application authors writing `inherit Olivier<'Msg>` code do not see this difference; the binding generator handles it.
 
 ## 1. Full API Surface
 

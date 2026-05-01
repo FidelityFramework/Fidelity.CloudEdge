@@ -1,6 +1,8 @@
 # Fidelity.CloudEdge Actor Model: Management Infrastructure
 
 > Part of the [Actor Model Design](08a_actor_model_overview.md) series.
+>
+> **Implementation note.** Per the collapsed architecture in [08f_agents_overlay_design.md](08f_agents_overlay_design.md), Olivier-extending F# classes lower to generated classes that extend Cloudflare's `Agent<Env, State>` from `@cloudflare/agents`, not the raw `DurableObject` base class. From the Management API perspective, this is invisible: DO bindings in the Worker script's metadata declare `class_name` values pointing at the generated class, and Cloudflare's Management API operates on the resulting DO namespaces identically regardless of which DO base class the deployed code extends. The control plane described in this document is unchanged. The deployment artifacts (Worker scripts, binding declarations) reference Agent-extending classes by name; Cloudflare's runtime treats them as ordinary DOs for namespace, identity, and storage purposes.
 
 ## 1. Management as Infrastructure Control Plane
 
@@ -40,7 +42,7 @@ The remaining 17 management services (AI, AIGateway, AISearch, AutoRAG, BrowserR
 
 ### 3.1 Worker Script Management
 
-Every actor class compiles (via Fable) to a JavaScript module that runs as a Cloudflare Worker with Durable Object bindings. Deploying an actor system means deploying one or more Worker scripts with the correct binding configuration.
+Every actor class compiles to a JavaScript module that runs as a Cloudflare Worker with Durable Object bindings. The compilation pipeline is Fable today (F# → JavaScript) and Composer-via-JSIR in the future (Clef → JavaScript through MLIR). The output JavaScript declares classes that extend `Agent<Env, State>` from `@cloudflare/agents`, with the binding generator emitting the Agent-side machinery (lifecycle hooks, `setState`/`onMessage`/`onConnect` overrides) that delegates to the F# Olivier-shaped methods. Deploying an actor system means deploying one or more Worker scripts with the correct binding configuration.
 
 `Management.Workers` provides 19 operations covering the full deployment lifecycle:
 
@@ -72,7 +74,9 @@ Cron triggers are limited to 3 per Worker. For finer-grained scheduling, DO Alar
 
 ### 4.1 Queue Provisioning
 
-The elastic scaling pattern described in [08a §Elastic Scaling](08a_actor_model_overview.md#elastic-scaling) requires a Cloudflare Queue as the pivot between direct WebSocket delivery and replicated consumption. `Management.Queues` provides the full lifecycle:
+> **Cloudflare-primitive backing (post-Agents-Week update).** The Queue-pivot pattern described in this section was designed before Cloudflare's Workflows V2 (April 2026) and Dynamic Workers (open beta March 24, 2026) shipped. For workloads shaped as bounded durable executions, **Workflows V2** binds directly to the elastic scaling concern (50,000 concurrent instances per workflow, 300 instances/sec creation rate, SousChef + Gatekeeper distribution); the Queue-pivot Worker-consumer dance is replaced by `wrangler deploy`-time workflow configuration plus runtime instance creation. For per-tenant code dispatch (the multi-tenant variant of elastic scaling where different inbound senders should run different code), **Dynamic Workflows** (`@cloudflare/dynamic-workflows`, published May 2026) binds directly. For the lightweight isolate replica strategy (millisecond-startup ephemeral consumers), **Dynamic Workers** provides the isolate primitive natively. The Queue-provisioning operations described below remain valid for Queue-shaped workloads (durable buffering, FIFO ordering, dead-letter routing); the elastic-scaling-via-Queue-consumers pattern as such is mostly subsumed by these newer primitives. Fidelity.CloudEdge.Management.Queues continues to expose the full Queue lifecycle for applications that genuinely need Queues (event streaming, decoupling, dead-lettering); the supervisor's "scale this actor" decision binds to Workflows V2 / Dynamic Workers / Dynamic Workflows depending on shape, not to a hand-rolled Queue + consumer Worker arrangement.
+
+The elastic scaling pattern described in [08a §Elastic Scaling](08a_actor_model_overview.md#elastic-scaling) requires a Cloudflare Queue as the pivot between direct WebSocket delivery and replicated consumption (for workloads where the Cloudflare-native primitives above don't fit). `Management.Queues` provides the full lifecycle:
 
 - **Queue creation**: `QueuesCreate` provisions a new Queue. The Prospero (or a deployment script) creates a Queue per actor class that declares an `Elastic` scaling policy.
 - **Consumer registration**: `QueuesCreateConsumer` attaches a Worker (or a set of Workers) as consumers of the Queue. For the `Isolate` replica strategy, Worker Loader-spawned isolates consume directly. For the `DurableObject` strategy, the consumer Worker routes messages to replica DO instances.

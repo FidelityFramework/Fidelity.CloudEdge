@@ -1,6 +1,8 @@
 # Fidelity.CloudEdge Actor Model: Persistence and Observability
 
 > Part of the [Actor Model Design](08a_actor_model_overview.md) series.
+>
+> **Implementation note.** On the Cloudflare side, persistence operations described here run against `state.storage` exposed through Cloudflare's `Agent<Env, State>` class (which is the underlying DO base for Olivier-extending classes per the collapsed architecture in [08f_agents_overlay_design.md](08f_agents_overlay_design.md)). The semantic content — event sourcing, journals, snapshots, recovery — is unchanged. What's different is that the binding generator emits `state.storage.put`/`state.storage.get` calls through Agent's framework rather than implementing the storage access directly. Agent's `setState` is *not* used as the journaling mechanism (it is shape-shaped for state-sync-to-clients, not for append-only event logs); instead, the binding goes through `state.storage` for transactional ACID writes that match what the journal needs.
 
 ## 1. Library Layering
 

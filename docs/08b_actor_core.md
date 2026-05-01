@@ -4,9 +4,11 @@
 
 ## 1. Durable Objects as Actor Substrate
 
+> **Implementation note (collapsed architecture).** On the Cloudflare side, Olivier-extending F# classes lower to generated classes that extend Cloudflare's `Agent<Env, State>` (from `@cloudflare/agents`), not the raw `DurableObject` base class. This is documented in [08a §Library Layering](08a_actor_model_overview.md) and [08f_agents_overlay_design.md](08f_agents_overlay_design.md). The DO contracts described in this section are inherited transitively through Agent — Agent extends DurableObject, so the underlying single-concurrency, identity, and state guarantees are unchanged. The advantage of routing through Agent is that hibernation, state persistence (`setState`/`state.storage`), WebSocket lifecycle, and RPC machinery come from Cloudflare's framework rather than being reimplemented in Fidelity's binding layer.
+
 ### 1.1 The Single-Concurrency Contract
 
-A Durable Object instance processes at most one request at a time. When a `fetch()` handler or WebSocket message handler is executing, Cloudflare's scheduler holds all other inbound requests in a queue. This is not advisory; it is enforced at the infrastructure level. No user code can violate it.
+A Durable Object instance processes at most one request at a time. When a `fetch()` handler or WebSocket message handler is executing, Cloudflare's scheduler holds all other inbound requests in a queue. This is not advisory; it is enforced at the infrastructure level. No user code can violate it. The Agent class inherits this contract directly from DurableObject; an Agent-extending DO has the same single-concurrency guarantee as any other DO.
 
 This contract maps directly onto the actor model's fundamental invariant: an actor processes one message at a time, with exclusive access to its own state. Where `MailboxProcessor` achieves this through a cooperative `async` loop and a `ConcurrentQueue`, a Durable Object achieves it through Cloudflare's execution scheduler. The guarantee is identical; the enforcement mechanism is stronger.
 
@@ -262,12 +264,14 @@ All hooks are virtual methods on `Olivier<'Msg>`. `Prospero<'Msg>` extends this 
 
 ## 5. Prospero and Olivier on Cloudflare
 
+> **Cloudflare-primitive backing (post-Agents-Week update).** The supervision *mechanism* described in this section binds to **Durable Object Facets** (the dynamic-DO-instantiation primitive shipped during Agents Week, with per-Facet SQLite isolation). A Prospero spawns child Oliviers as Facets via `facets.get(name, getStartupOptions)`, restarts them via `facets.abort(name, reason)` followed by a fresh `facets.get`, and stops them via `facets.delete(name)`. The returned `ServiceBinding` is the typed handle for messaging the child — structurally what `ActorRef<'Msg>` was meant to be. This replaces the registry-based child management described below (where the Prospero held WebSocket connections to children identified by name) with a platform-native parent-child primitive. The supervision *policy* (OneForOne / OneForAll / RestForOne, restart-vs-stop-vs-escalate decisions, timing of restarts) remains Fidelity's responsibility and is unchanged. The semantic content of this section is preserved; the implementation references shift from "Prospero opens a WebSocket to a child DO" to "Prospero invokes the Facets API to spawn / abort / delete children."
+
 ### 5.1 Supervision Model
 
 In the Fidelity framework, **Prospero** actors are supervisors and **Olivier** actors are workers. This maps onto Durable Objects as follows:
 
-- **Prospero (Supervisor)**: A Durable Object that maintains a registry of child actor IDs and their health status. It holds WebSocket connections to its children and monitors their liveness.
-- **Olivier (Worker)**: A Durable Object that performs domain-specific computation. It holds a WebSocket connection back to its supervisor for heartbeats and escalation.
+- **Prospero (Supervisor)**: A Durable Object that holds programmatic ownership of its child Oliviers via the Facets API. It tracks supervision state (which children are running, their failure history, their restart counts) and applies the configured supervision strategy when failures occur.
+- **Olivier (Worker)**: A Durable Object Facet (a dynamically-instantiated DO with its own isolated SQLite state) that performs domain-specific computation. The Facet's lifecycle is owned by its parent Prospero; the Facet does not need to track its own supervisor identity because Cloudflare's runtime maintains the parent-child relationship structurally.
 
 ### 5.2 Supervision Strategy
 

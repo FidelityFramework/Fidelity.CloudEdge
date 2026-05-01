@@ -8,7 +8,7 @@
 
 On April 6, 2026, Google published an RFC to upstream JSIR (JavaScript Intermediate Representation) into MLIR. JSIR is an MLIR dialect that represents JavaScript with full AST fidelity, supporting lossless round-trip conversion between JavaScript source, Babel AST, and MLIR ops. Google has used JSIR in production internally for Hermes bytecode decompilation, JavaScript deobfuscation, and malicious code detection. The RFC was posted to the LLVM Discourse by Zhixun Tan of Google's compiler team.
 
-Repository: https://github.com/google/jsira
+Repository: https://github.com/google/jsir
 RFC: https://discourse.llvm.org/t/rfc-jsir-a-high-level-ir-for-javascript/90456
 License: Apache-2.0
 

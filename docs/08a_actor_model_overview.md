@@ -22,26 +22,48 @@ Fidelity.CloudEdge.Actor.Observability (instrumentation)
   └── IActorDiagnostics               structured event channels
         │
         ▼  both depend on
-Fidelity.CloudEdge.Actor              (semantic layer)
-  ├── Olivier<'Msg>                   actor base type
+Fidelity.CloudEdge.Actor              (semantic layer; F# source-level API)
+  ├── Olivier<'Msg>                   actor base type (F# facade; lowers per substrate)
   ├── Prospero<'Msg>                  supervisor base type
   ├── ActorRef<'Msg>                  typed actor reference (tell/ask)
   ├── Supervision strategies          OneForOne, OneForAll, RestForOne
-  └── MailboxProcessor intercept      migration surface
+  └── MailboxProcessor intercept      migration surface (see 08c)
         │
-        ▼  depends on
-Fidelity.CloudEdge.DurableObjects     (platform binding layer)
-  ├── DurableObjectState              Cloudflare DO state API
+        ▼  on Cloudflare lowers to
+Fidelity.CloudEdge.Agents             (F# bindings on Cloudflare's Agents framework)
+  ├── Agent<'Env,'State>              F# binding on @cloudflare/agents Agent class
+  ├── Think<'Env,'State>              F# binding on @cloudflare/agents Think subclass
+  ├── @[Callable] attribute           RPC entry points exposed to clients
+  └── Lifecycle hooks                 OnConnect, OnMessage, OnRequest, plus Think hooks
+        │
+        ▼  uses
+Fidelity.CloudEdge.DurableObjects     (low-level platform binding)
+  ├── DurableObjectState              Cloudflare DO state API (used via Agent's state)
   ├── DurableObjectNamespace          DO factory/identity
-  ├── WebSocket hibernation API       connection lifecycle
-  └── Transactional storage API       key-value persistence
+  ├── WebSocket hibernation API       connection lifecycle (used via Agent's WebSocket handlers)
+  └── Transactional storage API       key-value persistence (used via Agent's state.storage)
 ```
 
-`Fidelity.CloudEdge.DurableObjects` is the low-level binding to Cloudflare's Durable Object runtime, generated via Glutinum from `@cloudflare/workers-types`. It exposes platform types directly: `DurableObjectState`, `DurableObjectId`, `DurableObjectNamespace`, WebSocket handlers, transactional storage.
+**Layer responsibilities (Cloudflare side):**
 
-`Fidelity.CloudEdge.Actor` is the semantic layer. It consumes `DurableObjects` as infrastructure but does not expose Cloudflare-specific types in its public API. A developer writing an Olivier actor works with `Olivier<'Msg>`, `ActorRef<'Msg>`, and supervision types. The fact that these are backed by Durable Objects is an implementation detail, visible in deployment configuration but not in application code.
+`Fidelity.CloudEdge.DurableObjects` is the low-level Glutinum binding to Cloudflare's Durable Object runtime types from `@cloudflare/workers-types`. It exposes platform types directly: `DurableObjectState`, `DurableObjectId`, `DurableObjectNamespace`, WebSocket handlers, transactional storage. Most application code does not touch this layer; it is consumed transitively by the Agents bindings.
 
-This separation serves two purposes. First, it allows the actor API surface to remain stable even if the underlying Cloudflare bindings change between `workers-types` releases. Second, it keeps the door open for alternative substrates: the same `Olivier<'Msg>` type signature could, in principle, be backed by a different execution environment without changing application code.
+`Fidelity.CloudEdge.Agents` provides F# bindings on Cloudflare's `@cloudflare/agents` package. `Agent<'Env, 'State>` and `Think<'Env, 'State>` are F# classes that wrap Cloudflare's TypeScript Agent and Think classes through Glutinum-generated bindings, with F# overrides for the lifecycle hooks. Applications writing in the **Cloudflare-native authoring style** inherit from these directly and work with `SetState`, `InitialState`, `[<Callable>]` methods, and the framework's lifecycle conventions.
+
+`Fidelity.CloudEdge.Actor` is the F# source-level semantic layer for the **Olivier authoring style**. Application code works with `Olivier<'Msg>`, `ActorRef<'Msg>`, and supervision types. On the Cloudflare side, the binding generator emits, for each Olivier-extending class, a generated class that extends `Agent<'Env, 'State>` and routes Tell/Ask/Handle to BAREWire-framed WebSocket messages over Agent's `onMessage` and `connection.send`. The Agent provides hibernation, state, transport, and lifecycle plumbing; the Olivier facade adds typed message dispatch and BAREWire wire format on top.
+
+**Layer responsibilities (native side):**
+
+`Fidelity.CloudEdge.Actor` lowers to native concurrency primitives — F# MailboxProcessor (today) or Composer's DCont dialect (post-JSIR). The same `inherit Olivier<'Msg>` source produces in-process actor instances on bare metal or Agent-extending DOs on Cloudflare; the substrate is selected at compilation time by the target profile.
+
+**Two authoring styles, one architecture:**
+
+- **Olivier style** for actor-shaped code, MailboxProcessor migration targets, and any application that values substrate transparency. F# facade over Agent on Cloudflare; F# facade over MailboxProcessor/DCont on native.
+- **Cloudflare-native style** for net-new agentic workloads that want framework conveniences (state sync to clients, `useAgent` hook, RPC ergonomics, Think's lifecycle hooks for streaming). F# bindings on Agent/Think directly. Cloudflare-only.
+
+Both styles compile to classes extending `Agent<Env, State>` on the Cloudflare side. The difference is in the F# author-facing API, not in what reaches the runtime.
+
+This layering keeps the actor API surface stable across Cloudflare's evolving Agent framework (as long as the binding layer absorbs upstream changes) and preserves substrate transparency for the Olivier style. New Cloudflare features land in the Agents bindings layer and become available to both authoring styles transparently.
 
 ## Tell-First Architecture
 
@@ -59,21 +81,21 @@ HTTP fetch is reserved for the external boundary (browser clients, API consumers
 
 The Fidelity framework operates across two substrates:
 
-1. **Bare Metal**: Actors compiled via MLIR through Fidelity.Firefly, running as native executables. State is local memory; communication is IPC (Unix sockets, shared memory) or network (TCP, QUIC).
-2. **Edge (Cloudflare)**: Actors compiled via Fable to JavaScript, running as Durable Objects. State is DO transactional storage; communication is WebSocket within Cloudflare, HTTP at the boundary.
+1. **Bare Metal**: Actors compiled via Composer through MLIR (LLVM backend), running as native executables. State is local memory; communication is IPC (Unix sockets, shared memory) or network (TCP, QUIC). Olivier-shaped F# (or Clef post-JSIR) source lowers to native MailboxProcessor today, native delimited continuations (DCont) once Composer's DCont dialect is in production.
+2. **Edge (Cloudflare)**: Actors deployed as Durable Objects extending Cloudflare's `Agent<Env, State>` class from `@cloudflare/agents`. State persists through Agent's `setState` and `state.storage`; communication is WebSocket within Cloudflare, HTTP at the boundary. Olivier-shaped F# source compiles via the binding generator (Fable today, Composer-JSIR future) to a generated class that extends Agent and provides Tell/Ask/Handle over Agent's `onMessage` raw transport.
 
-The goal is **substrate transparency**: a Prospero supervisor running on bare metal can supervise Olivier workers running on Cloudflare, and vice versa. BAREWire provides the bridge; a message serialized by a native Fidelity actor is byte-identical to the same message serialized by a CloudEdge actor.
+The goal is **substrate transparency at the F# source level**: the same `inherit Olivier<'Msg>` code runs as a native MailboxProcessor on bare metal or as an Agent-extending DO on Cloudflare. A Prospero supervisor running on bare metal can supervise Olivier workers running on Cloudflare, and vice versa. BAREWire provides the wire-level bridge; a message serialized by a native Fidelity actor is byte-identical to the same message serialized on the Cloudflare side, regardless of which DO base class the Cloudflare-side actor extends.
 
 Cross-substrate transport options include WebSocket (available today) and Media-over-QUIC (MoQ, future). Actor references use a unified `ActorRef<'Msg>` type that dispatches across substrates:
 
 ```fsharp
 type ActorRef<'Msg> =
     | Local of MailboxProcessor<'Msg>           // Native Fidelity (in-process)
-    | Edge of actorId: string * transport: IActorTransport  // Cloudflare (WebSocket to DO)
+    | Edge of actorId: string * transport: IActorTransport  // Cloudflare (WebSocket to Agent-extending DO)
     | Remote of endpoint: Uri * actorId: string // Cross-substrate (WS or MoQ)
 ```
 
-Akka.NET interoperability is planned via a BAREWire serializer plugin and a stateless gateway Worker that bridges WebSocket frames to TCP connections.
+Akka.NET interoperability is planned via a BAREWire serializer plugin and a stateless gateway Worker that bridges WebSocket frames to TCP connections. The interop is independent of which DO base class the Cloudflare-side actors extend; supervised actors talk to their supervisor (and to peers) via BAREWire frames over WebSocket regardless.
 
 ## Document Index
 
@@ -84,6 +106,7 @@ Akka.NET interoperability is planned via a BAREWire serializer plugin and a stat
 | [08c: MailboxProcessor Intercept](08c_mailbox_intercept.md) | Full API surface mapping, push model (TryReceive discouraged), Scan/TryScan unsupported, semantic changes, migration example. |
 | [08d: Persistence and Observability](08d_persistence_observability.md) | Event sourcing model, journals, snapshots, read-side projections, Analytics Engine, Diagnostics Channel, tracing. |
 | [08e: Management Infrastructure](08e_management_infrastructure.md) | Management API mapping, deployment provisioning, elastic scaling infrastructure, dead-letter storage, observability pipeline, security, cross-substrate tunnels. |
+| [08f: Agents Overlay Design](08f_agents_overlay_design.md) | Pre-generation framing for `Fidelity.CloudEdge.Agents`. F# author-facing API for Cloudflare's `@cloudflare/agents` (Agent / Think) and `@cloudflare/dynamic-workflows`. Collapsed architecture: Olivier as F# source-level facade over Cloudflare's Agent class. |
 
 ## Implementation Phases
 
@@ -156,6 +179,8 @@ Back-pressure in particular is well-served by this model. WebSocket does not nat
 The standard actor model assumes one instance per identity: a single DO processes all messages for a given actor ID. For stateful actors, this is essential. For referentially transparent actors, those whose output is determined solely by the input message with no dependency on local mutable state, the single-instance constraint is a throughput bottleneck, not a correctness requirement.
 
 The framework introduces an elastic scaling pattern for referentially transparent Olivier actors, using Cloudflare Queues as the pivot between single-instance and replicated execution.
+
+> **Cloudflare-primitive backing (post-Agents-Week update).** Two Cloudflare primitives shipped during Agents Week (March–April 2026) substantially change how this pattern is implemented, without changing what the pattern *is*. **Workflows V2** (April 2026) supports 50,000 concurrent instances per workflow with the new SousChef + Gatekeeper distribution architecture; for workloads shaped as bounded durable executions, Workflows V2 binds directly to what the elastic scaling pattern calls "replica spawn" with no hand-rolled Queue consumer. **DO Facets** (the dynamic-DO-instantiation primitive, with per-Facet SQLite isolation) lets a Prospero spawn replica children programmatically via `facets.get`/`abort`/`delete`, replacing the registry-based child management with a structural parent-child primitive. The threshold-detect → spawn → drain → converge lifecycle described below remains the supervisor's policy responsibility (when to spawn, how many, when to stop); the *mechanism* now binds to Cloudflare's primitives rather than being implemented over raw DO bindings and ad-hoc Queue routing. The Worker Loader isolate strategy described later in this section is partly subsumed by Dynamic Workers (open beta March 24, 2026), which provides the millisecond-startup isolate primitive natively.
 
 ### Adaptive Fan-Out
 
