@@ -24,7 +24,7 @@ Fidelity.CloudEdge/
 ## Runtime APIs (In-Worker)
 
 **Source**: TypeScript definitions from `@cloudflare/workers-types`
-**Generation**: Glutinum (TypeScript → F#)
+**Generation**: Xantham (TypeScript → F#) — standard going forward per [00 Decision 7](00_architecture_decisions.md). Glutinum is the legacy generator for existing Worker.Context and AI bindings until they migrate; new runtime bindings target Xantham.
 **Usage**: F# code running **inside** Cloudflare Workers
 **Protocol**: Direct JavaScript interop
 **Authentication**: Via Worker bindings in `wrangler.toml`
@@ -159,10 +159,28 @@ This process is still under review, but it's worth noting the "head space" that 
 
 ## Generation Pipeline
 
-### Runtime APIs (Glutinum)
+### Runtime APIs
+
+> **Migration in progress** ([00 Decision 7](00_architecture_decisions.md)). The Runtime API generation pipeline is moving from Glutinum to Xantham. Both flows are documented below; new bindings target Xantham; existing `Worker.Context` and `AI` bindings remain on Glutinum until their migration is scheduled.
+
+#### Xantham (forward-going)
 
 ```bash
-# TypeScript → F#
+# Phase 1: extract TypeScript → JSON schema (Fable-compiled extractor)
+cd ../Xantham
+node ./index.js ./node_modules/@cloudflare/workers-types/index.d.ts
+# Produces output.json
+
+# Phase 2: decode + generate F# from JSON schema (.NET generator)
+cp output.json src/Xantham.Fable/output.json
+dotnet run --project src/Xantham.Generator/Xantham.Generator.fsproj \
+    > /path/to/Fidelity.CloudEdge/src/Runtime/CloudEdge.Worker.Context/Generated.fs
+```
+
+#### Glutinum (legacy — deprecated)
+
+```bash
+# TypeScript → F# (legacy path, retained for existing Worker.Context and AI)
 npx @glutinum/cli generate ./node_modules/@cloudflare/workers-types/index.d.ts \
     --output ./src/Runtime/Fidelity.CloudEdge.Worker.Context/Generated.fs \
     --namespace Fidelity.CloudEdge.Worker

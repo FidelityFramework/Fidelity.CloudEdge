@@ -27,7 +27,7 @@ Plus the platform-level changes that the OpenAPI side will pick up:
 
 The Agents framework is the most architecturally consequential of these. It is, in the user's framing, "kinda the entire reason to be excited about Cloudflare as a delivery platform for agentic workloads." Getting its F# expression right is what this document is about.
 
-Tooling considerations specific to generating F# bindings from these TypeScript packages — particularly the new Glutinum demands (TypeScript decorators for `@callable`, generic class declarations, tagged-union-to-DU mapping, `unknown`-as-`JsValue` conventions) — are documented in [06_tool_status.md §"Glutinum: Anticipated Considerations for Agents Binding"](06_tool_status.md). This document focuses on the F# author-facing API design; that one focuses on the binding generator's mechanics.
+Tooling considerations specific to generating F# bindings from these TypeScript packages are documented in [06_tool_status.md](06_tool_status.md). The 0.3.0 release shipped these bindings as hand-curated `Types.fs` files because Glutinum crashed on the surface; per [00 Decision 7](00_architecture_decisions.md), Fidelity.CloudEdge has standardized on **Xantham** as the runtime binding generator going forward. Xantham handles the agents-sdk surface cleanly (where Glutinum did not). The hand-curated bindings will be replaced by Xantham-generated output once the renderer issues documented in [06](06_tool_status.md) are resolved. This document focuses on the F# author-facing API design; that one focuses on the binding generator's mechanics.
 
 ## The Composition Layers
 
@@ -51,9 +51,9 @@ Each layer uses the layer below it. None of them duplicate one another. An agent
 
 The split between packages is not arbitrary. Each layer has a different generation pipeline:
 
-- `Fidelity.CloudEdge` (existing): Hawaii-from-OpenAPI for Management, Glutinum-from-`.d.ts` for Runtime.
-- `Fidelity.CloudEdge.Workflows`: Glutinum-from-`@cloudflare/dynamic-workflows` for the runtime surface, Hawaii-from-OpenAPI for any Management endpoints exposed for Workflows V2.
-- `Fidelity.CloudEdge.Agents`: Glutinum-from-`@cloudflare/agents` for the Think class and lifecycle hooks, plus authored F# helpers that aren't 1:1 with the underlying TypeScript.
+- `Fidelity.CloudEdge` (existing): Hawaii-from-OpenAPI for Management, Xantham-from-`.d.ts` for Runtime (Glutinum-generated for the legacy `Worker.Context` and `AI` bindings until they migrate).
+- `Fidelity.CloudEdge.DynamicWorkflows`: Xantham-from-`@cloudflare/dynamic-workflows` for the runtime surface; Hawaii-from-OpenAPI for any Management endpoints exposed for Workflows V2.
+- `Fidelity.CloudEdge.Agents`: Xantham-from-`agents-sdk` for the Agent / Think classes and lifecycle hooks, plus authored F# helpers that aren't 1:1 with the underlying TypeScript.
 
 ## The Lifecycle Hooks: F# Surface Mapping
 

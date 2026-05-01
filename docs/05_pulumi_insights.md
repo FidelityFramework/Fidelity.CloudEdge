@@ -1,5 +1,7 @@
 # Pulumi .NET SDK Analysis: Selective Influences for Fidelity.CloudEdge `cfs` Tool
 
+> **Note on Glutinum references in this document.** Per [00 Decision 7](00_architecture_decisions.md), Fidelity.CloudEdge has standardized its runtime TypeScript→F# binding generation on **Xantham**, replacing Glutinum. The Glutinum-specific analysis throughout this document (backtick handling, `CompiledName` enhancements, runtime API wrapper patterns) was written when Glutinum was the standard tool. The Pulumi-influenced ideas remain valid — they're about the Management-layer `cfs` CLI design, not the runtime binding generator. Where this document refers to Glutinum-specific concerns, those concerns are addressed structurally by Xantham's architecture and should not drive new investment in Glutinum-side work.
+
 ## Executive Summary
 
 This document analyzes the Pulumi .NET SDK to identify specific patterns that may **influence** (not dictate) certain aspects of Fidelity.CloudEdge's `cedge` tool design. Fidelity.CloudEdge has its own unique vision - particularly around actor-model hierarchies of Workers and Cloudflare-specific optimizations - that goes well beyond what Pulumi contemplates.

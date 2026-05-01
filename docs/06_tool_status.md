@@ -2,27 +2,99 @@
 
 **Last Updated**: May 2026
 
-This document tracks the current state of Glutinum and Hawaii as used by the CloudEdge generation pipeline, including known limitations and the mitigations in place.
+This document tracks the binding generation tools used by Fidelity.CloudEdge.
+
+> **Strategic direction (per [00 Decision 7](00_architecture_decisions.md)):** Fidelity.CloudEdge has standardized its TypeScript→F# binding generation on **Xantham**. **Glutinum is being phased out** for runtime bindings; the migration is incremental and tracked in [03_gap_analysis.md](03_gap_analysis.md). The Glutinum-specific limitations and mitigations documented in this file are **legacy concerns** — they will be retired as each runtime binding migrates to Xantham. New runtime bindings target Xantham directly. Hawaii (for Management/Tenancy OpenAPI bindings) is unaffected and continues as the standard path for those tiers.
 
 For the original detailed analysis (Glutinum v0.12.0, Hawaii v0.66.0), see `_archived/06_tool_improvement_analysis_v1.md`.
 
 ## Tool Versions
 
-| Tool | Version | Role |
-|------|---------|------|
-| Hawaii | 0.66.0 | OpenAPI → F# client generation |
-| Glutinum CLI | Latest (npx) | TypeScript `.d.ts` → F# binding generation |
+| Tool | Version | Role | Status |
+|------|---------|------|--------|
+| **Xantham CLI** | npm `xantham` (extractor) + .NET `Xantham.Generator` (renderer) | TypeScript `.d.ts` → F# binding generation (forward-going) | **Standard** for new runtime bindings; migration target for existing |
+| Hawaii | 0.66.0 | OpenAPI → F# client generation | Standard for Management/Tenancy tiers; unaffected by the Glutinum→Xantham migration |
+| Glutinum CLI | 0.13.0 (npx) | TypeScript `.d.ts` → F# binding generation (legacy) | **Deprecated path**; retained for existing `Worker.Context` and `AI` bindings until they migrate to Xantham |
 
 ## Binding Inputs
 
 The generation pipeline consumes the following sources:
 
-| Input | Source | Tool | Output |
-|-------|--------|------|--------|
-| Cloudflare OpenAPI | `https://github.com/cloudflare/api-schemas` | Hawaii | 40 Management + 2 Tenancy services |
-| `@cloudflare/workers-types` | npm package | Glutinum | Worker.Context, AI, DurableObjects |
-| `@cloudflare/agents` | npm package (planned 0.3.0) | Glutinum | Agent, Think runtime types — see "Glutinum: Anticipated Considerations for Agents Binding" below |
-| `@cloudflare/dynamic-workflows` | npm package (planned 0.3.0) | Glutinum | Multi-tenant workflow dispatch primitives |
+| Input | Source | Current Tool | Migration Target | Output |
+|-------|--------|--------------|------------------|--------|
+| Cloudflare OpenAPI | `https://github.com/cloudflare/api-schemas` | Hawaii | Hawaii (no change) | 40 Management + 2 Tenancy services |
+| `@cloudflare/workers-types` | npm package | Glutinum | **Xantham** (migration pending) | Worker.Context, AI, DurableObjects |
+| `agents-sdk` (formerly `@cloudflare/agents`) | npm package | hand-curated `Types.fs` (Glutinum crashes on this surface) | **Xantham** | Agent base class, lifecycle hooks, Schedule, Callable attribute |
+| `@cloudflare/dynamic-workflows` | npm package | hand-curated `Types.fs` | **Xantham** | DynamicWorkflowBinding, dispatchWorkflow, wrapWorkflowBinding |
+
+## Xantham: Capabilities, Architecture, and Tracked Issues
+
+Xantham is a hard fork of Glutinum that decomposes the TypeScript→F# pipeline into three phases:
+
+1. **Extract** (`xantham` npm package, Fable-compiled). Crawls the TypeScript Compiler API across the entire reachable type graph (multi-file, recursive) and produces a JSON schema describing every type, with a `TypeKey` indirection system for cycle handling.
+2. **Decode** (`Xantham.Decoder` .NET library). Deserializes the JSON schema into a richer F# graph (`ResolvedType`, lazy containers, arena interner) for downstream consumption.
+3. **Generate** (`Xantham.Generator` .NET project). Renders F# bindings via Fabulous.AST + Fantomas SyntaxOak. Runs on .NET (not Fable), with full F# AST control.
+
+The decoder is reusable independently — any consumer can take a dependency on `Xantham.Decoder` and bypass the standard generator if framework-specific output is wanted. This is the architectural property that makes Xantham a long-term standard rather than a like-for-like Glutinum replacement.
+
+### Capabilities Xantham Has That Glutinum Does Not
+
+| Capability | Glutinum | Xantham |
+|:-----------|:---------|:--------|
+| `[<CompiledName>]` attributes for reserved keywords | Backtick-escaped identifiers (degraded ergonomics) | Native attribute emission |
+| Cyclic type references | Stack overflow / partial output | TypeKey indirection at the schema layer; visit-set guards in renderer (post-fix) |
+| Multi-file type graphs | Single `.d.ts` entry only | Recursively crawls all referenced files |
+| Generated `import` statements | Not emitted; wired by hand | Generated automatically with full provenance tracking |
+| Module nesting from package structure | Flat output | Hierarchical module tree from the type graph |
+| Output customization | Built-in single format | User-defined strategy (string concat, Fabulous.AST, etc.) |
+| TypeScript compiler swap-ability | Coupled to Fable.TypeScript | Encoder is replaceable (e.g., TSGO migration); decoders/generators unchanged |
+
+### Known Issues (as of May 2026)
+
+**1. `collectAllRecursively` stack overflow on cyclic graphs (FIXED locally; upstream PR pending)**
+
+`Render.Member.collectAllRecursively` walked type references, intersection constituents, interface heritage, class heritage, and conditionals without tracking visited types. On Cloudflare workers-types-shaped graphs (38,454 raw types, 8 cycles after compression) this caused infinite recursion. Fix: visited-set keyed on `LazyContainer.Data` (canonical TypeKey) at every recursion path. Local fix produces 18,573 lines of F# from workers-types where unfixed Xantham stack-overflowed; upstream PR is in flight.
+
+**2. Empty interface emission**
+
+`type IPartyserver =` with no body. F# requires `interface end` or members. Xantham emits the type header without a body marker for some empty top-level types. Workaround until fixed upstream: post-process to insert `class end` or `interface end` markers; or fix in `Render.fs` / `TypeRender.Render.fs`.
+
+**3. Generic constraint syntax**
+
+```fsharp
+type AgentNamespace<'Agentic Agent<option<obj>, option<obj>>> = ...
+```
+
+The constraint type is concatenated onto the parameter name without the `when ... :>` sigil. Should be `<'Agentic when 'Agentic :> Agent<...>>`. Renderer bug in the type-parameter rendering path.
+
+**4. Doubled generic brackets in `inherit` clauses**
+
+```fsharp
+inherit Partyserver.Server<'Env, 'Agent><'Env>
+```
+
+Heritage rendering double-applies type arguments. Should be `inherit Partyserver.Server<'Env, 'Agent>`. Localized to inheritance rendering; bug appears to be in the type shape or member rendering for class-extends clauses.
+
+**5. Brand-symbol type substitution (workers-types-specific observation)**
+
+```fsharp
+member __RPC_TARGET_BRAND: DurableObjectRoutingMode = JS.undefined
+```
+
+TypeScript brand symbols (which are nominal-typing markers like `unique symbol`) are being substituted with sibling enum types instead of `obj` or being elided. Affects mostly Cloudflare's branded DO/RPC types; doesn't break compilation but produces semantically wrong bindings at the brand fields.
+
+### Issues 2-5 are localized renderer bugs
+
+Each of issues 2-5 lives in a specific render module (`Render.fs`, `Render.TypeShapes.fs`, or `Render.TypeParameter.fs`) and is materially smaller than the compensations Glutinum requires. Each is either an upstream fix opportunity or, failing that, a thin post-processor — but the post-processor surface area is much narrower than the Glutinum compensations being retired.
+
+### Migration Status
+
+| Target | Current State | Migration Target | Blocker |
+|:-------|:--------------|:-----------------|:--------|
+| `Fidelity.CloudEdge.Worker.Context` | Glutinum + hand-curated `Types.fs` | Xantham + retained `Types.fs` | Issues 2-5 in workers-types output |
+| `Fidelity.CloudEdge.AI` | Glutinum | Xantham | Same (workers-types-adjacent surface) |
+| `Fidelity.CloudEdge.Agents` | Hand-curated only (Glutinum crashed) | Xantham | Issues 2-3 (agents-sdk surface) |
+| `Fidelity.CloudEdge.DynamicWorkflows` | Hand-curated only | Xantham | None expected (small clean surface) |
 
 ## Hawaii: Known Limitations & Mitigations
 
@@ -66,7 +138,9 @@ The generation pipeline consumes the following sources:
 
 Hawaii's generated `OpenApiHttp.fs` imports `Fable.Remoting.Json` and `Newtonsoft.Json`. All management `.fsproj` files must reference these packages, not `FSharp.SystemTextJson`.
 
-## Glutinum: Known Limitations & Mitigations
+## Glutinum: Known Limitations & Mitigations (Legacy — Migration to Xantham in Progress)
+
+> The Glutinum-specific issues below are documented for the existing `Worker.Context` and `AI` runtime bindings that have not yet migrated to Xantham. Per [00 Decision 7](00_architecture_decisions.md), these compensations are not extended to new runtime bindings; new bindings target Xantham. The cyclic-interface preprocessor, the post-processor sed fixes, and the missing `[<CompiledName>]` attributes documented here all become unnecessary once a binding migrates to Xantham. **Do not invest further work in these mitigations.** Issues encountered with Glutinum during the remaining lifetime of these bindings should be resolved by accelerating the migration of the affected target rather than by patching Glutinum behavior.
 
 ### 1. Cyclic Interface References
 
@@ -94,7 +168,9 @@ Hawaii's generated `OpenApiHttp.fs` imports `Fable.Remoting.Json` and `Newtonsof
 
 **Mitigation**: Handled by `postprocess-runtime.sh`, which wraps globals in a `Globals` module.
 
-## Glutinum: Anticipated Considerations for Agents Binding
+## Glutinum: Anticipated Considerations for Agents Binding (Obsoleted by Xantham Migration)
+
+> **Obsoleted as of [00 Decision 7](00_architecture_decisions.md).** This section was written before the standardization on Xantham. The five anticipated Glutinum considerations below — TypeScript decorator handling, generic class declarations, tagged-union-to-DU mapping, lifecycle hook abstract methods, `unknown`/`JsValue` convention — are all addressed structurally by Xantham's architecture or are localized renderer concerns rather than fundamental tooling limitations. The 0.3.0 release shipped `Fidelity.CloudEdge.Agents` and `Fidelity.CloudEdge.DynamicWorkflows` as hand-curated `Types.fs` files (Glutinum crashed on the agents-sdk and dynamic-workflows surfaces) and these will be replaced by Xantham-generated output once the renderer issues 2-5 above are resolved. The text below is retained for reference but should not drive new work.
 
 The 0.3.0 release adds Glutinum binding generation for `@cloudflare/agents` and `@cloudflare/dynamic-workflows`. These packages exercise corners of Glutinum that the existing `workers-types` and `@cloudflare/ai` bindings have not. The following considerations are flagged in advance so mitigations can be planned alongside the binding work, not discovered at generation time.
 
@@ -168,11 +244,20 @@ F#'s top-down type system requires types to be declared before use. Both tools o
 
 ## Upstream Contribution Opportunities
 
+### Hawaii (active investments)
+
 1. **Hawaii**: Cumulative type name sanitization (hyphen + underscore handling)
 2. **Hawaii**: Null-safe schema access in `createResponseType`
 3. **Hawaii**: Native discriminator schema support (would eliminate the `discriminators.fsx` post-processor)
-4. **Glutinum**: `[<CompiledName>]` attribute emission for reserved keywords
-5. **Glutinum**: Record generation for pure data structures (currently generates interfaces)
-6. **Glutinum**: TypeScript decorator metadata preservation in `.d.ts` parsing (would eliminate the anticipated `callable-attribute.fsx` post-processor for the Agents binding)
-7. **Glutinum**: String-literal-tagged-union → F# discriminated union mapping (would eliminate the anticipated `tagged-union-du.fsx` post-processor)
-8. **Glutinum**: Configurable `unknown` mapping (default to `JsValue` rather than `obj` for boundary types)
+
+### Xantham (active investments — replacing Glutinum)
+
+4. **Xantham**: `collectAllRecursively` stack overflow on cyclic graphs — fix prepared, PR pending
+5. **Xantham**: Empty interface emission (`type X =` with no body marker)
+6. **Xantham**: Generic constraint syntax for type parameter constraints (`<'T Constraint>` → `<'T when 'T :> Constraint>`)
+7. **Xantham**: Doubled generic brackets in `inherit` clauses
+8. **Xantham**: Brand-symbol substitution in workers-types
+
+### Glutinum (no longer pursued)
+
+The Glutinum upstream improvements previously listed (`[<CompiledName>]` attribute emission, record-vs-interface for pure data, decorator metadata, tagged-union-to-DU, `unknown` mapping) are no longer Fidelity.CloudEdge investment areas. These are all addressed structurally by Xantham's architecture; the migration delivers them without upstream contributions to Glutinum.

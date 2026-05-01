@@ -206,17 +206,60 @@ These contributions are source code whose compilation-facing role is declarative
 
 See [10: JSIR Strategic Assessment §8.10](10_jsir_strategic_assessment.md) for how this commitment shapes JSIR-targeted compilation specifically.
 
+### Decision 7: Standardize Runtime TypeScript→F# Generation on Xantham ✅
+
+**Commitment**: Fidelity.CloudEdge standardizes its TypeScript-to-F# binding generation pipeline on [Xantham](https://github.com/shayanhabibi/Xantham). Glutinum is being phased out as the runtime binding tool; the migration retires the compensatory pre/post-processing infrastructure built around Glutinum's structural limitations and aligns the project with a tool whose architecture absorbs those concerns natively.
+
+**Why**: Glutinum's monolithic Fable-side pipeline forced Fidelity.CloudEdge to maintain ~330 lines of preprocessing JavaScript, post-processing bash, and hand-curated F# patches to compensate for known limitations: cyclic interface references requiring DFS detection and `any`-replacement, complex intersection truncation, manual `[<CompiledName>]` attribute handling for reserved keywords, partial/crashing output on cycles, missing namespace declarations, and inability to generate import statements. The 0.3.0 work confirmed these compensations as ongoing rather than one-time costs — Glutinum crashed on `agents-sdk` (forcing hand-curated bindings) and produced partial output on the workers-types refresh that required additional post-processors per regen.
+
+Xantham is a hard fork of Glutinum that decomposes the pipeline into three phases — extract (Fable), encode/decode (JSON schema boundary), and generate (.NET) — so each compensation Fidelity.CloudEdge maintains is replaced by a structural property of the architecture. Cyclic references are tracked by the `TypeKey` indirection system at the schema layer. Namespaces and imports are generated automatically from the type graph. `[<CompiledName>]` attributes are emitted natively for reserved keywords. The decoder is reusable across consumers without coupling to extraction. The generator runs in .NET with full F# AST control via Fabulous.AST + Fantomas SyntaxOak.
+
+**Status as of May 2026**: Xantham is actively maintained (commits within hours of this decision), Fidelity.CloudEdge contributed an upstream fix for a `collectAllRecursively` stack-overflow on cyclic graphs, and the post-fix output already produces 18,573 lines of F# from `@cloudflare/workers-types` (vs. Glutinum's partial 17,876 with 32 compile errors) and 507 clean lines from `agents-sdk` (vs. Glutinum's crash). Three localized renderer bugs remain in the Xantham output (empty interface emission, generic constraint syntax, doubled inheritance brackets) — each is a small upstream fix or a thin post-processor, and is materially less work than the Glutinum compensations they replace.
+
+**How to apply**: New runtime bindings (G3 `Fidelity.CloudEdge.Agents`, G4 `Fidelity.CloudEdge.DynamicWorkflows`, future packages) target Xantham as the binding generator. The existing `Fidelity.CloudEdge.Worker.Context` and `Fidelity.CloudEdge.AI` runtime targets continue on Glutinum until the Xantham migration is rolled in (incremental, per-target). The hand-curated Worker.Context/Types.fs and DurableObjects/Types.fs additions remain as the source of truth at the runtime API surface — Xantham migration replaces the *generated* layer underneath, not the hand-curated Fidelity-specific types layered on top.
+
+**Migration sequencing** (tracked in [03_gap_analysis.md](03_gap_analysis.md)):
+
+1. Land the upstream `collectAllRecursively` fix in Xantham proper (PR in flight as of May 2026).
+2. Address the three remaining Xantham renderer bugs (locally or upstream) so workers-types generates compilable F# end-to-end.
+3. Replace `Fidelity.CloudEdge.Agents/Types.fs` and `Fidelity.CloudEdge.DynamicWorkflows/Types.fs` (currently hand-curated due to Glutinum crash) with Xantham-generated output. This validates the Xantham pipeline against the same surface the application code already depends on.
+4. Migrate `Fidelity.CloudEdge.Worker.Context/Generated.fs` from Glutinum to Xantham. Retire `preprocess-typescript.js` (212 lines), `postprocess-runtime.sh` (69 lines), and the Glutinum-specific entries in `06_tool_status.md`.
+5. Migrate `Fidelity.CloudEdge.AI/Generated.fs` similarly.
+6. Remove the `@glutinum/cli` dependency and the `Glutinum.Types` NuGet package reference. Document the cutover in [03_gap_analysis.md](03_gap_analysis.md).
+
+The Hawaii pipeline for Management API generation is **unaffected** by this migration — Hawaii handles OpenAPI specifications, Xantham handles TypeScript definitions, and the two are orthogonal. Hawaii continues as the Management-tier binding generator. Xantham's role is the runtime-tier replacement for Glutinum specifically.
+
 ## Implementation Pipeline
 
-### Runtime API Generation (Glutinum)
+### Runtime API Generation (Glutinum — being phased out per Decision 7)
+
+> **Status**: Glutinum remains operational for the existing Worker.Context and AI bindings while the Xantham migration progresses. New runtime bindings target Xantham. See Decision 7 above for the migration plan.
+
 ```bash
-# TypeScript definitions → F# bindings
-npx @glutinum/cli generate
+# TypeScript definitions → F# bindings (legacy path)
+npx @glutinum/cli generate \
     ./node_modules/@cloudflare/workers-types/index.d.ts \
     --output ./src/Runtime/Fidelity.CloudEdge.Worker.Context/Generated.fs
 ```
 
-### Management API Generation (Hawaii)
+### Runtime API Generation (Xantham — standard path going forward)
+
+```bash
+# Phase 1: extract TypeScript → JSON schema (Fable-compiled extractor)
+cd ../Xantham
+node ./index.js \
+    /home/hhh/repos/Fidelity.CloudEdge/node_modules/@cloudflare/workers-types/index.d.ts
+# Produces output.json (~14 MB for workers-types-shaped inputs)
+
+# Phase 2: decode + generate F# from JSON schema (.NET generator)
+cp output.json src/Xantham.Fable/output.json
+dotnet run --project src/Xantham.Generator/Xantham.Generator.fsproj \
+    > /path/to/Fidelity.CloudEdge/src/Runtime/CloudEdge.Worker.Context/Generated.fs
+```
+
+The three phases are deliberately separated so the encoder (TypeScript Compiler API or future TSGO migration) can be replaced without touching downstream consumers, and so a Fidelity-specific generator can be substituted if framework-specific output conventions warrant it.
+
+### Management API Generation (Hawaii — unaffected by Xantham migration)
 ```bash
 cd generators
 

@@ -8,7 +8,9 @@ Fidelity.CloudEdge represents the F# binding surface for Cloudflare's Workers AP
 
 **This document is the coverage analysis** — it tracks how completely Fidelity.CloudEdge represents Cloudflare's primitive surface, where bindings are missing or stale, and what closes each gap. The framing is external (Cloudflare's API/management plane as the universe to cover) rather than internal (Fidelity's progress against a private roadmap). When Cloudflare ships a new primitive, this document records the gap; when Fidelity binds to it, the gap closes.
 
-Following Cloudflare's Agents Week rollout (March–April 2026), the binding surface that Fidelity.CloudEdge needs to represent has expanded beyond OpenAPI Management services and `@cloudflare/workers-types`. Three additional npm packages now carry first-class Cloudflare value: `@cloudflare/agents` (the Agent and Think classes), `@cloudflare/dynamic-workflows` (multi-tenant workflow dispatch), and the Workflows V2 runtime additions to workers-types. These are tracked as new rows in the coverage matrix below. The 0.3.0 release scope is determined by what closes the highest-priority gaps in this matrix.
+Following Cloudflare's Agents Week rollout (March–April 2026), the binding surface that Fidelity.CloudEdge needs to represent has expanded beyond OpenAPI Management services and `@cloudflare/workers-types`. Three additional npm packages now carry first-class Cloudflare value: `agents-sdk` (the Agent and Think classes, formerly `@cloudflare/agents`), `@cloudflare/dynamic-workflows` (multi-tenant workflow dispatch), and the Workflows V2 runtime additions to workers-types. These are tracked as new rows in the coverage matrix below. The 0.3.0 release scope is determined by what closes the highest-priority gaps in this matrix.
+
+**Tooling pipeline change (May 2026):** Per [00 Decision 7](00_architecture_decisions.md), Fidelity.CloudEdge has standardized its TypeScript→F# binding generation on **Xantham**, replacing Glutinum as the runtime binding tool. This is tracked as gap **G6** below and sequences the closure of several existing concerns (the 9 service regressions in the Pipeline Improvements section, the hand-curated G3/G4 bindings, and the ~330 lines of compensatory pre/post-processing infrastructure documented in [06_tool_status.md](06_tool_status.md)). Hawaii (Management/Tenancy OpenAPI bindings) is unaffected.
 
 ## Service Maturity Status
 
@@ -127,6 +129,24 @@ The Agents framework (Agent base class, Think chat subclass, lifecycle hooks, `@
 **G4. `@cloudflare/dynamic-workflows` package binding**
 
 Multi-tenant workflow dispatch (`createDynamicWorkflowEntrypoint`, `wrapWorkflowBinding`, `dispatchWorkflow`, `DurableWorkflowBinding`). Roughly 300 lines of TypeScript on the Cloudflare side. Glutinum binding target. The use case is platforms that route workflow execution to per-tenant code at runtime — a pattern that previously had to be hand-rolled in any non-Cloudflare stack.
+
+**G6. TypeScript→F# generation pipeline standardization on Xantham (cross-cutting)**
+
+Per [00 Decision 7](00_architecture_decisions.md), Fidelity.CloudEdge is migrating its runtime TypeScript→F# binding generation from Glutinum to Xantham. This is a tooling-pipeline gap rather than a Cloudflare-surface gap, but it materially affects how every other runtime binding gap is closed and how prior compensations (~330 lines of pre/post-processing across 3 languages) are retired.
+
+**Migration sequence (5 ordered steps):**
+
+1. **Land upstream `collectAllRecursively` fix** in Xantham (PR in flight as of May 2026). Fix is local-validated; produces 18,573 lines of F# from `@cloudflare/workers-types` where unfixed Xantham stack-overflowed.
+2. **Resolve renderer issues 2-5** ([06_tool_status.md §"Xantham: Capabilities, Architecture, and Tracked Issues"](06_tool_status.md)): empty interface emission, generic constraint syntax, doubled inheritance brackets, brand-symbol substitution. Each is localized to one render module; combined they unblock compilable workers-types output.
+3. **Replace hand-curated `Fidelity.CloudEdge.Agents/Types.fs` and `Fidelity.CloudEdge.DynamicWorkflows/Types.fs`** with Xantham-generated output. These were hand-curated in 0.3.0 because Glutinum crashed on the agents-sdk and dynamic-workflows surfaces; Xantham handles both. This step validates the Xantham pipeline against application-consumed bindings.
+4. **Migrate `Fidelity.CloudEdge.Worker.Context/Generated.fs` and `Fidelity.CloudEdge.AI/Generated.fs`** from Glutinum to Xantham. Retire `preprocess-typescript.js`, `postprocess-runtime.sh`, and the Glutinum-specific entries in [06_tool_status.md](06_tool_status.md).
+5. **Remove Glutinum dependencies**: `@glutinum/cli` from npm, `Glutinum.Types` NuGet package from project files. Update CI/CD to use the Xantham extractor + generator pipeline.
+
+**Status:** Step 1 in flight (PR pending). The other steps are sequenced; each unblocks the next.
+
+**Why this matters:** The 9-service regression patterns documented in the Pipeline Improvements section below are dominated by Glutinum-side issues that Xantham addresses structurally (`[<CompiledName>]` attributes for reserved keywords, cycle handling without preprocessing, namespace and import generation). Closing G6 reduces the surface area for future regression patterns and retires compensatory infrastructure that's been growing rather than shrinking with each Cloudflare spec evolution.
+
+---
 
 **G5. Dynamic Workers management endpoints — NOT EXPOSED IN OPENAPI**
 
