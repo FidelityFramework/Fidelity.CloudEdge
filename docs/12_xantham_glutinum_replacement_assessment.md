@@ -2,7 +2,7 @@
 
 **Assessment Date**: March 2026
 
-> **Status update (May 2026):** This assessment is the foundational analysis behind [00 Decision 7](00_architecture_decisions.md), which formally standardizes Fidelity.CloudEdge's TypeScript→F# binding generation on Xantham. The "8-12 days of focused development" estimate in §8.3 has been substantially overtaken by upstream Xantham activity since this was written; verification runs in May 2026 confirm the generator produces 18,573 lines of F# from `@cloudflare/workers-types` (post a `collectAllRecursively` stack-overflow fix that Fidelity.CloudEdge contributed) and 507 lines from `agents-sdk` where Glutinum crashed. The current set of tracked Xantham issues lives in [06_tool_status.md §"Xantham: Capabilities, Architecture, and Tracked Issues"](06_tool_status.md); the migration sequence lives in [03_gap_analysis.md G6](03_gap_analysis.md). This document is preserved as the analytical foundation for those operational artifacts.
+> **Status update and course correction (May 2026):** This assessment is the foundational analysis behind [00 Decision 7](00_architecture_decisions.md), which formally standardizes Fidelity.CloudEdge's TypeScript→F# binding generation on Xantham. **§4-§8 below are now obsolete** and reflect a March 2026 snapshot of the generator that has been substantially overtaken by upstream activity. Verification runs in May 2026 confirm the generator produces 18,573 lines of F# from `@cloudflare/workers-types` (post a `collectAllRecursively` stack-overflow fix that Fidelity.CloudEdge contributed) and 507 lines from `agents-sdk` where Glutinum crashed entirely. The "5/12 typeBuilder cases complete" framing in §4-§7 no longer matches reality — the dispatch surface is largely complete; the remaining gaps are five specific renderer bugs documented in [06_tool_status.md §"Xantham: Capabilities, Architecture, and Tracked Issues"](06_tool_status.md), not unimplemented type-builder cases. The migration sequence lives in [03_gap_analysis.md G6](03_gap_analysis.md). **The current state and the path to closing the remaining bugs — including the verified finding that no Fabulous.AST fork is required — are in [§9 "May 2026 Verified State and Roadmap"](#9-may-2026-verified-state-and-roadmap) at the end of this document.** Sections 1-3 remain accurate as motivation and architectural framing; sections 4-8 are preserved as historical context for how the assessment evolved.
 
 ## 1. Executive Summary
 
@@ -278,3 +278,126 @@ No, but it is closer than initial inspection suggested. The type resolution laye
 2. **Generator customization**: A Fidelity-specific generator could emit bindings tailored to the CloudEdge actor model: Fable-optimized patterns, BAREWire-compatible serialization attributes, or other framework-specific concerns, without modifying the extraction pipeline.
 
 3. **Elimination of compensatory infrastructure**: ~330 lines of pre/post-processing code across 3 languages, a weekly CI regeneration workflow, and 2 documented unresolved issues are all retired.
+
+---
+
+## 9. May 2026 Verified State and Roadmap
+
+This section supersedes the gap analysis and effort estimate in §4-§8. It reflects what is actually true after the March-May 2026 verification work and a deeper inspection of both Xantham and the underlying Fabulous.AST surface.
+
+### 9.1 What Was Wrong With the Original §4-§8 Assessment
+
+The March 2026 assessment looked at `typeBuilder` and counted "5/12 cases complete," then projected 8-12 days to wire up the remaining 7. That framing was wrong in two ways:
+
+- **The dispatch surface is not the constraint.** Subsequent verification runs (May 2026) confirm the generator already produces dense, structurally correct output for the entire workers-types and agents-sdk surfaces — 18,573 and 507 lines of F# respectively. The "TypeAlias / TypeLiteral / Tuple / Variable / Function / TypeReference / TypeParameter typeBuilder placeholders" enumerated in §4-§5 are no longer the user-visible bottleneck.
+- **The real bottleneck moved.** With the dispatch wired, the actual obstacles are five renderer-side issues that a March-snapshot reader would not have surfaced. Three of them (empty interface emission, generic constraint syntax, doubled inheritance brackets) determine whether the generated code *compiles* against Cloudflare-shaped surfaces. The other two (the now-fixed `collectAllRecursively` stack overflow and brand-symbol substitution) sit at the schema/extraction boundary.
+
+### 9.2 The Five Tracked Bugs (Authoritative List)
+
+The authoritative list of tracked Xantham issues lives in [06_tool_status.md §"Known Issues (as of May 2026)"](06_tool_status.md). Summarized here for cross-reference:
+
+| # | Bug | Status | Location |
+|:--|:----|:-------|:---------|
+| 1 | `collectAllRecursively` stack overflow on cyclic graphs | **FIXED locally**, upstream PR pending | `Render.Member.fs` (visited-set added on `LazyContainer.Data`) |
+| 2 | Empty interface emission (`type X =` with no body marker) | Open | `TypeRender.Render.fs` `renderInterface` empty-member branch |
+| 3 | Generic constraint syntax (concatenated, no `when ... :>` sigil) | Open | `Render.TypeParameter.fs` + `TypeRender.Render.fs:369-375` |
+| 4 | Doubled generic brackets in `inherit` clauses | Open | Heritage rendering in `TypeRender.Render.fs` `renderInheritance`/`renderClass` |
+| 5 | Brand-symbol substitution (workers-types-specific) | Open | Schema/extraction layer; affects DO/RPC `__*_BRAND` fields |
+
+Bugs 2-3 block compilation of the agents-sdk surface (which is why `Fidelity.CloudEdge.Agents` ships as hand-curated `Types.fs` in 0.3.0). Bug 4 affects class hierarchies and is the principal blocker for the workers-types migration of `Worker.Context`. Bug 5 is a semantic-correctness concern that does not block compilation.
+
+### 9.3 The Fabulous.AST Question (Verified Finding)
+
+In May 2026 the Xantham author Shayan Habibi indicated that closing Bug 3 (constraint rendering) and unblocking certain class-shape patterns might require changes to Fabulous.AST itself — specifically static abstract member emission and proper constraint rendering for type parameters. A natural read of that signal was: fork Fabulous.AST, add the missing widgets, build Xantham against the local fork, then close the bugs.
+
+**This was investigated against the published 2.0.0-pre06 Fabulous.AST source.** The finding is that the constraint-rendering widgets needed for Bug 3 already exist in the published package and require no fork:
+
+- **`Ast.SubtypeOf(typar: string, tp: string)`** — at [Fabulous.AST/Widgets/Types/TypeConstraint.fs:109-115](https://github.com/edgarfgp/Fabulous.AST). Produces a `WidgetBuilder<TypeConstraint>` that renders as `'T :> Foo` inside a constraint clause. Both `string` and `WidgetBuilder<Type>` overloads are present.
+- **`Ast.PostfixList(decls, constraints)`** — at [Fabulous.AST/Widgets/Types/TyparDecls.fs:135-148](https://github.com/edgarfgp/Fabulous.AST). The composition API that produces `<'T when 'T :> Foo>`. Multiple overloads accept `seq<TyparDeclNode>` + `seq<TypeConstraint>` in any combination.
+- **Full constraint surface** is published: `ConstraintSingle`, `ConstraintNotStruct`, `DefaultsTo`, `SubtypeOf`, `EnumOrDelegate`, `WhereSelf`, `WhereNotSupportsNull`, `Supports` (member-constraint).
+
+Where Xantham gets it wrong is the dispatch, not the underlying AST library. The current renderer:
+
+```fsharp
+// Xantham: TypeRender.Render.fs:369-375 (TypeParameterRender.renderTypeParameter)
+match renderConstraints ctx typeParameter with
+| ValueSome constrain ->
+    Ast.TyparDecl(name, constrain)   // <- WRONG OVERLOAD
+| ValueNone ->
+    Ast.TyparDecl(name)
+```
+
+The `Ast.TyparDecl(tyPar: string, value: WidgetBuilder<Type>)` overload at [TyparDecls.fs:68](https://github.com/edgarfgp/Fabulous.AST) renders as **`'T & SomeType`** — the F# 7 *intersection-constraint* shorthand — not as the `when 'T :> SomeType` constraint clause. That is why Xantham's current output looks like the concatenated form documented in Bug 3.
+
+Static abstract members (the second concern Shayan raised) were authored by Shayan himself in Fabulous.AST commit `905f90e` on Feb 14, 2026. That commit lands in `main` but is not in the 2.0.0-pre06 release. **It is not needed for the agents-sdk surface** — none of the agents-sdk types in the 0.3.0 binding scope use static abstract slots. Static abstracts become relevant only for SRTP-style binding shapes that we are not currently consuming.
+
+**Conclusion: no Fabulous.AST fork is required to close Bug 3.** The fix is purely Xantham-side, against the published 2.0.0-pre06 widget surface.
+
+### 9.4 Concrete Fix Path for Bug 3 (Constraint Syntax)
+
+The minimal change shape, expressed against the current Xantham source:
+
+1. **Reshape `TypeParameterRender.renderTypeParameter`** in [TypeRender.Render.fs:369-375](https://github.com/) so it returns a `(WidgetBuilder<TyparDeclNode> * WidgetBuilder<TypeConstraint> voption)` pair instead of a single `WidgetBuilder<TyparDeclNode>` with the constraint folded in. The constraint case becomes:
+
+   ```fsharp
+   let renderTypeParameter (ctx: GeneratorContext) (typeParameter: TypeParameterRender) =
+       let name = Name.Case.valueOrModified typeParameter.Name
+       let decl = Ast.TyparDecl(name)
+       let constraint =
+           renderConstraints ctx typeParameter
+           |> ValueOption.map (fun constrainType ->
+               Ast.SubtypeOf(name, constrainType))   // produces WidgetBuilder<TypeConstraint>
+       decl, constraint
+   ```
+
+2. **Update the three call sites** that currently build `Ast.PostfixList(decls)`:
+   - `renderInterface` at [TypeRender.Render.fs:538-541](https://github.com/)
+   - `renderClass` at [TypeRender.Render.fs:571-574](https://github.com/)
+   - `renderTypeAlias` at [TypeRender.Render.fs:607-610](https://github.com/)
+
+   Each needs to split the `(decl, constraint)` pairs into two lists and call the constraint-bearing overload:
+
+   ```fsharp
+   let pairs = typeLike.TypeParameters |> List.map (TypeParameterRender.renderTypeParameter ctx)
+   let decls = pairs |> List.map fst
+   let constraints = pairs |> List.choose (snd >> ValueOption.toOption)
+   Ast.PostfixList(decls, constraints)
+   ```
+
+3. **No changes needed in Fabulous.AST.** No package bumps. No vendoring. The widget set in 2.0.0-pre06 is sufficient.
+
+The resulting output for the agents-sdk surface goes from the current malformed:
+
+```fsharp
+type AgentNamespace<'Agentic Agent<option<obj>, option<obj>>> = ...
+```
+
+to the correct:
+
+```fsharp
+type AgentNamespace<'Agentic when 'Agentic :> Agent<obj option, obj option>> = ...
+```
+
+### 9.5 Order of Operations (May 2026 Forward)
+
+The migration sequence in [03 G6](03_gap_analysis.md) and the per-binding migration table in [06](06_tool_status.md) drive the operational steps. The technical work, in priority order:
+
+1. **Land Bug 1 fix upstream.** The visited-set fix in `Render.Member.collectAllRecursively` is in a local branch (`fix-collect-all-recursively-stack-overflow`). Open the upstream PR. This unblocks every consumer running against published Xantham, not just Fidelity.CloudEdge.
+
+2. **Close Bug 3 (constraint syntax) per §9.4 above.** Local branch in Xantham, validate against agents-sdk to get a clean `Fidelity.CloudEdge.Agents.Types.fs` that compiles. PR upstream alongside Bug 1.
+
+3. **Close Bug 2 (empty interface emission).** The fix is in `renderInterface` at [TypeRender.Render.fs:549-552](https://github.com/) — when `memberCollection` is empty, the builder uses `Ast.InterfaceEnd(renderName)` which should produce `interface end` but currently produces a header-only emission for some cases. This is a one-line dispatch correction.
+
+4. **Close Bug 4 (doubled inheritance brackets).** Localized to `renderInheritance` / `renderClass` heritage rendering. Likely a stray `_.typeParams(typeParameters.Value)` reapplication after the inheritance widget already carries its own arguments.
+
+5. **Bug 5 (brand-symbol substitution) is deferrable.** It produces semantically wrong-but-compiling bindings at workers-types brand fields; not a release blocker. Schedule alongside the workers-types migration of `Worker.Context` once Bugs 2-4 are closed.
+
+6. **Replace hand-curated `Fidelity.CloudEdge.Agents` and `Fidelity.CloudEdge.DynamicWorkflows` `Types.fs`** with Xantham-generated output. This is the validation milestone for the migration plan in [03 G6](03_gap_analysis.md).
+
+7. **Migrate `Worker.Context` and `AI`** off Glutinum, in that order. Retire `preprocess-typescript.js`, `postprocess-runtime.sh`, the manual recursion patches, and the Glutinum npm dependency.
+
+The total inflight Xantham-side change is bounded (visited-set, two renderer dispatch corrections, one heritage fix, the constraint-clause refactor in §9.4) and lives in a small number of files. None of it requires changes outside Xantham.
+
+### 9.6 Why This Matters for Fidelity.CloudEdge
+
+Per [00 Decision 7](00_architecture_decisions.md), Xantham is the standard. The roadmap in this section is the operational continuation of that decision: it identifies the bounded set of upstream changes needed, confirms they do not propagate into Fabulous.AST (and therefore do not pull a transitive dependency fork into Fidelity.CloudEdge's build graph), and sequences the per-binding migration against those fixes. The 0.3.0 hand-curated `Types.fs` for Agents and DynamicWorkflows are bridge artifacts; the durable form is Xantham-generated output once Bugs 2-3 close.
