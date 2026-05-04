@@ -401,3 +401,186 @@ The total inflight Xantham-side change is bounded (visited-set, two renderer dis
 ### 9.6 Why This Matters for Fidelity.CloudEdge
 
 Per [00 Decision 7](00_architecture_decisions.md), Xantham is the standard. The roadmap in this section is the operational continuation of that decision: it identifies the bounded set of upstream changes needed, confirms they do not propagate into Fabulous.AST (and therefore do not pull a transitive dependency fork into Fidelity.CloudEdge's build graph), and sequences the per-binding migration against those fixes. The 0.3.0 hand-curated `Types.fs` for Agents and DynamicWorkflows are bridge artifacts; the durable form is Xantham-generated output once Bugs 2-3 close.
+
+### 9.6.1 Status update (May 3, 2026): Three of five bugs closed on speakez-xantham master
+
+Between this assessment's authoring and validation, the following three bugs landed on speakez-xantham master, all by Shayan Habibi on May 3, 2026:
+
+| Bug | Commit | Notes |
+|:----|:-------|:------|
+| Bug 1 — collectAllRecursively stack overflow | `a4ee905` "fix: prevent infinite recursion in collect all members" | `HashSet<ResolvedType>` guard in `Render.Member.fs`. Functionally equivalent to the visited-set fix that Fidelity.CloudEdge had developed locally on a `fix-collect-all-recursively-stack-overflow` branch — keys on `ResolvedType` rather than `TypeKey`, but both prevent re-entry on cyclic graphs. |
+| Bug 5 — brand-symbol substitution | `45cb34d` "fix: literal typenode provides typekey for literal token node resolution" | Modifies `LiteralTokenNode.fs` and `TypeNode.fs`. Shipped with a 963-line three.js test fixture at `tests/Xantham.Fable.Tests/TypeFiles/packages/three/constants.d.ts` — three.js was the original surface where the bug was identified. Resolves the "literal node vs literal typenode for TypeKey extraction" pattern documented in §9.2. |
+| Bug 3 — constraint syntax | `2e3433e` "fix: type parameters render using Ast.TyparDecl & Ast.SubtypeOf and Ast.PostfixList instead of Ast.TyparDecl into Ast.PostfixList directly" | Modifies `TypeRender.Render.fs:370-398` and the three call sites in `renderInterface`, `renderClass`, `renderTypeAlias`. **Implementation matches the §9.4 prescription line-for-line** — same `(TyparDecl, TypeConstraint voption)` restructure, same composition through `Ast.PostfixList`. Confirms the Fabulous.AST analysis in §9.3: no fork required; the widget surface in published 2.0.0-pre06 was sufficient. Adds a useful `renderTypeWithConstraint` helper for type signatures. |
+
+Plus `31bc583` "fix: prevent infinite recursion in TypeRefRender.replace" — additional stack-overflow protection in a sibling code path, with regression test added in [tests/Xantham.Generator.Tests/Tests/TypeAliasRender.fs](https://github.com/) (issue #39).
+
+**Remaining open bugs:** Bug 2 (empty interface emission) and Bug 4 (doubled generic brackets in `inherit` clauses). Fix paths and test specifications are below.
+
+**In-flight related work (do not duplicate):** Shayan has the `xantham-44` branch open against [shayanhabibi/Xantham issue #44](https://github.com/shayanhabibi/Xantham/issues/44) — "[GENERATOR] Rendering types with type parameters inside and outside of type references." The branch contains a fix in `src/Xantham.Fable/Reading/TypeReference.fs` (changes the type-argument resolution to prefer the longer of `resolveTypeArgumentsFromType` vs `resolveTypeArgumentsFromNode`, instead of preferring one and falling back) plus four test additions: `nested-generics.d.ts`, `type-args.d.ts`, +263 lines in `tests/Xantham.Fable.Tests/Program.fs`, and `tests/Xantham.Generator.Tests/Tests/Inheritance.fs`. Issue #44 is the broader concern that Bug 4 (the doubled-brackets symptom we observed) appears to be a manifestation of. **Bug 4 should not be worked separately until xantham-44 merges** — the fix may subsume the symptom, in which case our work is to verify and acknowledge; if the symptom persists, the right move is to comment on issue #44 with the specific case rather than open a competing branch.
+
+**Also relevant:** [shayanhabibi/Xantham issue #45](https://github.com/shayanhabibi/Xantham/issues/45) — "Wholesale refactor: unified hook model for generator extensibility" — is a planning document on master (`docs/plans/generator-extensibility-refactor.md`, 435 lines). It describes a future refactor of the consumer-facing API. **It is not an active blocker.** The current consumer API (`TypeRefRender.testRender`, `Interface.create`, `TypeReference.create`, etc., as used in [`tests/Xantham.Generator.Tests/Tests/Inheritance.fs`](https://github.com/) on xantham-44) is stable enough today for Shayan to write generator-side tests against; the refactor will likely change the API surface but the present API is consumable.
+
+### 9.7 Concrete Fix Path for Bug 2 (Empty Interface Emission)
+
+**Symptom:** Generation emits `type IPartyserver =` for some interfaces — header line with no body marker. F# requires `interface end` (or at least one member) for the type to compile.
+
+**Where it dispatches:** `renderInterface` in [src/Xantham.Generator/Generator/TypeRender.Render.fs:547-575](https://github.com/) on speakez-xantham master:
+
+```fsharp
+let renderInterface (ctx: GeneratorContext) (typeLike: TypeLikeRender) =
+    let renderName = Name.Case.valueOrModified typeLike.Name
+    let typeParameters = ...
+    let members = ...
+    let functions = ...
+    let memberCollection = members @ functions
+    let builder =
+        if List.isEmpty memberCollection
+        then Ast.InterfaceEnd(renderName)
+        else Ast.TypeDefn(renderName)
+    builder {
+        yield! renderAbstractConstructors ctx typeLike
+        yield!
+            typeLike.Inheritance
+            |> List.map (renderInheritance ctx)
+        yield! memberCollection
+    }
+```
+
+**Hypothesis on root cause:** The dispatch decides between `Ast.InterfaceEnd` (produces `interface end`) and `Ast.TypeDefn` (produces a normal type definition body) based solely on `memberCollection` being empty. But the builder block then yields three streams: `renderAbstractConstructors`, `Inheritance`, and `memberCollection`. When all three are empty AND the dispatch landed on `Ast.TypeDefn` (because `memberCollection` was non-empty for one parameter shape but ended up empty after rendering), the resulting `type X = ` block has no body marker.
+
+The mirror case is also suspect: when `memberCollection` is empty but `Inheritance` is non-empty, the dispatch lands on `Ast.InterfaceEnd` and yields `inherit Y` into a builder that should emit `type X = interface inherit Y end`. Whether Fabulous.AST's `InterfaceEnd` builder accepts inheritance children correctly is worth verifying.
+
+**Likely fix shape:** The dispatch decision should consider all three streams (`abstractConstructors`, `Inheritance`, `memberCollection`), not just `memberCollection`. When all three are empty, force `Ast.InterfaceEnd` with no body. When inheritance is the only non-empty stream, the question becomes whether `Ast.TypeDefn` correctly emits `type X = inherit Y` or whether `InterfaceEnd` is the right composition. Empirical generation against the test fixture below will confirm.
+
+**Test fixture** (`tests/Xantham.Fable.Tests/TypeFiles/empty-interface.d.ts`):
+
+```typescript
+// TEST TARGET: empty interfaces with various heritage shapes
+//
+// Verifies that interfaces with no own members emit valid F# (`interface end`
+// or appropriate body marker) regardless of heritage and type parameter shape.
+
+// Pure empty interface — no members, no heritage, no type parameters
+export interface Empty {}
+
+// Empty interface with heritage only
+export interface BaseInterface {
+    parentProp: string;
+}
+export interface EmptyExtended extends BaseInterface {}
+
+// Empty generic interface
+export interface EmptyGeneric<T> {}
+
+// Empty generic interface with constrained heritage
+export interface EmptyConstrainedExtended<T extends BaseInterface> extends BaseInterface {}
+```
+
+**Test assertion** (in `tests/Xantham.Generator.Tests/Tests/InterfaceRender.fs` or similar; pattern follows Shayan's `TypeAliasRender.fs`):
+
+```fsharp
+let emptyInterfaceTests =
+    testList "Empty interface emission (Bug 2)" [
+        testCase "pure empty interface emits `interface end`" <| fun _ ->
+            // generate against Empty fixture; assert output contains "interface end"
+            // assert output does NOT contain bare "type Empty =\n" with no body marker
+            ...
+        testCase "empty interface with heritage emits valid body" <| fun _ ->
+            // generate against EmptyExtended; assert F# parses
+            ...
+        testCase "empty generic interface emits `interface end` with type params" <| fun _ ->
+            // generate against EmptyGeneric<T>; assert "type EmptyGeneric<'T> = interface end"
+            ...
+    ]
+```
+
+The `dotnet fable` step in CI is a sufficient end-to-end check — if Fable can compile the generated F#, the body marker is correct.
+
+### 9.8 Bug 4 (Doubled Generic Brackets in `inherit` Clauses) — Symptom of Issue #44
+
+**Symptom:** Generation emits `inherit Partyserver.Server<'Env, 'Agent><'Env>` for class hierarchies where the parent class is generic and the child class re-applies its own type arguments. The trailing `<'Env>` is the doubling — the inherited type already carries `<'Env, 'Agent>` correctly; the second bracket pair is spurious.
+
+**This appears to be a manifestation of [Xantham issue #44](https://github.com/shayanhabibi/Xantham/issues/44)** — "Rendering types with type parameters inside and outside of type references." Shayan has `xantham-44` open with an in-flight fix in `src/Xantham.Fable/Reading/TypeReference.fs` and accompanying tests (see §9.6.1).
+
+**Why this section is now an observation rather than a fix prescription:** Earlier drafts of this section proposed a separate fix path in `TypeRefRender.Render.fs` `renderMolecule.Prefix` or in the heritage extraction layer. Those paths are downstream of the type-argument resolution that issue #44 is fixing in the extractor (`TypeReference.fs`). Opening a separate fix branch for Bug 4 while xantham-44 is in flight would duplicate effort and likely produce a competing fix at the wrong layer. The right sequence is:
+
+1. **Wait for xantham-44 to merge to master.**
+2. **Re-test for the doubling symptom** against post-merge code, ideally using the same fixtures Shayan added (`nested-generics.d.ts`, `type-args.d.ts`) extended to cover the heritage-passthrough shape if it isn't already.
+3. **If the symptom persists**, comment on issue #44 with the specific case (the agents-sdk `Agent extends DurableObject<Env>` / `Server extends DurableObject<Env>` shape) so Shayan can either fold the additional case into his fix or open a follow-up issue.
+4. **If the symptom is resolved**, mark Bug 4 closed and add a reference test in this repo's binding regeneration to prevent regression in the consumed binding.
+
+**Where to look for the symptom post-merge:** The `inherit` clause is composed by `renderInheritance` in [src/Xantham.Generator/Generator/TypeRender.Render.fs:527-531](https://github.com/) — a clean single-pass render that wraps the parent's `TypeRefRender` in `Ast.Inherit`. The doubling is not introduced there; it enters through the `TypeRefRender` that arrives, which is what issue #44 addresses.
+
+**Test fixture (proposed for verification, not yet branched)** (`tests/Xantham.Fable.Tests/TypeFiles/generic-extends-passthrough.d.ts`):
+
+```typescript
+// TEST TARGET: generic class extending generic class with type-arg passthrough
+//
+// Verifies that an extending generic class whose own type parameters are
+// passed to its generic parent emits `inherit Parent<'T>` exactly once,
+// not `inherit Parent<'T><'T>`.
+
+// Single-parameter generic parent with single-parameter generic child
+export class GenericParent<T> {
+    parentValue: T;
+}
+export class GenericChild<T> extends GenericParent<T> {
+    childValue: T;
+}
+
+// Multi-parameter generic parent — exercises the agents-sdk Server<Env, Agent> shape
+export class MultiParamParent<E, A> {
+    env: E;
+    agent: A;
+}
+export class MultiParamChild<E, A> extends MultiParamParent<E, A> {
+    childData: number;
+}
+
+// Subset passthrough — child re-applies a subset of its own params
+export class SubsetParent<E, A> {
+    env: E;
+    agent: A;
+}
+export class SubsetChild<E> extends SubsetParent<E, string> {
+    childData: number;
+}
+```
+
+**Test assertion** (in `tests/Xantham.Generator.Tests/Tests/HeritageRender.fs` or similar):
+
+```fsharp
+let heritageDoublingTests =
+    testList "Heritage rendering — doubled generic brackets (Bug 4)" [
+        testCase "single-param generic child renders `inherit Parent<'T>` once" <| fun _ ->
+            // generate against GenericChild fixture
+            // assert exact substring: "inherit GenericParent<'T>"
+            // assert absence of substring: "inherit GenericParent<'T><'T>"
+            ...
+        testCase "multi-param generic child preserves all parent type args" <| fun _ ->
+            // generate against MultiParamChild
+            // assert exact substring: "inherit MultiParamParent<'E, 'A>"
+            // assert absence of any "<...><...>" pattern in the inherit clause
+            ...
+        testCase "subset passthrough renders parent with mixed concrete/generic args" <| fun _ ->
+            // generate against SubsetChild
+            // assert exact substring: "inherit SubsetParent<'E, string>"
+            ...
+    ]
+```
+
+The agents-sdk surface — specifically the `Agent extends DurableObject<Env>` and `Server extends DurableObject<Env>` shapes — exercises this directly. Phase C of the migration plan ([§9.5](#95-order-of-operations-may-2026-forward)) provides empirical confirmation alongside the synthetic fixture.
+
+### 9.9 Test Coverage Summary for the Five Bugs
+
+| Bug | Status | Test coverage on master | Test coverage in flight | Outside contribution useful? |
+|:----|:-------|:------------------------|:------------------------|:-----------------------------|
+| Bug 1 — collectAllRecursively stack overflow | Fixed (`a4ee905`) on master | None visible — the fix is "naive" per Shayan's commit message; depends on existing fixtures triggering cycles indirectly | Not visible on `xantham-44` | A dedicated cyclic-graph fixture would lock the protection in place; worth asking Shayan whether he prefers it as an external PR or whether he plans to add it as part of his own iteration |
+| Bug 2 — empty interface emission | Open | None | Not visible on any branch | Yes — fixture + assertions per §9.7. This is the cleanest candidate for a small standalone PR back upstream |
+| Bug 3 — constraint syntax | Fixed (`2e3433e`) on master | None visible | **`tests/Xantham.Generator.Tests/Tests/Inheritance.fs` on `xantham-44`** uses `TypeRefRender.testRender` to assert against rendered type-parameter output (e.g., `"Global.TestInterface<string, _>"`, `"TestInterface<'T, 'U>"`). Active work in this area | Wait until xantham-44 merges; the in-flight tests likely cover the constraint-syntax surface |
+| Bug 4 — doubled generic brackets in `inherit` | Open; appears to be a manifestation of [issue #44](https://github.com/shayanhabibi/Xantham/issues/44) | `extends.d.ts` and `multiple-extends.d.ts` cover non-generic heritage only — doubling cannot occur in those shapes | **`xantham-44` adds `nested-generics.d.ts`, `type-args.d.ts`, +263 lines in `Program.fs`, and `Inheritance.fs`** — directly attacking the type-parameter resolution surface | Wait, then verify per §9.8. A separate fix branch would step on Shayan's in-flight work |
+| Bug 5 — brand-symbol substitution | Fixed (`45cb34d`) on master | `tests/Xantham.Fable.Tests/TypeFiles/packages/three/constants.d.ts` (963 lines) — Shayan's repro fixture | Not visible | Coverage is tight; additional `__*_BRAND` patterns from workers-types may surface during Phase D, at which point a small extension to the fixture set would be useful |
+
+**What changed in this revision:** An earlier version of this section claimed "no explicit generator-side regression test landed alongside [Bug 3]." That was accurate for master at the moment of writing but missed the in-flight work on `xantham-44` — `Inheritance.fs` is exactly that test infrastructure. Similarly, the Bug 4 row previously proposed a fixture as a standalone gap; the corrected reading is that Shayan's in-flight work on issue #44 is the primary effort and any external contribution should sequence behind it.
+
+**The shape of useful external contribution:** Of the five bugs, **Bug 2 is the only one where opening a clean external PR (small, focused, branch-named for the concern) is unambiguously useful right now**. The cyclic-graph fixture for Bug 1 would also be useful but should be coordinated with Shayan first — he may already plan to add it. Bugs 3, 4, and 5 either have in-flight test coverage or tight coverage already.

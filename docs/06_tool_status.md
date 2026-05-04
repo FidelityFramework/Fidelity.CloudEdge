@@ -49,52 +49,50 @@ The decoder is reusable independently — any consumer can take a dependency on 
 | Output customization | Built-in single format | User-defined strategy (string concat, Fabulous.AST, etc.) |
 | TypeScript compiler swap-ability | Coupled to Fable.TypeScript | Encoder is replaceable (e.g., TSGO migration); decoders/generators unchanged |
 
-### Known Issues (as of May 2026)
+### Known Issues (as of May 3, 2026)
 
-**1. `collectAllRecursively` stack overflow on cyclic graphs (FIXED locally; upstream PR pending)**
+> **Three of the five bugs below were closed on `speakez-xantham` master by Shayan Habibi on May 3, 2026.** The Bug 3 fix matches the [docs/12 §9.4](12_xantham_glutinum_replacement_assessment.md) prescription line-for-line, confirming the Fabulous.AST analysis (no fork required). Bugs 2 and 4 remain open with concrete fix paths and test specifications in [docs/12 §9.7 and §9.8](12_xantham_glutinum_replacement_assessment.md).
 
-`Render.Member.collectAllRecursively` walked type references, intersection constituents, interface heritage, class heritage, and conditionals without tracking visited types. On Cloudflare workers-types-shaped graphs (38,454 raw types, 8 cycles after compression) this caused infinite recursion. Fix: visited-set keyed on `LazyContainer.Data` (canonical TypeKey) at every recursion path. Local fix produces 18,573 lines of F# from workers-types where unfixed Xantham stack-overflowed; upstream PR is in flight.
+**1. `collectAllRecursively` stack overflow on cyclic graphs (CLOSED on master)**
 
-**2. Empty interface emission**
+Closed via `a4ee905` "fix: prevent infinite recursion in collect all members" — `HashSet<ResolvedType>` guard in `Render.Member.fs`. Functionally equivalent to the visited-set fix that Fidelity.CloudEdge developed locally on a `fix-collect-all-recursively-stack-overflow` branch (which keyed on `TypeKey` rather than `ResolvedType`). The local branch is now redundant.
 
-`type IPartyserver =` with no body. F# requires `interface end` or members. Xantham emits the type header without a body marker for some empty top-level types. Workaround until fixed upstream: post-process to insert `class end` or `interface end` markers; or fix in `Render.fs` / `TypeRender.Render.fs`.
+Test gap: no dedicated cyclic-fixture regression test landed alongside the fix. A `tests/Xantham.Fable.Tests/TypeFiles/cyclic-interfaces.d.ts` fixture would lock the protection in place against future refactors.
 
-**3. Generic constraint syntax**
+**2. Empty interface emission (OPEN)**
 
-```fsharp
-type AgentNamespace<'Agentic Agent<option<obj>, option<obj>>> = ...
-```
+`type IPartyserver =` with no body. F# requires `interface end` or members. Xantham emits the type header without a body marker for some empty top-level types. Fix path with test fixture and assertions in [docs/12 §9.7](12_xantham_glutinum_replacement_assessment.md). Lives in `renderInterface` dispatch in `TypeRender.Render.fs:547-575`.
 
-The constraint type is concatenated onto the parameter name without the `when ... :>` sigil. Should be `<'Agentic when 'Agentic :> Agent<...>>`. Renderer bug in the type-parameter rendering path.
+**3. Generic constraint syntax (CLOSED on master)**
 
-**4. Doubled generic brackets in `inherit` clauses**
+Closed via `2e3433e` "fix: type parameters render using Ast.TyparDecl & Ast.SubtypeOf and Ast.PostfixList instead of Ast.TyparDecl into Ast.PostfixList directly". The implementation matches the [docs/12 §9.4](12_xantham_glutinum_replacement_assessment.md) prescription line-for-line: same `(TyparDecl, TypeConstraint voption)` restructure, same `Ast.PostfixList(decls, constraints)` composition applied to the three call sites in `renderInterface`, `renderClass`, `renderTypeAlias`. Adds a `renderTypeWithConstraint` helper for type signatures.
+
+Test gap: no explicit generator-side regression test landed alongside the fix. A small assertion checking `<'T when 'T :> Foo>` output for a constrained type parameter would lock the prescription in place.
+
+**4. Doubled generic brackets in `inherit` clauses (OPEN)**
 
 ```fsharp
 inherit Partyserver.Server<'Env, 'Agent><'Env>
 ```
 
-Heritage rendering double-applies type arguments. Should be `inherit Partyserver.Server<'Env, 'Agent>`. Localized to inheritance rendering; bug appears to be in the type shape or member rendering for class-extends clauses.
+Heritage rendering double-applies type arguments. Should be `inherit Partyserver.Server<'Env, 'Agent>`. Fix path with test fixture and assertions in [docs/12 §9.8](12_xantham_glutinum_replacement_assessment.md). Likely lives in `TypeRefRender.Render.fs` `renderMolecule.Prefix` or in the heritage extraction layer that produces the `TypeRefRender` passed to `renderInheritance`.
 
-**5. Brand-symbol type substitution (workers-types-specific observation)**
+**5. Brand-symbol type substitution (CLOSED on master)**
 
-```fsharp
-member __RPC_TARGET_BRAND: DurableObjectRoutingMode = JS.undefined
-```
+Closed via `45cb34d` "fix: literal typenode provides typekey for literal token node resolution". Modifies `LiteralTokenNode.fs` and `TypeNode.fs`. The fix matches Shayan's "literal node vs literal typenode for TypeKey extraction" description — getting the typekey from the literal typenode (correct) instead of the literal token node (the syntactic node, wrong). Shipped with a 963-line three.js test fixture at `tests/Xantham.Fable.Tests/TypeFiles/packages/three/constants.d.ts` — three.js was the original surface where the bug was identified. Test coverage is tight; further `__*_BRAND` patterns from workers-types could be added during Phase D if regressions are observed.
 
-TypeScript brand symbols (which are nominal-typing markers like `unique symbol`) are being substituted with sibling enum types instead of `obj` or being elided. Affects mostly Cloudflare's branded DO/RPC types; doesn't break compilation but produces semantically wrong bindings at the brand fields.
+### Bugs 2 and 4 are localized renderer bugs
 
-### Issues 2-5 are localized renderer bugs
-
-Each of issues 2-5 lives in a specific render module (`Render.fs`, `Render.TypeShapes.fs`, or `Render.TypeParameter.fs`) and is materially smaller than the compensations Glutinum requires. Each is either an upstream fix opportunity or, failing that, a thin post-processor — but the post-processor surface area is much narrower than the Glutinum compensations being retired.
+Each of the two open bugs lives in a specific render module (`TypeRender.Render.fs` and `TypeRefRender.Render.fs`) and is materially smaller than the compensations Glutinum requires. Each has a concrete fix path with a test fixture proposed in [docs/12 §9.7-§9.8](12_xantham_glutinum_replacement_assessment.md).
 
 ### Migration Status
 
-| Target | Current State | Migration Target | Blocker |
-|:-------|:--------------|:-----------------|:--------|
-| `Fidelity.CloudEdge.Worker.Context` | Glutinum + hand-curated `Types.fs` | Xantham + retained `Types.fs` | Issues 2-5 in workers-types output |
-| `Fidelity.CloudEdge.AI` | Glutinum | Xantham | Same (workers-types-adjacent surface) |
-| `Fidelity.CloudEdge.Agents` | Hand-curated only (Glutinum crashed) | Xantham | Issues 2-3 (agents-sdk surface) |
-| `Fidelity.CloudEdge.DynamicWorkflows` | Hand-curated only | Xantham | None expected (small clean surface) |
+| Target | Current State | Migration Target | Blocker (May 3, 2026) |
+|:-------|:--------------|:-----------------|:----------------------|
+| `Fidelity.CloudEdge.Worker.Context` | Glutinum + hand-curated `Types.fs` | Xantham + retained `Types.fs` | Bug 4 (doubled inheritance brackets) — exercised by workers-types deep class hierarchies. Bug 2 (empty interface) — likely also in workers-types surface. Bugs 1/3/5 closed on master. |
+| `Fidelity.CloudEdge.AI` | Glutinum | Xantham | Same as Worker.Context (workers-types-adjacent surface) |
+| `Fidelity.CloudEdge.Agents` | Hand-curated only (Glutinum crashed) | Xantham | Bug 4 (Agent extends DurableObject<Env> exercises the heritage doubling shape). Bug 3 closed on master removes the original blocker. |
+| `Fidelity.CloudEdge.DynamicWorkflows` | Hand-curated only | Xantham | No known blockers. Phase B validation candidate — small clean surface to confirm Bugs 1/3/5 fixes hold up end-to-end. |
 
 ## Hawaii: Known Limitations & Mitigations
 

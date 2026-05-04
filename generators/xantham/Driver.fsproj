@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>Xantham.Driver</RootNamespace>
+        <DefineConstants>CONCURRENT_DICT</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../../../speakez-xantham/src/Xantham.Decoder/Xantham.Decoder.fsproj" />
+        <ProjectReference Include="../../../speakez-xantham/src/Xantham.Generator/Xantham.Generator.fsproj" />
+    </ItemGroup>
+
+</Project>
