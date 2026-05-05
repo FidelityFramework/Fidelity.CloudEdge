@@ -1,7 +1,7 @@
 # Xantham generator observations against Cloudflare SDK surfaces
 
-**Date:** 2026-05-04
-**Xantham source:** `xantham-44` branch (HEAD `4b71ec0`)
+**Date:** 2026-05-04 (updated 2026-05-05)
+**Xantham source:** `master` branch at HEAD `8fc22a2` (post-#55 export-rename fix that closes #53). Earlier observations against `xantham-44` HEAD `4b71ec0` are superseded by this update.
 **Driver:** `Fidelity.CloudEdge/generators/xantham/Program.fs` — small wrapper around `Xantham.Decoder.Runtime` + `Xantham.Generator` that takes JSON in, writes Fantomas-formatted F# out.
 
 This file catalogs observations from running the extractor and generator end-to-end against three current Cloudflare TypeScript packages. It is intended as empirical evidence of the generator's current behavior — not a prescription for where to make changes. Each observation cites a file and line in this directory so the snippets are reproducible from the artifacts.
@@ -18,13 +18,19 @@ All three packages installed at `npm`-latest in a fresh `/tmp/cf-sdk-latest/node
 
 `@cloudflare/ai@1.2.2` was excluded because Cloudflare deprecated it in favor of the native AI binding now living in `workers-types`.
 
-## Run summary
+## Run summary at master `8fc22a2`
 
-| Package | Extraction | Generation | F# output |
-|:--------|:-----------|:-----------|:----------|
-| `dynamic-workflows` | 121 KB JSON, 235 types, no diagnostics | Compressed 235 → 133 over 8 cycles, 5,635 bytes F# | `dynamic-workflows.fs` (139 lines) |
-| `agents` | 17 MB JSON, 1 `MISSREF` and 1 `CIRCREF` diagnostic during extraction | **Decoder threw `KeyNotFoundException` during compression pass; no F# produced** | (none) |
-| `workers-types` | 14.8 MB JSON, 3 `MISSREF` and 1 `CIRCREF` diagnostics | Generated with 4 "stack overflow would be caused by rendering the type ref" diagnostics, 894 KB F# | `workers-types.fs` (19,457 lines) |
+| Package | Encoder | Decoder | Generator | F# output |
+|:--------|:--------|:--------|:----------|:----------|
+| `dynamic-workflows` | Clean (1 CIRCREF diagnostic, normal) | Clean | Clean | 5,905 bytes — full generation |
+| `agents` | Clean (1 CIRCREF, no MISSREF since #51 closed the `NoInfer` intrinsic case) | Clean (no longer crashes) | **Crashes in `RenderScope_Anchored.registerAnchorFromExport` → `anchorPreludeExportScope` → `failwith`** | None |
+| `workers-types` | Clean (1 CIRCREF + 2 MISSREF on `-10204` and `-10225` for unresolved intrinsic refs at `index.d.ts:13624` and `index.d.ts:464`) | Clean | **Crashes in `RenderScope_Anchored.anchorPreludeExportScope` at `src/Xantham.Generator/Generator/RenderScope.Anchored.fs:481`** | None |
+
+**What changed since the prior observation cycle:**
+
+- **agents** — was crashing in the **decoder** at `Utils.swapType` with a `KeyNotFoundException` on TypeKey `-1550`. After #51 (NoInfer intrinsic fix) and #55 (export-rename resolution), the encoder and decoder both run clean for agents. The crash has moved into the generator at `RenderScope_Anchored`.
+- **workers-types** — was generating with cycle-protection diagnostics (894 KB output). On master `8fc22a2` it now also crashes at the generator in `RenderScope_Anchored`. This is a new generator-side regression introduced with the recent merge.
+- **dynamic-workflows** — was generating cleanly before; still does. Output is slightly larger (5,905 bytes vs prior 5,635 bytes) reflecting correct exported-name emission.
 
 ## Observations by category
 
@@ -40,141 +46,92 @@ type ICloudflare =
 type ``@cloudflare`` =
 ```
 
-**`workers-types.fs:1`:**
+The pattern appears at the top of the output. Subsequent `type` declarations in the same file have bodies (members or `interface end`).
+
+This was visible in earlier runs and remains in current output. No change post-#55.
+
+### 2. Duplicate static method emission for renamed exports (NEW post-#55)
+
+The `dynamic-workflows` package re-exports an internal function `dispatcherBindingImpl` under the alias `_dispatcherBindingImpl`. The current generator emits the static member twice with identical signatures.
+
+**`dynamic-workflows.fs:41-51`:**
 ```fsharp
-type ICloudflare =
+[<Import("@cloudflare/dynamic-workflows", "_dispatcherBindingImpl")>]
+static member _dispatcherBindingImpl
+    (getBinding: unit -> option<obj>, metadata: _dispatcherBindingImpl.Metadata)
+    : option<obj> =
+    JS.undefined
+
+[<Import("@cloudflare/dynamic-workflows", "_dispatcherBindingImpl")>]
+static member _dispatcherBindingImpl
+    (getBinding: unit -> option<obj>, metadata: _dispatcherBindingImpl.Metadata)
+    : option<obj> =
+    JS.undefined
 ```
 
-The pattern appears once per package at the top of the output. Subsequent `type` declarations in both files have bodies (members or `interface end`).
+Same scope, same identifier, same signature — F# would reject this as duplicate. Likely cause: the encoder now visits both the canonical definition site (`./binding.js`'s `dispatcherBindingImpl`) and the export site (the alias as `_dispatcherBindingImpl`), and the generator emits a method declaration for each visit instead of recognizing them as the same TypeKey.
 
-### 2. Doubled type-parameter brackets in `inherit` clauses
+This is **new post-#55** — pre-merge, the export-side wasn't fully wired so only the canonical site emitted (under the *wrong* name `dispatcherBindingImpl` without the underscore). #55 fixed the rename binding but exposed the duplicate-emission downstream.
 
-The output contains `inherit` clauses where a generic parent appears with type arguments applied twice — once nested inside, once trailing.
+### 3. Generator crashes on `agents` and `workers-types` (NEW post-merge)
 
-**`workers-types.fs:714-716`:**
-```fsharp
-type ByteLengthQueuingStrategy =
-    [<EmitConstructor>]
-    abstract Create: init: Typescript.QueuingStrategyInit -> ByteLengthQueuingStrategy
+Two stack traces, both in `src/Xantham.Generator/Generator/RenderScope.Anchored.fs`:
 
-    inherit Typescript.QueuingStrategy<ArrayBufferView<ArrayBufferLike>, 'ByteLengthQueuingStrategy><
-        ArrayBufferView<ArrayBufferLike>
-     >
+**agents:**
+```
+at Xantham.Generator.Generator.RenderScope_Anchored.registerAnchorFromExport
+at Xantham.Generator.Generator.RenderScope_Anchored.registerExportsForAnchoring@712
 ```
 
-**`workers-types.fs:1018`:**
-```fsharp
-inherit WritableStream<U2<ArrayBuffer, ArrayBufferView<ArrayBufferLike>>, 'DigestStream><
+**workers-types:**
+```
+at Xantham.Generator.Generator.RenderScope_Anchored.anchorPreludeExportScope (RenderScope.Anchored.fs:481)
+at Xantham.Generator.Generator.RenderScope_Anchored.anchorPreludeExportScope@482
+at Xantham.Generator.Generator.RenderScope_Anchored.registerAnchorFromExport (line 543)
+at Xantham.Generator.Generator.RenderScope_Anchored.registerExportsForAnchoring@712
 ```
 
-**`workers-types.fs:6185`:**
-```fsharp
-inherit TransformStream<D1SessionBookmark, Uint8Array<ArrayBufferLike>, 'TextEncoderStream><
-```
+Both converge on `anchorPreludeExportScope` (`RenderScope.Anchored.fs:478-494`), which iterates a `RenderScopeStore.TypeStore` and tries to resolve each `key` via `GeneratorContext.Prelude.tryGet`. When that returns None and a follow-up `prerender` doesn't repopulate the prelude with the missing key, `failwith "Could not find render scope for key"` fires at line 491.
 
-A second pattern in these clauses: the inner type parameters include `'ByteLengthQueuingStrategy`, `'DigestStream`, `'TextEncoderStream` — typars whose names match the *child* class being defined. These typars are not declared on the child type's parameter list (e.g., `ByteLengthQueuingStrategy` has no type parameters of its own).
+The two crashes are the **same root concern** — different export shapes (Variable case for workers-types' line 543, possibly Class or Interface for agents) reach the same convergent failure point. The line-number differences in the two stack traces just reflect which `ResolvedExport` case branch was being processed when the unifying `anchorPreludeExportScope` fired its `failwith`.
 
-3 occurrences in `workers-types.fs`. Not seen in `dynamic-workflows.fs`.
+This is consistent with the maintainer's debugging context (the rename binding chain established by #55 doesn't fully propagate to the prelude population step that `anchorPreludeExportScope` consults). The prelude is populated under one TypeKey; the iteration encounters the alias under a different TypeKey; the lookup misses; the fallback `prerender` doesn't reconcile.
 
-### 3. Decoder fails on extracted `MISSREF` keys
+### 4. Cycle-protection diagnostics during workers-types extraction
 
-The agents extraction emitted one diagnostic during JSON write-out:
+The encoder still emits `[CIRCREF]` and `[MISSREF]` diagnostics for workers-types:
 
 ```
-[MISSREF] - TypeKey -1550 - Missing type builder value -
-file:////home/hhh/repos/speakez-xantham/node_modules/typescript/lib/lib.es5.d.ts:1680:1 (end 1680:29)
+[CIRCREF] - TsConditionalType: ... references itself [30366]
+[MISSREF] - TypeKey -10204 - Missing type builder value -
+file:////tmp/cf-sdk-latest/node_modules/@cloudflare/workers-types/index.d.ts:13624:3 (end 13624:36)
+[MISSREF] - TypeKey -10225 - Missing type builder value -
+file:////tmp/cf-sdk-latest/node_modules/@cloudflare/workers-types/index.d.ts:464:15 (end 464:37)
 ```
 
-The JSON was written successfully (17 MB, exit 0). When the driver subsequently called `Xantham.Decoder.Runtime.create` to load that JSON, the decoder's compression pass threw:
-
-```
-System.Collections.Generic.KeyNotFoundException: The given key '-1550' was not present in the dictionary.
-   at Xantham.Decoder.Utils.swapType (Utils.fs:223)
-   at Xantham.Decoder.Utils.compressWithMap (Utils.fs:342)
-   at Xantham.Decoder.Utils.compressResult (Utils.fs:389)
-   at Xantham.Decoder.Utils.compress (Utils.fs:531)
-```
-
-No F# was produced for `agents`. The extractor and decoder appear to disagree about how `MISSREF` keys propagate from the JSON into the in-memory graph.
-
-`workers-types` extraction also produced 3 `MISSREF` diagnostics (TypeKeys -387, -10203, -10224, -10413) but the decoder did not crash on those keys. Why agents' `-1550` triggers the crash and the workers-types `MISSREF`s do not is not obvious from the output alone.
-
-### 4. Cycle-protection diagnostics during rendering
-
-During `workers-types.fs` generation, the generator emitted four diagnostics to stderr:
-
-```
-Stack overflow would be caused by rendering the type ref for -449
-Stack overflow would be caused by rendering the type ref for 1263
-Stack overflow would be caused by rendering the type ref for -10256
-Stack overflow would be caused by rendering the type ref for 1461
-```
-
-Generation continued and completed; the file was written. Whatever placeholder the protection layer emits is not greppable as a distinct token in the output.
-
-`dynamic-workflows.fs` generation reported "Compressed typemap from 235 to 133 types over 8 cycles" — cycles detected during decoder compression, no rendering-time diagnostics.
+The MISSREF keys shifted slightly (`-10203 -10224` → `-10204 -10225`) reflecting schema reorganization since the previous run, but neither pre-merge nor post-merge crashed the decoder on these keys. The encoder writes them; the decoder handles them; whether the generator then crashes is currently masked by the upstream `RenderScope_Anchored` failure.
 
 ### 5. Brand symbols rendered as single-case discriminated unions
 
-TypeScript `unique symbol` brand fields in `workers-types` translate to F# single-case DUs:
+In the prior cycle's workers-types output (which generated successfully before the post-merge regression), brand symbols rendered as F# single-case DUs:
 
-**`workers-types.fs:1344, 1855, 2717, 5595, 7630`:**
 ```fsharp
 type __WORKER_ENTRYPOINT_BRAND = | __WORKER_ENTRYPOINT_BRAND
 type __RPC_STUB_BRAND = | __RPC_STUB_BRAND
-type __RPC_TARGET_BRAND = | __RPC_TARGET_BRAND
-type __DURABLE_OBJECT_BRAND = | __DURABLE_OBJECT_BRAND
-type __WORKFLOW_ENTRYPOINT_BRAND = | __WORKFLOW_ENTRYPOINT_BRAND
+// ...
 ```
 
-Member references to those brands are correctly typed:
+This appeared sound. It cannot be re-verified against current master until the `RenderScope_Anchored` crash is unblocked.
 
-**`workers-types.fs:13, 19, 38, 86, 95`:**
-```fsharp
-member __RPC_TARGET_BRAND: __RPC_TARGET_BRAND = JS.undefined
-member __RPC_STUB_BRAND: __RPC_STUB_BRAND = JS.undefined
-member __WORKER_ENTRYPOINT_BRAND: __WORKER_ENTRYPOINT_BRAND = JS.undefined
-member __DURABLE_OBJECT_BRAND: __DURABLE_OBJECT_BRAND = JS.undefined
-member __WORKFLOW_ENTRYPOINT_BRAND: __WORKFLOW_ENTRYPOINT_BRAND = JS.undefined
-```
+### 6. Module structure on `dynamic-workflows.fs` is clean
 
-This appears to be a sound F# encoding of TypeScript's `unique symbol` brand pattern. Including this here as a contrast to the categories above — the brand-rendering area produces clean output.
+For contrast with the issues above, the working dynamic-workflows output has well-formed module nesting:
 
-### 6. Duplicate static method emissions
-
-Some `[<Import>]`'d static methods appear twice with identical signatures.
-
-**`workers-types.fs:24-31`:**
-```fsharp
-[<Import("@cloudflare/workers-types", "atob")>]
-static member atob(data: D1SessionBookmark) : D1SessionBookmark = JS.undefined
-
-[<Import("@cloudflare/workers-types", "atob")>]
-static member atob(data: D1SessionBookmark) : D1SessionBookmark = JS.undefined
-
-[<Import("@cloudflare/workers-types", "btoa")>]
-static member btoa(data: D1SessionBookmark) : D1SessionBookmark = JS.undefined
-
-[<Import("@cloudflare/workers-types", "btoa")>]
-static member btoa(data: D1SessionBookmark) : D1SessionBookmark = JS.undefined
-```
-
-The TypeScript declarations for `atob` and `btoa` each appear once in `workers-types/index.d.ts`. The duplicate emission may be a downstream effect of the TopLevelExports / KeyExportMap surface having both an export entry and a type-map entry for the same symbol; the generator may be visiting both.
-
-Also visible in this snippet: the `data` parameter type is rendered as `D1SessionBookmark` rather than `string`. `D1SessionBookmark` is declared elsewhere in `workers-types` as a Cloudflare-specific type (database bookmark identifier). Why the parameter for `atob`/`btoa` resolves to it rather than `string` is not obvious from the output.
-
-### 7. Module structure on `dynamic-workflows.fs` is clean
-
-For contrast, the `dynamic-workflows.fs` output has well-formed module nesting and import paths:
-
-**`dynamic-workflows.fs:7-8`:**
+**`dynamic-workflows.fs:7-8, 113-117`:**
 ```fsharp
 module Cloudflare =
     type IDynamicWorkflows =
-```
-
-**`dynamic-workflows.fs:113-117`:**
-```fsharp
+// ...
 module ``@cloudflare`` =
     module DynamicWorkflows =
         module Dist =
@@ -182,50 +139,36 @@ module ``@cloudflare`` =
                 [<Import("./binding.js", "DynamicWorkflowBindingProps")>]
 ```
 
-Generic types preserve their parameters cleanly:
-
-**`dynamic-workflows.fs:88-92`:**
-```fsharp
-[<Import("@cloudflare/dynamic-workflows", "LoadWorkflowRunnerContext")>]
-type LoadWorkflowRunnerContext<'Env> =
-    abstract ctx: option<obj> with get, set
-    abstract env: 'Env with get, set
-    abstract metadata: LoadWorkflowRunnerContext.Metadata with get, set
-```
-
-`MissingDispatcherMetadataError` correctly carries `inherit Error`:
-
-**`dynamic-workflows.fs:51-58`:**
-```fsharp
-[<Import("@cloudflare/dynamic-workflows", "MissingDispatcherMetadataError")>]
-type MissingDispatcherMetadataError =
-    interface
-        [<EmitConstructor>]
-        abstract Create: unit -> MissingDispatcherMetadataError
-
-        inherit Error
-    end
-```
-
-Including these positive observations because they show what's working — the smaller surface produces almost-deployable output already.
+Generic types preserve their parameters; `MissingDispatcherMetadataError extends Error` correctly emits `inherit Error`. The smaller surface produces almost-deployable output already.
 
 ## What is not in this catalog
 
-- No claim about *where* in `Xantham.Generator` or `Xantham.Decoder` source any of the above is introduced.
-- No proposed fix shape for any observed pattern.
+- No claim about *where* in Xantham source any of the above is best fixed. The `RenderScope_Anchored` crash sites are characterized in `feedback_discipline.md` and `project_status_and_next_steps.md` in the speakez-xantham project memory; fix work proceeds on dedicated branches.
 - No comparison to a target architecture; only what the output contains today.
-- No coverage of `agents@0.12.3` rendering output (the decoder crashed before the renderer ran).
+- No coverage of agents@0.12.3 or workers-types rendering output beyond the crash points (the generator crashes before producing F# for either).
 
 ## Reproducing
 
-The driver lives in `/home/hhh/repos/Fidelity.CloudEdge/generators/xantham/`. To reproduce against the artifacts in this directory:
+Driver lives in `/home/hhh/repos/Fidelity.CloudEdge/generators/xantham/`. To reproduce:
 
 ```bash
 cd /home/hhh/repos/Fidelity.CloudEdge/generators/xantham
-dotnet build -c Release
-dotnet run -c Release --no-build -- output/dynamic-workflows.json /tmp/dyn-workflows.fs
-dotnet run -c Release --no-build -- output/workers-types.json /tmp/workers-types.fs
-dotnet run -c Release --no-build -- output/agents.json /tmp/agents.fs   # crashes
+dotnet build -c Release  # builds driver + speakez-xantham libs via ProjectReference
+
+OUT=/home/hhh/repos/Fidelity.CloudEdge/generators/xantham/output
+dotnet run -c Release --no-build -- $OUT/dynamic-workflows.json $OUT/dynamic-workflows.fs  # generates
+dotnet run -c Release --no-build -- $OUT/agents.json $OUT/agents.fs                        # crashes
+dotnet run -c Release --no-build -- $OUT/workers-types.json $OUT/workers-types.fs          # crashes
 ```
 
-The driver references `speakez-xantham/src/Xantham.{Decoder,Generator}` by relative project path; the speakez-xantham repo is on the `xantham-44` branch.
+Speakez-xantham is on `master` at HEAD `8fc22a2`. The JSON inputs in this directory are post-merge extracts. The `dynamic-workflows.fs` is current (May 4 15:38). The previous `workers-types.fs` (May 4 08:14, 894 KB) was from pre-merge generator behavior and is retained as a stale comparison reference; it does not reflect current generator output and will be replaced once the `RenderScope_Anchored` regression is fixed.
+
+## Active fix work in speakez-xantham
+
+Per the maintainer's vacation window (May 4-?, 2026), SpeakEZ is now proceeding with fixes on the speakez-xantham fork. Three branches planned in priority order, named per the maintainer's existing convention (descriptive, not numbered):
+
+1. `fix-renderscope-anchor-export-key-resolution` — unblocks agents and workers-types generation
+2. `dedupe-method-emission-on-export-aliases` — addresses the duplicate `_dispatcherBindingImpl` emission introduced by #55
+3. `fix-empty-type-body-emission` — addresses the long-standing empty-body symptom
+
+Each branch contains the fix plus a regression test, structured as a PR-able unit for review when the maintainer returns. Master stays in sync with upstream; no SpeakEZ commits land on master directly.

@@ -1,3 +1,10 @@
+module rec CloudflareDynamicWorkflows
+
+open System
+open Fable.Core
+open Fable.Core.JS
+open Fable.Core.JsInterop
+
 module rec Cloudflare =
     module rec DynamicWorkflows =
         module rec DispatchWorkflow =

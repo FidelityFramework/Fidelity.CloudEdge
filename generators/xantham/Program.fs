@@ -31,6 +31,18 @@ let main argv =
          {
              customiser with
                  Customisation.Interceptors.ResolvedTypePrelude = fun _ -> function
+                     // TS lib.es `Error` class — substitute with F#'s `exn`
+                     // (alias for System.Exception). The path-based ref to
+                     // "Error" doesn't resolve in F#; `exn` does and supports
+                     // `inherit exn()` for class bindings whose TS source
+                     // extends Error.
+                     | ResolvedType.Interface ({ IsLibEs = true } as iface) when Name.Case.valueOrSource iface.Name = "Error" ->
+                         fun renderScope ->
+                             let exnRef =
+                                 RenderScopeStore.TypeRefAtom.Unsafe.createIntrinsic Intrinsic.exn
+                                 |> RenderScopeStore.TypeRef.Unsafe.createAtom
+                                 |> RenderScopeStore.TypeRefRender.Unsafe.createFromKind false
+                             { renderScope with TypeRef = exnRef; Render = Render.RefOnly exnRef }
                      | ResolvedType.Interface { IsLibEs = true }
                      | ResolvedType.Class { IsLibEs = true }
                      | ResolvedType.Enum { IsLibEs = true } -> fun renderScope ->
