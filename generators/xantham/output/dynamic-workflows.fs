@@ -4,12 +4,12 @@ module rec Cloudflare =
             type _Lit3 =
                 abstract Item: key: string -> option<obj>
 
+            type Invoke =
+                abstract run: event: Dist.Types.WorkflowEventLike<'T> * step: obj -> Promise<'R>
+
             type _Lit1 =
                 abstract ctx: option<obj> with get, set
                 abstract env: 'Env with get, set
-
-            type Invoke =
-                abstract run: event: Dist.Types.WorkflowEventLike<'T> * step: obj -> Promise<'R>
 
         module rec Dist =
             module rec Binding =
@@ -23,13 +23,13 @@ module rec Cloudflare =
                     abstract bindingName: option<string> with get, set
 
             module rec Types =
-                type DispatcherMetadata = obj
-
                 [<Import("./types.js", "WorkflowEventLike")>]
                 type WorkflowEventLike<'T> =
                     abstract instanceId: string with get, set
                     abstract timestamp: Date with get, set
                     abstract payload: 'T with get, set
+
+                type DispatcherMetadata = obj
 
         module rec LoadWorkflowRunner =
             type Invoke =
@@ -56,16 +56,6 @@ module rec Cloudflare =
             abstract createBatch: batch: ResizeArray<option<obj>> -> Promise<ResizeArray<option<obj>>>
             abstract create: ?options: obj -> Promise<option<obj>>
 
-        [<Import("@cloudflare/dynamic-workflows", "WorkflowRunner")>]
-        type WorkflowRunner<'R, 'T> =
-            abstract run: event: Dist.Types.WorkflowEventLike<'T> * step: obj -> Promise<'R>
-
-        [<Import("@cloudflare/dynamic-workflows", "LoadWorkflowRunnerContext")>]
-        type LoadWorkflowRunnerContext<'Env> =
-            abstract ctx: option<obj> with get, set
-            abstract env: 'Env with get, set
-            abstract metadata: Dist.Types.DispatcherMetadata with get, set
-
         type DispatchWorkflow =
             abstract Invoke:
                 context: DispatchWorkflow._Lit1 *
@@ -75,6 +65,16 @@ module rec Cloudflare =
                     LoadWorkflowRunnerContext<'Env>
                         -> U2<DispatchWorkflow.Invoke.LoadRunner, Promise<DispatchWorkflow.Invoke.LoadRunner>> ->
                     Promise<'Result>
+
+        [<Import("@cloudflare/dynamic-workflows", "WorkflowRunner")>]
+        type WorkflowRunner<'R, 'T> =
+            abstract run: event: Dist.Types.WorkflowEventLike<'T> * step: obj -> Promise<'R>
+
+        [<Import("@cloudflare/dynamic-workflows", "LoadWorkflowRunnerContext")>]
+        type LoadWorkflowRunnerContext<'Env> =
+            abstract ctx: option<obj> with get, set
+            abstract env: 'Env with get, set
+            abstract metadata: Dist.Types.DispatcherMetadata with get, set
 
         type IDynamicWorkflows =
             [<Import("@cloudflare/dynamic-workflows", "_dispatcherBindingImpl")>]
@@ -95,12 +95,6 @@ module rec Cloudflare =
                 ) : option<obj> =
                 JS.undefined
 
-            [<Import("@cloudflare/dynamic-workflows", "wrapWorkflowBinding")>]
-            static member wrapWorkflowBinding
-                (metadata: Dist.Types.DispatcherMetadata, ?options: Dist.Binding.WrapWorkflowBindingOptions)
-                : option<obj> =
-                JS.undefined
-
             [<Import("@cloudflare/dynamic-workflows", "dispatchWorkflow")>]
             static member dispatchWorkflow
                 (
@@ -111,4 +105,10 @@ module rec Cloudflare =
                         LoadWorkflowRunnerContext<'Env>
                             -> U2<DispatchWorkflow.LoadRunner, Promise<DispatchWorkflow.LoadRunner>>
                 ) : Promise<'Result> =
+                JS.undefined
+
+            [<Import("@cloudflare/dynamic-workflows", "wrapWorkflowBinding")>]
+            static member wrapWorkflowBinding
+                (metadata: Dist.Types.DispatcherMetadata, ?options: Dist.Binding.WrapWorkflowBindingOptions)
+                : option<obj> =
                 JS.undefined
