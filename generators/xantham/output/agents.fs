@@ -14885,7 +14885,7 @@ module rec Zod =
                         abstract _zod: _Lit62 with get, set
 
                         [<EmitProperty("~standard")>]
-                        abstract ``~standard``: Core.StandardSchema.StandardSchemaV1.Props<'$ZodType, 'Input> with get, set
+                        abstract ``~standard``: Core.StandardSchema.StandardSchemaV1.Props<'_SZodType, 'Input> with get, set
 
                         abstract _zod: 'Internals with get, set
                         abstract description: option<string> with get, set
@@ -17775,7 +17775,7 @@ module rec Zod =
                 [<Import("./schemas.cjs", "$ZodType")>]
                 type ZodType<'Internals, 'I, 'O when 'Internals :> ZodTypeInternals<'O, 'I>> =
                     [<EmitProperty("~standard")>]
-                    abstract ``~standard``: StandardSchema.StandardSchemaV1.Props<'$ZodType, 'Input> with get, set
+                    abstract ``~standard``: StandardSchema.StandardSchemaV1.Props<'_SZodType, 'Input> with get, set
 
                     abstract _zod: 'Internals with get, set
 
