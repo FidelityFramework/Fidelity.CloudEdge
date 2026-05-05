@@ -15749,7 +15749,7 @@ module rec Cloudflare =
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type IncomingRequestCfPropertiesTLSClientAuthPlaceholder =
-            | [<CompiledName("")>] ````
+            | [<CompiledName("")>] Empty
             | NONE
             | [<CompiledName("0")>] ``0``
 
