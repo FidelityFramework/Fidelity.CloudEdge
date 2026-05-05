@@ -8,12 +8,14 @@ open Fable.Core.JsInterop
 module rec Cloudflare =
     module rec DynamicWorkflows =
         module rec DispatchWorkflow =
+            module rec LoadRunner =
+                module rec LoadRunner =
+                    type Invoke =
+                        abstract run: event: Dist.Types.WorkflowEventLike<'T> * step: obj -> Promise<'R>
+
             type Context =
                 abstract ctx: option<obj> with get, set
                 abstract env: 'Env with get, set
-
-            type Invoke =
-                abstract run: event: Dist.Types.WorkflowEventLike<'T> * step: obj -> Promise<'R>
 
         module rec Dist =
             module rec Binding =
@@ -48,8 +50,10 @@ module rec Cloudflare =
                 abstract run: event: Dist.Types.WorkflowEventLike<'T> * step: obj -> Promise<'R>
 
         module rec LoadWorkflowRunnerContext =
-            type Metadata =
-                abstract Item: key: string -> option<obj>
+            module rec Metadata =
+                module rec Metadata =
+                    type Metadata =
+                        abstract Item: key: string -> option<obj>
 
         module rec WrapWorkflowBinding =
             type Metadata =
@@ -68,12 +72,15 @@ module rec Cloudflare =
 
         type DispatchWorkflow =
             abstract Invoke:
-                context: DispatchWorkflow.Invoke.Context *
+                context: DispatchWorkflow.Invoke.Context.Invoke.Context.Context *
                 event: Dist.Types.WorkflowEventLike<option<obj>> *
                 step: obj *
                 loadRunner:
                     LoadWorkflowRunnerContext<'Env>
-                        -> U2<DispatchWorkflow.Invoke.LoadRunner, Promise<DispatchWorkflow.Invoke.LoadRunner>> ->
+                        -> U2<
+                            DispatchWorkflow.Invoke.LoadRunner.LoadRunner.Invoke,
+                            Promise<DispatchWorkflow.Invoke.LoadRunner>
+                         > ->
                     Promise<'Result>
 
         [<Import("@cloudflare/dynamic-workflows", "LoadWorkflowRunnerContext")>]
@@ -89,7 +96,7 @@ module rec Cloudflare =
         type LoadWorkflowRunner<'R, 'T, 'Env> =
             abstract Invoke:
                 context: LoadWorkflowRunnerContext<'Env> ->
-                    U2<Promise<LoadWorkflowRunner.Invoke>, LoadWorkflowRunner.Invoke>
+                    U2<Promise<LoadWorkflowRunner.Invoke>, LoadWorkflowRunner.Invoke.Invoke.Invoke>
 
         [<Import("@cloudflare/dynamic-workflows", "WorkflowRunner")>]
         type WorkflowRunner<'R, 'T> =
@@ -104,7 +111,7 @@ module rec Cloudflare =
                     step: obj,
                     loadRunner:
                         LoadWorkflowRunnerContext<'Env>
-                            -> U2<DispatchWorkflow.LoadRunner, Promise<DispatchWorkflow.LoadRunner>>
+                            -> U2<DispatchWorkflow.LoadRunner.LoadRunner.Invoke, Promise<DispatchWorkflow.LoadRunner>>
                 ) : Promise<'Result> =
                 JS.undefined
 
@@ -126,7 +133,7 @@ module rec Cloudflare =
                     loadRunner:
                         LoadWorkflowRunnerContext<'Env>
                             -> U2<
-                                CreateDynamicWorkflowEntrypoint.LoadRunner,
+                                CreateDynamicWorkflowEntrypoint.LoadRunner.LoadRunner.Invoke,
                                 Promise<CreateDynamicWorkflowEntrypoint.LoadRunner>
                              >
                 ) : option<obj> =
