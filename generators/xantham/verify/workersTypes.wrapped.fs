@@ -10906,7 +10906,7 @@ module rec Cloudflare =
                 [<EmitProperty("[__RPC_TARGET_BRAND]")>]
                 abstract __RPC_TARGET_BRAND: unit with get, set
 
-            type MaybeDisposable<'T> = U2<Disposable, option<obj>>
+            type MaybeDisposable<'T> = U2<System.IDisposable, option<obj>>
             type Result<'R> = U2<Result, U2<Result, unit>>
 
             [<Import("@cloudflare/workers-types.Rpc", "UnstubifyAll")>]
@@ -10991,7 +10991,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.Rpc", "StubBase")>]
             type StubBase<'T when 'T :> Stubable> =
-                inherit Disposable
+                inherit System.IDisposable
 
                 [<EmitProperty("[__RPC_STUB_BRAND]")>]
                 abstract __RPC_STUB_BRAND: 'T with get, set
