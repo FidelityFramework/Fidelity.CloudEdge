@@ -225,21 +225,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input._Unscopables2222,
                                                                                                     Input._Unscopables2222,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input._Unscopables2222,
                                                                                         Input._Unscopables2222,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input._Unscopables2222
                                                                      >,
@@ -338,21 +340,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input._Unscopables2222,
                                                                                         Input._Unscopables2222,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input._Unscopables2222,
                                                                             Input._Unscopables2222,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input._Unscopables2222
                                                          >,
@@ -396,21 +398,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input._Unscopables2222,
                                                 Input._Unscopables2222,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input._Unscopables2222,
                                     Input._Unscopables2222,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input._Unscopables2222,
                         Input._Unscopables2222,
                         obj
@@ -579,21 +581,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input._Iterator494,
                                                                                                     Input._Iterator494,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input._Iterator494,
                                                                                         Input._Iterator494,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input._Iterator494
                                                                      >,
@@ -692,21 +696,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input._Iterator494,
                                                                                         Input._Iterator494,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input._Iterator494,
                                                                             Input._Iterator494,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input._Iterator494
                                                          >,
@@ -750,21 +754,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input._Iterator494,
                                                 Input._Iterator494,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input._Iterator494,
                                     Input._Iterator494,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input._Iterator494,
                         Input._Iterator494,
                         obj
@@ -933,21 +937,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.With,
                                                                                                     Input.With,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.With,
                                                                                         Input.With,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.With
                                                                      >,
@@ -1046,21 +1052,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.With,
                                                                                         Input.With,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.With,
                                                                             Input.With,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.With
                                                          >,
@@ -1104,21 +1110,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.With,
                                                 Input.With,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.With,
                                     Input.With,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.With,
                         Input.With,
                         obj
@@ -1286,21 +1292,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.ToSpliced,
                                                                                                     Input.ToSpliced,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToSpliced,
                                                                                         Input.ToSpliced,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.ToSpliced
                                                                      >,
@@ -1399,21 +1407,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToSpliced,
                                                                                         Input.ToSpliced,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.ToSpliced,
                                                                             Input.ToSpliced,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.ToSpliced
                                                          >,
@@ -1457,21 +1465,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.ToSpliced,
                                                 Input.ToSpliced,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.ToSpliced,
                                     Input.ToSpliced,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.ToSpliced,
                         Input.ToSpliced,
                         obj
@@ -1639,21 +1647,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.ToSorted,
                                                                                                     Input.ToSorted,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToSorted,
                                                                                         Input.ToSorted,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.ToSorted
                                                                      >,
@@ -1752,21 +1762,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToSorted,
                                                                                         Input.ToSorted,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.ToSorted,
                                                                             Input.ToSorted,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.ToSorted
                                                          >,
@@ -1810,21 +1820,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.ToSorted,
                                                 Input.ToSorted,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.ToSorted,
                                     Input.ToSorted,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.ToSorted,
                         Input.ToSorted,
                         obj
@@ -1992,21 +2002,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.ToReversed,
                                                                                                     Input.ToReversed,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToReversed,
                                                                                         Input.ToReversed,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.ToReversed
                                                                      >,
@@ -2105,21 +2117,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToReversed,
                                                                                         Input.ToReversed,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.ToReversed,
                                                                             Input.ToReversed,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.ToReversed
                                                          >,
@@ -2163,21 +2175,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.ToReversed,
                                                 Input.ToReversed,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.ToReversed,
                                     Input.ToReversed,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.ToReversed,
                         Input.ToReversed,
                         obj
@@ -2345,21 +2357,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.FindLastIndex,
                                                                                                     Input.FindLastIndex,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.FindLastIndex,
                                                                                         Input.FindLastIndex,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.FindLastIndex
                                                                      >,
@@ -2458,21 +2472,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.FindLastIndex,
                                                                                         Input.FindLastIndex,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.FindLastIndex,
                                                                             Input.FindLastIndex,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.FindLastIndex
                                                          >,
@@ -2516,21 +2530,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.FindLastIndex,
                                                 Input.FindLastIndex,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.FindLastIndex,
                                     Input.FindLastIndex,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.FindLastIndex,
                         Input.FindLastIndex,
                         obj
@@ -2698,21 +2712,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.FindLast,
                                                                                                     Input.FindLast,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.FindLast,
                                                                                         Input.FindLast,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.FindLast
                                                                      >,
@@ -2811,21 +2827,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.FindLast,
                                                                                         Input.FindLast,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.FindLast,
                                                                             Input.FindLast,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.FindLast
                                                          >,
@@ -2869,21 +2885,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.FindLast,
                                                 Input.FindLast,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.FindLast,
                                     Input.FindLast,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.FindLast,
                         Input.FindLast,
                         obj
@@ -3051,21 +3067,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.At,
                                                                                                     Input.At,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.At,
                                                                                         Input.At,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.At
                                                                      >,
@@ -3164,21 +3182,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.At,
                                                                                         Input.At,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.At,
                                                                             Input.At,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.At
                                                          >,
@@ -3222,21 +3240,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.At,
                                                 Input.At,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.At,
                                     Input.At,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.At,
                         Input.At,
                         obj
@@ -3404,21 +3422,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Flat,
                                                                                                     Input.Flat,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Flat,
                                                                                         Input.Flat,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Flat
                                                                      >,
@@ -3517,21 +3537,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Flat,
                                                                                         Input.Flat,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Flat,
                                                                             Input.Flat,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Flat
                                                          >,
@@ -3575,21 +3595,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Flat,
                                                 Input.Flat,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Flat,
                                     Input.Flat,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Flat,
                         Input.Flat,
                         obj
@@ -3757,21 +3777,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.FlatMap,
                                                                                                     Input.FlatMap,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.FlatMap,
                                                                                         Input.FlatMap,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.FlatMap
                                                                      >,
@@ -3870,21 +3892,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.FlatMap,
                                                                                         Input.FlatMap,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.FlatMap,
                                                                             Input.FlatMap,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.FlatMap
                                                          >,
@@ -3928,21 +3950,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.FlatMap,
                                                 Input.FlatMap,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.FlatMap,
                                     Input.FlatMap,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.FlatMap,
                         Input.FlatMap,
                         obj
@@ -4110,21 +4132,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Includes,
                                                                                                     Input.Includes,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Includes,
                                                                                         Input.Includes,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Includes
                                                                      >,
@@ -4223,21 +4247,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Includes,
                                                                                         Input.Includes,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Includes,
                                                                             Input.Includes,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Includes
                                                          >,
@@ -4281,21 +4305,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Includes,
                                                 Input.Includes,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Includes,
                                     Input.Includes,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Includes,
                         Input.Includes,
                         obj
@@ -4463,21 +4487,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Values,
                                                                                                     Input.Values,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Values,
                                                                                         Input.Values,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Values
                                                                      >,
@@ -4576,21 +4602,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Values,
                                                                                         Input.Values,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Values,
                                                                             Input.Values,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Values
                                                          >,
@@ -4634,21 +4660,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Values,
                                                 Input.Values,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Values,
                                     Input.Values,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Values,
                         Input.Values,
                         obj
@@ -4816,21 +4842,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Keys,
                                                                                                     Input.Keys,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Keys,
                                                                                         Input.Keys,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Keys
                                                                      >,
@@ -4929,21 +4957,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Keys,
                                                                                         Input.Keys,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Keys,
                                                                             Input.Keys,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Keys
                                                          >,
@@ -4987,21 +5015,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Keys,
                                                 Input.Keys,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Keys,
                                     Input.Keys,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Keys,
                         Input.Keys,
                         obj
@@ -5169,21 +5197,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Entries,
                                                                                                     Input.Entries,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Entries,
                                                                                         Input.Entries,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Entries
                                                                      >,
@@ -5282,21 +5312,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Entries,
                                                                                         Input.Entries,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Entries,
                                                                             Input.Entries,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Entries
                                                          >,
@@ -5340,21 +5370,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Entries,
                                                 Input.Entries,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Entries,
                                     Input.Entries,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Entries,
                         Input.Entries,
                         obj
@@ -5522,21 +5552,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.FindIndex,
                                                                                                     Input.FindIndex,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.FindIndex,
                                                                                         Input.FindIndex,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.FindIndex
                                                                      >,
@@ -5635,21 +5667,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.FindIndex,
                                                                                         Input.FindIndex,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.FindIndex,
                                                                             Input.FindIndex,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.FindIndex
                                                          >,
@@ -5693,21 +5725,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.FindIndex,
                                                 Input.FindIndex,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.FindIndex,
                                     Input.FindIndex,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.FindIndex,
                         Input.FindIndex,
                         obj
@@ -5875,21 +5907,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Find,
                                                                                                     Input.Find,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Find,
                                                                                         Input.Find,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Find
                                                                      >,
@@ -5988,21 +6022,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Find,
                                                                                         Input.Find,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Find,
                                                                             Input.Find,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Find
                                                          >,
@@ -6046,21 +6080,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Find,
                                                 Input.Find,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Find,
                                     Input.Find,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Find,
                         Input.Find,
                         obj
@@ -6228,21 +6262,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.ReduceRight,
                                                                                                     Input.ReduceRight,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ReduceRight,
                                                                                         Input.ReduceRight,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.ReduceRight
                                                                      >,
@@ -6341,21 +6377,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ReduceRight,
                                                                                         Input.ReduceRight,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.ReduceRight,
                                                                             Input.ReduceRight,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.ReduceRight
                                                          >,
@@ -6399,21 +6435,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.ReduceRight,
                                                 Input.ReduceRight,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.ReduceRight,
                                     Input.ReduceRight,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.ReduceRight,
                         Input.ReduceRight,
                         obj
@@ -6581,21 +6617,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Reduce,
                                                                                                     Input.Reduce,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Reduce,
                                                                                         Input.Reduce,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Reduce
                                                                      >,
@@ -6694,21 +6732,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Reduce,
                                                                                         Input.Reduce,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Reduce,
                                                                             Input.Reduce,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Reduce
                                                          >,
@@ -6752,21 +6790,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Reduce,
                                                 Input.Reduce,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Reduce,
                                     Input.Reduce,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Reduce,
                         Input.Reduce,
                         obj
@@ -6934,21 +6972,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Filter,
                                                                                                     Input.Filter,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Filter,
                                                                                         Input.Filter,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Filter
                                                                      >,
@@ -7047,21 +7087,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Filter,
                                                                                         Input.Filter,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Filter,
                                                                             Input.Filter,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Filter
                                                          >,
@@ -7105,21 +7145,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Filter,
                                                 Input.Filter,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Filter,
                                     Input.Filter,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Filter,
                         Input.Filter,
                         obj
@@ -7287,21 +7327,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Map,
                                                                                                     Input.Map,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Map,
                                                                                         Input.Map,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Map
                                                                      >,
@@ -7400,21 +7442,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Map,
                                                                                         Input.Map,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Map,
                                                                             Input.Map,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Map
                                                          >,
@@ -7458,21 +7500,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Map,
                                                 Input.Map,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Map,
                                     Input.Map,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Map,
                         Input.Map,
                         obj
@@ -7640,21 +7682,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.ForEach,
                                                                                                     Input.ForEach,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ForEach,
                                                                                         Input.ForEach,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.ForEach
                                                                      >,
@@ -7753,21 +7797,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ForEach,
                                                                                         Input.ForEach,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.ForEach,
                                                                             Input.ForEach,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.ForEach
                                                          >,
@@ -7811,21 +7855,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.ForEach,
                                                 Input.ForEach,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.ForEach,
                                     Input.ForEach,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.ForEach,
                         Input.ForEach,
                         obj
@@ -7993,21 +8037,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Some,
                                                                                                     Input.Some,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Some,
                                                                                         Input.Some,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Some
                                                                      >,
@@ -8106,21 +8152,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Some,
                                                                                         Input.Some,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Some,
                                                                             Input.Some,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Some
                                                          >,
@@ -8164,21 +8210,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Some,
                                                 Input.Some,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Some,
                                     Input.Some,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Some,
                         Input.Some,
                         obj
@@ -8346,21 +8392,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Every,
                                                                                                     Input.Every,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Every,
                                                                                         Input.Every,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Every
                                                                      >,
@@ -8459,21 +8507,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Every,
                                                                                         Input.Every,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Every,
                                                                             Input.Every,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Every
                                                          >,
@@ -8517,21 +8565,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Every,
                                                 Input.Every,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Every,
                                     Input.Every,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Every,
                         Input.Every,
                         obj
@@ -8699,21 +8747,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.LastIndexOf,
                                                                                                     Input.LastIndexOf,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.LastIndexOf,
                                                                                         Input.LastIndexOf,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.LastIndexOf
                                                                      >,
@@ -8812,21 +8862,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.LastIndexOf,
                                                                                         Input.LastIndexOf,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.LastIndexOf,
                                                                             Input.LastIndexOf,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.LastIndexOf
                                                          >,
@@ -8870,21 +8920,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.LastIndexOf,
                                                 Input.LastIndexOf,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.LastIndexOf,
                                     Input.LastIndexOf,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.LastIndexOf,
                         Input.LastIndexOf,
                         obj
@@ -9052,21 +9102,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.IndexOf,
                                                                                                     Input.IndexOf,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.IndexOf,
                                                                                         Input.IndexOf,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.IndexOf
                                                                      >,
@@ -9165,21 +9217,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.IndexOf,
                                                                                         Input.IndexOf,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.IndexOf,
                                                                             Input.IndexOf,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.IndexOf
                                                          >,
@@ -9223,21 +9275,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.IndexOf,
                                                 Input.IndexOf,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.IndexOf,
                                     Input.IndexOf,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.IndexOf,
                         Input.IndexOf,
                         obj
@@ -9405,21 +9457,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Slice,
                                                                                                     Input.Slice,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Slice,
                                                                                         Input.Slice,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Slice
                                                                      >,
@@ -9518,21 +9572,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Slice,
                                                                                         Input.Slice,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Slice,
                                                                             Input.Slice,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Slice
                                                          >,
@@ -9576,21 +9630,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Slice,
                                                 Input.Slice,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Slice,
                                     Input.Slice,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Slice,
                         Input.Slice,
                         obj
@@ -9758,21 +9812,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Join,
                                                                                                     Input.Join,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Join,
                                                                                         Input.Join,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Join
                                                                      >,
@@ -9871,21 +9927,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Join,
                                                                                         Input.Join,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Join,
                                                                             Input.Join,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Join
                                                          >,
@@ -9929,21 +9985,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Join,
                                                 Input.Join,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Join,
                                     Input.Join,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Join,
                         Input.Join,
                         obj
@@ -10111,21 +10167,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Concat,
                                                                                                     Input.Concat,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Concat,
                                                                                         Input.Concat,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Concat
                                                                      >,
@@ -10224,21 +10282,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Concat,
                                                                                         Input.Concat,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Concat,
                                                                             Input.Concat,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Concat
                                                          >,
@@ -10282,21 +10340,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Concat,
                                                 Input.Concat,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Concat,
                                     Input.Concat,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Concat,
                         Input.Concat,
                         obj
@@ -10464,21 +10522,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.ToLocaleString,
                                                                                                     Input.ToLocaleString,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToLocaleString,
                                                                                         Input.ToLocaleString,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.ToLocaleString
                                                                      >,
@@ -10577,21 +10637,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToLocaleString,
                                                                                         Input.ToLocaleString,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.ToLocaleString,
                                                                             Input.ToLocaleString,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.ToLocaleString
                                                          >,
@@ -10635,21 +10695,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.ToLocaleString,
                                                 Input.ToLocaleString,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.ToLocaleString,
                                     Input.ToLocaleString,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.ToLocaleString,
                         Input.ToLocaleString,
                         obj
@@ -10817,21 +10877,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.ToString,
                                                                                                     Input.ToString,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToString,
                                                                                         Input.ToString,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.ToString
                                                                      >,
@@ -10930,21 +10992,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.ToString,
                                                                                         Input.ToString,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.ToString,
                                                                             Input.ToString,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.ToString
                                                          >,
@@ -10988,21 +11050,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.ToString,
                                                 Input.ToString,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.ToString,
                                     Input.ToString,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.ToString,
                         Input.ToString,
                         obj
@@ -11170,21 +11232,23 @@ module rec Agents =
                                                                                                     ReadonlyArray<
                                                                                                         option<obj>
                                                                                                      >,
-                                                                                                    Array<option<obj>>,
+                                                                                                    ResizeArray<
+                                                                                                        option<obj>
+                                                                                                     >,
                                                                                                     Input.Length,
                                                                                                     Input.Length,
                                                                                                     obj
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Length,
                                                                                         Input.Length,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>
+                                                                            ResizeArray<option<obj>>
                                                                          >,
                                                                         Input.Length
                                                                      >,
@@ -11283,21 +11347,21 @@ module rec Agents =
                                                                                              >
                                                                                          >,
                                                                                         ReadonlyArray<option<obj>>,
-                                                                                        Array<option<obj>>,
+                                                                                        ResizeArray<option<obj>>,
                                                                                         Input.Length,
                                                                                         Input.Length,
                                                                                         obj
                                                                                      >
                                                                                  >
                                                                              >,
-                                                                            Array<option<obj>>,
+                                                                            ResizeArray<option<obj>>,
                                                                             Input.Length,
                                                                             Input.Length,
                                                                             obj
                                                                          >
                                                                      >
                                                                  >,
-                                                                Array<option<obj>>
+                                                                ResizeArray<option<obj>>
                                                              >,
                                                             Input.Length
                                                          >,
@@ -11341,21 +11405,21 @@ module rec Agents =
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                 ReadonlyArray<option<obj>>,
-                                                Array<option<obj>>,
+                                                ResizeArray<option<obj>>,
                                                 Input.Length,
                                                 Input.Length,
                                                 obj
                                              >
                                          >
                                      >,
-                                    Array<option<obj>>,
+                                    ResizeArray<option<obj>>,
                                     Input.Length,
                                     Input.Length,
                                     obj
                                  >
                              >
                          >,
-                        Array<option<obj>>,
+                        ResizeArray<option<obj>>,
                         Input.Length,
                         Input.Length,
                         obj
@@ -11411,7 +11475,7 @@ module rec Agents =
             [<EmitProperty("tos_uri")>]
             abstract tosUri: option<string> with get, set
 
-            abstract contacts: option<Array<string>> with get, set
+            abstract contacts: option<ResizeArray<string>> with get, set
             abstract scope: option<string> with get, set
 
             [<EmitProperty("logo_uri")>]
@@ -11424,16 +11488,16 @@ module rec Agents =
             abstract clientName: option<string> with get, set
 
             [<EmitProperty("response_types")>]
-            abstract responseTypes: option<Array<string>> with get, set
+            abstract responseTypes: option<ResizeArray<string>> with get, set
 
             [<EmitProperty("grant_types")>]
-            abstract grantTypes: option<Array<string>> with get, set
+            abstract grantTypes: option<ResizeArray<string>> with get, set
 
             [<EmitProperty("token_endpoint_auth_method")>]
             abstract tokenEndpointAuthMethod: option<string> with get, set
 
             [<EmitProperty("redirect_uris")>]
-            abstract redirectUris: Array<string> with get, set
+            abstract redirectUris: ResizeArray<string> with get, set
 
         type Tokens =
             [<EmitProperty("refresh_token")>]
@@ -11483,7 +11547,7 @@ module rec Agents =
             [<EmitProperty("tos_uri")>]
             abstract tosUri: option<string> with get, set
 
-            abstract contacts: option<Array<string>> with get, set
+            abstract contacts: option<ResizeArray<string>> with get, set
             abstract scope: option<string> with get, set
 
             [<EmitProperty("logo_uri")>]
@@ -11496,10 +11560,10 @@ module rec Agents =
             abstract clientName: option<string> with get, set
 
             [<EmitProperty("response_types")>]
-            abstract responseTypes: option<Array<string>> with get, set
+            abstract responseTypes: option<ResizeArray<string>> with get, set
 
             [<EmitProperty("grant_types")>]
-            abstract grantTypes: option<Array<string>> with get, set
+            abstract grantTypes: option<ResizeArray<string>> with get, set
 
             [<EmitProperty("token_endpoint_auth_method")>]
             abstract tokenEndpointAuthMethod: option<string> with get, set
@@ -11508,7 +11572,7 @@ module rec Agents =
             abstract clientId: string with get, set
 
             [<EmitProperty("redirect_uris")>]
-            abstract redirectUris: Array<string> with get, set
+            abstract redirectUris: ResizeArray<string> with get, set
 
     module rec GetAgentByName =
         type Vocabulary =
@@ -11525,7 +11589,7 @@ module rec Agents =
                 module rec Params =
                     module rec Tools =
                         type InputSchema =
-                            abstract required: option<Array<string>> with get, set
+                            abstract required: option<ResizeArray<string>> with get, set
                             abstract properties: option<InputSchema.Properties> with get, set
 
                             [<EmitProperty("type")>]
@@ -11605,13 +11669,13 @@ module rec Agents =
                 abstract name: string with get, set
 
         type GetMcpServers =
-            abstract resources: Array<GetMcpServers.Resources> with get, set
-            abstract prompts: Array<GetMcpServers.Prompts> with get, set
-            abstract tools: Array<GetMcpServers.Tools> with get, set
+            abstract resources: ResizeArray<GetMcpServers.Resources> with get, set
+            abstract prompts: ResizeArray<GetMcpServers.Prompts> with get, set
+            abstract tools: ResizeArray<GetMcpServers.Tools> with get, set
             abstract servers: GetMcpServers.Servers with get, set
             abstract serverId: string with get, set
             abstract title: option<string> with get, set
-            abstract icons: option<Array<GetMcpServers.Icons>> with get, set
+            abstract icons: option<ResizeArray<GetMcpServers.Icons>> with get, set
             abstract _meta: option<GetMcpServers._meta> with get, set
             abstract execution: option<GetMcpServers.Execution> with get, set
             abstract annotations: option<GetMcpServers.Annotations> with get, set
@@ -11619,7 +11683,7 @@ module rec Agents =
             abstract description: option<string> with get, set
             abstract name: string with get, set
             abstract inputSchema: GetMcpServers.InputSchema with get, set
-            abstract arguments: option<Array<GetMcpServers.Arguments>> with get, set
+            abstract arguments: option<ResizeArray<GetMcpServers.Arguments>> with get, set
             abstract size: option<float> with get, set
             abstract mimeType: option<string> with get, set
             abstract uri: string with get, set
@@ -11660,7 +11724,7 @@ module rec Agents =
 
     [<Import("agents", "AgentToolEventState")>]
     type AgentToolEventState =
-        abstract unboundRuns: Array<AgentToolRunState> with get, set
+        abstract unboundRuns: ResizeArray<AgentToolRunState> with get, set
         abstract runsByToolCallId: AgentToolEventState.RunsByToolCallId with get, set
         abstract runsById: AgentToolEventState.RunsById with get, set
 
@@ -11718,7 +11782,7 @@ module rec Agents =
 
     type RouteAgentEmail =
         abstract resolver: option<AgentContext> -> 'Env -> Promise<option<``.``.EmailX72ZjuqJs.EmailResolverResult>> with get, set
-        abstract cors: option<U4<Headers, Array<string * string>, RouteAgentEmail.Cors, bool>> with get, set
+        abstract cors: option<U4<Headers, ResizeArray<string * string>, RouteAgentEmail.Cors, bool>> with get, set
         abstract props: option<'Props> with get, set
         abstract locationHint: option<AgentContext> with get, set
         abstract jurisdiction: option<AgentContext> with get, set
@@ -11822,7 +11886,7 @@ module rec Agents =
 
         abstract getAgentToolChunks:
             runId: string * ?options: AgentToolChildAdapter.GetAgentToolChunks.Options ->
-                Promise<Array<AgentToolStoredChunk>>
+                Promise<ResizeArray<AgentToolStoredChunk>>
 
         abstract inspectAgentToolRun: runId: string -> Promise<option<AgentToolChildAdapter.InspectAgentToolRun>>
         abstract cancelAgentToolRun: runId: string * ?reason: obj -> Promise<unit>
@@ -12046,7 +12110,8 @@ module rec Ai =
 
         type Item =
             abstract Item:
-                key: string -> option<U5<Item.Item, Item.Item, Array<option<AiSdk.Provider.JSONValue>>, string, float>>
+                key: string ->
+                    option<U5<Item.Item, Item.Item, ResizeArray<option<AiSdk.Provider.JSONValue>>, string, float>>
 
     module rec OnFinishEvent =
         module rec NeedsApproval =
@@ -12077,7 +12142,7 @@ module rec Ai =
             type Item =
                 abstract Item:
                     key: string ->
-                        option<U5<Item.Item, Item.Item, Array<option<AiSdk.Provider.JSONValue>>, string, float>>
+                        option<U5<Item.Item, Item.Item, ResizeArray<option<AiSdk.Provider.JSONValue>>, string, float>>
 
         type Model =
             abstract modelId: string with get
@@ -12109,24 +12174,24 @@ module rec Ai =
             abstract providerMetadata: option<Steps.ProviderMetadata> with get
             abstract response: Steps.Response with get
             abstract request: LanguageModelRequestMetadata with get
-            abstract warnings: option<Array<AiSdk.Provider.SharedV3Warning>> with get
+            abstract warnings: option<ResizeArray<AiSdk.Provider.SharedV3Warning>> with get
             abstract usage: LanguageModelUsage with get
             abstract rawFinishReason: option<string> with get
             abstract finishReason: FinishReason with get
-            abstract dynamicToolResults: Array<DynamicToolResult> with get
-            abstract staticToolResults: Array<proptypekey<Steps.StaticToolResults, keyof<'TOOLS>>> with get
-            abstract toolResults: Array<U2<Steps.ToolResults, proptypekey<Steps.ToolResults, keyof<'TOOLS>>>> with get
-            abstract dynamicToolCalls: Array<DynamicToolCall> with get
-            abstract staticToolCalls: Array<proptypekey<Steps.StaticToolCalls, keyof<'TOOLS>>> with get
-            abstract toolCalls: Array<U2<Steps.ToolCalls, proptypekey<Steps.ToolCalls, keyof<'TOOLS>>>> with get
-            abstract sources: Array<AiSdk.Provider.LanguageModelV3Source> with get
-            abstract files: Array<GeneratedFile> with get
+            abstract dynamicToolResults: ResizeArray<DynamicToolResult> with get
+            abstract staticToolResults: ResizeArray<proptypekey<Steps.StaticToolResults, keyof<'TOOLS>>> with get
+            abstract toolResults: ResizeArray<U2<Steps.ToolResults, proptypekey<Steps.ToolResults, keyof<'TOOLS>>>> with get
+            abstract dynamicToolCalls: ResizeArray<DynamicToolCall> with get
+            abstract staticToolCalls: ResizeArray<proptypekey<Steps.StaticToolCalls, keyof<'TOOLS>>> with get
+            abstract toolCalls: ResizeArray<U2<Steps.ToolCalls, proptypekey<Steps.ToolCalls, keyof<'TOOLS>>>> with get
+            abstract sources: ResizeArray<AiSdk.Provider.LanguageModelV3Source> with get
+            abstract files: ResizeArray<GeneratedFile> with get
             abstract reasoningText: option<string> with get
-            abstract reasoning: Array<AiSdk.ProviderUtils.ReasoningPart> with get
+            abstract reasoning: ResizeArray<AiSdk.ProviderUtils.ReasoningPart> with get
             abstract text: string with get
 
             abstract content:
-                Array<
+                ResizeArray<
                     U12<
                         Steps.Content,
                         ReasoningOutput,
@@ -12189,7 +12254,7 @@ module rec Ai =
             type Item =
                 abstract Item:
                     key: string ->
-                        option<U5<Item.Item, Item.Item, Array<option<AiSdk.Provider.JSONValue>>, string, float>>
+                        option<U5<Item.Item, Item.Item, ResizeArray<option<AiSdk.Provider.JSONValue>>, string, float>>
 
         type Request =
             abstract body: option<obj> with get, set
@@ -12250,7 +12315,9 @@ module rec Ai =
                 type Item =
                     abstract Item:
                         key: string ->
-                            option<U5<Item.Item, Item.Item, Array<option<AiSdk.Provider.JSONValue>>, string, float>>
+                            option<
+                                U5<Item.Item, Item.Item, ResizeArray<option<AiSdk.Provider.JSONValue>>, string, float>
+                             >
 
             type Request =
                 abstract body: option<obj> with get, set
@@ -12280,7 +12347,7 @@ module rec Ai =
             abstract requestBody: option<bool> with get, set
 
         type StopWhen =
-            abstract steps: Array<StopWhen.Steps> with get, set
+            abstract steps: ResizeArray<StopWhen.Steps> with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type ToolChoice =
@@ -12302,7 +12369,7 @@ module rec Ai =
 
         type Steps =
             abstract body: option<obj> with get, set
-            abstract messages: Array<ResponseMessage> with get
+            abstract messages: ResizeArray<ResponseMessage> with get
             abstract headers: option<Steps.Headers> with get, set
             abstract modelId: string with get, set
             abstract timestamp: Date with get, set
@@ -12310,24 +12377,24 @@ module rec Ai =
             abstract providerMetadata: option<Steps.ProviderMetadata> with get
             abstract response: Steps.Response with get
             abstract request: LanguageModelRequestMetadata with get
-            abstract warnings: option<Array<AiSdk.Provider.SharedV3Warning>> with get
+            abstract warnings: option<ResizeArray<AiSdk.Provider.SharedV3Warning>> with get
             abstract usage: LanguageModelUsage with get
             abstract rawFinishReason: option<string> with get
             abstract finishReason: FinishReason with get
-            abstract dynamicToolResults: Array<DynamicToolResult> with get
-            abstract staticToolResults: Array<proptypekey<Steps.StaticToolResults, keyof<'TOOLS>>> with get
-            abstract toolResults: Array<U2<Steps.ToolResults, proptypekey<Steps.ToolResults, keyof<'TOOLS>>>> with get
-            abstract dynamicToolCalls: Array<DynamicToolCall> with get
-            abstract staticToolCalls: Array<proptypekey<Steps.StaticToolCalls, keyof<'TOOLS>>> with get
-            abstract toolCalls: Array<U2<Steps.ToolCalls, proptypekey<Steps.ToolCalls, keyof<'TOOLS>>>> with get
-            abstract sources: Array<AiSdk.Provider.LanguageModelV3Source> with get
-            abstract files: Array<GeneratedFile> with get
+            abstract dynamicToolResults: ResizeArray<DynamicToolResult> with get
+            abstract staticToolResults: ResizeArray<proptypekey<Steps.StaticToolResults, keyof<'TOOLS>>> with get
+            abstract toolResults: ResizeArray<U2<Steps.ToolResults, proptypekey<Steps.ToolResults, keyof<'TOOLS>>>> with get
+            abstract dynamicToolCalls: ResizeArray<DynamicToolCall> with get
+            abstract staticToolCalls: ResizeArray<proptypekey<Steps.StaticToolCalls, keyof<'TOOLS>>> with get
+            abstract toolCalls: ResizeArray<U2<Steps.ToolCalls, proptypekey<Steps.ToolCalls, keyof<'TOOLS>>>> with get
+            abstract sources: ResizeArray<AiSdk.Provider.LanguageModelV3Source> with get
+            abstract files: ResizeArray<GeneratedFile> with get
             abstract reasoningText: option<string> with get
-            abstract reasoning: Array<AiSdk.ProviderUtils.ReasoningPart> with get
+            abstract reasoning: ResizeArray<AiSdk.ProviderUtils.ReasoningPart> with get
             abstract text: string with get
 
             abstract content:
-                Array<
+                ResizeArray<
                     U12<
                         Steps.Content,
                         ReasoningOutput,
@@ -12429,7 +12496,15 @@ module rec Ai =
                     type Item =
                         abstract Item:
                             key: string ->
-                                option<U5<Item.Item, Item.Item, Array<option<AiSdk.Provider.JSONValue>>, string, float>>
+                                option<
+                                    U5<
+                                        Item.Item,
+                                        Item.Item,
+                                        ResizeArray<option<AiSdk.Provider.JSONValue>>,
+                                        string,
+                                        float
+                                     >
+                                 >
 
                 type Usage =
                     abstract raw: option<AiSdk.Provider.JSONObject> with get, set
@@ -12593,7 +12668,7 @@ module rec Ai =
             type Item =
                 abstract Item:
                     key: string ->
-                        option<U5<Item.Item, Item.Item, Array<option<AiSdk.Provider.JSONValue>>, string, float>>
+                        option<U5<Item.Item, Item.Item, ResizeArray<option<AiSdk.Provider.JSONValue>>, string, float>>
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type Content =
@@ -12678,7 +12753,15 @@ module rec Ai =
                     type Item =
                         abstract Item:
                             key: string ->
-                                option<U5<Item.Item, Item.Item, Array<option<AiSdk.Provider.JSONValue>>, string, float>>
+                                option<
+                                    U5<
+                                        Item.Item,
+                                        Item.Item,
+                                        ResizeArray<option<AiSdk.Provider.JSONValue>>,
+                                        string,
+                                        float
+                                     >
+                                 >
 
                 type Usage =
                     abstract raw: option<AiSdk.Provider.JSONObject> with get, set
@@ -12707,24 +12790,24 @@ module rec Ai =
                 abstract providerMetadata: option<Steps.ProviderMetadata> with get
                 abstract response: Steps.Response with get
                 abstract request: LanguageModelRequestMetadata with get
-                abstract warnings: option<Array<AiSdk.Provider.SharedV3Warning>> with get
+                abstract warnings: option<ResizeArray<AiSdk.Provider.SharedV3Warning>> with get
                 abstract usage: LanguageModelUsage with get
                 abstract rawFinishReason: option<string> with get
                 abstract finishReason: FinishReason with get
-                abstract dynamicToolResults: Array<DynamicToolResult> with get
-                abstract staticToolResults: Array<proptypekey<Steps.StaticToolResults, keyof<'TOOLS>>> with get
-                abstract toolResults: Array<U2<Steps.ToolResults, proptypekey<Steps.ToolResults, keyof<'TOOLS>>>> with get
-                abstract dynamicToolCalls: Array<DynamicToolCall> with get
-                abstract staticToolCalls: Array<proptypekey<Steps.StaticToolCalls, keyof<'TOOLS>>> with get
-                abstract toolCalls: Array<U2<Steps.ToolCalls, proptypekey<Steps.ToolCalls, keyof<'TOOLS>>>> with get
-                abstract sources: Array<AiSdk.Provider.LanguageModelV3Source> with get
-                abstract files: Array<GeneratedFile> with get
+                abstract dynamicToolResults: ResizeArray<DynamicToolResult> with get
+                abstract staticToolResults: ResizeArray<proptypekey<Steps.StaticToolResults, keyof<'TOOLS>>> with get
+                abstract toolResults: ResizeArray<U2<Steps.ToolResults, proptypekey<Steps.ToolResults, keyof<'TOOLS>>>> with get
+                abstract dynamicToolCalls: ResizeArray<DynamicToolCall> with get
+                abstract staticToolCalls: ResizeArray<proptypekey<Steps.StaticToolCalls, keyof<'TOOLS>>> with get
+                abstract toolCalls: ResizeArray<U2<Steps.ToolCalls, proptypekey<Steps.ToolCalls, keyof<'TOOLS>>>> with get
+                abstract sources: ResizeArray<AiSdk.Provider.LanguageModelV3Source> with get
+                abstract files: ResizeArray<GeneratedFile> with get
                 abstract reasoningText: option<string> with get
-                abstract reasoning: Array<AiSdk.ProviderUtils.ReasoningPart> with get
+                abstract reasoning: ResizeArray<AiSdk.ProviderUtils.ReasoningPart> with get
                 abstract text: string with get
 
                 abstract content:
-                    Array<
+                    ResizeArray<
                         U12<
                             Steps.Content,
                             ReasoningOutput,
@@ -12749,7 +12832,7 @@ module rec Ai =
                 abstract model: Steps.Model with get
                 abstract stepNumber: float with get
                 abstract body: option<obj> with get, set
-                abstract messages: Array<ResponseMessage> with get
+                abstract messages: ResizeArray<ResponseMessage> with get
                 abstract headers: option<Steps.Headers> with get, set
                 abstract modelId: string with get, set
                 abstract timestamp: Date with get, set
@@ -12759,7 +12842,7 @@ module rec Ai =
             abstract Item: key: string -> option<Agents.AgentContext>
 
         type StopWhen =
-            abstract steps: Array<StopWhen.Steps> with get, set
+            abstract steps: ResizeArray<StopWhen.Steps> with get, set
 
     module rec TextStreamPart =
         module rec CreateElementStreamTransform =
@@ -12786,7 +12869,15 @@ module rec Ai =
                     type Item =
                         abstract Item:
                             key: string ->
-                                option<U5<Item.Item, Item.Item, Array<option<AiSdk.Provider.JSONValue>>, string, float>>
+                                option<
+                                    U5<
+                                        Item.Item,
+                                        Item.Item,
+                                        ResizeArray<option<AiSdk.Provider.JSONValue>>,
+                                        string,
+                                        float
+                                     >
+                                 >
 
                 type Usage =
                     abstract raw: option<AiSdk.Provider.JSONObject> with get, set
@@ -13061,21 +13152,21 @@ module rec Ai =
                                                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                                                  >,
                                                                                 ReadonlyArray<option<obj>>,
-                                                                                Array<option<obj>>,
+                                                                                ResizeArray<option<obj>>,
                                                                                 DeepPartialInternal,
                                                                                 DeepPartialInternal,
                                                                                 obj
                                                                              >
                                                                          >
                                                                      >,
-                                                                    Array<option<obj>>,
+                                                                    ResizeArray<option<obj>>,
                                                                     DeepPartialInternal,
                                                                     DeepPartialInternal,
                                                                     obj
                                                                  >
                                                              >
                                                          >,
-                                                        Array<option<obj>>
+                                                        ResizeArray<option<obj>>
                                                      >,
                                                     DeepPartialInternal
                                                  >,
@@ -13129,21 +13220,21 @@ module rec Ai =
                                                                      >,
                                                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                                     ReadonlyArray<option<obj>>,
-                                                                    Array<option<obj>>,
+                                                                    ResizeArray<option<obj>>,
                                                                     DeepPartialInternal,
                                                                     DeepPartialInternal,
                                                                     obj
                                                                  >
                                                              >
                                                          >,
-                                                        Array<option<obj>>,
+                                                        ResizeArray<option<obj>>,
                                                         DeepPartialInternal,
                                                         DeepPartialInternal,
                                                         obj
                                                      >
                                                  >
                                              >,
-                                            Array<option<obj>>
+                                            ResizeArray<option<obj>>
                                          >,
                                         DeepPartialInternal
                                      >,
@@ -13244,21 +13335,21 @@ module rec Ai =
                                                                                          >
                                                                                      >,
                                                                                     ReadonlyArray<option<obj>>,
-                                                                                    Array<option<obj>>,
+                                                                                    ResizeArray<option<obj>>,
                                                                                     PartialReadonlySet,
                                                                                     PartialReadonlySet,
                                                                                     obj
                                                                                  >
                                                                              >
                                                                          >,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         PartialReadonlySet,
                                                                         PartialReadonlySet,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>
+                                                            ResizeArray<option<obj>>
                                                          >,
                                                         PartialReadonlySet
                                                      >,
@@ -13312,21 +13403,21 @@ module rec Ai =
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                                         ReadonlyArray<option<obj>>,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         PartialReadonlySet,
                                                                         PartialReadonlySet,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>,
+                                                            ResizeArray<option<obj>>,
                                                             PartialReadonlySet,
                                                             PartialReadonlySet,
                                                             obj
                                                          >
                                                      >
                                                  >,
-                                                Array<option<obj>>
+                                                ResizeArray<option<obj>>
                                              >,
                                             PartialReadonlySet
                                          >,
@@ -13379,7 +13470,7 @@ module rec Ai =
             option<
                 U2<
                     OnStepStartEvent.StopWhen -> U2<OnStepStartEvent.StopWhen, PromiseLike<bool>>,
-                    Array<OnStepStartEvent.StopWhen -> U2<OnStepStartEvent.StopWhen, PromiseLike<bool>>>
+                    ResizeArray<OnStepStartEvent.StopWhen -> U2<OnStepStartEvent.StopWhen, PromiseLike<bool>>>
                  >
              > with get
 
@@ -13387,7 +13478,7 @@ module rec Ai =
         abstract timeout: option<U2<OnStepStartEvent.Timeout, float>> with get
         abstract providerOptions: option<OnStepStartEvent.ProviderOptions> with get
         abstract steps: ReadonlyArray<OnStepStartEvent.Steps> with get
-        abstract activeTools: option<Array<keyof<'TOOLS>>> with get
+        abstract activeTools: option<ResizeArray<keyof<'TOOLS>>> with get
 
         abstract toolChoice:
             option<
@@ -13400,8 +13491,11 @@ module rec Ai =
              > with get
 
         abstract tools: option<OnStepStartEvent.Tools> with get
-        abstract messages: Array<AiSdk.ProviderUtils.ModelMessage> with get
-        abstract system: option<U3<OnStepStartEvent.System, Array<AiSdk.ProviderUtils.SystemModelMessage>, string>> with get
+        abstract messages: ResizeArray<AiSdk.ProviderUtils.ModelMessage> with get
+
+        abstract system:
+            option<U3<OnStepStartEvent.System, ResizeArray<AiSdk.ProviderUtils.SystemModelMessage>, string>> with get
+
         abstract model: CallbackModelInfo with get
         abstract stepNumber: float with get
 
@@ -13491,21 +13585,21 @@ module rec Ai =
                                                                                          >
                                                                                      >,
                                                                                     ReadonlyArray<option<obj>>,
-                                                                                    Array<option<obj>>,
+                                                                                    ResizeArray<option<obj>>,
                                                                                     PartialReadonlyMap,
                                                                                     PartialReadonlyMap,
                                                                                     obj
                                                                                  >
                                                                              >
                                                                          >,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         PartialReadonlyMap,
                                                                         PartialReadonlyMap,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>
+                                                            ResizeArray<option<obj>>
                                                          >,
                                                         PartialReadonlyMap
                                                      >,
@@ -13559,21 +13653,21 @@ module rec Ai =
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                                         ReadonlyArray<option<obj>>,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         PartialReadonlyMap,
                                                                         PartialReadonlyMap,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>,
+                                                            ResizeArray<option<obj>>,
                                                             PartialReadonlyMap,
                                                             PartialReadonlyMap,
                                                             obj
                                                          >
                                                      >
                                                  >,
-                                                Array<option<obj>>
+                                                ResizeArray<option<obj>>
                                              >,
                                             PartialReadonlyMap
                                          >,
@@ -13614,7 +13708,7 @@ module rec Ai =
         abstract experimentalContext: option<obj> with get, set
 
         abstract abortSignal: option<AbortSignal> with get, set
-        abstract messages: Array<AiSdk.ProviderUtils.ModelMessage> with get, set
+        abstract messages: ResizeArray<AiSdk.ProviderUtils.ModelMessage> with get, set
         abstract toolCallId: string with get, set
         abstract input: U2<option<obj>, 'INPUT> with get, set
         abstract inputTextDelta: string with get, set
@@ -13647,7 +13741,7 @@ module rec Ai =
         abstract needsApproval:
             option<U2<'INPUT -> AsUITool.NeedsApproval -> U2<AsUITool.NeedsApproval, PromiseLike<bool>>, bool>> with get, set
 
-        abstract inputExamples: option<Array<AsUITool.InputExamples>> with get, set
+        abstract inputExamples: option<ResizeArray<AsUITool.InputExamples>> with get, set
 
         abstract inputSchema:
             U5<
@@ -13766,21 +13860,21 @@ module rec Ai =
                                                                                          >
                                                                                      >,
                                                                                     ReadonlyArray<option<obj>>,
-                                                                                    Array<option<obj>>,
+                                                                                    ResizeArray<option<obj>>,
                                                                                     PartialSet,
                                                                                     PartialSet,
                                                                                     obj
                                                                                  >
                                                                              >
                                                                          >,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         PartialSet,
                                                                         PartialSet,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>
+                                                            ResizeArray<option<obj>>
                                                          >,
                                                         PartialSet
                                                      >,
@@ -13834,21 +13928,21 @@ module rec Ai =
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                                         ReadonlyArray<option<obj>>,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         PartialSet,
                                                                         PartialSet,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>,
+                                                            ResizeArray<option<obj>>,
                                                             PartialSet,
                                                             PartialSet,
                                                             obj
                                                          >
                                                      >
                                                  >,
-                                                Array<option<obj>>
+                                                ResizeArray<option<obj>>
                                              >,
                                             PartialSet
                                          >,
@@ -13875,31 +13969,34 @@ module rec Ai =
         abstract experimentalContext: option<obj> with get, set
 
         abstract totalUsage: LanguageModelUsage with get
-        abstract steps: Array<OnFinishEvent.Steps> with get
+        abstract steps: ResizeArray<OnFinishEvent.Steps> with get
         abstract providerMetadata: option<OnFinishEvent.ProviderMetadata> with get
         abstract response: OnFinishEvent.Response with get
         abstract request: LanguageModelRequestMetadata with get
-        abstract warnings: option<Array<AiSdk.Provider.SharedV3Warning>> with get
+        abstract warnings: option<ResizeArray<AiSdk.Provider.SharedV3Warning>> with get
         abstract usage: LanguageModelUsage with get
         abstract rawFinishReason: option<string> with get
         abstract finishReason: FinishReason with get
-        abstract dynamicToolResults: Array<DynamicToolResult> with get
-        abstract staticToolResults: Array<proptypekey<OnFinishEvent.StaticToolResults, keyof<'TOOLS>>> with get
+        abstract dynamicToolResults: ResizeArray<DynamicToolResult> with get
+        abstract staticToolResults: ResizeArray<proptypekey<OnFinishEvent.StaticToolResults, keyof<'TOOLS>>> with get
 
         abstract toolResults:
-            Array<U2<OnFinishEvent.ToolResults, proptypekey<OnFinishEvent.ToolResults, keyof<'TOOLS>>>> with get
+            ResizeArray<U2<OnFinishEvent.ToolResults, proptypekey<OnFinishEvent.ToolResults, keyof<'TOOLS>>>> with get
 
-        abstract dynamicToolCalls: Array<DynamicToolCall> with get
-        abstract staticToolCalls: Array<proptypekey<OnFinishEvent.StaticToolCalls, keyof<'TOOLS>>> with get
-        abstract toolCalls: Array<U2<OnFinishEvent.ToolCalls, proptypekey<OnFinishEvent.ToolCalls, keyof<'TOOLS>>>> with get
-        abstract sources: Array<AiSdk.Provider.LanguageModelV3Source> with get
-        abstract files: Array<GeneratedFile> with get
+        abstract dynamicToolCalls: ResizeArray<DynamicToolCall> with get
+        abstract staticToolCalls: ResizeArray<proptypekey<OnFinishEvent.StaticToolCalls, keyof<'TOOLS>>> with get
+
+        abstract toolCalls:
+            ResizeArray<U2<OnFinishEvent.ToolCalls, proptypekey<OnFinishEvent.ToolCalls, keyof<'TOOLS>>>> with get
+
+        abstract sources: ResizeArray<AiSdk.Provider.LanguageModelV3Source> with get
+        abstract files: ResizeArray<GeneratedFile> with get
         abstract reasoningText: option<string> with get
-        abstract reasoning: Array<AiSdk.ProviderUtils.ReasoningPart> with get
+        abstract reasoning: ResizeArray<AiSdk.ProviderUtils.ReasoningPart> with get
         abstract text: string with get
 
         abstract content:
-            Array<
+            ResizeArray<
                 U12<
                     OnFinishEvent.Content,
                     ReasoningOutput,
@@ -14052,21 +14149,21 @@ module rec Ai =
                                                                                          >
                                                                                      >,
                                                                                     ReadonlyArray<option<obj>>,
-                                                                                    Array<option<obj>>,
+                                                                                    ResizeArray<option<obj>>,
                                                                                     PartialMap,
                                                                                     PartialMap,
                                                                                     obj
                                                                                  >
                                                                              >
                                                                          >,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         PartialMap,
                                                                         PartialMap,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>
+                                                            ResizeArray<option<obj>>
                                                          >,
                                                         PartialMap
                                                      >,
@@ -14120,21 +14217,21 @@ module rec Ai =
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                                         ReadonlyArray<option<obj>>,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         PartialMap,
                                                                         PartialMap,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>,
+                                                            ResizeArray<option<obj>>,
                                                             PartialMap,
                                                             PartialMap,
                                                             obj
                                                          >
                                                      >
                                                  >,
-                                                Array<option<obj>>
+                                                ResizeArray<option<obj>>
                                              >,
                                             PartialMap
                                          >,
@@ -14158,7 +14255,7 @@ module rec Ai =
         abstract metadata: option<OnToolCallStartEvent.Metadata> with get
         abstract functionId: option<string> with get
         abstract abortSignal: option<AbortSignal> with get
-        abstract messages: Array<AiSdk.ProviderUtils.ModelMessage> with get
+        abstract messages: ResizeArray<AiSdk.ProviderUtils.ModelMessage> with get
         abstract toolCall: U2<OnToolCallStartEvent.ToolCall, proptypekey<OnToolCallStartEvent.ToolCall, keyof<'TOOLS>>> with get
         abstract model: option<CallbackModelInfo> with get
         abstract stepNumber: option<float> with get
@@ -14237,21 +14334,21 @@ module rec Ai =
                                                                                          >
                                                                                      >,
                                                                                     ReadonlyArray<option<obj>>,
-                                                                                    Array<option<obj>>,
+                                                                                    ResizeArray<option<obj>>,
                                                                                     DeepPartial,
                                                                                     DeepPartial,
                                                                                     obj
                                                                                  >
                                                                              >
                                                                          >,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         DeepPartial,
                                                                         DeepPartial,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>
+                                                            ResizeArray<option<obj>>
                                                          >,
                                                         DeepPartial
                                                      >,
@@ -14305,21 +14402,21 @@ module rec Ai =
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                                         ReadonlyArray<option<obj>>,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         DeepPartial,
                                                                         DeepPartial,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>,
+                                                            ResizeArray<option<obj>>,
                                                             DeepPartial,
                                                             DeepPartial,
                                                             obj
                                                          >
                                                      >
                                                  >,
-                                                Array<option<obj>>
+                                                ResizeArray<option<obj>>
                                              >,
                                             DeepPartial
                                          >,
@@ -14404,21 +14501,21 @@ module rec Ai =
                                                                                          >
                                                                                      >,
                                                                                     ReadonlyArray<option<obj>>,
-                                                                                    Array<option<obj>>,
+                                                                                    ResizeArray<option<obj>>,
                                                                                     DeepPartial,
                                                                                     DeepPartial,
                                                                                     obj
                                                                                  >
                                                                              >
                                                                          >,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         DeepPartial,
                                                                         DeepPartial,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>
+                                                            ResizeArray<option<obj>>
                                                          >,
                                                         DeepPartial
                                                      >,
@@ -14472,21 +14569,21 @@ module rec Ai =
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
                                                                         ReadonlyArray<option<obj>>,
-                                                                        Array<option<obj>>,
+                                                                        ResizeArray<option<obj>>,
                                                                         DeepPartial,
                                                                         DeepPartial,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
-                                                            Array<option<obj>>,
+                                                            ResizeArray<option<obj>>,
                                                             DeepPartial,
                                                             DeepPartial,
                                                             obj
                                                          >
                                                      >
                                                  >,
-                                                Array<option<obj>>
+                                                ResizeArray<option<obj>>
                                              >,
                                             DeepPartial
                                          >,
@@ -14506,7 +14603,7 @@ module rec Ai =
     type LogWarningsFunction =
         abstract model: string with get, set
         abstract provider: string with get, set
-        abstract warnings: Array<AiSdk.Provider.SharedV3Warning> with get, set
+        abstract warnings: ResizeArray<AiSdk.Provider.SharedV3Warning> with get, set
 
     type TemplateLiteral =
         abstract Value: string
@@ -14589,7 +14686,7 @@ module rec Ai =
         abstract output: option<obj> with get, set
         abstract error: option<obj> with get, set
         abstract body: option<obj> with get, set
-        abstract messages: Array<ResponseMessage> with get
+        abstract messages: ResizeArray<ResponseMessage> with get
         abstract headers: option<StepResult.Headers> with get, set
         abstract modelId: string with get, set
         abstract timestamp: Date with get, set
@@ -14665,7 +14762,7 @@ module rec Ai =
 
     type OnStepFinishEvent =
         abstract body: option<obj> with get, set
-        abstract messages: Array<ResponseMessage> with get
+        abstract messages: ResizeArray<ResponseMessage> with get
         abstract headers: option<OnStepFinishEvent.Headers> with get, set
         abstract modelId: string with get, set
         abstract timestamp: Date with get, set
@@ -14673,30 +14770,30 @@ module rec Ai =
         abstract providerMetadata: option<OnStepFinishEvent.ProviderMetadata> with get
         abstract response: OnStepFinishEvent.Response with get
         abstract request: LanguageModelRequestMetadata with get
-        abstract warnings: option<Array<AiSdk.Provider.SharedV3Warning>> with get
+        abstract warnings: option<ResizeArray<AiSdk.Provider.SharedV3Warning>> with get
         abstract usage: LanguageModelUsage with get
         abstract rawFinishReason: option<string> with get
         abstract finishReason: FinishReason with get
-        abstract dynamicToolResults: Array<DynamicToolResult> with get
-        abstract staticToolResults: Array<proptypekey<OnStepFinishEvent.StaticToolResults, keyof<'TOOLS>>> with get
+        abstract dynamicToolResults: ResizeArray<DynamicToolResult> with get
+        abstract staticToolResults: ResizeArray<proptypekey<OnStepFinishEvent.StaticToolResults, keyof<'TOOLS>>> with get
 
         abstract toolResults:
-            Array<U2<OnStepFinishEvent.ToolResults, proptypekey<OnStepFinishEvent.ToolResults, keyof<'TOOLS>>>> with get
+            ResizeArray<U2<OnStepFinishEvent.ToolResults, proptypekey<OnStepFinishEvent.ToolResults, keyof<'TOOLS>>>> with get
 
-        abstract dynamicToolCalls: Array<DynamicToolCall> with get
-        abstract staticToolCalls: Array<proptypekey<OnStepFinishEvent.StaticToolCalls, keyof<'TOOLS>>> with get
+        abstract dynamicToolCalls: ResizeArray<DynamicToolCall> with get
+        abstract staticToolCalls: ResizeArray<proptypekey<OnStepFinishEvent.StaticToolCalls, keyof<'TOOLS>>> with get
 
         abstract toolCalls:
-            Array<U2<OnStepFinishEvent.ToolCalls, proptypekey<OnStepFinishEvent.ToolCalls, keyof<'TOOLS>>>> with get
+            ResizeArray<U2<OnStepFinishEvent.ToolCalls, proptypekey<OnStepFinishEvent.ToolCalls, keyof<'TOOLS>>>> with get
 
-        abstract sources: Array<AiSdk.Provider.LanguageModelV3Source> with get
-        abstract files: Array<GeneratedFile> with get
+        abstract sources: ResizeArray<AiSdk.Provider.LanguageModelV3Source> with get
+        abstract files: ResizeArray<GeneratedFile> with get
         abstract reasoningText: option<string> with get
-        abstract reasoning: Array<AiSdk.ProviderUtils.ReasoningPart> with get
+        abstract reasoning: ResizeArray<AiSdk.ProviderUtils.ReasoningPart> with get
         abstract text: string with get
 
         abstract content:
-            Array<
+            ResizeArray<
                 U12<
                     OnStepFinishEvent.Content,
                     ReasoningOutput,
@@ -14773,7 +14870,7 @@ module rec Ai =
 
     type IAi =
         [<Erase>]
-        member AI_SDK_TELEMETRY_INTEGRATIONS: option<Array<TelemetryIntegration>> =
+        member AI_SDK_TELEMETRY_INTEGRATIONS: option<ResizeArray<TelemetryIntegration>> =
             JS.undefined
 
         [<Erase>]
@@ -14796,7 +14893,7 @@ module rec AiSdk =
                         abstract headers: option<SharedV3Headers> with get, set
                         abstract providerOptions: option<SharedV3ProviderOptions> with get, set
                         abstract abortSignal: option<AbortSignal> with get, set
-                        abstract values: Array<string> with get, set
+                        abstract values: ResizeArray<string> with get, set
                         abstract Item: key: string -> option<Agents.AgentContext>
 
         module rec EmbeddingModelV3CallOptions =
@@ -14843,7 +14940,7 @@ module rec AiSdk =
                         abstract abortSignal: option<AbortSignal> with get, set
                         abstract providerOptions: SharedV3ProviderOptions with get, set
                         abstract mask: option<U2<Options.Mask, Options.Mask>> with get, set
-                        abstract files: option<Array<ImageModelV3File>> with get, set
+                        abstract files: option<ResizeArray<ImageModelV3File>> with get, set
                         abstract seed: option<float> with get, set
                         abstract aspectRatio: option<Options.AspectRatio> with get, set
                         abstract size: option<Options.Size> with get, set
@@ -14859,11 +14956,13 @@ module rec AiSdk =
 
         module rec JSONObject =
             type Item =
-                abstract Item: key: string -> option<U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>>
+                abstract Item:
+                    key: string -> option<U5<Item.Item, Item.Item, ResizeArray<option<JSONValue>>, string, float>>
 
         module rec JSONValue =
             type Item =
-                abstract Item: key: string -> option<U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>>
+                abstract Item:
+                    key: string -> option<U5<Item.Item, Item.Item, ResizeArray<option<JSONValue>>, string, float>>
 
         module rec LanguageModelV3 =
             module rec LanguageModel =
@@ -14874,14 +14973,14 @@ module rec AiSdk =
                         abstract abortSignal: option<AbortSignal> with get, set
                         abstract includeRawChunks: option<bool> with get, set
                         abstract toolChoice: option<LanguageModelV3ToolChoice> with get, set
-                        abstract tools: option<Array<U2<Options.Tools, Options.Tools>>> with get, set
+                        abstract tools: option<ResizeArray<U2<Options.Tools, Options.Tools>>> with get, set
                         abstract seed: option<float> with get, set
                         abstract responseFormat: option<U2<Options.ResponseFormat, Options.ResponseFormat>> with get, set
                         abstract frequencyPenalty: option<float> with get, set
                         abstract presencePenalty: option<float> with get, set
                         abstract topK: option<float> with get, set
                         abstract topP: option<float> with get, set
-                        abstract stopSequences: option<Array<string>> with get, set
+                        abstract stopSequences: option<ResizeArray<string>> with get, set
                         abstract temperature: option<float> with get, set
                         abstract maxOutputTokens: option<float> with get, set
                         abstract prompt: LanguageModelV3Prompt with get, set
@@ -14893,7 +14992,8 @@ module rec AiSdk =
                     module rec InputExamples =
                         type Item =
                             abstract Item:
-                                key: string -> option<U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>>
+                                key: string ->
+                                    option<U5<Item.Item, Item.Item, ResizeArray<option<JSONValue>>, string, float>>
 
                     type InputExamples =
                         abstract input: JSONObject with get, set
@@ -14919,7 +15019,7 @@ module rec AiSdk =
             type Tools =
                 abstract providerOptions: option<SharedV3ProviderOptions> with get, set
                 abstract strict: option<bool> with get, set
-                abstract inputExamples: option<Array<Tools.InputExamples>> with get, set
+                abstract inputExamples: option<ResizeArray<Tools.InputExamples>> with get, set
                 abstract inputSchema: option<Agents.AgentContext> with get, set
                 abstract description: option<string> with get, set
                 abstract name: string with get, set
@@ -14941,7 +15041,8 @@ module rec AiSdk =
                     module rec Content =
                         type Item =
                             abstract Item:
-                                key: string -> option<U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>>
+                                key: string ->
+                                    option<U5<Item.Item, Item.Item, ResizeArray<option<JSONValue>>, string, float>>
 
                     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                     type Content =
@@ -14974,7 +15075,8 @@ module rec AiSdk =
 
                         type Item =
                             abstract Item:
-                                key: string -> option<U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>>
+                                key: string ->
+                                    option<U5<Item.Item, Item.Item, ResizeArray<option<JSONValue>>, string, float>>
 
                     type Request =
                         abstract body: option<obj> with get, set
@@ -15002,7 +15104,8 @@ module rec AiSdk =
                     module rec Content =
                         type Item =
                             abstract Item:
-                                key: string -> option<U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>>
+                                key: string ->
+                                    option<U5<Item.Item, Item.Item, ResizeArray<option<JSONValue>>, string, float>>
 
                     type Content =
                         abstract providerMetadata: option<SharedV3ProviderMetadata> with get, set
@@ -15017,7 +15120,10 @@ module rec AiSdk =
 
                         abstract preliminary: option<bool> with get, set
                         abstract isError: option<bool> with get, set
-                        abstract result: U5<Content.Result, Content.Result, Array<option<JSONValue>>, string, float> with get, set
+
+                        abstract result:
+                            U5<Content.Result, Content.Result, ResizeArray<option<JSONValue>>, string, float> with get, set
+
                         abstract approvalId: string with get, set
                         abstract data: U2<Uint8Array<ArrayBufferLike>, string> with get, set
                         abstract mediaType: string with get, set
@@ -15102,7 +15208,7 @@ module rec AiSdk =
 
             type Output =
                 abstract value:
-                    Array<
+                    ResizeArray<
                         U8<
                             Output.Value,
                             Output.Value,
@@ -15140,7 +15246,8 @@ module rec AiSdk =
                             abstract total: option<float> with get, set
 
             type Item =
-                abstract Item: key: string -> option<U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>>
+                abstract Item:
+                    key: string -> option<U5<Item.Item, Item.Item, ResizeArray<option<JSONValue>>, string, float>>
 
         module rec ProviderV3 =
             module rec EmbeddingModel =
@@ -15159,14 +15266,14 @@ module rec AiSdk =
                             abstract headers: option<SharedV3Headers> with get, set
                             abstract providerOptions: option<SharedV3ProviderOptions> with get, set
                             abstract abortSignal: option<AbortSignal> with get, set
-                            abstract values: Array<string> with get, set
+                            abstract values: ResizeArray<string> with get, set
 
                     type DoEmbed =
-                        abstract warnings: Array<SharedV3Warning> with get, set
+                        abstract warnings: ResizeArray<SharedV3Warning> with get, set
                         abstract response: option<DoEmbed.Response> with get, set
                         abstract providerMetadata: option<SharedV3ProviderMetadata> with get, set
                         abstract usage: option<DoEmbed.Usage> with get, set
-                        abstract embeddings: Array<EmbeddingModelV3Embedding> with get, set
+                        abstract embeddings: ResizeArray<EmbeddingModelV3Embedding> with get, set
 
             module rec ImageModel =
                 module rec ImageModel =
@@ -15209,7 +15316,7 @@ module rec AiSdk =
                             abstract abortSignal: option<AbortSignal> with get, set
                             abstract providerOptions: SharedV3ProviderOptions with get, set
                             abstract mask: option<U2<Options.Mask, Options.Mask>> with get, set
-                            abstract files: option<Array<ImageModelV3File>> with get, set
+                            abstract files: option<ResizeArray<ImageModelV3File>> with get, set
                             abstract seed: option<float> with get, set
                             abstract aspectRatio: option<Options.AspectRatio> with get, set
                             abstract size: option<Options.Size> with get, set
@@ -15223,8 +15330,8 @@ module rec AiSdk =
                         abstract usage: option<ImageModelV3Usage> with get, set
                         abstract response: DoGenerate.Response with get, set
                         abstract providerMetadata: option<ImageModelV3ProviderMetadata> with get, set
-                        abstract warnings: Array<SharedV3Warning> with get, set
-                        abstract images: U2<Array<string>, Array<BigInteger>> with get, set
+                        abstract warnings: ResizeArray<SharedV3Warning> with get, set
+                        abstract images: U2<ResizeArray<string>, ResizeArray<BigInteger>> with get, set
 
             module rec LanguageModel =
                 module rec LanguageModel =
@@ -15235,7 +15342,15 @@ module rec AiSdk =
                                     type Item =
                                         abstract Item:
                                             key: string ->
-                                                option<U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>>
+                                                option<
+                                                    U5<
+                                                        Item.Item,
+                                                        Item.Item,
+                                                        ResizeArray<option<JSONValue>>,
+                                                        string,
+                                                        float
+                                                     >
+                                                 >
 
                                 module rec Usage =
                                     module rec LanguageModel =
@@ -15289,14 +15404,14 @@ module rec AiSdk =
                             abstract abortSignal: option<AbortSignal> with get, set
                             abstract includeRawChunks: option<bool> with get, set
                             abstract toolChoice: option<LanguageModelV3ToolChoice> with get, set
-                            abstract tools: option<Array<U2<Options.Tools, Options.Tools>>> with get, set
+                            abstract tools: option<ResizeArray<U2<Options.Tools, Options.Tools>>> with get, set
                             abstract seed: option<float> with get, set
                             abstract responseFormat: option<U2<Options.ResponseFormat, Options.ResponseFormat>> with get, set
                             abstract frequencyPenalty: option<float> with get, set
                             abstract presencePenalty: option<float> with get, set
                             abstract topK: option<float> with get, set
                             abstract topP: option<float> with get, set
-                            abstract stopSequences: option<Array<string>> with get, set
+                            abstract stopSequences: option<ResizeArray<string>> with get, set
                             abstract temperature: option<float> with get, set
                             abstract maxOutputTokens: option<float> with get, set
                             abstract prompt: LanguageModelV3Prompt with get, set
@@ -15354,12 +15469,12 @@ module rec AiSdk =
 
                         abstract title: option<string> with get, set
                         abstract url: string with get, set
-                        abstract warnings: Array<SharedV3Warning> with get, set
+                        abstract warnings: ResizeArray<SharedV3Warning> with get, set
                         abstract response: option<DoGenerate.Response> with get, set
                         abstract request: option<DoGenerate.Request> with get, set
                         abstract usage: LanguageModelV3Usage with get, set
                         abstract finishReason: LanguageModelV3FinishReason with get, set
-                        abstract content: Array<LanguageModelV3Content> with get, set
+                        abstract content: ResizeArray<LanguageModelV3Content> with get, set
                         abstract Item: key: string -> option<Agents.AgentContext>
 
                 type Vocabulary =
@@ -15398,9 +15513,9 @@ module rec AiSdk =
 
                     type DoRerank =
                         abstract response: option<DoRerank.Response> with get, set
-                        abstract warnings: option<Array<SharedV3Warning>> with get, set
+                        abstract warnings: option<ResizeArray<SharedV3Warning>> with get, set
                         abstract providerMetadata: option<SharedV3ProviderMetadata> with get, set
-                        abstract ranking: Array<DoRerank.Ranking> with get, set
+                        abstract ranking: ResizeArray<DoRerank.Ranking> with get, set
 
             module rec SpeechModel =
                 module rec SpeechModel =
@@ -15442,7 +15557,7 @@ module rec AiSdk =
                         abstract providerMetadata: option<DoGenerate.ProviderMetadata> with get, set
                         abstract response: DoGenerate.Response with get, set
                         abstract request: option<DoGenerate.Request> with get, set
-                        abstract warnings: Array<SharedV3Warning> with get, set
+                        abstract warnings: ResizeArray<SharedV3Warning> with get, set
                         abstract audio: U2<Uint8Array<ArrayBufferLike>, string> with get, set
 
             module rec TranscriptionModel =
@@ -15482,10 +15597,10 @@ module rec AiSdk =
                         abstract providerMetadata: option<DoGenerate.ProviderMetadata> with get, set
                         abstract response: DoGenerate.Response with get, set
                         abstract request: option<DoGenerate.Request> with get, set
-                        abstract warnings: Array<SharedV3Warning> with get, set
+                        abstract warnings: ResizeArray<SharedV3Warning> with get, set
                         abstract durationInSeconds: option<float> with get, set
                         abstract language: option<string> with get, set
-                        abstract segments: Array<DoGenerate.Segments> with get, set
+                        abstract segments: ResizeArray<DoGenerate.Segments> with get, set
                         abstract text: string with get, set
 
             type LanguageModel =
@@ -15545,7 +15660,13 @@ module rec AiSdk =
                                             abstract Item:
                                                 key: string ->
                                                     option<
-                                                        U5<Item.Item, Item.Item, Array<option<JSONValue>>, string, float>
+                                                        U5<
+                                                            Item.Item,
+                                                            Item.Item,
+                                                            ResizeArray<option<JSONValue>>,
+                                                            string,
+                                                            float
+                                                         >
                                                      >
 
                                     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -15668,7 +15789,7 @@ module rec AiSdk =
             abstract raw: option<string> with get, set
             abstract unified: Ai.FinishReason with get, set
 
-        type JSONValue = option<U5<JSONValue, Array<option<JSONValue>>, string, float, bool>>
+        type JSONValue = option<U5<JSONValue, ResizeArray<option<JSONValue>>, string, float, bool>>
         type LanguageModelV3Prompt = obj
         type JSONArray = obj
 
@@ -15688,7 +15809,7 @@ module rec AiSdk =
             abstract abortSignal: option<AbortSignal> with get, set
             abstract providerOptions: SharedV3ProviderOptions with get, set
             abstract mask: option<U2<ImageModelV3CallOptions.Mask, ImageModelV3CallOptions.Mask>> with get, set
-            abstract files: option<Array<ImageModelV3File>> with get, set
+            abstract files: option<ResizeArray<ImageModelV3File>> with get, set
             abstract seed: option<float> with get, set
             abstract aspectRatio: option<ImageModelV3CallOptions.AspectRatio> with get, set
             abstract size: option<ImageModelV3CallOptions.Size> with get, set
@@ -15716,7 +15837,7 @@ module rec AiSdk =
             abstract abortSignal: option<AbortSignal> with get, set
             abstract includeRawChunks: option<bool> with get, set
             abstract toolChoice: option<LanguageModelV3ToolChoice> with get, set
-            abstract tools: option<Array<U2<LanguageModelV3CallOptions.Tools, LanguageModelV3CallOptions.Tools>>> with get, set
+            abstract tools: option<ResizeArray<U2<LanguageModelV3CallOptions.Tools, LanguageModelV3CallOptions.Tools>>> with get, set
             abstract seed: option<float> with get, set
 
             abstract responseFormat:
@@ -15726,7 +15847,7 @@ module rec AiSdk =
             abstract presencePenalty: option<float> with get, set
             abstract topK: option<float> with get, set
             abstract topP: option<float> with get, set
-            abstract stopSequences: option<Array<string>> with get, set
+            abstract stopSequences: option<ResizeArray<string>> with get, set
             abstract temperature: option<float> with get, set
             abstract maxOutputTokens: option<float> with get, set
             abstract prompt: LanguageModelV3Prompt with get, set
@@ -15763,11 +15884,11 @@ module rec AiSdk =
 
         [<Import("@ai-sdk/provider", "EmbeddingModelV3Result")>]
         type EmbeddingModelV3Result =
-            abstract warnings: Array<SharedV3Warning> with get, set
+            abstract warnings: ResizeArray<SharedV3Warning> with get, set
             abstract response: option<EmbeddingModelV3Result.Response> with get, set
             abstract providerMetadata: option<SharedV3ProviderMetadata> with get, set
             abstract usage: option<EmbeddingModelV3Result.Usage> with get, set
-            abstract embeddings: Array<EmbeddingModelV3Embedding> with get, set
+            abstract embeddings: ResizeArray<EmbeddingModelV3Embedding> with get, set
 
         [<Import("@ai-sdk/provider", "LanguageModelV3Reasoning")>]
         type LanguageModelV3Reasoning =
@@ -16112,13 +16233,14 @@ module rec AiSdk =
 
             type Item =
                 abstract Item:
-                    key: string -> option<U5<Item.Item, Item.Item, Array<option<Provider.JSONValue>>, string, float>>
+                    key: string ->
+                        option<U5<Item.Item, Item.Item, ResizeArray<option<Provider.JSONValue>>, string, float>>
 
             type NeedsApproval =
                 [<EmitProperty("experimental_context")>]
                 abstract experimentalContext: option<obj> with get, set
 
-                abstract messages: Array<ModelMessage> with get, set
+                abstract messages: ResizeArray<ModelMessage> with get, set
                 abstract toolCallId: string with get, set
 
             type InputExamples =
@@ -16169,7 +16291,7 @@ module rec AiSdk =
                 [<EmitProperty("experimental_context")>]
                 abstract experimentalContext: option<obj> with get, set
 
-                abstract messages: Array<ModelMessage> with get, set
+                abstract messages: ResizeArray<ModelMessage> with get, set
                 abstract toolCallId: string with get, set
 
         module rec ValidationResult =
@@ -16254,7 +16376,7 @@ module rec AiSdk =
                         'OUTPUT
                      >
 
-        type UserContent = U2<Array<U3<TextPart, FilePart, ImagePart>>, string>
+        type UserContent = U2<ResizeArray<U3<TextPart, FilePart, ImagePart>>, string>
 
         type ToolModelMessage =
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -16301,7 +16423,7 @@ module rec AiSdk =
             abstract experimentalContext: option<obj> with get, set
 
             abstract abortSignal: option<AbortSignal> with get, set
-            abstract messages: Array<ModelMessage> with get, set
+            abstract messages: ResizeArray<ModelMessage> with get, set
             abstract toolCallId: string with get, set
 
         [<Import("@ai-sdk/provider-utils", "ImagePart")>]
@@ -16318,7 +16440,10 @@ module rec AiSdk =
         type NeverOptional<'T, 'N> = U2<NeverOptional, U2<NeverOptional, 'T>>
 
         type AssistantContent =
-            U2<Array<U6<ToolResultPart, TextPart, FilePart, ReasoningPart, ToolCallPart, AssistantContent>>, string>
+            U2<
+                ResizeArray<U6<ToolResultPart, TextPart, FilePart, ReasoningPart, ToolCallPart, AssistantContent>>,
+                string
+             >
 
         [<Import("@ai-sdk/provider-utils", "StandardSchema")>]
         type StandardSchema<'SCHEMA> =
@@ -16458,7 +16583,7 @@ module rec JsonSchemaTyped =
                     [<EmitProperty("then")>]
                     abstract ``then``: option<JSONSchema> with get, set
 
-                    abstract required: option<U2<Array<string>, ReadonlyArray<string>>> with get, set
+                    abstract required: option<U2<ResizeArray<string>, ReadonlyArray<string>>> with get, set
                     abstract readOnly: option<bool> with get, set
                     abstract propertyNames: option<U2<AdditionalItems.PropertyNames, AdditionalItems.PropertyNames>> with get, set
                     abstract properties: option<AdditionalItems.Properties> with get, set
@@ -16467,7 +16592,7 @@ module rec JsonSchemaTyped =
                         option<
                             U4<
                                 AdditionalItems.PrefixItems,
-                                Array<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
+                                ResizeArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
                                 ReadonlyArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
                                 AdditionalItems.PrefixItems
                              >
@@ -16475,7 +16600,7 @@ module rec JsonSchemaTyped =
 
                     abstract patternProperties: option<AdditionalItems.PatternProperties> with get, set
                     abstract pattern: option<string> with get, set
-                    abstract oneOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                    abstract oneOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
                     [<EmitProperty("not")>]
                     abstract ``not``: option<JSONSchema> with get, set
@@ -16499,8 +16624,8 @@ module rec JsonSchemaTyped =
                     abstract format: option<string> with get, set
                     abstract exclusiveMinimum: option<float> with get, set
                     abstract exclusiveMaximum: option<float> with get, set
-                    abstract examples: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
-                    abstract enum: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
+                    abstract examples: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
+                    abstract enum: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
 
                     [<EmitProperty("else")>]
                     abstract ``else``: option<JSONSchema> with get, set
@@ -16530,8 +16655,8 @@ module rec JsonSchemaTyped =
                     [<EmitProperty("const")>]
                     abstract ``const``: option<'Value> with get, set
 
-                    abstract anyOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
-                    abstract allOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                    abstract anyOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                    abstract allOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
                     abstract additionalProperties:
                         option<U2<AdditionalItems.AdditionalProperties, AdditionalItems.AdditionalProperties>> with get, set
@@ -16572,7 +16697,7 @@ module rec JsonSchemaTyped =
 
         module rec Invoke =
             type Splitter =
-                abstract symbolSplit: string: string * ?limit: float -> Array<string>
+                abstract symbolSplit: string: string * ?limit: float -> ResizeArray<string>
 
             type Matcher =
                 abstract symbolMatch: string: string -> option<RegExpMatchArray>
@@ -16585,7 +16710,8 @@ module rec JsonSchemaTyped =
                 abstract symbolSearch: string: string -> float
 
             type Replacer =
-                abstract Invoke: substring: string * [<ParamArray>] args: Array<option<Agents.AgentContext>> -> string
+                abstract Invoke:
+                    substring: string * [<ParamArray>] args: ResizeArray<option<Agents.AgentContext>> -> string
 
     module rec JSONSchema =
         module rec GetValidator =
@@ -16608,7 +16734,7 @@ module rec JsonSchemaTyped =
                     [<EmitProperty("then")>]
                     abstract ``then``: option<JSONSchema> with get, set
 
-                    abstract required: option<U2<Array<string>, ReadonlyArray<string>>> with get, set
+                    abstract required: option<U2<ResizeArray<string>, ReadonlyArray<string>>> with get, set
                     abstract readOnly: option<bool> with get, set
                     abstract propertyNames: option<U2<AdditionalItems.PropertyNames, AdditionalItems.PropertyNames>> with get, set
                     abstract properties: option<AdditionalItems.Properties> with get, set
@@ -16617,7 +16743,7 @@ module rec JsonSchemaTyped =
                         option<
                             U4<
                                 AdditionalItems.PrefixItems,
-                                Array<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
+                                ResizeArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
                                 ReadonlyArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
                                 AdditionalItems.PrefixItems
                              >
@@ -16625,7 +16751,7 @@ module rec JsonSchemaTyped =
 
                     abstract patternProperties: option<AdditionalItems.PatternProperties> with get, set
                     abstract pattern: option<string> with get, set
-                    abstract oneOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                    abstract oneOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
                     [<EmitProperty("not")>]
                     abstract ``not``: option<JSONSchema> with get, set
@@ -16649,8 +16775,8 @@ module rec JsonSchemaTyped =
                     abstract format: option<string> with get, set
                     abstract exclusiveMinimum: option<float> with get, set
                     abstract exclusiveMaximum: option<float> with get, set
-                    abstract examples: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
-                    abstract enum: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
+                    abstract examples: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
+                    abstract enum: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
 
                     [<EmitProperty("else")>]
                     abstract ``else``: option<JSONSchema> with get, set
@@ -16680,8 +16806,8 @@ module rec JsonSchemaTyped =
                     [<EmitProperty("const")>]
                     abstract ``const``: option<'Value> with get, set
 
-                    abstract anyOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
-                    abstract allOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                    abstract anyOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                    abstract allOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
                     abstract additionalProperties:
                         option<U2<AdditionalItems.AdditionalProperties, AdditionalItems.AdditionalProperties>> with get, set
@@ -16741,7 +16867,7 @@ module rec JsonSchemaTyped =
                         [<EmitProperty("then")>]
                         abstract ``then``: option<JSONSchema> with get, set
 
-                        abstract required: option<U2<Array<string>, ReadonlyArray<string>>> with get, set
+                        abstract required: option<U2<ResizeArray<string>, ReadonlyArray<string>>> with get, set
                         abstract readOnly: option<bool> with get, set
                         abstract propertyNames: option<U2<AdditionalItems.PropertyNames, AdditionalItems.PropertyNames>> with get, set
                         abstract properties: option<AdditionalItems.Properties> with get, set
@@ -16750,7 +16876,7 @@ module rec JsonSchemaTyped =
                             option<
                                 U4<
                                     AdditionalItems.PrefixItems,
-                                    Array<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
+                                    ResizeArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
                                     ReadonlyArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
                                     AdditionalItems.PrefixItems
                                  >
@@ -16758,7 +16884,7 @@ module rec JsonSchemaTyped =
 
                         abstract patternProperties: option<AdditionalItems.PatternProperties> with get, set
                         abstract pattern: option<string> with get, set
-                        abstract oneOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                        abstract oneOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
                         [<EmitProperty("not")>]
                         abstract ``not``: option<JSONSchema> with get, set
@@ -16782,8 +16908,8 @@ module rec JsonSchemaTyped =
                         abstract format: option<string> with get, set
                         abstract exclusiveMinimum: option<float> with get, set
                         abstract exclusiveMaximum: option<float> with get, set
-                        abstract examples: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
-                        abstract enum: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
+                        abstract examples: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
+                        abstract enum: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
 
                         [<EmitProperty("else")>]
                         abstract ``else``: option<JSONSchema> with get, set
@@ -16813,8 +16939,8 @@ module rec JsonSchemaTyped =
                         [<EmitProperty("const")>]
                         abstract ``const``: option<'Value> with get, set
 
-                        abstract anyOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
-                        abstract allOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                        abstract anyOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                        abstract allOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
                         abstract additionalProperties:
                             option<U2<AdditionalItems.AdditionalProperties, AdditionalItems.AdditionalProperties>> with get, set
@@ -16859,14 +16985,14 @@ module rec JsonSchemaTyped =
                     abstract symbolReplace: string: string * replaceValue: string -> string
 
                 type Splitter =
-                    abstract symbolSplit: string: string * ?limit: float -> Array<string>
+                    abstract symbolSplit: string: string * ?limit: float -> ResizeArray<string>
 
                 type Matcher =
                     abstract symbolMatch: string: string -> option<RegExpMatchArray>
 
                 type Replacer =
                     abstract Invoke:
-                        substring: string * [<ParamArray>] args: Array<option<Agents.AgentContext>> -> string
+                        substring: string * [<ParamArray>] args: ResizeArray<option<Agents.AgentContext>> -> string
 
                 type Searcher =
                     abstract symbolSearch: string: string -> float
@@ -16882,7 +17008,7 @@ module rec JsonSchemaTyped =
                     U4<
                         TypeValue.PrefixItems,
                         TypeValue.PrefixItems,
-                        Array<U2<TypeValue.PrefixItems, TypeValue.PrefixItems>>,
+                        ResizeArray<U2<TypeValue.PrefixItems, TypeValue.PrefixItems>>,
                         ReadonlyArray<U2<TypeValue.PrefixItems, TypeValue.PrefixItems>>
                      >
                  > with get, set
@@ -16903,7 +17029,10 @@ module rec JsonSchemaTyped =
 
             abstract oneOf:
                 option<
-                    U2<Array<U2<TypeValue.OneOf, TypeValue.OneOf>>, ReadonlyArray<U2<TypeValue.OneOf, TypeValue.OneOf>>>
+                    U2<
+                        ResizeArray<U2<TypeValue.OneOf, TypeValue.OneOf>>,
+                        ReadonlyArray<U2<TypeValue.OneOf, TypeValue.OneOf>>
+                     >
                  > with get, set
 
             [<EmitProperty("not")>]
@@ -16915,7 +17044,7 @@ module rec JsonSchemaTyped =
             abstract examples:
                 option<
                     U2<
-                        Array<
+                        ResizeArray<
                             U33<
                                 unit -> StringIterator<string>,
                                 string -> string,
@@ -17000,12 +17129,18 @@ module rec JsonSchemaTyped =
 
             abstract anyOf:
                 option<
-                    U2<Array<U2<TypeValue.AnyOf, TypeValue.AnyOf>>, ReadonlyArray<U2<TypeValue.AnyOf, TypeValue.AnyOf>>>
+                    U2<
+                        ResizeArray<U2<TypeValue.AnyOf, TypeValue.AnyOf>>,
+                        ReadonlyArray<U2<TypeValue.AnyOf, TypeValue.AnyOf>>
+                     >
                  > with get, set
 
             abstract allOf:
                 option<
-                    U2<Array<U2<TypeValue.AllOf, TypeValue.AllOf>>, ReadonlyArray<U2<TypeValue.AllOf, TypeValue.AllOf>>>
+                    U2<
+                        ResizeArray<U2<TypeValue.AllOf, TypeValue.AllOf>>,
+                        ReadonlyArray<U2<TypeValue.AllOf, TypeValue.AllOf>>
+                     >
                  > with get, set
 
             [<EmitProperty("$vocabulary")>]
@@ -17083,7 +17218,7 @@ module rec JsonSchemaTyped =
             abstract enum:
                 option<
                     U2<
-                        Array<
+                        ResizeArray<
                             U33<
                                 unit -> StringIterator<string>,
                                 string -> string,
@@ -17205,24 +17340,24 @@ module rec JsonSchemaTyped =
 
             abstract Invoke: searcher: TypeValue.Invoke.Searcher -> float
             abstract Invoke: regexp: U2<RegExp, string> -> float
-            abstract Invoke: splitter: TypeValue.Invoke.Splitter * ?limit: float -> Array<string>
-            abstract Invoke: separator: U2<RegExp, string> * ?limit: float -> Array<string>
+            abstract Invoke: splitter: TypeValue.Invoke.Splitter * ?limit: float -> ResizeArray<string>
+            abstract Invoke: separator: U2<RegExp, string> * ?limit: float -> ResizeArray<string>
             abstract Invoke: searchValue: U2<RegExp, string> * replacer: TypeValue.Invoke.Replacer -> string
             abstract Invoke: searchValue: U2<RegExp, string> * replaceValue: string -> string
             abstract Invoke: ?locales: Intl.LocalesArgument -> string
-            abstract Invoke: ?locales: U2<Array<string>, string> -> string
+            abstract Invoke: ?locales: U2<ResizeArray<string>, string> -> string
             abstract Invoke: ?form: string -> string
             abstract Invoke: form: TypeValue.Invoke.Form -> string
             abstract Invoke: searchValue: TypeValue.Invoke.SearchValue * replacer: TypeValue.Invoke.Replacer -> string
             abstract Invoke: searchValue: TypeValue.Invoke.SearchValue * replaceValue: string -> string
             abstract Invoke: searchValue: U2<RegExp, string> * replaceValue: string -> string
-            abstract Invoke: [<ParamArray>] strings: Array<string> -> string
+            abstract Invoke: [<ParamArray>] strings: ResizeArray<string> -> string
             abstract Invoke: matcher: TypeValue.Invoke.Matcher -> option<RegExpMatchArray>
             abstract Invoke: regexp: U2<RegExp, string> -> option<RegExpMatchArray>
             abstract Invoke: that: string * ?locales: Intl.LocalesArgument * ?options: Intl.CollatorOptions -> float
 
             abstract Invoke:
-                that: string * ?locales: U2<Array<string>, string> * ?options: Intl.CollatorOptions -> float
+                that: string * ?locales: U2<ResizeArray<string>, string> * ?options: Intl.CollatorOptions -> float
 
             abstract Invoke: that: string -> float
             abstract Invoke: size: string -> string
@@ -17341,7 +17476,7 @@ module rec JsonSchemaTyped =
         | [<CompiledName("object")>] Object
         | [<CompiledName("string")>] String
 
-    type MaybeReadonlyArray<'T> = U2<Array<'T>, ReadonlyArray<'T>>
+    type MaybeReadonlyArray<'T> = U2<ResizeArray<'T>, ReadonlyArray<'T>>
 
 module rec Modelcontextprotocol =
     module rec Sdk =
@@ -17378,7 +17513,7 @@ module rec Modelcontextprotocol =
                                 [<EmitProperty("tos_uri")>]
                                 abstract tosUri: option<string> with get, set
 
-                                abstract contacts: option<Array<string>> with get, set
+                                abstract contacts: option<ResizeArray<string>> with get, set
                                 abstract scope: option<string> with get, set
 
                                 [<EmitProperty("logo_uri")>]
@@ -17391,16 +17526,16 @@ module rec Modelcontextprotocol =
                                 abstract clientName: option<string> with get, set
 
                                 [<EmitProperty("response_types")>]
-                                abstract responseTypes: option<Array<string>> with get, set
+                                abstract responseTypes: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("grant_types")>]
-                                abstract grantTypes: option<Array<string>> with get, set
+                                abstract grantTypes: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("token_endpoint_auth_method")>]
                                 abstract tokenEndpointAuthMethod: option<string> with get, set
 
                                 [<EmitProperty("redirect_uris")>]
-                                abstract redirectUris: Array<string> with get, set
+                                abstract redirectUris: ResizeArray<string> with get, set
 
                             type Tokens =
                                 [<EmitProperty("refresh_token")>]
@@ -17450,7 +17585,7 @@ module rec Modelcontextprotocol =
                                 [<EmitProperty("tos_uri")>]
                                 abstract tosUri: option<string> with get, set
 
-                                abstract contacts: option<Array<string>> with get, set
+                                abstract contacts: option<ResizeArray<string>> with get, set
                                 abstract scope: option<string> with get, set
 
                                 [<EmitProperty("logo_uri")>]
@@ -17463,10 +17598,10 @@ module rec Modelcontextprotocol =
                                 abstract clientName: option<string> with get, set
 
                                 [<EmitProperty("response_types")>]
-                                abstract responseTypes: option<Array<string>> with get, set
+                                abstract responseTypes: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("grant_types")>]
-                                abstract grantTypes: option<Array<string>> with get, set
+                                abstract grantTypes: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("token_endpoint_auth_method")>]
                                 abstract tokenEndpointAuthMethod: option<string> with get, set
@@ -17475,7 +17610,7 @@ module rec Modelcontextprotocol =
                                 abstract clientId: string with get, set
 
                                 [<EmitProperty("redirect_uris")>]
-                                abstract redirectUris: Array<string> with get, set
+                                abstract redirectUris: ResizeArray<string> with get, set
 
                         module rec OAuthServerInfo =
                             type ResourceMetadata =
@@ -17484,10 +17619,10 @@ module rec Modelcontextprotocol =
                                     option<ResourceMetadata.DpopBoundAccessTokensRequired> with get, set
 
                                 [<EmitProperty("dpop_signing_alg_values_supported")>]
-                                abstract dpopSigningAlgValuesSupported: option<Array<string>> with get, set
+                                abstract dpopSigningAlgValuesSupported: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("authorization_details_types_supported")>]
-                                abstract authorizationDetailsTypesSupported: option<Array<string>> with get, set
+                                abstract authorizationDetailsTypesSupported: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("tls_client_certificate_bound_access_tokens")>]
                                 abstract tlsClientCertificateBoundAccessTokens:
@@ -17506,19 +17641,19 @@ module rec Modelcontextprotocol =
                                 abstract resourceName: option<string> with get, set
 
                                 [<EmitProperty("resource_signing_alg_values_supported")>]
-                                abstract resourceSigningAlgValuesSupported: option<Array<string>> with get, set
+                                abstract resourceSigningAlgValuesSupported: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("bearer_methods_supported")>]
-                                abstract bearerMethodsSupported: option<Array<string>> with get, set
+                                abstract bearerMethodsSupported: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("scopes_supported")>]
-                                abstract scopesSupported: option<Array<string>> with get, set
+                                abstract scopesSupported: option<ResizeArray<string>> with get, set
 
                                 [<EmitProperty("jwks_uri")>]
                                 abstract jwksUri: option<string> with get, set
 
                                 [<EmitProperty("authorization_servers")>]
-                                abstract authorizationServers: option<Array<string>> with get, set
+                                abstract authorizationServers: option<ResizeArray<string>> with get, set
 
                                 abstract resource: string with get, set
 
@@ -17623,7 +17758,7 @@ module rec Modelcontextprotocol =
                                     type Completion =
                                         abstract hasMore: option<bool> with get, set
                                         abstract total: option<float> with get, set
-                                        abstract values: Array<string> with get, set
+                                        abstract values: ResizeArray<string> with get, set
                                         abstract Item: x: string -> option<obj>
 
                             module rec CreateMessageStream =
@@ -17636,7 +17771,7 @@ module rec Modelcontextprotocol =
                                                         type Annotations =
                                                             abstract lastModified: option<string> with get, set
                                                             abstract priority: option<float> with get, set
-                                                            abstract audience: option<Array<Annotations.Audience>> with get, set
+                                                            abstract audience: option<ResizeArray<Annotations.Audience>> with get, set
 
                                         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                         type Content =
@@ -17688,7 +17823,7 @@ module rec Modelcontextprotocol =
                             module rec ListChanged =
                                 module rec ListChanged =
                                     type Tools =
-                                        abstract onChanged: option<exn> -> option<Array<'T>> -> unit with get, set
+                                        abstract onChanged: option<exn> -> option<ResizeArray<'T>> -> unit with get, set
                                         abstract debounceMs: option<float> with get, set
                                         abstract autoRefresh: option<bool> with get, set
 
@@ -17712,7 +17847,7 @@ module rec Modelcontextprotocol =
 
                                     type Tools =
                                         abstract title: option<string> with get, set
-                                        abstract icons: option<Array<Tools.Icons>> with get, set
+                                        abstract icons: option<ResizeArray<Tools.Icons>> with get, set
                                         abstract _meta: option<Tools._meta> with get, set
                                         abstract execution: option<Tools.Execution> with get, set
                                         abstract annotations: option<Tools.Annotations> with get, set
@@ -17796,7 +17931,7 @@ module rec Modelcontextprotocol =
                                                         module rec ClientInfo =
                                                             type Icons =
                                                                 abstract theme: option<Icons.Theme> with get, set
-                                                                abstract sizes: option<Array<string>> with get, set
+                                                                abstract sizes: option<ResizeArray<string>> with get, set
                                                                 abstract mimeType: option<string> with get, set
                                                                 abstract src: string with get, set
 
@@ -17825,7 +17960,7 @@ module rec Modelcontextprotocol =
 
                                         type ClientInfo =
                                             abstract title: option<string> with get, set
-                                            abstract icons: option<Array<ClientInfo.Icons>> with get, set
+                                            abstract icons: option<ResizeArray<ClientInfo.Icons>> with get, set
                                             abstract description: option<string> with get, set
                                             abstract websiteUrl: option<string> with get, set
                                             abstract name: string with get, set
@@ -17883,7 +18018,7 @@ module rec Modelcontextprotocol =
                                 type Handler =
                                     abstract _meta: option<Handler._meta> with get, set
                                     abstract task: Handler.Task with get, set
-                                    abstract roots: Array<Handler.Roots> with get, set
+                                    abstract roots: ResizeArray<Handler.Roots> with get, set
                                     abstract stopReason: option<string> with get, set
 
                                     abstract content:
@@ -17893,7 +18028,7 @@ module rec Modelcontextprotocol =
                                             Handler.Content,
                                             Handler.Content,
                                             Handler.Content,
-                                            Array<
+                                            ResizeArray<
                                                 U5<
                                                     Handler.Content,
                                                     Handler.Content,
@@ -17913,7 +18048,7 @@ module rec Modelcontextprotocol =
                             type ListResourceTemplates =
                                 abstract nextCursor: option<string> with get, set
                                 abstract _meta: option<ListResourceTemplates._meta> with get, set
-                                abstract resourceTemplates: Array<ListResourceTemplates.ResourceTemplates> with get, set
+                                abstract resourceTemplates: ResizeArray<ListResourceTemplates.ResourceTemplates> with get, set
                                 abstract Item: x: string -> option<obj>
 
                             type GetTask =
@@ -17929,7 +18064,7 @@ module rec Modelcontextprotocol =
                             type ListPrompts =
                                 abstract nextCursor: option<string> with get, set
                                 abstract _meta: option<ListPrompts._meta> with get, set
-                                abstract prompts: Array<ListPrompts.Prompts> with get, set
+                                abstract prompts: ResizeArray<ListPrompts.Prompts> with get, set
                                 abstract Item: x: string -> option<obj>
 
                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -17993,7 +18128,7 @@ module rec Modelcontextprotocol =
                             type ListResources =
                                 abstract nextCursor: option<string> with get, set
                                 abstract _meta: option<ListResources._meta> with get, set
-                                abstract resources: Array<ListResources.Resources> with get, set
+                                abstract resources: ResizeArray<ListResources.Resources> with get, set
                                 abstract Item: x: string -> option<obj>
 
                             type Params =
@@ -18008,7 +18143,7 @@ module rec Modelcontextprotocol =
                             type ListTasks =
                                 abstract nextCursor: option<string> with get, set
                                 abstract _meta: option<ListTasks._meta> with get, set
-                                abstract tasks: Array<ListTasks.Tasks> with get, set
+                                abstract tasks: ResizeArray<ListTasks.Tasks> with get, set
 
                             type Ping =
                                 abstract _meta: option<Ping._meta> with get, set
@@ -18022,14 +18157,14 @@ module rec Modelcontextprotocol =
                             type ListTools =
                                 abstract nextCursor: option<string> with get, set
                                 abstract _meta: option<ListTools._meta> with get, set
-                                abstract tools: Array<ListTools.Tools> with get, set
+                                abstract tools: ResizeArray<ListTools.Tools> with get, set
                                 abstract Item: x: string -> option<obj>
 
                         module rec ClientOptions =
                             module rec ListChanged =
                                 module rec ListChanged =
                                     type Tools =
-                                        abstract onChanged: option<exn> -> option<Array<'T>> -> unit with get, set
+                                        abstract onChanged: option<exn> -> option<ResizeArray<'T>> -> unit with get, set
                                         abstract debounceMs: option<float> with get, set
                                         abstract autoRefresh: option<bool> with get, set
 
@@ -18163,7 +18298,7 @@ module rec Modelcontextprotocol =
                             abstract defaultTaskPollInterval: option<float> with get, set
                             abstract taskMessageQueue: option<Experimental.Tasks.Interfaces.TaskMessageQueue> with get, set
                             abstract taskStore: option<Experimental.Tasks.Interfaces.TaskStore> with get, set
-                            abstract debouncedNotificationMethods: option<Array<string>> with get, set
+                            abstract debouncedNotificationMethods: option<ResizeArray<string>> with get, set
                             abstract enforceStrictCapabilities: option<bool> with get, set
                             abstract resumptionToken: option<string> with get, set
                             abstract relatedRequestId: option<Types.RequestId> with get, set
@@ -18221,7 +18356,7 @@ module rec Modelcontextprotocol =
                             abstract defaultTaskPollInterval: option<float> with get, set
                             abstract taskMessageQueue: option<Experimental.Tasks.Interfaces.TaskMessageQueue> with get, set
                             abstract taskStore: option<Experimental.Tasks.Interfaces.TaskStore> with get, set
-                            abstract debouncedNotificationMethods: option<Array<string>> with get, set
+                            abstract debouncedNotificationMethods: option<ResizeArray<string>> with get, set
                             abstract enforceStrictCapabilities: option<bool> with get, set
 
                     module rec Sse =
@@ -18347,7 +18482,7 @@ module rec Modelcontextprotocol =
                                         StreamableHTTPClientTransport.Send.Message,
                                         StreamableHTTPClientTransport.Send.Message,
                                         StreamableHTTPClientTransport.Send.Message,
-                                        Array<Types.JSONRPCMessage>
+                                        ResizeArray<Types.JSONRPCMessage>
                                      > *
                                 ?options: StreamableHTTPClientTransport.Send.Options ->
                                     Promise<unit>
@@ -18508,7 +18643,7 @@ module rec Modelcontextprotocol =
                                                                                             option<Icons.Theme> with get, set
 
                                                                                         abstract sizes:
-                                                                                            option<Array<string>> with get, set
+                                                                                            option<ResizeArray<string>> with get, set
 
                                                                                         abstract mimeType:
                                                                                             option<string> with get, set
@@ -18530,7 +18665,10 @@ module rec Modelcontextprotocol =
 
                                                                 type ClientInfo =
                                                                     abstract title: option<string> with get, set
-                                                                    abstract icons: option<Array<ClientInfo.Icons>> with get, set
+
+                                                                    abstract icons:
+                                                                        option<ResizeArray<ClientInfo.Icons>> with get, set
+
                                                                     abstract description: option<string> with get, set
                                                                     abstract websiteUrl: option<string> with get, set
                                                                     abstract name: string with get, set
@@ -18620,7 +18758,7 @@ module rec Modelcontextprotocol =
                                 type ListTasks =
                                     abstract nextCursor: option<string> with get, set
                                     abstract _meta: option<ListTasks._meta> with get, set
-                                    abstract tasks: Array<ListTasks.Tasks> with get, set
+                                    abstract tasks: ResizeArray<ListTasks.Tasks> with get, set
 
                             [<Import("../experimental/tasks/client.js", "ExperimentalClientTasks");
                               AbstractClass;
@@ -19113,7 +19251,7 @@ module rec Modelcontextprotocol =
 
                                 type ListTasks =
                                     abstract nextCursor: option<string> with get, set
-                                    abstract tasks: Array<ListTasks.Tasks> with get, set
+                                    abstract tasks: ResizeArray<ListTasks.Tasks> with get, set
 
                             module rec ToolTaskHandler =
                                 module rec T =
@@ -19816,7 +19954,7 @@ module rec Modelcontextprotocol =
                             [<Import("../experimental/tasks/interfaces.js", "TaskMessageQueue")>]
                             type TaskMessageQueue =
                                 abstract dequeueAll:
-                                    taskId: string * ?sessionId: string -> Promise<Array<QueuedMessage>>
+                                    taskId: string * ?sessionId: string -> Promise<ResizeArray<QueuedMessage>>
 
                                 abstract dequeue:
                                     taskId: string * ?sessionId: string ->
@@ -19909,7 +20047,7 @@ module rec Modelcontextprotocol =
                                                                         abstract priority: option<float> with get, set
 
                                                                         abstract audience:
-                                                                            option<Array<Annotations.Audience>> with get, set
+                                                                            option<ResizeArray<Annotations.Audience>> with get, set
 
                                                     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                                     type Content =
@@ -20518,7 +20656,7 @@ module rec Modelcontextprotocol =
                                             abstract _meta: option<Handler._meta> with get, set
 
                                             abstract content:
-                                                Array<
+                                                ResizeArray<
                                                     U5<
                                                         Handler.Content,
                                                         Handler.Content,
@@ -20594,7 +20732,7 @@ module rec Modelcontextprotocol =
                                         module rec ElicitInputStream =
                                             module rec Params =
                                                 type RequestedSchema =
-                                                    abstract required: option<Array<string>> with get, set
+                                                    abstract required: option<ResizeArray<string>> with get, set
                                                     abstract properties: RequestedSchema.Properties with get, set
 
                                                     [<EmitProperty("type")>]
@@ -20650,7 +20788,7 @@ module rec Modelcontextprotocol =
 
                                                                                         abstract audience:
                                                                                             option<
-                                                                                                Array<
+                                                                                                ResizeArray<
                                                                                                     Annotations.Audience
                                                                                                  >
                                                                                              > with get, set
@@ -20681,7 +20819,8 @@ module rec Modelcontextprotocol =
                                                                 module rec Params =
                                                                     module rec Tools =
                                                                         type InputSchema =
-                                                                            abstract required: option<Array<string>> with get, set
+                                                                            abstract required:
+                                                                                option<ResizeArray<string>> with get, set
 
                                                                             abstract properties:
                                                                                 option<InputSchema.Properties> with get, set
@@ -20719,7 +20858,7 @@ module rec Modelcontextprotocol =
                                                                     Messages.Content,
                                                                     Messages.Content,
                                                                     Messages.Content,
-                                                                    Array<
+                                                                    ResizeArray<
                                                                         U5<
                                                                             Messages.Content,
                                                                             Messages.Content,
@@ -20740,7 +20879,7 @@ module rec Modelcontextprotocol =
 
                                                         type Tools =
                                                             abstract title: option<string> with get, set
-                                                            abstract icons: option<Array<Tools.Icons>> with get, set
+                                                            abstract icons: option<ResizeArray<Tools.Icons>> with get, set
                                                             abstract _meta: option<Tools._meta> with get, set
                                                             abstract execution: option<Tools.Execution> with get, set
                                                             abstract annotations: option<Tools.Annotations> with get, set
@@ -20753,7 +20892,7 @@ module rec Modelcontextprotocol =
                                                             abstract intelligencePriority: option<float> with get, set
                                                             abstract speedPriority: option<float> with get, set
                                                             abstract costPriority: option<float> with get, set
-                                                            abstract hints: option<Array<ModelPreferences.Hints>> with get, set
+                                                            abstract hints: option<ResizeArray<ModelPreferences.Hints>> with get, set
 
                                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                             type Params =
@@ -20954,7 +21093,7 @@ module rec Modelcontextprotocol =
                                 abstract extra: option<AuthInfo.Extra> with get, set
                                 abstract resource: option<URL> with get, set
                                 abstract expiresAt: option<float> with get, set
-                                abstract scopes: Array<string> with get, set
+                                abstract scopes: ResizeArray<string> with get, set
                                 abstract clientId: string with get, set
                                 abstract token: string with get, set
 
@@ -20998,14 +21137,14 @@ module rec Modelcontextprotocol =
 
                             module rec CreateMessage =
                                 type Params =
-                                    abstract stopSequences: option<Array<string>> with get, set
+                                    abstract stopSequences: option<ResizeArray<string>> with get, set
                                     abstract maxTokens: float with get, set
                                     abstract temperature: option<float> with get, set
                                     abstract includeContext: option<Params.IncludeContext> with get, set
                                     abstract systemPrompt: option<string> with get, set
                                     abstract modelPreferences: option<Params.ModelPreferences> with get, set
                                     abstract task: option<Params.Task> with get, set
-                                    abstract messages: Array<Params.Messages> with get, set
+                                    abstract messages: ResizeArray<Params.Messages> with get, set
                                     abstract _meta: option<Params._meta> with get, set
                                     abstract metadata: option<obj> with get, set
 
@@ -21039,7 +21178,7 @@ module rec Modelcontextprotocol =
                                                     module rec Params =
                                                         module rec Tools =
                                                             type InputSchema =
-                                                                abstract required: option<Array<string>> with get, set
+                                                                abstract required: option<ResizeArray<string>> with get, set
                                                                 abstract properties: option<InputSchema.Properties> with get, set
 
                                                                 [<EmitProperty("type")>]
@@ -21070,11 +21209,11 @@ module rec Modelcontextprotocol =
                                                 abstract intelligencePriority: option<float> with get, set
                                                 abstract speedPriority: option<float> with get, set
                                                 abstract costPriority: option<float> with get, set
-                                                abstract hints: option<Array<ModelPreferences.Hints>> with get, set
+                                                abstract hints: option<ResizeArray<ModelPreferences.Hints>> with get, set
 
                                             type Tools =
                                                 abstract title: option<string> with get, set
-                                                abstract icons: option<Array<Tools.Icons>> with get, set
+                                                abstract icons: option<ResizeArray<Tools.Icons>> with get, set
                                                 abstract _meta: option<Tools._meta> with get, set
                                                 abstract execution: option<Tools.Execution> with get, set
                                                 abstract annotations: option<Tools.Annotations> with get, set
@@ -21093,7 +21232,7 @@ module rec Modelcontextprotocol =
                                                         Messages.Content,
                                                         Messages.Content,
                                                         Messages.Content,
-                                                        Array<
+                                                        ResizeArray<
                                                             U5<
                                                                 Messages.Content,
                                                                 Messages.Content,
@@ -21108,9 +21247,9 @@ module rec Modelcontextprotocol =
 
                                 type Params =
                                     abstract toolChoice: option<Params.ToolChoice> with get, set
-                                    abstract tools: option<Array<Params.Tools>> with get, set
+                                    abstract tools: option<ResizeArray<Params.Tools>> with get, set
                                     abstract metadata: option<obj> with get, set
-                                    abstract stopSequences: option<Array<string>> with get, set
+                                    abstract stopSequences: option<ResizeArray<string>> with get, set
                                     abstract temperature: option<float> with get, set
                                     abstract includeContext: option<Params.IncludeContext> with get, set
                                     abstract systemPrompt: option<string> with get, set
@@ -21118,7 +21257,7 @@ module rec Modelcontextprotocol =
                                     abstract task: option<Params.Task> with get, set
                                     abstract _meta: option<Params._meta> with get, set
                                     abstract maxTokens: float with get, set
-                                    abstract messages: Array<Params.Messages> with get, set
+                                    abstract messages: ResizeArray<Params.Messages> with get, set
 
                             module rec ExtraT =
                                 module rec ExtraT =
@@ -21240,7 +21379,9 @@ module rec Modelcontextprotocol =
                                                             type Annotations =
                                                                 abstract lastModified: option<string> with get, set
                                                                 abstract priority: option<float> with get, set
-                                                                abstract audience: option<Array<Annotations.Audience>> with get, set
+
+                                                                abstract audience:
+                                                                    option<ResizeArray<Annotations.Audience>> with get, set
 
                                                             type Resource =
                                                                 abstract _meta: option<Resource._meta> with get, set
@@ -21263,7 +21404,7 @@ module rec Modelcontextprotocol =
                                     abstract _meta: option<Handler._meta> with get, set
 
                                     abstract content:
-                                        Array<
+                                        ResizeArray<
                                             U5<
                                                 Handler.Content,
                                                 Handler.Content,
@@ -21374,13 +21515,13 @@ module rec Modelcontextprotocol =
                                                                 module rec ClientInfo =
                                                                     type Icons =
                                                                         abstract theme: option<Icons.Theme> with get, set
-                                                                        abstract sizes: option<Array<string>> with get, set
+                                                                        abstract sizes: option<ResizeArray<string>> with get, set
                                                                         abstract mimeType: option<string> with get, set
                                                                         abstract src: string with get, set
 
                                                 type ClientInfo =
                                                     abstract title: option<string> with get, set
-                                                    abstract icons: option<Array<ClientInfo.Icons>> with get, set
+                                                    abstract icons: option<ResizeArray<ClientInfo.Icons>> with get, set
                                                     abstract description: option<string> with get, set
                                                     abstract websiteUrl: option<string> with get, set
                                                     abstract name: string with get, set
@@ -21403,19 +21544,19 @@ module rec Modelcontextprotocol =
                                             type Completion =
                                                 abstract hasMore: option<Completion.HasMore> with get, set
                                                 abstract total: option<float> with get, set
-                                                abstract values: Array<string> with get, set
+                                                abstract values: ResizeArray<string> with get, set
 
                                     type Prompts =
                                         abstract title: option<string> with get, set
-                                        abstract icons: option<Array<Prompts.Icons>> with get, set
+                                        abstract icons: option<ResizeArray<Prompts.Icons>> with get, set
                                         abstract _meta: option<Prompts._meta> with get, set
-                                        abstract arguments: option<Array<Prompts.Arguments>> with get, set
+                                        abstract arguments: option<ResizeArray<Prompts.Arguments>> with get, set
                                         abstract description: option<string> with get, set
                                         abstract name: string with get, set
 
                                     type Resources =
                                         abstract title: option<string> with get, set
-                                        abstract icons: option<Array<Resources.Icons>> with get, set
+                                        abstract icons: option<ResizeArray<Resources.Icons>> with get, set
                                         abstract _meta: option<Resources._meta> with get, set
                                         abstract annotations: option<Resources.Annotations> with get, set
                                         abstract size: option<float> with get, set
@@ -21426,7 +21567,7 @@ module rec Modelcontextprotocol =
 
                                     type ResourceTemplates =
                                         abstract title: option<string> with get, set
-                                        abstract icons: option<Array<ResourceTemplates.Icons>> with get, set
+                                        abstract icons: option<ResizeArray<ResourceTemplates.Icons>> with get, set
                                         abstract _meta: option<ResourceTemplates._meta> with get, set
                                         abstract annotations: option<ResourceTemplates.Annotations> with get, set
                                         abstract mimeType: option<string> with get, set
@@ -21437,11 +21578,11 @@ module rec Modelcontextprotocol =
                                 type Handler =
                                     abstract description: option<string> with get, set
                                     abstract _meta: option<Handler._meta> with get, set
-                                    abstract messages: Array<Handler.Messages> with get, set
+                                    abstract messages: ResizeArray<Handler.Messages> with get, set
                                     abstract nextCursor: option<string> with get, set
-                                    abstract prompts: Array<Handler.Prompts> with get, set
+                                    abstract prompts: ResizeArray<Handler.Prompts> with get, set
                                     abstract completion: Handler.Completion with get, set
-                                    abstract resources: Array<Handler.Resources> with get, set
+                                    abstract resources: ResizeArray<Handler.Resources> with get, set
                                     abstract instructions: option<string> with get, set
                                     abstract serverInfo: Handler.ServerInfo with get, set
                                     abstract capabilities: Handler.Capabilities with get, set
@@ -21456,7 +21597,7 @@ module rec Modelcontextprotocol =
                                             Handler.Content,
                                             Handler.Content,
                                             Handler.Content,
-                                            Array<
+                                            ResizeArray<
                                                 U5<
                                                     Handler.Content,
                                                     Handler.Content,
@@ -21469,14 +21610,14 @@ module rec Modelcontextprotocol =
 
                                     abstract role: Handler.Role with get, set
                                     abstract model: string with get, set
-                                    abstract tools: Array<Handler.Tools> with get, set
-                                    abstract resourceTemplates: Array<Handler.ResourceTemplates> with get, set
-                                    abstract contents: Array<U2<Handler.Contents, Handler.Contents>> with get, set
+                                    abstract tools: ResizeArray<Handler.Tools> with get, set
+                                    abstract resourceTemplates: ResizeArray<Handler.ResourceTemplates> with get, set
+                                    abstract contents: ResizeArray<U2<Handler.Contents, Handler.Contents>> with get, set
 
                             type ListTasks =
                                 abstract nextCursor: option<string> with get, set
                                 abstract _meta: option<ListTasks._meta> with get, set
-                                abstract tasks: Array<ListTasks.Tasks> with get, set
+                                abstract tasks: ResizeArray<ListTasks.Tasks> with get, set
 
                             type CreateMessageStream =
                                 abstract stopReason: option<string> with get, set
@@ -21494,7 +21635,7 @@ module rec Modelcontextprotocol =
 
                             type ListRoots =
                                 abstract _meta: option<ListRoots._meta> with get, set
-                                abstract roots: Array<ListRoots.Roots> with get, set
+                                abstract roots: ResizeArray<ListRoots.Roots> with get, set
                                 abstract Item: x: string -> option<obj>
 
                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -21641,7 +21782,7 @@ module rec Modelcontextprotocol =
                             abstract defaultTaskPollInterval: option<float> with get, set
                             abstract taskMessageQueue: option<Experimental.Tasks.Interfaces.TaskMessageQueue> with get, set
                             abstract taskStore: option<Experimental.Tasks.Interfaces.TaskStore> with get, set
-                            abstract debouncedNotificationMethods: option<Array<string>> with get, set
+                            abstract debouncedNotificationMethods: option<ResizeArray<string>> with get, set
                             abstract enforceStrictCapabilities: option<bool> with get, set
 
                     module rec Mcp =
@@ -21795,7 +21936,7 @@ module rec Modelcontextprotocol =
 
                                                     abstract text: string with get, set
                                                     abstract title: option<string> with get, set
-                                                    abstract icons: option<Array<Content.Icons>> with get, set
+                                                    abstract icons: option<ResizeArray<Content.Icons>> with get, set
                                                     abstract size: option<float> with get, set
                                                     abstract mimeType: option<string> with get, set
                                                     abstract description: option<string> with get, set
@@ -21851,7 +21992,7 @@ module rec Modelcontextprotocol =
                                         abstract _meta: option<Handler._meta> with get, set
 
                                         abstract content:
-                                            Array<
+                                            ResizeArray<
                                                 U5<
                                                     Handler.Content,
                                                     Handler.Content,
@@ -22392,13 +22533,13 @@ module rec Modelcontextprotocol =
                                                         module rec ClientInfo =
                                                             type Icons =
                                                                 abstract theme: option<Icons.Theme> with get, set
-                                                                abstract sizes: option<Array<string>> with get, set
+                                                                abstract sizes: option<ResizeArray<string>> with get, set
                                                                 abstract mimeType: option<string> with get, set
                                                                 abstract src: string with get, set
 
                                         type ClientInfo =
                                             abstract title: option<string> with get, set
-                                            abstract icons: option<Array<ClientInfo.Icons>> with get, set
+                                            abstract icons: option<ResizeArray<ClientInfo.Icons>> with get, set
                                             abstract description: option<string> with get, set
                                             abstract websiteUrl: option<string> with get, set
                                             abstract name: string with get, set
@@ -22427,7 +22568,7 @@ module rec Modelcontextprotocol =
                                                     U2<Updates.Callback, Promise<Updates.Callback>>
 
                                     type Metadata =
-                                        abstract icons: option<Array<Metadata.Icons>> with get, set
+                                        abstract icons: option<ResizeArray<Metadata.Icons>> with get, set
                                         abstract _meta: option<Metadata._meta> with get, set
                                         abstract annotations: option<Metadata.Annotations> with get, set
                                         abstract size: option<float> with get, set
@@ -22469,9 +22610,9 @@ module rec Modelcontextprotocol =
 
                                 type Handler =
                                     abstract _meta: option<Handler._meta> with get, set
-                                    abstract contents: Array<U2<Handler.Contents, Handler.Contents>> with get, set
+                                    abstract contents: ResizeArray<U2<Handler.Contents, Handler.Contents>> with get, set
                                     abstract description: option<string> with get, set
-                                    abstract messages: Array<Handler.Messages> with get, set
+                                    abstract messages: ResizeArray<Handler.Messages> with get, set
 
                             type RegisterToolTask =
                                 abstract enabled: bool with get, set
@@ -22579,7 +22720,7 @@ module rec Modelcontextprotocol =
                                                 U2<Updates.Callback, Promise<Updates.Callback>>
 
                                 type Metadata =
-                                    abstract icons: option<Array<Metadata.Icons>> with get, set
+                                    abstract icons: option<ResizeArray<Metadata.Icons>> with get, set
                                     abstract _meta: option<Metadata._meta> with get, set
                                     abstract annotations: option<Metadata.Annotations> with get, set
                                     abstract size: option<float> with get, set
@@ -22604,7 +22745,7 @@ module rec Modelcontextprotocol =
                                                 U2<Updates.Callback, Promise<Updates.Callback>>
 
                                 type Metadata =
-                                    abstract icons: option<Array<Metadata.Icons>> with get, set
+                                    abstract icons: option<ResizeArray<Metadata.Icons>> with get, set
                                     abstract _meta: option<Metadata._meta> with get, set
                                     abstract annotations: option<Metadata.Annotations> with get, set
                                     abstract size: option<float> with get, set
@@ -22668,7 +22809,7 @@ module rec Modelcontextprotocol =
                         module rec ResourceMetadata =
                             module rec Resource =
                                 type Metadata =
-                                    abstract icons: option<Array<Metadata.Icons>> with get, set
+                                    abstract icons: option<ResizeArray<Metadata.Icons>> with get, set
                                     abstract _meta: option<Metadata._meta> with get, set
                                     abstract annotations: option<Metadata.Annotations> with get, set
                                     abstract size: option<float> with get, set
@@ -22681,7 +22822,7 @@ module rec Modelcontextprotocol =
                                 module rec Handler =
                                     type Resources =
                                         abstract title: option<string> with get, set
-                                        abstract icons: option<Array<Resources.Icons>> with get, set
+                                        abstract icons: option<ResizeArray<Resources.Icons>> with get, set
                                         abstract _meta: option<Resources._meta> with get, set
                                         abstract annotations: option<Resources.Annotations> with get, set
                                         abstract size: option<float> with get, set
@@ -22693,7 +22834,7 @@ module rec Modelcontextprotocol =
                                 type Handler =
                                     abstract nextCursor: option<string> with get, set
                                     abstract _meta: option<Handler._meta> with get, set
-                                    abstract resources: Array<Handler.Resources> with get, set
+                                    abstract resources: ResizeArray<Handler.Resources> with get, set
 
                             module rec _callbacks =
                                 module rec _callbacks =
@@ -22776,7 +22917,7 @@ module rec Modelcontextprotocol =
                             abstract defaultTaskPollInterval: option<float> with get, set
                             abstract taskMessageQueue: option<Experimental.Tasks.Interfaces.TaskMessageQueue> with get, set
                             abstract taskStore: option<Experimental.Tasks.Interfaces.TaskStore> with get, set
-                            abstract debouncedNotificationMethods: option<Array<string>> with get, set
+                            abstract debouncedNotificationMethods: option<ResizeArray<string>> with get, set
                             abstract enforceStrictCapabilities: option<bool> with get, set
                             abstract _createRegisteredTool: option<Agents.AgentContext> with get, set
                             abstract _createRegisteredPrompt: option<Agents.AgentContext> with get, set
@@ -23110,7 +23251,7 @@ module rec Modelcontextprotocol =
                                     option<
                                         string
                                             -> option<ResourceTemplate.CompleteCallback>
-                                            -> U2<Array<string>, Promise<Array<string>>>
+                                            -> U2<ResizeArray<string>, Promise<ResizeArray<string>>>
                                      >
 
                         [<Import("@modelcontextprotocol/sdk/server/mcp.js", "RegisteredTool")>]
@@ -23173,7 +23314,7 @@ module rec Modelcontextprotocol =
                         type CompleteResourceTemplateCallback =
                             abstract Invoke:
                                 value: string * ?context: CompleteResourceTemplateCallback.Invoke.Context ->
-                                    U2<Array<string>, Promise<Array<string>>>
+                                    U2<ResizeArray<string>, Promise<ResizeArray<string>>>
 
                         [<Import("@modelcontextprotocol/sdk/server/mcp.js", "RegisteredResourceTemplate")>]
                         type RegisteredResourceTemplate =
@@ -23397,7 +23538,7 @@ module rec Modelcontextprotocol =
                                 abstract defaultTaskPollInterval: option<float> with get, set
                                 abstract taskMessageQueue: option<Experimental.Tasks.Interfaces.TaskMessageQueue> with get, set
                                 abstract taskStore: option<Experimental.Tasks.Interfaces.TaskStore> with get, set
-                                abstract debouncedNotificationMethods: option<Array<string>> with get, set
+                                abstract debouncedNotificationMethods: option<ResizeArray<string>> with get, set
                                 abstract enforceStrictCapabilities: option<bool> with get, set
 
                         module rec RequestHandlerExtra =
@@ -23516,7 +23657,7 @@ module rec Modelcontextprotocol =
                             abstract defaultTaskPollInterval: option<float> with get, set
                             abstract taskMessageQueue: option<Experimental.Tasks.Interfaces.TaskMessageQueue> with get, set
                             abstract taskStore: option<Experimental.Tasks.Interfaces.TaskStore> with get, set
-                            abstract debouncedNotificationMethods: option<Array<string>> with get, set
+                            abstract debouncedNotificationMethods: option<ResizeArray<string>> with get, set
                             abstract enforceStrictCapabilities: option<bool> with get, set
 
                         [<Import("@modelcontextprotocol/sdk/shared/protocol.js", "Protocol");
@@ -23919,7 +24060,7 @@ module rec Modelcontextprotocol =
                             abstract getNames: option<Agents.AgentContext> with get, set
                             abstract getOperator: option<Agents.AgentContext> with get, set
                             abstract parse: option<Agents.AgentContext> with get, set
-                            abstract variableNames: Array<string> with get
+                            abstract variableNames: ResizeArray<string> with get
                             abstract parts: option<Agents.AgentContext> with get
                             abstract template: option<Agents.AgentContext> with get
                             abstract validateLength: option<Agents.AgentContext> with get, set
@@ -24059,7 +24200,10 @@ module rec Modelcontextprotocol =
                                                                         module rec ClientInfo =
                                                                             type Icons =
                                                                                 abstract theme: option<Icons.Theme> with get, set
-                                                                                abstract sizes: option<Array<string>> with get, set
+
+                                                                                abstract sizes:
+                                                                                    option<ResizeArray<string>> with get, set
+
                                                                                 abstract mimeType: option<string> with get, set
                                                                                 abstract src: string with get, set
 
@@ -24084,7 +24228,7 @@ module rec Modelcontextprotocol =
 
                                                         type ClientInfo =
                                                             abstract title: option<string> with get, set
-                                                            abstract icons: option<Array<ClientInfo.Icons>> with get, set
+                                                            abstract icons: option<ResizeArray<ClientInfo.Icons>> with get, set
                                                             abstract description: option<string> with get, set
                                                             abstract websiteUrl: option<string> with get, set
                                                             abstract name: string with get, set
@@ -24143,7 +24287,7 @@ module rec Modelcontextprotocol =
                                                     type Annotations =
                                                         abstract lastModified: option<string> with get, set
                                                         abstract priority: option<float> with get, set
-                                                        abstract audience: option<Array<Annotations.Audience>> with get, set
+                                                        abstract audience: option<ResizeArray<Annotations.Audience>> with get, set
 
                                     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                     type Content =
@@ -24173,7 +24317,7 @@ module rec Modelcontextprotocol =
                             type Handler =
                                 abstract _meta: option<Handler._meta> with get, set
                                 abstract task: Handler.Task with get, set
-                                abstract roots: Array<Handler.Roots> with get, set
+                                abstract roots: ResizeArray<Handler.Roots> with get, set
                                 abstract stopReason: option<string> with get, set
 
                                 abstract content:
@@ -24183,7 +24327,7 @@ module rec Modelcontextprotocol =
                                         Handler.Content,
                                         Handler.Content,
                                         Handler.Content,
-                                        Array<
+                                        ResizeArray<
                                             U5<
                                                 Handler.Content,
                                                 Handler.Content,
@@ -24230,7 +24374,7 @@ module rec Modelcontextprotocol =
                         type ListTasks =
                             abstract nextCursor: option<string> with get, set
                             abstract _meta: option<ListTasks._meta> with get, set
-                            abstract tasks: Array<ListTasks.Tasks> with get, set
+                            abstract tasks: ResizeArray<ListTasks.Tasks> with get, set
 
                         type T =
                             abstract _meta: option<T._meta> with get, set
@@ -24280,7 +24424,7 @@ module rec Modelcontextprotocol =
                                                                         abstract priority: option<float> with get, set
 
                                                                         abstract audience:
-                                                                            option<Array<Annotations.Audience>> with get, set
+                                                                            option<ResizeArray<Annotations.Audience>> with get, set
 
                                                     type Content =
                                                         abstract _meta: option<Content._meta> with get, set
@@ -24305,7 +24449,7 @@ module rec Modelcontextprotocol =
                                                 module rec Params =
                                                     module rec Tools =
                                                         type InputSchema =
-                                                            abstract required: option<Array<string>> with get, set
+                                                            abstract required: option<ResizeArray<string>> with get, set
                                                             abstract properties: option<InputSchema.Properties> with get, set
 
                                                             [<EmitProperty("type")>]
@@ -24333,7 +24477,7 @@ module rec Modelcontextprotocol =
                                             abstract intelligencePriority: option<float> with get, set
                                             abstract speedPriority: option<float> with get, set
                                             abstract costPriority: option<float> with get, set
-                                            abstract hints: option<Array<ModelPreferences.Hints>> with get, set
+                                            abstract hints: option<ResizeArray<ModelPreferences.Hints>> with get, set
 
                                         type Messages =
                                             abstract _meta: option<Messages._meta> with get, set
@@ -24345,7 +24489,7 @@ module rec Modelcontextprotocol =
                                                     Messages.Content,
                                                     Messages.Content,
                                                     Messages.Content,
-                                                    Array<
+                                                    ResizeArray<
                                                         U5<
                                                             Messages.Content,
                                                             Messages.Content,
@@ -24360,7 +24504,7 @@ module rec Modelcontextprotocol =
 
                                         type Tools =
                                             abstract title: option<string> with get, set
-                                            abstract icons: option<Array<Tools.Icons>> with get, set
+                                            abstract icons: option<ResizeArray<Tools.Icons>> with get, set
                                             abstract _meta: option<Tools._meta> with get, set
                                             abstract execution: option<Tools.Execution> with get, set
                                             abstract annotations: option<Tools.Annotations> with get, set
@@ -24371,9 +24515,9 @@ module rec Modelcontextprotocol =
 
                             type Params =
                                 abstract toolChoice: option<Params.ToolChoice> with get, set
-                                abstract tools: option<Array<Params.Tools>> with get, set
+                                abstract tools: option<ResizeArray<Params.Tools>> with get, set
                                 abstract metadata: option<obj> with get, set
-                                abstract stopSequences: option<Array<string>> with get, set
+                                abstract stopSequences: option<ResizeArray<string>> with get, set
                                 abstract temperature: option<float> with get, set
                                 abstract includeContext: option<Params.IncludeContext> with get, set
                                 abstract systemPrompt: option<string> with get, set
@@ -24381,7 +24525,7 @@ module rec Modelcontextprotocol =
                                 abstract task: option<Params.Task> with get, set
                                 abstract _meta: option<Params._meta> with get, set
                                 abstract maxTokens: float with get, set
-                                abstract messages: Array<Params.Messages> with get, set
+                                abstract messages: ResizeArray<Params.Messages> with get, set
 
                     module rec IsomorphicHeaders =
                         type Headers =
@@ -24471,7 +24615,9 @@ module rec Modelcontextprotocol =
                                                                                 abstract priority: option<float> with get, set
 
                                                                                 abstract audience:
-                                                                                    option<Array<Annotations.Audience>> with get, set
+                                                                                    option<
+                                                                                        ResizeArray<Annotations.Audience>
+                                                                                     > with get, set
 
                                                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                                             type Content =
@@ -24527,7 +24673,7 @@ module rec Modelcontextprotocol =
                                                             Messages.Content,
                                                             Messages.Content,
                                                             Messages.Content,
-                                                            Array<
+                                                            ResizeArray<
                                                                 U5<
                                                                     Messages.Content,
                                                                     Messages.Content,
@@ -24542,7 +24688,7 @@ module rec Modelcontextprotocol =
 
                                                 type Tools =
                                                     abstract title: option<string> with get, set
-                                                    abstract icons: option<Array<Tools.Icons>> with get, set
+                                                    abstract icons: option<ResizeArray<Tools.Icons>> with get, set
                                                     abstract _meta: option<Tools._meta> with get, set
                                                     abstract execution: option<Tools.Execution> with get, set
                                                     abstract annotations: option<Tools.Annotations> with get, set
@@ -24555,13 +24701,13 @@ module rec Modelcontextprotocol =
                                                     abstract intelligencePriority: option<float> with get, set
                                                     abstract speedPriority: option<float> with get, set
                                                     abstract costPriority: option<float> with get, set
-                                                    abstract hints: option<Array<ModelPreferences.Hints>> with get, set
+                                                    abstract hints: option<ResizeArray<ModelPreferences.Hints>> with get, set
 
                                     type Params =
                                         abstract toolChoice: option<Params.ToolChoice> with get, set
-                                        abstract tools: option<Array<Params.Tools>> with get, set
+                                        abstract tools: option<ResizeArray<Params.Tools>> with get, set
                                         abstract metadata: option<obj> with get, set
-                                        abstract stopSequences: option<Array<string>> with get, set
+                                        abstract stopSequences: option<ResizeArray<string>> with get, set
                                         abstract temperature: option<float> with get, set
                                         abstract includeContext: option<Params.IncludeContext> with get, set
                                         abstract systemPrompt: option<string> with get, set
@@ -24569,7 +24715,7 @@ module rec Modelcontextprotocol =
                                         abstract task: option<Params.Task> with get, set
                                         abstract _meta: option<Params._meta> with get, set
                                         abstract maxTokens: float with get, set
-                                        abstract messages: Array<Params.Messages> with get, set
+                                        abstract messages: ResizeArray<Params.Messages> with get, set
 
                                 module rec RequestStream =
                                     module rec Request =
@@ -24630,7 +24776,7 @@ module rec Modelcontextprotocol =
                                                         type Annotations =
                                                             abstract lastModified: option<string> with get, set
                                                             abstract priority: option<float> with get, set
-                                                            abstract audience: option<Array<Annotations.Audience>> with get, set
+                                                            abstract audience: option<ResizeArray<Annotations.Audience>> with get, set
 
                                         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                         type Content =
@@ -24646,7 +24792,7 @@ module rec Modelcontextprotocol =
                                 abstract _meta: option<Handler._meta> with get, set
 
                                 abstract content:
-                                    Array<
+                                    ResizeArray<
                                         U5<
                                             Handler.Content,
                                             Handler.Content,
@@ -24720,13 +24866,13 @@ module rec Modelcontextprotocol =
                                                             module rec ClientInfo =
                                                                 type Icons =
                                                                     abstract theme: option<Icons.Theme> with get, set
-                                                                    abstract sizes: option<Array<string>> with get, set
+                                                                    abstract sizes: option<ResizeArray<string>> with get, set
                                                                     abstract mimeType: option<string> with get, set
                                                                     abstract src: string with get, set
 
                                             type ClientInfo =
                                                 abstract title: option<string> with get, set
-                                                abstract icons: option<Array<ClientInfo.Icons>> with get, set
+                                                abstract icons: option<ResizeArray<ClientInfo.Icons>> with get, set
                                                 abstract description: option<string> with get, set
                                                 abstract websiteUrl: option<string> with get, set
                                                 abstract name: string with get, set
@@ -24737,7 +24883,7 @@ module rec Modelcontextprotocol =
                                         type Completion =
                                             abstract hasMore: option<Completion.HasMore> with get, set
                                             abstract total: option<float> with get, set
-                                            abstract values: Array<string> with get, set
+                                            abstract values: ResizeArray<string> with get, set
 
                                         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                         type Messages =
@@ -24746,7 +24892,7 @@ module rec Modelcontextprotocol =
 
                                 type ResourceTemplates =
                                     abstract title: option<string> with get, set
-                                    abstract icons: option<Array<ResourceTemplates.Icons>> with get, set
+                                    abstract icons: option<ResizeArray<ResourceTemplates.Icons>> with get, set
                                     abstract _meta: option<ResourceTemplates._meta> with get, set
                                     abstract annotations: option<ResourceTemplates.Annotations> with get, set
                                     abstract mimeType: option<string> with get, set
@@ -24756,15 +24902,15 @@ module rec Modelcontextprotocol =
 
                                 type Prompts =
                                     abstract title: option<string> with get, set
-                                    abstract icons: option<Array<Prompts.Icons>> with get, set
+                                    abstract icons: option<ResizeArray<Prompts.Icons>> with get, set
                                     abstract _meta: option<Prompts._meta> with get, set
-                                    abstract arguments: option<Array<Prompts.Arguments>> with get, set
+                                    abstract arguments: option<ResizeArray<Prompts.Arguments>> with get, set
                                     abstract description: option<string> with get, set
                                     abstract name: string with get, set
 
                                 type Resources =
                                     abstract title: option<string> with get, set
-                                    abstract icons: option<Array<Resources.Icons>> with get, set
+                                    abstract icons: option<ResizeArray<Resources.Icons>> with get, set
                                     abstract _meta: option<Resources._meta> with get, set
                                     abstract annotations: option<Resources.Annotations> with get, set
                                     abstract size: option<float> with get, set
@@ -24776,18 +24922,18 @@ module rec Modelcontextprotocol =
                             type Handler =
                                 abstract nextCursor: option<string> with get, set
                                 abstract _meta: option<Handler._meta> with get, set
-                                abstract tools: Array<Handler.Tools> with get, set
+                                abstract tools: ResizeArray<Handler.Tools> with get, set
                                 abstract description: option<string> with get, set
-                                abstract messages: Array<Handler.Messages> with get, set
+                                abstract messages: ResizeArray<Handler.Messages> with get, set
                                 abstract task: Handler.Task with get, set
-                                abstract resourceTemplates: Array<Handler.ResourceTemplates> with get, set
+                                abstract resourceTemplates: ResizeArray<Handler.ResourceTemplates> with get, set
                                 abstract instructions: option<string> with get, set
                                 abstract serverInfo: Handler.ServerInfo with get, set
                                 abstract capabilities: Handler.Capabilities with get, set
                                 abstract protocolVersion: string with get, set
-                                abstract resources: Array<Handler.Resources> with get, set
-                                abstract contents: Array<U2<Handler.Contents, Handler.Contents>> with get, set
-                                abstract prompts: Array<Handler.Prompts> with get, set
+                                abstract resources: ResizeArray<Handler.Resources> with get, set
+                                abstract contents: ResizeArray<U2<Handler.Contents, Handler.Contents>> with get, set
+                                abstract prompts: ResizeArray<Handler.Prompts> with get, set
                                 abstract completion: Handler.Completion with get, set
 
                         module rec T =
@@ -24808,7 +24954,7 @@ module rec Modelcontextprotocol =
                         type ListTasks =
                             abstract nextCursor: option<string> with get, set
                             abstract _meta: option<ListTasks._meta> with get, set
-                            abstract tasks: Array<ListTasks.Tasks> with get, set
+                            abstract tasks: ResizeArray<ListTasks.Tasks> with get, set
 
                         type T =
                             abstract _meta: option<T._meta> with get, set
@@ -24837,7 +24983,7 @@ module rec Modelcontextprotocol =
 
                     [<Import("@modelcontextprotocol/sdk/types.js", "ListChangedCallback")>]
                     type ListChangedCallback<'T> =
-                        abstract Invoke: ?error: exn * ?items: Array<'T> -> unit
+                        abstract Invoke: ?error: exn * ?items: ResizeArray<'T> -> unit
 
                     type ServerRequest = ServerRequest
                     type CreateMessageRequestParamsBase = obj
@@ -24847,7 +24993,7 @@ module rec Modelcontextprotocol =
                     [<Import("@modelcontextprotocol/sdk/types.js", "CreateMessageRequestParamsWithTools")>]
                     type CreateMessageRequestParamsWithTools =
                         inherit CreateMessageRequestParamsWithTools
-                        abstract tools: Array<CreateMessageRequestParamsWithTools.Tools> with get, set
+                        abstract tools: ResizeArray<CreateMessageRequestParamsWithTools.Tools> with get, set
 
                     [<Import("@modelcontextprotocol/sdk/types.js", "MessageExtraInfo")>]
                     type MessageExtraInfo =
@@ -24876,7 +25022,7 @@ module rec Modelcontextprotocol =
 
                     [<Import("@modelcontextprotocol/sdk/types.js", "ListChangedOptions")>]
                     type ListChangedOptions<'T> =
-                        abstract onChanged: option<exn> -> option<Array<'T>> -> unit with get, set
+                        abstract onChanged: option<exn> -> option<ResizeArray<'T>> -> unit with get, set
                         abstract debounceMs: option<float> with get, set
                         abstract autoRefresh: option<bool> with get, set
 
@@ -24961,7 +25107,7 @@ module rec Modelcontextprotocol =
                             [<EmitProperty("then")>]
                             abstract ``then``: option<JsonSchemaTyped.JSONSchema> with get, set
 
-                            abstract required: option<U2<Array<string>, ReadonlyArray<string>>> with get, set
+                            abstract required: option<U2<ResizeArray<string>, ReadonlyArray<string>>> with get, set
                             abstract readOnly: option<bool> with get, set
 
                             abstract propertyNames:
@@ -24973,7 +25119,7 @@ module rec Modelcontextprotocol =
                                 option<
                                     U4<
                                         JsonSchemaType.PrefixItems,
-                                        Array<U2<JsonSchemaType.PrefixItems, JsonSchemaType.PrefixItems>>,
+                                        ResizeArray<U2<JsonSchemaType.PrefixItems, JsonSchemaType.PrefixItems>>,
                                         ReadonlyArray<U2<JsonSchemaType.PrefixItems, JsonSchemaType.PrefixItems>>,
                                         JsonSchemaType.PrefixItems
                                      >
@@ -24983,7 +25129,12 @@ module rec Modelcontextprotocol =
                             abstract pattern: option<string> with get, set
 
                             abstract oneOf:
-                                option<U2<Array<JsonSchemaTyped.JSONSchema>, ReadonlyArray<JsonSchemaTyped.JSONSchema>>> with get, set
+                                option<
+                                    U2<
+                                        ResizeArray<JsonSchemaTyped.JSONSchema>,
+                                        ReadonlyArray<JsonSchemaTyped.JSONSchema>
+                                     >
+                                 > with get, set
 
                             [<EmitProperty("not")>]
                             abstract ``not``: option<JsonSchemaTyped.JSONSchema> with get, set
@@ -25007,8 +25158,8 @@ module rec Modelcontextprotocol =
                             abstract format: option<string> with get, set
                             abstract exclusiveMinimum: option<float> with get, set
                             abstract exclusiveMaximum: option<float> with get, set
-                            abstract examples: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
-                            abstract enum: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
+                            abstract examples: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
+                            abstract enum: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
 
                             [<EmitProperty("else")>]
                             abstract ``else``: option<JsonSchemaTyped.JSONSchema> with get, set
@@ -25039,10 +25190,20 @@ module rec Modelcontextprotocol =
                             abstract ``const``: option<'Value> with get, set
 
                             abstract anyOf:
-                                option<U2<Array<JsonSchemaTyped.JSONSchema>, ReadonlyArray<JsonSchemaTyped.JSONSchema>>> with get, set
+                                option<
+                                    U2<
+                                        ResizeArray<JsonSchemaTyped.JSONSchema>,
+                                        ReadonlyArray<JsonSchemaTyped.JSONSchema>
+                                     >
+                                 > with get, set
 
                             abstract allOf:
-                                option<U2<Array<JsonSchemaTyped.JSONSchema>, ReadonlyArray<JsonSchemaTyped.JSONSchema>>> with get, set
+                                option<
+                                    U2<
+                                        ResizeArray<JsonSchemaTyped.JSONSchema>,
+                                        ReadonlyArray<JsonSchemaTyped.JSONSchema>
+                                     >
+                                 > with get, set
 
                             abstract additionalProperties:
                                 option<U2<JsonSchemaType.AdditionalProperties, JsonSchemaType.AdditionalProperties>> with get, set
@@ -25092,11 +25253,11 @@ module rec Modelcontextprotocol =
                 U2<
                     'T,
                     U2<
-                        Array<
+                        ResizeArray<
                             U2<
                                 'T,
                                 U2<
-                                    Array<
+                                    ResizeArray<
                                         U2<
                                             'T,
                                             U2<
@@ -25155,7 +25316,7 @@ module rec Partyserver =
 
     [<Import("partyserver", "PartyServerOptions")>]
     type PartyServerOptions<'Props, 'Env> =
-        abstract cors: option<U4<Headers, Array<string * string>, PartyServerOptions.Cors, bool>> with get, set
+        abstract cors: option<U4<Headers, ResizeArray<string * string>, PartyServerOptions.Cors, bool>> with get, set
         abstract props: option<'Props> with get, set
         abstract locationHint: option<Agents.AgentContext> with get, set
         abstract jurisdiction: option<Agents.AgentContext> with get, set
@@ -25361,7 +25522,7 @@ module rec Zod =
                         abstract contextualErrorMap:
                             option<ZodError.ZodIssueOptionalMessage -> ZodError.ErrorMapCtx -> Common.ContextualErrorMap> with get
 
-                        abstract issues: Array<ZodError.ZodIssue> with get
+                        abstract issues: ResizeArray<ZodError.ZodIssue> with get
 
                 module rec ParseParams =
                     module rec Invoke =
@@ -25405,7 +25566,7 @@ module rec Zod =
                 [<Import("./helpers/parseUtil.cjs", "ParseParams")>]
                 type ParseParams =
                     abstract async: bool with get, set
-                    abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                    abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
                     abstract errorMap:
                         issue: ZodError.ZodIssueOptionalMessage * _ctx: ZodError.ErrorMapCtx -> ParseParams.ErrorMap
@@ -25436,7 +25597,7 @@ module rec Zod =
                 [<Import("./helpers/parseUtil.cjs", "ParseInput")>]
                 type ParseInput =
                     abstract parent: ParseContext with get, set
-                    abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                    abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                     abstract data: option<Agents.AgentContext> with get, set
 
                 [<Import("./helpers/parseUtil.cjs", "ParseStatus"); AbstractClass; AllowNullLiteral>]
@@ -25446,11 +25607,11 @@ module rec Zod =
                     abstract value: 'T with get, set
 
                     abstract mergeObjectSync:
-                        status: ParseStatus * pairs: Array<ParseStatus.MergeObjectSync.Pairs> ->
+                        status: ParseStatus * pairs: ResizeArray<ParseStatus.MergeObjectSync.Pairs> ->
                             U3<ParseStatus.MergeObjectSync, ParseStatus.MergeObjectSync, ParseStatus.MergeObjectSync>
 
                     abstract mergeObjectAsync:
-                        status: ParseStatus * pairs: Array<ParseStatus.MergeObjectAsync.Pairs> ->
+                        status: ParseStatus * pairs: ResizeArray<ParseStatus.MergeObjectAsync.Pairs> ->
                             Promise<
                                 U3<
                                     ParseStatus.MergeObjectAsync,
@@ -25462,7 +25623,7 @@ module rec Zod =
                     abstract mergeArray:
                         status: ParseStatus *
                         results:
-                            Array<
+                            ResizeArray<
                                 U3<
                                     ParseStatus.MergeArray.Results,
                                     ParseStatus.MergeArray.Results,
@@ -25744,7 +25905,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodArrayDef =
@@ -25759,7 +25920,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
                 type Vocabulary =
@@ -25773,7 +25934,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodCatchDef =
@@ -25790,7 +25951,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodDefaultDef =
@@ -25809,7 +25970,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodEffectsDef =
@@ -25829,10 +25990,13 @@ module rec Zod =
                             abstract ``0``: 'U with get, set
 
                             abstract symbolIterator: unit -> ArrayIterator<'T>
-                            abstract ``with``: index: float * value: 'T -> Array
-                            abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-                            abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                            abstract toReversed: unit -> Array
+                            abstract ``with``: index: float * value: 'T -> ResizeArray
+
+                            abstract toSpliced:
+                                start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+
+                            abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                            abstract toReversed: unit -> ResizeArray
 
                             abstract findLastIndex:
                                 predicate: Invoke.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -25843,9 +26007,10 @@ module rec Zod =
                             abstract at: index: float -> option<'T>
 
                             abstract flat:
-                                this: 'A * ?depth: 'D -> Array<proptypekey<Invoke.Flat, U2<Invoke.Flat, Invoke.Flat>>>
+                                this: 'A * ?depth: 'D ->
+                                    ResizeArray<proptypekey<Invoke.Flat, U2<Invoke.Flat, Invoke.Flat>>>
 
-                            abstract flatMap: callback: Invoke.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                            abstract flatMap: callback: Invoke.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                             abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                             abstract values: unit -> ArrayIterator<'T>
                             abstract keys: unit -> ArrayIterator<float>
@@ -25863,9 +26028,10 @@ module rec Zod =
                             abstract reduce: callbackfn: Invoke.Reduce.Callbackfn -> 'T
 
                             abstract filter:
-                                predicate: Invoke.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
+                                predicate: Invoke.Filter.Predicate * ?thisArg: Agents.AgentContext -> ResizeArray<'S>
 
-                            abstract map: callbackfn: Invoke.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                            abstract map:
+                                callbackfn: Invoke.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
 
                             abstract forEach:
                                 callbackfn: Invoke.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
@@ -25874,15 +26040,15 @@ module rec Zod =
                             abstract every: predicate: Invoke.Every.Predicate * ?thisArg: Agents.AgentContext -> bool
                             abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                             abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                            abstract unshift: [<ParamArray>] items: Array -> float
-                            abstract splice: start: float * ?deleteCount: float -> Array
+                            abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                            abstract splice: start: float * ?deleteCount: float -> ResizeArray
                             abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                            abstract slice: ?start: float * ?``end``: float -> Array
+                            abstract slice: ?start: float * ?``end``: float -> ResizeArray
                             abstract shift: unit -> option<'T>
-                            abstract reverse: unit -> Array
+                            abstract reverse: unit -> ResizeArray
                             abstract join: ?separator: string -> string
-                            abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                            abstract push: [<ParamArray>] items: Array -> float
+                            abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                            abstract push: [<ParamArray>] items: ResizeArray -> float
                             abstract pop: unit -> option<'T>
                             abstract toLocaleString: unit -> string
                             abstract toString: unit -> string
@@ -25893,39 +26059,42 @@ module rec Zod =
                             module rec Args =
                                 module rec Every =
                                     type Predicate =
-                                        abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                        abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
                                 module rec Find =
                                     type Predicate =
-                                        abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                        abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
 
                                 module rec FindIndex =
                                     type Predicate =
-                                        abstract Invoke: value: 'T * index: float * obj: Array -> option<obj>
+                                        abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                                 module rec FlatMap =
                                     type Callback =
                                         abstract Invoke:
-                                            this: 'This * value: 'T * index: float * array: Array ->
+                                            this: 'This * value: 'T * index: float * array: ResizeArray ->
                                                 U2<'U, ReadonlyArray<'U>>
 
                                 module rec ForEach =
                                     type Callbackfn =
-                                        abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                        abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
 
                                 module rec Map =
                                     type Callbackfn =
-                                        abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                        abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
 
                                 module rec Reduce =
                                     type Callbackfn =
                                         abstract Invoke:
-                                            previousValue: 'T * currentValue: 'T * currentIndex: float * array: Array ->
+                                            previousValue: 'T *
+                                            currentValue: 'T *
+                                            currentIndex: float *
+                                            array: ResizeArray ->
                                                 'T
 
                                 module rec Some =
                                     type Predicate =
-                                        abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
+                                        abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
 
                                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                 type SymbolUnscopables =
@@ -25935,7 +26104,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
                 type Extract =
@@ -25948,10 +26117,13 @@ module rec Zod =
                     abstract ``0``: proptypekey<'T, float> with get, set
 
                     abstract symbolIterator: unit -> ArrayIterator<'T>
-                    abstract ``with``: index: float * value: 'T -> Array
-                    abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-                    abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                    abstract toReversed: unit -> Array
+                    abstract ``with``: index: float * value: 'T -> ResizeArray
+
+                    abstract toSpliced:
+                        start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+
+                    abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                    abstract toReversed: unit -> ResizeArray
 
                     abstract findLastIndex:
                         predicate: Extract.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -25962,9 +26134,9 @@ module rec Zod =
                     abstract at: index: float -> option<'T>
 
                     abstract flat:
-                        this: 'A * ?depth: 'D -> Array<proptypekey<Extract.Flat, U2<Extract.Flat, Extract.Flat>>>
+                        this: 'A * ?depth: 'D -> ResizeArray<proptypekey<Extract.Flat, U2<Extract.Flat, Extract.Flat>>>
 
-                    abstract flatMap: callback: Extract.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                    abstract flatMap: callback: Extract.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                     abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                     abstract values: unit -> ArrayIterator<'T>
                     abstract keys: unit -> ArrayIterator<float>
@@ -25975,22 +26147,25 @@ module rec Zod =
                     abstract find: predicate: Extract.Find.Predicate * ?thisArg: Agents.AgentContext -> option<'S>
                     abstract reduceRight: callbackfn: Extract.ReduceRight.Callbackfn -> 'T
                     abstract reduce: callbackfn: Extract.Reduce.Callbackfn -> 'T
-                    abstract filter: predicate: Extract.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
-                    abstract map: callbackfn: Extract.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+
+                    abstract filter:
+                        predicate: Extract.Filter.Predicate * ?thisArg: Agents.AgentContext -> ResizeArray<'S>
+
+                    abstract map: callbackfn: Extract.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
                     abstract forEach: callbackfn: Extract.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
                     abstract some: predicate: Extract.Some.Predicate * ?thisArg: Agents.AgentContext -> bool
                     abstract every: predicate: Extract.Every.Predicate * ?thisArg: Agents.AgentContext -> bool
                     abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                     abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                    abstract unshift: [<ParamArray>] items: Array -> float
-                    abstract splice: start: float * ?deleteCount: float -> Array
+                    abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                    abstract splice: start: float * ?deleteCount: float -> ResizeArray
                     abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                    abstract slice: ?start: float * ?``end``: float -> Array
+                    abstract slice: ?start: float * ?``end``: float -> ResizeArray
                     abstract shift: unit -> option<'T>
-                    abstract reverse: unit -> Array
+                    abstract reverse: unit -> ResizeArray
                     abstract join: ?separator: string -> string
-                    abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                    abstract push: [<ParamArray>] items: Array -> float
+                    abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                    abstract push: [<ParamArray>] items: ResizeArray -> float
                     abstract pop: unit -> option<'T>
                     abstract toLocaleString: unit -> string
                     abstract toString: unit -> string
@@ -26010,7 +26185,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodIntersectionDef =
@@ -26021,7 +26196,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodNullableDef =
@@ -26032,11 +26207,11 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
                 type _cached =
-                    abstract keys: Array<string> with get, set
+                    abstract keys: ResizeArray<string> with get, set
                     abstract shape: 'T with get, set
 
                 type T =
@@ -26056,7 +26231,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodOptionalDef =
@@ -26067,7 +26242,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodPipelineDef =
@@ -26078,7 +26253,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodPromiseDef =
@@ -26104,7 +26279,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodReadonlyDef =
@@ -26115,7 +26290,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodTupleDef =
@@ -26135,18 +26310,18 @@ module rec Zod =
                         abstract errorMap:
                             option<ZodError.ZodIssueOptionalMessage -> ZodError.ErrorMapCtx -> Params.ErrorMap> with get, set
 
-                        abstract path: option<Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
+                        abstract path: option<ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
 
                 module rec Refine =
                     type Message =
                         abstract params: option<Message.Params> with get, set
-                        abstract path: option<Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
+                        abstract path: option<ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
                         abstract message: option<string> with get, set
 
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
                 type _processInputParams =
@@ -26165,7 +26340,7 @@ module rec Zod =
                 module rec _parse =
                     type Input =
                         abstract parent: Helpers.ParseUtil.ParseContext with get, set
-                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                         abstract data: option<Agents.AgentContext> with get, set
 
             module rec ZodUnionDef =
@@ -26207,12 +26382,12 @@ module rec Zod =
             [<Import("./types.cjs", "ZodTuple"); AbstractClass; AllowNullLiteral>]
             type ZodTuple<'Rest, 'T
                 when 'Rest :> ZodType<option<Agents.AgentContext>, ZodTypeDef, 'Output>
-                and 'T :> U2<ZodTypeAny * Array<ZodTypeAny>, unit>> private () =
+                and 'T :> U2<ZodTypeAny * ResizeArray<ZodTypeAny>, unit>> private () =
                 inherit
                     ZodType<
-                        U2<U2<'T, unit> * Array<proptypekey<'Rest, ZodTuple>>, U2<'T, unit>>,
+                        U2<U2<'T, unit> * ResizeArray<proptypekey<'Rest, ZodTuple>>, U2<'T, unit>>,
                         ZodTupleDef<'T, 'Rest>,
-                        U2<U2<'T, unit> * Array<proptypekey<'Rest, ZodTuple>>, U2<'T, unit>>
+                        U2<U2<'T, unit> * ResizeArray<proptypekey<'Rest, ZodTuple>>, U2<'T, unit>>
                      >()
 
                 abstract items: 'T with get
@@ -26350,7 +26525,7 @@ module rec Zod =
                 abstract Create: def: 'Def -> ZodType
 
                 abstract fatal: option<bool> with get, set
-                abstract path: option<Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
+                abstract path: option<ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
                 abstract params: option<ZodType.Params> with get, set
                 abstract code: ZodType.Code with get, set
                 abstract message: option<string> with get, set
@@ -26363,11 +26538,11 @@ module rec Zod =
                 abstract _input: 'Input with get
                 abstract _output: 'Output with get
                 abstract _type: 'Output with get
-                abstract keys: Array<string> with get, set
-                abstract unionErrors: Array<ZodError.ZodError<option<Agents.AgentContext>>> with get, set
-                abstract options: Array<option<Helpers.TypeAliases.Primitive>> with get, set
+                abstract keys: ResizeArray<string> with get, set
+                abstract unionErrors: ResizeArray<ZodError.ZodError<option<Agents.AgentContext>>> with get, set
+                abstract options: ResizeArray<option<Helpers.TypeAliases.Primitive>> with get, set
                 abstract received: Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId with get, set
-                abstract options: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract options: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                 abstract received: option<obj> with get, set
                 abstract expected: option<obj> with get, set
                 abstract argumentsError: ZodError.ZodError<option<Agents.AgentContext>> with get, set
@@ -26584,7 +26759,7 @@ module rec Zod =
 
             [<Import("./types.cjs", "RefinementCtx")>]
             type RefinementCtx =
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                 abstract addIssue: arg: ZodError.IssueData -> unit
 
             [<Import("./types.cjs", "objectInputType")>]
@@ -26603,13 +26778,13 @@ module rec Zod =
                 inherit
                     ZodType<
                         U2<
-                            proptypekey<'T, ZodArray> * Array<proptypekey<'T, ZodArray>>,
-                            Array<proptypekey<'T, ZodArray>>
+                            proptypekey<'T, ZodArray> * ResizeArray<proptypekey<'T, ZodArray>>,
+                            ResizeArray<proptypekey<'T, ZodArray>>
                          >,
                         ZodArrayDef<'T>,
                         U2<
-                            proptypekey<'T, ZodArray> * Array<proptypekey<'T, ZodArray>>,
-                            Array<proptypekey<'T, ZodArray>>
+                            proptypekey<'T, ZodArray> * ResizeArray<proptypekey<'T, ZodArray>>,
+                            ResizeArray<proptypekey<'T, ZodArray>>
                          >
                      >()
 
@@ -26649,8 +26824,8 @@ module rec Zod =
 
             type InputTypeOfTupleWithRest<'Rest, 'T
                 when 'Rest :> ZodType<option<Agents.AgentContext>, ZodTypeDef, 'Output>
-                and 'T :> U2<ZodTypeAny * Array<ZodTypeAny>, unit>> =
-                U2<U2<'T, unit> * Array<proptypekey<'Rest, InputTypeOfTupleWithRest>>, U2<'T, unit>>
+                and 'T :> U2<ZodTypeAny * ResizeArray<ZodTypeAny>, unit>> =
+                U2<U2<'T, unit> * ResizeArray<proptypekey<'Rest, InputTypeOfTupleWithRest>>, U2<'T, unit>>
 
             [<Import("./types.cjs", "ZodCatch"); AbstractClass; AllowNullLiteral>]
             type ZodCatch<'T when 'T :> ZodTypeAny> private () =
@@ -26667,7 +26842,7 @@ module rec Zod =
                             Promise<proptypekey<'ZodCatch, ZodCatch._parse>>
                          >
 
-            type OutputTypeOfTuple<'T when 'T :> U2<ZodTypeAny * Array<ZodTypeAny>, unit>> = OutputTypeOfTuple
+            type OutputTypeOfTuple<'T when 'T :> U2<ZodTypeAny * ResizeArray<ZodTypeAny>, unit>> = OutputTypeOfTuple
 
             [<Import("./types.cjs", "SafeParseError")>]
             type SafeParseError<'Input> =
@@ -26768,7 +26943,7 @@ module rec Zod =
                 | [<CompiledName("valid")>] Valid
 
             [<Import("./types.cjs", "ZodEnum"); AbstractClass; AllowNullLiteral>]
-            type ZodEnum<'T when 'T :> string * Array<string>> private () =
+            type ZodEnum<'T when 'T :> string * ResizeArray<string>> private () =
                 inherit ZodType<proptypekey<'T, float>, ZodEnumDef<'T>, proptypekey<'T, float>>()
                 abstract create: ZodEnum.Create with get, set
 
@@ -26800,7 +26975,7 @@ module rec Zod =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type PreprocessEffect = | [<CompiledName("preprocess")>] Preprocess
 
-            type InputTypeOfTuple<'T when 'T :> U2<ZodTypeAny * Array<ZodTypeAny>, unit>> = InputTypeOfTuple
+            type InputTypeOfTuple<'T when 'T :> U2<ZodTypeAny * ResizeArray<ZodTypeAny>, unit>> = InputTypeOfTuple
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type SafeParseSuccess = | [<CompiledValue(true)>] True
@@ -26833,8 +27008,8 @@ module rec Zod =
 
             type OutputTypeOfTupleWithRest<'Rest, 'T
                 when 'Rest :> ZodType<option<Agents.AgentContext>, ZodTypeDef, 'Output>
-                and 'T :> U2<ZodTypeAny * Array<ZodTypeAny>, unit>> =
-                U2<U2<'T, unit> * Array<proptypekey<'Rest, OutputTypeOfTupleWithRest>>, U2<'T, unit>>
+                and 'T :> U2<ZodTypeAny * ResizeArray<ZodTypeAny>, unit>> =
+                U2<U2<'T, unit> * ResizeArray<proptypekey<'Rest, OutputTypeOfTupleWithRest>>, U2<'T, unit>>
 
             type Output<'T
                 when 'T :> ZodType<option<Agents.AgentContext>, option<Agents.AgentContext>, option<Agents.AgentContext>>>
@@ -26850,7 +27025,7 @@ module rec Zod =
             [<Import("./types.cjs", "ZodTupleDef")>]
             type ZodTupleDef<'Rest, 'T
                 when 'Rest :> ZodType<option<Agents.AgentContext>, ZodTypeDef, 'Output>
-                and 'T :> U2<ZodTypeAny * Array<ZodTypeAny>, unit>> =
+                and 'T :> U2<ZodTypeAny * ResizeArray<ZodTypeAny>, unit>> =
                 inherit ZodTypeDef
                 abstract typeName: ZodTupleDef.TypeName.ZodTuple with get, set
                 abstract rest: 'Rest with get, set
@@ -26890,38 +27065,39 @@ module rec Zod =
                         module rec Args =
                             module rec Every =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
                             module rec Find =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                    abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
 
                             module rec FindIndex =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: Array -> option<obj>
+                                    abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                             module rec FlatMap =
                                 type Callback =
                                     abstract Invoke:
-                                        this: 'This * value: 'T * index: float * array: Array ->
+                                        this: 'This * value: 'T * index: float * array: ResizeArray ->
                                             U2<'U, ReadonlyArray<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
 
                             module rec Map =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
 
                             module rec Reduce =
                                 type Callbackfn =
                                     abstract Invoke:
-                                        previousValue: 'T * currentValue: 'T * currentIndex: float * array: Array -> 'T
+                                        previousValue: 'T * currentValue: 'T * currentIndex: float * array: ResizeArray ->
+                                            'T
 
                             module rec Some =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
 
                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                             type SymbolUnscopables =
@@ -26929,11 +27105,11 @@ module rec Zod =
                                 | [<CompiledValue(true)>] True
 
                 type ``0`` =
-                    abstract _errors: Array<'U> with get, set
+                    abstract _errors: ResizeArray<'U> with get, set
 
                 type Flatten =
                     abstract fieldErrors: Flatten.FieldErrors with get, set
-                    abstract formErrors: Array<'U> with get, set
+                    abstract formErrors: ResizeArray<'U> with get, set
 
                 type Params =
                     abstract Item: k: string -> option<Agents.AgentContext>
@@ -26953,38 +27129,39 @@ module rec Zod =
                         module rec Args =
                             module rec Every =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
                             module rec Find =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                    abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
 
                             module rec FindIndex =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: Array -> option<obj>
+                                    abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                             module rec FlatMap =
                                 type Callback =
                                     abstract Invoke:
-                                        this: 'This * value: 'T * index: float * array: Array ->
+                                        this: 'This * value: 'T * index: float * array: ResizeArray ->
                                             U2<'U, ReadonlyArray<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
 
                             module rec Map =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
 
                             module rec Reduce =
                                 type Callbackfn =
                                     abstract Invoke:
-                                        previousValue: 'T * currentValue: 'T * currentIndex: float * array: Array -> 'T
+                                        previousValue: 'T * currentValue: 'T * currentIndex: float * array: ResizeArray ->
+                                            'T
 
                             module rec Some =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
 
                             type SymbolUnscopables =
                                 [<EmitProperty("__@unscopables@2222")>]
@@ -27086,7 +27263,7 @@ module rec Zod =
             [<Import("./ZodError.cjs", "ZodInvalidUnionDiscriminatorIssue")>]
             type ZodInvalidUnionDiscriminatorIssue =
                 inherit ZodIssueBase
-                abstract options: Array<option<Helpers.TypeAliases.Primitive>> with get, set
+                abstract options: ResizeArray<option<Helpers.TypeAliases.Primitive>> with get, set
                 abstract code: ZodInvalidUnionDiscriminatorIssue.Code with get, set
 
             [<Import("./ZodError.cjs", "ZodFormattedError")>]
@@ -27099,14 +27276,14 @@ module rec Zod =
                 [<EmitProperty("0")>]
                 abstract ``0``: option<ZodFormattedError.``0``> with get, set
 
-                abstract _errors: Array<'U> with get, set
+                abstract _errors: ResizeArray<'U> with get, set
                 abstract Item: key: string -> option<Agents.AgentContext>
                 abstract Item: k: float -> ZodFormattedError.Item
                 abstract symbolIterator: unit -> ArrayIterator<'T>
-                abstract ``with``: index: float * value: 'T -> Array
-                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-                abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                abstract toReversed: unit -> Array
+                abstract ``with``: index: float * value: 'T -> ResizeArray
+                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+                abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                abstract toReversed: unit -> ResizeArray
 
                 abstract findLastIndex:
                     predicate: ZodFormattedError.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -27118,9 +27295,11 @@ module rec Zod =
 
                 abstract flat:
                     this: 'A * ?depth: 'D ->
-                        Array<proptypekey<ZodFormattedError.Flat, U2<ZodFormattedError.Flat, ZodFormattedError.Flat>>>
+                        ResizeArray<
+                            proptypekey<ZodFormattedError.Flat, U2<ZodFormattedError.Flat, ZodFormattedError.Flat>>
+                         >
 
-                abstract flatMap: callback: ZodFormattedError.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                abstract flatMap: callback: ZodFormattedError.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                 abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                 abstract values: unit -> ArrayIterator<'T>
                 abstract keys: unit -> ArrayIterator<float>
@@ -27136,9 +27315,10 @@ module rec Zod =
                 abstract reduce: callbackfn: ZodFormattedError.Reduce.Callbackfn -> 'T
 
                 abstract filter:
-                    predicate: ZodFormattedError.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
+                    predicate: ZodFormattedError.Filter.Predicate * ?thisArg: Agents.AgentContext -> ResizeArray<'S>
 
-                abstract map: callbackfn: ZodFormattedError.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                abstract map:
+                    callbackfn: ZodFormattedError.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
 
                 abstract forEach:
                     callbackfn: ZodFormattedError.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
@@ -27147,15 +27327,15 @@ module rec Zod =
                 abstract every: predicate: ZodFormattedError.Every.Predicate * ?thisArg: Agents.AgentContext -> bool
                 abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                 abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                abstract unshift: [<ParamArray>] items: Array -> float
-                abstract splice: start: float * ?deleteCount: float -> Array
+                abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                abstract splice: start: float * ?deleteCount: float -> ResizeArray
                 abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                abstract slice: ?start: float * ?``end``: float -> Array
+                abstract slice: ?start: float * ?``end``: float -> ResizeArray
                 abstract shift: unit -> option<'T>
-                abstract reverse: unit -> Array
+                abstract reverse: unit -> ResizeArray
                 abstract join: ?separator: string -> string
-                abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                abstract push: [<ParamArray>] items: Array -> float
+                abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                abstract push: [<ParamArray>] items: ResizeArray -> float
                 abstract pop: unit -> option<'T>
                 abstract toLocaleString: unit -> string
                 abstract toString: unit -> string
@@ -27166,7 +27346,7 @@ module rec Zod =
 
             type ZodUnrecognizedKeysIssue =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
             type StringValidation = U4<StringValidation, StringValidation, StringValidation, StringValidation>
 
@@ -27179,17 +27359,17 @@ module rec Zod =
                 [<EmitProperty("0")>]
                 abstract ``0``: option<ZodError.``0``> with get, set
 
-                abstract _errors: Array<'U> with get, set
+                abstract _errors: ResizeArray<'U> with get, set
                 abstract message: string with get, set
                 abstract fatal: option<bool> with get, set
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                 abstract received: ZodError.Received with get, set
                 abstract expected: ZodError.Expected with get, set
                 abstract code: ZodError.Code with get, set
                 abstract received: option<obj> with get, set
                 abstract expected: option<obj> with get, set
-                abstract keys: Array<string> with get, set
+                abstract keys: ResizeArray<string> with get, set
                 abstract multipleOf: float with get, set
 
                 [<EmitProperty("type")>]
@@ -27201,19 +27381,19 @@ module rec Zod =
                 abstract minimum: float with get, set
                 abstract validation: StringValidation with get, set
                 abstract returnTypeError: ZodError<option<Agents.AgentContext>> with get, set
-                abstract options: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract options: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                 abstract received: Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId with get, set
-                abstract options: Array<option<Helpers.TypeAliases.Primitive>> with get, set
+                abstract options: ResizeArray<option<Helpers.TypeAliases.Primitive>> with get, set
                 abstract params: option<ZodError.Params> with get, set
-                abstract unionErrors: Array<ZodError<option<Agents.AgentContext>>> with get, set
+                abstract unionErrors: ResizeArray<ZodError<option<Agents.AgentContext>>> with get, set
                 abstract argumentsError: ZodError<option<Agents.AgentContext>> with get, set
                 abstract Item: key: string -> option<Agents.AgentContext>
                 abstract Item: k: float -> ZodError.Item
                 abstract symbolIterator: unit -> ArrayIterator<'T>
-                abstract ``with``: index: float * value: 'T -> Array
-                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-                abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                abstract toReversed: unit -> Array
+                abstract ``with``: index: float * value: 'T -> ResizeArray
+                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+                abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                abstract toReversed: unit -> ResizeArray
 
                 abstract findLastIndex:
                     predicate: ZodError.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -27222,9 +27402,9 @@ module rec Zod =
                 abstract at: index: float -> option<'T>
 
                 abstract flat:
-                    this: 'A * ?depth: 'D -> Array<proptypekey<ZodError.Flat, U2<ZodError.Flat, ZodError.Flat>>>
+                    this: 'A * ?depth: 'D -> ResizeArray<proptypekey<ZodError.Flat, U2<ZodError.Flat, ZodError.Flat>>>
 
-                abstract flatMap: callback: ZodError.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                abstract flatMap: callback: ZodError.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                 abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                 abstract values: unit -> ArrayIterator<'T>
                 abstract keys: unit -> ArrayIterator<float>
@@ -27235,33 +27415,33 @@ module rec Zod =
                 abstract find: predicate: ZodError.Find.Predicate * ?thisArg: Agents.AgentContext -> option<'S>
                 abstract reduceRight: callbackfn: ZodError.ReduceRight.Callbackfn -> 'T
                 abstract reduce: callbackfn: ZodError.Reduce.Callbackfn -> 'T
-                abstract filter: predicate: ZodError.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
-                abstract map: callbackfn: ZodError.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                abstract filter: predicate: ZodError.Filter.Predicate * ?thisArg: Agents.AgentContext -> ResizeArray<'S>
+                abstract map: callbackfn: ZodError.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
                 abstract forEach: callbackfn: ZodError.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
                 abstract some: predicate: ZodError.Some.Predicate * ?thisArg: Agents.AgentContext -> bool
                 abstract every: predicate: ZodError.Every.Predicate * ?thisArg: Agents.AgentContext -> bool
                 abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                 abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                abstract unshift: [<ParamArray>] items: Array -> float
-                abstract splice: start: float * ?deleteCount: float -> Array
+                abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                abstract splice: start: float * ?deleteCount: float -> ResizeArray
                 abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                abstract slice: ?start: float * ?``end``: float -> Array
+                abstract slice: ?start: float * ?``end``: float -> ResizeArray
                 abstract shift: unit -> option<'T>
-                abstract reverse: unit -> Array
+                abstract reverse: unit -> ResizeArray
                 abstract join: ?separator: string -> string
-                abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                abstract push: [<ParamArray>] items: Array -> float
+                abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                abstract push: [<ParamArray>] items: ResizeArray -> float
                 abstract pop: unit -> option<'T>
                 abstract toLocaleString: unit -> string
                 abstract toString: unit -> string
 
             type ZodInvalidDateIssue =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
             type ZodInvalidIntersectionTypesIssue =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
             type ZodIssueOptionalMessage = obj
 
@@ -27273,7 +27453,7 @@ module rec Zod =
             [<Import("./ZodError.cjs", "ZodIssueBase")>]
             type ZodIssueBase =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
             [<Import("./ZodError.cjs", "ErrorMapCtx")>]
             type ErrorMapCtx =
@@ -27298,7 +27478,7 @@ module rec Zod =
             [<Import("./ZodError.cjs", "typeToFlattenedError")>]
             type TypeToFlattenedError<'U, 'T> =
                 abstract fieldErrors: TypeToFlattenedError.FieldErrors with get, set
-                abstract formErrors: Array<'U> with get, set
+                abstract formErrors: ResizeArray<'U> with get, set
 
             [<Import("./ZodError.cjs", "ZodInvalidStringIssue")>]
             type ZodInvalidStringIssue =
@@ -27308,18 +27488,18 @@ module rec Zod =
 
             type ZodInvalidLiteralIssue =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
             type ZodInvalidReturnTypeIssue =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type ZodInvalidEnumValueIssue = | [<CompiledName("invalid_enum_value")>] InvalidEnumValue
 
             type ZodTooBigIssue =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
             [<Import("./ZodError.cjs", "ZodCustomIssue")>]
             type ZodCustomIssue =
@@ -27329,7 +27509,7 @@ module rec Zod =
 
             type ZodInvalidArgumentsIssue =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
             [<Import("./ZodError.cjs", "ZodTooSmallIssue")>]
             type ZodTooSmallIssue =
@@ -27345,7 +27525,7 @@ module rec Zod =
 
             type ZodInvalidUnionIssue =
                 abstract message: option<string> with get, set
-                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
     module rec V4 =
         module rec Classic =
@@ -27361,29 +27541,29 @@ module rec Zod =
                                 module rec Args =
                                     module rec Every =
                                         type Predicate =
-                                            abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                            abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
                                     module rec Find =
                                         type Predicate =
-                                            abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                            abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
 
                                     module rec FindIndex =
                                         type Predicate =
-                                            abstract Invoke: value: 'T * index: float * obj: Array -> option<obj>
+                                            abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                                     module rec FlatMap =
                                         type Callback =
                                             abstract Invoke:
-                                                this: 'This * value: 'T * index: float * array: Array ->
+                                                this: 'This * value: 'T * index: float * array: ResizeArray ->
                                                     U2<'U, ReadonlyArray<'U>>
 
                                     module rec ForEach =
                                         type Callbackfn =
-                                            abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                            abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
 
                                     module rec Map =
                                         type Callbackfn =
-                                            abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                            abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
 
                                     module rec Reduce =
                                         type Callbackfn =
@@ -27391,12 +27571,13 @@ module rec Zod =
                                                 previousValue: 'T *
                                                 currentValue: 'T *
                                                 currentIndex: float *
-                                                array: Array ->
+                                                array: ResizeArray ->
                                                     'T
 
                                     module rec Some =
                                         type Predicate =
-                                            abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
+                                            abstract Invoke:
+                                                value: 'T * index: float * array: ResizeArray -> option<obj>
 
                                     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                     type SymbolUnscopables =
@@ -27412,12 +27593,15 @@ module rec Zod =
                         [<EmitProperty("0")>]
                         abstract ``0``: option<ToString.``0``> with get, set
 
-                        abstract _errors: Array<'U> with get, set
+                        abstract _errors: ResizeArray<'U> with get, set
                         abstract symbolIterator: unit -> ArrayIterator<'T>
-                        abstract ``with``: index: float * value: 'T -> Array
-                        abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-                        abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                        abstract toReversed: unit -> Array
+                        abstract ``with``: index: float * value: 'T -> ResizeArray
+
+                        abstract toSpliced:
+                            start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+
+                        abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                        abstract toReversed: unit -> ResizeArray
 
                         abstract findLastIndex:
                             predicate: ToString.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -27428,9 +27612,10 @@ module rec Zod =
                         abstract at: index: float -> option<'T>
 
                         abstract flat:
-                            this: 'A * ?depth: 'D -> Array<proptypekey<ToString.Flat, U2<ToString.Flat, ToString.Flat>>>
+                            this: 'A * ?depth: 'D ->
+                                ResizeArray<proptypekey<ToString.Flat, U2<ToString.Flat, ToString.Flat>>>
 
-                        abstract flatMap: callback: ToString.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                        abstract flatMap: callback: ToString.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                         abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                         abstract values: unit -> ArrayIterator<'T>
                         abstract keys: unit -> ArrayIterator<float>
@@ -27446,9 +27631,10 @@ module rec Zod =
                         abstract reduce: callbackfn: ToString.Reduce.Callbackfn -> 'T
 
                         abstract filter:
-                            predicate: ToString.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
+                            predicate: ToString.Filter.Predicate * ?thisArg: Agents.AgentContext -> ResizeArray<'S>
 
-                        abstract map: callbackfn: ToString.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                        abstract map:
+                            callbackfn: ToString.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
 
                         abstract forEach:
                             callbackfn: ToString.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
@@ -27457,15 +27643,15 @@ module rec Zod =
                         abstract every: predicate: ToString.Every.Predicate * ?thisArg: Agents.AgentContext -> bool
                         abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                         abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                        abstract unshift: [<ParamArray>] items: Array -> float
-                        abstract splice: start: float * ?deleteCount: float -> Array
+                        abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                        abstract splice: start: float * ?deleteCount: float -> ResizeArray
                         abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                        abstract slice: ?start: float * ?``end``: float -> Array
+                        abstract slice: ?start: float * ?``end``: float -> ResizeArray
                         abstract shift: unit -> option<'T>
-                        abstract reverse: unit -> Array
+                        abstract reverse: unit -> ResizeArray
                         abstract join: ?separator: string -> string
-                        abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                        abstract push: [<ParamArray>] items: Array -> float
+                        abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                        abstract push: [<ParamArray>] items: ResizeArray -> float
                         abstract pop: unit -> option<'T>
                         abstract toLocaleString: unit -> string
                         abstract toString: unit -> string
@@ -27473,7 +27659,7 @@ module rec Zod =
 
                     type Flatten =
                         abstract fieldErrors: Flatten.FieldErrors with get, set
-                        abstract formErrors: Array<'U> with get, set
+                        abstract formErrors: ResizeArray<'U> with get, set
 
                 [<Import("./errors.cjs", "ZodError")>]
                 type ZodError<'T> =
@@ -27482,7 +27668,7 @@ module rec Zod =
                     /// Check `err.issues.length === 0` instead.
                     /// </deprecated>
                     abstract isEmpty: bool with get, set
-                    abstract addIssues: issues: Array<Core.Errors.ZodIssue> -> unit
+                    abstract addIssues: issues: ResizeArray<Core.Errors.ZodIssue> -> unit
                     abstract addIssue: issue: Core.Errors.ZodIssue -> unit
                     abstract flatten: mapper: Core.Errors.ZodIssue -> 'U -> ZodError.Flatten
                     abstract flatten: unit -> ZodError.Flatten
@@ -27752,7 +27938,7 @@ module rec Zod =
                             abstract ``when``: option<Core.Schemas.ParsePayload<option<obj>> -> bool> with get, set
 
                             abstract params: option<Params.Params> with get, set
-                            abstract path: option<Array<PropertyKey>> with get, set
+                            abstract path: option<ResizeArray<PropertyKey>> with get, set
                             abstract abort: option<Params.Abort> with get, set
 
                     module rec ToJSONSchema =
@@ -27766,7 +27952,7 @@ module rec Zod =
                                             abstract contentEncoding: option<string> with get, set
                                             abstract contentMediaType: option<string> with get, set
                                             abstract format: option<string> with get, set
-                                            abstract examples: option<Array<option<obj>>> with get, set
+                                            abstract examples: option<ResizeArray<option<obj>>> with get, set
                                             abstract nullable: option<bool> with get, set
                                             abstract writeOnly: option<bool> with get, set
                                             abstract readOnly: option<bool> with get, set
@@ -27782,9 +27968,9 @@ module rec Zod =
                                             [<EmitProperty("const")>]
                                             abstract ``const``: option<U3<string, float, bool>> with get, set
 
-                                            abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
+                                            abstract enum: option<ResizeArray<option<U3<string, float, bool>>>> with get, set
                                             abstract dependentRequired: option<AdditionalItems.DependentRequired> with get, set
-                                            abstract required: option<Array<string>> with get, set
+                                            abstract required: option<ResizeArray<string>> with get, set
                                             abstract minProperties: option<float> with get, set
                                             abstract maxProperties: option<float> with get, set
                                             abstract minContains: option<float> with get, set
@@ -27804,9 +27990,9 @@ module rec Zod =
                                             [<EmitProperty("not")>]
                                             abstract ``not``: option<Core.JsonSchema._JSONSchema> with get, set
 
-                                            abstract oneOf: option<Array<obj>> with get, set
-                                            abstract anyOf: option<Array<obj>> with get, set
-                                            abstract allOf: option<Array<obj>> with get, set
+                                            abstract oneOf: option<ResizeArray<obj>> with get, set
+                                            abstract anyOf: option<ResizeArray<obj>> with get, set
+                                            abstract allOf: option<ResizeArray<obj>> with get, set
 
                                             [<EmitProperty("else")>]
                                             abstract ``else``: option<Core.JsonSchema._JSONSchema> with get, set
@@ -27830,11 +28016,11 @@ module rec Zod =
                                                     U3<
                                                         AdditionalItems.Items,
                                                         AdditionalItems.Items,
-                                                        Array<Core.JsonSchema._JSONSchema>
+                                                        ResizeArray<Core.JsonSchema._JSONSchema>
                                                      >
                                                  > with get, set
 
-                                            abstract prefixItems: option<Array<Core.JsonSchema._JSONSchema>> with get, set
+                                            abstract prefixItems: option<ResizeArray<Core.JsonSchema._JSONSchema>> with get, set
                                             abstract unevaluatedItems: option<Core.JsonSchema._JSONSchema> with get, set
                                             abstract additionalItems: option<Core.JsonSchema._JSONSchema> with get, set
 
@@ -27877,7 +28063,7 @@ module rec Zod =
                                             abstract out: Config.Out with get, set
 
                                     type Override =
-                                        abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                                        abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                                         abstract jsonSchema: Core.JsonSchema.JSONSchema with get, set
                                         abstract zodSchema: Core.Schemas.ZodTypes with get, set
 
@@ -28278,7 +28464,7 @@ module rec Zod =
                 [<Import("./schemas.cjs", "ZodEnum")>]
                 type ZodEnum<'T when 'T :> ZodEnum> =
                     inherit _ZodType<Core.Schemas.ZodEnumInternals<'T>>
-                    abstract options: Array<proptypekey<'T, keyof<'T>>> with get, set
+                    abstract options: ResizeArray<proptypekey<'T, keyof<'T>>> with get, set
                     abstract enum: 'T with get, set
 
                     [<EmitProperty("~standard")>]
@@ -28365,17 +28551,17 @@ module rec Zod =
                                      >
                                  > with get, set
 
-                            abstract path: option<Array<PropertyKey>> with get, set
+                            abstract path: option<ResizeArray<PropertyKey>> with get, set
                             abstract message: option<string> with get, set
                             abstract discriminator: option<string> with get, set
                             abstract errors: unit with get, set
                             abstract inclusive: Arg.Inclusive with get, set
                             abstract code: Arg.Code with get, set
                             abstract input: option<obj> with get, set
-                            abstract issues: Array<Errors.ZodIssue> with get, set
+                            abstract issues: ResizeArray<Errors.ZodIssue> with get, set
                             abstract origin: Arg.Origin with get, set
                             abstract key: option<obj> with get, set
-                            abstract values: Array<option<Util.Primitive>> with get, set
+                            abstract values: ResizeArray<option<Util.Primitive>> with get, set
                             abstract params: option<Arg.Params> with get, set
                             abstract format: U2<Arg.Format, Arg.Format> with get, set
                             abstract pattern: option<string> with get, set
@@ -28387,10 +28573,10 @@ module rec Zod =
                             abstract divisor: float with get, set
                             abstract input: option<float> with get, set
                             abstract maximum: float with get, set
-                            abstract keys: Array<string> with get, set
+                            abstract keys: ResizeArray<string> with get, set
                             abstract input: option<Arg.Input> with get, set
-                            abstract options: option<Array<option<Util.Primitive>>> with get, set
-                            abstract errors: Array<Array<Errors.ZodIssue>> with get, set
+                            abstract options: option<ResizeArray<option<Util.Primitive>>> with get, set
+                            abstract errors: ResizeArray<ResizeArray<Errors.ZodIssue>> with get, set
                             abstract expected: Errors.ZodInvalidTypeExpected with get, set
 
                 [<Import("./api.cjs", "$RefinementCtx")>]
@@ -28458,7 +28644,7 @@ module rec Zod =
                 [<Import("./checks.cjs", "$ZodCheckInternals")>]
                 type ZodCheckInternals<'T> =
                     abstract onattach:
-                        Array<
+                        ResizeArray<
                             Schemas.ZodType<
                                 option<Agents.AgentContext>,
                                 option<Agents.AgentContext>,
@@ -28525,7 +28711,7 @@ module rec Zod =
             module rec Errors =
                 module rec ZodError =
                     type _zod =
-                        abstract def: Array<ZodIssue> with get, set
+                        abstract def: ResizeArray<ZodIssue> with get, set
                         abstract output: 'T with get, set
 
                 module rec ZodErrorMap =
@@ -28554,7 +28740,7 @@ module rec Zod =
                     abstract name: string with get, set
                     abstract stack: option<string> with get, set
                     abstract _zod: ZodError._zod with get, set
-                    abstract issues: Array<ZodIssue> with get, set
+                    abstract issues: ResizeArray<ZodIssue> with get, set
 
                     [<EmitProperty("type")>]
                     abstract ``type``: 'T with get, set
@@ -28571,7 +28757,7 @@ module rec Zod =
                 type ZodIssueInvalidElement<'Input> =
                     inherit ZodIssueBase
                     abstract input: option<'Input> with get
-                    abstract issues: Array<ZodIssue> with get
+                    abstract issues: ResizeArray<ZodIssue> with get
                     abstract key: option<obj> with get
                     abstract origin: ZodIssueInvalidElement.Origin with get
                     abstract code: ZodIssueInvalidElement.Code with get
@@ -28579,7 +28765,7 @@ module rec Zod =
                 [<Import("./errors.cjs", "$ZodIssueBase")>]
                 type ZodIssueBase =
                     abstract message: string with get
-                    abstract path: Array<PropertyKey> with get
+                    abstract path: ResizeArray<PropertyKey> with get
                     abstract input: option<obj> with get
                     abstract code: option<string> with get
 
@@ -28595,7 +28781,7 @@ module rec Zod =
                 type ZodIssueUnrecognizedKeys =
                     inherit ZodIssueBase
                     abstract input: option<ZodIssueUnrecognizedKeys.Input> with get
-                    abstract keys: Array<string> with get
+                    abstract keys: ResizeArray<string> with get
                     abstract code: ZodIssueUnrecognizedKeys.Code with get
 
                 [<Import("./errors.cjs", "$ZodFormattedError")>]
@@ -28604,7 +28790,7 @@ module rec Zod =
                         proptypekey<ZodFormattedError.ToLocaleString, ZodFormattedError.ToLocaleString> with get, set
 
                     abstract toString: proptypekey<ZodFormattedError.ToString, ZodFormattedError.ToString> with get, set
-                    abstract _errors: Array<'U> with get, set
+                    abstract _errors: ResizeArray<'U> with get, set
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type ZodIssueInvalidStringFormat =
@@ -28675,7 +28861,7 @@ module rec Zod =
                 type ZodIssueInvalidValue<'Input> =
                     inherit ZodIssueBase
                     abstract input: option<'Input> with get
-                    abstract values: Array<option<Util.Primitive>> with get
+                    abstract values: ResizeArray<option<Util.Primitive>> with get
                     abstract code: ZodIssueInvalidValue.Code with get
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -28689,7 +28875,7 @@ module rec Zod =
                         abstract contentEncoding: option<string> with get, set
                         abstract contentMediaType: option<string> with get, set
                         abstract format: option<string> with get, set
-                        abstract examples: option<Array<option<obj>>> with get, set
+                        abstract examples: option<ResizeArray<option<obj>>> with get, set
                         abstract nullable: option<bool> with get, set
                         abstract writeOnly: option<bool> with get, set
                         abstract readOnly: option<bool> with get, set
@@ -28705,9 +28891,9 @@ module rec Zod =
                         [<EmitProperty("const")>]
                         abstract ``const``: option<U3<string, float, bool>> with get, set
 
-                        abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
+                        abstract enum: option<ResizeArray<option<U3<string, float, bool>>>> with get, set
                         abstract dependentRequired: option<AdditionalItems.DependentRequired> with get, set
-                        abstract required: option<Array<string>> with get, set
+                        abstract required: option<ResizeArray<string>> with get, set
                         abstract minProperties: option<float> with get, set
                         abstract maxProperties: option<float> with get, set
                         abstract minContains: option<float> with get, set
@@ -28727,9 +28913,9 @@ module rec Zod =
                         [<EmitProperty("not")>]
                         abstract ``not``: option<_JSONSchema> with get, set
 
-                        abstract oneOf: option<Array<obj>> with get, set
-                        abstract anyOf: option<Array<obj>> with get, set
-                        abstract allOf: option<Array<obj>> with get, set
+                        abstract oneOf: option<ResizeArray<obj>> with get, set
+                        abstract anyOf: option<ResizeArray<obj>> with get, set
+                        abstract allOf: option<ResizeArray<obj>> with get, set
 
                         [<EmitProperty("else")>]
                         abstract ``else``: option<_JSONSchema> with get, set
@@ -28747,8 +28933,11 @@ module rec Zod =
                         abstract unevaluatedProperties: option<_JSONSchema> with get, set
                         abstract additionalProperties: option<_JSONSchema> with get, set
                         abstract contains: option<_JSONSchema> with get, set
-                        abstract items: option<U3<AdditionalItems.Items, AdditionalItems.Items, Array<_JSONSchema>>> with get, set
-                        abstract prefixItems: option<Array<_JSONSchema>> with get, set
+
+                        abstract items:
+                            option<U3<AdditionalItems.Items, AdditionalItems.Items, ResizeArray<_JSONSchema>>> with get, set
+
+                        abstract prefixItems: option<ResizeArray<_JSONSchema>> with get, set
                         abstract unevaluatedItems: option<_JSONSchema> with get, set
                         abstract additionalItems: option<_JSONSchema> with get, set
 
@@ -28829,30 +29018,34 @@ module rec Zod =
                                             module rec Args =
                                                 module rec Every =
                                                     type Predicate =
-                                                        abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                                        abstract Invoke:
+                                                            value: 'T * index: float * array: ResizeArray -> bool
 
                                                 module rec Find =
                                                     type Predicate =
-                                                        abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                                        abstract Invoke:
+                                                            value: 'T * index: float * obj: ResizeArray -> bool
 
                                                 module rec FindIndex =
                                                     type Predicate =
                                                         abstract Invoke:
-                                                            value: 'T * index: float * obj: Array -> option<obj>
+                                                            value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                                                 module rec FlatMap =
                                                     type Callback =
                                                         abstract Invoke:
-                                                            this: 'This * value: 'T * index: float * array: Array ->
+                                                            this: 'This * value: 'T * index: float * array: ResizeArray ->
                                                                 U2<'U, ReadonlyArray<'U>>
 
                                                 module rec ForEach =
                                                     type Callbackfn =
-                                                        abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                                        abstract Invoke:
+                                                            value: 'T * index: float * array: ResizeArray -> unit
 
                                                 module rec Map =
                                                     type Callbackfn =
-                                                        abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                                        abstract Invoke:
+                                                            value: 'T * index: float * array: ResizeArray -> 'U
 
                                                 module rec Reduce =
                                                     type Callbackfn =
@@ -28860,13 +29053,13 @@ module rec Zod =
                                                             previousValue: 'T *
                                                             currentValue: 'T *
                                                             currentIndex: float *
-                                                            array: Array ->
+                                                            array: ResizeArray ->
                                                                 'T
 
                                                 module rec Some =
                                                     type Predicate =
                                                         abstract Invoke:
-                                                            value: 'T * index: float * array: Array -> option<obj>
+                                                            value: 'T * index: float * array: ResizeArray -> option<obj>
 
                                                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                                                 type Flat =
@@ -28929,13 +29122,14 @@ module rec Zod =
 
                                     abstract length: float with get, set
                                     abstract symbolIterator: unit -> ArrayIterator<'T>
-                                    abstract ``with``: index: float * value: 'T -> Array
+                                    abstract ``with``: index: float * value: 'T -> ResizeArray
 
                                     abstract toSpliced:
-                                        start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
+                                        start: float * deleteCount: float * [<ParamArray>] items: ResizeArray ->
+                                            ResizeArray
 
-                                    abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                                    abstract toReversed: unit -> Array
+                                    abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                                    abstract toReversed: unit -> ResizeArray
 
                                     abstract findLastIndex:
                                         predicate: Args.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -28946,9 +29140,12 @@ module rec Zod =
                                     abstract at: index: float -> option<'T>
 
                                     abstract flat:
-                                        this: 'A * ?depth: 'D -> Array<proptypekey<Args.Flat, U2<Args.Flat, Args.Flat>>>
+                                        this: 'A * ?depth: 'D ->
+                                            ResizeArray<proptypekey<Args.Flat, U2<Args.Flat, Args.Flat>>>
 
-                                    abstract flatMap: callback: Args.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                                    abstract flatMap:
+                                        callback: Args.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
+
                                     abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                                     abstract values: unit -> ArrayIterator<'T>
                                     abstract keys: unit -> ArrayIterator<float>
@@ -28966,10 +29163,12 @@ module rec Zod =
                                     abstract reduce: callbackfn: Args.Reduce.Callbackfn -> 'T
 
                                     abstract filter:
-                                        predicate: Args.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
+                                        predicate: Args.Filter.Predicate * ?thisArg: Agents.AgentContext ->
+                                            ResizeArray<'S>
 
                                     abstract map:
-                                        callbackfn: Args.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                                        callbackfn: Args.Map.Callbackfn * ?thisArg: Agents.AgentContext ->
+                                            ResizeArray<'U>
 
                                     abstract forEach:
                                         callbackfn: Args.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
@@ -28982,15 +29181,15 @@ module rec Zod =
 
                                     abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                                     abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                                    abstract unshift: [<ParamArray>] items: Array -> float
-                                    abstract splice: start: float * ?deleteCount: float -> Array
+                                    abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                                    abstract splice: start: float * ?deleteCount: float -> ResizeArray
                                     abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                                    abstract slice: ?start: float * ?``end``: float -> Array
+                                    abstract slice: ?start: float * ?``end``: float -> ResizeArray
                                     abstract shift: unit -> option<'T>
-                                    abstract reverse: unit -> Array
+                                    abstract reverse: unit -> ResizeArray
                                     abstract join: ?separator: string -> string
-                                    abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                                    abstract push: [<ParamArray>] items: Array -> float
+                                    abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                                    abstract push: [<ParamArray>] items: ResizeArray -> float
                                     abstract pop: unit -> option<'T>
                                     abstract toLocaleString: unit -> string
                                     abstract toString: unit -> string
@@ -29003,7 +29202,7 @@ module rec Zod =
                                     U2<
                                         U2<proptypekey<proptypekey<'T, _map.Invoke>, _map.Invoke>, option<obj>>,
                                         U2<
-                                            Array<
+                                            ResizeArray<
                                                 U2<
                                                     U2<
                                                         proptypekey<proptypekey<'T, _map.Invoke>, _map.Invoke>,
@@ -29015,7 +29214,7 @@ module rec Zod =
                                                             option<obj>
                                                          >,
                                                         U2<
-                                                            Array<
+                                                            ResizeArray<
                                                                 U2<
                                                                     U2<
                                                                         proptypekey<
@@ -29080,13 +29279,13 @@ module rec Zod =
                         U2<
                             U2<proptypekey<proptypekey<'T, Replace>, Replace>, option<obj>>,
                             U2<
-                                Array<
+                                ResizeArray<
                                     U2<
                                         U2<proptypekey<proptypekey<'T, Replace>, Replace>, option<obj>>,
                                         U2<
                                             U2<proptypekey<proptypekey<'T, Replace>, Replace>, option<obj>>,
                                             U2<
-                                                Array<
+                                                ResizeArray<
                                                     U2<
                                                         U2<proptypekey<proptypekey<'T, Replace>, Replace>, option<obj>>,
                                                         U2<
@@ -29183,7 +29382,7 @@ module rec Zod =
 
                 module rec ZodCatchCtx =
                     type Error =
-                        abstract issues: Array<Errors.ZodIssue> with get, set
+                        abstract issues: ResizeArray<Errors.ZodIssue> with get, set
 
                 module rec ZodCatchDef =
                     type T =
@@ -29196,7 +29395,7 @@ module rec Zod =
                 module rec ZodCustomInternals =
                     type Class =
                         abstract prototype: Util.Class with get, set
-                        abstract Create: [<ParamArray>] _args: Array<option<Agents.AgentContext>> -> Util.Class
+                        abstract Create: [<ParamArray>] _args: ResizeArray<option<Agents.AgentContext>> -> Util.Class
 
                 module rec ZodDefault =
                     type T =
@@ -29235,7 +29434,7 @@ module rec Zod =
                         abstract Invoke:
                             [<ParamArray>] args:
                                 U2<
-                                    Array<unit>,
+                                    ResizeArray<unit>,
                                     U2<
                                         proptypekey<proptypekey<'T, _output.Invoke.Args>, _output.Invoke.Args>,
                                         option<obj>
@@ -29247,7 +29446,7 @@ module rec Zod =
                         abstract Invoke:
                             [<ParamArray>] args:
                                 U2<
-                                    Array<unit>,
+                                    ResizeArray<unit>,
                                     U2<
                                         proptypekey<
                                             proptypekey<'T, ImplementAsync.Invoke.Args>,
@@ -29272,7 +29471,7 @@ module rec Zod =
                         abstract Invoke:
                             [<ParamArray>] args:
                                 U2<
-                                    Array<unit>,
+                                    ResizeArray<unit>,
                                     U2<proptypekey<proptypekey<'T, _input.Invoke.Args>, _input.Invoke.Args>, option<obj>>
                                  > ->
                                 U2<proptypekey<proptypekey<'T, _input.Invoke>, _input.Invoke>, option<obj>>
@@ -29486,7 +29685,7 @@ module rec Zod =
                             module rec FlatMap =
                                 type Callback =
                                     abstract Invoke:
-                                        this: 'This * value: 'T * index: float * array: Array<'T> ->
+                                        this: 'This * value: 'T * index: float * array: ResizeArray<'T> ->
                                             U2<'U, ReadonlyArray<'U>>
 
                             module rec ForEach =
@@ -29521,13 +29720,13 @@ module rec Zod =
 
                         abstract length: float with get
                         abstract symbolIterator: unit -> ArrayIterator<'T>
-                        abstract ``with``: index: float * value: 'T -> Array<'T>
+                        abstract ``with``: index: float * value: 'T -> ResizeArray<'T>
 
                         abstract toSpliced:
-                            start: float * deleteCount: float * [<ParamArray>] items: Array<'T> -> Array<'T>
+                            start: float * deleteCount: float * [<ParamArray>] items: ResizeArray<'T> -> ResizeArray<'T>
 
-                        abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array<'T>
-                        abstract toReversed: unit -> Array<'T>
+                        abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray<'T>
+                        abstract toReversed: unit -> ResizeArray<'T>
 
                         abstract findLastIndex:
                             predicate: Output.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -29538,9 +29737,9 @@ module rec Zod =
                         abstract at: index: float -> option<'T>
 
                         abstract flat:
-                            this: 'A * ?depth: 'D -> Array<proptypekey<Output.Flat, U2<Output.Flat, Output.Flat>>>
+                            this: 'A * ?depth: 'D -> ResizeArray<proptypekey<Output.Flat, U2<Output.Flat, Output.Flat>>>
 
-                        abstract flatMap: callback: Output.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                        abstract flatMap: callback: Output.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                         abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                         abstract values: unit -> ArrayIterator<'T>
                         abstract keys: unit -> ArrayIterator<float>
@@ -29552,16 +29751,21 @@ module rec Zod =
                         abstract find: predicate: Output.Find.Predicate * ?thisArg: Agents.AgentContext -> option<'S>
                         abstract reduceRight: callbackfn: Output.ReduceRight.Callbackfn -> 'T
                         abstract reduce: callbackfn: Output.Reduce.Callbackfn -> 'T
-                        abstract filter: predicate: Output.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
-                        abstract map: callbackfn: Output.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+
+                        abstract filter:
+                            predicate: Output.Filter.Predicate * ?thisArg: Agents.AgentContext -> ResizeArray<'S>
+
+                        abstract map:
+                            callbackfn: Output.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
+
                         abstract forEach: callbackfn: Output.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
                         abstract some: predicate: Output.Some.Predicate * ?thisArg: Agents.AgentContext -> bool
                         abstract every: predicate: Output.Every.Predicate * ?thisArg: Agents.AgentContext -> bool
                         abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                         abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                        abstract slice: ?start: float * ?``end``: float -> Array<'T>
+                        abstract slice: ?start: float * ?``end``: float -> ResizeArray<'T>
                         abstract join: ?separator: string -> string
-                        abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array<'T>
+                        abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray<'T>
                         abstract toLocaleString: unit -> string
                         abstract toString: unit -> string
 
@@ -29573,7 +29777,7 @@ module rec Zod =
                             abstract contentEncoding: option<string> with get, set
                             abstract contentMediaType: option<string> with get, set
                             abstract format: option<string> with get, set
-                            abstract examples: option<Array<option<obj>>> with get, set
+                            abstract examples: option<ResizeArray<option<obj>>> with get, set
                             abstract nullable: option<bool> with get, set
                             abstract writeOnly: option<bool> with get, set
                             abstract readOnly: option<bool> with get, set
@@ -29589,9 +29793,9 @@ module rec Zod =
                             [<EmitProperty("const")>]
                             abstract ``const``: option<U3<string, float, bool>> with get, set
 
-                            abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
+                            abstract enum: option<ResizeArray<option<U3<string, float, bool>>>> with get, set
                             abstract dependentRequired: option<AdditionalItems.DependentRequired> with get, set
-                            abstract required: option<Array<string>> with get, set
+                            abstract required: option<ResizeArray<string>> with get, set
                             abstract minProperties: option<float> with get, set
                             abstract maxProperties: option<float> with get, set
                             abstract minContains: option<float> with get, set
@@ -29611,9 +29815,9 @@ module rec Zod =
                             [<EmitProperty("not")>]
                             abstract ``not``: option<JsonSchema._JSONSchema> with get, set
 
-                            abstract oneOf: option<Array<obj>> with get, set
-                            abstract anyOf: option<Array<obj>> with get, set
-                            abstract allOf: option<Array<obj>> with get, set
+                            abstract oneOf: option<ResizeArray<obj>> with get, set
+                            abstract anyOf: option<ResizeArray<obj>> with get, set
+                            abstract allOf: option<ResizeArray<obj>> with get, set
 
                             [<EmitProperty("else")>]
                             abstract ``else``: option<JsonSchema._JSONSchema> with get, set
@@ -29633,9 +29837,11 @@ module rec Zod =
                             abstract contains: option<JsonSchema._JSONSchema> with get, set
 
                             abstract items:
-                                option<U3<AdditionalItems.Items, AdditionalItems.Items, Array<JsonSchema._JSONSchema>>> with get, set
+                                option<
+                                    U3<AdditionalItems.Items, AdditionalItems.Items, ResizeArray<JsonSchema._JSONSchema>>
+                                 > with get, set
 
-                            abstract prefixItems: option<Array<JsonSchema._JSONSchema>> with get, set
+                            abstract prefixItems: option<ResizeArray<JsonSchema._JSONSchema>> with get, set
                             abstract unevaluatedItems: option<JsonSchema._JSONSchema> with get, set
                             abstract additionalItems: option<JsonSchema._JSONSchema> with get, set
 
@@ -29685,7 +29891,7 @@ module rec Zod =
 
                     type Deferred =
                         abstract Invoke:
-                            [<ParamArray>] args: Array<option<Agents.AgentContext>> -> option<Agents.AgentContext>
+                            [<ParamArray>] args: ResizeArray<option<Agents.AgentContext>> -> option<Agents.AgentContext>
 
                     type ProcessJSONSchema =
                         abstract Invoke:
@@ -29885,7 +30091,7 @@ module rec Zod =
                 [<Import("./schemas.cjs", "$ZodStringDef")>]
                 type ZodStringDef =
                     inherit ZodTypeDef
-                    abstract checks: option<Array<Checks.ZodCheck<string>>> with get, set
+                    abstract checks: option<ResizeArray<Checks.ZodCheck<string>>> with get, set
                     abstract coerce: option<bool> with get, set
 
                     [<EmitProperty("type")>]
@@ -30048,7 +30254,7 @@ module rec Zod =
                     abstract Invoke:
                         [<ParamArray>] args:
                             U2<
-                                Array<unit>,
+                                ResizeArray<unit>,
                                 U2<
                                     proptypekey<
                                         proptypekey<'T, InferInnerFunctionTypeAsync.Invoke.Args>,
@@ -30297,7 +30503,7 @@ module rec Zod =
                 [<Import("./schemas.cjs", "$ZodBooleanDef")>]
                 type ZodBooleanDef =
                     inherit ZodTypeDef
-                    abstract checks: option<Array<Checks.ZodCheck<bool>>> with get, set
+                    abstract checks: option<ResizeArray<Checks.ZodCheck<bool>>> with get, set
                     abstract coerce: option<bool> with get, set
 
                     [<EmitProperty("type")>]
@@ -30410,7 +30616,7 @@ module rec Zod =
                     abstract Invoke:
                         [<ParamArray>] args:
                             U2<
-                                Array<unit>,
+                                ResizeArray<unit>,
                                 U2<
                                     proptypekey<
                                         proptypekey<'T, InferInnerFunctionType.Invoke.Args>,
@@ -30444,7 +30650,7 @@ module rec Zod =
                     abstract aborted: option<bool> with get, set
 
                     abstract issues:
-                        Array<
+                        ResizeArray<
                             U12<
                                 ParsePayload.Issues,
                                 ParsePayload.Issues,
@@ -30597,7 +30803,7 @@ module rec Zod =
                                 unit
                              >,
                             U2<
-                                Array<
+                                ResizeArray<
                                     U2<
                                         proptypekey<proptypekey<'T, ZodTupleInternals.Input>, ZodTupleInternals.Input>,
                                         option<obj>
@@ -30641,7 +30847,7 @@ module rec Zod =
                                 unit
                              >,
                             U2<
-                                Array<
+                                ResizeArray<
                                     U2<
                                         proptypekey<proptypekey<'T, ZodTupleInternals.Output>, ZodTupleInternals.Output>,
                                         option<obj>
@@ -30654,8 +30860,8 @@ module rec Zod =
                     abstract isst:
                         U3<
                             Errors.ZodIssueInvalidType<option<obj>>,
-                            Errors.ZodIssueTooBig<Array<option<obj>>>,
-                            Errors.ZodIssueTooSmall<Array<option<obj>>>
+                            Errors.ZodIssueTooBig<ResizeArray<option<obj>>>,
+                            Errors.ZodIssueTooSmall<ResizeArray<option<obj>>>
                          > with get, set
 
                     abstract def: ZodTupleDef<'T, 'Rest> with get, set
@@ -30724,7 +30930,7 @@ module rec Zod =
                     abstract optout: option<_ZodTypeInternals.Optout> with get, set
                     abstract optin: option<_ZodTypeInternals.Optin> with get, set
                     abstract traits: Set<string> with get, set
-                    abstract deferred: option<Array<Util.AnyFunc>> with get, set
+                    abstract deferred: option<ResizeArray<Util.AnyFunc>> with get, set
                     abstract def: ZodTypeDef with get, set
                     abstract version: _ZodTypeInternals.Version with get, set
                     abstract toJSONSchema: unit -> option<obj>
@@ -30880,7 +31086,7 @@ module rec Zod =
                     abstract output: output: 'NewReturns -> ZodFunction<'Args, 'NewReturns>
 
                     abstract input:
-                        [<ParamArray>] args: Array<option<Agents.AgentContext>> ->
+                        [<ParamArray>] args: ResizeArray<option<Agents.AgentContext>> ->
                             ZodFunction<option<Agents.AgentContext>, 'Returns>
 
                     abstract input: args: 'NewArgs -> ZodFunction<'NewArgs, 'Returns>
@@ -30930,7 +31136,7 @@ module rec Zod =
                     abstract Invoke:
                         [<ParamArray>] args:
                             U2<
-                                Array<unit>,
+                                ResizeArray<unit>,
                                 U2<
                                     proptypekey<
                                         proptypekey<'T, InferOuterFunctionTypeAsync.Invoke.Args>,
@@ -30958,7 +31164,7 @@ module rec Zod =
                     abstract Invoke:
                         [<ParamArray>] args:
                             U2<
-                                Array<unit>,
+                                ResizeArray<unit>,
                                 U2<
                                     proptypekey<
                                         proptypekey<'T, InferOuterFunctionType.Invoke.Args>,
@@ -31061,7 +31267,7 @@ module rec Zod =
                     inherit _ZodTypeInternals
 
                     abstract input:
-                        Array<
+                        ResizeArray<
                             U2<
                                 proptypekey<proptypekey<'T, ZodArrayInternals.Input>, ZodArrayInternals.Input>,
                                 option<obj>
@@ -31069,7 +31275,7 @@ module rec Zod =
                          > with get, set
 
                     abstract output:
-                        Array<
+                        ResizeArray<
                             U2<
                                 proptypekey<proptypekey<'T, ZodArrayInternals.Output>, ZodArrayInternals.Output>,
                                 option<obj>
@@ -31390,7 +31596,7 @@ module rec Zod =
                                     abstract Item: key: string -> option<Agents.AgentContext>
 
                             type Override =
-                                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                                 abstract jsonSchema: JsonSchema.JSONSchema with get, set
                                 abstract zodSchema: Schemas.ZodTypes with get, set
 
@@ -31415,7 +31621,7 @@ module rec Zod =
                         abstract contentEncoding: option<string> with get, set
                         abstract contentMediaType: option<string> with get, set
                         abstract format: option<string> with get, set
-                        abstract examples: option<Array<option<obj>>> with get, set
+                        abstract examples: option<ResizeArray<option<obj>>> with get, set
                         abstract nullable: option<bool> with get, set
                         abstract writeOnly: option<bool> with get, set
                         abstract readOnly: option<bool> with get, set
@@ -31431,9 +31637,9 @@ module rec Zod =
                         [<EmitProperty("const")>]
                         abstract ``const``: option<U3<string, float, bool>> with get, set
 
-                        abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
+                        abstract enum: option<ResizeArray<option<U3<string, float, bool>>>> with get, set
                         abstract dependentRequired: option<AdditionalItems.DependentRequired> with get, set
-                        abstract required: option<Array<string>> with get, set
+                        abstract required: option<ResizeArray<string>> with get, set
                         abstract minProperties: option<float> with get, set
                         abstract maxProperties: option<float> with get, set
                         abstract minContains: option<float> with get, set
@@ -31453,9 +31659,9 @@ module rec Zod =
                         [<EmitProperty("not")>]
                         abstract ``not``: option<JsonSchema._JSONSchema> with get, set
 
-                        abstract oneOf: option<Array<obj>> with get, set
-                        abstract anyOf: option<Array<obj>> with get, set
-                        abstract allOf: option<Array<obj>> with get, set
+                        abstract oneOf: option<ResizeArray<obj>> with get, set
+                        abstract anyOf: option<ResizeArray<obj>> with get, set
+                        abstract allOf: option<ResizeArray<obj>> with get, set
 
                         [<EmitProperty("else")>]
                         abstract ``else``: option<JsonSchema._JSONSchema> with get, set
@@ -31475,9 +31681,9 @@ module rec Zod =
                         abstract contains: option<JsonSchema._JSONSchema> with get, set
 
                         abstract items:
-                            option<U3<AdditionalItems.Items, AdditionalItems.Items, Array<JsonSchema._JSONSchema>>> with get, set
+                            option<U3<AdditionalItems.Items, AdditionalItems.Items, ResizeArray<JsonSchema._JSONSchema>>> with get, set
 
-                        abstract prefixItems: option<Array<JsonSchema._JSONSchema>> with get, set
+                        abstract prefixItems: option<ResizeArray<JsonSchema._JSONSchema>> with get, set
                         abstract unevaluatedItems: option<JsonSchema._JSONSchema> with get, set
                         abstract additionalItems: option<JsonSchema._JSONSchema> with get, set
 
@@ -31536,7 +31742,7 @@ module rec Zod =
                                     | [<CompiledName("http://json-schema.org/draft-04/schema#")>] ``Http:/jsonSchemaOrgDraft04Schema#``
 
                             type Ctx =
-                                abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                                abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
                                 abstract jsonSchema: JsonSchema.JSONSchema with get, set
 
                                 abstract zodSchema:
@@ -31631,7 +31837,7 @@ module rec Zod =
                         abstract contentEncoding: option<string> with get, set
                         abstract contentMediaType: option<string> with get, set
                         abstract format: option<string> with get, set
-                        abstract examples: option<Array<option<obj>>> with get, set
+                        abstract examples: option<ResizeArray<option<obj>>> with get, set
                         abstract nullable: option<bool> with get, set
                         abstract writeOnly: option<bool> with get, set
                         abstract readOnly: option<bool> with get, set
@@ -31647,9 +31853,9 @@ module rec Zod =
                         [<EmitProperty("const")>]
                         abstract ``const``: option<U3<string, float, bool>> with get, set
 
-                        abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
+                        abstract enum: option<ResizeArray<option<U3<string, float, bool>>>> with get, set
                         abstract dependentRequired: option<AdditionalItems.DependentRequired> with get, set
-                        abstract required: option<Array<string>> with get, set
+                        abstract required: option<ResizeArray<string>> with get, set
                         abstract minProperties: option<float> with get, set
                         abstract maxProperties: option<float> with get, set
                         abstract minContains: option<float> with get, set
@@ -31669,9 +31875,9 @@ module rec Zod =
                         [<EmitProperty("not")>]
                         abstract ``not``: option<JsonSchema._JSONSchema> with get, set
 
-                        abstract oneOf: option<Array<obj>> with get, set
-                        abstract anyOf: option<Array<obj>> with get, set
-                        abstract allOf: option<Array<obj>> with get, set
+                        abstract oneOf: option<ResizeArray<obj>> with get, set
+                        abstract anyOf: option<ResizeArray<obj>> with get, set
+                        abstract allOf: option<ResizeArray<obj>> with get, set
 
                         [<EmitProperty("else")>]
                         abstract ``else``: option<JsonSchema._JSONSchema> with get, set
@@ -31691,9 +31897,9 @@ module rec Zod =
                         abstract contains: option<JsonSchema._JSONSchema> with get, set
 
                         abstract items:
-                            option<U3<AdditionalItems.Items, AdditionalItems.Items, Array<JsonSchema._JSONSchema>>> with get, set
+                            option<U3<AdditionalItems.Items, AdditionalItems.Items, ResizeArray<JsonSchema._JSONSchema>>> with get, set
 
-                        abstract prefixItems: option<Array<JsonSchema._JSONSchema>> with get, set
+                        abstract prefixItems: option<ResizeArray<JsonSchema._JSONSchema>> with get, set
                         abstract unevaluatedItems: option<JsonSchema._JSONSchema> with get, set
                         abstract additionalItems: option<JsonSchema._JSONSchema> with get, set
 
@@ -31744,10 +31950,10 @@ module rec Zod =
 
                 [<Import("./to-json-schema.cjs", "ProcessParams")>]
                 type ProcessParams =
-                    abstract path: Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
+                    abstract path: ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId> with get, set
 
                     abstract schemaPath:
-                        Array<
+                        ResizeArray<
                             Schemas.ZodType<
                                 option<Agents.AgentContext>,
                                 option<Agents.AgentContext>,
@@ -31788,7 +31994,7 @@ module rec Zod =
 
                 [<Import("./to-json-schema.cjs", "Seen")>]
                 type Seen =
-                    abstract path: option<Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
+                    abstract path: option<ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
 
                     abstract ref:
                         option<
@@ -31800,7 +32006,7 @@ module rec Zod =
                          > with get, set
 
                     abstract isParent: option<bool> with get, set
-                    abstract cycle: option<Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
+                    abstract cycle: option<ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.RequestId>> with get, set
                     abstract count: float with get, set
                     abstract defId: option<string> with get, set
                     abstract def: option<JsonSchema.JSONSchema> with get, set
@@ -31827,7 +32033,7 @@ module rec Zod =
                 [<Import("../core/util.cjs", "Class"); AbstractClass; AllowNullLiteral>]
                 type Class private () =
                     [<EmitConstructor>]
-                    abstract Create: [<ParamArray>] _args: Array<option<Agents.AgentContext>> -> Class
+                    abstract Create: [<ParamArray>] _args: ResizeArray<option<Agents.AgentContext>> -> Class
 
                 type NoUndefined<'T> = U2<unit, 'T>
                 type TupleItems = TupleItems
@@ -31853,7 +32059,7 @@ module rec Zod =
                 [<Import("../core/util.cjs", "AnyFunc")>]
                 type AnyFunc =
                     abstract Invoke:
-                        [<ParamArray>] args: Array<option<Agents.AgentContext>> -> option<Agents.AgentContext>
+                        [<ParamArray>] args: ResizeArray<option<Agents.AgentContext>> -> option<Agents.AgentContext>
 
                 type EnumValue = U2<string, float>
 
@@ -31862,10 +32068,10 @@ module rec Zod =
                     abstract symbolToStringTag: string with get
 
                     abstract Create:
-                        [<ParamArray>] args: Array<option<Agents.AgentContext>> -> option<Agents.AgentContext>
+                        [<ParamArray>] args: ResizeArray<option<Agents.AgentContext>> -> option<Agents.AgentContext>
 
                     abstract Invoke:
-                        [<ParamArray>] args: Array<option<Agents.AgentContext>> -> option<Agents.AgentContext>
+                        [<ParamArray>] args: ResizeArray<option<Agents.AgentContext>> -> option<Agents.AgentContext>
 
                 type Literal = option<U3<string, float, bool>>
                 type MimeTypes = interface end
@@ -31944,7 +32150,7 @@ module rec ``.`` =
                     module rec ListChanged =
                         module rec ListChanged =
                             type Tools =
-                                abstract onChanged: option<exn> -> option<Array<'T>> -> unit with get, set
+                                abstract onChanged: option<exn> -> option<ResizeArray<'T>> -> unit with get, set
                                 abstract debounceMs: option<float> with get, set
                                 abstract autoRefresh: option<bool> with get, set
 
@@ -32092,7 +32298,7 @@ module rec ``.`` =
                     abstract taskStore:
                         option<Modelcontextprotocol.Sdk.Dist.Esm.Experimental.Tasks.Interfaces.TaskStore> with get, set
 
-                    abstract debouncedNotificationMethods: option<Array<string>> with get, set
+                    abstract debouncedNotificationMethods: option<ResizeArray<string>> with get, set
                     abstract enforceStrictCapabilities: option<bool> with get, set
                     abstract retry: option<RetriesFLD8cGNfJs.RetryOptions> with get, set
                     abstract transport: option<CallbackHostOrOptions.Transport> with get, set
@@ -32113,7 +32319,7 @@ module rec ``.`` =
 
             module rec ClearAgentToolRuns =
                 type Options =
-                    abstract status: option<Array<AgentToolRunStatus>> with get, set
+                    abstract status: option<ResizeArray<AgentToolRunStatus>> with get, set
                     abstract olderThan: option<float> with get, set
 
             module rec GetMcpServers =
@@ -32224,7 +32430,7 @@ module rec ``.`` =
                     abstract limit: option<float> with get, set
                     abstract metadata: option<Criteria.Metadata> with get, set
                     abstract workflowName: option<string> with get, set
-                    abstract status: option<U2<Array<option<Agents.AgentContext>>, obj>> with get, set
+                    abstract status: option<U2<ResizeArray<option<Agents.AgentContext>>, obj>> with get, set
 
                 type GetWorkflow =
                     abstract completedAt: option<Date> with get, set
@@ -32355,13 +32561,13 @@ module rec ``.`` =
                                                     abstract html: option<string> with get, set
                                                     abstract text: option<string> with get, set
                                                     abstract headers: option<Message.Headers> with get, set
-                                                    abstract bcc: option<U2<Array<string>, string>> with get, set
-                                                    abstract cc: option<U2<Array<string>, string>> with get, set
+                                                    abstract bcc: option<U2<ResizeArray<string>, string>> with get, set
+                                                    abstract cc: option<U2<ResizeArray<string>, string>> with get, set
                                                     abstract replyTo: option<U2<Message.ReplyTo, string>> with get, set
                                                     abstract subject: string with get, set
 
                                                     [<EmitProperty("to")>]
-                                                    abstract ``to``: U2<Array<string>, string> with get, set
+                                                    abstract ``to``: U2<ResizeArray<string>, string> with get, set
 
                                                     abstract from: U2<Message.From, string> with get, set
 
@@ -32377,8 +32583,8 @@ module rec ``.`` =
                     abstract secret: option<string> with get, set
                     abstract headers: option<Options.Headers> with get, set
                     abstract inReplyTo: option<string> with get, set
-                    abstract bcc: option<U2<Array<string>, string>> with get, set
-                    abstract cc: option<U2<Array<string>, string>> with get, set
+                    abstract bcc: option<U2<ResizeArray<string>, string>> with get, set
+                    abstract cc: option<U2<ResizeArray<string>, string>> with get, set
                     abstract replyTo: option<U2<Options.ReplyTo, string>> with get, set
                     abstract html: option<string> with get, set
                     abstract text: option<string> with get, set
@@ -32386,7 +32592,7 @@ module rec ``.`` =
                     abstract from: U2<Options.From, string> with get, set
 
                     [<EmitProperty("to")>]
-                    abstract ``to``: U2<Array<string>, string> with get, set
+                    abstract ``to``: U2<ResizeArray<string>, string> with get, set
 
                     abstract binding: EmailSendBinding with get, set
 
@@ -32477,13 +32683,13 @@ module rec ``.`` =
                 abstract Item: key: string -> option<Agents.AgentContext>
 
             type GetMcpServers =
-                abstract resources: Array<GetMcpServers.Resources> with get, set
-                abstract prompts: Array<GetMcpServers.Prompts> with get, set
-                abstract tools: Array<GetMcpServers.Tools> with get, set
+                abstract resources: ResizeArray<GetMcpServers.Resources> with get, set
+                abstract prompts: ResizeArray<GetMcpServers.Prompts> with get, set
+                abstract tools: ResizeArray<GetMcpServers.Tools> with get, set
                 abstract servers: GetMcpServers.Servers with get, set
                 abstract serverId: string with get, set
                 abstract title: option<string> with get, set
-                abstract icons: option<Array<GetMcpServers.Icons>> with get, set
+                abstract icons: option<ResizeArray<GetMcpServers.Icons>> with get, set
                 abstract _meta: option<GetMcpServers._meta> with get, set
                 abstract execution: option<GetMcpServers.Execution> with get, set
                 abstract annotations: option<GetMcpServers.Annotations> with get, set
@@ -32494,7 +32700,7 @@ module rec ``.`` =
                 abstract size: option<float> with get, set
                 abstract mimeType: option<string> with get, set
                 abstract uri: string with get, set
-                abstract arguments: option<Array<GetMcpServers.Arguments>> with get, set
+                abstract arguments: option<ResizeArray<GetMcpServers.Arguments>> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type AddMcpServer =
@@ -32504,12 +32710,12 @@ module rec ``.`` =
             type GetWorkflows =
                 abstract nextCursor: option<string> with get, set
                 abstract total: float with get, set
-                abstract workflows: Array<WorkflowTypesDHs0L0KPJs.WorkflowInfo> with get, set
+                abstract workflows: ResizeArray<WorkflowTypesDHs0L0KPJs.WorkflowInfo> with get, set
 
             type _cfSubAgentConnectionMetas =
-                abstract requestHeaders: option<Array<string * string>> with get, set
+                abstract requestHeaders: option<ResizeArray<string * string>> with get, set
                 abstract state: option<obj> with get, set
-                abstract tags: Array<string> with get, set
+                abstract tags: ResizeArray<string> with get, set
                 abstract uri: option<string> with get, set
                 abstract id: string with get, set
 
@@ -32600,7 +32806,7 @@ module rec ``.`` =
                             module rec Params =
                                 module rec Tools =
                                     type InputSchema =
-                                        abstract required: option<Array<string>> with get, set
+                                        abstract required: option<ResizeArray<string>> with get, set
                                         abstract properties: option<InputSchema.Properties> with get, set
 
                                         [<EmitProperty("type")>]
@@ -32620,7 +32826,7 @@ module rec ``.`` =
 
                     type Tools =
                         abstract title: option<string> with get, set
-                        abstract icons: option<Array<Tools.Icons>> with get, set
+                        abstract icons: option<ResizeArray<Tools.Icons>> with get, set
                         abstract _meta: option<Tools._meta> with get, set
                         abstract execution: option<Tools.Execution> with get, set
                         abstract annotations: option<Tools.Annotations> with get, set
@@ -32659,7 +32865,7 @@ module rec ``.`` =
                         abstract taskSupport: option<Execution.TaskSupport> with get, set
 
                     type InputSchema =
-                        abstract required: option<Array<string>> with get, set
+                        abstract required: option<ResizeArray<string>> with get, set
                         abstract properties: option<InputSchema.Properties> with get, set
 
                         [<EmitProperty("type")>]
@@ -32724,13 +32930,13 @@ module rec ``.`` =
                                         module rec ClientInfo =
                                             type Icons =
                                                 abstract theme: option<Icons.Theme> with get, set
-                                                abstract sizes: option<Array<string>> with get, set
+                                                abstract sizes: option<ResizeArray<string>> with get, set
                                                 abstract mimeType: option<string> with get, set
                                                 abstract src: string with get, set
 
                         type ClientInfo =
                             abstract title: option<string> with get, set
-                            abstract icons: option<Array<ClientInfo.Icons>> with get, set
+                            abstract icons: option<ResizeArray<ClientInfo.Icons>> with get, set
                             abstract description: option<string> with get, set
                             abstract websiteUrl: option<string> with get, set
                             abstract name: string with get, set
@@ -32758,15 +32964,15 @@ module rec ``.`` =
 
             type FetchPrompts =
                 abstract title: option<string> with get, set
-                abstract icons: option<Array<FetchPrompts.Icons>> with get, set
+                abstract icons: option<ResizeArray<FetchPrompts.Icons>> with get, set
                 abstract _meta: option<FetchPrompts._meta> with get, set
-                abstract arguments: option<Array<FetchPrompts.Arguments>> with get, set
+                abstract arguments: option<ResizeArray<FetchPrompts.Arguments>> with get, set
                 abstract description: option<string> with get, set
                 abstract name: string with get, set
 
             type ResourceTemplates =
                 abstract title: option<string> with get, set
-                abstract icons: option<Array<ResourceTemplates.Icons>> with get, set
+                abstract icons: option<ResizeArray<ResourceTemplates.Icons>> with get, set
                 abstract _meta: option<ResourceTemplates._meta> with get, set
                 abstract annotations: option<ResourceTemplates.Annotations> with get, set
                 abstract mimeType: option<string> with get, set
@@ -32776,15 +32982,15 @@ module rec ``.`` =
 
             type Prompts =
                 abstract title: option<string> with get, set
-                abstract icons: option<Array<Prompts.Icons>> with get, set
+                abstract icons: option<ResizeArray<Prompts.Icons>> with get, set
                 abstract _meta: option<Prompts._meta> with get, set
-                abstract arguments: option<Array<Prompts.Arguments>> with get, set
+                abstract arguments: option<ResizeArray<Prompts.Arguments>> with get, set
                 abstract description: option<string> with get, set
                 abstract name: string with get, set
 
             type FetchResources =
                 abstract title: option<string> with get, set
-                abstract icons: option<Array<FetchResources.Icons>> with get, set
+                abstract icons: option<ResizeArray<FetchResources.Icons>> with get, set
                 abstract _meta: option<FetchResources._meta> with get, set
                 abstract annotations: option<FetchResources.Annotations> with get, set
                 abstract size: option<float> with get, set
@@ -32795,7 +33001,7 @@ module rec ``.`` =
 
             type FetchResourceTemplates =
                 abstract title: option<string> with get, set
-                abstract icons: option<Array<FetchResourceTemplates.Icons>> with get, set
+                abstract icons: option<ResizeArray<FetchResourceTemplates.Icons>> with get, set
                 abstract _meta: option<FetchResourceTemplates._meta> with get, set
                 abstract annotations: option<FetchResourceTemplates.Annotations> with get, set
                 abstract mimeType: option<string> with get, set
@@ -32805,7 +33011,7 @@ module rec ``.`` =
 
             type FetchTools =
                 abstract title: option<string> with get, set
-                abstract icons: option<Array<FetchTools.Icons>> with get, set
+                abstract icons: option<ResizeArray<FetchTools.Icons>> with get, set
                 abstract _meta: option<FetchTools._meta> with get, set
                 abstract execution: option<FetchTools.Execution> with get, set
                 abstract annotations: option<FetchTools.Annotations> with get, set
@@ -32823,7 +33029,7 @@ module rec ``.`` =
 
             type Resources =
                 abstract title: option<string> with get, set
-                abstract icons: option<Array<Resources.Icons>> with get, set
+                abstract icons: option<ResizeArray<Resources.Icons>> with get, set
                 abstract _meta: option<Resources._meta> with get, set
                 abstract annotations: option<Resources.Annotations> with get, set
                 abstract size: option<float> with get, set
@@ -32857,7 +33063,7 @@ module rec ``.`` =
                                 type Annotations =
                                     abstract lastModified: option<string> with get, set
                                     abstract priority: option<float> with get, set
-                                    abstract audience: option<Array<Annotations.Audience>> with get, set
+                                    abstract audience: option<ResizeArray<Annotations.Audience>> with get, set
 
                                 type _meta =
                                     abstract Item: x: string -> option<obj>
@@ -32879,7 +33085,7 @@ module rec ``.`` =
                         abstract ``type``: Content.Type with get, set
 
                         abstract title: option<string> with get, set
-                        abstract icons: option<Array<Content.Icons>> with get, set
+                        abstract icons: option<ResizeArray<Content.Icons>> with get, set
                         abstract size: option<float> with get, set
                         abstract mimeType: option<string> with get, set
                         abstract description: option<string> with get, set
@@ -33197,7 +33403,9 @@ module rec ``.`` =
                 abstract structuredContent: option<CallTool.StructuredContent> with get, set
 
                 abstract content:
-                    Array<U5<CallTool.Content, CallTool.Content, CallTool.Content, CallTool.Content, CallTool.Content>> with get, set
+                    ResizeArray<
+                        U5<CallTool.Content, CallTool.Content, CallTool.Content, CallTool.Content, CallTool.Content>
+                     > with get, set
 
                 abstract Item: x: string -> option<obj>
 
@@ -33255,12 +33463,12 @@ module rec ``.`` =
             type GetPrompt =
                 abstract description: option<string> with get, set
                 abstract _meta: option<GetPrompt._meta> with get, set
-                abstract messages: Array<GetPrompt.Messages> with get, set
+                abstract messages: ResizeArray<GetPrompt.Messages> with get, set
                 abstract Item: x: string -> option<obj>
 
             type ReadResource =
                 abstract _meta: option<ReadResource._meta> with get, set
-                abstract contents: Array<U2<ReadResource.Contents, ReadResource.Contents>> with get, set
+                abstract contents: ResizeArray<U2<ReadResource.Contents, ReadResource.Contents>> with get, set
                 abstract Item: x: string -> option<obj>
 
             type Vocabulary =
@@ -33433,13 +33641,13 @@ module rec ``.`` =
                                             abstract html: option<string> with get, set
                                             abstract text: option<string> with get, set
                                             abstract headers: option<Message.Headers> with get, set
-                                            abstract bcc: option<U2<Array<string>, string>> with get, set
-                                            abstract cc: option<U2<Array<string>, string>> with get, set
+                                            abstract bcc: option<U2<ResizeArray<string>, string>> with get, set
+                                            abstract cc: option<U2<ResizeArray<string>, string>> with get, set
                                             abstract replyTo: option<U2<Message.ReplyTo, string>> with get, set
                                             abstract subject: string with get, set
 
                                             [<EmitProperty("to")>]
-                                            abstract ``to``: U2<Array<string>, string> with get, set
+                                            abstract ``to``: U2<ResizeArray<string>, string> with get, set
 
                                             abstract from: U2<Message.From, string> with get, set
 
@@ -33451,7 +33659,7 @@ module rec ``.`` =
                 abstract Invoke:
                     ownerPath: ReadonlyArray<AgentPathStep> *
                     message: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, string> *
-                    ?without: Array<string> ->
+                    ?without: ResizeArray<string> ->
                         unit
 
             type Vocabulary =
@@ -33471,7 +33679,7 @@ module rec ``.`` =
 
             abstract serverId: string with get, set
             abstract title: option<string> with get, set
-            abstract icons: option<Array<MCPClientManager.Icons>> with get, set
+            abstract icons: option<ResizeArray<MCPClientManager.Icons>> with get, set
             abstract _meta: option<MCPClientManager._meta> with get, set
             abstract execution: option<MCPClientManager.Execution> with get, set
             abstract annotations: option<MCPClientManager.Annotations> with get, set
@@ -33479,7 +33687,7 @@ module rec ``.`` =
             abstract description: option<string> with get, set
             abstract name: string with get, set
             abstract inputSchema: MCPClientManager.InputSchema with get, set
-            abstract arguments: option<Array<MCPClientManager.Arguments>> with get, set
+            abstract arguments: option<ResizeArray<MCPClientManager.Arguments>> with get, set
             abstract size: option<float> with get, set
             abstract mimeType: option<string> with get, set
             abstract uri: string with get, set
@@ -33560,17 +33768,19 @@ module rec ``.`` =
                 ?options: Modelcontextprotocol.Sdk.Dist.Esm.Shared.Protocol.RequestOptions ->
                     Promise<U2<MCPClientManager.CallTool, MCPClientManager.CallTool>>
 
-            abstract listResourceTemplates: ?filter: MCPServerFilter -> Array<MCPClientManager.ListResourceTemplates>
-            abstract listResources: ?filter: MCPServerFilter -> Array<MCPClientManager.ListResources>
-            abstract listPrompts: ?filter: MCPServerFilter -> Array<MCPClientManager.ListPrompts>
+            abstract listResourceTemplates:
+                ?filter: MCPServerFilter -> ResizeArray<MCPClientManager.ListResourceTemplates>
+
+            abstract listResources: ?filter: MCPServerFilter -> ResizeArray<MCPClientManager.ListResources>
+            abstract listPrompts: ?filter: MCPServerFilter -> ResizeArray<MCPClientManager.ListPrompts>
             abstract dispose: unit -> Promise<unit>
-            abstract listServers: unit -> Array<MCPServerRow>
+            abstract listServers: unit -> ResizeArray<MCPServerRow>
             abstract removeServer: serverId: string -> Promise<unit>
             abstract closeConnection: id: string -> Promise<unit>
             abstract closeAllConnections: unit -> Promise<unit>
             abstract unstableGetAITools: ?filter: MCPServerFilter -> Ai.ToolSet
             abstract getAITools: ?filter: MCPServerFilter -> Ai.ToolSet
-            abstract listTools: ?filter: MCPServerFilter -> Array<MCPClientManager.ListTools>
+            abstract listTools: ?filter: MCPServerFilter -> ResizeArray<MCPClientManager.ListTools>
             abstract getOAuthCallbackConfig: unit -> option<MCPClientManager.GetOAuthCallbackConfig>
             abstract configureOAuthCallback: config: MCPClientOAuthCallbackConfig -> unit
             abstract establishConnection: serverId: string -> Promise<unit>
@@ -33598,7 +33808,7 @@ module rec ``.`` =
                 ?props: MCPClientManager.SaveRpcServerToStorage.Props ->
                     unit
 
-            abstract getRpcServersFromStorage: unit -> Array<MCPServerRow>
+            abstract getRpcServersFromStorage: unit -> ResizeArray<MCPServerRow>
             abstract onresumptiontoken: token: string -> unit
             abstract onprogress: progress: MCPClientManager.Onprogress.Progress -> unit
 
@@ -33609,9 +33819,9 @@ module rec ``.`` =
 
         [<Import("./agent-tool-types-DSteYkkS.js", "SubAgentConnectionMeta")>]
         type SubAgentConnectionMeta =
-            abstract requestHeaders: option<Array<string * string>> with get, set
+            abstract requestHeaders: option<ResizeArray<string * string>> with get, set
             abstract state: option<obj> with get, set
-            abstract tags: Array<string> with get, set
+            abstract tags: ResizeArray<string> with get, set
             abstract uri: option<string> with get, set
             abstract id: string with get, set
 
@@ -33634,15 +33844,15 @@ module rec ``.`` =
 
         [<Import("./agent-tool-types-DSteYkkS.js", "MCPServerFilter")>]
         type MCPServerFilter =
-            abstract state: option<U2<MCPServerFilter.State, Array<MCPConnectionState>>> with get, set
-            abstract serverName: option<U2<Array<string>, string>> with get, set
-            abstract serverId: option<U2<Array<string>, string>> with get, set
+            abstract state: option<U2<MCPServerFilter.State, ResizeArray<MCPConnectionState>>> with get, set
+            abstract serverName: option<U2<ResizeArray<string>, string>> with get, set
+            abstract serverId: option<U2<ResizeArray<string>, string>> with get, set
 
         [<Import("./agent-tool-types-DSteYkkS.js", "MCPServersState")>]
         type MCPServersState =
-            abstract resources: Array<MCPServersState.Resources> with get, set
-            abstract prompts: Array<MCPServersState.Prompts> with get, set
-            abstract tools: Array<MCPServersState.Tools> with get, set
+            abstract resources: ResizeArray<MCPServersState.Resources> with get, set
+            abstract prompts: ResizeArray<MCPServersState.Prompts> with get, set
+            abstract tools: ResizeArray<MCPServersState.Tools> with get, set
             abstract servers: MCPServersState.Servers with get, set
 
         [<Import("./agent-tool-types-DSteYkkS.js", "MCPClientConnection"); AbstractClass; AllowNullLiteral>]
@@ -33662,11 +33872,11 @@ module rec ``.`` =
             abstract _discoveryAbortController: option<Agents.AgentContext> with get, set
             abstract _probingCapabilities: option<Agents.AgentContext> with get, set
             abstract serverCapabilities: option<MCPClientConnection.ServerCapabilities> with get, set
-            abstract resourceTemplates: Array<MCPClientConnection.ResourceTemplates> with get, set
-            abstract resources: Array<MCPClientConnection.Resources> with get, set
-            abstract prompts: Array<MCPClientConnection.Prompts> with get, set
+            abstract resourceTemplates: ResizeArray<MCPClientConnection.ResourceTemplates> with get, set
+            abstract resources: ResizeArray<MCPClientConnection.Resources> with get, set
+            abstract prompts: ResizeArray<MCPClientConnection.Prompts> with get, set
             abstract _transport: option<Agents.AgentContext> with get, set
-            abstract tools: Array<MCPClientConnection.Tools> with get, set
+            abstract tools: ResizeArray<MCPClientConnection.Tools> with get, set
             abstract instructions: option<string> with get, set
             abstract lastConnectedTransport: option<MCPClientConnection.LastConnectedTransport> with get, set
             abstract connectionError: option<string> with get, set
@@ -33696,14 +33906,17 @@ module rec ``.`` =
                 _request: MCPClientConnection.HandleElicitationRequest._request ->
                     Promise<MCPClientConnection.HandleElicitationRequest>
 
-            abstract fetchResourceTemplates: unit -> Promise<Array<MCPClientConnection.FetchResourceTemplates>>
-            abstract fetchPrompts: unit -> Promise<Array<MCPClientConnection.FetchPrompts>>
-            abstract fetchResources: unit -> Promise<Array<MCPClientConnection.FetchResources>>
-            abstract fetchTools: unit -> Promise<Array<MCPClientConnection.FetchTools>>
-            abstract registerResourceTemplates: unit -> Promise<Array<MCPClientConnection.RegisterResourceTemplates>>
-            abstract registerPrompts: unit -> Promise<Array<MCPClientConnection.RegisterPrompts>>
-            abstract registerResources: unit -> Promise<Array<MCPClientConnection.RegisterResources>>
-            abstract registerTools: unit -> Promise<Array<MCPClientConnection.RegisterTools>>
+            abstract fetchResourceTemplates: unit -> Promise<ResizeArray<MCPClientConnection.FetchResourceTemplates>>
+            abstract fetchPrompts: unit -> Promise<ResizeArray<MCPClientConnection.FetchPrompts>>
+            abstract fetchResources: unit -> Promise<ResizeArray<MCPClientConnection.FetchResources>>
+            abstract fetchTools: unit -> Promise<ResizeArray<MCPClientConnection.FetchTools>>
+
+            abstract registerResourceTemplates:
+                unit -> Promise<ResizeArray<MCPClientConnection.RegisterResourceTemplates>>
+
+            abstract registerPrompts: unit -> Promise<ResizeArray<MCPClientConnection.RegisterPrompts>>
+            abstract registerResources: unit -> Promise<ResizeArray<MCPClientConnection.RegisterResources>>
+            abstract registerTools: unit -> Promise<ResizeArray<MCPClientConnection.RegisterTools>>
             abstract cancelDiscovery: unit -> unit
             abstract discover: ?options: MCPClientConnection.Discover.Options -> Promise<MCPDiscoveryResult>
             abstract discoverAndRegister: unit -> Promise<unit>
@@ -33715,7 +33928,7 @@ module rec ``.`` =
             abstract broadcast:
                 ownerPath: ReadonlyArray<AgentPathStep> *
                 message: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, string> *
-                ?without: Array<string> ->
+                ?without: ResizeArray<string> ->
                     unit
 
             abstract setState: ?state: obj -> option<obj>
@@ -34041,8 +34254,8 @@ module rec ``.`` =
             abstract secret: option<string> with get, set
             abstract headers: option<SendEmailOptions.Headers> with get, set
             abstract inReplyTo: option<string> with get, set
-            abstract bcc: option<U2<Array<string>, string>> with get, set
-            abstract cc: option<U2<Array<string>, string>> with get, set
+            abstract bcc: option<U2<ResizeArray<string>, string>> with get, set
+            abstract cc: option<U2<ResizeArray<string>, string>> with get, set
             abstract replyTo: option<U2<SendEmailOptions.ReplyTo, string>> with get, set
             abstract html: option<string> with get, set
             abstract text: option<string> with get, set
@@ -34050,7 +34263,7 @@ module rec ``.`` =
             abstract from: U2<SendEmailOptions.From, string> with get, set
 
             [<EmitProperty("to")>]
-            abstract ``to``: U2<Array<string>, string> with get, set
+            abstract ``to``: U2<ResizeArray<string>, string> with get, set
 
             abstract binding: EmailSendBinding with get, set
 
@@ -34126,7 +34339,7 @@ module rec ``.`` =
             abstract resolver:
                 option<Agents.AgentContext> -> 'Env -> Promise<option<EmailX72ZjuqJs.EmailResolverResult>> with get, set
 
-            abstract cors: option<U4<Headers, Array<string * string>, EmailRoutingOptions.Cors, bool>> with get, set
+            abstract cors: option<U4<Headers, ResizeArray<string * string>, EmailRoutingOptions.Cors, bool>> with get, set
             abstract props: option<'Props> with get, set
             abstract locationHint: option<Agents.AgentContext> with get, set
             abstract jurisdiction: option<Agents.AgentContext> with get, set
@@ -34278,7 +34491,7 @@ module rec ``.`` =
             abstract broadcast:
                 ownerPath: ReadonlyArray<AgentPathStep> *
                 message: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, string> *
-                ?without: Array<string> ->
+                ?without: ResizeArray<string> ->
                     unit
 
             abstract setState: ?state: obj -> option<obj>
@@ -34318,7 +34531,7 @@ module rec ``.`` =
                         RPCClientTransport.Send.Message,
                         RPCClientTransport.Send.Message,
                         RPCClientTransport.Send.Message,
-                        Array<Modelcontextprotocol.Sdk.Dist.Esm.Types.JSONRPCMessage>
+                        ResizeArray<Modelcontextprotocol.Sdk.Dist.Esm.Types.JSONRPCMessage>
                      > *
                 ?options: Modelcontextprotocol.Sdk.Dist.Esm.Shared.Transport.TransportSendOptions ->
                     Promise<unit>
@@ -34390,38 +34603,39 @@ module rec ``.`` =
                         module rec Args =
                             module rec Every =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
                             module rec Find =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                    abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
 
                             module rec FindIndex =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: Array -> option<obj>
+                                    abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                             module rec FlatMap =
                                 type Callback =
                                     abstract Invoke:
-                                        this: 'This * value: 'T * index: float * array: Array ->
+                                        this: 'This * value: 'T * index: float * array: ResizeArray ->
                                             U2<'U, ReadonlyArray<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
 
                             module rec Map =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
 
                             module rec Reduce =
                                 type Callbackfn =
                                     abstract Invoke:
-                                        previousValue: 'T * currentValue: 'T * currentIndex: float * array: Array -> 'T
+                                        previousValue: 'T * currentValue: 'T * currentIndex: float * array: ResizeArray ->
+                                            'T
 
                             module rec Some =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
 
                             type SymbolUnscopables =
                                 [<EmitProperty("__@unscopables@2222")>]
@@ -34484,12 +34698,12 @@ module rec ``.`` =
                 [<EmitProperty("0")>]
                 abstract ``0``: option<ToString.``0``> with get, set
 
-                abstract _errors: Array<'U> with get, set
+                abstract _errors: ResizeArray<'U> with get, set
                 abstract symbolIterator: unit -> ArrayIterator<'T>
-                abstract ``with``: index: float * value: 'T -> Array
-                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-                abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                abstract toReversed: unit -> Array
+                abstract ``with``: index: float * value: 'T -> ResizeArray
+                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+                abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                abstract toReversed: unit -> ResizeArray
 
                 abstract findLastIndex:
                     predicate: ToString.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -34498,9 +34712,9 @@ module rec ``.`` =
                 abstract at: index: float -> option<'T>
 
                 abstract flat:
-                    this: 'A * ?depth: 'D -> Array<proptypekey<ToString.Flat, U2<ToString.Flat, ToString.Flat>>>
+                    this: 'A * ?depth: 'D -> ResizeArray<proptypekey<ToString.Flat, U2<ToString.Flat, ToString.Flat>>>
 
-                abstract flatMap: callback: ToString.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                abstract flatMap: callback: ToString.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                 abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                 abstract values: unit -> ArrayIterator<'T>
                 abstract keys: unit -> ArrayIterator<float>
@@ -34511,22 +34725,22 @@ module rec ``.`` =
                 abstract find: predicate: ToString.Find.Predicate * ?thisArg: Agents.AgentContext -> option<'S>
                 abstract reduceRight: callbackfn: ToString.ReduceRight.Callbackfn -> 'T
                 abstract reduce: callbackfn: ToString.Reduce.Callbackfn -> 'T
-                abstract filter: predicate: ToString.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
-                abstract map: callbackfn: ToString.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                abstract filter: predicate: ToString.Filter.Predicate * ?thisArg: Agents.AgentContext -> ResizeArray<'S>
+                abstract map: callbackfn: ToString.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
                 abstract forEach: callbackfn: ToString.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
                 abstract some: predicate: ToString.Some.Predicate * ?thisArg: Agents.AgentContext -> bool
                 abstract every: predicate: ToString.Every.Predicate * ?thisArg: Agents.AgentContext -> bool
                 abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                 abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                abstract unshift: [<ParamArray>] items: Array -> float
-                abstract splice: start: float * ?deleteCount: float -> Array
+                abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                abstract splice: start: float * ?deleteCount: float -> ResizeArray
                 abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                abstract slice: ?start: float * ?``end``: float -> Array
+                abstract slice: ?start: float * ?``end``: float -> ResizeArray
                 abstract shift: unit -> option<'T>
-                abstract reverse: unit -> Array
+                abstract reverse: unit -> ResizeArray
                 abstract join: ?separator: string -> string
-                abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                abstract push: [<ParamArray>] items: Array -> float
+                abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                abstract push: [<ParamArray>] items: ResizeArray -> float
                 abstract pop: unit -> option<'T>
                 abstract toLocaleString: unit -> string
                 abstract toString: unit -> string
@@ -34546,23 +34760,23 @@ module rec ``.`` =
         type ZodIssueInvalidUnionNoMatch =
             inherit Zod.V4.Core.Errors.ZodIssueBase
             abstract inclusive: option<ZodIssueInvalidUnionNoMatch.Inclusive> with get
-            abstract options: option<Array<option<Zod.V4.Core.Util.Primitive>>> with get
+            abstract options: option<ResizeArray<option<Zod.V4.Core.Util.Primitive>>> with get
             abstract discriminator: option<string> with get
             abstract input: option<obj> with get
-            abstract errors: Array<Array<Zod.V4.Core.Errors.ZodIssue>> with get
+            abstract errors: ResizeArray<ResizeArray<Zod.V4.Core.Errors.ZodIssue>> with get
             abstract code: ZodIssueInvalidUnionNoMatch.Code with get
 
         [<Import("./errors.cjs", "_FlattenedError")>]
         type _FlattenedError<'U, 'T> =
             abstract fieldErrors: _FlattenedError.FieldErrors with get, set
-            abstract formErrors: Array<'U> with get, set
+            abstract formErrors: ResizeArray<'U> with get, set
 
     module rec Helpers =
         module rec EnumUtilCjs =
             type GetUnionLast<'T> = U2<'Last, unit>
             type UnionToIntersectionFn<'T> = U2<'Intersection, unit>
 
-            type UnionToTuple<'Tuple, 'T when 'Tuple :> Array<option<obj>>> =
+            type UnionToTuple<'Tuple, 'T when 'Tuple :> ResizeArray<option<obj>>> =
                 U2<'Tuple, U2<'Tuple, U2<'Tuple, option<obj>>>>
 
             type CastToStringTuple<'T> = U2<'T, unit>
@@ -34765,7 +34979,7 @@ module rec ``.`` =
                 module rec FlatMap =
                     type Callback =
                         abstract Invoke:
-                            this: 'This * value: 'T * index: float * array: Array<'T> -> U2<'U, ReadonlyArray<'U>>
+                            this: 'This * value: 'T * index: float * array: ResizeArray<'T> -> U2<'U, ReadonlyArray<'U>>
 
                 module rec ForEach =
                     type Callbackfn =
@@ -34806,7 +35020,7 @@ module rec ``.`` =
                 module rec FlatMap =
                     type Callback =
                         abstract Invoke:
-                            this: 'This * value: 'T * index: float * array: Array<'T> -> U2<'U, ReadonlyArray<'U>>
+                            this: 'This * value: 'T * index: float * array: ResizeArray<'T> -> U2<'U, ReadonlyArray<'U>>
 
                 module rec ForEach =
                     type Callbackfn =
@@ -34872,10 +35086,13 @@ module rec ``.`` =
 
             abstract length: float with get
             abstract symbolIterator: unit -> ArrayIterator<'T>
-            abstract ``with``: index: float * value: 'T -> Array<'T>
-            abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array<'T> -> Array<'T>
-            abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array<'T>
-            abstract toReversed: unit -> Array<'T>
+            abstract ``with``: index: float * value: 'T -> ResizeArray<'T>
+
+            abstract toSpliced:
+                start: float * deleteCount: float * [<ParamArray>] items: ResizeArray<'T> -> ResizeArray<'T>
+
+            abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray<'T>
+            abstract toReversed: unit -> ResizeArray<'T>
 
             abstract findLastIndex:
                 predicate: TupleInputTypeNoOptionals.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -34887,14 +35104,14 @@ module rec ``.`` =
 
             abstract flat:
                 this: 'A * ?depth: 'D ->
-                    Array<
+                    ResizeArray<
                         proptypekey<
                             TupleInputTypeNoOptionals.Flat,
                             U2<TupleInputTypeNoOptionals.Flat, TupleInputTypeNoOptionals.Flat>
                          >
                      >
 
-            abstract flatMap: callback: TupleInputTypeNoOptionals.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+            abstract flatMap: callback: TupleInputTypeNoOptionals.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
             abstract includes: searchElement: 'T * ?fromIndex: float -> bool
             abstract values: unit -> ArrayIterator<'T>
             abstract keys: unit -> ArrayIterator<float>
@@ -34910,10 +35127,10 @@ module rec ``.`` =
             abstract reduce: callbackfn: TupleInputTypeNoOptionals.Reduce.Callbackfn -> 'T
 
             abstract filter:
-                predicate: TupleInputTypeNoOptionals.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
+                predicate: TupleInputTypeNoOptionals.Filter.Predicate * ?thisArg: Agents.AgentContext -> ResizeArray<'S>
 
             abstract map:
-                callbackfn: TupleInputTypeNoOptionals.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                callbackfn: TupleInputTypeNoOptionals.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
 
             abstract forEach:
                 callbackfn: TupleInputTypeNoOptionals.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
@@ -34922,9 +35139,9 @@ module rec ``.`` =
             abstract every: predicate: TupleInputTypeNoOptionals.Every.Predicate * ?thisArg: Agents.AgentContext -> bool
             abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
             abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-            abstract slice: ?start: float * ?``end``: float -> Array<'T>
+            abstract slice: ?start: float * ?``end``: float -> ResizeArray<'T>
             abstract join: ?separator: string -> string
-            abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array<'T>
+            abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray<'T>
             abstract toLocaleString: unit -> string
             abstract toString: unit -> string
 
@@ -35020,7 +35237,10 @@ module rec ``.`` =
                  >,
                 unit
              > *
-            U2<Array<U2<proptypekey<proptypekey<'T, InferTupleOutputType>, InferTupleOutputType>, option<obj>>>, unit>
+            U2<
+                ResizeArray<U2<proptypekey<proptypekey<'T, InferTupleOutputType>, InferTupleOutputType>, option<obj>>>,
+                unit
+             >
 
         type InferTupleInputType<'Rest, 'T when 'Rest :> InferTupleInputType and 'T :> Zod.V4.Core.Util.TupleItems> =
             U2<
@@ -35040,7 +35260,10 @@ module rec ``.`` =
                  >,
                 unit
              > *
-            U2<Array<U2<proptypekey<proptypekey<'T, InferTupleInputType>, InferTupleInputType>, option<obj>>>, unit>
+            U2<
+                ResizeArray<U2<proptypekey<proptypekey<'T, InferTupleInputType>, InferTupleInputType>, option<obj>>>,
+                unit
+             >
 
         type LiteralPart = option<LiteralPart>
 
@@ -35066,10 +35289,13 @@ module rec ``.`` =
 
             abstract length: float with get
             abstract symbolIterator: unit -> ArrayIterator<'T>
-            abstract ``with``: index: float * value: 'T -> Array<'T>
-            abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array<'T> -> Array<'T>
-            abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array<'T>
-            abstract toReversed: unit -> Array<'T>
+            abstract ``with``: index: float * value: 'T -> ResizeArray<'T>
+
+            abstract toSpliced:
+                start: float * deleteCount: float * [<ParamArray>] items: ResizeArray<'T> -> ResizeArray<'T>
+
+            abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray<'T>
+            abstract toReversed: unit -> ResizeArray<'T>
 
             abstract findLastIndex:
                 predicate: TupleOutputTypeNoOptionals.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -35081,14 +35307,14 @@ module rec ``.`` =
 
             abstract flat:
                 this: 'A * ?depth: 'D ->
-                    Array<
+                    ResizeArray<
                         proptypekey<
                             TupleOutputTypeNoOptionals.Flat,
                             U2<TupleOutputTypeNoOptionals.Flat, TupleOutputTypeNoOptionals.Flat>
                          >
                      >
 
-            abstract flatMap: callback: TupleOutputTypeNoOptionals.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+            abstract flatMap: callback: TupleOutputTypeNoOptionals.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
             abstract includes: searchElement: 'T * ?fromIndex: float -> bool
             abstract values: unit -> ArrayIterator<'T>
             abstract keys: unit -> ArrayIterator<float>
@@ -35104,10 +35330,11 @@ module rec ``.`` =
             abstract reduce: callbackfn: TupleOutputTypeNoOptionals.Reduce.Callbackfn -> 'T
 
             abstract filter:
-                predicate: TupleOutputTypeNoOptionals.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
+                predicate: TupleOutputTypeNoOptionals.Filter.Predicate * ?thisArg: Agents.AgentContext ->
+                    ResizeArray<'S>
 
             abstract map:
-                callbackfn: TupleOutputTypeNoOptionals.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                callbackfn: TupleOutputTypeNoOptionals.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
 
             abstract forEach:
                 callbackfn: TupleOutputTypeNoOptionals.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
@@ -35119,9 +35346,9 @@ module rec ``.`` =
 
             abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
             abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-            abstract slice: ?start: float * ?``end``: float -> Array<'T>
+            abstract slice: ?start: float * ?``end``: float -> ResizeArray<'T>
             abstract join: ?separator: string -> string
-            abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array<'T>
+            abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray<'T>
             abstract toLocaleString: unit -> string
             abstract toString: unit -> string
 
@@ -35185,7 +35412,7 @@ module rec ``.`` =
         type WorkflowPage =
             abstract nextCursor: option<string> with get, set
             abstract total: float with get, set
-            abstract workflows: Array<WorkflowInfo> with get, set
+            abstract workflows: ResizeArray<WorkflowInfo> with get, set
 
         [<Import("./workflow-types-DHs0L0KP.js", "RunWorkflowOptions")>]
         type RunWorkflowOptions =
@@ -35269,7 +35496,7 @@ module rec ``.`` =
             abstract limit: option<float> with get, set
             abstract metadata: option<WorkflowQueryCriteria.Metadata> with get, set
             abstract workflowName: option<string> with get, set
-            abstract status: option<U2<Array<option<Agents.AgentContext>>, obj>> with get, set
+            abstract status: option<U2<ResizeArray<option<Agents.AgentContext>>, obj>> with get, set
 
     module rec ZodErrorCjs =
         module rec RecursiveZodFormattedError =
@@ -35278,37 +35505,39 @@ module rec ``.`` =
                     module rec Args =
                         module rec Every =
                             type Predicate =
-                                abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
                         module rec Find =
                             type Predicate =
-                                abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
 
                         module rec FindIndex =
                             type Predicate =
-                                abstract Invoke: value: 'T * index: float * obj: Array -> option<obj>
+                                abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                         module rec FlatMap =
                             type Callback =
                                 abstract Invoke:
-                                    this: 'This * value: 'T * index: float * array: Array -> U2<'U, ReadonlyArray<'U>>
+                                    this: 'This * value: 'T * index: float * array: ResizeArray ->
+                                        U2<'U, ReadonlyArray<'U>>
 
                         module rec ForEach =
                             type Callbackfn =
-                                abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
 
                         module rec Map =
                             type Callbackfn =
-                                abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
 
                         module rec Reduce =
                             type Callbackfn =
                                 abstract Invoke:
-                                    previousValue: 'T * currentValue: 'T * currentIndex: float * array: Array -> 'T
+                                    previousValue: 'T * currentValue: 'T * currentIndex: float * array: ResizeArray ->
+                                        'T
 
                         module rec Some =
                             type Predicate =
-                                abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
+                                abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
 
                         type SymbolUnscopables =
                             [<EmitProperty("__@unscopables@2222")>]
@@ -35376,10 +35605,10 @@ module rec ``.`` =
             abstract ``0``: option<RecursiveZodFormattedError.``0``> with get, set
 
             abstract symbolIterator: unit -> ArrayIterator<'T>
-            abstract ``with``: index: float * value: 'T -> Array
-            abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-            abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-            abstract toReversed: unit -> Array
+            abstract ``with``: index: float * value: 'T -> ResizeArray
+            abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+            abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+            abstract toReversed: unit -> ResizeArray
 
             abstract findLastIndex:
                 predicate: RecursiveZodFormattedError.FindLastIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -35391,14 +35620,14 @@ module rec ``.`` =
 
             abstract flat:
                 this: 'A * ?depth: 'D ->
-                    Array<
+                    ResizeArray<
                         proptypekey<
                             RecursiveZodFormattedError.Flat,
                             U2<RecursiveZodFormattedError.Flat, RecursiveZodFormattedError.Flat>
                          >
                      >
 
-            abstract flatMap: callback: RecursiveZodFormattedError.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+            abstract flatMap: callback: RecursiveZodFormattedError.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
             abstract includes: searchElement: 'T * ?fromIndex: float -> bool
             abstract values: unit -> ArrayIterator<'T>
             abstract keys: unit -> ArrayIterator<float>
@@ -35416,10 +35645,11 @@ module rec ``.`` =
             abstract reduce: callbackfn: RecursiveZodFormattedError.Reduce.Callbackfn -> 'T
 
             abstract filter:
-                predicate: RecursiveZodFormattedError.Filter.Predicate * ?thisArg: Agents.AgentContext -> Array<'S>
+                predicate: RecursiveZodFormattedError.Filter.Predicate * ?thisArg: Agents.AgentContext ->
+                    ResizeArray<'S>
 
             abstract map:
-                callbackfn: RecursiveZodFormattedError.Map.Callbackfn * ?thisArg: Agents.AgentContext -> Array<'U>
+                callbackfn: RecursiveZodFormattedError.Map.Callbackfn * ?thisArg: Agents.AgentContext -> ResizeArray<'U>
 
             abstract forEach:
                 callbackfn: RecursiveZodFormattedError.ForEach.Callbackfn * ?thisArg: Agents.AgentContext -> unit
@@ -35431,15 +35661,15 @@ module rec ``.`` =
 
             abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
             abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-            abstract unshift: [<ParamArray>] items: Array -> float
-            abstract splice: start: float * ?deleteCount: float -> Array
+            abstract unshift: [<ParamArray>] items: ResizeArray -> float
+            abstract splice: start: float * ?deleteCount: float -> ResizeArray
             abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-            abstract slice: ?start: float * ?``end``: float -> Array
+            abstract slice: ?start: float * ?``end``: float -> ResizeArray
             abstract shift: unit -> option<'T>
-            abstract reverse: unit -> Array
+            abstract reverse: unit -> ResizeArray
             abstract join: ?separator: string -> string
-            abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-            abstract push: [<ParamArray>] items: Array -> float
+            abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+            abstract push: [<ParamArray>] items: ResizeArray -> float
             abstract pop: unit -> option<'T>
             abstract toLocaleString: unit -> string
             abstract toString: unit -> string

@@ -43,6 +43,19 @@ let main argv =
                                  |> RenderScopeStore.TypeRef.Unsafe.createAtom
                                  |> RenderScopeStore.TypeRefRender.Unsafe.createFromKind false
                              { renderScope with TypeRef = exnRef; Render = Render.RefOnly exnRef }
+                     // TS lib.es `Array<T>` — substitute with F#'s `ResizeArray`
+                     // (alias for Collections.Generic.List<T>). Bare `Array`
+                     // resolves to System.Array which is non-generic (FS0033
+                     // when applied with type args). Same intrinsic name as
+                     // the generator uses for TS `T[]` syntax (Intrinsic.array)
+                     // so both shapes converge on `ResizeArray<T>`.
+                     | ResolvedType.Interface ({ IsLibEs = true } as iface) when Name.Case.valueOrSource iface.Name = "Array" ->
+                         fun renderScope ->
+                             let arrayRef =
+                                 RenderScopeStore.TypeRefAtom.Unsafe.createIntrinsic Intrinsic.array
+                                 |> RenderScopeStore.TypeRef.Unsafe.createAtom
+                                 |> RenderScopeStore.TypeRefRender.Unsafe.createFromKind false
+                             { renderScope with TypeRef = arrayRef; Render = Render.RefOnly arrayRef }
                      | ResolvedType.Interface { IsLibEs = true }
                      | ResolvedType.Class { IsLibEs = true }
                      | ResolvedType.Enum { IsLibEs = true } -> fun renderScope ->

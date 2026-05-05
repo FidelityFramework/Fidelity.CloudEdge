@@ -48,7 +48,7 @@ module rec Cloudflare =
 
             module rec Run =
                 type Inputs =
-                    abstract requests: Array<proptypekey<proptypekey<'AiModelList, 'Name>, Inputs.Requests>> with get, set
+                    abstract requests: ResizeArray<proptypekey<proptypekey<'AiModelList, 'Name>, Inputs.Requests>> with get, set
 
                 type Options =
                     abstract signal: option<AbortSignal> with get, set
@@ -56,7 +56,7 @@ module rec Cloudflare =
                     abstract prefix: option<D1SessionBookmark> with get, set
                     abstract returnRawResponse: option<bool> with get, set
                     abstract gateway: option<GatewayOptions> with get, set
-                    abstract tags: option<Array<D1SessionBookmark>> with get, set
+                    abstract tags: option<ResizeArray<D1SessionBookmark>> with get, set
                     abstract websocket: option<bool> with get, set
                     abstract queueRequest: option<bool> with get, set
 
@@ -138,8 +138,8 @@ module rec Cloudflare =
                 abstract requestId: D1SessionBookmark with get, set
 
             type Models =
-                abstract properties: Array<Models.Properties> with get, set
-                abstract tags: Array<D1SessionBookmark> with get, set
+                abstract properties: ResizeArray<Models.Properties> with get, set
+                abstract tags: ResizeArray<D1SessionBookmark> with get, set
                 abstract task: Models.Task with get, set
                 abstract description: D1SessionBookmark with get, set
                 abstract name: D1SessionBookmark with get, set
@@ -163,7 +163,7 @@ module rec Cloudflare =
 
                     type Message =
                         [<EmitProperty("tool_calls")>]
-                        abstract toolCalls: option<Array<AiTextGenerationToolOutput>> with get, set
+                        abstract toolCalls: option<ResizeArray<AiTextGenerationToolOutput>> with get, set
 
                         [<EmitProperty("reasoning_content")>]
                         abstract reasoningContent: option<D1SessionBookmark> with get, set
@@ -223,7 +223,7 @@ module rec Cloudflare =
 
                     type Parameters =
                         abstract properties: Parameters.Properties with get, set
-                        abstract required: option<Array<D1SessionBookmark>> with get, set
+                        abstract required: option<ResizeArray<D1SessionBookmark>> with get, set
 
                         [<EmitProperty("type")>]
                         abstract ``type``: D1SessionBookmark with get, set
@@ -240,7 +240,7 @@ module rec Cloudflare =
                 abstract name: D1SessionBookmark with get, set
 
             type Messages =
-                abstract content: U2<Array<Messages.Content>, string> with get, set
+                abstract content: U2<ResizeArray<Messages.Content>, string> with get, set
                 abstract role: D1SessionBookmark with get, set
 
         module rec AiCfAisingaporeGemmaSeaLionV427BItTextCompletionResponse =
@@ -325,7 +325,7 @@ module rec Cloudflare =
                                                     abstract confidence: option<float> with get, set
 
                                 type Alternatives =
-                                    abstract words: option<Array<Alternatives.Words>> with get, set
+                                    abstract words: option<ResizeArray<Alternatives.Words>> with get, set
                                     abstract transcript: option<D1SessionBookmark> with get, set
                                     abstract confidence: option<float> with get, set
 
@@ -353,11 +353,11 @@ module rec Cloudflare =
                                     abstract text: option<D1SessionBookmark> with get, set
 
                     type Channels =
-                        abstract alternatives: option<Array<Channels.Alternatives>> with get, set
+                        abstract alternatives: option<ResizeArray<Channels.Alternatives>> with get, set
 
                     type Sentiments =
                         abstract average: option<Sentiments.Average> with get, set
-                        abstract segments: option<Array<Sentiments.Segments>> with get, set
+                        abstract segments: option<ResizeArray<Sentiments.Segments>> with get, set
 
                     type Summary =
                         abstract short: option<D1SessionBookmark> with get, set
@@ -366,11 +366,11 @@ module rec Cloudflare =
             type Results =
                 abstract sentiments: option<Results.Sentiments> with get, set
                 abstract summary: option<Results.Summary> with get, set
-                abstract channels: option<Array<Results.Channels>> with get, set
+                abstract channels: option<ResizeArray<Results.Channels>> with get, set
 
         module rec AiCfGoogleGemma312BItMessages =
             type Messages =
-                abstract content: option<U2<Array<Messages.Content>, string>> with get, set
+                abstract content: option<U2<ResizeArray<Messages.Content>, string>> with get, set
                 abstract role: option<D1SessionBookmark> with get, set
 
         module rec AiCfGoogleGemma312BItOutput =
@@ -430,7 +430,7 @@ module rec Cloudflare =
 
             type PostProcessedOutputs =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
+                abstract toolCalls: option<ResizeArray<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
                 abstract response: D1SessionBookmark with get, set
@@ -454,7 +454,7 @@ module rec Cloudflare =
                         abstract ``type``: option<D1SessionBookmark> with get, set
 
             type Messages =
-                abstract content: option<U3<Array<Messages.Content>, Messages.Content, string>> with get, set
+                abstract content: option<U3<ResizeArray<Messages.Content>, Messages.Content, string>> with get, set
 
                 [<EmitProperty("tool_call_id")>]
                 abstract toolCallId: option<D1SessionBookmark> with get, set
@@ -496,7 +496,7 @@ module rec Cloudflare =
                     abstract promptTokens: option<float> with get, set
 
             type Response =
-                abstract categories: option<Array<D1SessionBookmark>> with get, set
+                abstract categories: option<ResizeArray<D1SessionBookmark>> with get, set
                 abstract safe: option<bool> with get, set
 
         module rec AiCfMistralaiMistralSmall3124BInstructOutput =
@@ -527,7 +527,7 @@ module rec Cloudflare =
                         abstract word: option<D1SessionBookmark> with get, set
 
             type Segments =
-                abstract words: option<Array<Segments.Words>> with get, set
+                abstract words: option<ResizeArray<Segments.Words>> with get, set
 
                 [<EmitProperty("no_speech_prob")>]
                 abstract noSpeechProb: option<float> with get, set
@@ -619,7 +619,7 @@ module rec Cloudflare =
                 [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
-                abstract image: U2<Array<float>, Inputs.Image> with get, set
+                abstract image: U2<ResizeArray<float>, Inputs.Image> with get, set
 
                 [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
@@ -916,7 +916,7 @@ module rec Cloudflare =
 
                     abstract stream: option<bool> with get, set
                     abstract model: option<D1SessionBookmark> with get, set
-                    abstract messages: Array<AiSearchMessage> with get, set
+                    abstract messages: ResizeArray<AiSearchMessage> with get, set
                     abstract Item: key: D1SessionBookmark -> option<obj>
 
             module rec List =
@@ -964,10 +964,10 @@ module rec Cloudflare =
                                         abstract eq: option<U3<Item.Eq, string, float>> with get, set
 
                                         [<EmitProperty("$nin")>]
-                                        abstract nin: option<Array<U3<Item.Nin, string, float>>> with get, set
+                                        abstract nin: option<ResizeArray<U3<Item.Nin, string, float>>> with get, set
 
                                         [<EmitProperty("$in")>]
-                                        abstract ``in``: option<Array<U3<Item.In, string, float>>> with get, set
+                                        abstract ``in``: option<ResizeArray<U3<Item.In, string, float>>> with get, set
 
                             type Filter =
                                 abstract Item:
@@ -1021,7 +1021,7 @@ module rec Cloudflare =
                     [<EmitProperty("ai_search_options")>]
                     abstract aiSearchOptions: option<AiSearchOptions> with get, set
 
-                    abstract messages: Array<AiSearchMessage> with get, set
+                    abstract messages: ResizeArray<AiSearchMessage> with get, set
                     abstract query: option<unit> with get, set
                     abstract messages: option<unit> with get, set
                     abstract query: D1SessionBookmark with get, set
@@ -1069,7 +1069,7 @@ module rec Cloudflare =
 
                             type RetrievalOptions =
                                 [<EmitProperty("boost_by")>]
-                                abstract boostBy: option<Array<RetrievalOptions.BoostBy>> with get, set
+                                abstract boostBy: option<ResizeArray<RetrievalOptions.BoostBy>> with get, set
 
                                 [<EmitProperty("keyword_match_mode")>]
                                 abstract keywordMatchMode: option<RetrievalOptions.KeywordMatchMode> with get, set
@@ -1084,7 +1084,7 @@ module rec Cloudflare =
                     abstract ``namespace``: option<string> with get, set
 
                     [<EmitProperty("custom_metadata")>]
-                    abstract customMetadata: option<Array<Config.CustomMetadata>> with get, set
+                    abstract customMetadata: option<ResizeArray<Config.CustomMetadata>> with get, set
 
                     [<EmitProperty("cache_threshold")>]
                     abstract cacheThreshold: option<Config.CacheThreshold> with get, set
@@ -1167,14 +1167,14 @@ module rec Cloudflare =
                 abstract queued: option<float> with get, set
 
             type Search =
-                abstract chunks: Array<Search.Chunks> with get, set
+                abstract chunks: ResizeArray<Search.Chunks> with get, set
 
                 [<EmitProperty("search_query")>]
                 abstract searchQuery: D1SessionBookmark with get, set
 
             type ChatCompletions =
-                abstract chunks: Array<ChatCompletions.Chunks> with get, set
-                abstract choices: Array<ChatCompletions.Choices> with get, set
+                abstract chunks: ResizeArray<ChatCompletions.Chunks> with get, set
+                abstract choices: ResizeArray<ChatCompletions.Choices> with get, set
                 abstract model: option<D1SessionBookmark> with get, set
                 abstract object: option<D1SessionBookmark> with get, set
                 abstract id: option<D1SessionBookmark> with get, set
@@ -1247,7 +1247,7 @@ module rec Cloudflare =
                 [<EmitProperty("result_info")>]
                 abstract resultInfo: Chunks.ResultInfo with get, set
 
-                abstract result: Array<AiSearchItemChunk> with get, set
+                abstract result: ResizeArray<AiSearchItemChunk> with get, set
 
             type Download =
                 abstract size: float with get, set
@@ -1259,7 +1259,7 @@ module rec Cloudflare =
                 [<EmitProperty("result_info")>]
                 abstract resultInfo: Logs.ResultInfo with get, set
 
-                abstract result: Array<AiSearchItemLog> with get, set
+                abstract result: ResizeArray<AiSearchItemLog> with get, set
 
         module rec AiSearchItemChunk =
             type Item =
@@ -1329,7 +1329,7 @@ module rec Cloudflare =
                 [<EmitProperty("result_info")>]
                 abstract resultInfo: option<List.ResultInfo> with get, set
 
-                abstract result: Array<AiSearchItemInfo> with get, set
+                abstract result: ResizeArray<AiSearchItemInfo> with get, set
 
         module rec AiSearchJob =
             module rec Logs =
@@ -1365,7 +1365,7 @@ module rec Cloudflare =
                 [<EmitProperty("result_info")>]
                 abstract resultInfo: option<Logs.ResultInfo> with get, set
 
-                abstract result: Array<AiSearchJobLog> with get, set
+                abstract result: ResizeArray<AiSearchJobLog> with get, set
 
         module rec AiSearchJobLogsResponse =
             module rec List =
@@ -1411,7 +1411,7 @@ module rec Cloudflare =
                 [<EmitProperty("result_info")>]
                 abstract resultInfo: option<List.ResultInfo> with get, set
 
-                abstract result: Array<AiSearchJobInfo> with get, set
+                abstract result: ResizeArray<AiSearchJobInfo> with get, set
 
         module rec AiSearchListItemsResponse =
             module rec List =
@@ -1455,10 +1455,10 @@ module rec Cloudflare =
                     module rec Filter =
                         type Item =
                             [<EmitProperty("$nin")>]
-                            abstract nin: option<Array<U3<Item.Nin, string, float>>> with get, set
+                            abstract nin: option<ResizeArray<U3<Item.Nin, string, float>>> with get, set
 
                             [<EmitProperty("$in")>]
-                            abstract ``in``: option<Array<U3<Item.In, string, float>>> with get, set
+                            abstract ``in``: option<ResizeArray<U3<Item.In, string, float>>> with get, set
 
                             [<EmitProperty("$gte")>]
                             abstract gte: option<U3<Item.Gte, string, float>> with get, set
@@ -1484,7 +1484,7 @@ module rec Cloudflare =
 
             type Retrieval =
                 [<EmitProperty("boost_by")>]
-                abstract boostBy: option<Array<Retrieval.BoostBy>> with get, set
+                abstract boostBy: option<ResizeArray<Retrieval.BoostBy>> with get, set
 
                 [<EmitProperty("return_on_failure")>]
                 abstract returnOnFailure: option<bool> with get, set
@@ -1587,7 +1587,7 @@ module rec Cloudflare =
 
             type Retrieval =
                 [<EmitProperty("boost_by")>]
-                abstract boostBy: option<Array<Retrieval.BoostBy>> with get, set
+                abstract boostBy: option<ResizeArray<Retrieval.BoostBy>> with get, set
 
                 [<EmitProperty("return_on_failure")>]
                 abstract returnOnFailure: option<bool> with get, set
@@ -1644,7 +1644,7 @@ module rec Cloudflare =
                     abstract ``namespace``: option<D1SessionBookmark> with get, set
 
                     [<EmitProperty("custom_metadata")>]
-                    abstract customMetadata: option<Array<Config.CustomMetadata>> with get, set
+                    abstract customMetadata: option<ResizeArray<Config.CustomMetadata>> with get, set
 
                     [<EmitProperty("cache_threshold")>]
                     abstract cacheThreshold: option<Config.CacheThreshold> with get, set
@@ -1750,7 +1750,7 @@ module rec Cloudflare =
 
                                 type RetrievalOptions =
                                     [<EmitProperty("boost_by")>]
-                                    abstract boostBy: option<Array<RetrievalOptions.BoostBy>> with get, set
+                                    abstract boostBy: option<ResizeArray<RetrievalOptions.BoostBy>> with get, set
 
                                     [<EmitProperty("keyword_match_mode")>]
                                     abstract keywordMatchMode: option<RetrievalOptions.KeywordMatchMode> with get, set
@@ -1762,7 +1762,7 @@ module rec Cloudflare =
                         abstract syncInterval: option<Result.SyncInterval> with get, set
 
                         [<EmitProperty("custom_metadata")>]
-                        abstract customMetadata: option<Array<Result.CustomMetadata>> with get, set
+                        abstract customMetadata: option<ResizeArray<Result.CustomMetadata>> with get, set
 
                         [<EmitProperty("cache_threshold")>]
                         abstract cacheThreshold: option<Result.CacheThreshold> with get, set
@@ -1933,7 +1933,7 @@ module rec Cloudflare =
 
                 type Params =
                     [<EmitProperty("instance_ids")>]
-                    abstract instanceIds: Array<D1SessionBookmark> with get, set
+                    abstract instanceIds: ResizeArray<D1SessionBookmark> with get, set
 
                     abstract cache: option<Params.Cache> with get, set
                     abstract reranking: option<Params.Reranking> with get, set
@@ -1946,7 +1946,7 @@ module rec Cloudflare =
                     [<EmitProperty("ai_search_options")>]
                     abstract aiSearchOptions: AiSearchMultiSearchOptions with get, set
 
-                    abstract messages: Array<AiSearchMessage> with get, set
+                    abstract messages: ResizeArray<AiSearchMessage> with get, set
                     abstract query: option<unit> with get, set
                     abstract messages: option<unit> with get, set
                     abstract query: D1SessionBookmark with get, set
@@ -1977,8 +1977,8 @@ module rec Cloudflare =
                 abstract ``type``: D1SessionBookmark with get, set
 
                 abstract id: D1SessionBookmark with get, set
-                abstract errors: option<Array<AiSearchMultiSearchError>> with get, set
-                abstract chunks: Array<AiSearchMultiSearchChunk> with get, set
+                abstract errors: option<ResizeArray<AiSearchMultiSearchError>> with get, set
+                abstract chunks: ResizeArray<AiSearchMultiSearchChunk> with get, set
 
                 [<EmitProperty("search_query")>]
                 abstract searchQuery: D1SessionBookmark with get, set
@@ -1987,7 +1987,7 @@ module rec Cloudflare =
                 [<EmitProperty("result_info")>]
                 abstract resultInfo: option<List.ResultInfo> with get, set
 
-                abstract result: Array<AiSearchInstanceInfo> with get, set
+                abstract result: ResizeArray<AiSearchInstanceInfo> with get, set
 
         module rec AiSearchOptions =
             module rec Retrieval =
@@ -2103,7 +2103,7 @@ module rec Cloudflare =
                                                             abstract Item: key: D1SessionBookmark -> Properties.Item
 
                                     type Parameters =
-                                        abstract required: Array<D1SessionBookmark> with get, set
+                                        abstract required: ResizeArray<D1SessionBookmark> with get, set
                                         abstract properties: Parameters.Properties with get, set
 
                                         [<EmitProperty("type")>]
@@ -2139,7 +2139,7 @@ module rec Cloudflare =
                                                 abstract Item: key: D1SessionBookmark -> Properties.Item
 
                         type Parameters =
-                            abstract required: Array<D1SessionBookmark> with get, set
+                            abstract required: ResizeArray<D1SessionBookmark> with get, set
                             abstract properties: Parameters.Properties with get, set
 
                             [<EmitProperty("type")>]
@@ -2259,7 +2259,7 @@ module rec Cloudflare =
                             abstract Item: key: D1SessionBookmark -> option<obj>
 
                     type Data =
-                        abstract content: Array<ChatCompletionContentPartText> with get, set
+                        abstract content: ResizeArray<ChatCompletionContentPartText> with get, set
                         abstract attributes: WebAssembly.ModuleImports with get, set
                         abstract score: float with get, set
                         abstract filename: D1SessionBookmark with get, set
@@ -2341,44 +2341,44 @@ module rec Cloudflare =
 
             type PostProcessedOutputs =
                 abstract vtt: option<D1SessionBookmark> with get, set
-                abstract words: option<Array<PostProcessedOutputs.Words>> with get, set
+                abstract words: option<ResizeArray<PostProcessedOutputs.Words>> with get, set
                 abstract text: option<D1SessionBookmark> with get, set
 
         module rec BaseAiCfBaaiBgeBaseEnV15 =
             type Inputs =
-                abstract requests: Array<Inputs.Requests> with get, set
+                abstract requests: ResizeArray<Inputs.Requests> with get, set
                 abstract pooling: option<Inputs.Pooling> with get, set
-                abstract text: U2<Array<D1SessionBookmark>, string> with get, set
+                abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
 
             type PostProcessedOutputs =
                 abstract pooling: option<PostProcessedOutputs.Pooling> with get, set
-                abstract data: option<Array<AiSentenceSimilarityOutput>> with get, set
+                abstract data: option<ResizeArray<AiSentenceSimilarityOutput>> with get, set
                 abstract shape: option<AiSentenceSimilarityOutput> with get, set
 
         module rec BaseAiCfBaaiBgeLargeEnV15 =
             type PostProcessedOutputs =
                 abstract pooling: option<PostProcessedOutputs.Pooling> with get, set
-                abstract data: option<Array<AiSentenceSimilarityOutput>> with get, set
+                abstract data: option<ResizeArray<AiSentenceSimilarityOutput>> with get, set
                 abstract shape: option<AiSentenceSimilarityOutput> with get, set
 
             type Inputs =
                 abstract pooling: option<Inputs.Pooling> with get, set
-                abstract text: U2<Array<D1SessionBookmark>, string> with get, set
-                abstract requests: Array<Inputs.Requests> with get, set
+                abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
+                abstract requests: ResizeArray<Inputs.Requests> with get, set
 
         module rec BaseAiCfBaaiBgeM3 =
             type Inputs =
-                abstract requests: Array<U2<AiCfBaaiBgeM3InputQueryAndContexts1, AiCfBaaiBgeM3InputEmbedding1>> with get, set
+                abstract requests: ResizeArray<U2<AiCfBaaiBgeM3InputQueryAndContexts1, AiCfBaaiBgeM3InputEmbedding1>> with get, set
 
         module rec BaseAiCfBaaiBgeSmallEnV15 =
             type Inputs =
                 abstract pooling: option<Inputs.Pooling> with get, set
-                abstract text: U2<Array<D1SessionBookmark>, string> with get, set
-                abstract requests: Array<Inputs.Requests> with get, set
+                abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
+                abstract requests: ResizeArray<Inputs.Requests> with get, set
 
             type PostProcessedOutputs =
                 abstract pooling: option<PostProcessedOutputs.Pooling> with get, set
-                abstract data: option<Array<AiSentenceSimilarityOutput>> with get, set
+                abstract data: option<ResizeArray<AiSentenceSimilarityOutput>> with get, set
                 abstract shape: option<AiSentenceSimilarityOutput> with get, set
 
         module rec BaseAiCfGoogleGemma312BIt =
@@ -2400,7 +2400,7 @@ module rec Cloudflare =
 
             type PostProcessedOutputs =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
+                abstract toolCalls: option<ResizeArray<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
                 abstract response: D1SessionBookmark with get, set
@@ -2421,15 +2421,15 @@ module rec Cloudflare =
                                                             module rec Logprobs =
                                                                 module rec Content =
                                                                     type TopLogprobs =
-                                                                        abstract bytes: option<Array<float>> with get, set
+                                                                        abstract bytes: option<ResizeArray<float>> with get, set
                                                                         abstract logprob: float with get, set
                                                                         abstract token: D1SessionBookmark with get, set
 
                                                 type Content =
                                                     [<EmitProperty("top_logprobs")>]
-                                                    abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
+                                                    abstract topLogprobs: ResizeArray<ChatCompletionTopLogprob> with get, set
 
-                                                    abstract bytes: option<Array<float>> with get, set
+                                                    abstract bytes: option<ResizeArray<float>> with get, set
                                                     abstract logprob: float with get, set
                                                     abstract token: D1SessionBookmark with get, set
 
@@ -2474,17 +2474,17 @@ module rec Cloudflare =
                                     abstract functionCall: option<Message.FunctionCall> with get, set
 
                                     [<EmitProperty("tool_calls")>]
-                                    abstract toolCalls: option<Array<ChatCompletionMessageToolCall>> with get, set
+                                    abstract toolCalls: option<ResizeArray<ChatCompletionMessageToolCall>> with get, set
 
                                     abstract audio: option<ChatCompletionAudio> with get, set
-                                    abstract annotations: option<Array<ChatCompletionUrlCitation>> with get, set
+                                    abstract annotations: option<ResizeArray<ChatCompletionUrlCitation>> with get, set
                                     abstract refusal: option<string> with get, set
                                     abstract content: option<string> with get, set
                                     abstract role: Message.Role with get, set
 
                                 type Logprobs =
-                                    abstract refusal: option<Array<ChatCompletionTokenLogprob>> with get, set
-                                    abstract content: option<Array<ChatCompletionTokenLogprob>> with get, set
+                                    abstract refusal: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
+                                    abstract content: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
 
                     module rec Usage =
                         module rec PostProcessedOutputs =
@@ -2545,7 +2545,7 @@ module rec Cloudflare =
         module rec BaseAiCfMetaLlama3211BVisionInstruct =
             type PostProcessedOutputs =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
+                abstract toolCalls: option<ResizeArray<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract response: option<D1SessionBookmark> with get, set
 
@@ -2564,7 +2564,7 @@ module rec Cloudflare =
 
             type PostProcessedOutputs =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
+                abstract toolCalls: option<ResizeArray<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
                 abstract response: D1SessionBookmark with get, set
@@ -2600,7 +2600,7 @@ module rec Cloudflare =
 
             type PostProcessedOutputs =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
+                abstract toolCalls: option<ResizeArray<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
                 abstract response: D1SessionBookmark with get, set
@@ -2611,7 +2611,7 @@ module rec Cloudflare =
                 abstract translatedText: option<D1SessionBookmark> with get, set
 
             type Inputs =
-                abstract requests: Array<Inputs.Requests> with get, set
+                abstract requests: ResizeArray<Inputs.Requests> with get, set
 
                 [<EmitProperty("target_lang")>]
                 abstract targetLang: D1SessionBookmark with get, set
@@ -2636,7 +2636,7 @@ module rec Cloudflare =
 
             type PostProcessedOutputs =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
+                abstract toolCalls: option<ResizeArray<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
                 abstract response: D1SessionBookmark with get, set
@@ -2657,15 +2657,15 @@ module rec Cloudflare =
                                                             module rec Logprobs =
                                                                 module rec Content =
                                                                     type TopLogprobs =
-                                                                        abstract bytes: option<Array<float>> with get, set
+                                                                        abstract bytes: option<ResizeArray<float>> with get, set
                                                                         abstract logprob: float with get, set
                                                                         abstract token: D1SessionBookmark with get, set
 
                                                 type Content =
                                                     [<EmitProperty("top_logprobs")>]
-                                                    abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
+                                                    abstract topLogprobs: ResizeArray<ChatCompletionTopLogprob> with get, set
 
-                                                    abstract bytes: option<Array<float>> with get, set
+                                                    abstract bytes: option<ResizeArray<float>> with get, set
                                                     abstract logprob: float with get, set
                                                     abstract token: D1SessionBookmark with get, set
 
@@ -2713,8 +2713,8 @@ module rec Cloudflare =
                                 type Message = | [<CompiledName("assistant")>] Assistant
 
                                 type Logprobs =
-                                    abstract refusal: option<Array<ChatCompletionTokenLogprob>> with get, set
-                                    abstract content: option<Array<ChatCompletionTokenLogprob>> with get, set
+                                    abstract refusal: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
+                                    abstract content: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
 
                     module rec Usage =
                         module rec PostProcessedOutputs =
@@ -2771,7 +2771,7 @@ module rec Cloudflare =
                 abstract systemFingerprint: option<string> with get, set
 
                 abstract usage: option<CompletionUsage> with get, set
-                abstract choices: Array<ChatCompletionChoice> with get, set
+                abstract choices: ResizeArray<ChatCompletionChoice> with get, set
                 abstract model: D1SessionBookmark with get, set
                 abstract created: float with get, set
                 abstract object: D1SessionBookmark with get, set
@@ -2793,15 +2793,15 @@ module rec Cloudflare =
                                                             module rec Logprobs =
                                                                 module rec Content =
                                                                     type TopLogprobs =
-                                                                        abstract bytes: option<Array<float>> with get, set
+                                                                        abstract bytes: option<ResizeArray<float>> with get, set
                                                                         abstract logprob: float with get, set
                                                                         abstract token: D1SessionBookmark with get, set
 
                                                 type Content =
                                                     [<EmitProperty("top_logprobs")>]
-                                                    abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
+                                                    abstract topLogprobs: ResizeArray<ChatCompletionTopLogprob> with get, set
 
-                                                    abstract bytes: option<Array<float>> with get, set
+                                                    abstract bytes: option<ResizeArray<float>> with get, set
                                                     abstract logprob: float with get, set
                                                     abstract token: D1SessionBookmark with get, set
 
@@ -2846,18 +2846,18 @@ module rec Cloudflare =
                                                     abstract id: D1SessionBookmark with get, set
 
                                 type Logprobs =
-                                    abstract refusal: option<Array<ChatCompletionTokenLogprob>> with get, set
-                                    abstract content: option<Array<ChatCompletionTokenLogprob>> with get, set
+                                    abstract refusal: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
+                                    abstract content: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
 
                                 type Message =
                                     [<EmitProperty("function_call")>]
                                     abstract functionCall: option<Message.FunctionCall> with get, set
 
                                     [<EmitProperty("tool_calls")>]
-                                    abstract toolCalls: option<Array<ChatCompletionMessageToolCall>> with get, set
+                                    abstract toolCalls: option<ResizeArray<ChatCompletionMessageToolCall>> with get, set
 
                                     abstract audio: option<ChatCompletionAudio> with get, set
-                                    abstract annotations: option<Array<ChatCompletionUrlCitation>> with get, set
+                                    abstract annotations: option<ResizeArray<ChatCompletionUrlCitation>> with get, set
                                     abstract refusal: option<string> with get, set
                                     abstract content: option<string> with get, set
                                     abstract role: Message.Role with get, set
@@ -2938,7 +2938,7 @@ module rec Cloudflare =
 
                                 type Logprobs =
                                     [<EmitProperty("top_logprobs")>]
-                                    abstract topLogprobs: option<Array<TopLogprob>> with get, set
+                                    abstract topLogprobs: option<ResizeArray<TopLogprob>> with get, set
 
                                     abstract logprob: float with get, set
                                     abstract token: D1SessionBookmark with get, set
@@ -3056,7 +3056,7 @@ module rec Cloudflare =
                 abstract enableThinking: option<bool> with get, set
 
             type Prediction =
-                abstract content: U2<Array<ChatCompletionContentPartText>, string> with get, set
+                abstract content: U2<ResizeArray<ChatCompletionContentPartText>, string> with get, set
 
                 [<EmitProperty("type")>]
                 abstract ``type``: Prediction.Type with get, set
@@ -3195,7 +3195,7 @@ module rec Cloudflare =
 
             type PostProcessedOutputs =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
+                abstract toolCalls: option<ResizeArray<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
                 abstract response: D1SessionBookmark with get, set
@@ -3215,7 +3215,7 @@ module rec Cloudflare =
 
             type PostProcessedOutputs =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
+                abstract toolCalls: option<ResizeArray<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
                 abstract response: D1SessionBookmark with get, set
@@ -3225,7 +3225,7 @@ module rec Cloudflare =
                 [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
-                abstract image: U2<Array<float>, Inputs.Image> with get, set
+                abstract image: U2<ResizeArray<float>, Inputs.Image> with get, set
 
                 [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
@@ -3263,15 +3263,15 @@ module rec Cloudflare =
                                                             module rec Logprobs =
                                                                 module rec Content =
                                                                     type TopLogprobs =
-                                                                        abstract bytes: option<Array<float>> with get, set
+                                                                        abstract bytes: option<ResizeArray<float>> with get, set
                                                                         abstract logprob: float with get, set
                                                                         abstract token: D1SessionBookmark with get, set
 
                                                 type Content =
                                                     [<EmitProperty("top_logprobs")>]
-                                                    abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
+                                                    abstract topLogprobs: ResizeArray<ChatCompletionTopLogprob> with get, set
 
-                                                    abstract bytes: option<Array<float>> with get, set
+                                                    abstract bytes: option<ResizeArray<float>> with get, set
                                                     abstract logprob: float with get, set
                                                     abstract token: D1SessionBookmark with get, set
 
@@ -3315,8 +3315,8 @@ module rec Cloudflare =
                                 type Message = | [<CompiledName("assistant")>] Assistant
 
                                 type Logprobs =
-                                    abstract refusal: option<Array<ChatCompletionTokenLogprob>> with get, set
-                                    abstract content: option<Array<ChatCompletionTokenLogprob>> with get, set
+                                    abstract refusal: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
+                                    abstract content: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
 
                     module rec Usage =
                         module rec PostProcessedOutputs =
@@ -3374,7 +3374,7 @@ module rec Cloudflare =
                 abstract systemFingerprint: option<string> with get, set
 
                 abstract usage: option<CompletionUsage> with get, set
-                abstract choices: Array<ChatCompletionChoice> with get, set
+                abstract choices: ResizeArray<ChatCompletionChoice> with get, set
                 abstract model: D1SessionBookmark with get, set
                 abstract created: float with get, set
                 abstract object: D1SessionBookmark with get, set
@@ -3390,7 +3390,7 @@ module rec Cloudflare =
 
         module rec BaseAiImageTextToText =
             type Inputs =
-                abstract messages: option<Array<RoleScopedChatInput>> with get, set
+                abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
                 abstract raw: option<bool> with get, set
 
                 [<EmitProperty("presence_penalty")>]
@@ -3436,7 +3436,7 @@ module rec Cloudflare =
                 abstract description: D1SessionBookmark with get, set
 
             type Inputs =
-                abstract messages: option<Array<RoleScopedChatInput>> with get, set
+                abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
                 abstract raw: option<bool> with get, set
 
                 [<EmitProperty("presence_penalty")>]
@@ -3466,7 +3466,7 @@ module rec Cloudflare =
 
         module rec BaseAiMultimodalEmbeddings =
             type Inputs =
-                abstract messages: option<Array<RoleScopedChatInput>> with get, set
+                abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
                 abstract raw: option<bool> with get, set
 
                 [<EmitProperty("presence_penalty")>]
@@ -3510,7 +3510,7 @@ module rec Cloudflare =
 
         module rec BaseAiSentenceSimilarity =
             type Inputs =
-                abstract sentences: Array<D1SessionBookmark> with get, set
+                abstract sentences: ResizeArray<D1SessionBookmark> with get, set
                 abstract source: D1SessionBookmark with get, set
 
         module rec BaseAiSummarization =
@@ -3534,10 +3534,10 @@ module rec Cloudflare =
 
         module rec BaseAiTextEmbeddings =
             type Inputs =
-                abstract text: U2<Array<D1SessionBookmark>, string> with get, set
+                abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
 
             type PostProcessedOutputs =
-                abstract data: Array<AiSentenceSimilarityOutput> with get, set
+                abstract data: ResizeArray<AiSentenceSimilarityOutput> with get, set
                 abstract shape: AiSentenceSimilarityOutput with get, set
 
         module rec BaseAiTextGeneration =
@@ -3576,7 +3576,7 @@ module rec Cloudflare =
                                                                             key: D1SessionBookmark -> Properties.Item
 
                                                 type Parameters =
-                                                    abstract required: Array<D1SessionBookmark> with get, set
+                                                    abstract required: ResizeArray<D1SessionBookmark> with get, set
                                                     abstract properties: Parameters.Properties with get, set
 
                                                     [<EmitProperty("type")>]
@@ -3630,15 +3630,15 @@ module rec Cloudflare =
                 abstract response: option<D1SessionBookmark> with get, set
 
             type Inputs =
-                abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
+                abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
 
                 abstract tools:
-                    option<U3<Array<AiTextGenerationToolInput>, Array<AiTextGenerationToolLegacyInput>, obj>> with get, set
+                    option<U3<ResizeArray<AiTextGenerationToolInput>, ResizeArray<AiTextGenerationToolLegacyInput>, obj>> with get, set
 
                 [<EmitProperty("response_format")>]
                 abstract responseFormat: option<AiTextGenerationResponseFormat> with get, set
 
-                abstract messages: option<Array<RoleScopedChatInput>> with get, set
+                abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
 
                 [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
@@ -3755,10 +3755,10 @@ module rec Cloudflare =
                         abstract functionCall: option<Message.FunctionCall> with get, set
 
                         [<EmitProperty("tool_calls")>]
-                        abstract toolCalls: option<Array<ChatCompletionMessageToolCall>> with get, set
+                        abstract toolCalls: option<ResizeArray<ChatCompletionMessageToolCall>> with get, set
 
                         abstract audio: option<ChatCompletionAudio> with get, set
-                        abstract annotations: option<Array<ChatCompletionUrlCitation>> with get, set
+                        abstract annotations: option<ResizeArray<ChatCompletionUrlCitation>> with get, set
                         abstract refusal: option<string> with get, set
                         abstract content: option<string> with get, set
                         abstract role: Message.Role with get, set
@@ -3886,7 +3886,7 @@ module rec Cloudflare =
                         abstract Item: key: D1SessionBookmark -> option<obj>
 
                 type AllowedTools =
-                    abstract tools: Array<WebAssembly.ModuleImports> with get, set
+                    abstract tools: ResizeArray<WebAssembly.ModuleImports> with get, set
                     abstract mode: AllowedTools.Mode with get, set
 
         module rec ChatCompletionToolChoiceCustom =
@@ -4501,7 +4501,7 @@ module rec Cloudflare =
                         abstract payload: WebAssembly.ModuleImports with get, set
 
                 type T =
-                    abstract Invoke: [<ParamArray>] args: Array<option<obj>> -> option<obj>
+                    abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> option<obj>
 
             module rec WorkflowStep =
                 module rec Do =
@@ -5562,11 +5562,11 @@ module rec Cloudflare =
 
             type Trace =
                 abstract Invoke:
-                    traces: Array<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
+                    traces: ResizeArray<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
             type Tail =
                 abstract Invoke:
-                    events: Array<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
+                    events: ResizeArray<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
             type Connect =
                 abstract Invoke: socket: Socket * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
@@ -5741,7 +5741,7 @@ module rec Cloudflare =
             type List =
                 abstract cacheStatus: option<string> with get, set
                 abstract cursor: D1SessionBookmark with get, set
-                abstract keys: Array<KVNamespaceListKey<'Metadata, 'Key>> with get, set
+                abstract keys: ResizeArray<KVNamespaceListKey<'Metadata, 'Key>> with get, set
 
                 [<EmitProperty("list_complete")>]
                 abstract listComplete: List.ListComplete with get, set
@@ -5759,7 +5759,7 @@ module rec Cloudflare =
                     abstract props: option<'Props> with get, set
 
             type T =
-                abstract Create: [<ParamArray>] args: Array<option<obj>> -> Rpc.EntrypointBranded
+                abstract Create: [<ParamArray>] args: ResizeArray<option<obj>> -> Rpc.EntrypointBranded
 
             type Get =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
@@ -5896,7 +5896,7 @@ module rec Cloudflare =
 
                             type Logprobs =
                                 [<EmitProperty("top_logprobs")>]
-                                abstract topLogprobs: option<Array<TopLogprob>> with get, set
+                                abstract topLogprobs: option<ResizeArray<TopLogprob>> with get, set
 
                                 abstract logprob: float with get, set
                                 abstract token: D1SessionBookmark with get, set
@@ -5906,7 +5906,7 @@ module rec Cloudflare =
                     abstract ``type``: Content.Type with get, set
 
                     abstract refusal: D1SessionBookmark with get, set
-                    abstract logprobs: option<Array<Logprob>> with get, set
+                    abstract logprobs: option<ResizeArray<Logprob>> with get, set
                     abstract text: D1SessionBookmark with get, set
 
             module rec Prompt =
@@ -5974,7 +5974,7 @@ module rec Cloudflare =
 
                                 type Logprobs =
                                     [<EmitProperty("top_logprobs")>]
-                                    abstract topLogprobs: option<Array<TopLogprob>> with get, set
+                                    abstract topLogprobs: option<ResizeArray<TopLogprob>> with get, set
 
                                     abstract logprob: float with get, set
                                     abstract token: D1SessionBookmark with get, set
@@ -5984,7 +5984,7 @@ module rec Cloudflare =
                         abstract ``type``: Content.Type with get, set
 
                         abstract refusal: D1SessionBookmark with get, set
-                        abstract logprobs: option<Array<Logprob>> with get, set
+                        abstract logprobs: option<ResizeArray<Logprob>> with get, set
                         abstract text: D1SessionBookmark with get, set
 
                     type Summary =
@@ -6023,13 +6023,13 @@ module rec Cloudflare =
 
                                 type Logprobs =
                                     [<EmitProperty("top_logprobs")>]
-                                    abstract topLogprobs: option<Array<TopLogprob>> with get, set
+                                    abstract topLogprobs: option<ResizeArray<TopLogprob>> with get, set
 
                                     abstract logprob: float with get, set
                                     abstract token: D1SessionBookmark with get, set
 
                     type Content =
-                        abstract logprobs: option<Array<Logprob>> with get, set
+                        abstract logprobs: option<ResizeArray<Logprob>> with get, set
 
                         [<EmitProperty("type")>]
                         abstract ``type``: Content.Type with get, set
@@ -6043,7 +6043,7 @@ module rec Cloudflare =
 
                 abstract status: Instructions.Status with get, set
                 abstract role: Instructions.Role with get, set
-                abstract content: Array<U2<Instructions.Content, Instructions.Content>> with get, set
+                abstract content: ResizeArray<U2<Instructions.Content, Instructions.Content>> with get, set
                 abstract id: D1SessionBookmark with get, set
 
         module rec ResponsesInput =
@@ -6103,11 +6103,11 @@ module rec Cloudflare =
                     abstract Item: key: D1SessionBookmark -> option<obj>
 
                 type T =
-                    abstract Invoke: [<ParamArray>] args: Array<option<obj>> -> option<obj>
+                    abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> option<obj>
 
             module rec StubBase =
                 type T =
-                    abstract Invoke: [<ParamArray>] args: Array<option<obj>> -> option<obj>
+                    abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> option<obj>
 
             module rec Stubify =
                 type Params =
@@ -6122,37 +6122,39 @@ module rec Cloudflare =
                     module rec Args =
                         module rec Every =
                             type Predicate =
-                                abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
                         module rec Find =
                             type Predicate =
-                                abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
 
                         module rec FindIndex =
                             type Predicate =
-                                abstract Invoke: value: 'T * index: float * obj: Array -> option<obj>
+                                abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                         module rec FlatMap =
                             type Callback =
                                 abstract Invoke:
-                                    this: 'This * value: 'T * index: float * array: Array -> U2<'U, ReadonlyArray<'U>>
+                                    this: 'This * value: 'T * index: float * array: ResizeArray ->
+                                        U2<'U, ReadonlyArray<'U>>
 
                         module rec ForEach =
                             type Callbackfn =
-                                abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
 
                         module rec Map =
                             type Callbackfn =
-                                abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
 
                         module rec Reduce =
                             type Callbackfn =
                                 abstract Invoke:
-                                    previousValue: 'T * currentValue: 'T * currentIndex: float * array: Array -> 'T
+                                    previousValue: 'T * currentValue: 'T * currentIndex: float * array: ResizeArray ->
+                                        'T
 
                         module rec Some =
                             type Predicate =
-                                abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
+                                abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
 
                         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                         type SymbolUnscopables =
@@ -6206,25 +6208,25 @@ module rec Cloudflare =
             type BaseType = option<obj>
 
             [<Import("@cloudflare/workers-types.Rpc", "UnstubifyAll")>]
-            type UnstubifyAll<'A when 'A :> Array<option<obj>>> =
+            type UnstubifyAll<'A when 'A :> ResizeArray<option<obj>>> =
                 [<EmitProperty("[Symbol.unscopables]")>]
                 abstract symbolUnscopables: UnstubifyAll.SymbolUnscopables with get
 
                 abstract length: float with get, set
                 abstract symbolIterator: unit -> ArrayIterator<'T>
-                abstract ``with``: index: float * value: 'T -> Array
-                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-                abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                abstract toReversed: unit -> Array
+                abstract ``with``: index: float * value: 'T -> ResizeArray
+                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+                abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                abstract toReversed: unit -> ResizeArray
                 abstract findLastIndex: predicate: UnstubifyAll.FindLastIndex.Predicate * ?thisArg: obj -> float
                 abstract findLast: predicate: UnstubifyAll.FindLast.Predicate * ?thisArg: obj -> option<'S>
                 abstract at: index: float -> option<'T>
 
                 abstract flat:
                     this: 'A * ?depth: 'D ->
-                        Array<proptypekey<UnstubifyAll.Flat, U2<UnstubifyAll.Flat, UnstubifyAll.Flat>>>
+                        ResizeArray<proptypekey<UnstubifyAll.Flat, U2<UnstubifyAll.Flat, UnstubifyAll.Flat>>>
 
-                abstract flatMap: callback: UnstubifyAll.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+                abstract flatMap: callback: UnstubifyAll.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                 abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                 abstract values: unit -> ArrayIterator<'T>
                 abstract keys: unit -> ArrayIterator<float>
@@ -6235,22 +6237,22 @@ module rec Cloudflare =
                 abstract find: predicate: UnstubifyAll.Find.Predicate * ?thisArg: obj -> option<'S>
                 abstract reduceRight: callbackfn: UnstubifyAll.ReduceRight.Callbackfn -> 'T
                 abstract reduce: callbackfn: UnstubifyAll.Reduce.Callbackfn -> 'T
-                abstract filter: predicate: UnstubifyAll.Filter.Predicate * ?thisArg: obj -> Array<'S>
-                abstract map: callbackfn: UnstubifyAll.Map.Callbackfn * ?thisArg: obj -> Array<'U>
+                abstract filter: predicate: UnstubifyAll.Filter.Predicate * ?thisArg: obj -> ResizeArray<'S>
+                abstract map: callbackfn: UnstubifyAll.Map.Callbackfn * ?thisArg: obj -> ResizeArray<'U>
                 abstract forEach: callbackfn: UnstubifyAll.ForEach.Callbackfn * ?thisArg: obj -> unit
                 abstract some: predicate: UnstubifyAll.Some.Predicate * ?thisArg: obj -> bool
                 abstract every: predicate: UnstubifyAll.Every.Predicate * ?thisArg: obj -> bool
                 abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                 abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                abstract unshift: [<ParamArray>] items: Array -> float
-                abstract splice: start: float * ?deleteCount: float -> Array
+                abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                abstract splice: start: float * ?deleteCount: float -> ResizeArray
                 abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                abstract slice: ?start: float * ?``end``: float -> Array
+                abstract slice: ?start: float * ?``end``: float -> ResizeArray
                 abstract shift: unit -> option<'T>
-                abstract reverse: unit -> Array
+                abstract reverse: unit -> ResizeArray
                 abstract join: ?separator: D1SessionBookmark -> D1SessionBookmark
-                abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                abstract push: [<ParamArray>] items: Array -> float
+                abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                abstract push: [<ParamArray>] items: ResizeArray -> float
                 abstract pop: unit -> option<'T>
                 abstract toLocaleString: unit -> D1SessionBookmark
                 abstract toString: unit -> D1SessionBookmark
@@ -6325,7 +6327,7 @@ module rec Cloudflare =
                                                                 U2<
                                                                     Set<U2<'V, option<obj>>>,
                                                                     U2<
-                                                                        Array<U2<'V, option<obj>>>,
+                                                                        ResizeArray<U2<'V, option<obj>>>,
                                                                         U2<
                                                                             ReadonlyArray<U2<'V, option<obj>>>,
                                                                             U2<'T, U2<WebAssembly.ModuleImports, 'T>>
@@ -6336,7 +6338,7 @@ module rec Cloudflare =
                                                          >
                                                      >,
                                                     U2<
-                                                        Array<U2<'V, option<obj>>>,
+                                                        ResizeArray<U2<'V, option<obj>>>,
                                                         U2<
                                                             ReadonlyArray<U2<'V, option<obj>>>,
                                                             U2<'T, U2<WebAssembly.ModuleImports, 'T>>
@@ -6352,7 +6354,7 @@ module rec Cloudflare =
                                                 U2<
                                                     Set<U2<'V, option<obj>>>,
                                                     U2<
-                                                        Array<U2<'V, option<obj>>>,
+                                                        ResizeArray<U2<'V, option<obj>>>,
                                                         U2<
                                                             ReadonlyArray<U2<'V, option<obj>>>,
                                                             U2<'T, U2<WebAssembly.ModuleImports, 'T>>
@@ -6371,7 +6373,7 @@ module rec Cloudflare =
                                                     U2<
                                                         Set<U2<'V, option<obj>>>,
                                                         U2<
-                                                            Array<U2<'V, option<obj>>>,
+                                                            ResizeArray<U2<'V, option<obj>>>,
                                                             U2<
                                                                 ReadonlyArray<U2<'V, option<obj>>>,
                                                                 U2<'T, U2<WebAssembly.ModuleImports, 'T>>
@@ -6382,7 +6384,7 @@ module rec Cloudflare =
                                              >
                                          >,
                                         U2<
-                                            Array<U2<'V, option<obj>>>,
+                                            ResizeArray<U2<'V, option<obj>>>,
                                             U2<
                                                 ReadonlyArray<U2<'V, option<obj>>>,
                                                 U2<'T, U2<WebAssembly.ModuleImports, 'T>>
@@ -6398,7 +6400,7 @@ module rec Cloudflare =
                                     U2<
                                         Set<U2<'V, option<obj>>>,
                                         U2<
-                                            Array<U2<'V, option<obj>>>,
+                                            ResizeArray<U2<'V, option<obj>>>,
                                             U2<
                                                 ReadonlyArray<U2<'V, option<obj>>>,
                                                 U2<'T, U2<WebAssembly.ModuleImports, 'T>>
@@ -6417,7 +6419,7 @@ module rec Cloudflare =
                                         U2<
                                             Set<U2<'V, option<obj>>>,
                                             U2<
-                                                Array<U2<'V, option<obj>>>,
+                                                ResizeArray<U2<'V, option<obj>>>,
                                                 U2<
                                                     ReadonlyArray<U2<'V, option<obj>>>,
                                                     U2<'T, U2<WebAssembly.ModuleImports, 'T>>
@@ -6428,7 +6430,7 @@ module rec Cloudflare =
                                  >
                              >,
                             U2<
-                                Array<U2<'V, option<obj>>>,
+                                ResizeArray<U2<'V, option<obj>>>,
                                 U2<ReadonlyArray<U2<'V, option<obj>>>, U2<'T, U2<WebAssembly.ModuleImports, 'T>>>
                              >
                          >
@@ -6442,38 +6444,39 @@ module rec Cloudflare =
                         module rec Args =
                             module rec Every =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> bool
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
                             module rec Find =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: Array -> bool
+                                    abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
 
                             module rec FindIndex =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: Array -> option<obj>
+                                    abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
 
                             module rec FlatMap =
                                 type Callback =
                                     abstract Invoke:
-                                        this: 'This * value: 'T * index: float * array: Array ->
+                                        this: 'This * value: 'T * index: float * array: ResizeArray ->
                                             U2<'U, ReadonlyArray<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> unit
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
 
                             module rec Map =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> 'U
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
 
                             module rec Reduce =
                                 type Callbackfn =
                                     abstract Invoke:
-                                        previousValue: 'T * currentValue: 'T * currentIndex: float * array: Array -> 'T
+                                        previousValue: 'T * currentValue: 'T * currentIndex: float * array: ResizeArray ->
+                                            'T
 
                             module rec Some =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
+                                    abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
 
                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                             type SymbolUnscopables =
@@ -6491,15 +6494,21 @@ module rec Cloudflare =
 
                     abstract length: float with get, set
                     abstract symbolIterator: unit -> ArrayIterator<'T>
-                    abstract ``with``: index: float * value: 'T -> Array
-                    abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: Array -> Array
-                    abstract toSorted: ?compareFn: 'T -> 'T -> float -> Array
-                    abstract toReversed: unit -> Array
+                    abstract ``with``: index: float * value: 'T -> ResizeArray
+
+                    abstract toSpliced:
+                        start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+
+                    abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                    abstract toReversed: unit -> ResizeArray
                     abstract findLastIndex: predicate: Args.FindLastIndex.Predicate * ?thisArg: obj -> float
                     abstract findLast: predicate: Args.FindLast.Predicate * ?thisArg: obj -> option<'S>
                     abstract at: index: float -> option<'T>
-                    abstract flat: this: 'A * ?depth: 'D -> Array<proptypekey<Args.Flat, U2<Args.Flat, Args.Flat>>>
-                    abstract flatMap: callback: Args.FlatMap.Callback * ?thisArg: 'This -> Array<'U>
+
+                    abstract flat:
+                        this: 'A * ?depth: 'D -> ResizeArray<proptypekey<Args.Flat, U2<Args.Flat, Args.Flat>>>
+
+                    abstract flatMap: callback: Args.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                     abstract includes: searchElement: 'T * ?fromIndex: float -> bool
                     abstract values: unit -> ArrayIterator<'T>
                     abstract keys: unit -> ArrayIterator<float>
@@ -6510,22 +6519,22 @@ module rec Cloudflare =
                     abstract find: predicate: Args.Find.Predicate * ?thisArg: obj -> option<'S>
                     abstract reduceRight: callbackfn: Args.ReduceRight.Callbackfn -> 'T
                     abstract reduce: callbackfn: Args.Reduce.Callbackfn -> 'T
-                    abstract filter: predicate: Args.Filter.Predicate * ?thisArg: obj -> Array<'S>
-                    abstract map: callbackfn: Args.Map.Callbackfn * ?thisArg: obj -> Array<'U>
+                    abstract filter: predicate: Args.Filter.Predicate * ?thisArg: obj -> ResizeArray<'S>
+                    abstract map: callbackfn: Args.Map.Callbackfn * ?thisArg: obj -> ResizeArray<'U>
                     abstract forEach: callbackfn: Args.ForEach.Callbackfn * ?thisArg: obj -> unit
                     abstract some: predicate: Args.Some.Predicate * ?thisArg: obj -> bool
                     abstract every: predicate: Args.Every.Predicate * ?thisArg: obj -> bool
                     abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
                     abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                    abstract unshift: [<ParamArray>] items: Array -> float
-                    abstract splice: start: float * ?deleteCount: float -> Array
+                    abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                    abstract splice: start: float * ?deleteCount: float -> ResizeArray
                     abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                    abstract slice: ?start: float * ?``end``: float -> Array
+                    abstract slice: ?start: float * ?``end``: float -> ResizeArray
                     abstract shift: unit -> option<'T>
-                    abstract reverse: unit -> Array
+                    abstract reverse: unit -> ResizeArray
                     abstract join: ?separator: D1SessionBookmark -> D1SessionBookmark
-                    abstract concat: [<ParamArray>] items: Array<ConcatArray<'T>> -> Array
-                    abstract push: [<ParamArray>] items: Array -> float
+                    abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                    abstract push: [<ParamArray>] items: ResizeArray -> float
                     abstract pop: unit -> option<'T>
                     abstract toLocaleString: unit -> D1SessionBookmark
                     abstract toString: unit -> D1SessionBookmark
@@ -6547,17 +6556,17 @@ module rec Cloudflare =
                                 abstract contentId: option<unit> with get, set
 
                 type Builder =
-                    abstract attachments: option<Array<EmailAttachment>> with get, set
+                    abstract attachments: option<ResizeArray<EmailAttachment>> with get, set
                     abstract html: option<D1SessionBookmark> with get, set
                     abstract text: option<D1SessionBookmark> with get, set
                     abstract headers: option<WebAssembly.ModuleImports> with get, set
-                    abstract bcc: option<U2<Array<D1SessionBookmark>, string>> with get, set
-                    abstract cc: option<U2<Array<D1SessionBookmark>, string>> with get, set
+                    abstract bcc: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
+                    abstract cc: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
                     abstract replyTo: option<U2<EmailAddress, string>> with get, set
                     abstract subject: D1SessionBookmark with get, set
 
                     [<EmitProperty("to")>]
-                    abstract ``to``: U2<Array<D1SessionBookmark>, string> with get, set
+                    abstract ``to``: U2<ResizeArray<D1SessionBookmark>, string> with get, set
 
                     abstract from: U2<EmailAddress, string> with get, set
 
@@ -6570,7 +6579,7 @@ module rec Cloudflare =
                         Promise<Typescript.Response>
 
             type T =
-                abstract Create: [<ParamArray>] args: Array<option<obj>> -> Rpc.WorkerEntrypointBranded
+                abstract Create: [<ParamArray>] args: ResizeArray<option<obj>> -> Rpc.WorkerEntrypointBranded
 
         module rec ServiceWorkerGlobalScope =
             module rec ReadableStream =
@@ -6582,7 +6591,7 @@ module rec Cloudflare =
             module rec SetTimeout =
                 type Callback =
                     abstract Invoke: [<ParamArray>] args: 'Args -> unit
-                    abstract Invoke: [<ParamArray>] args: Array<option<obj>> -> unit
+                    abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> unit
 
             module rec URLSearchParams =
                 type Params =
@@ -6668,7 +6677,8 @@ module rec Cloudflare =
                 abstract prototype: Typescript.WebSocket with get, set
 
                 abstract Create:
-                    url: U2<URL, string> * ?protocols: U2<Array<D1SessionBookmark>, string> -> Typescript.WebSocket
+                    url: U2<URL, string> * ?protocols: U2<ResizeArray<D1SessionBookmark>, string> ->
+                        Typescript.WebSocket
 
             type ByteLengthQueuingStrategy =
                 abstract prototype: ByteLengthQueuingStrategy with get, set
@@ -6827,7 +6837,7 @@ module rec Cloudflare =
             type AbortSignal =
                 abstract prototype: AbortSignal with get, set
                 abstract timeout: milliseconds: float -> AbortSignal
-                abstract any: signals: Array<AbortSignal> -> AbortSignal
+                abstract any: signals: ResizeArray<AbortSignal> -> AbortSignal
                 abstract abort: ?reason: obj -> AbortSignal
                 abstract Create: unit -> AbortSignal
 
@@ -6874,11 +6884,11 @@ module rec Cloudflare =
                 abstract prototype: File with get, set
 
                 abstract Create:
-                    fileBits: Array<BlobPart> * fileName: D1SessionBookmark * ?options: FilePropertyBag -> File
+                    fileBits: ResizeArray<BlobPart> * fileName: D1SessionBookmark * ?options: FilePropertyBag -> File
 
             type Blob =
                 abstract prototype: Blob with get, set
-                abstract Create: ?blobParts: Array<BlobPart> * ?options: BlobPropertyBag -> Blob
+                abstract Create: ?blobParts: ResizeArray<BlobPart> * ?options: BlobPropertyBag -> Blob
 
             type URLPattern =
                 abstract prototype: URLPattern with get, set
@@ -6897,7 +6907,13 @@ module rec Cloudflare =
                 abstract prototype: URLSearchParams with get, set
 
                 abstract Create:
-                    ?init: U4<Array<Array<D1SessionBookmark>>, URLSearchParams.Create.Init, URLSearchParams, string> ->
+                    ?init:
+                        U4<
+                            ResizeArray<ResizeArray<D1SessionBookmark>>,
+                            URLSearchParams.Create.Init,
+                            URLSearchParams,
+                            string
+                         > ->
                         URLSearchParams
 
             type URL =
@@ -6912,13 +6928,13 @@ module rec Cloudflare =
             module rec SetTimeout =
                 type Callback =
                     abstract Invoke: [<ParamArray>] args: 'Args -> unit
-                    abstract Invoke: [<ParamArray>] args: Array<option<obj>> -> unit
+                    abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> unit
 
         module rec SetTimeout =
             module rec SetTimeout =
                 type Callback =
                     abstract Invoke: [<ParamArray>] args: 'Args -> unit
-                    abstract Invoke: [<ParamArray>] args: Array<option<obj>> -> unit
+                    abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> unit
 
         module rec SqlStorage =
             type Cursor =
@@ -6955,7 +6971,7 @@ module rec Cloudflare =
                     abstract scheduledDeletion: option<string> with get, set
                     abstract thumbnailTimestampPct: option<float> with get, set
                     abstract requireSignedURLs: option<bool> with get, set
-                    abstract allowedOrigins: option<Array<D1SessionBookmark>> with get, set
+                    abstract allowedOrigins: option<ResizeArray<D1SessionBookmark>> with get, set
                     abstract meta: option<WebAssembly.ModuleImports> with get, set
                     abstract creator: option<D1SessionBookmark> with get, set
                     abstract expiry: option<D1SessionBookmark> with get, set
@@ -6969,7 +6985,7 @@ module rec Cloudflare =
                     abstract requireSignedURLs: option<bool> with get, set
                     abstract meta: option<WebAssembly.ModuleImports> with get, set
                     abstract creator: option<D1SessionBookmark> with get, set
-                    abstract allowedOrigins: option<Array<D1SessionBookmark>> with get, set
+                    abstract allowedOrigins: option<ResizeArray<D1SessionBookmark>> with get, set
 
             type CreateDirectUpload =
                 abstract scheduledDeletion: option<string> with get, set
@@ -7052,7 +7068,7 @@ module rec Cloudflare =
                     abstract meta: option<WebAssembly.ModuleImports> with get, set
                     abstract maxDurationSeconds: option<float> with get, set
                     abstract creator: option<D1SessionBookmark> with get, set
-                    abstract allowedOrigins: option<Array<D1SessionBookmark>> with get, set
+                    abstract allowedOrigins: option<ResizeArray<D1SessionBookmark>> with get, set
 
         module rec StreamVideos =
             module rec List =
@@ -7106,13 +7122,13 @@ module rec Cloudflare =
 
                 abstract preview: option<TracePreviewInfo> with get
                 abstract scriptVersion: option<ScriptVersion> with get
-                abstract scriptTags: option<Array<D1SessionBookmark>> with get
+                abstract scriptTags: option<ResizeArray<D1SessionBookmark>> with get
                 abstract scriptName: option<D1SessionBookmark> with get
                 abstract executionModel: D1SessionBookmark with get
                 abstract entrypoint: option<D1SessionBookmark> with get
                 abstract dispatchNamespace: option<D1SessionBookmark> with get
                 abstract spanId: D1SessionBookmark with get
-                abstract attributes: Array<Attribute> with get
+                abstract attributes: ResizeArray<Attribute> with get
 
                 [<EmitProperty("type")>]
                 abstract ``type``: Onset.Type with get
@@ -7244,7 +7260,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.TailStream", "Attributes")>]
             type Attributes =
-                abstract info: Array<Attribute> with get
+                abstract info: ResizeArray<Attribute> with get
 
                 [<EmitProperty("type")>]
                 abstract ``type``: Attributes.Type with get
@@ -7279,7 +7295,9 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.TailStream", "Attribute")>]
             type Attribute =
-                abstract value: U6<Array<D1SessionBookmark>, Array<bool>, Array<float>, string, bool, float> with get
+                abstract value:
+                    U6<ResizeArray<D1SessionBookmark>, ResizeArray<bool>, ResizeArray<float>, string, bool, float> with get
+
                 abstract name: D1SessionBookmark with get
 
             [<Import("@cloudflare/workers-types.TailStream", "Log")>]
@@ -7614,11 +7632,14 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.WebAssembly", "Module"); AbstractClass; AllowNullLiteral>]
             type Module private () =
-                abstract imports: ``module``: WebAssembly.Module -> Array<Typescript.WebAssembly.ModuleImportDescriptor>
-                abstract exports: ``module``: WebAssembly.Module -> Array<Typescript.WebAssembly.ModuleExportDescriptor>
+                abstract imports:
+                    ``module``: WebAssembly.Module -> ResizeArray<Typescript.WebAssembly.ModuleImportDescriptor>
+
+                abstract exports:
+                    ``module``: WebAssembly.Module -> ResizeArray<Typescript.WebAssembly.ModuleExportDescriptor>
 
                 abstract customSections:
-                    ``module``: WebAssembly.Module * sectionName: D1SessionBookmark -> Array<ArrayBuffer>
+                    ``module``: WebAssembly.Module * sectionName: D1SessionBookmark -> ResizeArray<ArrayBuffer>
 
             type IWebAssembly =
                 [<Import("@cloudflare/workers-types.WebAssembly", "validate")>]
@@ -7728,7 +7749,7 @@ module rec Cloudflare =
             [<Import("@cloudflare/workers-types.cloudflare:node", "NodeStyleServer")>]
             type NodeStyleServer =
                 abstract address: unit -> NodeStyleServer.Address
-                abstract listen: [<ParamArray>] args: Array<option<obj>> -> 'NodeStyleServer
+                abstract listen: [<ParamArray>] args: ResizeArray<option<obj>> -> 'NodeStyleServer
 
             type HttpServerHandler =
                 abstract Invoke:
@@ -7789,7 +7810,7 @@ module rec Cloudflare =
 
                 abstract ctx: ExecutionContext<option<obj>> with get, set
                 abstract env: 'Env with get, set
-                abstract run: records: Array<'I> * metadata: PipelineBatchMetadata -> Promise<Array<'O>>
+                abstract run: records: ResizeArray<'I> * metadata: PipelineBatchMetadata -> Promise<ResizeArray<'O>>
 
             [<Import("@cloudflare/workers-types.cloudflare:pipelines", "PipelineBatchMetadata")>]
             type PipelineBatchMetadata =
@@ -7798,7 +7819,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.cloudflare:pipelines", "Pipeline")>]
             type Pipeline<'T when 'T :> PipelineRecord> =
-                abstract send: records: Array<'T> -> Promise<unit>
+                abstract send: records: ResizeArray<'T> -> Promise<unit>
 
         module rec ``Cloudflare:workflows`` =
             [<Import("@cloudflare/workers-types.cloudflare:workflows", "NonRetryableError");
@@ -7847,7 +7868,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "AiSearchMultiSearchOptions")>]
         type AiSearchMultiSearchOptions =
             [<EmitProperty("instance_ids")>]
-            abstract instanceIds: Array<D1SessionBookmark> with get, set
+            abstract instanceIds: ResizeArray<D1SessionBookmark> with get, set
 
             abstract cache: option<AiSearchMultiSearchOptions.Cache> with get, set
             abstract reranking: option<AiSearchMultiSearchOptions.Reranking> with get, set
@@ -7906,16 +7927,16 @@ module rec Cloudflare =
             abstract responseFormat: option<AiCfQwenQwen330BA3BFp8JSONMode3> with get, set
 
             abstract tools:
-                option<Array<U2<AiCfQwenQwen330BA3BFp8Messages1.Tools, AiCfQwenQwen330BA3BFp8Messages1.Tools>>> with get, set
+                option<ResizeArray<U2<AiCfQwenQwen330BA3BFp8Messages1.Tools, AiCfQwenQwen330BA3BFp8Messages1.Tools>>> with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfQwenQwen330BA3BFp8Messages1.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfQwenQwen330BA3BFp8Messages1.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "ImageMetadata")>]
         type ImageMetadata =
             abstract creator: option<D1SessionBookmark> with get, set
             abstract draft: option<bool> with get, set
-            abstract variants: Array<D1SessionBookmark> with get, set
+            abstract variants: ResizeArray<D1SessionBookmark> with get, set
             abstract meta: option<WebAssembly.ModuleImports> with get, set
             abstract requireSignedURLs: bool with get, set
             abstract uploaded: option<D1SessionBookmark> with get, set
@@ -7960,7 +7981,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Pfnet_Plamo_Embedding_1B_Output")>]
         type AiCfPfnetPlamoEmbedding1BOutput =
             abstract shape: float * float with get, set
-            abstract data: Array<AiSentenceSimilarityOutput> with get, set
+            abstract data: ResizeArray<AiSentenceSimilarityOutput> with get, set
 
         [<Import("@cloudflare/workers-types", "VectorizeMatch")>]
         type VectorizeMatch =
@@ -7971,7 +7992,9 @@ module rec Cloudflare =
             abstract ``namespace``: option<string> with get, set
 
             abstract id: D1SessionBookmark with get, set
-            abstract values: option<U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, Array<float>>> with get, set
+
+            abstract values:
+                option<U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, ResizeArray<float>>> with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type ResponseFunctionToolCall =
@@ -8046,7 +8069,7 @@ module rec Cloudflare =
 
             abstract tools:
                 option<
-                    Array<
+                    ResizeArray<
                         U2<
                             AiCfMetaLlama3370BInstructFp8FastMessages.Tools,
                             AiCfMetaLlama3370BInstructFp8FastMessages.Tools
@@ -8054,8 +8077,8 @@ module rec Cloudflare =
                      >
                  > with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfMetaLlama3370BInstructFp8FastMessages.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfMetaLlama3370BInstructFp8FastMessages.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "AiAutomaticSpeechRecognitionInput")>]
         type AiAutomaticSpeechRecognitionInput =
@@ -8063,16 +8086,16 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Vectorize"); AbstractClass; AllowNullLiteral>]
         type Vectorize private () =
-            abstract getByIds: ids: Array<D1SessionBookmark> -> Promise<Array<VectorizeVector>>
-            abstract deleteByIds: ids: Array<D1SessionBookmark> -> Promise<VectorizeAsyncMutation>
-            abstract upsert: vectors: Array<VectorizeVector> -> Promise<VectorizeAsyncMutation>
-            abstract insert: vectors: Array<VectorizeVector> -> Promise<VectorizeAsyncMutation>
+            abstract getByIds: ids: ResizeArray<D1SessionBookmark> -> Promise<ResizeArray<VectorizeVector>>
+            abstract deleteByIds: ids: ResizeArray<D1SessionBookmark> -> Promise<VectorizeAsyncMutation>
+            abstract upsert: vectors: ResizeArray<VectorizeVector> -> Promise<VectorizeAsyncMutation>
+            abstract insert: vectors: ResizeArray<VectorizeVector> -> Promise<VectorizeAsyncMutation>
 
             abstract queryById:
                 vectorId: D1SessionBookmark * ?options: VectorizeQueryOptions -> Promise<VectorizeMatches>
 
             abstract query:
-                vector: U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, Array<float>> *
+                vector: U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, ResizeArray<float>> *
                 ?options: VectorizeQueryOptions ->
                     Promise<VectorizeMatches>
 
@@ -8112,7 +8135,7 @@ module rec Cloudflare =
             [<EmitProperty("type")>]
             abstract ``type``: D1SessionBookmark with get
 
-            abstract composedPath: unit -> Array<EventTarget>
+            abstract composedPath: unit -> ResizeArray<EventTarget>
             abstract stopPropagation: unit -> unit
             abstract preventDefault: unit -> unit
             abstract stopImmediatePropagation: unit -> unit
@@ -8120,8 +8143,8 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "TailEvent"); AbstractClass; AllowNullLiteral>]
         type TailEvent private () =
             inherit ExtendableEvent()
-            abstract traces: Array<TraceItem> with get
-            abstract events: Array<TraceItem> with get
+            abstract traces: ResizeArray<TraceItem> with get
+            abstract events: ResizeArray<TraceItem> with get
 
         type AiTextClassificationOutput = obj
 
@@ -8145,7 +8168,7 @@ module rec Cloudflare =
             abstract requireSignedURLs: option<bool> with get, set
             abstract meta: option<WebAssembly.ModuleImports> with get, set
             abstract creator: option<D1SessionBookmark> with get, set
-            abstract allowedOrigins: option<Array<D1SessionBookmark>> with get, set
+            abstract allowedOrigins: option<ResizeArray<D1SessionBookmark>> with get, set
 
         [<Import("@cloudflare/workers-types", "EmailExportedHandler")>]
         type EmailExportedHandler<'Props, 'Env> =
@@ -8165,7 +8188,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Openai_Whisper_Output")>]
         type AiCfOpenaiWhisperOutput =
             abstract vtt: option<D1SessionBookmark> with get, set
-            abstract words: option<Array<AiCfOpenaiWhisperOutput.Words>> with get, set
+            abstract words: option<ResizeArray<AiCfOpenaiWhisperOutput.Words>> with get, set
 
             [<EmitProperty("word_count")>]
             abstract wordCount: option<float> with get, set
@@ -8228,7 +8251,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Pfnet_Plamo_Embedding_1B_Input")>]
         type AiCfPfnetPlamoEmbedding1BInput =
-            abstract text: U2<Array<D1SessionBookmark>, string> with get, set
+            abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
 
         [<Import("@cloudflare/workers-types", "AbortSignal"); AbstractClass; AllowNullLiteral>]
         type AbortSignal private () =
@@ -8238,7 +8261,7 @@ module rec Cloudflare =
             abstract reason: option<obj> with get
             abstract aborted: bool with get
             abstract throwIfAborted: unit -> unit
-            abstract any: signals: Array<AbortSignal> -> AbortSignal
+            abstract any: signals: ResizeArray<AbortSignal> -> AbortSignal
             abstract timeout: delay: float -> AbortSignal
             abstract abort: ?reason: obj -> AbortSignal
 
@@ -8291,7 +8314,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Output")>]
         type AiCfMetaLlama4Scout17B16EInstructOutput =
             [<EmitProperty("tool_calls")>]
-            abstract toolCalls: option<Array<AiCfMetaLlama4Scout17B16EInstructOutput.ToolCalls>> with get, set
+            abstract toolCalls: option<ResizeArray<AiCfMetaLlama4Scout17B16EInstructOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfMetaLlama4Scout17B16EInstructOutput.Usage> with get, set
             abstract response: D1SessionBookmark with get, set
@@ -8329,7 +8352,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "AiIMultimodalEmbeddingsOutput")>]
         type AiIMultimodalEmbeddingsOutput =
             abstract shape: AiSentenceSimilarityOutput with get, set
-            abstract data: Array<AiSentenceSimilarityOutput> with get, set
+            abstract data: ResizeArray<AiSentenceSimilarityOutput> with get, set
 
         [<Import("@cloudflare/workers-types", "InferenceUpstreamError"); AbstractClass; AllowNullLiteral>]
         type InferenceUpstreamError private () =
@@ -8373,7 +8396,7 @@ module rec Cloudflare =
                 unwrapAlgorithm: U2<SubtleCryptoEncryptAlgorithm, string> *
                 unwrappedKeyAlgorithm: U2<SubtleCryptoImportKeyAlgorithm, string> *
                 extractable: bool *
-                keyUsages: Array<D1SessionBookmark> ->
+                keyUsages: ResizeArray<D1SessionBookmark> ->
                     Promise<CryptoKey>
 
             abstract wrapKey:
@@ -8391,7 +8414,7 @@ module rec Cloudflare =
                 keyData: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, Typescript.JsonWebKey> *
                 algorithm: U2<SubtleCryptoImportKeyAlgorithm, string> *
                 extractable: bool *
-                keyUsages: Array<D1SessionBookmark> ->
+                keyUsages: ResizeArray<D1SessionBookmark> ->
                     Promise<CryptoKey>
 
             abstract deriveBits:
@@ -8403,13 +8426,13 @@ module rec Cloudflare =
                 baseKey: CryptoKey *
                 derivedKeyAlgorithm: U2<SubtleCryptoImportKeyAlgorithm, string> *
                 extractable: bool *
-                keyUsages: Array<D1SessionBookmark> ->
+                keyUsages: ResizeArray<D1SessionBookmark> ->
                     Promise<CryptoKey>
 
             abstract generateKey:
                 algorithm: U2<SubtleCryptoGenerateKeyAlgorithm, string> *
                 extractable: bool *
-                keyUsages: Array<D1SessionBookmark> ->
+                keyUsages: ResizeArray<D1SessionBookmark> ->
                     Promise<U2<CryptoKey, Typescript.CryptoKeyPair>>
 
             abstract digest:
@@ -8450,7 +8473,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionsPromptInput")>]
         type ChatCompletionsPromptInput =
-            abstract functions: option<Array<FunctionDefinition>> with get, set
+            abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
 
             [<EmitProperty("function_call")>]
             abstract functionCall:
@@ -8464,7 +8487,7 @@ module rec Cloudflare =
             [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
-            abstract tools: option<Array<ChatCompletionTool>> with get, set
+            abstract tools: option<ResizeArray<ChatCompletionTool>> with get, set
 
             [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
@@ -8476,7 +8499,7 @@ module rec Cloudflare =
 
             abstract stream: option<bool> with get, set
             abstract store: option<bool> with get, set
-            abstract stop: option<U2<Array<D1SessionBookmark>, string>> with get, set
+            abstract stop: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
 
             [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ChatCompletionsPromptInput.ServiceTier> with get, set
@@ -8501,7 +8524,7 @@ module rec Cloudflare =
             abstract parallelToolCalls: option<bool> with get, set
 
             abstract n: option<float> with get, set
-            abstract modalities: option<Array<ChatCompletionsPromptInput.Modalities>> with get, set
+            abstract modalities: option<ResizeArray<ChatCompletionsPromptInput.Modalities>> with get, set
             abstract metadata: option<ChatCompletionsPromptInput.Metadata> with get, set
 
             [<EmitProperty("max_completion_tokens")>]
@@ -8578,7 +8601,7 @@ module rec Cloudflare =
 
             abstract tools:
                 option<
-                    Array<
+                    ResizeArray<
                         U2<
                             AiCfMetaLlama4Scout17B16EInstructMessagesInner.Tools,
                             AiCfMetaLlama4Scout17B16EInstructMessagesInner.Tools
@@ -8586,8 +8609,8 @@ module rec Cloudflare =
                      >
                  > with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfMetaLlama4Scout17B16EInstructMessagesInner.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfMetaLlama4Scout17B16EInstructMessagesInner.Messages> with get, set
 
         type StructuredClone =
             abstract Invoke: value: 'T * ?options: Typescript.StructuredSerializeOptions -> 'T
@@ -8621,7 +8644,7 @@ module rec Cloudflare =
             abstract prefix: option<D1SessionBookmark> with get, set
             abstract returnRawResponse: option<bool> with get, set
             abstract gateway: option<GatewayOptions> with get, set
-            abstract tags: option<Array<D1SessionBookmark>> with get, set
+            abstract tags: option<ResizeArray<D1SessionBookmark>> with get, set
             abstract websocket: option<bool> with get, set
             abstract queueRequest: option<bool> with get, set
             abstract returnRawResponse: Ai.ReturnRawResponse with get, set
@@ -8631,11 +8654,11 @@ module rec Cloudflare =
                 files: MarkdownDocument * ?options: ConversionRequestOptions -> Promise<ConversionResponse>
 
             abstract toMarkdown:
-                files: Array<MarkdownDocument> * ?options: ConversionRequestOptions ->
-                    Promise<Array<ConversionResponse>>
+                files: ResizeArray<MarkdownDocument> * ?options: ConversionRequestOptions ->
+                    Promise<ResizeArray<ConversionResponse>>
 
             abstract toMarkdown: unit -> ToMarkdownService
-            abstract models: ?params: AiModelsSearchParams -> Promise<Array<AiModelsSearchObject>>
+            abstract models: ?params: AiModelsSearchParams -> Promise<ResizeArray<AiModelsSearchObject>>
 
             abstract run:
                 model: Ai.Run.Model * inputs: WebAssembly.ModuleImports * ?options: AiOptions ->
@@ -8682,7 +8705,7 @@ module rec Cloudflare =
         type ArtifactsRepoListResult =
             abstract cursor: option<D1SessionBookmark> with get, set
             abstract total: float with get, set
-            abstract repos: Array<ArtifactsRepoListResult.Repos> with get, set
+            abstract repos: ResizeArray<ArtifactsRepoListResult.Repos> with get, set
 
         [<Import("@cloudflare/workers-types", "AiSearchListJobsParams")>]
         type AiSearchListJobsParams =
@@ -8749,7 +8772,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_Reranker_Base_Input")>]
         type AiCfBaaiBgeRerankerBaseInput =
-            abstract contexts: Array<AiCfBaaiBgeRerankerBaseInput.Contexts> with get, set
+            abstract contexts: ResizeArray<AiCfBaaiBgeRerankerBaseInput.Contexts> with get, set
 
             [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
@@ -8765,7 +8788,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiMultimodalEmbeddingsInput")>]
         type AiMultimodalEmbeddingsInput =
-            abstract text: Array<D1SessionBookmark> with get, set
+            abstract text: ResizeArray<D1SessionBookmark> with get, set
             abstract image: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "SchedulerWaitOptions")>]
@@ -8818,11 +8841,11 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "ContainerStartupOptions")>]
         type ContainerStartupOptions =
             abstract containerSnapshot: option<ContainerSnapshot> with get, set
-            abstract directorySnapshots: option<Array<ContainerDirectorySnapshotRestoreParams>> with get, set
+            abstract directorySnapshots: option<ResizeArray<ContainerDirectorySnapshotRestoreParams>> with get, set
             abstract labels: option<WebAssembly.ModuleImports> with get, set
             abstract env: option<WebAssembly.ModuleImports> with get, set
             abstract enableInternet: bool with get, set
-            abstract entrypoint: option<Array<D1SessionBookmark>> with get, set
+            abstract entrypoint: option<ResizeArray<D1SessionBookmark>> with get, set
 
         [<Import("@cloudflare/workers-types", "ResponseError")>]
         type ResponseError =
@@ -8831,7 +8854,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiImageToTextInput")>]
         type AiImageToTextInput =
-            abstract messages: option<Array<RoleScopedChatInput>> with get, set
+            abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
             abstract raw: option<bool> with get, set
 
             [<EmitProperty("presence_penalty")>]
@@ -9132,7 +9155,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "CachePurgeResult")>]
         type CachePurgeResult =
-            abstract errors: Array<CachePurgeError> with get, set
+            abstract errors: ResizeArray<CachePurgeError> with get, set
             abstract success: bool with get, set
 
         [<Import("@cloudflare/workers-types", "AiSearchOptions")>]
@@ -9180,7 +9203,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_Embedding_0_6B_Output")>]
         type AiCfQwenQwen3Embedding06BOutput =
             abstract shape: option<AiSentenceSimilarityOutput> with get, set
-            abstract data: option<Array<AiSentenceSimilarityOutput>> with get, set
+            abstract data: option<ResizeArray<AiSentenceSimilarityOutput>> with get, set
 
         [<Import("@cloudflare/workers-types", "CryptoKeyHmacKeyAlgorithm")>]
         type CryptoKeyHmacKeyAlgorithm =
@@ -9465,7 +9488,7 @@ module rec Cloudflare =
             abstract Create:
                 ``type``: D1SessionBookmark * initializer: Typescript.MessageEventInit<option<obj>> -> MessageEvent
 
-            abstract ports: Array<MessagePort> with get
+            abstract ports: ResizeArray<MessagePort> with get
             abstract source: option<MessagePort> with get
             abstract lastEventId: D1SessionBookmark with get
             abstract origin: option<string> with get
@@ -9509,7 +9532,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "ArtifactsTokenListResult")>]
         type ArtifactsTokenListResult =
             abstract total: float with get, set
-            abstract tokens: Array<ArtifactsTokenInfo> with get, set
+            abstract tokens: ResizeArray<ArtifactsTokenInfo> with get, set
 
         [<Import("@cloudflare/workers-types", "D1ExecResult")>]
         type D1ExecResult =
@@ -9565,7 +9588,7 @@ module rec Cloudflare =
             [<EmitProperty("has_more")>]
             abstract hasMore: bool with get, set
 
-            abstract data: Array<AutoRAG.Data> with get, set
+            abstract data: ResizeArray<AutoRAG.Data> with get, set
 
             [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
@@ -9680,7 +9703,7 @@ module rec Cloudflare =
             [<EmitProperty("namespace")>]
             abstract ``namespace``: option<D1SessionBookmark> with get, set
 
-            abstract values: U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, Array<float>> with get, set
+            abstract values: U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, ResizeArray<float>> with get, set
             abstract id: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "LoopbackColoLocalActorNamespace"); AbstractClass; AllowNullLiteral>]
@@ -9712,7 +9735,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Async_Batch")>]
         type AiCfAisingaporeGemmaSeaLionV427BItAsyncBatch =
             abstract requests:
-                Array<U2<AiCfAisingaporeGemmaSeaLionV427BItPrompt1, AiCfAisingaporeGemmaSeaLionV427BItMessages1>> with get, set
+                ResizeArray<U2<AiCfAisingaporeGemmaSeaLionV427BItPrompt1, AiCfAisingaporeGemmaSeaLionV427BItMessages1>> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_M2M100_1_2B_AsyncResponse")>]
         type AiCfMetaM2M10012BAsyncResponse =
@@ -9722,18 +9745,18 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "ExportedHandlerTailHandler")>]
         type ExportedHandlerTailHandler<'Props, 'Env> =
             abstract Invoke:
-                events: Array<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
+                events: ResizeArray<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
         [<Import("@cloudflare/workers-types", "ToMarkdownService"); AbstractClass; AllowNullLiteral>]
         type ToMarkdownService private () =
-            abstract supported: unit -> Promise<Array<SupportedFileFormat>>
+            abstract supported: unit -> Promise<ResizeArray<SupportedFileFormat>>
 
             abstract transform:
                 files: MarkdownDocument * ?options: ConversionRequestOptions -> Promise<ConversionResponse>
 
             abstract transform:
-                files: Array<MarkdownDocument> * ?options: ConversionRequestOptions ->
-                    Promise<Array<ConversionResponse>>
+                files: ResizeArray<MarkdownDocument> * ?options: ConversionRequestOptions ->
+                    Promise<ResizeArray<ConversionResponse>>
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type ReasoningEffort =
@@ -9745,9 +9768,9 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "ChatCompletionTokenLogprob")>]
         type ChatCompletionTokenLogprob =
             [<EmitProperty("top_logprobs")>]
-            abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
+            abstract topLogprobs: ResizeArray<ChatCompletionTopLogprob> with get, set
 
-            abstract bytes: option<Array<float>> with get, set
+            abstract bytes: option<ResizeArray<float>> with get, set
             abstract logprob: float with get, set
             abstract token: D1SessionBookmark with get, set
 
@@ -9868,7 +9891,7 @@ module rec Cloudflare =
         type R2MultipartUpload =
             abstract uploadId: D1SessionBookmark with get
             abstract key: D1SessionBookmark with get
-            abstract complete: uploadedParts: Array<R2UploadedPart> -> Promise<R2Object>
+            abstract complete: uploadedParts: ResizeArray<R2UploadedPart> -> Promise<R2Object>
             abstract abort: unit -> Promise<unit>
 
             abstract uploadPart:
@@ -9906,7 +9929,9 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Async_Batch")>]
         type AiCfMetaLlama4Scout17B16EInstructAsyncBatch =
             abstract requests:
-                Array<U2<AiCfMetaLlama4Scout17B16EInstructPromptInner, AiCfMetaLlama4Scout17B16EInstructMessagesInner>> with get, set
+                ResizeArray<
+                    U2<AiCfMetaLlama4Scout17B16EInstructPromptInner, AiCfMetaLlama4Scout17B16EInstructMessagesInner>
+                 > with get, set
 
         [<Import("@cloudflare/workers-types", "StreamError"); AbstractClass; AllowNullLiteral>]
         type StreamError private () =
@@ -9921,7 +9946,7 @@ module rec Cloudflare =
             [<EmitProperty("truncate_inputs")>]
             abstract truncateInputs: option<bool> with get, set
 
-            abstract text: U2<Array<D1SessionBookmark>, string> with get, set
+            abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Leonardo_Phoenix_1_0_Input")>]
         type AiCfLeonardoPhoenix10Input =
@@ -9947,7 +9972,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "D1DatabaseSession"); AbstractClass; AllowNullLiteral>]
         type D1DatabaseSession private () =
-            abstract results: Array<'T> with get, set
+            abstract results: ResizeArray<'T> with get, set
             abstract error: option<unit> with get, set
             abstract meta: D1DatabaseSession.Meta with get, set
             abstract success: D1DatabaseSession.Success with get, set
@@ -9985,7 +10010,10 @@ module rec Cloudflare =
 
             abstract duration: float with get, set
             abstract getBookmark: unit -> option<string>
-            abstract batch: statements: Array<D1PreparedStatement> -> Promise<Array<D1DatabaseSession.Batch>>
+
+            abstract batch:
+                statements: ResizeArray<D1PreparedStatement> -> Promise<ResizeArray<D1DatabaseSession.Batch>>
+
             abstract prepare: query: D1SessionBookmark -> D1PreparedStatement
             abstract Item: key: D1SessionBookmark -> option<obj>
 
@@ -10224,7 +10252,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseOutputText")>]
         type ResponseOutputText =
-            abstract logprobs: option<Array<Logprob>> with get, set
+            abstract logprobs: option<ResizeArray<Logprob>> with get, set
 
             [<EmitProperty("type")>]
             abstract ``type``: ResponseOutputText.Type with get, set
@@ -10274,7 +10302,7 @@ module rec Cloudflare =
         type Blob private () =
             [<EmitConstructor>]
             abstract Create:
-                ?``type``: Array<U4<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, Blob, string>> *
+                ?``type``: ResizeArray<U4<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, Blob, string>> *
                 ?options: BlobOptions ->
                     Blob
 
@@ -10367,9 +10395,9 @@ module rec Cloudflare =
             abstract stop: option<unit> with get, set
             abstract metadata: option<unit> with get, set
             abstract audio: option<unit> with get, set
-            abstract requests: Array<ChatCompletionsBase> with get, set
+            abstract requests: ResizeArray<ChatCompletionsBase> with get, set
             abstract requests: option<unit> with get, set
-            abstract functions: option<Array<FunctionDefinition>> with get, set
+            abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
 
             [<EmitProperty("function_call")>]
             abstract functionCall: option<U2<ChatCompletionsInput.FunctionCall, ChatCompletionsInput.FunctionCall>> with get, set
@@ -10382,7 +10410,7 @@ module rec Cloudflare =
             [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
-            abstract tools: option<Array<ChatCompletionTool>> with get, set
+            abstract tools: option<ResizeArray<ChatCompletionTool>> with get, set
 
             [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
@@ -10394,7 +10422,7 @@ module rec Cloudflare =
 
             abstract stream: option<bool> with get, set
             abstract store: option<bool> with get, set
-            abstract stop: option<U2<Array<D1SessionBookmark>, string>> with get, set
+            abstract stop: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
 
             [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ChatCompletionsInput.ServiceTier> with get, set
@@ -10419,7 +10447,7 @@ module rec Cloudflare =
             abstract parallelToolCalls: option<bool> with get, set
 
             abstract n: option<float> with get, set
-            abstract modalities: option<Array<ChatCompletionsInput.Modalities>> with get, set
+            abstract modalities: option<ResizeArray<ChatCompletionsInput.Modalities>> with get, set
             abstract metadata: option<ChatCompletionsInput.Metadata> with get, set
 
             [<EmitProperty("max_completion_tokens")>]
@@ -10441,17 +10469,17 @@ module rec Cloudflare =
 
             abstract audio: option<AudioParams> with get, set
             abstract model: option<D1SessionBookmark> with get, set
-            abstract messages: Array<ChatCompletionMessageParam> with get, set
+            abstract messages: ResizeArray<ChatCompletionMessageParam> with get, set
             abstract prompt: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_Reranker_Base_Output")>]
         type AiCfBaaiBgeRerankerBaseOutput =
-            abstract response: option<Array<AiCfBaaiBgeRerankerBaseOutput.Response>> with get, set
+            abstract response: option<ResizeArray<AiCfBaaiBgeRerankerBaseOutput.Response>> with get, set
 
         [<Import("@cloudflare/workers-types", "AiModelsSearchObject")>]
         type AiModelsSearchObject =
-            abstract properties: Array<AiModelsSearchObject.Properties> with get, set
-            abstract tags: Array<D1SessionBookmark> with get, set
+            abstract properties: ResizeArray<AiModelsSearchObject.Properties> with get, set
+            abstract tags: ResizeArray<D1SessionBookmark> with get, set
             abstract task: AiModelsSearchObject.Task with get, set
             abstract description: D1SessionBookmark with get, set
             abstract name: D1SessionBookmark with get, set
@@ -10504,7 +10532,7 @@ module rec Cloudflare =
             [<EmitProperty("end_of_turn_confidence")>]
             abstract endOfTurnConfidence: option<float> with get, set
 
-            abstract words: option<Array<AiCfDeepgramFluxOutput.Words>> with get, set
+            abstract words: option<ResizeArray<AiCfDeepgramFluxOutput.Words>> with get, set
             abstract transcript: option<D1SessionBookmark> with get, set
 
             [<EmitProperty("audio_window_end")>]
@@ -10534,7 +10562,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiTextEmbeddingsOutput")>]
         type AiTextEmbeddingsOutput =
-            abstract data: Array<AiSentenceSimilarityOutput> with get, set
+            abstract data: ResizeArray<AiSentenceSimilarityOutput> with get, set
             abstract shape: AiSentenceSimilarityOutput with get, set
 
         [<Import("@cloudflare/workers-types", "ImageTransformationResult")>]
@@ -10575,12 +10603,12 @@ module rec Cloudflare =
             [<EmitProperty("result_info")>]
             abstract resultInfo: option<AiSearchJobLogsResponse.ResultInfo> with get, set
 
-            abstract result: Array<AiSearchJobLog> with get, set
+            abstract result: ResizeArray<AiSearchJobLog> with get, set
 
         [<Import("@cloudflare/workers-types", "AiSearchMultiChatCompletionsResponse")>]
         type AiSearchMultiChatCompletionsResponse =
-            abstract errors: option<Array<AiSearchMultiSearchError>> with get, set
-            abstract chunks: Array<AiSearchMultiSearchChunk> with get, set
+            abstract errors: option<ResizeArray<AiSearchMultiSearchError>> with get, set
+            abstract chunks: ResizeArray<AiSearchMultiSearchChunk> with get, set
             abstract Item: key: D1SessionBookmark -> option<obj>
 
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Openai_Whisper"); AbstractClass; AllowNullLiteral>]
@@ -10599,7 +10627,7 @@ module rec Cloudflare =
             [<EmitProperty("result_info")>]
             abstract resultInfo: option<AiSearchListJobsResponse.ResultInfo> with get, set
 
-            abstract result: Array<AiSearchJobInfo> with get, set
+            abstract result: ResizeArray<AiSearchJobInfo> with get, set
 
         [<Import("@cloudflare/workers-types", "QueueSendBatchOptions")>]
         type QueueSendBatchOptions =
@@ -10638,7 +10666,7 @@ module rec Cloudflare =
             [<EmitProperty("has_more")>]
             abstract hasMore: bool with get, set
 
-            abstract data: Array<AutoRagAiSearchResponse.Data> with get, set
+            abstract data: ResizeArray<AutoRagAiSearchResponse.Data> with get, set
 
             [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
@@ -10652,7 +10680,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Openai_Whisper_Tiny_En_Output")>]
         type AiCfOpenaiWhisperTinyEnOutput =
             abstract vtt: option<D1SessionBookmark> with get, set
-            abstract words: option<Array<AiCfOpenaiWhisperTinyEnOutput.Words>> with get, set
+            abstract words: option<ResizeArray<AiCfOpenaiWhisperTinyEnOutput.Words>> with get, set
 
             [<EmitProperty("word_count")>]
             abstract wordCount: option<float> with get, set
@@ -10847,7 +10875,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Logprob")>]
         type Logprob =
             [<EmitProperty("top_logprobs")>]
-            abstract topLogprobs: option<Array<TopLogprob>> with get, set
+            abstract topLogprobs: option<ResizeArray<TopLogprob>> with get, set
 
             abstract logprob: float with get, set
             abstract token: D1SessionBookmark with get, set
@@ -11164,7 +11192,7 @@ module rec Cloudflare =
             [<EmitProperty("type")>]
             abstract ``type``: ResponseFunctionToolCallOutputItem.Type with get, set
 
-            abstract output: U2<Array<ResponseInputContent>, string> with get, set
+            abstract output: U2<ResizeArray<ResponseInputContent>, string> with get, set
 
             [<EmitProperty("call_id")>]
             abstract callId: D1SessionBookmark with get, set
@@ -11202,10 +11230,10 @@ module rec Cloudflare =
             abstract responseFormat: option<AiCfQwenQwen330BA3BFp8JSONMode1> with get, set
 
             abstract tools:
-                option<Array<U2<AiCfQwenQwen330BA3BFp8Messages.Tools, AiCfQwenQwen330BA3BFp8Messages.Tools>>> with get, set
+                option<ResizeArray<U2<AiCfQwenQwen330BA3BFp8Messages.Tools, AiCfQwenQwen330BA3BFp8Messages.Tools>>> with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfQwenQwen330BA3BFp8Messages.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfQwenQwen330BA3BFp8Messages.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "InvalidURLError")>]
         type InvalidURLError =
@@ -11281,7 +11309,9 @@ module rec Cloudflare =
             abstract onmessage: option<obj> with get
             abstract start: unit -> unit
             abstract close: unit -> unit
-            abstract postMessage: ?data: obj * ?options: U2<Array<option<obj>>, MessagePortPostMessageOptions> -> unit
+
+            abstract postMessage:
+                ?data: obj * ?options: U2<ResizeArray<option<obj>>, MessagePortPostMessageOptions> -> unit
 
         [<Import("@cloudflare/workers-types", "StreamDownload")>]
         type StreamDownload =
@@ -11363,7 +11393,7 @@ module rec Cloudflare =
             abstract cacheControl: option<D1SessionBookmark> with get, set
             abstract cacheTtlByStatus: option<WebAssembly.ModuleImports> with get, set
             abstract cacheTtl: option<float> with get, set
-            abstract cacheTags: option<Array<D1SessionBookmark>> with get, set
+            abstract cacheTags: option<ResizeArray<D1SessionBookmark>> with get, set
             abstract cacheKey: option<D1SessionBookmark> with get, set
             abstract cacheEverything: option<bool> with get, set
 
@@ -11383,7 +11413,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Text_Completion_Response")>]
         type AiCfAisingaporeGemmaSeaLionV427BItTextCompletionResponse =
             abstract usage: option<AiCfAisingaporeGemmaSeaLionV427BItTextCompletionResponse.Usage> with get, set
-            abstract choices: option<Array<AiCfAisingaporeGemmaSeaLionV427BItTextCompletionResponse.Choices>> with get, set
+            abstract choices: option<ResizeArray<AiCfAisingaporeGemmaSeaLionV427BItTextCompletionResponse.Choices>> with get, set
             abstract model: option<D1SessionBookmark> with get, set
             abstract created: option<float> with get, set
             abstract object: option<AiCfAisingaporeGemmaSeaLionV427BItTextCompletionResponse.Object> with get, set
@@ -11476,7 +11506,7 @@ module rec Cloudflare =
 
         type ChatCompletionsBase =
             abstract prompt: option<unit> with get, set
-            abstract functions: option<Array<FunctionDefinition>> with get, set
+            abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
 
             [<EmitProperty("function_call")>]
             abstract functionCall: option<U2<ChatCompletionsBase.FunctionCall, ChatCompletionsBase.FunctionCall>> with get, set
@@ -11489,7 +11519,7 @@ module rec Cloudflare =
             [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
-            abstract tools: option<Array<ChatCompletionTool>> with get, set
+            abstract tools: option<ResizeArray<ChatCompletionTool>> with get, set
 
             [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
@@ -11501,7 +11531,7 @@ module rec Cloudflare =
 
             abstract stream: option<bool> with get, set
             abstract store: option<bool> with get, set
-            abstract stop: option<U2<Array<D1SessionBookmark>, string>> with get, set
+            abstract stop: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
 
             [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ChatCompletionsBase.ServiceTier> with get, set
@@ -11526,7 +11556,7 @@ module rec Cloudflare =
             abstract parallelToolCalls: option<bool> with get, set
 
             abstract n: option<float> with get, set
-            abstract modalities: option<Array<ChatCompletionsBase.Modalities>> with get, set
+            abstract modalities: option<ResizeArray<ChatCompletionsBase.Modalities>> with get, set
             abstract metadata: option<ChatCompletionsBase.Metadata> with get, set
 
             [<EmitProperty("max_completion_tokens")>]
@@ -11548,7 +11578,7 @@ module rec Cloudflare =
 
             abstract audio: option<AudioParams> with get, set
             abstract model: option<D1SessionBookmark> with get, set
-            abstract messages: Array<ChatCompletionMessageParam> with get, set
+            abstract messages: ResizeArray<ChatCompletionMessageParam> with get, set
             abstract messages: option<unit> with get, set
             abstract prompt: D1SessionBookmark with get, set
 
@@ -11605,7 +11635,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchSearchResponse")>]
         type AiSearchSearchResponse =
-            abstract chunks: Array<AiSearchSearchResponse.Chunks> with get, set
+            abstract chunks: ResizeArray<AiSearchSearchResponse.Chunks> with get, set
 
             [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
@@ -11731,13 +11761,13 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_2_11B_Vision_Instruct_Output")>]
         type AiCfMetaLlama3211BVisionInstructOutput =
             [<EmitProperty("tool_calls")>]
-            abstract toolCalls: option<Array<AiCfMetaLlama3211BVisionInstructOutput.ToolCalls>> with get, set
+            abstract toolCalls: option<ResizeArray<AiCfMetaLlama3211BVisionInstructOutput.ToolCalls>> with get, set
 
             abstract response: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "AiSentenceSimilarityInput")>]
         type AiSentenceSimilarityInput =
-            abstract sentences: Array<D1SessionBookmark> with get, set
+            abstract sentences: ResizeArray<D1SessionBookmark> with get, set
             abstract source: D1SessionBookmark with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -11753,7 +11783,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "VectorizeVectorMutation")>]
         type VectorizeVectorMutation =
             abstract count: float with get, set
-            abstract ids: Array<D1SessionBookmark> with get, set
+            abstract ids: ResizeArray<D1SessionBookmark> with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type DecompressionStream =
@@ -11783,7 +11813,7 @@ module rec Cloudflare =
             abstract password: URLPatternComponentResult with get, set
             abstract username: URLPatternComponentResult with get, set
             abstract protocol: URLPatternComponentResult with get, set
-            abstract inputs: Array<U2<URLPatternInit, string>> with get, set
+            abstract inputs: ResizeArray<U2<URLPatternInit, string>> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Black_Forest_Labs_Flux_2_Klein_4B_Input")>]
         type AiCfBlackForestLabsFlux2Klein4BInput =
@@ -11856,7 +11886,7 @@ module rec Cloudflare =
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
-            abstract image: option<U2<Array<float>, AiCfMetaLlama3211BVisionInstructPrompt.Image>> with get, set
+            abstract image: option<U2<ResizeArray<float>, AiCfMetaLlama3211BVisionInstructPrompt.Image>> with get, set
             abstract prompt: D1SessionBookmark with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -11914,9 +11944,12 @@ module rec Cloudflare =
             abstract ``namespace``: option<string> with get, set
 
             abstract id: D1SessionBookmark with get, set
-            abstract values: option<U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, Array<float>>> with get, set
+
+            abstract values:
+                option<U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, ResizeArray<float>>> with get, set
+
             abstract count: float with get, set
-            abstract matches: Array<VectorizeMatch> with get, set
+            abstract matches: ResizeArray<VectorizeMatch> with get, set
 
         [<Import("@cloudflare/workers-types", "MediaBinding")>]
         type MediaBinding =
@@ -11940,7 +11973,7 @@ module rec Cloudflare =
             abstract Invoke: callback: SetTimeout.Invoke.Callback * ?msDelay: float -> float
 
             abstract Invoke:
-                handler: TimerHandler * ?timeout: float * [<ParamArray>] arguments: Array<option<obj>> -> float
+                handler: TimerHandler * ?timeout: float * [<ParamArray>] arguments: ResizeArray<option<obj>> -> float
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type ResponseInputItemMessage =
@@ -11969,13 +12002,13 @@ module rec Cloudflare =
             abstract prefix: option<D1SessionBookmark> with get, set
             abstract returnRawResponse: option<bool> with get, set
             abstract gateway: option<GatewayOptions> with get, set
-            abstract tags: option<Array<D1SessionBookmark>> with get, set
+            abstract tags: option<ResizeArray<D1SessionBookmark>> with get, set
             abstract websocket: option<bool> with get, set
             abstract queueRequest: option<bool> with get, set
 
         type AiSearchMultiChatCompletionsRequest =
             [<EmitProperty("instance_ids")>]
-            abstract instanceIds: Array<D1SessionBookmark> with get, set
+            abstract instanceIds: ResizeArray<D1SessionBookmark> with get, set
 
             abstract cache: option<AiSearchMultiChatCompletionsRequest.Cache> with get, set
             abstract reranking: option<AiSearchMultiChatCompletionsRequest.Reranking> with get, set
@@ -12076,8 +12109,8 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchChatCompletionsResponse")>]
         type AiSearchChatCompletionsResponse =
-            abstract chunks: Array<AiSearchChatCompletionsResponse.Chunks> with get, set
-            abstract choices: Array<AiSearchChatCompletionsResponse.Choices> with get, set
+            abstract chunks: ResizeArray<AiSearchChatCompletionsResponse.Chunks> with get, set
+            abstract choices: ResizeArray<AiSearchChatCompletionsResponse.Choices> with get, set
             abstract model: option<D1SessionBookmark> with get, set
             abstract object: option<D1SessionBookmark> with get, set
             abstract id: option<D1SessionBookmark> with get, set
@@ -12124,14 +12157,14 @@ module rec Cloudflare =
             abstract id: DurableObjectId with get
             abstract props: 'Props with get
             abstract abort: ?reason: D1SessionBookmark -> unit
-            abstract getTags: ws: Typescript.WebSocket -> Array<D1SessionBookmark>
+            abstract getTags: ws: Typescript.WebSocket -> ResizeArray<D1SessionBookmark>
             abstract getHibernatableWebSocketEventTimeout: unit -> option<float>
             abstract setHibernatableWebSocketEventTimeout: ?timeoutMs: float -> unit
             abstract getWebSocketAutoResponseTimestamp: ws: Typescript.WebSocket -> option<Date>
             abstract getWebSocketAutoResponse: unit -> option<WebSocketRequestResponsePair>
             abstract setWebSocketAutoResponse: ?maybeReqResp: WebSocketRequestResponsePair -> unit
-            abstract getWebSockets: ?tag: D1SessionBookmark -> Array<Typescript.WebSocket>
-            abstract acceptWebSocket: ws: Typescript.WebSocket * ?tags: Array<D1SessionBookmark> -> unit
+            abstract getWebSockets: ?tag: D1SessionBookmark -> ResizeArray<Typescript.WebSocket>
+            abstract acceptWebSocket: ws: Typescript.WebSocket * ?tags: ResizeArray<D1SessionBookmark> -> unit
             abstract blockConcurrencyWhile: callback: unit -> Promise<'T> -> Promise<'T>
             abstract waitUntil: promise: Promise<option<obj>> -> unit
 
@@ -12148,9 +12181,9 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AnalyticsEngineDataPoint")>]
         type AnalyticsEngineDataPoint =
-            abstract blobs: option<Array<option<U2<ArrayBuffer, string>>>> with get, set
+            abstract blobs: option<ResizeArray<option<U2<ArrayBuffer, string>>>> with get, set
             abstract doubles: option<AiSentenceSimilarityOutput> with get, set
-            abstract indexes: option<Array<option<U2<ArrayBuffer, string>>>> with get, set
+            abstract indexes: option<ResizeArray<option<U2<ArrayBuffer, string>>>> with get, set
 
         [<Import("@cloudflare/workers-types", "R2UploadPartOptions")>]
         type R2UploadPartOptions =
@@ -12180,7 +12213,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Text_Completion_Response")>]
         type AiCfQwenQwen330BA3BFp8TextCompletionResponse =
             abstract usage: option<AiCfQwenQwen330BA3BFp8TextCompletionResponse.Usage> with get, set
-            abstract choices: option<Array<AiCfQwenQwen330BA3BFp8TextCompletionResponse.Choices>> with get, set
+            abstract choices: option<ResizeArray<AiCfQwenQwen330BA3BFp8TextCompletionResponse.Choices>> with get, set
             abstract model: option<D1SessionBookmark> with get, set
             abstract created: option<float> with get, set
             abstract object: option<AiCfQwenQwen330BA3BFp8TextCompletionResponse.Object> with get, set
@@ -12279,7 +12312,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "D1PreparedStatement"); AbstractClass; AllowNullLiteral>]
         type D1PreparedStatement private () =
-            abstract results: Array<'T> with get, set
+            abstract results: ResizeArray<'T> with get, set
             abstract error: option<unit> with get, set
             abstract meta: D1PreparedStatement.Meta with get, set
             abstract success: D1PreparedStatement.Success with get, set
@@ -12316,13 +12349,16 @@ module rec Cloudflare =
             abstract sizeAfter: float with get, set
 
             abstract duration: float with get, set
-            abstract raw: ?options: D1PreparedStatement.Raw.Options -> Promise<Array<'T>>
-            abstract raw: options: D1PreparedStatement.Raw.Options -> Promise<Array<D1SessionBookmark> * Array<'T>>
+            abstract raw: ?options: D1PreparedStatement.Raw.Options -> Promise<ResizeArray<'T>>
+
+            abstract raw:
+                options: D1PreparedStatement.Raw.Options -> Promise<ResizeArray<D1SessionBookmark> * ResizeArray<'T>>
+
             abstract all: unit -> Promise<D1PreparedStatement.All>
             abstract run: unit -> Promise<D1PreparedStatement.Run>
             abstract first: unit -> Promise<option<'T>>
             abstract first: colName: D1SessionBookmark -> Promise<option<'T>>
-            abstract bind: [<ParamArray>] values: Array<option<obj>> -> D1PreparedStatement
+            abstract bind: [<ParamArray>] values: ResizeArray<option<obj>> -> D1PreparedStatement
             abstract Item: key: D1SessionBookmark -> option<obj>
 
         [<Import("@cloudflare/workers-types", "DurableObjectFacets")>]
@@ -12373,7 +12409,7 @@ module rec Cloudflare =
             abstract append: name: D1SessionBookmark * value: D1SessionBookmark -> unit
             abstract set: name: D1SessionBookmark * value: D1SessionBookmark -> unit
             abstract has: name: D1SessionBookmark -> bool
-            abstract getAll: name: D1SessionBookmark -> Array<D1SessionBookmark>
+            abstract getAll: name: D1SessionBookmark -> ResizeArray<D1SessionBookmark>
             abstract get: name: D1SessionBookmark -> option<string>
 
         [<Import("@cloudflare/workers-types", "AiSearchJobs"); AbstractClass; AllowNullLiteral>]
@@ -12433,7 +12469,7 @@ module rec Cloudflare =
             [<EmitProperty("result_info")>]
             abstract resultInfo: option<AiSearchListItemsResponse.ResultInfo> with get, set
 
-            abstract result: Array<AiSearchItemInfo> with get, set
+            abstract result: ResizeArray<AiSearchItemInfo> with get, set
 
         [<Import("@cloudflare/workers-types", "ChatCompletionAudio")>]
         type ChatCompletionAudio =
@@ -12559,7 +12595,7 @@ module rec Cloudflare =
 
             abstract tools:
                 option<
-                    Array<
+                    ResizeArray<
                         U2<
                             AiCfMetaLlama4Scout17B16EInstructMessages.Tools,
                             AiCfMetaLlama4Scout17B16EInstructMessages.Tools
@@ -12567,13 +12603,13 @@ module rec Cloudflare =
                      >
                  > with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfMetaLlama4Scout17B16EInstructMessages.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfMetaLlama4Scout17B16EInstructMessages.Messages> with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type SystemMessage = | [<CompiledName("system")>] System
 
-        type VectorizeVectorMetadataValue = U4<Array<D1SessionBookmark>, string, float, bool>
+        type VectorizeVectorMetadataValue = U4<ResizeArray<D1SessionBookmark>, string, float, bool>
 
         [<Import("@cloudflare/workers-types", "ForwardableEmailMessage")>]
         type ForwardableEmailMessage =
@@ -12598,7 +12634,7 @@ module rec Cloudflare =
             [<EmitProperty("result_info")>]
             abstract resultInfo: option<AiSearchListResponse.ResultInfo> with get, set
 
-            abstract result: Array<AiSearchInstanceInfo> with get, set
+            abstract result: ResizeArray<AiSearchInstanceInfo> with get, set
 
         [<Import("@cloudflare/workers-types", "StreamDirectUploadCreateParams")>]
         type StreamDirectUploadCreateParams =
@@ -12606,7 +12642,7 @@ module rec Cloudflare =
             abstract scheduledDeletion: option<string> with get, set
             abstract thumbnailTimestampPct: option<float> with get, set
             abstract requireSignedURLs: option<bool> with get, set
-            abstract allowedOrigins: option<Array<D1SessionBookmark>> with get, set
+            abstract allowedOrigins: option<ResizeArray<D1SessionBookmark>> with get, set
             abstract meta: option<WebAssembly.ModuleImports> with get, set
             abstract creator: option<D1SessionBookmark> with get, set
             abstract expiry: option<D1SessionBookmark> with get, set
@@ -12707,7 +12743,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiImageTextToTextInput")>]
         type AiImageTextToTextInput =
-            abstract messages: option<Array<RoleScopedChatInput>> with get, set
+            abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
             abstract raw: option<bool> with get, set
 
             [<EmitProperty("presence_penalty")>]
@@ -12935,7 +12971,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionTopLogprob")>]
         type ChatCompletionTopLogprob =
-            abstract bytes: option<Array<float>> with get, set
+            abstract bytes: option<ResizeArray<float>> with get, set
             abstract logprob: float with get, set
             abstract token: D1SessionBookmark with get, set
 
@@ -12993,7 +13029,7 @@ module rec Cloudflare =
             [<EmitProperty("has_more")>]
             abstract hasMore: bool with get, set
 
-            abstract data: Array<AutoRagSearchResponse.Data> with get, set
+            abstract data: ResizeArray<AutoRagSearchResponse.Data> with get, set
 
             [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
@@ -13035,7 +13071,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "MessagePortPostMessageOptions")>]
         type MessagePortPostMessageOptions =
-            abstract transfer: option<Array<option<obj>>> with get, set
+            abstract transfer: option<ResizeArray<option<obj>>> with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type __WORKER_ENTRYPOINT_BRAND = | __WORKER_ENTRYPOINT_BRAND
@@ -13081,7 +13117,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "DeveloperMessage")>]
         type DeveloperMessage =
             abstract name: option<D1SessionBookmark> with get, set
-            abstract content: U2<Array<ChatCompletionContentPartText>, string> with get, set
+            abstract content: U2<ResizeArray<ChatCompletionContentPartText>, string> with get, set
             abstract role: DeveloperMessage.Role with get, set
 
         [<Import("@cloudflare/workers-types", "DurableObjectGetOptions")>]
@@ -13091,7 +13127,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "TraceItemTailEventInfo")>]
         type TraceItemTailEventInfo =
-            abstract consumedEvents: Array<TraceItemTailEventInfoTailItem> with get
+            abstract consumedEvents: ResizeArray<TraceItemTailEventInfoTailItem> with get
 
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct");
           AbstractClass;
@@ -13157,7 +13193,7 @@ module rec Cloudflare =
 
             [<EmitConstructor>]
             abstract Create:
-                ?bits: Array<U4<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, Blob, string>> *
+                ?bits: ResizeArray<U4<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, Blob, string>> *
                 name: D1SessionBookmark *
                 ?options: FileOptions ->
                     File
@@ -13289,7 +13325,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "StreamVideos")>]
         type StreamVideos =
-            abstract list: ?params: StreamVideosListParams -> Promise<Array<StreamVideo>>
+            abstract list: ?params: StreamVideosListParams -> Promise<ResizeArray<StreamVideo>>
 
         [<Import("@cloudflare/workers-types", "IdentityTransformStreamQueuingStrategy")>]
         type IdentityTransformStreamQueuingStrategy =
@@ -13299,7 +13335,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast_Async_Batch")>]
         type AiCfMetaLlama3370BInstructFp8FastAsyncBatch =
-            abstract requests: option<Array<AiCfMetaLlama3370BInstructFp8FastAsyncBatch.Requests>> with get, set
+            abstract requests: option<ResizeArray<AiCfMetaLlama3370BInstructFp8FastAsyncBatch.Requests>> with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type RequestInfo =
@@ -13590,7 +13626,7 @@ module rec Cloudflare =
 
             abstract tools:
                 option<
-                    Array<
+                    ResizeArray<
                         U2<
                             AiCfAisingaporeGemmaSeaLionV427BItMessages.Tools,
                             AiCfAisingaporeGemmaSeaLionV427BItMessages.Tools
@@ -13598,8 +13634,8 @@ module rec Cloudflare =
                      >
                  > with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfAisingaporeGemmaSeaLionV427BItMessages.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfAisingaporeGemmaSeaLionV427BItMessages.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "IncomingRequestCfPropertiesCloudflareForSaaSEnterprise")>]
         type IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<'HostMetadata> =
@@ -13656,7 +13692,7 @@ module rec Cloudflare =
             abstract databaseSize: float with get
 
             abstract exec:
-                query: D1SessionBookmark * [<ParamArray>] bindings: Array<option<obj>> -> SqlStorageCursor<'T>
+                query: D1SessionBookmark * [<ParamArray>] bindings: ResizeArray<option<obj>> -> SqlStorageCursor<'T>
 
         [<Import("@cloudflare/workers-types", "ConversionOptions")>]
         type ConversionOptions =
@@ -13667,7 +13703,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "CryptoKey"); AbstractClass; AllowNullLiteral>]
         type CryptoKey private () =
-            abstract usages: Array<D1SessionBookmark> with get
+            abstract usages: ResizeArray<D1SessionBookmark> with get
 
             abstract algorithm:
                 U6<
@@ -13686,12 +13722,12 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionLogprobs")>]
         type ChatCompletionLogprobs =
-            abstract refusal: option<Array<ChatCompletionTokenLogprob>> with get, set
-            abstract content: option<Array<ChatCompletionTokenLogprob>> with get, set
+            abstract refusal: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
+            abstract content: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
 
         [<Import("@cloudflare/workers-types", "PredictionContent")>]
         type PredictionContent =
-            abstract content: U2<Array<ChatCompletionContentPartText>, string> with get, set
+            abstract content: U2<ResizeArray<ChatCompletionContentPartText>, string> with get, set
 
             [<EmitProperty("type")>]
             abstract ``type``: PredictionContent.Type with get, set
@@ -13699,7 +13735,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "StreamScopedCaptions")>]
         type StreamScopedCaptions =
             abstract delete: language: D1SessionBookmark -> Promise<unit>
-            abstract list: ?language: D1SessionBookmark -> Promise<Array<StreamCaption>>
+            abstract list: ?language: D1SessionBookmark -> Promise<ResizeArray<StreamCaption>>
             abstract generate: language: D1SessionBookmark -> Promise<StreamCaption>
             abstract upload: language: D1SessionBookmark * input: AiTextToImageOutput -> Promise<StreamCaption>
 
@@ -13770,13 +13806,13 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Async_Batch")>]
         type AiCfQwenQwen330BA3BFp8AsyncBatch =
-            abstract requests: Array<U2<AiCfQwenQwen330BA3BFp8Prompt1, AiCfQwenQwen330BA3BFp8Messages1>> with get, set
+            abstract requests: ResizeArray<U2<AiCfQwenQwen330BA3BFp8Prompt1, AiCfQwenQwen330BA3BFp8Messages1>> with get, set
 
         [<Import("@cloudflare/workers-types", "CachePurgeOptions")>]
         type CachePurgeOptions =
             abstract purgeEverything: option<bool> with get, set
-            abstract pathPrefixes: option<Array<D1SessionBookmark>> with get, set
-            abstract tags: option<Array<D1SessionBookmark>> with get, set
+            abstract pathPrefixes: option<ResizeArray<D1SessionBookmark>> with get, set
+            abstract tags: option<ResizeArray<D1SessionBookmark>> with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type VectorizeDistanceMetric =
@@ -13955,7 +13991,7 @@ module rec Cloudflare =
             [<EmitProperty("result_info")>]
             abstract resultInfo: AiSearchItemLogsResponse.ResultInfo with get, set
 
-            abstract result: Array<AiSearchItemLog> with get, set
+            abstract result: ResizeArray<AiSearchItemLog> with get, set
 
         [<Import("@cloudflare/workers-types", "ContainerSnapshotOptions")>]
         type ContainerSnapshotOptions =
@@ -14005,7 +14041,7 @@ module rec Cloudflare =
         type ImageList =
             abstract listComplete: bool with get, set
             abstract cursor: option<D1SessionBookmark> with get, set
-            abstract images: Array<ImageMetadata> with get, set
+            abstract images: ResizeArray<ImageMetadata> with get, set
 
         type AiCfBaaiBgeBaseEnV15Output = obj
 
@@ -14055,8 +14091,8 @@ module rec Cloudflare =
             | [<CompiledValue(false)>] False
 
         type AiSearchNamespace =
-            abstract errors: option<Array<AiSearchMultiSearchError>> with get, set
-            abstract chunks: Array<AiSearchMultiSearchChunk> with get, set
+            abstract errors: option<ResizeArray<AiSearchMultiSearchError>> with get, set
+            abstract chunks: ResizeArray<AiSearchMultiSearchChunk> with get, set
 
             [<EmitProperty("ai_search_options")>]
             abstract aiSearchOptions: AiSearchMultiSearchOptions with get, set
@@ -14104,7 +14140,7 @@ module rec Cloudflare =
 
             abstract tools:
                 option<
-                    Array<
+                    ResizeArray<
                         U2<
                             AiCfMetaLlama3211BVisionInstructMessages.Tools,
                             AiCfMetaLlama3211BVisionInstructMessages.Tools
@@ -14112,9 +14148,9 @@ module rec Cloudflare =
                      >
                  > with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract image: option<U2<Array<float>, AiCfMetaLlama3211BVisionInstructMessages.Image>> with get, set
-            abstract messages: Array<AiCfMetaLlama3211BVisionInstructMessages.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract image: option<U2<ResizeArray<float>, AiCfMetaLlama3211BVisionInstructMessages.Image>> with get, set
+            abstract messages: ResizeArray<AiCfMetaLlama3211BVisionInstructMessages.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "ArtifactsCreateTokenResult")>]
         type ArtifactsCreateTokenResult =
@@ -14178,11 +14214,13 @@ module rec Cloudflare =
 
             abstract tools:
                 option<
-                    Array<U2<AiCfQwenQwen25Coder32BInstructMessages.Tools, AiCfQwenQwen25Coder32BInstructMessages.Tools>>
+                    ResizeArray<
+                        U2<AiCfQwenQwen25Coder32BInstructMessages.Tools, AiCfQwenQwen25Coder32BInstructMessages.Tools>
+                     >
                  > with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfQwenQwen25Coder32BInstructMessages.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfQwenQwen25Coder32BInstructMessages.Messages> with get, set
 
         type AiGatewayPatchLog =
             | ``-1`` = -1
@@ -14190,13 +14228,13 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "VectorizeIndex"); AbstractClass; AllowNullLiteral>]
         type VectorizeIndex private () =
-            abstract getByIds: ids: Array<D1SessionBookmark> -> Promise<Array<VectorizeVector>>
-            abstract deleteByIds: ids: Array<D1SessionBookmark> -> Promise<VectorizeVectorMutation>
-            abstract upsert: vectors: Array<VectorizeVector> -> Promise<VectorizeVectorMutation>
-            abstract insert: vectors: Array<VectorizeVector> -> Promise<VectorizeVectorMutation>
+            abstract getByIds: ids: ResizeArray<D1SessionBookmark> -> Promise<ResizeArray<VectorizeVector>>
+            abstract deleteByIds: ids: ResizeArray<D1SessionBookmark> -> Promise<VectorizeVectorMutation>
+            abstract upsert: vectors: ResizeArray<VectorizeVector> -> Promise<VectorizeVectorMutation>
+            abstract insert: vectors: ResizeArray<VectorizeVector> -> Promise<VectorizeVectorMutation>
 
             abstract query:
-                vector: U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, Array<float>> *
+                vector: U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, ResizeArray<float>> *
                 ?options: VectorizeQueryOptions ->
                     Promise<VectorizeMatches>
 
@@ -14207,7 +14245,7 @@ module rec Cloudflare =
             [<EmitProperty("result_info")>]
             abstract resultInfo: AiSearchItemChunksResponse.ResultInfo with get, set
 
-            abstract result: Array<AiSearchItemChunk> with get, set
+            abstract result: ResizeArray<AiSearchItemChunk> with get, set
 
         [<Import("@cloudflare/workers-types", "TextEncoderStream"); AbstractClass; AllowNullLiteral>]
         type TextEncoderStream private () =
@@ -14304,7 +14342,7 @@ module rec Cloudflare =
             abstract uploadExpiry: option<string> with get, set
             abstract uploaded: option<string> with get, set
             abstract requireSignedURLs: option<bool> with get, set
-            abstract allowedOrigins: Array<D1SessionBookmark> with get, set
+            abstract allowedOrigins: ResizeArray<D1SessionBookmark> with get, set
             abstract preview: option<D1SessionBookmark> with get, set
             abstract size: float with get, set
             abstract scheduledDeletion: option<string> with get, set
@@ -14385,7 +14423,7 @@ module rec Cloudflare =
             abstract set: name: D1SessionBookmark * value: D1SessionBookmark -> unit
             abstract set: name: D1SessionBookmark * value: U2<Blob, string> -> unit
             abstract has: name: D1SessionBookmark -> bool
-            abstract getAll: name: D1SessionBookmark -> Array<D1SessionBookmark>
+            abstract getAll: name: D1SessionBookmark -> ResizeArray<D1SessionBookmark>
             abstract get: name: D1SessionBookmark -> option<string>
             abstract delete: name: D1SessionBookmark -> unit
             abstract append: name: D1SessionBookmark * value: Blob * ?filename: D1SessionBookmark -> unit
@@ -14402,14 +14440,14 @@ module rec Cloudflare =
             abstract durableObjectId: option<D1SessionBookmark> with get
             abstract preview: option<TracePreviewInfo> with get
             abstract tailAttributes: option<WebAssembly.ModuleImports> with get
-            abstract scriptTags: option<Array<D1SessionBookmark>> with get
+            abstract scriptTags: option<ResizeArray<D1SessionBookmark>> with get
             abstract dispatchNamespace: option<D1SessionBookmark> with get
             abstract scriptVersion: option<ScriptVersion> with get
             abstract entrypoint: option<D1SessionBookmark> with get
             abstract scriptName: option<string> with get
-            abstract diagnosticsChannelEvents: Array<TraceDiagnosticChannelEvent> with get
-            abstract exceptions: Array<TraceException> with get
-            abstract logs: Array<TraceLog> with get
+            abstract diagnosticsChannelEvents: ResizeArray<TraceDiagnosticChannelEvent> with get
+            abstract exceptions: ResizeArray<TraceException> with get
+            abstract logs: ResizeArray<TraceLog> with get
             abstract eventTimestamp: option<float> with get
 
             abstract event:
@@ -14522,7 +14560,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "AiAutomaticSpeechRecognitionOutput")>]
         type AiAutomaticSpeechRecognitionOutput =
             abstract vtt: option<D1SessionBookmark> with get, set
-            abstract words: option<Array<AiAutomaticSpeechRecognitionOutput.Words>> with get, set
+            abstract words: option<ResizeArray<AiAutomaticSpeechRecognitionOutput.Words>> with get, set
             abstract text: option<D1SessionBookmark> with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -14621,9 +14659,9 @@ module rec Cloudflare =
             [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
-            abstract tools: option<Array<U2<AiCfQwenQwq32BMessages.Tools, AiCfQwenQwq32BMessages.Tools>>> with get, set
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfQwenQwq32BMessages.Messages> with get, set
+            abstract tools: option<ResizeArray<U2<AiCfQwenQwq32BMessages.Tools, AiCfQwenQwq32BMessages.Tools>>> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfQwenQwq32BMessages.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "AiObjectDetectionInput")>]
         type AiObjectDetectionInput =
@@ -14635,7 +14673,8 @@ module rec Cloudflare =
         type URLSearchParams private () =
             [<EmitConstructor>]
             abstract Create:
-                ?init: U4<URLSearchParams, URLSearchParams.Init, Array<D1SessionBookmark * D1SessionBookmark>, string> ->
+                ?init:
+                    U4<URLSearchParams, URLSearchParams.Init, ResizeArray<D1SessionBookmark * D1SessionBookmark>, string> ->
                     URLSearchParams
 
             abstract size: float with get
@@ -14651,7 +14690,7 @@ module rec Cloudflare =
             abstract sort: unit -> unit
             abstract set: name: D1SessionBookmark * value: D1SessionBookmark -> unit
             abstract has: name: D1SessionBookmark -> bool
-            abstract getAll: name: D1SessionBookmark -> Array<D1SessionBookmark>
+            abstract getAll: name: D1SessionBookmark -> ResizeArray<D1SessionBookmark>
             abstract get: name: D1SessionBookmark -> option<string>
             abstract delete: name: D1SessionBookmark -> unit
             abstract append: name: D1SessionBookmark * value: D1SessionBookmark -> unit
@@ -14663,7 +14702,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiTextEmbeddingsInput")>]
         type AiTextEmbeddingsInput =
-            abstract text: U2<Array<D1SessionBookmark>, string> with get, set
+            abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
 
         [<Import("@cloudflare/workers-types", "ErrorEvent"); AbstractClass; AllowNullLiteral>]
         type ErrorEvent private () =
@@ -14742,20 +14781,20 @@ module rec Cloudflare =
             [<EmitProperty("truncate_inputs")>]
             abstract truncateInputs: option<bool> with get, set
 
-            abstract contexts: Array<AiCfBaaiBgeM3InputQueryAndContexts.Contexts> with get, set
+            abstract contexts: ResizeArray<AiCfBaaiBgeM3InputQueryAndContexts.Contexts> with get, set
             abstract query: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "WorkerLoaderWorkerCode")>]
         type WorkerLoaderWorkerCode =
-            abstract streamingTails: option<Array<WorkerLoaderWorkerCode.StreamingTails>> with get, set
-            abstract tails: option<Array<WorkerLoaderWorkerCode.Tails>> with get, set
+            abstract streamingTails: option<ResizeArray<WorkerLoaderWorkerCode.StreamingTails>> with get, set
+            abstract tails: option<ResizeArray<WorkerLoaderWorkerCode.Tails>> with get, set
             abstract globalOutbound: option<WorkerLoaderWorkerCode.GlobalOutbound> with get, set
             abstract env: option<obj> with get, set
             abstract modules: WebAssembly.ModuleImports with get, set
             abstract mainModule: D1SessionBookmark with get, set
             abstract limits: option<WorkerdResourceLimits> with get, set
             abstract allowExperimental: option<bool> with get, set
-            abstract compatibilityFlags: option<Array<D1SessionBookmark>> with get, set
+            abstract compatibilityFlags: option<ResizeArray<D1SessionBookmark>> with get, set
             abstract compatibilityDate: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "ExportedHandlerQueueHandler")>]
@@ -14793,7 +14832,7 @@ module rec Cloudflare =
             abstract customMetadata: option<WebAssembly.ModuleImports> with get, set
             abstract httpMetadata: option<U2<R2HTTPMetadata, Headers>> with get, set
             abstract list: ?options: R2ListOptions -> Promise<R2Objects>
-            abstract delete: keys: U2<Array<D1SessionBookmark>, string> -> Promise<unit>
+            abstract delete: keys: U2<ResizeArray<D1SessionBookmark>, string> -> Promise<unit>
             abstract resumeMultipartUpload: key: D1SessionBookmark * uploadId: D1SessionBookmark -> R2MultipartUpload
 
             abstract createMultipartUpload:
@@ -14948,7 +14987,7 @@ module rec Cloudflare =
             abstract prompt: D1SessionBookmark with get, set
 
         type VectorizeVectorMetadata =
-            U5<VectorizeVectorMetadata, Array<D1SessionBookmark>, VectorizeVectorMetadata, string, float>
+            U5<VectorizeVectorMetadata, ResizeArray<D1SessionBookmark>, VectorizeVectorMetadata, string, float>
 
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Qwen_Qwen2_5_Coder_32B_Instruct");
           AbstractClass;
@@ -15029,10 +15068,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_Embedding_0_6B_Input")>]
         type AiCfQwenQwen3Embedding06BInput =
-            abstract text: option<U2<Array<D1SessionBookmark>, string>> with get, set
-            abstract documents: option<U2<Array<D1SessionBookmark>, string>> with get, set
+            abstract text: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
+            abstract documents: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
             abstract instruction: option<D1SessionBookmark> with get, set
-            abstract queries: option<U2<Array<D1SessionBookmark>, string>> with get, set
+            abstract queries: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
 
         type QueueMicrotask =
             abstract Invoke: task: Function -> unit
@@ -15191,7 +15230,7 @@ module rec Cloudflare =
             [<EmitProperty("truncate_inputs")>]
             abstract truncateInputs: option<bool> with get, set
 
-            abstract text: U2<Array<D1SessionBookmark>, string> with get, set
+            abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
 
         type LoopbackForExport =
             abstract Invoke: opts: LoopbackForExport.Invoke.Opts -> LoopbackForExport.Invoke
@@ -15250,7 +15289,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Ai4Bharat_Indictrans2_En_Indic_1B_Output")>]
         type AiCfAi4BharatIndictrans2EnIndic1BOutput =
-            abstract translations: Array<D1SessionBookmark> with get, set
+            abstract translations: ResizeArray<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Mistralai_Mistral_Small_3_1_24B_Instruct_Messages")>]
         type AiCfMistralaiMistralSmall3124BInstructMessages =
@@ -15284,7 +15323,7 @@ module rec Cloudflare =
 
             abstract tools:
                 option<
-                    Array<
+                    ResizeArray<
                         U2<
                             AiCfMistralaiMistralSmall3124BInstructMessages.Tools,
                             AiCfMistralaiMistralSmall3124BInstructMessages.Tools
@@ -15292,8 +15331,8 @@ module rec Cloudflare =
                      >
                  > with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfMistralaiMistralSmall3124BInstructMessages.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfMistralaiMistralSmall3124BInstructMessages.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "WebSocketEventMap")>]
         type WebSocketEventMap =
@@ -15342,7 +15381,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionsCommonOptions")>]
         type ChatCompletionsCommonOptions =
-            abstract functions: option<Array<FunctionDefinition>> with get, set
+            abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
 
             [<EmitProperty("function_call")>]
             abstract functionCall:
@@ -15356,7 +15395,7 @@ module rec Cloudflare =
             [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
-            abstract tools: option<Array<ChatCompletionTool>> with get, set
+            abstract tools: option<ResizeArray<ChatCompletionTool>> with get, set
 
             [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
@@ -15368,7 +15407,7 @@ module rec Cloudflare =
 
             abstract stream: option<bool> with get, set
             abstract store: option<bool> with get, set
-            abstract stop: option<U2<Array<D1SessionBookmark>, string>> with get, set
+            abstract stop: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
 
             [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ChatCompletionsCommonOptions.ServiceTier> with get, set
@@ -15393,7 +15432,7 @@ module rec Cloudflare =
             abstract parallelToolCalls: option<bool> with get, set
 
             abstract n: option<float> with get, set
-            abstract modalities: option<Array<ChatCompletionsCommonOptions.Modalities>> with get, set
+            abstract modalities: option<ResizeArray<ChatCompletionsCommonOptions.Modalities>> with get, set
             abstract metadata: option<ChatCompletionsCommonOptions.Metadata> with get, set
 
             [<EmitProperty("max_completion_tokens")>]
@@ -15495,7 +15534,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_M3_Output_Query")>]
         type AiCfBaaiBgeM3OutputQuery =
-            abstract response: option<Array<AiCfBaaiBgeM3OutputQuery.Response>> with get, set
+            abstract response: option<ResizeArray<AiCfBaaiBgeM3OutputQuery.Response>> with get, set
 
         [<Import("@cloudflare/workers-types", "DynamicDispatchLimits")>]
         type DynamicDispatchLimits =
@@ -15681,11 +15720,11 @@ module rec Cloudflare =
             [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
-            abstract messages: Array<AiCfMetaLlamaGuard38BInput.Messages> with get, set
+            abstract messages: ResizeArray<AiCfMetaLlamaGuard38BInput.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "D1Result")>]
         type D1Result<'T> =
-            abstract results: Array<'T> with get, set
+            abstract results: ResizeArray<'T> with get, set
             abstract error: option<unit> with get, set
             abstract meta: D1Result.Meta with get, set
             abstract success: D1Result.Success with get, set
@@ -15776,7 +15815,7 @@ module rec Cloudflare =
             [<EmitProperty("truncate_inputs")>]
             abstract truncateInputs: option<bool> with get, set
 
-            abstract contexts: Array<AiCfBaaiBgeM3InputQueryAndContexts1.Contexts> with get, set
+            abstract contexts: ResizeArray<AiCfBaaiBgeM3InputQueryAndContexts1.Contexts> with get, set
             abstract query: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "CryptoKeyAesKeyAlgorithm")>]
@@ -15913,7 +15952,7 @@ module rec Cloudflare =
 
             abstract stream: option<bool> with get, set
             abstract model: option<D1SessionBookmark> with get, set
-            abstract messages: Array<AiSearchMessage> with get, set
+            abstract messages: ResizeArray<AiSearchMessage> with get, set
             abstract stats: unit -> Promise<AiSearchStatsResponse>
             abstract info: unit -> Promise<AiSearchInstanceInfo>
             abstract update: config: AiSearchInstance.Update.Config -> Promise<AiSearchInstanceInfo>
@@ -15925,7 +15964,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "UserMessage")>]
         type UserMessage =
             abstract name: option<D1SessionBookmark> with get, set
-            abstract content: U2<Array<UserMessageContentPart>, string> with get, set
+            abstract content: U2<ResizeArray<UserMessageContentPart>, string> with get, set
             abstract role: UserMessage.Role with get, set
 
         [<Import("@cloudflare/workers-types", "KVNamespaceGetWithMetadataResult")>]
@@ -15937,7 +15976,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Workflow"); AbstractClass; AllowNullLiteral>]
         type Workflow<'PARAMS> private () =
             abstract createBatch:
-                batch: Array<WorkflowInstanceCreateOptions<'PARAMS>> -> Promise<Array<WorkflowInstance>>
+                batch: ResizeArray<WorkflowInstanceCreateOptions<'PARAMS>> -> Promise<ResizeArray<WorkflowInstance>>
 
             abstract create: ?options: WorkflowInstanceCreateOptions<'PARAMS> -> Promise<WorkflowInstance>
             abstract get: id: D1SessionBookmark -> Promise<WorkflowInstance>
@@ -15993,7 +16032,7 @@ module rec Cloudflare =
 
             abstract stream: option<bool> with get, set
             abstract model: option<D1SessionBookmark> with get, set
-            abstract messages: Array<AiSearchMessage> with get, set
+            abstract messages: ResizeArray<AiSearchMessage> with get, set
             abstract Item: key: D1SessionBookmark -> option<obj>
 
         type SetInterval =
@@ -16003,7 +16042,7 @@ module rec Cloudflare =
             abstract Invoke: callback: SetInterval.Invoke.Callback * ?msDelay: float -> float
 
             abstract Invoke:
-                handler: TimerHandler * ?timeout: float * [<ParamArray>] arguments: Array<option<obj>> -> float
+                handler: TimerHandler * ?timeout: float * [<ParamArray>] arguments: ResizeArray<option<obj>> -> float
 
         [<Import("@cloudflare/workers-types", "MessageBatchMetrics")>]
         type MessageBatchMetrics =
@@ -16068,23 +16107,23 @@ module rec Cloudflare =
             abstract delete: key: 'Key -> Promise<unit>
 
             abstract getWithMetadata:
-                key: Array<'Key> * ?options: KVNamespaceGetOptions<KVNamespace.GetWithMetadata.Options> ->
+                key: ResizeArray<'Key> * ?options: KVNamespaceGetOptions<KVNamespace.GetWithMetadata.Options> ->
                     Promise<Map<D1SessionBookmark, KVNamespaceGetWithMetadataResult<'ExpectedValue, 'Metadata>>>
 
             abstract getWithMetadata:
-                key: Array<'Key> * ?options: KVNamespaceGetOptions<KVNamespace.GetWithMetadata.Options> ->
+                key: ResizeArray<'Key> * ?options: KVNamespaceGetOptions<KVNamespace.GetWithMetadata.Options> ->
                     Promise<Map<D1SessionBookmark, KVNamespaceGetWithMetadataResult<D1SessionBookmark, 'Metadata>>>
 
             abstract getWithMetadata:
-                key: Array<'Key> * ?options: KVNamespace.GetWithMetadata.Options ->
+                key: ResizeArray<'Key> * ?options: KVNamespace.GetWithMetadata.Options ->
                     Promise<Map<D1SessionBookmark, KVNamespaceGetWithMetadataResult<D1SessionBookmark, 'Metadata>>>
 
             abstract getWithMetadata:
-                key: Array<'Key> * ``type``: KVNamespace.GetWithMetadata.Type ->
+                key: ResizeArray<'Key> * ``type``: KVNamespace.GetWithMetadata.Type ->
                     Promise<Map<D1SessionBookmark, KVNamespaceGetWithMetadataResult<'ExpectedValue, 'Metadata>>>
 
             abstract getWithMetadata:
-                key: Array<'Key> * ``type``: KVNamespace.GetWithMetadata.Type ->
+                key: ResizeArray<'Key> * ``type``: KVNamespace.GetWithMetadata.Type ->
                     Promise<Map<D1SessionBookmark, KVNamespaceGetWithMetadataResult<D1SessionBookmark, 'Metadata>>>
 
             abstract getWithMetadata:
@@ -16132,22 +16171,24 @@ module rec Cloudflare =
             abstract list: ?options: KVNamespaceListOptions -> Promise<U2<KVNamespace.List, KVNamespace.List>>
 
             abstract get:
-                key: Array<'Key> * ?options: KVNamespaceGetOptions<KVNamespace.Get.Options> ->
+                key: ResizeArray<'Key> * ?options: KVNamespaceGetOptions<KVNamespace.Get.Options> ->
                     Promise<Map<D1SessionBookmark, option<'ExpectedValue>>>
 
             abstract get:
-                key: Array<'Key> * ?options: KVNamespaceGetOptions<KVNamespace.Get.Options> ->
+                key: ResizeArray<'Key> * ?options: KVNamespaceGetOptions<KVNamespace.Get.Options> ->
                     Promise<Map<D1SessionBookmark, option<string>>>
 
             abstract get:
-                key: Array<'Key> * ?options: KVNamespace.Get.Options -> Promise<Map<D1SessionBookmark, option<string>>>
+                key: ResizeArray<'Key> * ?options: KVNamespace.Get.Options ->
+                    Promise<Map<D1SessionBookmark, option<string>>>
 
             abstract get:
-                key: Array<'Key> * ``type``: KVNamespace.Get.Type ->
+                key: ResizeArray<'Key> * ``type``: KVNamespace.Get.Type ->
                     Promise<Map<D1SessionBookmark, option<'ExpectedValue>>>
 
             abstract get:
-                key: Array<'Key> * ``type``: KVNamespace.Get.Type -> Promise<Map<D1SessionBookmark, option<string>>>
+                key: ResizeArray<'Key> * ``type``: KVNamespace.Get.Type ->
+                    Promise<Map<D1SessionBookmark, option<string>>>
 
             abstract get:
                 key: 'Key * ?options: KVNamespaceGetOptions<KVNamespace.Get.Options> ->
@@ -16232,7 +16273,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen2_5_Coder_32B_Instruct_Output")>]
         type AiCfQwenQwen25Coder32BInstructOutput =
             [<EmitProperty("tool_calls")>]
-            abstract toolCalls: option<Array<AiCfQwenQwen25Coder32BInstructOutput.ToolCalls>> with get, set
+            abstract toolCalls: option<ResizeArray<AiCfQwenQwen25Coder32BInstructOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfQwenQwen25Coder32BInstructOutput.Usage> with get, set
             abstract response: D1SessionBookmark with get, set
@@ -16325,14 +16366,14 @@ module rec Cloudflare =
             abstract getAlarm: ?options: DurableObjectGetAlarmOptions -> Promise<option<float>>
             abstract transaction: closure: DurableObjectTransaction -> Promise<'T> -> Promise<'T>
             abstract deleteAll: ?options: DurableObjectPutOptions -> Promise<unit>
-            abstract delete: keys: Array<D1SessionBookmark> * ?options: DurableObjectPutOptions -> Promise<float>
+            abstract delete: keys: ResizeArray<D1SessionBookmark> * ?options: DurableObjectPutOptions -> Promise<float>
             abstract delete: key: D1SessionBookmark * ?options: DurableObjectPutOptions -> Promise<bool>
             abstract put: entries: WebAssembly.ModuleImports * ?options: DurableObjectPutOptions -> Promise<unit>
             abstract put: key: D1SessionBookmark * value: 'T * ?options: DurableObjectPutOptions -> Promise<unit>
             abstract list: ?options: DurableObjectListOptions -> Promise<Map<D1SessionBookmark, 'T>>
 
             abstract get:
-                keys: Array<D1SessionBookmark> * ?options: DurableObjectGetOptions ->
+                keys: ResizeArray<D1SessionBookmark> * ?options: DurableObjectGetOptions ->
                     Promise<Map<D1SessionBookmark, 'T>>
 
             abstract get: key: D1SessionBookmark * ?options: DurableObjectGetOptions -> Promise<option<'T>>
@@ -16394,7 +16435,7 @@ module rec Cloudflare =
 
             abstract tools:
                 option<
-                    Array<
+                    ResizeArray<
                         U2<
                             AiCfAisingaporeGemmaSeaLionV427BItMessages1.Tools,
                             AiCfAisingaporeGemmaSeaLionV427BItMessages1.Tools
@@ -16402,8 +16443,8 @@ module rec Cloudflare =
                      >
                  > with get, set
 
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfAisingaporeGemmaSeaLionV427BItMessages1.Messages> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfAisingaporeGemmaSeaLionV427BItMessages1.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "ChatCompletionCustomTool")>]
         type ChatCompletionCustomTool =
@@ -16419,7 +16460,7 @@ module rec Cloudflare =
             [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
-            abstract tools: option<Array<Tool>> with get, set
+            abstract tools: option<ResizeArray<Tool>> with get, set
 
             [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<U2<ResponsesInput.ToolChoice, ResponsesInput.ToolChoice>> with get, set
@@ -16453,8 +16494,8 @@ module rec Cloudflare =
             abstract maxOutputTokens: option<float> with get, set
 
             abstract instructions: option<string> with get, set
-            abstract input: option<U2<Array<'T>, string>> with get, set
-            abstract include: option<Array<ResponseIncludable>> with get, set
+            abstract input: option<U2<ResizeArray<'T>, string>> with get, set
+            abstract include: option<ResizeArray<ResponseIncludable>> with get, set
             abstract conversation: option<U2<ResponsesInput.Conversation, string>> with get, set
             abstract background: option<bool> with get, set
 
@@ -16496,7 +16537,7 @@ module rec Cloudflare =
             abstract meta: option<WebAssembly.ModuleImports> with get, set
             abstract maxDurationSeconds: option<float> with get, set
             abstract creator: option<D1SessionBookmark> with get, set
-            abstract allowedOrigins: option<Array<D1SessionBookmark>> with get, set
+            abstract allowedOrigins: option<ResizeArray<D1SessionBookmark>> with get, set
 
         [<Import("@cloudflare/workers-types", "SubtleCryptoSignAlgorithm")>]
         type SubtleCryptoSignAlgorithm =
@@ -16637,20 +16678,22 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Google_Gemma_3_12B_It_Output")>]
         type AiCfGoogleGemma312BItOutput =
             [<EmitProperty("tool_calls")>]
-            abstract toolCalls: option<Array<AiCfGoogleGemma312BItOutput.ToolCalls>> with get, set
+            abstract toolCalls: option<ResizeArray<AiCfGoogleGemma312BItOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfGoogleGemma312BItOutput.Usage> with get, set
             abstract response: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "AiTextGenerationInput")>]
         type AiTextGenerationInput =
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract tools: option<U3<Array<AiTextGenerationToolInput>, Array<AiTextGenerationToolLegacyInput>, obj>> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+
+            abstract tools:
+                option<U3<ResizeArray<AiTextGenerationToolInput>, ResizeArray<AiTextGenerationToolLegacyInput>, obj>> with get, set
 
             [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiTextGenerationResponseFormat> with get, set
 
-            abstract messages: option<Array<RoleScopedChatInput>> with get, set
+            abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
 
             [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
@@ -16710,7 +16753,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwq_32B_Output")>]
         type AiCfQwenQwq32BOutput =
             [<EmitProperty("tool_calls")>]
-            abstract toolCalls: option<Array<AiCfQwenQwq32BOutput.ToolCalls>> with get, set
+            abstract toolCalls: option<ResizeArray<AiCfQwenQwq32BOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfQwenQwq32BOutput.Usage> with get, set
             abstract response: D1SessionBookmark with get, set
@@ -16745,7 +16788,7 @@ module rec Cloudflare =
         type StreamWatermarks =
             abstract delete: watermarkId: D1SessionBookmark -> Promise<unit>
             abstract get: watermarkId: D1SessionBookmark -> Promise<StreamWatermark>
-            abstract list: unit -> Promise<Array<StreamWatermark>>
+            abstract list: unit -> Promise<ResizeArray<StreamWatermark>>
             abstract generate: url: D1SessionBookmark * params: StreamWatermarkCreateParams -> Promise<StreamWatermark>
 
             abstract generate:
@@ -16821,11 +16864,11 @@ module rec Cloudflare =
         type SqlStorageCursor<'T when 'T :> WebAssembly.ModuleImports> private () =
             abstract rowsWritten: float with get
             abstract rowsRead: float with get
-            abstract columnNames: Array<D1SessionBookmark> with get, set
+            abstract columnNames: ResizeArray<D1SessionBookmark> with get, set
             abstract symbolIterator: unit -> IterableIterator<'T, option<obj>, option<obj>>
             abstract raw: unit -> IterableIterator<'U, option<obj>, option<obj>>
             abstract one: unit -> 'T
-            abstract toArray: unit -> Array<'T>
+            abstract toArray: unit -> ResizeArray<'T>
             abstract next: unit -> U2<SqlStorageCursor.Next, SqlStorageCursor.Next>
 
         type OnRequest =
@@ -16902,9 +16945,11 @@ module rec Cloudflare =
             [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
-            abstract tools: option<Array<U2<AiCfGoogleGemma312BItMessages.Tools, AiCfGoogleGemma312BItMessages.Tools>>> with get, set
-            abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: Array<AiCfGoogleGemma312BItMessages.Messages> with get, set
+            abstract tools:
+                option<ResizeArray<U2<AiCfGoogleGemma312BItMessages.Tools, AiCfGoogleGemma312BItMessages.Tools>>> with get, set
+
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiCfGoogleGemma312BItMessages.Messages> with get, set
 
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Pfnet_Plamo_Embedding_1B"); AbstractClass; AllowNullLiteral>]
         type BaseAiCfPfnetPlamoEmbedding1B private () =
@@ -17275,7 +17320,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Ai_Cf_Openai_Whisper_Large_V3_Turbo_Output")>]
         type AiCfOpenaiWhisperLargeV3TurboOutput =
             abstract vtt: option<D1SessionBookmark> with get, set
-            abstract segments: option<Array<AiCfOpenaiWhisperLargeV3TurboOutput.Segments>> with get, set
+            abstract segments: option<ResizeArray<AiCfOpenaiWhisperLargeV3TurboOutput.Segments>> with get, set
 
             [<EmitProperty("word_count")>]
             abstract wordCount: option<float> with get, set
@@ -17293,12 +17338,12 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "ExportedHandlerTraceHandler")>]
         type ExportedHandlerTraceHandler<'Props, 'Env> =
             abstract Invoke:
-                traces: Array<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
+                traces: ResizeArray<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Mistralai_Mistral_Small_3_1_24B_Instruct_Output")>]
         type AiCfMistralaiMistralSmall3124BInstructOutput =
             [<EmitProperty("tool_calls")>]
-            abstract toolCalls: option<Array<AiCfMistralaiMistralSmall3124BInstructOutput.ToolCalls>> with get, set
+            abstract toolCalls: option<ResizeArray<AiCfMistralaiMistralSmall3124BInstructOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfMistralaiMistralSmall3124BInstructOutput.Usage> with get, set
             abstract response: D1SessionBookmark with get, set
@@ -17330,14 +17375,14 @@ module rec Cloudflare =
             abstract setAlarm: scheduledTime: U2<Date, float> * ?options: DurableObjectSetAlarmOptions -> Promise<unit>
             abstract getAlarm: ?options: DurableObjectGetAlarmOptions -> Promise<option<float>>
             abstract rollback: unit -> unit
-            abstract delete: keys: Array<D1SessionBookmark> * ?options: DurableObjectPutOptions -> Promise<float>
+            abstract delete: keys: ResizeArray<D1SessionBookmark> * ?options: DurableObjectPutOptions -> Promise<float>
             abstract delete: key: D1SessionBookmark * ?options: DurableObjectPutOptions -> Promise<bool>
             abstract put: entries: WebAssembly.ModuleImports * ?options: DurableObjectPutOptions -> Promise<unit>
             abstract put: key: D1SessionBookmark * value: 'T * ?options: DurableObjectPutOptions -> Promise<unit>
             abstract list: ?options: DurableObjectListOptions -> Promise<Map<D1SessionBookmark, 'T>>
 
             abstract get:
-                keys: Array<D1SessionBookmark> * ?options: DurableObjectGetOptions ->
+                keys: ResizeArray<D1SessionBookmark> * ?options: DurableObjectGetOptions ->
                     Promise<Map<D1SessionBookmark, 'T>>
 
             abstract get: key: D1SessionBookmark * ?options: DurableObjectGetOptions -> Promise<option<'T>>
@@ -17496,8 +17541,8 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchMultiSearchResponse")>]
         type AiSearchMultiSearchResponse =
-            abstract errors: option<Array<AiSearchMultiSearchError>> with get, set
-            abstract chunks: Array<AiSearchMultiSearchChunk> with get, set
+            abstract errors: option<ResizeArray<AiSearchMultiSearchError>> with get, set
+            abstract chunks: ResizeArray<AiSearchMultiSearchChunk> with get, set
 
             [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
@@ -17601,7 +17646,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types", "setInterval")>]
             static member setInterval
-                (handler: TimerHandler, ?timeout: float, [<ParamArray>] arguments: Array<option<obj>>)
+                (handler: TimerHandler, ?timeout: float, [<ParamArray>] arguments: ResizeArray<option<obj>>)
                 : float =
                 JS.undefined
 
@@ -17652,7 +17697,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types", "setTimeout")>]
             static member setTimeout
-                (handler: TimerHandler, ?timeout: float, [<ParamArray>] arguments: Array<option<obj>>)
+                (handler: TimerHandler, ?timeout: float, [<ParamArray>] arguments: ResizeArray<option<obj>>)
                 : float =
                 JS.undefined
 
