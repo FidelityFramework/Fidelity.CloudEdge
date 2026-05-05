@@ -4896,7 +4896,7 @@ module rec Cloudflare =
                                                     WorkflowEntrypoint,
                                                     Map<U2<option<obj>, unit>, U2<option<obj>, unit>>,
                                                     Set<U2<option<obj>, unit>>,
-                                                    ReadonlyArray<U2<option<obj>, unit>>,
+                                                    System.Collections.Generic.IReadOnlyList<U2<option<obj>, unit>>,
                                                     WorkflowEntrypoint,
                                                     string,
                                                     float
@@ -4907,7 +4907,7 @@ module rec Cloudflare =
                                         U2<option<obj>, unit>
                                      >,
                                     Set<U2<option<obj>, unit>>,
-                                    ReadonlyArray<U2<option<obj>, unit>>,
+                                    System.Collections.Generic.IReadOnlyList<U2<option<obj>, unit>>,
                                     WorkflowEntrypoint,
                                     string,
                                     float
@@ -4974,7 +4974,7 @@ module rec Cloudflare =
                                                     WorkflowEntrypoint,
                                                     Map<U2<option<obj>, unit>, U2<option<obj>, unit>>,
                                                     Set<U2<option<obj>, unit>>,
-                                                    ReadonlyArray<U2<option<obj>, unit>>,
+                                                    System.Collections.Generic.IReadOnlyList<U2<option<obj>, unit>>,
                                                     WorkflowEntrypoint,
                                                     string,
                                                     float
@@ -4985,7 +4985,7 @@ module rec Cloudflare =
                                         U2<option<obj>, unit>
                                      >,
                                     Set<U2<option<obj>, unit>>,
-                                    ReadonlyArray<U2<option<obj>, unit>>,
+                                    System.Collections.Generic.IReadOnlyList<U2<option<obj>, unit>>,
                                     WorkflowEntrypoint,
                                     string,
                                     float
@@ -5054,7 +5054,7 @@ module rec Cloudflare =
                                                     WorkflowEntrypoint,
                                                     Map<U2<option<obj>, unit>, U2<option<obj>, unit>>,
                                                     Set<U2<option<obj>, unit>>,
-                                                    ReadonlyArray<U2<option<obj>, unit>>,
+                                                    System.Collections.Generic.IReadOnlyList<U2<option<obj>, unit>>,
                                                     WorkflowEntrypoint,
                                                     string,
                                                     float
@@ -5065,7 +5065,7 @@ module rec Cloudflare =
                                         U2<option<obj>, unit>
                                      >,
                                     Set<U2<option<obj>, unit>>,
-                                    ReadonlyArray<U2<option<obj>, unit>>,
+                                    System.Collections.Generic.IReadOnlyList<U2<option<obj>, unit>>,
                                     WorkflowEntrypoint,
                                     string,
                                     float
@@ -5074,7 +5074,7 @@ module rec Cloudflare =
                             unit
                          >
                      >,
-                    ReadonlyArray<
+                    System.Collections.Generic.IReadOnlyList<
                         U2<
                             option<
                                 U31<
@@ -5134,7 +5134,7 @@ module rec Cloudflare =
                                                     WorkflowEntrypoint,
                                                     Map<U2<option<obj>, unit>, U2<option<obj>, unit>>,
                                                     Set<U2<option<obj>, unit>>,
-                                                    ReadonlyArray<U2<option<obj>, unit>>,
+                                                    System.Collections.Generic.IReadOnlyList<U2<option<obj>, unit>>,
                                                     WorkflowEntrypoint,
                                                     string,
                                                     float
@@ -5145,7 +5145,7 @@ module rec Cloudflare =
                                         U2<option<obj>, unit>
                                      >,
                                     Set<U2<option<obj>, unit>>,
-                                    ReadonlyArray<U2<option<obj>, unit>>,
+                                    System.Collections.Generic.IReadOnlyList<U2<option<obj>, unit>>,
                                     WorkflowEntrypoint,
                                     string,
                                     float
@@ -6095,7 +6095,7 @@ module rec Cloudflare =
                             type Callback =
                                 abstract Invoke:
                                     this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                        U2<'U, ReadonlyArray<'U>>
+                                        U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                         module rec ForEach =
                             type Callbackfn =
@@ -6137,13 +6137,11 @@ module rec Cloudflare =
             type Result =
                 abstract Item: key: D1SessionBookmark -> option<obj>
                 abstract Invoke: [<ParamArray>] args: Result.Invoke.Args -> U2<Result.Invoke, U2<Result.Invoke, unit>>
-
-                abstract catch:
-                    ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+                abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
                 abstract ``then``:
-                    ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                    ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                    ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                    ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                         Promise<U2<'TResult1, 'TResult2>>
 
             type Stubify<'T> = obj
@@ -6172,7 +6170,7 @@ module rec Cloudflare =
                 abstract symbolUnscopables: UnstubifyAll.SymbolUnscopables with get
 
                 abstract length: float with get, set
-                abstract symbolIterator: unit -> ArrayIterator<'T>
+                abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                 abstract ``with``: index: float * value: 'T -> ResizeArray
                 abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
                 abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
@@ -6187,9 +6185,9 @@ module rec Cloudflare =
 
                 abstract flatMap: callback: UnstubifyAll.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                 abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                abstract values: unit -> ArrayIterator<'T>
-                abstract keys: unit -> ArrayIterator<float>
-                abstract entries: unit -> ArrayIterator<float * 'T>
+                abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                 abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                 abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
                 abstract findIndex: predicate: UnstubifyAll.FindIndex.Predicate * ?thisArg: obj -> float
@@ -6224,13 +6222,11 @@ module rec Cloudflare =
             [<Import("@cloudflare/workers-types.Rpc", "Provider")>]
             type Provider<'Reserved, 'T when 'Reserved :> D1SessionBookmark and 'T :> obj> =
                 abstract Item: key: D1SessionBookmark -> option<obj>
-
-                abstract catch:
-                    ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+                abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
                 abstract ``then``:
-                    ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                    ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                    ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                    ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                         Promise<U2<'TResult1, 'TResult2>>
 
                 abstract Invoke:
@@ -6246,13 +6242,11 @@ module rec Cloudflare =
                 abstract symbolDispose: unit -> unit
                 abstract dup: unit -> 'StubBase
                 abstract Item: key: D1SessionBookmark -> option<obj>
-
-                abstract catch:
-                    ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+                abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
                 abstract ``then``:
-                    ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                    ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                    ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                    ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                         Promise<U2<'TResult1, 'TResult2>>
 
                 abstract Invoke: [<ParamArray>] args: Stub.Invoke.Args -> U2<Stub.Invoke, U2<Stub.Invoke, unit>>
@@ -6288,7 +6282,9 @@ module rec Cloudflare =
                                                                     U2<
                                                                         ResizeArray<U2<'V, option<obj>>>,
                                                                         U2<
-                                                                            ReadonlyArray<U2<'V, option<obj>>>,
+                                                                            System.Collections.Generic.IReadOnlyList<
+                                                                                U2<'V, option<obj>>
+                                                                             >,
                                                                             U2<'T, U2<WebAssembly.ModuleImports, 'T>>
                                                                          >
                                                                      >
@@ -6299,7 +6295,7 @@ module rec Cloudflare =
                                                     U2<
                                                         ResizeArray<U2<'V, option<obj>>>,
                                                         U2<
-                                                            ReadonlyArray<U2<'V, option<obj>>>,
+                                                            System.Collections.Generic.IReadOnlyList<U2<'V, option<obj>>>,
                                                             U2<'T, U2<WebAssembly.ModuleImports, 'T>>
                                                          >
                                                      >
@@ -6315,7 +6311,7 @@ module rec Cloudflare =
                                                     U2<
                                                         ResizeArray<U2<'V, option<obj>>>,
                                                         U2<
-                                                            ReadonlyArray<U2<'V, option<obj>>>,
+                                                            System.Collections.Generic.IReadOnlyList<U2<'V, option<obj>>>,
                                                             U2<'T, U2<WebAssembly.ModuleImports, 'T>>
                                                          >
                                                      >
@@ -6334,7 +6330,9 @@ module rec Cloudflare =
                                                         U2<
                                                             ResizeArray<U2<'V, option<obj>>>,
                                                             U2<
-                                                                ReadonlyArray<U2<'V, option<obj>>>,
+                                                                System.Collections.Generic.IReadOnlyList<
+                                                                    U2<'V, option<obj>>
+                                                                 >,
                                                                 U2<'T, U2<WebAssembly.ModuleImports, 'T>>
                                                              >
                                                          >
@@ -6345,7 +6343,7 @@ module rec Cloudflare =
                                         U2<
                                             ResizeArray<U2<'V, option<obj>>>,
                                             U2<
-                                                ReadonlyArray<U2<'V, option<obj>>>,
+                                                System.Collections.Generic.IReadOnlyList<U2<'V, option<obj>>>,
                                                 U2<'T, U2<WebAssembly.ModuleImports, 'T>>
                                              >
                                          >
@@ -6361,7 +6359,7 @@ module rec Cloudflare =
                                         U2<
                                             ResizeArray<U2<'V, option<obj>>>,
                                             U2<
-                                                ReadonlyArray<U2<'V, option<obj>>>,
+                                                System.Collections.Generic.IReadOnlyList<U2<'V, option<obj>>>,
                                                 U2<'T, U2<WebAssembly.ModuleImports, 'T>>
                                              >
                                          >
@@ -6380,7 +6378,7 @@ module rec Cloudflare =
                                             U2<
                                                 ResizeArray<U2<'V, option<obj>>>,
                                                 U2<
-                                                    ReadonlyArray<U2<'V, option<obj>>>,
+                                                    System.Collections.Generic.IReadOnlyList<U2<'V, option<obj>>>,
                                                     U2<'T, U2<WebAssembly.ModuleImports, 'T>>
                                                  >
                                              >
@@ -6390,7 +6388,10 @@ module rec Cloudflare =
                              >,
                             U2<
                                 ResizeArray<U2<'V, option<obj>>>,
-                                U2<ReadonlyArray<U2<'V, option<obj>>>, U2<'T, U2<WebAssembly.ModuleImports, 'T>>>
+                                U2<
+                                    System.Collections.Generic.IReadOnlyList<U2<'V, option<obj>>>,
+                                    U2<'T, U2<WebAssembly.ModuleImports, 'T>>
+                                 >
                              >
                          >
                      >
@@ -6417,7 +6418,7 @@ module rec Cloudflare =
                                 type Callback =
                                     abstract Invoke:
                                         this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                            U2<'U, ReadonlyArray<'U>>
+                                            U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
@@ -6452,7 +6453,7 @@ module rec Cloudflare =
                     abstract symbolUnscopables: Args.SymbolUnscopables with get
 
                     abstract length: float with get, set
-                    abstract symbolIterator: unit -> ArrayIterator<'T>
+                    abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                     abstract ``with``: index: float * value: 'T -> ResizeArray
 
                     abstract toSpliced:
@@ -6469,9 +6470,9 @@ module rec Cloudflare =
 
                     abstract flatMap: callback: Args.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                     abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                    abstract values: unit -> ArrayIterator<'T>
-                    abstract keys: unit -> ArrayIterator<float>
-                    abstract entries: unit -> ArrayIterator<float * 'T>
+                    abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                    abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                    abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                     abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                     abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
                     abstract findIndex: predicate: Args.FindIndex.Predicate * ?thisArg: obj -> float
@@ -7891,11 +7892,11 @@ module rec Cloudflare =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
             abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke:
@@ -8558,11 +8559,7 @@ module rec Cloudflare =
             abstract metrics: QueueSendBatchMetrics with get, set
 
         type HeadersInit =
-            U3<
-                Headers,
-                Iterable<Iterable<D1SessionBookmark, option<obj>, option<obj>>, option<obj>, option<obj>>,
-                HeadersInit
-             >
+            U3<Headers, seq<seq<D1SessionBookmark, option<obj>, option<obj>>, option<obj>, option<obj>>, HeadersInit>
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type StreamWatermarkCreateParams =
@@ -8669,11 +8666,11 @@ module rec Cloudflare =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
             abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke: [<ParamArray>] args: Fetcher.Invoke.Args -> U2<Fetcher.Invoke, U2<Fetcher.Invoke, unit>>
@@ -9435,7 +9432,7 @@ module rec Cloudflare =
         type MessageBatch<'Body> =
             abstract metadata: MessageBatchMetadata with get
             abstract queue: D1SessionBookmark with get
-            abstract messages: ReadonlyArray<Message<'Body>> with get
+            abstract messages: System.Collections.Generic.IReadOnlyList<Message<'Body>> with get
             abstract ackAll: unit -> unit
             abstract retryAll: ?options: QueueRetryOptions -> unit
 
@@ -10452,7 +10449,7 @@ module rec Cloudflare =
         type SyncKvStorage =
             abstract delete: key: D1SessionBookmark -> bool
             abstract put: key: D1SessionBookmark * value: 'T -> unit
-            abstract list: ?options: SyncKvListOptions -> Iterable<D1SessionBookmark * 'T, option<obj>, option<obj>>
+            abstract list: ?options: SyncKvListOptions -> seq<D1SessionBookmark * 'T, option<obj>, option<obj>>
             abstract get: key: D1SessionBookmark -> option<'T>
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Deepgram_Flux_Output")>]
@@ -10570,11 +10567,11 @@ module rec Cloudflare =
             abstract symbolDispose: unit -> unit
             abstract dup: unit -> 'StubBase
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke: [<ParamArray>] args: RpcStub.Invoke.Args -> U2<RpcStub.Invoke, U2<RpcStub.Invoke, unit>>
@@ -11397,11 +11394,11 @@ module rec Cloudflare =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
             abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke:
@@ -11951,7 +11948,7 @@ module rec Cloudflare =
             inherit ExtendableEvent()
             abstract metadata: MessageBatchMetadata with get
             abstract queue: D1SessionBookmark with get
-            abstract messages: ReadonlyArray<Message<'Body>> with get
+            abstract messages: System.Collections.Generic.IReadOnlyList<Message<'Body>> with get
             abstract ackAll: unit -> unit
             abstract retryAll: ?options: QueueRetryOptions -> unit
 
@@ -12296,11 +12293,11 @@ module rec Cloudflare =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
             abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke:
@@ -12317,11 +12314,24 @@ module rec Cloudflare =
             abstract Create: ?init: HeadersInit -> Headers
 
             abstract symbolIterator:
-                unit -> IterableIterator<D1SessionBookmark * D1SessionBookmark, option<obj>, option<obj>>
+                unit ->
+                    System.Collections.Generic.IEnumerator<
+                        D1SessionBookmark * D1SessionBookmark,
+                        option<obj>,
+                        option<obj>
+                     >
 
-            abstract values: unit -> IterableIterator<D1SessionBookmark, option<obj>, option<obj>>
-            abstract keys: unit -> IterableIterator<D1SessionBookmark, option<obj>, option<obj>>
-            abstract entries: unit -> IterableIterator<D1SessionBookmark * D1SessionBookmark, option<obj>, option<obj>>
+            abstract values: unit -> System.Collections.Generic.IEnumerator<D1SessionBookmark, option<obj>, option<obj>>
+            abstract keys: unit -> System.Collections.Generic.IEnumerator<D1SessionBookmark, option<obj>, option<obj>>
+
+            abstract entries:
+                unit ->
+                    System.Collections.Generic.IEnumerator<
+                        D1SessionBookmark * D1SessionBookmark,
+                        option<obj>,
+                        option<obj>
+                     >
+
             abstract forEach: callback: Headers.ForEach.Callback * ?thisArg: 'This -> unit
             abstract delete: name: D1SessionBookmark -> unit
             abstract append: name: D1SessionBookmark * value: D1SessionBookmark -> unit
@@ -12580,10 +12590,12 @@ module rec Cloudflare =
             abstract locked: bool with get
 
             abstract symbolAsyncIterator:
-                ?options: ReadableStreamValuesOptions -> AsyncIterableIterator<'R, option<obj>, option<obj>>
+                ?options: ReadableStreamValuesOptions ->
+                    System.Collections.Generic.IAsyncEnumerator<'R, option<obj>, option<obj>>
 
             abstract values:
-                ?options: ReadableStreamValuesOptions -> AsyncIterableIterator<'R, option<obj>, option<obj>>
+                ?options: ReadableStreamValuesOptions ->
+                    System.Collections.Generic.IAsyncEnumerator<'R, option<obj>, option<obj>>
 
             abstract tee: unit -> ReadableStream<'R> * ReadableStream<'R>
             abstract pipeTo: destination: WritableStream<'R> * ?options: StreamPipeOptions -> Promise<unit>
@@ -13158,8 +13170,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Queue")>]
         type Queue<'Body> =
             abstract sendBatch:
-                messages: Iterable<MessageSendRequest<'Body>, option<obj>, option<obj>> *
-                ?options: QueueSendBatchOptions ->
+                messages: seq<MessageSendRequest<'Body>, option<obj>, option<obj>> * ?options: QueueSendBatchOptions ->
                     Promise<QueueSendBatchResponse>
 
             abstract send: message: 'Body * ?options: QueueSendOptions -> Promise<QueueSendResponse>
@@ -14327,12 +14338,25 @@ module rec Cloudflare =
             abstract Create: unit -> FormData
 
             abstract symbolIterator:
-                unit -> IterableIterator<D1SessionBookmark * D1SessionBookmark, option<obj>, option<obj>>
+                unit ->
+                    System.Collections.Generic.IEnumerator<
+                        D1SessionBookmark * D1SessionBookmark,
+                        option<obj>,
+                        option<obj>
+                     >
 
             abstract forEach: callback: FormData.ForEach.Callback * ?thisArg: 'This -> unit
-            abstract values: unit -> IterableIterator<U2<File, string>, option<obj>, option<obj>>
-            abstract keys: unit -> IterableIterator<D1SessionBookmark, option<obj>, option<obj>>
-            abstract entries: unit -> IterableIterator<D1SessionBookmark * D1SessionBookmark, option<obj>, option<obj>>
+            abstract values: unit -> System.Collections.Generic.IEnumerator<U2<File, string>, option<obj>, option<obj>>
+            abstract keys: unit -> System.Collections.Generic.IEnumerator<D1SessionBookmark, option<obj>, option<obj>>
+
+            abstract entries:
+                unit ->
+                    System.Collections.Generic.IEnumerator<
+                        D1SessionBookmark * D1SessionBookmark,
+                        option<obj>,
+                        option<obj>
+                     >
+
             abstract set: name: D1SessionBookmark * value: Blob * ?filename: D1SessionBookmark -> unit
             abstract set: name: D1SessionBookmark * value: D1SessionBookmark -> unit
             abstract set: name: D1SessionBookmark * value: U2<Blob, string> -> unit
@@ -14592,13 +14616,26 @@ module rec Cloudflare =
             abstract size: float with get
 
             abstract symbolIterator:
-                unit -> IterableIterator<D1SessionBookmark * D1SessionBookmark, option<obj>, option<obj>>
+                unit ->
+                    System.Collections.Generic.IEnumerator<
+                        D1SessionBookmark * D1SessionBookmark,
+                        option<obj>,
+                        option<obj>
+                     >
 
             abstract toString: unit -> D1SessionBookmark
             abstract forEach: callback: URLSearchParams.ForEach.Callback * ?thisArg: 'This -> unit
-            abstract values: unit -> IterableIterator<D1SessionBookmark, option<obj>, option<obj>>
-            abstract keys: unit -> IterableIterator<D1SessionBookmark, option<obj>, option<obj>>
-            abstract entries: unit -> IterableIterator<D1SessionBookmark * D1SessionBookmark, option<obj>, option<obj>>
+            abstract values: unit -> System.Collections.Generic.IEnumerator<D1SessionBookmark, option<obj>, option<obj>>
+            abstract keys: unit -> System.Collections.Generic.IEnumerator<D1SessionBookmark, option<obj>, option<obj>>
+
+            abstract entries:
+                unit ->
+                    System.Collections.Generic.IEnumerator<
+                        D1SessionBookmark * D1SessionBookmark,
+                        option<obj>,
+                        option<obj>
+                     >
+
             abstract sort: unit -> unit
             abstract set: name: D1SessionBookmark * value: D1SessionBookmark -> unit
             abstract has: name: D1SessionBookmark -> bool
@@ -14950,11 +14987,11 @@ module rec Cloudflare =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
             abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke: [<ParamArray>] args: Service.Invoke.Args -> U2<Service.Invoke, U2<Service.Invoke, unit>>
@@ -15080,11 +15117,11 @@ module rec Cloudflare =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
             abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke:
@@ -15142,11 +15179,11 @@ module rec Cloudflare =
             abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Invoke: opts: LoopbackForExport.Invoke.Opts -> DurableObjectClass<'T>
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke:
@@ -15883,11 +15920,11 @@ module rec Cloudflare =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
             abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
-            abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
+            abstract catch: ?onrejected: option<obj> -> U2<'TResult, Promise<'TResult>> -> Promise<U2<'T, 'TResult>>
 
             abstract ``then``:
-                ?onfulfilled: 'T -> U2<'TResult1, PromiseLike<'TResult1>> *
-                ?onrejected: option<obj> -> U2<'TResult2, PromiseLike<'TResult2>> ->
+                ?onfulfilled: 'T -> U2<'TResult1, Promise<'TResult1>> *
+                ?onrejected: option<obj> -> U2<'TResult2, Promise<'TResult2>> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
             abstract Invoke:
@@ -16759,8 +16796,8 @@ module rec Cloudflare =
             abstract rowsWritten: float with get
             abstract rowsRead: float with get
             abstract columnNames: ResizeArray<D1SessionBookmark> with get, set
-            abstract symbolIterator: unit -> IterableIterator<'T, option<obj>, option<obj>>
-            abstract raw: unit -> IterableIterator<'U, option<obj>, option<obj>>
+            abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T, option<obj>, option<obj>>
+            abstract raw: unit -> System.Collections.Generic.IEnumerator<'U, option<obj>, option<obj>>
             abstract one: unit -> 'T
             abstract toArray: unit -> ResizeArray<'T>
             abstract next: unit -> U2<SqlStorageCursor.Next, SqlStorageCursor.Next>

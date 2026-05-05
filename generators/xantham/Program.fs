@@ -26,36 +26,55 @@ let main argv =
     let tree = Decoder.Runtime.create inputFile
     let interner = tree.GetArenaInterner()
 
+    // Map from TS lib.es type name to F# equivalent. Substitutes the
+    // renderScope's TypeRef with an intrinsic ref so all reference sites
+    // resolve through the cache. Generic-arity is preserved at the
+    // application site (TypeReference branch wraps the substituted ref
+    // in a Prefix molecule with the type args).
+    let libEsSubstitutions =
+        Map.ofList [
+            // `Error` → `exn` (F# alias for System.Exception). `inherit exn()`
+            // works for TS classes that extend Error.
+            "Error", Intrinsic.exn
+            // `Array<T>` → `ResizeArray<T>` (F# alias for List<T>; Fable maps
+            // to JS Array). Same intrinsic the generator uses for `T[]` syntax.
+            "Array", Intrinsic.array
+            // `PromiseLike<T>` → `Promise<T>` (Fable.Core.JS.Promise satisfies
+            // PromiseLike's structural interface).
+            "PromiseLike", "Promise"
+            // `Disposable` → `System.IDisposable` (direct semantic equivalent).
+            "Disposable", "System.IDisposable"
+            // `Iterable<T>` → `seq<T>` (F# alias for IEnumerable<T>).
+            "Iterable", "seq"
+            // `IterableIterator<T>` and `ArrayIterator<T>` → IEnumerator<T>.
+            // Both are TS lib.es iterator forms; F# IEnumerator covers the
+            // iteration semantics consumers actually use.
+            "IterableIterator", "System.Collections.Generic.IEnumerator"
+            "ArrayIterator", "System.Collections.Generic.IEnumerator"
+            "AsyncIterableIterator", "System.Collections.Generic.IAsyncEnumerator"
+            // `ReadonlyArray<T>` → `IReadOnlyList<T>` (read-only list with
+            // index access; matches TS ReadonlyArray semantics).
+            "ReadonlyArray", "System.Collections.Generic.IReadOnlyList"
+        ]
+
+    let intrinsicRef (name: string) =
+        RenderScopeStore.TypeRefAtom.Unsafe.createIntrinsic name
+        |> RenderScopeStore.TypeRef.Unsafe.createAtom
+        |> RenderScopeStore.TypeRefRender.Unsafe.createFromKind false
+
     let generatorContext: GeneratorContext =
          GeneratorContext.EmptyWithCustomisation (fun customiser ->
          {
              customiser with
                  Customisation.Interceptors.ResolvedTypePrelude = fun _ -> function
-                     // TS lib.es `Error` class — substitute with F#'s `exn`
-                     // (alias for System.Exception). The path-based ref to
-                     // "Error" doesn't resolve in F#; `exn` does and supports
-                     // `inherit exn()` for class bindings whose TS source
-                     // extends Error.
-                     | ResolvedType.Interface ({ IsLibEs = true } as iface) when Name.Case.valueOrSource iface.Name = "Error" ->
+                     // TS lib.es type substitutions — see libEsSubstitutions
+                     // table above for the mappings and rationale.
+                     | ResolvedType.Interface ({ IsLibEs = true } as iface)
+                       when libEsSubstitutions.ContainsKey(Name.Case.valueOrSource iface.Name) ->
+                         let target = libEsSubstitutions.[Name.Case.valueOrSource iface.Name]
                          fun renderScope ->
-                             let exnRef =
-                                 RenderScopeStore.TypeRefAtom.Unsafe.createIntrinsic Intrinsic.exn
-                                 |> RenderScopeStore.TypeRef.Unsafe.createAtom
-                                 |> RenderScopeStore.TypeRefRender.Unsafe.createFromKind false
-                             { renderScope with TypeRef = exnRef; Render = Render.RefOnly exnRef }
-                     // TS lib.es `Array<T>` — substitute with F#'s `ResizeArray`
-                     // (alias for Collections.Generic.List<T>). Bare `Array`
-                     // resolves to System.Array which is non-generic (FS0033
-                     // when applied with type args). Same intrinsic name as
-                     // the generator uses for TS `T[]` syntax (Intrinsic.array)
-                     // so both shapes converge on `ResizeArray<T>`.
-                     | ResolvedType.Interface ({ IsLibEs = true } as iface) when Name.Case.valueOrSource iface.Name = "Array" ->
-                         fun renderScope ->
-                             let arrayRef =
-                                 RenderScopeStore.TypeRefAtom.Unsafe.createIntrinsic Intrinsic.array
-                                 |> RenderScopeStore.TypeRef.Unsafe.createAtom
-                                 |> RenderScopeStore.TypeRefRender.Unsafe.createFromKind false
-                             { renderScope with TypeRef = arrayRef; Render = Render.RefOnly arrayRef }
+                             let ref = intrinsicRef target
+                             { renderScope with TypeRef = ref; Render = Render.RefOnly ref }
                      | ResolvedType.Interface { IsLibEs = true }
                      | ResolvedType.Class { IsLibEs = true }
                      | ResolvedType.Enum { IsLibEs = true } -> fun renderScope ->

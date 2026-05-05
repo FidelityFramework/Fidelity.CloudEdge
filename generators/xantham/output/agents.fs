@@ -90,7 +90,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -144,7 +144,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -222,7 +222,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -269,7 +269,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -285,7 +285,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -339,7 +339,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input._Unscopables2222,
                                                                                         Input._Unscopables2222,
@@ -372,7 +374,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -383,7 +385,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -397,7 +399,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input._Unscopables2222,
                                                 Input._Unscopables2222,
@@ -446,7 +448,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -500,7 +502,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -578,7 +580,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -625,7 +627,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -641,7 +643,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -695,7 +697,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input._Iterator494,
                                                                                         Input._Iterator494,
@@ -728,7 +732,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -739,7 +743,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -753,7 +757,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input._Iterator494,
                                                 Input._Iterator494,
@@ -802,7 +806,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -856,7 +860,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -934,7 +938,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -981,7 +985,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -997,7 +1001,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -1051,7 +1055,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.With,
                                                                                         Input.With,
@@ -1084,7 +1090,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -1095,7 +1101,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -1109,7 +1115,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.With,
                                                 Input.With,
@@ -1157,7 +1163,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -1211,7 +1217,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -1289,7 +1295,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -1336,7 +1342,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -1352,7 +1358,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -1406,7 +1412,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.ToSpliced,
                                                                                         Input.ToSpliced,
@@ -1439,7 +1447,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -1450,7 +1458,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -1464,7 +1472,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.ToSpliced,
                                                 Input.ToSpliced,
@@ -1512,7 +1520,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -1566,7 +1574,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -1644,7 +1652,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -1691,7 +1699,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -1707,7 +1715,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -1761,7 +1769,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.ToSorted,
                                                                                         Input.ToSorted,
@@ -1794,7 +1804,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -1805,7 +1815,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -1819,7 +1829,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.ToSorted,
                                                 Input.ToSorted,
@@ -1867,7 +1877,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -1921,7 +1931,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -1999,7 +2009,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -2046,7 +2056,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -2062,7 +2072,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -2116,7 +2126,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.ToReversed,
                                                                                         Input.ToReversed,
@@ -2149,7 +2161,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -2160,7 +2172,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -2174,7 +2186,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.ToReversed,
                                                 Input.ToReversed,
@@ -2222,7 +2234,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -2276,7 +2288,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -2354,7 +2366,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -2401,7 +2413,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -2417,7 +2429,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -2471,7 +2483,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.FindLastIndex,
                                                                                         Input.FindLastIndex,
@@ -2504,7 +2518,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -2515,7 +2529,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -2529,7 +2543,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.FindLastIndex,
                                                 Input.FindLastIndex,
@@ -2577,7 +2591,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -2631,7 +2645,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -2709,7 +2723,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -2756,7 +2770,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -2772,7 +2786,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -2826,7 +2840,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.FindLast,
                                                                                         Input.FindLast,
@@ -2859,7 +2875,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -2870,7 +2886,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -2884,7 +2900,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.FindLast,
                                                 Input.FindLast,
@@ -2932,7 +2948,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -2986,7 +3002,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -3064,7 +3080,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -3111,7 +3127,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -3127,7 +3143,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -3181,7 +3197,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.At,
                                                                                         Input.At,
@@ -3214,7 +3232,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -3225,7 +3243,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -3239,7 +3257,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.At,
                                                 Input.At,
@@ -3287,7 +3305,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -3341,7 +3359,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -3419,7 +3437,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -3466,7 +3484,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -3482,7 +3500,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -3536,7 +3554,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Flat,
                                                                                         Input.Flat,
@@ -3569,7 +3589,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -3580,7 +3600,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -3594,7 +3614,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Flat,
                                                 Input.Flat,
@@ -3642,7 +3662,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -3696,7 +3716,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -3774,7 +3794,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -3821,7 +3841,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -3837,7 +3857,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -3891,7 +3911,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.FlatMap,
                                                                                         Input.FlatMap,
@@ -3924,7 +3946,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -3935,7 +3957,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -3949,7 +3971,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.FlatMap,
                                                 Input.FlatMap,
@@ -3997,7 +4019,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -4051,7 +4073,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -4129,7 +4151,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -4176,7 +4198,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -4192,7 +4214,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -4246,7 +4268,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Includes,
                                                                                         Input.Includes,
@@ -4279,7 +4303,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -4290,7 +4314,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -4304,7 +4328,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Includes,
                                                 Input.Includes,
@@ -4352,7 +4376,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -4406,7 +4430,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -4484,7 +4508,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -4531,7 +4555,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -4547,7 +4571,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -4601,7 +4625,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Values,
                                                                                         Input.Values,
@@ -4634,7 +4660,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -4645,7 +4671,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -4659,7 +4685,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Values,
                                                 Input.Values,
@@ -4707,7 +4733,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -4761,7 +4787,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -4839,7 +4865,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -4886,7 +4912,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -4902,7 +4928,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -4956,7 +4982,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Keys,
                                                                                         Input.Keys,
@@ -4989,7 +5017,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -5000,7 +5028,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -5014,7 +5042,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Keys,
                                                 Input.Keys,
@@ -5062,7 +5090,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -5116,7 +5144,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -5194,7 +5222,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -5241,7 +5269,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -5257,7 +5285,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -5311,7 +5339,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Entries,
                                                                                         Input.Entries,
@@ -5344,7 +5374,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -5355,7 +5385,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -5369,7 +5399,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Entries,
                                                 Input.Entries,
@@ -5417,7 +5447,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -5471,7 +5501,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -5549,7 +5579,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -5596,7 +5626,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -5612,7 +5642,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -5666,7 +5696,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.FindIndex,
                                                                                         Input.FindIndex,
@@ -5699,7 +5731,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -5710,7 +5742,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -5724,7 +5756,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.FindIndex,
                                                 Input.FindIndex,
@@ -5772,7 +5804,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -5826,7 +5858,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -5904,7 +5936,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -5951,7 +5983,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -5967,7 +5999,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -6021,7 +6053,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Find,
                                                                                         Input.Find,
@@ -6054,7 +6088,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -6065,7 +6099,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -6079,7 +6113,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Find,
                                                 Input.Find,
@@ -6127,7 +6161,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -6181,7 +6215,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -6259,7 +6293,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -6306,7 +6340,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -6322,7 +6356,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -6376,7 +6410,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.ReduceRight,
                                                                                         Input.ReduceRight,
@@ -6409,7 +6445,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -6420,7 +6456,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -6434,7 +6470,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.ReduceRight,
                                                 Input.ReduceRight,
@@ -6482,7 +6518,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -6536,7 +6572,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -6614,7 +6650,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -6661,7 +6697,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -6677,7 +6713,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -6731,7 +6767,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Reduce,
                                                                                         Input.Reduce,
@@ -6764,7 +6802,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -6775,7 +6813,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -6789,7 +6827,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Reduce,
                                                 Input.Reduce,
@@ -6837,7 +6875,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -6891,7 +6929,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -6969,7 +7007,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -7016,7 +7054,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -7032,7 +7070,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -7086,7 +7124,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Filter,
                                                                                         Input.Filter,
@@ -7119,7 +7159,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -7130,7 +7170,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -7144,7 +7184,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Filter,
                                                 Input.Filter,
@@ -7192,7 +7232,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -7246,7 +7286,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -7324,7 +7364,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -7371,7 +7411,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -7387,7 +7427,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -7441,7 +7481,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Map,
                                                                                         Input.Map,
@@ -7474,7 +7516,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -7485,7 +7527,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -7499,7 +7541,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Map,
                                                 Input.Map,
@@ -7547,7 +7589,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -7601,7 +7643,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -7679,7 +7721,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -7726,7 +7768,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -7742,7 +7784,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -7796,7 +7838,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.ForEach,
                                                                                         Input.ForEach,
@@ -7829,7 +7873,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -7840,7 +7884,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -7854,7 +7898,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.ForEach,
                                                 Input.ForEach,
@@ -7902,7 +7946,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -7956,7 +8000,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -8034,7 +8078,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -8081,7 +8125,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -8097,7 +8141,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -8151,7 +8195,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Some,
                                                                                         Input.Some,
@@ -8184,7 +8230,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -8195,7 +8241,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -8209,7 +8255,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Some,
                                                 Input.Some,
@@ -8257,7 +8303,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -8311,7 +8357,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -8389,7 +8435,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -8436,7 +8482,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -8452,7 +8498,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -8506,7 +8552,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Every,
                                                                                         Input.Every,
@@ -8539,7 +8587,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -8550,7 +8598,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -8564,7 +8612,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Every,
                                                 Input.Every,
@@ -8612,7 +8660,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -8666,7 +8714,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -8744,7 +8792,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -8791,7 +8839,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -8807,7 +8855,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -8861,7 +8909,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.LastIndexOf,
                                                                                         Input.LastIndexOf,
@@ -8894,7 +8944,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -8905,7 +8955,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -8919,7 +8969,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.LastIndexOf,
                                                 Input.LastIndexOf,
@@ -8967,7 +9017,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -9021,7 +9071,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -9099,7 +9149,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -9146,7 +9196,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -9162,7 +9212,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -9216,7 +9266,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.IndexOf,
                                                                                         Input.IndexOf,
@@ -9249,7 +9301,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -9260,7 +9312,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -9274,7 +9326,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.IndexOf,
                                                 Input.IndexOf,
@@ -9322,7 +9374,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -9376,7 +9428,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -9454,7 +9506,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -9501,7 +9553,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -9517,7 +9569,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -9571,7 +9623,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Slice,
                                                                                         Input.Slice,
@@ -9604,7 +9658,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -9615,7 +9669,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -9629,7 +9683,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Slice,
                                                 Input.Slice,
@@ -9677,7 +9731,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -9731,7 +9785,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -9809,7 +9863,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -9856,7 +9910,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -9872,7 +9926,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -9926,7 +9980,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Join,
                                                                                         Input.Join,
@@ -9959,7 +10015,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -9970,7 +10026,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -9984,7 +10040,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Join,
                                                 Input.Join,
@@ -10032,7 +10088,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -10086,7 +10142,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -10164,7 +10220,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -10211,7 +10267,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -10227,7 +10283,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -10281,7 +10337,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Concat,
                                                                                         Input.Concat,
@@ -10314,7 +10372,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -10325,7 +10383,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -10339,7 +10397,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Concat,
                                                 Input.Concat,
@@ -10387,7 +10445,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -10441,7 +10499,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -10519,7 +10577,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -10566,7 +10624,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -10582,7 +10640,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -10636,7 +10694,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.ToLocaleString,
                                                                                         Input.ToLocaleString,
@@ -10669,7 +10729,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -10680,7 +10740,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -10694,7 +10754,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.ToLocaleString,
                                                 Input.ToLocaleString,
@@ -10742,7 +10802,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -10796,7 +10856,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -10874,7 +10934,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -10921,7 +10981,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -10937,7 +10997,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -10991,7 +11051,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.ToString,
                                                                                         Input.ToString,
@@ -11024,7 +11086,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -11035,7 +11097,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -11049,7 +11111,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.ToString,
                                                 Input.ToString,
@@ -11097,7 +11159,7 @@ module rec Agents =
                                                                 U2<
                                                                     U2<
                                                                         U2<
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -11151,7 +11213,7 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<
+                                                                                        System.Collections.Generic.IReadOnlyList<
                                                                                             option<
                                                                                                 U10<
                                                                                                     'T,
@@ -11229,7 +11291,7 @@ module rec Agents =
                                                                                                              >
                                                                                                          >
                                                                                                      >,
-                                                                                                    ReadonlyArray<
+                                                                                                    System.Collections.Generic.IReadOnlyList<
                                                                                                         option<obj>
                                                                                                      >,
                                                                                                     ResizeArray<
@@ -11276,7 +11338,7 @@ module rec Agents =
                                                     U2<
                                                         U2<
                                                             U2<
-                                                                ReadonlyArray<
+                                                                System.Collections.Generic.IReadOnlyList<
                                                                     option<
                                                                         U10<
                                                                             'T,
@@ -11292,7 +11354,7 @@ module rec Agents =
                                                                             ReadonlySet<
                                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                                              >,
-                                                                            ReadonlyArray<
+                                                                            System.Collections.Generic.IReadOnlyList<
                                                                                 option<
                                                                                     U10<
                                                                                         'T,
@@ -11346,7 +11408,9 @@ module rec Agents =
                                                                                                  >
                                                                                              >
                                                                                          >,
-                                                                                        ReadonlyArray<option<obj>>,
+                                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                                            option<obj>
+                                                                                         >,
                                                                                         ResizeArray<option<obj>>,
                                                                                         Input.Length,
                                                                                         Input.Length,
@@ -11379,7 +11443,7 @@ module rec Agents =
                         Set<U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlyMap<U2<'T, U2<option<obj>, option<obj>>>, U2<'T, U2<option<obj>, option<obj>>>>,
                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             option<
                                 U10<
                                     'T,
@@ -11390,7 +11454,7 @@ module rec Agents =
                                         U2<'T, U2<option<obj>, option<obj>>>
                                      >,
                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                    ReadonlyArray<
+                                    System.Collections.Generic.IReadOnlyList<
                                         option<
                                             U10<
                                                 'T,
@@ -11404,7 +11468,7 @@ module rec Agents =
                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                  >,
                                                 ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                ReadonlyArray<option<obj>>,
+                                                System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                 ResizeArray<option<obj>>,
                                                 Input.Length,
                                                 Input.Length,
@@ -11824,7 +11888,7 @@ module rec Agents =
         abstract sequence: float with get, set
 
     type ParseSubAgentPath =
-        abstract knownClasses: option<ReadonlyArray<string>> with get, set
+        abstract knownClasses: option<System.Collections.Generic.IReadOnlyList<string>> with get, set
 
     /// <deprecated>
     /// Use DurableObjectNamespace instead
@@ -12044,7 +12108,7 @@ module rec Ai =
             [<EmitProperty("[schemaSymbol]")>]
             abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
-            abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
+            abstract jsonSchema: option<U2<Promise<option<Agents.AgentContext>>, obj>> with get
             abstract _type: 'OBJECT with get, set
 
             abstract validate:
@@ -12052,7 +12116,7 @@ module rec Ai =
                     U3<
                         InputSchema.Validate,
                         InputSchema.Validate,
-                        PromiseLike<U2<InputSchema.Validate, InputSchema.Validate>>
+                        Promise<U2<InputSchema.Validate, InputSchema.Validate>>
                      >
 
     module rec ContentPart =
@@ -13121,7 +13185,7 @@ module rec Ai =
                                             U2<
                                                 U2<
                                                     U2<
-                                                        ReadonlyArray<
+                                                        System.Collections.Generic.IReadOnlyList<
                                                             option<
                                                                 U10<
                                                                     'T,
@@ -13135,7 +13199,7 @@ module rec Ai =
                                                                         U2<'T, U2<option<obj>, option<obj>>>
                                                                      >,
                                                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                    ReadonlyArray<
+                                                                    System.Collections.Generic.IReadOnlyList<
                                                                         option<
                                                                             U10<
                                                                                 'T,
@@ -13151,7 +13215,9 @@ module rec Ai =
                                                                                 ReadonlySet<
                                                                                     U2<'T, U2<option<obj>, option<obj>>>
                                                                                  >,
-                                                                                ReadonlyArray<option<obj>>,
+                                                                                System.Collections.Generic.IReadOnlyList<
+                                                                                    option<obj>
+                                                                                 >,
                                                                                 ResizeArray<option<obj>>,
                                                                                 DeepPartialInternal,
                                                                                 DeepPartialInternal,
@@ -13191,7 +13257,7 @@ module rec Ai =
                                 U2<
                                     U2<
                                         U2<
-                                            ReadonlyArray<
+                                            System.Collections.Generic.IReadOnlyList<
                                                 option<
                                                     U10<
                                                         'T,
@@ -13205,7 +13271,7 @@ module rec Ai =
                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                          >,
                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                        ReadonlyArray<
+                                                        System.Collections.Generic.IReadOnlyList<
                                                             option<
                                                                 U10<
                                                                     'T,
@@ -13219,7 +13285,7 @@ module rec Ai =
                                                                         U2<'T, U2<option<obj>, option<obj>>>
                                                                      >,
                                                                     ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                    ReadonlyArray<option<obj>>,
+                                                                    System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                                     ResizeArray<option<obj>>,
                                                                     DeepPartialInternal,
                                                                     DeepPartialInternal,
@@ -13250,16 +13316,16 @@ module rec Ai =
 
     [<Import("ai", "StopCondition")>]
     type StopCondition<'TOOLS when 'TOOLS :> ToolSet> =
-        abstract Invoke: options: StopCondition.Invoke.Options -> U2<PromiseLike<bool>, bool>
+        abstract Invoke: options: StopCondition.Invoke.Options -> U2<Promise<bool>, bool>
 
     [<Import("ai", "TelemetryIntegration")>]
     type TelemetryIntegration =
-        abstract onFinish: option<'EVENT -> option<PromiseLike<unit>>> with get, set
-        abstract onStepFinish: option<'EVENT -> option<PromiseLike<unit>>> with get, set
-        abstract onToolCallFinish: option<'EVENT -> option<PromiseLike<unit>>> with get, set
-        abstract onToolCallStart: option<'EVENT -> option<PromiseLike<unit>>> with get, set
-        abstract onStepStart: option<'EVENT -> option<PromiseLike<unit>>> with get, set
-        abstract onStart: option<'EVENT -> option<PromiseLike<unit>>> with get, set
+        abstract onFinish: option<'EVENT -> option<Promise<unit>>> with get, set
+        abstract onStepFinish: option<'EVENT -> option<Promise<unit>>> with get, set
+        abstract onToolCallFinish: option<'EVENT -> option<Promise<unit>>> with get, set
+        abstract onToolCallStart: option<'EVENT -> option<Promise<unit>>> with get, set
+        abstract onStepStart: option<'EVENT -> option<Promise<unit>>> with get, set
+        abstract onStart: option<'EVENT -> option<Promise<unit>>> with get, set
 
     type PartialReadonlySet<'T> =
         ReadonlySet<
@@ -13284,7 +13350,7 @@ module rec Ai =
                                                 U2<
                                                     U2<
                                                         U2<
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -13298,7 +13364,7 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<
+                                                                        System.Collections.Generic.IReadOnlyList<
                                                                             option<
                                                                                 U10<
                                                                                     'T,
@@ -13334,7 +13400,9 @@ module rec Ai =
                                                                                             U2<option<obj>, option<obj>>
                                                                                          >
                                                                                      >,
-                                                                                    ReadonlyArray<option<obj>>,
+                                                                                    System.Collections.Generic.IReadOnlyList<
+                                                                                        option<obj>
+                                                                                     >,
                                                                                     ResizeArray<option<obj>>,
                                                                                     PartialReadonlySet,
                                                                                     PartialReadonlySet,
@@ -13374,7 +13442,7 @@ module rec Ai =
                                     U2<
                                         U2<
                                             U2<
-                                                ReadonlyArray<
+                                                System.Collections.Generic.IReadOnlyList<
                                                     option<
                                                         U10<
                                                             'T,
@@ -13388,7 +13456,7 @@ module rec Ai =
                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                              >,
                                                             ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -13402,7 +13470,9 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<option<obj>>,
+                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                            option<obj>
+                                                                         >,
                                                                         ResizeArray<option<obj>>,
                                                                         PartialReadonlySet,
                                                                         PartialReadonlySet,
@@ -13469,15 +13539,15 @@ module rec Ai =
         abstract stopWhen:
             option<
                 U2<
-                    OnStepStartEvent.StopWhen -> U2<OnStepStartEvent.StopWhen, PromiseLike<bool>>,
-                    ResizeArray<OnStepStartEvent.StopWhen -> U2<OnStepStartEvent.StopWhen, PromiseLike<bool>>>
+                    OnStepStartEvent.StopWhen -> U2<OnStepStartEvent.StopWhen, Promise<bool>>,
+                    ResizeArray<OnStepStartEvent.StopWhen -> U2<OnStepStartEvent.StopWhen, Promise<bool>>>
                  >
              > with get
 
         abstract headers: option<OnStepStartEvent.Headers> with get
         abstract timeout: option<U2<OnStepStartEvent.Timeout, float>> with get
         abstract providerOptions: option<OnStepStartEvent.ProviderOptions> with get
-        abstract steps: ReadonlyArray<OnStepStartEvent.Steps> with get
+        abstract steps: System.Collections.Generic.IReadOnlyList<OnStepStartEvent.Steps> with get
         abstract activeTools: option<ResizeArray<keyof<'TOOLS>>> with get
 
         abstract toolChoice:
@@ -13534,7 +13604,7 @@ module rec Ai =
                                                 U2<
                                                     U2<
                                                         U2<
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -13548,7 +13618,7 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<
+                                                                        System.Collections.Generic.IReadOnlyList<
                                                                             option<
                                                                                 U10<
                                                                                     'T,
@@ -13584,7 +13654,9 @@ module rec Ai =
                                                                                             U2<option<obj>, option<obj>>
                                                                                          >
                                                                                      >,
-                                                                                    ReadonlyArray<option<obj>>,
+                                                                                    System.Collections.Generic.IReadOnlyList<
+                                                                                        option<obj>
+                                                                                     >,
                                                                                     ResizeArray<option<obj>>,
                                                                                     PartialReadonlyMap,
                                                                                     PartialReadonlyMap,
@@ -13624,7 +13696,7 @@ module rec Ai =
                                     U2<
                                         U2<
                                             U2<
-                                                ReadonlyArray<
+                                                System.Collections.Generic.IReadOnlyList<
                                                     option<
                                                         U10<
                                                             'T,
@@ -13638,7 +13710,7 @@ module rec Ai =
                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                              >,
                                                             ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -13652,7 +13724,9 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<option<obj>>,
+                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                            option<obj>
+                                                                         >,
                                                                         ResizeArray<option<obj>>,
                                                                         PartialReadonlyMap,
                                                                         PartialReadonlyMap,
@@ -13739,7 +13813,7 @@ module rec Ai =
         abstract strict: option<bool> with get, set
 
         abstract needsApproval:
-            option<U2<'INPUT -> AsUITool.NeedsApproval -> U2<AsUITool.NeedsApproval, PromiseLike<bool>>, bool>> with get, set
+            option<U2<'INPUT -> AsUITool.NeedsApproval -> U2<AsUITool.NeedsApproval, Promise<bool>>, bool>> with get, set
 
         abstract inputExamples: option<ResizeArray<AsUITool.InputExamples>> with get, set
 
@@ -13779,12 +13853,12 @@ module rec Ai =
                     AsUITool.ToModelOutput,
                     AsUITool.ToModelOutput,
                     AsUITool.ToModelOutput,
-                    PromiseLike<AiSdk.ProviderUtils.ToolResultOutput>
+                    Promise<AiSdk.ProviderUtils.ToolResultOutput>
                  >
 
-        abstract onInputAvailable: options: AsUITool.OnInputAvailable.Options -> option<PromiseLike<unit>>
-        abstract onInputDelta: options: AsUITool.OnInputDelta.Options -> option<PromiseLike<unit>>
-        abstract onInputStart: options: AiSdk.ProviderUtils.ToolExecutionOptions -> option<PromiseLike<unit>>
+        abstract onInputAvailable: options: AsUITool.OnInputAvailable.Options -> option<Promise<unit>>
+        abstract onInputDelta: options: AsUITool.OnInputDelta.Options -> option<Promise<unit>>
+        abstract onInputStart: options: AiSdk.ProviderUtils.ToolExecutionOptions -> option<Promise<unit>>
 
     type PartialSet<'T> =
         Set<
@@ -13809,7 +13883,7 @@ module rec Ai =
                                                 U2<
                                                     U2<
                                                         U2<
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -13823,7 +13897,7 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<
+                                                                        System.Collections.Generic.IReadOnlyList<
                                                                             option<
                                                                                 U10<
                                                                                     'T,
@@ -13859,7 +13933,9 @@ module rec Ai =
                                                                                             U2<option<obj>, option<obj>>
                                                                                          >
                                                                                      >,
-                                                                                    ReadonlyArray<option<obj>>,
+                                                                                    System.Collections.Generic.IReadOnlyList<
+                                                                                        option<obj>
+                                                                                     >,
                                                                                     ResizeArray<option<obj>>,
                                                                                     PartialSet,
                                                                                     PartialSet,
@@ -13899,7 +13975,7 @@ module rec Ai =
                                     U2<
                                         U2<
                                             U2<
-                                                ReadonlyArray<
+                                                System.Collections.Generic.IReadOnlyList<
                                                     option<
                                                         U10<
                                                             'T,
@@ -13913,7 +13989,7 @@ module rec Ai =
                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                              >,
                                                             ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -13927,7 +14003,9 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<option<obj>>,
+                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                            option<obj>
+                                                                         >,
                                                                         ResizeArray<option<obj>>,
                                                                         PartialSet,
                                                                         PartialSet,
@@ -14098,7 +14176,7 @@ module rec Ai =
                                                 U2<
                                                     U2<
                                                         U2<
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -14112,7 +14190,7 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<
+                                                                        System.Collections.Generic.IReadOnlyList<
                                                                             option<
                                                                                 U10<
                                                                                     'T,
@@ -14148,7 +14226,9 @@ module rec Ai =
                                                                                             U2<option<obj>, option<obj>>
                                                                                          >
                                                                                      >,
-                                                                                    ReadonlyArray<option<obj>>,
+                                                                                    System.Collections.Generic.IReadOnlyList<
+                                                                                        option<obj>
+                                                                                     >,
                                                                                     ResizeArray<option<obj>>,
                                                                                     PartialMap,
                                                                                     PartialMap,
@@ -14188,7 +14268,7 @@ module rec Ai =
                                     U2<
                                         U2<
                                             U2<
-                                                ReadonlyArray<
+                                                System.Collections.Generic.IReadOnlyList<
                                                     option<
                                                         U10<
                                                             'T,
@@ -14202,7 +14282,7 @@ module rec Ai =
                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                              >,
                                                             ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -14216,7 +14296,9 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<option<obj>>,
+                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                            option<obj>
+                                                                         >,
                                                                         ResizeArray<option<obj>>,
                                                                         PartialMap,
                                                                         PartialMap,
@@ -14283,7 +14365,7 @@ module rec Ai =
                                                 U2<
                                                     U2<
                                                         U2<
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -14297,7 +14379,7 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<
+                                                                        System.Collections.Generic.IReadOnlyList<
                                                                             option<
                                                                                 U10<
                                                                                     'T,
@@ -14333,7 +14415,9 @@ module rec Ai =
                                                                                             U2<option<obj>, option<obj>>
                                                                                          >
                                                                                      >,
-                                                                                    ReadonlyArray<option<obj>>,
+                                                                                    System.Collections.Generic.IReadOnlyList<
+                                                                                        option<obj>
+                                                                                     >,
                                                                                     ResizeArray<option<obj>>,
                                                                                     DeepPartial,
                                                                                     DeepPartial,
@@ -14373,7 +14457,7 @@ module rec Ai =
                                     U2<
                                         U2<
                                             U2<
-                                                ReadonlyArray<
+                                                System.Collections.Generic.IReadOnlyList<
                                                     option<
                                                         U10<
                                                             'T,
@@ -14387,7 +14471,7 @@ module rec Ai =
                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                              >,
                                                             ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -14401,7 +14485,9 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<option<obj>>,
+                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                            option<obj>
+                                                                         >,
                                                                         ResizeArray<option<obj>>,
                                                                         DeepPartial,
                                                                         DeepPartial,
@@ -14450,7 +14536,7 @@ module rec Ai =
                                                 U2<
                                                     U2<
                                                         U2<
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -14464,7 +14550,7 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<
+                                                                        System.Collections.Generic.IReadOnlyList<
                                                                             option<
                                                                                 U10<
                                                                                     'T,
@@ -14500,7 +14586,9 @@ module rec Ai =
                                                                                             U2<option<obj>, option<obj>>
                                                                                          >
                                                                                      >,
-                                                                                    ReadonlyArray<option<obj>>,
+                                                                                    System.Collections.Generic.IReadOnlyList<
+                                                                                        option<obj>
+                                                                                     >,
                                                                                     ResizeArray<option<obj>>,
                                                                                     DeepPartial,
                                                                                     DeepPartial,
@@ -14540,7 +14628,7 @@ module rec Ai =
                                     U2<
                                         U2<
                                             U2<
-                                                ReadonlyArray<
+                                                System.Collections.Generic.IReadOnlyList<
                                                     option<
                                                         U10<
                                                             'T,
@@ -14554,7 +14642,7 @@ module rec Ai =
                                                                 U2<'T, U2<option<obj>, option<obj>>>
                                                              >,
                                                             ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                            ReadonlyArray<
+                                                            System.Collections.Generic.IReadOnlyList<
                                                                 option<
                                                                     U10<
                                                                         'T,
@@ -14568,7 +14656,9 @@ module rec Ai =
                                                                             U2<'T, U2<option<obj>, option<obj>>>
                                                                          >,
                                                                         ReadonlySet<U2<'T, U2<option<obj>, option<obj>>>>,
-                                                                        ReadonlyArray<option<obj>>,
+                                                                        System.Collections.Generic.IReadOnlyList<
+                                                                            option<obj>
+                                                                         >,
                                                                         ResizeArray<option<obj>>,
                                                                         DeepPartial,
                                                                         DeepPartial,
@@ -14722,7 +14812,7 @@ module rec Ai =
 
     [<Import("ai", "Listener")>]
     type Listener<'EVENT> =
-        abstract Invoke: event: 'EVENT -> option<PromiseLike<unit>>
+        abstract Invoke: event: 'EVENT -> option<Promise<unit>>
 
     [<Import("ai", "PartialObject")>]
     type PartialObject<'ObjectType when 'ObjectType :> obj> =
@@ -14820,7 +14910,7 @@ module rec Ai =
 
     [<Import("ai", "Output")>]
     type Output<'ELEMENT, 'PARTIAL, 'OUTPUT> =
-        abstract responseFormat: PromiseLike<option<U2<Output.ResponseFormat, Output.ResponseFormat>>> with get, set
+        abstract responseFormat: Promise<option<U2<Output.ResponseFormat, Output.ResponseFormat>>> with get, set
         abstract name: string with get, set
 
         abstract createElementStreamTransform:
@@ -15604,49 +15694,47 @@ module rec AiSdk =
                         abstract text: string with get, set
 
             type LanguageModel =
-                abstract supportedUrls: U2<PromiseLike<LanguageModel.SupportedUrls>, LanguageModel.SupportedUrls> with get, set
+                abstract supportedUrls: U2<Promise<LanguageModel.SupportedUrls>, LanguageModel.SupportedUrls> with get, set
                 abstract modelId: string with get
                 abstract provider: string with get
                 abstract specificationVersion: LanguageModel.SpecificationVersion with get
-                abstract doStream: options: LanguageModelV3CallOptions -> PromiseLike<LanguageModelV3StreamResult>
-                abstract doGenerate: options: LanguageModelV3CallOptions -> PromiseLike<LanguageModelV3GenerateResult>
+                abstract doStream: options: LanguageModelV3CallOptions -> Promise<LanguageModelV3StreamResult>
+                abstract doGenerate: options: LanguageModelV3CallOptions -> Promise<LanguageModelV3GenerateResult>
 
             type TranscriptionModel =
                 abstract modelId: string with get
                 abstract provider: string with get
                 abstract specificationVersion: TranscriptionModel.SpecificationVersion with get
-
-                abstract doGenerate:
-                    options: TranscriptionModelV3CallOptions -> PromiseLike<TranscriptionModel.DoGenerate>
+                abstract doGenerate: options: TranscriptionModelV3CallOptions -> Promise<TranscriptionModel.DoGenerate>
 
             type SpeechModel =
                 abstract modelId: string with get
                 abstract provider: string with get
                 abstract specificationVersion: SpeechModel.SpecificationVersion with get
-                abstract doGenerate: options: SpeechModelV3CallOptions -> PromiseLike<SpeechModel.DoGenerate>
+                abstract doGenerate: options: SpeechModelV3CallOptions -> Promise<SpeechModel.DoGenerate>
 
             type ImageModel =
                 abstract maxImagesPerCall:
-                    option<U2<ImageModel.MaxImagesPerCall -> option<U2<PromiseLike<option<float>>, float>>, float>> with get
+                    option<U2<ImageModel.MaxImagesPerCall -> option<U2<Promise<option<float>>, float>>, float>> with get
 
                 abstract modelId: string with get
                 abstract provider: string with get
                 abstract specificationVersion: ImageModel.SpecificationVersion with get
-                abstract doGenerate: options: ImageModelV3CallOptions -> PromiseLike<ImageModel.DoGenerate>
+                abstract doGenerate: options: ImageModelV3CallOptions -> Promise<ImageModel.DoGenerate>
 
             type RerankingModel =
                 abstract modelId: string with get
                 abstract provider: string with get
                 abstract specificationVersion: RerankingModel.SpecificationVersion with get
-                abstract doRerank: options: RerankingModelV3CallOptions -> PromiseLike<RerankingModel.DoRerank>
+                abstract doRerank: options: RerankingModelV3CallOptions -> Promise<RerankingModel.DoRerank>
 
             type EmbeddingModel =
-                abstract supportsParallelCalls: U2<PromiseLike<bool>, bool> with get
-                abstract maxEmbeddingsPerCall: option<U2<PromiseLike<option<float>>, float>> with get
+                abstract supportsParallelCalls: U2<Promise<bool>, bool> with get
+                abstract maxEmbeddingsPerCall: option<U2<Promise<option<float>>, float>> with get
                 abstract modelId: string with get
                 abstract provider: string with get
                 abstract specificationVersion: EmbeddingModel.SpecificationVersion with get
-                abstract doEmbed: options: EmbeddingModelV3CallOptions -> PromiseLike<EmbeddingModelV3Result>
+                abstract doEmbed: options: EmbeddingModelV3CallOptions -> Promise<EmbeddingModelV3Result>
 
         module rec RerankingModelV3 =
             module rec RerankingModel =
@@ -15828,7 +15916,7 @@ module rec AiSdk =
         [<Import("@ai-sdk/provider", "GetMaxImagesPerCallFunction$1")>]
         type GetMaxImagesPerCallFunction1 =
             abstract Invoke:
-                options: GetMaxImagesPerCallFunction1.Invoke.Options -> option<U2<PromiseLike<option<float>>, float>>
+                options: GetMaxImagesPerCallFunction1.Invoke.Options -> option<U2<Promise<option<float>>, float>>
 
         [<Import("@ai-sdk/provider", "LanguageModelV3CallOptions")>]
         type LanguageModelV3CallOptions =
@@ -15857,7 +15945,7 @@ module rec AiSdk =
             abstract modelId: string with get
             abstract provider: string with get
             abstract specificationVersion: SpeechModelV3.SpecificationVersion with get
-            abstract doGenerate: options: SpeechModelV3CallOptions -> PromiseLike<SpeechModelV3.DoGenerate>
+            abstract doGenerate: options: SpeechModelV3CallOptions -> Promise<SpeechModelV3.DoGenerate>
 
         type LanguageModelV3ReasoningPart =
             abstract providerOptions: option<SharedV3ProviderOptions> with get, set
@@ -16054,12 +16142,12 @@ module rec AiSdk =
         [<Import("@ai-sdk/provider", "ImageModelV3")>]
         type ImageModelV3 =
             abstract maxImagesPerCall:
-                option<U2<ImageModelV3.MaxImagesPerCall -> option<U2<PromiseLike<option<float>>, float>>, float>> with get
+                option<U2<ImageModelV3.MaxImagesPerCall -> option<U2<Promise<option<float>>, float>>, float>> with get
 
             abstract modelId: string with get
             abstract provider: string with get
             abstract specificationVersion: ImageModelV3.SpecificationVersion with get
-            abstract doGenerate: options: ImageModelV3CallOptions -> PromiseLike<ImageModelV3.DoGenerate>
+            abstract doGenerate: options: ImageModelV3CallOptions -> Promise<ImageModelV3.DoGenerate>
 
         [<Import("@ai-sdk/provider", "TranscriptionModelV3CallOptions")>]
         type TranscriptionModelV3CallOptions =
@@ -16085,7 +16173,7 @@ module rec AiSdk =
                 [<EmitProperty("[schemaSymbol]")>]
                 abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
-                abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
+                abstract jsonSchema: option<U2<Promise<option<Agents.AgentContext>>, obj>> with get
                 abstract _type: 'OBJECT with get, set
 
                 abstract validate:
@@ -16093,7 +16181,7 @@ module rec AiSdk =
                         U3<
                             InputSchema.Validate,
                             InputSchema.Validate,
-                            PromiseLike<U2<InputSchema.Validate, InputSchema.Validate>>
+                            Promise<U2<InputSchema.Validate, InputSchema.Validate>>
                          >
 
         module rec InferToolOutput =
@@ -16116,7 +16204,7 @@ module rec AiSdk =
                 [<EmitProperty("[schemaSymbol]")>]
                 abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
-                abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
+                abstract jsonSchema: option<U2<Promise<option<Agents.AgentContext>>, obj>> with get
                 abstract _type: 'OBJECT with get, set
 
                 abstract validate:
@@ -16124,7 +16212,7 @@ module rec AiSdk =
                         U3<
                             InputSchema.Validate,
                             InputSchema.Validate,
-                            PromiseLike<U2<InputSchema.Validate, InputSchema.Validate>>
+                            Promise<U2<InputSchema.Validate, InputSchema.Validate>>
                          >
 
         module rec LazySchema =
@@ -16140,7 +16228,7 @@ module rec AiSdk =
                 [<EmitProperty("[schemaSymbol]")>]
                 abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
-                abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
+                abstract jsonSchema: option<U2<Promise<option<Agents.AgentContext>>, obj>> with get
                 abstract _type: 'OBJECT with get, set
 
                 abstract validate:
@@ -16148,7 +16236,7 @@ module rec AiSdk =
                         U3<
                             InputSchema.Validate,
                             InputSchema.Validate,
-                            PromiseLike<U2<InputSchema.Validate, InputSchema.Validate>>
+                            Promise<U2<InputSchema.Validate, InputSchema.Validate>>
                          >
 
         module rec ModelMessage =
@@ -16250,7 +16338,7 @@ module rec AiSdk =
                 [<EmitProperty("[schemaSymbol]")>]
                 abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
-                abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
+                abstract jsonSchema: option<U2<Promise<option<Agents.AgentContext>>, obj>> with get
                 abstract _type: 'OBJECT with get, set
 
                 abstract validate:
@@ -16258,7 +16346,7 @@ module rec AiSdk =
                         U3<
                             InputSchema.Validate,
                             InputSchema.Validate,
-                            PromiseLike<U2<InputSchema.Validate, InputSchema.Validate>>
+                            Promise<U2<InputSchema.Validate, InputSchema.Validate>>
                          >
 
             type Output =
@@ -16340,7 +16428,7 @@ module rec AiSdk =
         [<Import("@ai-sdk/provider-utils", "ToolNeedsApprovalFunction")>]
         type ToolNeedsApprovalFunction<'INPUT> =
             abstract Invoke:
-                input: 'INPUT * options: ToolNeedsApprovalFunction.Invoke.Options -> U2<PromiseLike<bool>, bool>
+                input: 'INPUT * options: ToolNeedsApprovalFunction.Invoke.Options -> U2<Promise<bool>, bool>
 
         type InferSchema<'SCHEMA> = U2<'T, U2<'T, U2<'T, U2<'T, unit>>>>
 
@@ -16372,7 +16460,7 @@ module rec AiSdk =
                 input: 'INPUT * options: ToolExecutionOptions ->
                     U3<
                         AsyncIterable<'OUTPUT, option<Agents.AgentContext>, option<Agents.AgentContext>>,
-                        PromiseLike<'OUTPUT>,
+                        Promise<'OUTPUT>,
                         'OUTPUT
                      >
 
@@ -16583,7 +16671,7 @@ module rec JsonSchemaTyped =
                     [<EmitProperty("then")>]
                     abstract ``then``: option<JSONSchema> with get, set
 
-                    abstract required: option<U2<ResizeArray<string>, ReadonlyArray<string>>> with get, set
+                    abstract required: option<U2<ResizeArray<string>, System.Collections.Generic.IReadOnlyList<string>>> with get, set
                     abstract readOnly: option<bool> with get, set
                     abstract propertyNames: option<U2<AdditionalItems.PropertyNames, AdditionalItems.PropertyNames>> with get, set
                     abstract properties: option<AdditionalItems.Properties> with get, set
@@ -16593,14 +16681,18 @@ module rec JsonSchemaTyped =
                             U4<
                                 AdditionalItems.PrefixItems,
                                 ResizeArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
-                                ReadonlyArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
+                                System.Collections.Generic.IReadOnlyList<
+                                    U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>
+                                 >,
                                 AdditionalItems.PrefixItems
                              >
                          > with get, set
 
                     abstract patternProperties: option<AdditionalItems.PatternProperties> with get, set
                     abstract pattern: option<string> with get, set
-                    abstract oneOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+
+                    abstract oneOf:
+                        option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
 
                     [<EmitProperty("not")>]
                     abstract ``not``: option<JSONSchema> with get, set
@@ -16624,8 +16716,8 @@ module rec JsonSchemaTyped =
                     abstract format: option<string> with get, set
                     abstract exclusiveMinimum: option<float> with get, set
                     abstract exclusiveMaximum: option<float> with get, set
-                    abstract examples: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
-                    abstract enum: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
+                    abstract examples: option<U2<ResizeArray<'Value>, System.Collections.Generic.IReadOnlyList<'Value>>> with get, set
+                    abstract enum: option<U2<ResizeArray<'Value>, System.Collections.Generic.IReadOnlyList<'Value>>> with get, set
 
                     [<EmitProperty("else")>]
                     abstract ``else``: option<JSONSchema> with get, set
@@ -16655,8 +16747,11 @@ module rec JsonSchemaTyped =
                     [<EmitProperty("const")>]
                     abstract ``const``: option<'Value> with get, set
 
-                    abstract anyOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
-                    abstract allOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                    abstract anyOf:
+                        option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
+
+                    abstract allOf:
+                        option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
 
                     abstract additionalProperties:
                         option<U2<AdditionalItems.AdditionalProperties, AdditionalItems.AdditionalProperties>> with get, set
@@ -16734,7 +16829,7 @@ module rec JsonSchemaTyped =
                     [<EmitProperty("then")>]
                     abstract ``then``: option<JSONSchema> with get, set
 
-                    abstract required: option<U2<ResizeArray<string>, ReadonlyArray<string>>> with get, set
+                    abstract required: option<U2<ResizeArray<string>, System.Collections.Generic.IReadOnlyList<string>>> with get, set
                     abstract readOnly: option<bool> with get, set
                     abstract propertyNames: option<U2<AdditionalItems.PropertyNames, AdditionalItems.PropertyNames>> with get, set
                     abstract properties: option<AdditionalItems.Properties> with get, set
@@ -16744,14 +16839,18 @@ module rec JsonSchemaTyped =
                             U4<
                                 AdditionalItems.PrefixItems,
                                 ResizeArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
-                                ReadonlyArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
+                                System.Collections.Generic.IReadOnlyList<
+                                    U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>
+                                 >,
                                 AdditionalItems.PrefixItems
                              >
                          > with get, set
 
                     abstract patternProperties: option<AdditionalItems.PatternProperties> with get, set
                     abstract pattern: option<string> with get, set
-                    abstract oneOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+
+                    abstract oneOf:
+                        option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
 
                     [<EmitProperty("not")>]
                     abstract ``not``: option<JSONSchema> with get, set
@@ -16775,8 +16874,8 @@ module rec JsonSchemaTyped =
                     abstract format: option<string> with get, set
                     abstract exclusiveMinimum: option<float> with get, set
                     abstract exclusiveMaximum: option<float> with get, set
-                    abstract examples: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
-                    abstract enum: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
+                    abstract examples: option<U2<ResizeArray<'Value>, System.Collections.Generic.IReadOnlyList<'Value>>> with get, set
+                    abstract enum: option<U2<ResizeArray<'Value>, System.Collections.Generic.IReadOnlyList<'Value>>> with get, set
 
                     [<EmitProperty("else")>]
                     abstract ``else``: option<JSONSchema> with get, set
@@ -16806,8 +16905,11 @@ module rec JsonSchemaTyped =
                     [<EmitProperty("const")>]
                     abstract ``const``: option<'Value> with get, set
 
-                    abstract anyOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
-                    abstract allOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                    abstract anyOf:
+                        option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
+
+                    abstract allOf:
+                        option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
 
                     abstract additionalProperties:
                         option<U2<AdditionalItems.AdditionalProperties, AdditionalItems.AdditionalProperties>> with get, set
@@ -16867,7 +16969,9 @@ module rec JsonSchemaTyped =
                         [<EmitProperty("then")>]
                         abstract ``then``: option<JSONSchema> with get, set
 
-                        abstract required: option<U2<ResizeArray<string>, ReadonlyArray<string>>> with get, set
+                        abstract required:
+                            option<U2<ResizeArray<string>, System.Collections.Generic.IReadOnlyList<string>>> with get, set
+
                         abstract readOnly: option<bool> with get, set
                         abstract propertyNames: option<U2<AdditionalItems.PropertyNames, AdditionalItems.PropertyNames>> with get, set
                         abstract properties: option<AdditionalItems.Properties> with get, set
@@ -16877,14 +16981,18 @@ module rec JsonSchemaTyped =
                                 U4<
                                     AdditionalItems.PrefixItems,
                                     ResizeArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
-                                    ReadonlyArray<U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>>,
+                                    System.Collections.Generic.IReadOnlyList<
+                                        U2<AdditionalItems.PrefixItems, AdditionalItems.PrefixItems>
+                                     >,
                                     AdditionalItems.PrefixItems
                                  >
                              > with get, set
 
                         abstract patternProperties: option<AdditionalItems.PatternProperties> with get, set
                         abstract pattern: option<string> with get, set
-                        abstract oneOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+
+                        abstract oneOf:
+                            option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
 
                         [<EmitProperty("not")>]
                         abstract ``not``: option<JSONSchema> with get, set
@@ -16908,8 +17016,11 @@ module rec JsonSchemaTyped =
                         abstract format: option<string> with get, set
                         abstract exclusiveMinimum: option<float> with get, set
                         abstract exclusiveMaximum: option<float> with get, set
-                        abstract examples: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
-                        abstract enum: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
+
+                        abstract examples:
+                            option<U2<ResizeArray<'Value>, System.Collections.Generic.IReadOnlyList<'Value>>> with get, set
+
+                        abstract enum: option<U2<ResizeArray<'Value>, System.Collections.Generic.IReadOnlyList<'Value>>> with get, set
 
                         [<EmitProperty("else")>]
                         abstract ``else``: option<JSONSchema> with get, set
@@ -16939,8 +17050,11 @@ module rec JsonSchemaTyped =
                         [<EmitProperty("const")>]
                         abstract ``const``: option<'Value> with get, set
 
-                        abstract anyOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
-                        abstract allOf: option<U2<ResizeArray<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
+                        abstract anyOf:
+                            option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
+
+                        abstract allOf:
+                            option<U2<ResizeArray<JSONSchema>, System.Collections.Generic.IReadOnlyList<JSONSchema>>> with get, set
 
                         abstract additionalProperties:
                             option<U2<AdditionalItems.AdditionalProperties, AdditionalItems.AdditionalProperties>> with get, set
@@ -17009,7 +17123,7 @@ module rec JsonSchemaTyped =
                         TypeValue.PrefixItems,
                         TypeValue.PrefixItems,
                         ResizeArray<U2<TypeValue.PrefixItems, TypeValue.PrefixItems>>,
-                        ReadonlyArray<U2<TypeValue.PrefixItems, TypeValue.PrefixItems>>
+                        System.Collections.Generic.IReadOnlyList<U2<TypeValue.PrefixItems, TypeValue.PrefixItems>>
                      >
                  > with get, set
 
@@ -17031,7 +17145,7 @@ module rec JsonSchemaTyped =
                 option<
                     U2<
                         ResizeArray<U2<TypeValue.OneOf, TypeValue.OneOf>>,
-                        ReadonlyArray<U2<TypeValue.OneOf, TypeValue.OneOf>>
+                        System.Collections.Generic.IReadOnlyList<U2<TypeValue.OneOf, TypeValue.OneOf>>
                      >
                  > with get, set
 
@@ -17081,7 +17195,7 @@ module rec JsonSchemaTyped =
                                 float
                              >
                          >,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             U33<
                                 unit -> StringIterator<string>,
                                 string -> string,
@@ -17131,7 +17245,7 @@ module rec JsonSchemaTyped =
                 option<
                     U2<
                         ResizeArray<U2<TypeValue.AnyOf, TypeValue.AnyOf>>,
-                        ReadonlyArray<U2<TypeValue.AnyOf, TypeValue.AnyOf>>
+                        System.Collections.Generic.IReadOnlyList<U2<TypeValue.AnyOf, TypeValue.AnyOf>>
                      >
                  > with get, set
 
@@ -17139,7 +17253,7 @@ module rec JsonSchemaTyped =
                 option<
                     U2<
                         ResizeArray<U2<TypeValue.AllOf, TypeValue.AllOf>>,
-                        ReadonlyArray<U2<TypeValue.AllOf, TypeValue.AllOf>>
+                        System.Collections.Generic.IReadOnlyList<U2<TypeValue.AllOf, TypeValue.AllOf>>
                      >
                  > with get, set
 
@@ -17255,7 +17369,7 @@ module rec JsonSchemaTyped =
                                 float
                              >
                          >,
-                        ReadonlyArray<
+                        System.Collections.Generic.IReadOnlyList<
                             U33<
                                 unit -> StringIterator<string>,
                                 string -> string,
@@ -17476,7 +17590,7 @@ module rec JsonSchemaTyped =
         | [<CompiledName("object")>] Object
         | [<CompiledName("string")>] String
 
-    type MaybeReadonlyArray<'T> = U2<ResizeArray<'T>, ReadonlyArray<'T>>
+    type MaybeReadonlyArray<'T> = U2<ResizeArray<'T>, System.Collections.Generic.IReadOnlyList<'T>>
 
 module rec Modelcontextprotocol =
     module rec Sdk =
@@ -25107,7 +25221,9 @@ module rec Modelcontextprotocol =
                             [<EmitProperty("then")>]
                             abstract ``then``: option<JsonSchemaTyped.JSONSchema> with get, set
 
-                            abstract required: option<U2<ResizeArray<string>, ReadonlyArray<string>>> with get, set
+                            abstract required:
+                                option<U2<ResizeArray<string>, System.Collections.Generic.IReadOnlyList<string>>> with get, set
+
                             abstract readOnly: option<bool> with get, set
 
                             abstract propertyNames:
@@ -25120,7 +25236,9 @@ module rec Modelcontextprotocol =
                                     U4<
                                         JsonSchemaType.PrefixItems,
                                         ResizeArray<U2<JsonSchemaType.PrefixItems, JsonSchemaType.PrefixItems>>,
-                                        ReadonlyArray<U2<JsonSchemaType.PrefixItems, JsonSchemaType.PrefixItems>>,
+                                        System.Collections.Generic.IReadOnlyList<
+                                            U2<JsonSchemaType.PrefixItems, JsonSchemaType.PrefixItems>
+                                         >,
                                         JsonSchemaType.PrefixItems
                                      >
                                  > with get, set
@@ -25132,7 +25250,7 @@ module rec Modelcontextprotocol =
                                 option<
                                     U2<
                                         ResizeArray<JsonSchemaTyped.JSONSchema>,
-                                        ReadonlyArray<JsonSchemaTyped.JSONSchema>
+                                        System.Collections.Generic.IReadOnlyList<JsonSchemaTyped.JSONSchema>
                                      >
                                  > with get, set
 
@@ -25158,8 +25276,12 @@ module rec Modelcontextprotocol =
                             abstract format: option<string> with get, set
                             abstract exclusiveMinimum: option<float> with get, set
                             abstract exclusiveMaximum: option<float> with get, set
-                            abstract examples: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
-                            abstract enum: option<U2<ResizeArray<'Value>, ReadonlyArray<'Value>>> with get, set
+
+                            abstract examples:
+                                option<U2<ResizeArray<'Value>, System.Collections.Generic.IReadOnlyList<'Value>>> with get, set
+
+                            abstract enum:
+                                option<U2<ResizeArray<'Value>, System.Collections.Generic.IReadOnlyList<'Value>>> with get, set
 
                             [<EmitProperty("else")>]
                             abstract ``else``: option<JsonSchemaTyped.JSONSchema> with get, set
@@ -25193,7 +25315,7 @@ module rec Modelcontextprotocol =
                                 option<
                                     U2<
                                         ResizeArray<JsonSchemaTyped.JSONSchema>,
-                                        ReadonlyArray<JsonSchemaTyped.JSONSchema>
+                                        System.Collections.Generic.IReadOnlyList<JsonSchemaTyped.JSONSchema>
                                      >
                                  > with get, set
 
@@ -25201,7 +25323,7 @@ module rec Modelcontextprotocol =
                                 option<
                                     U2<
                                         ResizeArray<JsonSchemaTyped.JSONSchema>,
-                                        ReadonlyArray<JsonSchemaTyped.JSONSchema>
+                                        System.Collections.Generic.IReadOnlyList<JsonSchemaTyped.JSONSchema>
                                      >
                                  > with get, set
 
@@ -25334,7 +25456,7 @@ module rec Partyserver =
         /// The server name. Populated from `Server.name` after initialization.
         /// </deprecated>
         abstract server: string with get, set
-        abstract tags: ReadonlyArray<string> with get, set
+        abstract tags: System.Collections.Generic.IReadOnlyList<string> with get, set
         abstract state: option<Server.State> with get, set
         abstract uri: option<string> with get, set
         abstract id: string with get, set
@@ -25455,7 +25577,7 @@ module rec StandardSchema =
 
             [<Import("@standard-schema/spec.StandardSchemaV1", "FailureResult")>]
             type FailureResult =
-                abstract issues: ReadonlyArray<Issue> with get
+                abstract issues: System.Collections.Generic.IReadOnlyList<Issue> with get
 
             [<Import("@standard-schema/spec.StandardSchemaV1", "SuccessResult")>]
             type SuccessResult<'Output> =
@@ -25464,7 +25586,7 @@ module rec StandardSchema =
 
             [<Import("@standard-schema/spec.StandardSchemaV1", "Issue")>]
             type Issue =
-                abstract path: option<ReadonlyArray<U4<PathSegment, string, float, obj>>> with get
+                abstract path: option<System.Collections.Generic.IReadOnlyList<U4<PathSegment, string, float, obj>>> with get
                 abstract message: string with get
 
             [<Import("@standard-schema/spec.StandardSchemaV1", "Options")>]
@@ -25841,12 +25963,12 @@ module rec Zod =
 
                 [<Import("./standard-schema.cjs.StandardSchemaV1", "Issue")>]
                 type Issue =
-                    abstract path: option<ReadonlyArray<U4<PathSegment, string, float, obj>>> with get
+                    abstract path: option<System.Collections.Generic.IReadOnlyList<U4<PathSegment, string, float, obj>>> with get
                     abstract message: string with get
 
                 [<Import("./standard-schema.cjs.StandardSchemaV1", "FailureResult")>]
                 type FailureResult =
-                    abstract issues: ReadonlyArray<Issue> with get
+                    abstract issues: System.Collections.Generic.IReadOnlyList<Issue> with get
 
         module rec Types =
             module rec BRAND =
@@ -25989,7 +26111,7 @@ module rec Zod =
                             [<EmitProperty("0")>]
                             abstract ``0``: 'U with get, set
 
-                            abstract symbolIterator: unit -> ArrayIterator<'T>
+                            abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                             abstract ``with``: index: float * value: 'T -> ResizeArray
 
                             abstract toSpliced:
@@ -26012,9 +26134,9 @@ module rec Zod =
 
                             abstract flatMap: callback: Invoke.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                             abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                            abstract values: unit -> ArrayIterator<'T>
-                            abstract keys: unit -> ArrayIterator<float>
-                            abstract entries: unit -> ArrayIterator<float * 'T>
+                            abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                            abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                            abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                             abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                             abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
 
@@ -26073,7 +26195,7 @@ module rec Zod =
                                     type Callback =
                                         abstract Invoke:
                                             this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                                U2<'U, ReadonlyArray<'U>>
+                                                U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                                 module rec ForEach =
                                     type Callbackfn =
@@ -26116,7 +26238,7 @@ module rec Zod =
                     [<EmitProperty("0")>]
                     abstract ``0``: proptypekey<'T, float> with get, set
 
-                    abstract symbolIterator: unit -> ArrayIterator<'T>
+                    abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                     abstract ``with``: index: float * value: 'T -> ResizeArray
 
                     abstract toSpliced:
@@ -26138,9 +26260,9 @@ module rec Zod =
 
                     abstract flatMap: callback: Extract.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                     abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                    abstract values: unit -> ArrayIterator<'T>
-                    abstract keys: unit -> ArrayIterator<float>
-                    abstract entries: unit -> ArrayIterator<float * 'T>
+                    abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                    abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                    abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                     abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                     abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
                     abstract findIndex: predicate: Extract.FindIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -26870,12 +26992,24 @@ module rec Zod =
                     ZodType<
                         U2<
                             ReadonlyMap<'K, 'V>,
-                            U2<ReadonlySet<'V>, U2<'T * 'T<'Head, 'Tail>, U2<ReadonlyArray<'V>, U2<'T, ZodReadonly>>>>
+                            U2<
+                                ReadonlySet<'V>,
+                                U2<
+                                    'T * 'T<'Head, 'Tail>,
+                                    U2<System.Collections.Generic.IReadOnlyList<'V>, U2<'T, ZodReadonly>>
+                                 >
+                             >
                          >,
                         ZodReadonlyDef<'T>,
                         U2<
                             ReadonlyMap<'K, 'V>,
-                            U2<ReadonlySet<'V>, U2<'T * 'T<'Head, 'Tail>, U2<ReadonlyArray<'V>, U2<'T, ZodReadonly>>>>
+                            U2<
+                                ReadonlySet<'V>,
+                                U2<
+                                    'T * 'T<'Head, 'Tail>,
+                                    U2<System.Collections.Generic.IReadOnlyList<'V>, U2<'T, ZodReadonly>>
+                                 >
+                             >
                          >
                      >()
 
@@ -27079,7 +27213,7 @@ module rec Zod =
                                 type Callback =
                                     abstract Invoke:
                                         this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                            U2<'U, ReadonlyArray<'U>>
+                                            U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
@@ -27143,7 +27277,7 @@ module rec Zod =
                                 type Callback =
                                     abstract Invoke:
                                         this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                            U2<'U, ReadonlyArray<'U>>
+                                            U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
@@ -27279,7 +27413,7 @@ module rec Zod =
                 abstract _errors: ResizeArray<'U> with get, set
                 abstract Item: key: string -> option<Agents.AgentContext>
                 abstract Item: k: float -> ZodFormattedError.Item
-                abstract symbolIterator: unit -> ArrayIterator<'T>
+                abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                 abstract ``with``: index: float * value: 'T -> ResizeArray
                 abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
                 abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
@@ -27301,9 +27435,9 @@ module rec Zod =
 
                 abstract flatMap: callback: ZodFormattedError.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                 abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                abstract values: unit -> ArrayIterator<'T>
-                abstract keys: unit -> ArrayIterator<float>
-                abstract entries: unit -> ArrayIterator<float * 'T>
+                abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                 abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                 abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
 
@@ -27389,7 +27523,7 @@ module rec Zod =
                 abstract argumentsError: ZodError<option<Agents.AgentContext>> with get, set
                 abstract Item: key: string -> option<Agents.AgentContext>
                 abstract Item: k: float -> ZodError.Item
-                abstract symbolIterator: unit -> ArrayIterator<'T>
+                abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                 abstract ``with``: index: float * value: 'T -> ResizeArray
                 abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
                 abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
@@ -27406,9 +27540,9 @@ module rec Zod =
 
                 abstract flatMap: callback: ZodError.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                 abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                abstract values: unit -> ArrayIterator<'T>
-                abstract keys: unit -> ArrayIterator<float>
-                abstract entries: unit -> ArrayIterator<float * 'T>
+                abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                 abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                 abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
                 abstract findIndex: predicate: ZodError.FindIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -27555,7 +27689,7 @@ module rec Zod =
                                         type Callback =
                                             abstract Invoke:
                                                 this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                                    U2<'U, ReadonlyArray<'U>>
+                                                    U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                                     module rec ForEach =
                                         type Callbackfn =
@@ -27594,7 +27728,7 @@ module rec Zod =
                         abstract ``0``: option<ToString.``0``> with get, set
 
                         abstract _errors: ResizeArray<'U> with get, set
-                        abstract symbolIterator: unit -> ArrayIterator<'T>
+                        abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                         abstract ``with``: index: float * value: 'T -> ResizeArray
 
                         abstract toSpliced:
@@ -27617,9 +27751,9 @@ module rec Zod =
 
                         abstract flatMap: callback: ToString.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                         abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                        abstract values: unit -> ArrayIterator<'T>
-                        abstract keys: unit -> ArrayIterator<float>
-                        abstract entries: unit -> ArrayIterator<float * 'T>
+                        abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                        abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                        abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                         abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                         abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
 
@@ -28299,7 +28433,7 @@ module rec Zod =
                     end
 
                 [<Import("./schemas.cjs", "ZodUnion")>]
-                type ZodUnion<'T when 'T :> ReadonlyArray<Core.Schemas.SomeType>> =
+                type ZodUnion<'T when 'T :> System.Collections.Generic.IReadOnlyList<Core.Schemas.SomeType>> =
                     inherit _ZodType<Core.Schemas.ZodUnionInternals<'T>>
                     abstract options: 'T with get, set
 
@@ -28374,7 +28508,8 @@ module rec Zod =
 
                 [<Import("./schemas.cjs", "ZodDiscriminatedUnion")>]
                 type ZodDiscriminatedUnion<'Disc, 'Options
-                    when 'Disc :> string and 'Options :> ReadonlyArray<Core.Schemas.SomeType>> =
+                    when 'Disc :> string and 'Options :> System.Collections.Generic.IReadOnlyList<Core.Schemas.SomeType>>
+                    =
                     inherit ZodUnion<'Options>
                     abstract def: Core.Schemas.ZodDiscriminatedUnionDef<'Options, 'Disc> with get, set
                     abstract _zod: Core.Schemas.ZodDiscriminatedUnionInternals<'Options, 'Disc> with get, set
@@ -29035,7 +29170,7 @@ module rec Zod =
                                                     type Callback =
                                                         abstract Invoke:
                                                             this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                                                U2<'U, ReadonlyArray<'U>>
+                                                                U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                                                 module rec ForEach =
                                                     type Callbackfn =
@@ -29121,7 +29256,7 @@ module rec Zod =
                                     abstract symbolUnscopables: Args.SymbolUnscopables with get
 
                                     abstract length: float with get, set
-                                    abstract symbolIterator: unit -> ArrayIterator<'T>
+                                    abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                                     abstract ``with``: index: float * value: 'T -> ResizeArray
 
                                     abstract toSpliced:
@@ -29147,9 +29282,9 @@ module rec Zod =
                                         callback: Args.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
 
                                     abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                                    abstract values: unit -> ArrayIterator<'T>
-                                    abstract keys: unit -> ArrayIterator<float>
-                                    abstract entries: unit -> ArrayIterator<float * 'T>
+                                    abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                                    abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                                    abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                                     abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                                     abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
 
@@ -29672,29 +29807,37 @@ module rec Zod =
                         module rec Output =
                             module rec Every =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> bool
+                                    abstract Invoke:
+                                        value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList ->
+                                            bool
 
                             module rec Find =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: ReadonlyArray -> bool
+                                    abstract Invoke:
+                                        value: 'T * index: float * obj: System.Collections.Generic.IReadOnlyList -> bool
 
                             module rec FindIndex =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * obj: ReadonlyArray -> option<obj>
+                                    abstract Invoke:
+                                        value: 'T * index: float * obj: System.Collections.Generic.IReadOnlyList ->
+                                            option<obj>
 
                             module rec FlatMap =
                                 type Callback =
                                     abstract Invoke:
                                         this: 'This * value: 'T * index: float * array: ResizeArray<'T> ->
-                                            U2<'U, ReadonlyArray<'U>>
+                                            U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> unit
+                                    abstract Invoke:
+                                        value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList ->
+                                            unit
 
                             module rec Map =
                                 type Callbackfn =
-                                    abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> 'U
+                                    abstract Invoke:
+                                        value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> 'U
 
                             module rec Reduce =
                                 type Callbackfn =
@@ -29702,12 +29845,14 @@ module rec Zod =
                                         previousValue: 'T *
                                         currentValue: 'T *
                                         currentIndex: float *
-                                        array: ReadonlyArray ->
+                                        array: System.Collections.Generic.IReadOnlyList ->
                                             'T
 
                             module rec Some =
                                 type Predicate =
-                                    abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> option<obj>
+                                    abstract Invoke:
+                                        value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList ->
+                                            option<obj>
 
                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                             type SymbolUnscopables =
@@ -29719,7 +29864,7 @@ module rec Zod =
                         abstract symbolUnscopables: Output.SymbolUnscopables with get
 
                         abstract length: float with get
-                        abstract symbolIterator: unit -> ArrayIterator<'T>
+                        abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                         abstract ``with``: index: float * value: 'T -> ResizeArray<'T>
 
                         abstract toSpliced:
@@ -29741,9 +29886,9 @@ module rec Zod =
 
                         abstract flatMap: callback: Output.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                         abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                        abstract values: unit -> ArrayIterator<'T>
-                        abstract keys: unit -> ArrayIterator<float>
-                        abstract entries: unit -> ArrayIterator<float * 'T>
+                        abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                        abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                        abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
 
                         abstract findIndex:
                             predicate: Output.FindIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -30126,7 +30271,7 @@ module rec Zod =
                     abstract def: ZodSymbolDef with get, set
 
                 [<Import("./schemas.cjs", "$ZodUnion")>]
-                type ZodUnion<'T when 'T :> ReadonlyArray<SomeType>> =
+                type ZodUnion<'T when 'T :> System.Collections.Generic.IReadOnlyList<SomeType>> =
                     inherit ZodType<option<Agents.AgentContext>, option<Agents.AgentContext>, ZodUnionInternals<'T>>
                     abstract _zod: ZodUnionInternals<'T> with get, set
 
@@ -30671,7 +30816,7 @@ module rec Zod =
 
                 [<Import("./schemas.cjs", "$ZodDiscriminatedUnionDef")>]
                 type ZodDiscriminatedUnionDef<'Disc, 'Options
-                    when 'Disc :> string and 'Options :> ReadonlyArray<SomeType>> =
+                    when 'Disc :> string and 'Options :> System.Collections.Generic.IReadOnlyList<SomeType>> =
                     inherit ZodUnionDef<'Options>
                     abstract unionFallback: option<bool> with get, set
                     abstract discriminator: 'Disc with get, set
@@ -30727,7 +30872,7 @@ module rec Zod =
 
                 [<Import("./schemas.cjs", "$ZodDiscriminatedUnionInternals")>]
                 type ZodDiscriminatedUnionInternals<'Disc, 'Options
-                    when 'Disc :> string and 'Options :> ReadonlyArray<SomeType>> =
+                    when 'Disc :> string and 'Options :> System.Collections.Generic.IReadOnlyList<SomeType>> =
                     inherit ZodUnionInternals<'Options>
                     abstract propValues: Util.PropValues with get, set
                     abstract def: ZodDiscriminatedUnionDef<'Options, 'Disc> with get, set
@@ -31352,7 +31497,7 @@ module rec Zod =
                 type ZodISODateTimeDef = | [<CompiledName("datetime")>] Datetime
 
                 [<Import("./schemas.cjs", "$ZodUnionDef")>]
-                type ZodUnionDef<'Options when 'Options :> ReadonlyArray<SomeType>> =
+                type ZodUnionDef<'Options when 'Options :> System.Collections.Generic.IReadOnlyList<SomeType>> =
                     inherit ZodTypeDef
                     abstract inclusive: option<bool> with get, set
                     abstract options: 'Options with get, set
@@ -31516,7 +31661,9 @@ module rec Zod =
 
                     [<Import("../core/standard-schema.cjs.StandardSchemaV1", "Issue")>]
                     type Issue =
-                        abstract path: option<ReadonlyArray<U4<PathSegment, string, float, obj>>> with get
+                        abstract path:
+                            option<System.Collections.Generic.IReadOnlyList<U4<PathSegment, string, float, obj>>> with get
+
                         abstract message: string with get
 
                     [<Import("../core/standard-schema.cjs.StandardSchemaV1", "Options")>]
@@ -31525,7 +31672,7 @@ module rec Zod =
 
                     [<Import("../core/standard-schema.cjs.StandardSchemaV1", "FailureResult")>]
                     type FailureResult =
-                        abstract issues: ReadonlyArray<Issue> with get
+                        abstract issues: System.Collections.Generic.IReadOnlyList<Issue> with get
 
                     [<Import("../core/standard-schema.cjs.StandardSchemaV1", "PathSegment")>]
                     type PathSegment =
@@ -32027,7 +32174,13 @@ module rec Zod =
                 type MakeReadonly<'T> =
                     U2<
                         ReadonlyMap<'K, 'V>,
-                        U2<ReadonlySet<'V>, U2<'T * 'T<'Head, 'Tail>, U2<ReadonlyArray<'V>, U2<'T, MakeReadonly>>>>
+                        U2<
+                            ReadonlySet<'V>,
+                            U2<
+                                'T * 'T<'Head, 'Tail>,
+                                U2<System.Collections.Generic.IReadOnlyList<'V>, U2<'T, MakeReadonly>>
+                             >
+                         >
                      >
 
                 [<Import("../core/util.cjs", "Class"); AbstractClass; AllowNullLiteral>]
@@ -33657,7 +33810,7 @@ module rec ``.`` =
         module rec SubAgentConnectionBridge =
             type Broadcast =
                 abstract Invoke:
-                    ownerPath: ReadonlyArray<AgentPathStep> *
+                    ownerPath: System.Collections.Generic.IReadOnlyList<AgentPathStep> *
                     message: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, string> *
                     ?without: ResizeArray<string> ->
                         unit
@@ -33926,7 +34079,7 @@ module rec ``.`` =
         [<Import("./agent-tool-types-DSteYkkS.js", "SubAgentConnectionBridgeLike")>]
         type SubAgentConnectionBridgeLike =
             abstract broadcast:
-                ownerPath: ReadonlyArray<AgentPathStep> *
+                ownerPath: System.Collections.Generic.IReadOnlyList<AgentPathStep> *
                 message: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, string> *
                 ?without: ResizeArray<string> ->
                     unit
@@ -34489,7 +34642,7 @@ module rec ``.`` =
             abstract ``#private``: option<Agents.AgentContext> with get, set
 
             abstract broadcast:
-                ownerPath: ReadonlyArray<AgentPathStep> *
+                ownerPath: System.Collections.Generic.IReadOnlyList<AgentPathStep> *
                 message: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, string> *
                 ?without: ResizeArray<string> ->
                     unit
@@ -34617,7 +34770,7 @@ module rec ``.`` =
                                 type Callback =
                                     abstract Invoke:
                                         this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                            U2<'U, ReadonlyArray<'U>>
+                                            U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                             module rec ForEach =
                                 type Callbackfn =
@@ -34699,7 +34852,7 @@ module rec ``.`` =
                 abstract ``0``: option<ToString.``0``> with get, set
 
                 abstract _errors: ResizeArray<'U> with get, set
-                abstract symbolIterator: unit -> ArrayIterator<'T>
+                abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
                 abstract ``with``: index: float * value: 'T -> ResizeArray
                 abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
                 abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
@@ -34716,9 +34869,9 @@ module rec ``.`` =
 
                 abstract flatMap: callback: ToString.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
                 abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                abstract values: unit -> ArrayIterator<'T>
-                abstract keys: unit -> ArrayIterator<float>
-                abstract entries: unit -> ArrayIterator<float * 'T>
+                abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
                 abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
                 abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
                 abstract findIndex: predicate: ToString.FindIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -34966,37 +35119,48 @@ module rec ``.`` =
             module rec Output =
                 module rec Every =
                     type Predicate =
-                        abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> bool
+                        abstract Invoke:
+                            value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> bool
 
                 module rec Find =
                     type Predicate =
-                        abstract Invoke: value: 'T * index: float * obj: ReadonlyArray -> bool
+                        abstract Invoke:
+                            value: 'T * index: float * obj: System.Collections.Generic.IReadOnlyList -> bool
 
                 module rec FindIndex =
                     type Predicate =
-                        abstract Invoke: value: 'T * index: float * obj: ReadonlyArray -> option<obj>
+                        abstract Invoke:
+                            value: 'T * index: float * obj: System.Collections.Generic.IReadOnlyList -> option<obj>
 
                 module rec FlatMap =
                     type Callback =
                         abstract Invoke:
-                            this: 'This * value: 'T * index: float * array: ResizeArray<'T> -> U2<'U, ReadonlyArray<'U>>
+                            this: 'This * value: 'T * index: float * array: ResizeArray<'T> ->
+                                U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                 module rec ForEach =
                     type Callbackfn =
-                        abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> unit
+                        abstract Invoke:
+                            value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> unit
 
                 module rec Map =
                     type Callbackfn =
-                        abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> 'U
+                        abstract Invoke:
+                            value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> 'U
 
                 module rec Reduce =
                     type Callbackfn =
                         abstract Invoke:
-                            previousValue: 'T * currentValue: 'T * currentIndex: float * array: ReadonlyArray -> 'T
+                            previousValue: 'T *
+                            currentValue: 'T *
+                            currentIndex: float *
+                            array: System.Collections.Generic.IReadOnlyList ->
+                                'T
 
                 module rec Some =
                     type Predicate =
-                        abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> option<obj>
+                        abstract Invoke:
+                            value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> option<obj>
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type SymbolUnscopables =
@@ -35007,37 +35171,48 @@ module rec ``.`` =
             module rec Output =
                 module rec Every =
                     type Predicate =
-                        abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> bool
+                        abstract Invoke:
+                            value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> bool
 
                 module rec Find =
                     type Predicate =
-                        abstract Invoke: value: 'T * index: float * obj: ReadonlyArray -> bool
+                        abstract Invoke:
+                            value: 'T * index: float * obj: System.Collections.Generic.IReadOnlyList -> bool
 
                 module rec FindIndex =
                     type Predicate =
-                        abstract Invoke: value: 'T * index: float * obj: ReadonlyArray -> option<obj>
+                        abstract Invoke:
+                            value: 'T * index: float * obj: System.Collections.Generic.IReadOnlyList -> option<obj>
 
                 module rec FlatMap =
                     type Callback =
                         abstract Invoke:
-                            this: 'This * value: 'T * index: float * array: ResizeArray<'T> -> U2<'U, ReadonlyArray<'U>>
+                            this: 'This * value: 'T * index: float * array: ResizeArray<'T> ->
+                                U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                 module rec ForEach =
                     type Callbackfn =
-                        abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> unit
+                        abstract Invoke:
+                            value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> unit
 
                 module rec Map =
                     type Callbackfn =
-                        abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> 'U
+                        abstract Invoke:
+                            value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> 'U
 
                 module rec Reduce =
                     type Callbackfn =
                         abstract Invoke:
-                            previousValue: 'T * currentValue: 'T * currentIndex: float * array: ReadonlyArray -> 'T
+                            previousValue: 'T *
+                            currentValue: 'T *
+                            currentIndex: float *
+                            array: System.Collections.Generic.IReadOnlyList ->
+                                'T
 
                 module rec Some =
                     type Predicate =
-                        abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> option<obj>
+                        abstract Invoke:
+                            value: 'T * index: float * array: System.Collections.Generic.IReadOnlyList -> option<obj>
 
                 type SymbolUnscopables =
                     [<EmitProperty("__@unscopables@2222")>]
@@ -35085,7 +35260,7 @@ module rec ``.`` =
             abstract symbolUnscopables: TupleInputTypeNoOptionals.SymbolUnscopables with get
 
             abstract length: float with get
-            abstract symbolIterator: unit -> ArrayIterator<'T>
+            abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
             abstract ``with``: index: float * value: 'T -> ResizeArray<'T>
 
             abstract toSpliced:
@@ -35113,9 +35288,9 @@ module rec ``.`` =
 
             abstract flatMap: callback: TupleInputTypeNoOptionals.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
             abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-            abstract values: unit -> ArrayIterator<'T>
-            abstract keys: unit -> ArrayIterator<float>
-            abstract entries: unit -> ArrayIterator<float * 'T>
+            abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+            abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+            abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
 
             abstract findIndex:
                 predicate: TupleInputTypeNoOptionals.FindIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -35288,7 +35463,7 @@ module rec ``.`` =
             abstract symbolUnscopables: TupleOutputTypeNoOptionals.SymbolUnscopables with get
 
             abstract length: float with get
-            abstract symbolIterator: unit -> ArrayIterator<'T>
+            abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
             abstract ``with``: index: float * value: 'T -> ResizeArray<'T>
 
             abstract toSpliced:
@@ -35316,9 +35491,9 @@ module rec ``.`` =
 
             abstract flatMap: callback: TupleOutputTypeNoOptionals.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
             abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-            abstract values: unit -> ArrayIterator<'T>
-            abstract keys: unit -> ArrayIterator<float>
-            abstract entries: unit -> ArrayIterator<float * 'T>
+            abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+            abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+            abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
 
             abstract findIndex:
                 predicate: TupleOutputTypeNoOptionals.FindIndex.Predicate * ?thisArg: Agents.AgentContext -> float
@@ -35360,7 +35535,10 @@ module rec ``.`` =
         type MakeReadonly<'T> =
             U2<
                 ReadonlyMap<'K, 'V>,
-                U2<ReadonlySet<'V>, U2<'T * 'T<'Head, 'Tail>, U2<ReadonlyArray<'V>, U2<'T, MakeReadonly>>>>
+                U2<
+                    ReadonlySet<'V>,
+                    U2<'T * 'T<'Head, 'Tail>, U2<System.Collections.Generic.IReadOnlyList<'V>, U2<'T, MakeReadonly>>>
+                 >
              >
 
         type BuiltIn = obj
@@ -35519,7 +35697,7 @@ module rec ``.`` =
                             type Callback =
                                 abstract Invoke:
                                     this: 'This * value: 'T * index: float * array: ResizeArray ->
-                                        U2<'U, ReadonlyArray<'U>>
+                                        U2<'U, System.Collections.Generic.IReadOnlyList<'U>>
 
                         module rec ForEach =
                             type Callbackfn =
@@ -35604,7 +35782,7 @@ module rec ``.`` =
             [<EmitProperty("0")>]
             abstract ``0``: option<RecursiveZodFormattedError.``0``> with get, set
 
-            abstract symbolIterator: unit -> ArrayIterator<'T>
+            abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
             abstract ``with``: index: float * value: 'T -> ResizeArray
             abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
             abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
@@ -35629,9 +35807,9 @@ module rec ``.`` =
 
             abstract flatMap: callback: RecursiveZodFormattedError.FlatMap.Callback * ?thisArg: 'This -> ResizeArray<'U>
             abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-            abstract values: unit -> ArrayIterator<'T>
-            abstract keys: unit -> ArrayIterator<float>
-            abstract entries: unit -> ArrayIterator<float * 'T>
+            abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+            abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+            abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
             abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
             abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
 
