@@ -12,13 +12,13 @@ module rec Cloudflare =
                 module rec Data =
                     module rec Headers =
                         type CfAigCustomCost =
-                            [<CompiledName("total_cost")>]
+                            [<EmitProperty("total_cost")>]
                             abstract totalCost: option<float> with get, set
 
-                            [<CompiledName("per_token_out")>]
+                            [<EmitProperty("per_token_out")>]
                             abstract perTokenOut: option<float> with get, set
 
-                            [<CompiledName("per_token_in")>]
+                            [<EmitProperty("per_token_in")>]
                             abstract perTokenIn: option<float> with get, set
 
             type Params =
@@ -30,7 +30,7 @@ module rec Cloudflare =
                     type Properties =
                         abstract value: D1SessionBookmark with get, set
 
-                        [<CompiledName("property_id")>]
+                        [<EmitProperty("property_id")>]
                         abstract propertyId: D1SessionBookmark with get, set
 
                     type Task =
@@ -43,12 +43,12 @@ module rec Cloudflare =
                     abstract source: option<float> with get, set
                     abstract search: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: option<float> with get, set
 
                     abstract page: option<float> with get, set
 
-                    [<CompiledName("hide_experimental")>]
+                    [<EmitProperty("hide_experimental")>]
                     abstract hideExperimental: option<bool> with get, set
 
                     abstract author: option<D1SessionBookmark> with get, set
@@ -141,7 +141,7 @@ module rec Cloudflare =
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
             type Run =
-                [<CompiledName("request_id")>]
+                [<EmitProperty("request_id")>]
                 abstract requestId: D1SessionBookmark with get, set
 
             type Models =
@@ -169,10 +169,10 @@ module rec Cloudflare =
                                 type ToolCalls = | [<CompiledName("function")>] Function
 
                     type Message =
-                        [<CompiledName("tool_calls")>]
+                        [<EmitProperty("tool_calls")>]
                         abstract toolCalls: option<Array<AiTextGenerationToolOutput>> with get, set
 
-                        [<CompiledName("reasoning_content")>]
+                        [<EmitProperty("reasoning_content")>]
                         abstract reasoningContent: option<D1SessionBookmark> with get, set
 
                         abstract content: D1SessionBookmark with get, set
@@ -180,22 +180,22 @@ module rec Cloudflare =
 
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
             type Choices =
                 abstract logprobs: option<obj> with get, set
 
-                [<CompiledName("stop_reason")>]
+                [<EmitProperty("stop_reason")>]
                 abstract stopReason: option<string> with get, set
 
-                [<CompiledName("finish_reason")>]
+                [<EmitProperty("finish_reason")>]
                 abstract finishReason: option<D1SessionBookmark> with get, set
 
                 abstract message: option<Choices.Message> with get, set
@@ -207,7 +207,7 @@ module rec Cloudflare =
                     type Content =
                         abstract text: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<D1SessionBookmark> with get, set
 
             module rec Tools =
@@ -222,7 +222,7 @@ module rec Cloudflare =
                                                 type Item =
                                                     abstract description: D1SessionBookmark with get, set
 
-                                                    [<CompiledName("type")>]
+                                                    [<EmitProperty("type")>]
                                                     abstract ``type``: D1SessionBookmark with get, set
 
                                 type Properties =
@@ -232,14 +232,14 @@ module rec Cloudflare =
                         abstract properties: Parameters.Properties with get, set
                         abstract required: option<Array<D1SessionBookmark>> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: D1SessionBookmark with get, set
 
             type Tools =
-                [<CompiledName("function")>]
+                [<EmitProperty("function")>]
                 abstract ``function``: Tools.Function with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: D1SessionBookmark with get, set
 
                 abstract parameters: Tools.Parameters with get, set
@@ -253,25 +253,25 @@ module rec Cloudflare =
         module rec AiCfAisingaporeGemmaSeaLionV427BItTextCompletionResponse =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
             type Choices =
-                [<CompiledName("prompt_logprobs")>]
+                [<EmitProperty("prompt_logprobs")>]
                 abstract promptLogprobs: option<obj> with get, set
 
                 abstract logprobs: option<obj> with get, set
 
-                [<CompiledName("stop_reason")>]
+                [<EmitProperty("stop_reason")>]
                 abstract stopReason: option<string> with get, set
 
-                [<CompiledName("finish_reason")>]
+                [<EmitProperty("finish_reason")>]
                 abstract finishReason: D1SessionBookmark with get, set
 
                 abstract text: D1SessionBookmark with get, set
@@ -326,7 +326,7 @@ module rec Cloudflare =
                                                     abstract word: option<D1SessionBookmark> with get, set
                                                     abstract start: option<float> with get, set
 
-                                                    [<CompiledName("end")>]
+                                                    [<EmitProperty("end")>]
                                                     abstract ``end``: option<float> with get, set
 
                                                     abstract confidence: option<float> with get, set
@@ -340,21 +340,21 @@ module rec Cloudflare =
                         module rec Results =
                             module rec Sentiments =
                                 type Average =
-                                    [<CompiledName("sentiment_score")>]
+                                    [<EmitProperty("sentiment_score")>]
                                     abstract sentimentScore: option<float> with get, set
 
                                     abstract sentiment: option<D1SessionBookmark> with get, set
 
                                 type Segments =
-                                    [<CompiledName("sentiment_score")>]
+                                    [<EmitProperty("sentiment_score")>]
                                     abstract sentimentScore: option<float> with get, set
 
                                     abstract sentiment: option<D1SessionBookmark> with get, set
 
-                                    [<CompiledName("end_word")>]
+                                    [<EmitProperty("end_word")>]
                                     abstract endWord: option<float> with get, set
 
-                                    [<CompiledName("start_word")>]
+                                    [<EmitProperty("start_word")>]
                                     abstract startWord: option<float> with get, set
 
                                     abstract text: option<D1SessionBookmark> with get, set
@@ -383,60 +383,60 @@ module rec Cloudflare =
         module rec AiCfGoogleGemma312BItOutput =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
         module rec AiCfMetaLlama3370BInstructFp8FastAsyncBatch =
             type Requests =
-                [<CompiledName("response_format")>]
+                [<EmitProperty("response_format")>]
                 abstract responseFormat: option<AiCfMetaLlama3370BInstructFp8FastJSONMode2> with get, set
 
-                [<CompiledName("presence_penalty")>]
+                [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
 
-                [<CompiledName("frequency_penalty")>]
+                [<EmitProperty("frequency_penalty")>]
                 abstract frequencyPenalty: option<float> with get, set
 
-                [<CompiledName("repetition_penalty")>]
+                [<EmitProperty("repetition_penalty")>]
                 abstract repetitionPenalty: option<float> with get, set
 
                 abstract seed: option<float> with get, set
 
-                [<CompiledName("top_p")>]
+                [<EmitProperty("top_p")>]
                 abstract topP: option<float> with get, set
 
                 abstract temperature: option<float> with get, set
 
-                [<CompiledName("max_tokens")>]
+                [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
                 abstract stream: option<bool> with get, set
                 abstract prompt: option<D1SessionBookmark> with get, set
 
-                [<CompiledName("external_reference")>]
+                [<EmitProperty("external_reference")>]
                 abstract externalReference: option<D1SessionBookmark> with get, set
 
         module rec AiCfMetaLlama3370BInstructFp8FastOutput =
             module rec PostProcessedOutputs =
                 module rec PostProcessedOutputs =
                     type Usage =
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: option<float> with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: option<float> with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: option<float> with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
@@ -452,18 +452,18 @@ module rec Cloudflare =
                                     abstract url: option<D1SessionBookmark> with get, set
 
                     type Content =
-                        [<CompiledName("image_url")>]
+                        [<EmitProperty("image_url")>]
                         abstract imageUrl: option<Content.ImageUrl> with get, set
 
                         abstract text: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<D1SessionBookmark> with get, set
 
             type Messages =
                 abstract content: option<U3<Array<Messages.Content>, Messages.Content, string>> with get, set
 
-                [<CompiledName("tool_call_id")>]
+                [<EmitProperty("tool_call_id")>]
                 abstract toolCallId: option<D1SessionBookmark> with get, set
 
                 abstract role: option<D1SessionBookmark> with get, set
@@ -471,13 +471,13 @@ module rec Cloudflare =
         module rec AiCfMetaLlama4Scout17B16EInstructOutput =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
         module rec AiCfMetaLlamaGuard38BInput =
@@ -487,19 +487,19 @@ module rec Cloudflare =
                 | [<CompiledName("assistant")>] Assistant
 
             type ResponseFormat =
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: option<D1SessionBookmark> with get, set
 
         module rec AiCfMetaLlamaGuard38BOutput =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
             type Response =
@@ -509,13 +509,13 @@ module rec Cloudflare =
         module rec AiCfMistralaiMistralSmall3124BInstructOutput =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
         module rec AiCfOpenaiWhisperLargeV3TurboInput =
@@ -527,7 +527,7 @@ module rec Cloudflare =
             module rec Segments =
                 module rec Segments =
                     type Words =
-                        [<CompiledName("end")>]
+                        [<EmitProperty("end")>]
                         abstract ``end``: option<float> with get, set
 
                         abstract start: option<float> with get, set
@@ -536,30 +536,30 @@ module rec Cloudflare =
             type Segments =
                 abstract words: option<Array<Segments.Words>> with get, set
 
-                [<CompiledName("no_speech_prob")>]
+                [<EmitProperty("no_speech_prob")>]
                 abstract noSpeechProb: option<float> with get, set
 
-                [<CompiledName("compression_ratio")>]
+                [<EmitProperty("compression_ratio")>]
                 abstract compressionRatio: option<float> with get, set
 
-                [<CompiledName("avg_logprob")>]
+                [<EmitProperty("avg_logprob")>]
                 abstract avgLogprob: option<float> with get, set
 
                 abstract temperature: option<float> with get, set
                 abstract text: option<D1SessionBookmark> with get, set
 
-                [<CompiledName("end")>]
+                [<EmitProperty("end")>]
                 abstract ``end``: option<float> with get, set
 
                 abstract start: option<float> with get, set
 
             type TranscriptionInfo =
-                [<CompiledName("duration_after_vad")>]
+                [<EmitProperty("duration_after_vad")>]
                 abstract durationAfterVad: option<float> with get, set
 
                 abstract duration: option<float> with get, set
 
-                [<CompiledName("language_probability")>]
+                [<EmitProperty("language_probability")>]
                 abstract languageProbability: option<float> with get, set
 
                 abstract language: option<D1SessionBookmark> with get, set
@@ -576,73 +576,73 @@ module rec Cloudflare =
         module rec AiCfQwenQwen25Coder32BInstructOutput =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
         module rec AiCfQwenQwen330BA3BFp8ChatCompletionResponse =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
         module rec AiCfQwenQwen330BA3BFp8TextCompletionResponse =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
         module rec AiCfQwenQwq32BOutput =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: option<float> with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: option<float> with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: option<float> with get, set
 
         module rec AiCfUnumUformGen2Qwen500MInput =
             type Inputs =
-                [<CompiledName("max_tokens")>]
+                [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
                 abstract image: U2<Array<float>, Inputs.Image> with get, set
 
-                [<CompiledName("presence_penalty")>]
+                [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
 
-                [<CompiledName("frequency_penalty")>]
+                [<EmitProperty("frequency_penalty")>]
                 abstract frequencyPenalty: option<float> with get, set
 
-                [<CompiledName("repetition_penalty")>]
+                [<EmitProperty("repetition_penalty")>]
                 abstract repetitionPenalty: option<float> with get, set
 
                 abstract seed: option<float> with get, set
 
-                [<CompiledName("top_k")>]
+                [<EmitProperty("top_k")>]
                 abstract topK: option<float> with get, set
 
-                [<CompiledName("top_p")>]
+                [<EmitProperty("top_p")>]
                 abstract topP: option<float> with get, set
 
                 abstract raw: option<bool> with get, set
@@ -668,13 +668,13 @@ module rec Cloudflare =
                                     module rec Data =
                                         module rec Headers =
                                             type CfAigCustomCost =
-                                                [<CompiledName("total_cost")>]
+                                                [<EmitProperty("total_cost")>]
                                                 abstract totalCost: option<float> with get, set
 
-                                                [<CompiledName("per_token_out")>]
+                                                [<EmitProperty("per_token_out")>]
                                                 abstract perTokenOut: option<float> with get, set
 
-                                                [<CompiledName("per_token_in")>]
+                                                [<EmitProperty("per_token_in")>]
                                                 abstract perTokenIn: option<float> with get, set
 
                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -716,59 +716,59 @@ module rec Cloudflare =
                     abstract provider: U2<Data.Provider, string> with get, set
 
             type GetLog =
-                [<CompiledName("created_at")>]
+                [<EmitProperty("created_at")>]
                 abstract createdAt: Date with get, set
 
-                [<CompiledName("response_head_complete")>]
+                [<EmitProperty("response_head_complete")>]
                 abstract responseHeadComplete: bool with get, set
 
-                [<CompiledName("response_head")>]
+                [<EmitProperty("response_head")>]
                 abstract responseHead: option<D1SessionBookmark> with get, set
 
-                [<CompiledName("response_size")>]
+                [<EmitProperty("response_size")>]
                 abstract responseSize: float with get, set
 
-                [<CompiledName("request_head_complete")>]
+                [<EmitProperty("request_head_complete")>]
                 abstract requestHeadComplete: bool with get, set
 
-                [<CompiledName("request_head")>]
+                [<EmitProperty("request_head")>]
                 abstract requestHead: option<D1SessionBookmark> with get, set
 
-                [<CompiledName("request_size")>]
+                [<EmitProperty("request_size")>]
                 abstract requestSize: float with get, set
 
-                [<CompiledName("custom_cost")>]
+                [<EmitProperty("custom_cost")>]
                 abstract customCost: option<bool> with get, set
 
                 abstract cost: option<float> with get, set
                 abstract step: option<float> with get, set
                 abstract metadata: option<WebAssembly.ModuleImports> with get, set
 
-                [<CompiledName("tokens_out")>]
+                [<EmitProperty("tokens_out")>]
                 abstract tokensOut: option<float> with get, set
 
-                [<CompiledName("tokens_in")>]
+                [<EmitProperty("tokens_in")>]
                 abstract tokensIn: option<float> with get, set
 
                 abstract cached: bool with get, set
                 abstract success: bool with get, set
 
-                [<CompiledName("response_content_type")>]
+                [<EmitProperty("response_content_type")>]
                 abstract responseContentType: option<D1SessionBookmark> with get, set
 
-                [<CompiledName("status_code")>]
+                [<EmitProperty("status_code")>]
                 abstract statusCode: float with get, set
 
-                [<CompiledName("request_content_type")>]
+                [<EmitProperty("request_content_type")>]
                 abstract requestContentType: option<D1SessionBookmark> with get, set
 
-                [<CompiledName("request_type")>]
+                [<EmitProperty("request_type")>]
                 abstract requestType: option<D1SessionBookmark> with get, set
 
                 abstract duration: float with get, set
                 abstract path: D1SessionBookmark with get, set
 
-                [<CompiledName("model_type")>]
+                [<EmitProperty("model_type")>]
                 abstract modelType: option<D1SessionBookmark> with get, set
 
                 abstract model: D1SessionBookmark with get, set
@@ -830,7 +830,7 @@ module rec Cloudflare =
                         | [<CompiledValue(true)>] True
 
                 type QueryRewrite =
-                    [<CompiledName("rewrite_prompt")>]
+                    [<EmitProperty("rewrite_prompt")>]
                     abstract rewritePrompt: option<D1SessionBookmark> with get, set
 
                     abstract model: option<D1SessionBookmark> with get, set
@@ -838,7 +838,7 @@ module rec Cloudflare =
                     abstract Item: key: D1SessionBookmark -> option<obj>
 
                 type Reranking =
-                    [<CompiledName("match_threshold")>]
+                    [<EmitProperty("match_threshold")>]
                     abstract matchThreshold: option<float> with get, set
 
                     abstract model: option<D1SessionBookmark> with get, set
@@ -846,7 +846,7 @@ module rec Cloudflare =
                     abstract Item: key: D1SessionBookmark -> option<obj>
 
                 type Cache =
-                    [<CompiledName("cache_threshold")>]
+                    [<EmitProperty("cache_threshold")>]
                     abstract cacheThreshold: option<Cache.CacheThreshold> with get, set
 
                     abstract enabled: option<bool> with get, set
@@ -865,7 +865,7 @@ module rec Cloudflare =
                 abstract cache: option<AiSearchOptions.Cache> with get, set
                 abstract reranking: option<AiSearchOptions.Reranking> with get, set
 
-                [<CompiledName("query_rewrite")>]
+                [<EmitProperty("query_rewrite")>]
                 abstract queryRewrite: option<AiSearchOptions.QueryRewrite> with get, set
 
                 abstract retrieval: option<AiSearchOptions.Retrieval> with get, set
@@ -891,14 +891,14 @@ module rec Cloudflare =
                     abstract timestamp: option<float> with get, set
 
             type Chunks =
-                [<CompiledName("scoring_details")>]
+                [<EmitProperty("scoring_details")>]
                 abstract scoringDetails: option<Chunks.ScoringDetails> with get, set
 
                 abstract item: Chunks.Item with get, set
                 abstract text: D1SessionBookmark with get, set
                 abstract score: float with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: D1SessionBookmark with get, set
 
                 abstract id: D1SessionBookmark with get, set
@@ -918,7 +918,7 @@ module rec Cloudflare =
         module rec AiSearchInstance =
             module rec ChatCompletions =
                 type Params =
-                    [<CompiledName("ai_search_options")>]
+                    [<EmitProperty("ai_search_options")>]
                     abstract aiSearchOptions: option<AiSearchOptions> with get, set
 
                     abstract stream: option<bool> with get, set
@@ -931,10 +931,10 @@ module rec Cloudflare =
                     module rec List =
                         module rec Result =
                             type CustomMetadata =
-                                [<CompiledName("data_type")>]
+                                [<EmitProperty("data_type")>]
                                 abstract dataType: CustomMetadata.DataType with get, set
 
-                                [<CompiledName("field_name")>]
+                                [<EmitProperty("field_name")>]
                                 abstract fieldName: D1SessionBookmark with get, set
 
                 type Result =
@@ -952,28 +952,28 @@ module rec Cloudflare =
                             module rec Filter =
                                 module rec Filter =
                                     type Item =
-                                        [<CompiledName("$gte")>]
+                                        [<EmitProperty("$gte")>]
                                         abstract gte: option<U3<Item.Gte, string, float>> with get, set
 
-                                        [<CompiledName("$gt")>]
+                                        [<EmitProperty("$gt")>]
                                         abstract gt: option<U3<Item.Gt, string, float>> with get, set
 
-                                        [<CompiledName("$lte")>]
+                                        [<EmitProperty("$lte")>]
                                         abstract lte: option<U3<Item.Lte, string, float>> with get, set
 
-                                        [<CompiledName("$lt")>]
+                                        [<EmitProperty("$lt")>]
                                         abstract lt: option<U3<Item.Lt, string, float>> with get, set
 
-                                        [<CompiledName("$ne")>]
+                                        [<EmitProperty("$ne")>]
                                         abstract ne: option<U3<Item.Ne, string, float>> with get, set
 
-                                        [<CompiledName("$eq")>]
+                                        [<EmitProperty("$eq")>]
                                         abstract eq: option<U3<Item.Eq, string, float>> with get, set
 
-                                        [<CompiledName("$nin")>]
+                                        [<EmitProperty("$nin")>]
                                         abstract nin: option<Array<U3<Item.Nin, string, float>>> with get, set
 
-                                        [<CompiledName("$in")>]
+                                        [<EmitProperty("$in")>]
                                         abstract ``in``: option<Array<U3<Item.In, string, float>>> with get, set
 
                             type Filter =
@@ -999,7 +999,7 @@ module rec Cloudflare =
                             | [<CompiledName("anything_goes")>] AnythingGoes
 
                         type QueryRewrite =
-                            [<CompiledName("rewrite_prompt")>]
+                            [<EmitProperty("rewrite_prompt")>]
                             abstract rewritePrompt: option<D1SessionBookmark> with get, set
 
                             abstract model: option<D1SessionBookmark> with get, set
@@ -1007,7 +1007,7 @@ module rec Cloudflare =
                             abstract Item: key: D1SessionBookmark -> option<obj>
 
                         type Reranking =
-                            [<CompiledName("match_threshold")>]
+                            [<EmitProperty("match_threshold")>]
                             abstract matchThreshold: option<float> with get, set
 
                             abstract model: option<D1SessionBookmark> with get, set
@@ -1018,14 +1018,14 @@ module rec Cloudflare =
                         abstract cache: option<AiSearchOptions.Cache> with get, set
                         abstract reranking: option<AiSearchOptions.Reranking> with get, set
 
-                        [<CompiledName("query_rewrite")>]
+                        [<EmitProperty("query_rewrite")>]
                         abstract queryRewrite: option<AiSearchOptions.QueryRewrite> with get, set
 
                         abstract retrieval: option<AiSearchOptions.Retrieval> with get, set
                         abstract Item: key: D1SessionBookmark -> option<obj>
 
                 type Params =
-                    [<CompiledName("ai_search_options")>]
+                    [<EmitProperty("ai_search_options")>]
                     abstract aiSearchOptions: option<AiSearchOptions> with get, set
 
                     abstract messages: Array<AiSearchMessage> with get, set
@@ -1071,91 +1071,91 @@ module rec Cloudflare =
                                 abstract vector: option<bool> with get, set
 
                             type IndexingOptions =
-                                [<CompiledName("keyword_tokenizer")>]
+                                [<EmitProperty("keyword_tokenizer")>]
                                 abstract keywordTokenizer: option<IndexingOptions.KeywordTokenizer> with get, set
 
                             type RetrievalOptions =
-                                [<CompiledName("boost_by")>]
+                                [<EmitProperty("boost_by")>]
                                 abstract boostBy: option<Array<RetrievalOptions.BoostBy>> with get, set
 
-                                [<CompiledName("keyword_match_mode")>]
+                                [<EmitProperty("keyword_match_mode")>]
                                 abstract keywordMatchMode: option<RetrievalOptions.KeywordMatchMode> with get, set
 
                 type Config =
                     abstract metadata: option<Config.Metadata> with get, set
 
-                    [<CompiledName("sync_interval")>]
+                    [<EmitProperty("sync_interval")>]
                     abstract syncInterval: option<Config.SyncInterval> with get, set
 
-                    [<CompiledName("namespace")>]
+                    [<EmitProperty("namespace")>]
                     abstract ``namespace``: option<string> with get, set
 
-                    [<CompiledName("custom_metadata")>]
+                    [<EmitProperty("custom_metadata")>]
                     abstract customMetadata: option<Array<Config.CustomMetadata>> with get, set
 
-                    [<CompiledName("cache_threshold")>]
+                    [<EmitProperty("cache_threshold")>]
                     abstract cacheThreshold: option<Config.CacheThreshold> with get, set
 
                     abstract cache: option<Config.Cache> with get, set
 
-                    [<CompiledName("max_num_results")>]
+                    [<EmitProperty("max_num_results")>]
                     abstract maxNumResults: option<float> with get, set
 
-                    [<CompiledName("score_threshold")>]
+                    [<EmitProperty("score_threshold")>]
                     abstract scoreThreshold: option<float> with get, set
 
-                    [<CompiledName("chunk_overlap")>]
+                    [<EmitProperty("chunk_overlap")>]
                     abstract chunkOverlap: option<float> with get, set
 
-                    [<CompiledName("chunk_size")>]
+                    [<EmitProperty("chunk_size")>]
                     abstract chunkSize: option<float> with get, set
 
                     abstract chunk: option<Config.Chunk> with get, set
 
-                    [<CompiledName("retrieval_options")>]
+                    [<EmitProperty("retrieval_options")>]
                     abstract retrievalOptions: option<Config.RetrievalOptions> with get, set
 
-                    [<CompiledName("indexing_options")>]
+                    [<EmitProperty("indexing_options")>]
                     abstract indexingOptions: option<Config.IndexingOptions> with get, set
 
-                    [<CompiledName("fusion_method")>]
+                    [<EmitProperty("fusion_method")>]
                     abstract fusionMethod: option<Config.FusionMethod> with get, set
 
-                    [<CompiledName("index_method")>]
+                    [<EmitProperty("index_method")>]
                     abstract indexMethod: option<Config.IndexMethod> with get, set
 
-                    [<CompiledName("hybrid_search_enabled")>]
+                    [<EmitProperty("hybrid_search_enabled")>]
                     abstract hybridSearchEnabled: option<Config.HybridSearchEnabled> with get, set
 
-                    [<CompiledName("reranking_model")>]
+                    [<EmitProperty("reranking_model")>]
                     abstract rerankingModel: option<string> with get, set
 
-                    [<CompiledName("rewrite_model")>]
+                    [<EmitProperty("rewrite_model")>]
                     abstract rewriteModel: option<string> with get, set
 
-                    [<CompiledName("ai_search_model")>]
+                    [<EmitProperty("ai_search_model")>]
                     abstract aiSearchModel: option<string> with get, set
 
-                    [<CompiledName("embedding_model")>]
+                    [<EmitProperty("embedding_model")>]
                     abstract embeddingModel: option<string> with get, set
 
                     abstract reranking: option<Config.Reranking> with get, set
 
-                    [<CompiledName("rewrite_query")>]
+                    [<EmitProperty("rewrite_query")>]
                     abstract rewriteQuery: option<Config.RewriteQuery> with get, set
 
-                    [<CompiledName("ai_gateway_id")>]
+                    [<EmitProperty("ai_gateway_id")>]
                     abstract aiGatewayId: option<string> with get, set
 
-                    [<CompiledName("token_id")>]
+                    [<EmitProperty("token_id")>]
                     abstract tokenId: option<string> with get, set
 
-                    [<CompiledName("source_params")>]
+                    [<EmitProperty("source_params")>]
                     abstract sourceParams: option<obj> with get, set
 
                     abstract source: option<string> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: option<string> with get, set
 
                     abstract id: option<string> with get, set
@@ -1163,7 +1163,7 @@ module rec Cloudflare =
             type Stats =
                 abstract engine: option<Stats.Engine> with get, set
 
-                [<CompiledName("last_activity")>]
+                [<EmitProperty("last_activity")>]
                 abstract lastActivity: option<D1SessionBookmark> with get, set
 
                 abstract outdated: option<float> with get, set
@@ -1176,7 +1176,7 @@ module rec Cloudflare =
             type Search =
                 abstract chunks: Array<Search.Chunks> with get, set
 
-                [<CompiledName("search_query")>]
+                [<EmitProperty("search_query")>]
                 abstract searchQuery: D1SessionBookmark with get, set
 
             type ChatCompletions =
@@ -1206,10 +1206,10 @@ module rec Cloudflare =
                     type Result =
                         abstract item: option<Result.Item> with get, set
 
-                        [<CompiledName("end_byte")>]
+                        [<EmitProperty("end_byte")>]
                         abstract endByte: float with get, set
 
-                        [<CompiledName("start_byte")>]
+                        [<EmitProperty("start_byte")>]
                         abstract startByte: float with get, set
 
                         abstract text: D1SessionBookmark with get, set
@@ -1236,7 +1236,7 @@ module rec Cloudflare =
                         abstract truncated: bool with get, set
                         abstract cursor: option<string> with get, set
 
-                        [<CompiledName("per_page")>]
+                        [<EmitProperty("per_page")>]
                         abstract perPage: float with get, set
 
                         abstract count: float with get, set
@@ -1251,7 +1251,7 @@ module rec Cloudflare =
                         abstract timestamp: D1SessionBookmark with get, set
 
             type Chunks =
-                [<CompiledName("result_info")>]
+                [<EmitProperty("result_info")>]
                 abstract resultInfo: Chunks.ResultInfo with get, set
 
                 abstract result: Array<AiSearchItemChunk> with get, set
@@ -1263,7 +1263,7 @@ module rec Cloudflare =
                 abstract body: AiTextToImageOutput with get, set
 
             type Logs =
-                [<CompiledName("result_info")>]
+                [<EmitProperty("result_info")>]
                 abstract resultInfo: Logs.ResultInfo with get, set
 
                 abstract result: Array<AiSearchItemLog> with get, set
@@ -1288,7 +1288,7 @@ module rec Cloudflare =
                     abstract truncated: bool with get, set
                     abstract cursor: option<string> with get, set
 
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: float with get, set
 
                     abstract count: float with get, set
@@ -1297,10 +1297,10 @@ module rec Cloudflare =
             module rec List =
                 module rec List =
                     type ResultInfo =
-                        [<CompiledName("total_count")>]
+                        [<EmitProperty("total_count")>]
                         abstract totalCount: float with get, set
 
-                        [<CompiledName("per_page")>]
+                        [<EmitProperty("per_page")>]
                         abstract perPage: float with get, set
 
                         abstract page: float with get, set
@@ -1333,7 +1333,7 @@ module rec Cloudflare =
                     abstract metadata: option<WebAssembly.ModuleImports> with get, set
 
             type List =
-                [<CompiledName("result_info")>]
+                [<EmitProperty("result_info")>]
                 abstract resultInfo: option<List.ResultInfo> with get, set
 
                 abstract result: Array<AiSearchItemInfo> with get, set
@@ -1342,10 +1342,10 @@ module rec Cloudflare =
             module rec Logs =
                 module rec List =
                     type ResultInfo =
-                        [<CompiledName("total_count")>]
+                        [<EmitProperty("total_count")>]
                         abstract totalCount: float with get, set
 
-                        [<CompiledName("per_page")>]
+                        [<EmitProperty("per_page")>]
                         abstract perPage: float with get, set
 
                         abstract page: float with get, set
@@ -1353,23 +1353,23 @@ module rec Cloudflare =
 
                 module rec Logs =
                     type Result =
-                        [<CompiledName("created_at")>]
+                        [<EmitProperty("created_at")>]
                         abstract createdAt: float with get, set
 
-                        [<CompiledName("message_type")>]
+                        [<EmitProperty("message_type")>]
                         abstract messageType: float with get, set
 
                         abstract message: D1SessionBookmark with get, set
                         abstract id: float with get, set
 
                 type Params =
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: option<float> with get, set
 
                     abstract page: option<float> with get, set
 
             type Logs =
-                [<CompiledName("result_info")>]
+                [<EmitProperty("result_info")>]
                 abstract resultInfo: option<Logs.ResultInfo> with get, set
 
                 abstract result: Array<AiSearchJobLog> with get, set
@@ -1377,10 +1377,10 @@ module rec Cloudflare =
         module rec AiSearchJobLogsResponse =
             module rec List =
                 type ResultInfo =
-                    [<CompiledName("total_count")>]
+                    [<EmitProperty("total_count")>]
                     abstract totalCount: float with get, set
 
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: float with get, set
 
                     abstract page: float with get, set
@@ -1394,10 +1394,10 @@ module rec Cloudflare =
             module rec List =
                 module rec List =
                     type ResultInfo =
-                        [<CompiledName("total_count")>]
+                        [<EmitProperty("total_count")>]
                         abstract totalCount: float with get, set
 
-                        [<CompiledName("per_page")>]
+                        [<EmitProperty("per_page")>]
                         abstract perPage: float with get, set
 
                         abstract page: float with get, set
@@ -1409,13 +1409,13 @@ module rec Cloudflare =
                     | [<CompiledName("schedule")>] Schedule
 
                 type Params =
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: option<float> with get, set
 
                     abstract page: option<float> with get, set
 
             type List =
-                [<CompiledName("result_info")>]
+                [<EmitProperty("result_info")>]
                 abstract resultInfo: option<List.ResultInfo> with get, set
 
                 abstract result: Array<AiSearchJobInfo> with get, set
@@ -1423,10 +1423,10 @@ module rec Cloudflare =
         module rec AiSearchListItemsResponse =
             module rec List =
                 type ResultInfo =
-                    [<CompiledName("total_count")>]
+                    [<EmitProperty("total_count")>]
                     abstract totalCount: float with get, set
 
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: float with get, set
 
                     abstract page: float with get, set
@@ -1435,10 +1435,10 @@ module rec Cloudflare =
         module rec AiSearchListJobsResponse =
             module rec List =
                 type ResultInfo =
-                    [<CompiledName("total_count")>]
+                    [<EmitProperty("total_count")>]
                     abstract totalCount: float with get, set
 
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: float with get, set
 
                     abstract page: float with get, set
@@ -1447,10 +1447,10 @@ module rec Cloudflare =
         module rec AiSearchListResponse =
             module rec List =
                 type ResultInfo =
-                    [<CompiledName("total_count")>]
+                    [<EmitProperty("total_count")>]
                     abstract totalCount: float with get, set
 
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: float with get, set
 
                     abstract page: float with get, set
@@ -1461,28 +1461,28 @@ module rec Cloudflare =
                 module rec Filter =
                     module rec Filter =
                         type Item =
-                            [<CompiledName("$nin")>]
+                            [<EmitProperty("$nin")>]
                             abstract nin: option<Array<U3<Item.Nin, string, float>>> with get, set
 
-                            [<CompiledName("$in")>]
+                            [<EmitProperty("$in")>]
                             abstract ``in``: option<Array<U3<Item.In, string, float>>> with get, set
 
-                            [<CompiledName("$gte")>]
+                            [<EmitProperty("$gte")>]
                             abstract gte: option<U3<Item.Gte, string, float>> with get, set
 
-                            [<CompiledName("$gt")>]
+                            [<EmitProperty("$gt")>]
                             abstract gt: option<U3<Item.Gt, string, float>> with get, set
 
-                            [<CompiledName("$lte")>]
+                            [<EmitProperty("$lte")>]
                             abstract lte: option<U3<Item.Lte, string, float>> with get, set
 
-                            [<CompiledName("$lt")>]
+                            [<EmitProperty("$lt")>]
                             abstract lt: option<U3<Item.Lt, string, float>> with get, set
 
-                            [<CompiledName("$ne")>]
+                            [<EmitProperty("$ne")>]
                             abstract ne: option<U3<Item.Ne, string, float>> with get, set
 
-                            [<CompiledName("$eq")>]
+                            [<EmitProperty("$eq")>]
                             abstract eq: option<U3<Item.Eq, string, float>> with get, set
 
                 type Filter =
@@ -1490,33 +1490,33 @@ module rec Cloudflare =
                         key: D1SessionBookmark -> option<U5<Filter.Item, Filter.Item, Filter.Item, string, float>>
 
             type Retrieval =
-                [<CompiledName("boost_by")>]
+                [<EmitProperty("boost_by")>]
                 abstract boostBy: option<Array<Retrieval.BoostBy>> with get, set
 
-                [<CompiledName("return_on_failure")>]
+                [<EmitProperty("return_on_failure")>]
                 abstract returnOnFailure: option<bool> with get, set
 
-                [<CompiledName("metadata_only")>]
+                [<EmitProperty("metadata_only")>]
                 abstract metadataOnly: option<bool> with get, set
 
-                [<CompiledName("context_expansion")>]
+                [<EmitProperty("context_expansion")>]
                 abstract contextExpansion: option<float> with get, set
 
                 abstract filters: option<VectorizeVectorMetadataFilter> with get, set
 
-                [<CompiledName("max_num_results")>]
+                [<EmitProperty("max_num_results")>]
                 abstract maxNumResults: option<float> with get, set
 
-                [<CompiledName("match_threshold")>]
+                [<EmitProperty("match_threshold")>]
                 abstract matchThreshold: option<float> with get, set
 
-                [<CompiledName("keyword_match_mode")>]
+                [<EmitProperty("keyword_match_mode")>]
                 abstract keywordMatchMode: option<Retrieval.KeywordMatchMode> with get, set
 
-                [<CompiledName("fusion_method")>]
+                [<EmitProperty("fusion_method")>]
                 abstract fusionMethod: option<Retrieval.FusionMethod> with get, set
 
-                [<CompiledName("retrieval_type")>]
+                [<EmitProperty("retrieval_type")>]
                 abstract retrievalType: option<Retrieval.RetrievalType> with get, set
 
                 abstract Item: key: D1SessionBookmark -> option<obj>
@@ -1529,7 +1529,7 @@ module rec Cloudflare =
                 | [<CompiledName("anything_goes")>] AnythingGoes
 
             type QueryRewrite =
-                [<CompiledName("rewrite_prompt")>]
+                [<EmitProperty("rewrite_prompt")>]
                 abstract rewritePrompt: option<D1SessionBookmark> with get, set
 
                 abstract model: option<D1SessionBookmark> with get, set
@@ -1537,7 +1537,7 @@ module rec Cloudflare =
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
             type Reranking =
-                [<CompiledName("match_threshold")>]
+                [<EmitProperty("match_threshold")>]
                 abstract matchThreshold: option<float> with get, set
 
                 abstract model: option<D1SessionBookmark> with get, set
@@ -1551,22 +1551,22 @@ module rec Cloudflare =
                 abstract timestamp: option<float> with get, set
 
             type ScoringDetails =
-                [<CompiledName("fusion_method")>]
+                [<EmitProperty("fusion_method")>]
                 abstract fusionMethod: option<ScoringDetails.FusionMethod> with get, set
 
-                [<CompiledName("reranking_score")>]
+                [<EmitProperty("reranking_score")>]
                 abstract rerankingScore: option<float> with get, set
 
-                [<CompiledName("vector_rank")>]
+                [<EmitProperty("vector_rank")>]
                 abstract vectorRank: option<float> with get, set
 
-                [<CompiledName("keyword_rank")>]
+                [<EmitProperty("keyword_rank")>]
                 abstract keywordRank: option<float> with get, set
 
-                [<CompiledName("vector_score")>]
+                [<EmitProperty("vector_score")>]
                 abstract vectorScore: option<float> with get, set
 
-                [<CompiledName("keyword_score")>]
+                [<EmitProperty("keyword_score")>]
                 abstract keywordScore: option<float> with get, set
 
                 abstract Item: key: D1SessionBookmark -> option<obj>
@@ -1585,7 +1585,7 @@ module rec Cloudflare =
                         key: D1SessionBookmark -> option<U5<Filter.Item, Filter.Item, Filter.Item, string, float>>
 
             type QueryRewrite =
-                [<CompiledName("rewrite_prompt")>]
+                [<EmitProperty("rewrite_prompt")>]
                 abstract rewritePrompt: option<D1SessionBookmark> with get, set
 
                 abstract model: option<D1SessionBookmark> with get, set
@@ -1593,33 +1593,33 @@ module rec Cloudflare =
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
             type Retrieval =
-                [<CompiledName("boost_by")>]
+                [<EmitProperty("boost_by")>]
                 abstract boostBy: option<Array<Retrieval.BoostBy>> with get, set
 
-                [<CompiledName("return_on_failure")>]
+                [<EmitProperty("return_on_failure")>]
                 abstract returnOnFailure: option<bool> with get, set
 
-                [<CompiledName("metadata_only")>]
+                [<EmitProperty("metadata_only")>]
                 abstract metadataOnly: option<bool> with get, set
 
-                [<CompiledName("context_expansion")>]
+                [<EmitProperty("context_expansion")>]
                 abstract contextExpansion: option<float> with get, set
 
                 abstract filters: option<VectorizeVectorMetadataFilter> with get, set
 
-                [<CompiledName("max_num_results")>]
+                [<EmitProperty("max_num_results")>]
                 abstract maxNumResults: option<float> with get, set
 
-                [<CompiledName("match_threshold")>]
+                [<EmitProperty("match_threshold")>]
                 abstract matchThreshold: option<float> with get, set
 
-                [<CompiledName("keyword_match_mode")>]
+                [<EmitProperty("keyword_match_mode")>]
                 abstract keywordMatchMode: option<Retrieval.KeywordMatchMode> with get, set
 
-                [<CompiledName("fusion_method")>]
+                [<EmitProperty("fusion_method")>]
                 abstract fusionMethod: option<Retrieval.FusionMethod> with get, set
 
-                [<CompiledName("retrieval_type")>]
+                [<EmitProperty("retrieval_type")>]
                 abstract retrievalType: option<Retrieval.RetrievalType> with get, set
 
                 abstract Item: key: D1SessionBookmark -> option<obj>
@@ -1632,7 +1632,7 @@ module rec Cloudflare =
                 | [<CompiledName("anything_goes")>] AnythingGoes
 
             type Reranking =
-                [<CompiledName("match_threshold")>]
+                [<EmitProperty("match_threshold")>]
                 abstract matchThreshold: option<float> with get, set
 
                 abstract model: option<D1SessionBookmark> with get, set
@@ -1644,81 +1644,81 @@ module rec Cloudflare =
                 type Config =
                     abstract metadata: option<WebAssembly.ModuleImports> with get, set
 
-                    [<CompiledName("sync_interval")>]
+                    [<EmitProperty("sync_interval")>]
                     abstract syncInterval: option<Config.SyncInterval> with get, set
 
-                    [<CompiledName("namespace")>]
+                    [<EmitProperty("namespace")>]
                     abstract ``namespace``: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("custom_metadata")>]
+                    [<EmitProperty("custom_metadata")>]
                     abstract customMetadata: option<Array<Config.CustomMetadata>> with get, set
 
-                    [<CompiledName("cache_threshold")>]
+                    [<EmitProperty("cache_threshold")>]
                     abstract cacheThreshold: option<Config.CacheThreshold> with get, set
 
                     abstract cache: option<bool> with get, set
 
-                    [<CompiledName("max_num_results")>]
+                    [<EmitProperty("max_num_results")>]
                     abstract maxNumResults: option<float> with get, set
 
-                    [<CompiledName("score_threshold")>]
+                    [<EmitProperty("score_threshold")>]
                     abstract scoreThreshold: option<float> with get, set
 
-                    [<CompiledName("chunk_overlap")>]
+                    [<EmitProperty("chunk_overlap")>]
                     abstract chunkOverlap: option<float> with get, set
 
-                    [<CompiledName("chunk_size")>]
+                    [<EmitProperty("chunk_size")>]
                     abstract chunkSize: option<float> with get, set
 
                     abstract chunk: option<bool> with get, set
 
-                    [<CompiledName("retrieval_options")>]
+                    [<EmitProperty("retrieval_options")>]
                     abstract retrievalOptions: option<Config.RetrievalOptions> with get, set
 
-                    [<CompiledName("indexing_options")>]
+                    [<EmitProperty("indexing_options")>]
                     abstract indexingOptions: option<Config.IndexingOptions> with get, set
 
-                    [<CompiledName("fusion_method")>]
+                    [<EmitProperty("fusion_method")>]
                     abstract fusionMethod: option<Config.FusionMethod> with get, set
 
-                    [<CompiledName("index_method")>]
+                    [<EmitProperty("index_method")>]
                     abstract indexMethod: option<Config.IndexMethod> with get, set
 
                     /// <deprecated>
                     /// Use index_method instead.
                     /// </deprecated>
-                    [<CompiledName("hybrid_search_enabled")>]
+                    [<EmitProperty("hybrid_search_enabled")>]
                     abstract hybridSearchEnabled: option<bool> with get, set
 
-                    [<CompiledName("reranking_model")>]
+                    [<EmitProperty("reranking_model")>]
                     abstract rerankingModel: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("rewrite_model")>]
+                    [<EmitProperty("rewrite_model")>]
                     abstract rewriteModel: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("ai_search_model")>]
+                    [<EmitProperty("ai_search_model")>]
                     abstract aiSearchModel: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("embedding_model")>]
+                    [<EmitProperty("embedding_model")>]
                     abstract embeddingModel: option<D1SessionBookmark> with get, set
 
                     abstract reranking: option<bool> with get, set
 
-                    [<CompiledName("rewrite_query")>]
+                    [<EmitProperty("rewrite_query")>]
                     abstract rewriteQuery: option<bool> with get, set
 
-                    [<CompiledName("ai_gateway_id")>]
+                    [<EmitProperty("ai_gateway_id")>]
                     abstract aiGatewayId: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("token_id")>]
+                    [<EmitProperty("token_id")>]
                     abstract tokenId: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("source_params")>]
+                    [<EmitProperty("source_params")>]
                     abstract sourceParams: option<obj> with get, set
 
                     abstract source: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: option<U2<Config.Type, string>> with get, set
 
                     abstract id: D1SessionBookmark with get, set
@@ -1741,10 +1741,10 @@ module rec Cloudflare =
                                                     | [<CompiledName("not_exists")>] NotExists
 
                                 type CustomMetadata =
-                                    [<CompiledName("data_type")>]
+                                    [<EmitProperty("data_type")>]
                                     abstract dataType: CustomMetadata.DataType with get, set
 
-                                    [<CompiledName("field_name")>]
+                                    [<EmitProperty("field_name")>]
                                     abstract fieldName: D1SessionBookmark with get, set
 
                                 type IndexMethod =
@@ -1752,128 +1752,128 @@ module rec Cloudflare =
                                     abstract vector: option<bool> with get, set
 
                                 type IndexingOptions =
-                                    [<CompiledName("keyword_tokenizer")>]
+                                    [<EmitProperty("keyword_tokenizer")>]
                                     abstract keywordTokenizer: option<IndexingOptions.KeywordTokenizer> with get, set
 
                                 type RetrievalOptions =
-                                    [<CompiledName("boost_by")>]
+                                    [<EmitProperty("boost_by")>]
                                     abstract boostBy: option<Array<RetrievalOptions.BoostBy>> with get, set
 
-                                    [<CompiledName("keyword_match_mode")>]
+                                    [<EmitProperty("keyword_match_mode")>]
                                     abstract keywordMatchMode: option<RetrievalOptions.KeywordMatchMode> with get, set
 
                     type Result =
                         abstract metadata: option<WebAssembly.ModuleImports> with get, set
 
-                        [<CompiledName("sync_interval")>]
+                        [<EmitProperty("sync_interval")>]
                         abstract syncInterval: option<Result.SyncInterval> with get, set
 
-                        [<CompiledName("custom_metadata")>]
+                        [<EmitProperty("custom_metadata")>]
                         abstract customMetadata: option<Array<Result.CustomMetadata>> with get, set
 
-                        [<CompiledName("cache_threshold")>]
+                        [<EmitProperty("cache_threshold")>]
                         abstract cacheThreshold: option<Result.CacheThreshold> with get, set
 
                         abstract cache: option<bool> with get, set
 
-                        [<CompiledName("max_num_results")>]
+                        [<EmitProperty("max_num_results")>]
                         abstract maxNumResults: option<float> with get, set
 
-                        [<CompiledName("score_threshold")>]
+                        [<EmitProperty("score_threshold")>]
                         abstract scoreThreshold: option<float> with get, set
 
-                        [<CompiledName("chunk_overlap")>]
+                        [<EmitProperty("chunk_overlap")>]
                         abstract chunkOverlap: option<float> with get, set
 
-                        [<CompiledName("chunk_size")>]
+                        [<EmitProperty("chunk_size")>]
                         abstract chunkSize: option<float> with get, set
 
                         abstract chunk: option<bool> with get, set
 
-                        [<CompiledName("retrieval_options")>]
+                        [<EmitProperty("retrieval_options")>]
                         abstract retrievalOptions: option<Result.RetrievalOptions> with get, set
 
-                        [<CompiledName("indexing_options")>]
+                        [<EmitProperty("indexing_options")>]
                         abstract indexingOptions: option<Result.IndexingOptions> with get, set
 
-                        [<CompiledName("fusion_method")>]
+                        [<EmitProperty("fusion_method")>]
                         abstract fusionMethod: option<Result.FusionMethod> with get, set
 
-                        [<CompiledName("index_method")>]
+                        [<EmitProperty("index_method")>]
                         abstract indexMethod: option<Result.IndexMethod> with get, set
 
                         /// <deprecated>
                         /// Use index_method instead.
                         /// </deprecated>
-                        [<CompiledName("hybrid_search_enabled")>]
+                        [<EmitProperty("hybrid_search_enabled")>]
                         abstract hybridSearchEnabled: option<bool> with get, set
 
-                        [<CompiledName("reranking_model")>]
+                        [<EmitProperty("reranking_model")>]
                         abstract rerankingModel: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("rewrite_model")>]
+                        [<EmitProperty("rewrite_model")>]
                         abstract rewriteModel: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("ai_search_model")>]
+                        [<EmitProperty("ai_search_model")>]
                         abstract aiSearchModel: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("embedding_model")>]
+                        [<EmitProperty("embedding_model")>]
                         abstract embeddingModel: option<D1SessionBookmark> with get, set
 
                         abstract reranking: option<bool> with get, set
 
-                        [<CompiledName("rewrite_query")>]
+                        [<EmitProperty("rewrite_query")>]
                         abstract rewriteQuery: option<bool> with get, set
 
-                        [<CompiledName("ai_gateway_id")>]
+                        [<EmitProperty("ai_gateway_id")>]
                         abstract aiGatewayId: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("token_id")>]
+                        [<EmitProperty("token_id")>]
                         abstract tokenId: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("modified_at")>]
+                        [<EmitProperty("modified_at")>]
                         abstract modifiedAt: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("created_at")>]
+                        [<EmitProperty("created_at")>]
                         abstract createdAt: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("namespace")>]
+                        [<EmitProperty("namespace")>]
                         abstract ``namespace``: option<D1SessionBookmark> with get, set
 
                         abstract status: option<D1SessionBookmark> with get, set
                         abstract paused: option<bool> with get, set
 
-                        [<CompiledName("source_params")>]
+                        [<EmitProperty("source_params")>]
                         abstract sourceParams: option<obj> with get, set
 
                         abstract source: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<U2<Result.Type, string>> with get, set
 
                         abstract id: D1SessionBookmark with get, set
                         abstract Item: key: D1SessionBookmark -> option<obj>
 
                     type ResultInfo =
-                        [<CompiledName("total_count")>]
+                        [<EmitProperty("total_count")>]
                         abstract totalCount: float with get, set
 
-                        [<CompiledName("per_page")>]
+                        [<EmitProperty("per_page")>]
                         abstract perPage: float with get, set
 
                         abstract page: float with get, set
                         abstract count: float with get, set
 
                 type Params =
-                    [<CompiledName("order_by_direction")>]
+                    [<EmitProperty("order_by_direction")>]
                     abstract orderByDirection: option<Params.OrderByDirection> with get, set
 
-                    [<CompiledName("order_by")>]
+                    [<EmitProperty("order_by")>]
                     abstract orderBy: option<Params.OrderBy> with get, set
 
                     abstract search: option<D1SessionBookmark> with get, set
 
-                    [<CompiledName("per_page")>]
+                    [<EmitProperty("per_page")>]
                     abstract perPage: option<float> with get, set
 
                     abstract page: option<float> with get, set
@@ -1910,7 +1910,7 @@ module rec Cloudflare =
                         | [<CompiledName("hybrid")>] Hybrid
 
                     type Reranking =
-                        [<CompiledName("match_threshold")>]
+                        [<EmitProperty("match_threshold")>]
                         abstract matchThreshold: option<float> with get, set
 
                         abstract model: option<D1SessionBookmark> with get, set
@@ -1918,7 +1918,7 @@ module rec Cloudflare =
                         abstract Item: key: D1SessionBookmark -> option<obj>
 
                     type QueryRewrite =
-                        [<CompiledName("rewrite_prompt")>]
+                        [<EmitProperty("rewrite_prompt")>]
                         abstract rewritePrompt: option<D1SessionBookmark> with get, set
 
                         abstract model: option<D1SessionBookmark> with get, set
@@ -1926,7 +1926,7 @@ module rec Cloudflare =
                         abstract Item: key: D1SessionBookmark -> option<obj>
 
                     type Cache =
-                        [<CompiledName("cache_threshold")>]
+                        [<EmitProperty("cache_threshold")>]
                         abstract cacheThreshold: option<Cache.CacheThreshold> with get, set
 
                         abstract enabled: option<bool> with get, set
@@ -1935,22 +1935,22 @@ module rec Cloudflare =
                     type Errors =
                         abstract message: D1SessionBookmark with get, set
 
-                        [<CompiledName("instance_id")>]
+                        [<EmitProperty("instance_id")>]
                         abstract instanceId: D1SessionBookmark with get, set
 
                 type Params =
-                    [<CompiledName("instance_ids")>]
+                    [<EmitProperty("instance_ids")>]
                     abstract instanceIds: Array<D1SessionBookmark> with get, set
 
                     abstract cache: option<Params.Cache> with get, set
                     abstract reranking: option<Params.Reranking> with get, set
 
-                    [<CompiledName("query_rewrite")>]
+                    [<EmitProperty("query_rewrite")>]
                     abstract queryRewrite: option<Params.QueryRewrite> with get, set
 
                     abstract retrieval: option<Params.Retrieval> with get, set
 
-                    [<CompiledName("ai_search_options")>]
+                    [<EmitProperty("ai_search_options")>]
                     abstract aiSearchOptions: AiSearchMultiSearchOptions with get, set
 
                     abstract messages: Array<AiSearchMessage> with get, set
@@ -1970,28 +1970,28 @@ module rec Cloudflare =
                     abstract timestamp: option<float> with get, set
 
             type Search =
-                [<CompiledName("instance_id")>]
+                [<EmitProperty("instance_id")>]
                 abstract instanceId: D1SessionBookmark with get, set
 
-                [<CompiledName("scoring_details")>]
+                [<EmitProperty("scoring_details")>]
                 abstract scoringDetails: option<Search.ScoringDetails> with get, set
 
                 abstract item: Search.Item with get, set
                 abstract text: D1SessionBookmark with get, set
                 abstract score: float with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: D1SessionBookmark with get, set
 
                 abstract id: D1SessionBookmark with get, set
                 abstract errors: option<Array<AiSearchMultiSearchError>> with get, set
                 abstract chunks: Array<AiSearchMultiSearchChunk> with get, set
 
-                [<CompiledName("search_query")>]
+                [<EmitProperty("search_query")>]
                 abstract searchQuery: D1SessionBookmark with get, set
 
             type List =
-                [<CompiledName("result_info")>]
+                [<EmitProperty("result_info")>]
                 abstract resultInfo: option<List.ResultInfo> with get, set
 
                 abstract result: Array<AiSearchInstanceInfo> with get, set
@@ -2027,7 +2027,7 @@ module rec Cloudflare =
                 | [<CompiledName("anything_goes")>] AnythingGoes
 
             type QueryRewrite =
-                [<CompiledName("rewrite_prompt")>]
+                [<EmitProperty("rewrite_prompt")>]
                 abstract rewritePrompt: option<D1SessionBookmark> with get, set
 
                 abstract model: option<D1SessionBookmark> with get, set
@@ -2035,7 +2035,7 @@ module rec Cloudflare =
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
             type Reranking =
-                [<CompiledName("match_threshold")>]
+                [<EmitProperty("match_threshold")>]
                 abstract matchThreshold: option<float> with get, set
 
                 abstract model: option<D1SessionBookmark> with get, set
@@ -2063,22 +2063,22 @@ module rec Cloudflare =
         module rec AiTextGenerationInput =
             module rec Inputs =
                 type ResponseFormat =
-                    [<CompiledName("json_schema")>]
+                    [<EmitProperty("json_schema")>]
                     abstract jsonSchema: option<obj> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: D1SessionBookmark with get, set
 
         module rec AiTextGenerationOutput =
             module rec PostProcessedOutputs =
                 type Usage =
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: float with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: float with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: float with get, set
 
         module rec AiTextGenerationToolInput =
@@ -2103,7 +2103,7 @@ module rec Cloudflare =
                                                                                     abstract description:
                                                                                         option<D1SessionBookmark> with get, set
 
-                                                                                    [<CompiledName("type")>]
+                                                                                    [<EmitProperty("type")>]
                                                                                     abstract ``type``: D1SessionBookmark with get, set
 
                                                         type Properties =
@@ -2113,7 +2113,7 @@ module rec Cloudflare =
                                         abstract required: Array<D1SessionBookmark> with get, set
                                         abstract properties: Parameters.Properties with get, set
 
-                                        [<CompiledName("type")>]
+                                        [<EmitProperty("type")>]
                                         abstract ``type``: U2<Parameters.Type, Parameters.Type> with get, set
 
                     type Function =
@@ -2139,7 +2139,7 @@ module rec Cloudflare =
                                                                     type Item =
                                                                         abstract description: option<D1SessionBookmark> with get, set
 
-                                                                        [<CompiledName("type")>]
+                                                                        [<EmitProperty("type")>]
                                                                         abstract ``type``: D1SessionBookmark with get, set
 
                                             type Properties =
@@ -2149,7 +2149,7 @@ module rec Cloudflare =
                             abstract required: Array<D1SessionBookmark> with get, set
                             abstract properties: Parameters.Properties with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: U2<Parameters.Type, Parameters.Type> with get, set
 
         module rec AiTextGenerationToolOutput =
@@ -2235,7 +2235,7 @@ module rec Cloudflare =
                                         type Filters =
                                             abstract value: U3<string, float, bool> with get, set
 
-                                            [<CompiledName("type")>]
+                                            [<EmitProperty("type")>]
                                             abstract ``type``: Filters.Type with get, set
 
                                             abstract key: D1SessionBookmark with get, set
@@ -2246,7 +2246,7 @@ module rec Cloudflare =
                                 | [<CompiledName("or")>] Or
 
                             type RankingOptions =
-                                [<CompiledName("score_threshold")>]
+                                [<EmitProperty("score_threshold")>]
                                 abstract scoreThreshold: option<float> with get, set
 
                                 abstract ranker: option<D1SessionBookmark> with get, set
@@ -2271,19 +2271,19 @@ module rec Cloudflare =
                         abstract score: float with get, set
                         abstract filename: D1SessionBookmark with get, set
 
-                        [<CompiledName("file_id")>]
+                        [<EmitProperty("file_id")>]
                         abstract fileId: D1SessionBookmark with get, set
 
                 type Params =
-                    [<CompiledName("rewrite_query")>]
+                    [<EmitProperty("rewrite_query")>]
                     abstract rewriteQuery: option<bool> with get, set
 
                     abstract reranking: option<Params.Reranking> with get, set
 
-                    [<CompiledName("ranking_options")>]
+                    [<EmitProperty("ranking_options")>]
                     abstract rankingOptions: option<Params.RankingOptions> with get, set
 
-                    [<CompiledName("max_num_results")>]
+                    [<EmitProperty("max_num_results")>]
                     abstract maxNumResults: option<float> with get, set
 
                     abstract filters: option<U2<Params.Filters, Params.Filters>> with get, set
@@ -2293,12 +2293,12 @@ module rec Cloudflare =
                 abstract status: D1SessionBookmark with get, set
                 abstract paused: bool with get, set
 
-                [<CompiledName("vectorize_name")>]
+                [<EmitProperty("vectorize_name")>]
                 abstract vectorizeName: D1SessionBookmark with get, set
 
                 abstract source: D1SessionBookmark with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: D1SessionBookmark with get, set
 
                 abstract enable: bool with get, set
@@ -2315,7 +2315,7 @@ module rec Cloudflare =
                         abstract enabled: option<bool> with get, set
 
                     type RankingOptions =
-                        [<CompiledName("score_threshold")>]
+                        [<EmitProperty("score_threshold")>]
                         abstract scoreThreshold: option<float> with get, set
 
                         abstract ranker: option<D1SessionBookmark> with get, set
@@ -2324,7 +2324,7 @@ module rec Cloudflare =
             module rec Search =
                 module rec Params =
                     type RankingOptions =
-                        [<CompiledName("score_threshold")>]
+                        [<EmitProperty("score_threshold")>]
                         abstract scoreThreshold: option<float> with get, set
 
                         abstract ranker: option<D1SessionBookmark> with get, set
@@ -2337,7 +2337,7 @@ module rec Cloudflare =
             module rec PostProcessedOutputs =
                 module rec PostProcessedOutputs =
                     type Words =
-                        [<CompiledName("end")>]
+                        [<EmitProperty("end")>]
                         abstract ``end``: float with get, set
 
                         abstract start: float with get, set
@@ -2396,17 +2396,17 @@ module rec Cloudflare =
                         abstract arguments: option<obj> with get, set
 
                     type Usage =
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: option<float> with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: option<float> with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: option<float> with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
@@ -2433,7 +2433,7 @@ module rec Cloudflare =
                                                                         abstract token: D1SessionBookmark with get, set
 
                                                 type Content =
-                                                    [<CompiledName("top_logprobs")>]
+                                                    [<EmitProperty("top_logprobs")>]
                                                     abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
 
                                                     abstract bytes: option<Array<float>> with get, set
@@ -2455,10 +2455,10 @@ module rec Cloudflare =
                                                             module rec Message =
                                                                 module rec Annotations =
                                                                     type UrlCitation =
-                                                                        [<CompiledName("end_index")>]
+                                                                        [<EmitProperty("end_index")>]
                                                                         abstract endIndex: float with get, set
 
-                                                                        [<CompiledName("start_index")>]
+                                                                        [<EmitProperty("start_index")>]
                                                                         abstract startIndex: float with get, set
 
                                                                         abstract title: D1SessionBookmark with get, set
@@ -2467,7 +2467,7 @@ module rec Cloudflare =
                                                 type Audio =
                                                     abstract transcript: D1SessionBookmark with get, set
 
-                                                    [<CompiledName("expires_at")>]
+                                                    [<EmitProperty("expires_at")>]
                                                     abstract expiresAt: float with get, set
 
                                                     abstract data: D1SessionBookmark with get, set
@@ -2477,10 +2477,10 @@ module rec Cloudflare =
                                                 type Annotations = | [<CompiledName("url_citation")>] UrlCitation
 
                                 type Message =
-                                    [<CompiledName("function_call")>]
+                                    [<EmitProperty("function_call")>]
                                     abstract functionCall: option<Message.FunctionCall> with get, set
 
-                                    [<CompiledName("tool_calls")>]
+                                    [<EmitProperty("tool_calls")>]
                                     abstract toolCalls: option<Array<ChatCompletionMessageToolCall>> with get, set
 
                                     abstract audio: option<ChatCompletionAudio> with get, set
@@ -2497,48 +2497,48 @@ module rec Cloudflare =
                         module rec PostProcessedOutputs =
                             module rec Usage =
                                 type PromptTokensDetails =
-                                    [<CompiledName("audio_tokens")>]
+                                    [<EmitProperty("audio_tokens")>]
                                     abstract audioTokens: option<float> with get, set
 
-                                    [<CompiledName("cached_tokens")>]
+                                    [<EmitProperty("cached_tokens")>]
                                     abstract cachedTokens: option<float> with get, set
 
                                 type CompletionTokensDetails =
-                                    [<CompiledName("rejected_prediction_tokens")>]
+                                    [<EmitProperty("rejected_prediction_tokens")>]
                                     abstract rejectedPredictionTokens: option<float> with get, set
 
-                                    [<CompiledName("accepted_prediction_tokens")>]
+                                    [<EmitProperty("accepted_prediction_tokens")>]
                                     abstract acceptedPredictionTokens: option<float> with get, set
 
-                                    [<CompiledName("audio_tokens")>]
+                                    [<EmitProperty("audio_tokens")>]
                                     abstract audioTokens: option<float> with get, set
 
-                                    [<CompiledName("reasoning_tokens")>]
+                                    [<EmitProperty("reasoning_tokens")>]
                                     abstract reasoningTokens: option<float> with get, set
 
                     type Choices =
                         abstract logprobs: option<Choices.Logprobs> with get, set
 
-                        [<CompiledName("finish_reason")>]
+                        [<EmitProperty("finish_reason")>]
                         abstract finishReason: Choices.FinishReason with get, set
 
                         abstract message: ChatCompletionResponseMessage with get, set
                         abstract index: float with get, set
 
                     type Usage =
-                        [<CompiledName("completion_tokens_details")>]
+                        [<EmitProperty("completion_tokens_details")>]
                         abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
 
-                        [<CompiledName("prompt_tokens_details")>]
+                        [<EmitProperty("prompt_tokens_details")>]
                         abstract promptTokensDetails: option<PromptTokensDetails> with get, set
 
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: float with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: float with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: float with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -2551,7 +2551,7 @@ module rec Cloudflare =
 
         module rec BaseAiCfMetaLlama3211BVisionInstruct =
             type PostProcessedOutputs =
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract response: option<D1SessionBookmark> with get, set
@@ -2560,17 +2560,17 @@ module rec Cloudflare =
             module rec PostProcessedOutputs =
                 module rec PostProcessedOutputs =
                     type Usage =
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: option<float> with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: option<float> with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: option<float> with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
@@ -2587,26 +2587,26 @@ module rec Cloudflare =
                                     abstract name: option<D1SessionBookmark> with get, set
 
                     type ToolCalls =
-                        [<CompiledName("function")>]
+                        [<EmitProperty("function")>]
                         abstract ``function``: option<ToolCalls.Function> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<D1SessionBookmark> with get, set
 
                         abstract id: option<D1SessionBookmark> with get, set
 
                     type Usage =
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: option<float> with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: option<float> with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: option<float> with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
@@ -2614,16 +2614,16 @@ module rec Cloudflare =
 
         module rec BaseAiCfMetaM2M10012B =
             type PostProcessedOutputs =
-                [<CompiledName("translated_text")>]
+                [<EmitProperty("translated_text")>]
                 abstract translatedText: option<D1SessionBookmark> with get, set
 
             type Inputs =
                 abstract requests: Array<Inputs.Requests> with get, set
 
-                [<CompiledName("target_lang")>]
+                [<EmitProperty("target_lang")>]
                 abstract targetLang: D1SessionBookmark with get, set
 
-                [<CompiledName("source_lang")>]
+                [<EmitProperty("source_lang")>]
                 abstract sourceLang: option<D1SessionBookmark> with get, set
 
                 abstract text: D1SessionBookmark with get, set
@@ -2632,17 +2632,17 @@ module rec Cloudflare =
             module rec PostProcessedOutputs =
                 module rec PostProcessedOutputs =
                     type Usage =
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: option<float> with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: option<float> with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: option<float> with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
@@ -2669,7 +2669,7 @@ module rec Cloudflare =
                                                                         abstract token: D1SessionBookmark with get, set
 
                                                 type Content =
-                                                    [<CompiledName("top_logprobs")>]
+                                                    [<EmitProperty("top_logprobs")>]
                                                     abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
 
                                                     abstract bytes: option<Array<float>> with get, set
@@ -2691,26 +2691,26 @@ module rec Cloudflare =
                                                             module rec Message =
                                                                 module rec Annotations =
                                                                     type UrlCitation =
-                                                                        [<CompiledName("end_index")>]
+                                                                        [<EmitProperty("end_index")>]
                                                                         abstract endIndex: float with get, set
 
-                                                                        [<CompiledName("start_index")>]
+                                                                        [<EmitProperty("start_index")>]
                                                                         abstract startIndex: float with get, set
 
                                                                         abstract title: D1SessionBookmark with get, set
                                                                         abstract url: D1SessionBookmark with get, set
 
                                                 type Annotations =
-                                                    [<CompiledName("url_citation")>]
+                                                    [<EmitProperty("url_citation")>]
                                                     abstract urlCitation: Annotations.UrlCitation with get, set
 
-                                                    [<CompiledName("type")>]
+                                                    [<EmitProperty("type")>]
                                                     abstract ``type``: Annotations.Type with get, set
 
                                                 type Audio =
                                                     abstract transcript: D1SessionBookmark with get, set
 
-                                                    [<CompiledName("expires_at")>]
+                                                    [<EmitProperty("expires_at")>]
                                                     abstract expiresAt: float with get, set
 
                                                     abstract data: D1SessionBookmark with get, set
@@ -2727,23 +2727,23 @@ module rec Cloudflare =
                         module rec PostProcessedOutputs =
                             module rec Usage =
                                 type PromptTokensDetails =
-                                    [<CompiledName("audio_tokens")>]
+                                    [<EmitProperty("audio_tokens")>]
                                     abstract audioTokens: option<float> with get, set
 
-                                    [<CompiledName("cached_tokens")>]
+                                    [<EmitProperty("cached_tokens")>]
                                     abstract cachedTokens: option<float> with get, set
 
                                 type CompletionTokensDetails =
-                                    [<CompiledName("rejected_prediction_tokens")>]
+                                    [<EmitProperty("rejected_prediction_tokens")>]
                                     abstract rejectedPredictionTokens: option<float> with get, set
 
-                                    [<CompiledName("accepted_prediction_tokens")>]
+                                    [<EmitProperty("accepted_prediction_tokens")>]
                                     abstract acceptedPredictionTokens: option<float> with get, set
 
-                                    [<CompiledName("audio_tokens")>]
+                                    [<EmitProperty("audio_tokens")>]
                                     abstract audioTokens: option<float> with get, set
 
-                                    [<CompiledName("reasoning_tokens")>]
+                                    [<EmitProperty("reasoning_tokens")>]
                                     abstract reasoningTokens: option<float> with get, set
 
                     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -2755,26 +2755,26 @@ module rec Cloudflare =
                         | [<CompiledName("function_call")>] FunctionCall
 
                     type Usage =
-                        [<CompiledName("completion_tokens_details")>]
+                        [<EmitProperty("completion_tokens_details")>]
                         abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
 
-                        [<CompiledName("prompt_tokens_details")>]
+                        [<EmitProperty("prompt_tokens_details")>]
                         abstract promptTokensDetails: option<PromptTokensDetails> with get, set
 
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: float with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: float with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: float with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("service_tier")>]
+                [<EmitProperty("service_tier")>]
                 abstract serviceTier: option<PostProcessedOutputs.ServiceTier> with get, set
 
-                [<CompiledName("system_fingerprint")>]
+                [<EmitProperty("system_fingerprint")>]
                 abstract systemFingerprint: option<string> with get, set
 
                 abstract usage: option<CompletionUsage> with get, set
@@ -2805,7 +2805,7 @@ module rec Cloudflare =
                                                                         abstract token: D1SessionBookmark with get, set
 
                                                 type Content =
-                                                    [<CompiledName("top_logprobs")>]
+                                                    [<EmitProperty("top_logprobs")>]
                                                     abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
 
                                                     abstract bytes: option<Array<float>> with get, set
@@ -2827,26 +2827,26 @@ module rec Cloudflare =
                                                             module rec Message =
                                                                 module rec Annotations =
                                                                     type UrlCitation =
-                                                                        [<CompiledName("end_index")>]
+                                                                        [<EmitProperty("end_index")>]
                                                                         abstract endIndex: float with get, set
 
-                                                                        [<CompiledName("start_index")>]
+                                                                        [<EmitProperty("start_index")>]
                                                                         abstract startIndex: float with get, set
 
                                                                         abstract title: D1SessionBookmark with get, set
                                                                         abstract url: D1SessionBookmark with get, set
 
                                                 type Annotations =
-                                                    [<CompiledName("url_citation")>]
+                                                    [<EmitProperty("url_citation")>]
                                                     abstract urlCitation: Annotations.UrlCitation with get, set
 
-                                                    [<CompiledName("type")>]
+                                                    [<EmitProperty("type")>]
                                                     abstract ``type``: Annotations.Type with get, set
 
                                                 type Audio =
                                                     abstract transcript: D1SessionBookmark with get, set
 
-                                                    [<CompiledName("expires_at")>]
+                                                    [<EmitProperty("expires_at")>]
                                                     abstract expiresAt: float with get, set
 
                                                     abstract data: D1SessionBookmark with get, set
@@ -2857,10 +2857,10 @@ module rec Cloudflare =
                                     abstract content: option<Array<ChatCompletionTokenLogprob>> with get, set
 
                                 type Message =
-                                    [<CompiledName("function_call")>]
+                                    [<EmitProperty("function_call")>]
                                     abstract functionCall: option<Message.FunctionCall> with get, set
 
-                                    [<CompiledName("tool_calls")>]
+                                    [<EmitProperty("tool_calls")>]
                                     abstract toolCalls: option<Array<ChatCompletionMessageToolCall>> with get, set
 
                                     abstract audio: option<ChatCompletionAudio> with get, set
@@ -2873,48 +2873,48 @@ module rec Cloudflare =
                         module rec PostProcessedOutputs =
                             module rec Usage =
                                 type PromptTokensDetails =
-                                    [<CompiledName("audio_tokens")>]
+                                    [<EmitProperty("audio_tokens")>]
                                     abstract audioTokens: option<float> with get, set
 
-                                    [<CompiledName("cached_tokens")>]
+                                    [<EmitProperty("cached_tokens")>]
                                     abstract cachedTokens: option<float> with get, set
 
                                 type CompletionTokensDetails =
-                                    [<CompiledName("rejected_prediction_tokens")>]
+                                    [<EmitProperty("rejected_prediction_tokens")>]
                                     abstract rejectedPredictionTokens: option<float> with get, set
 
-                                    [<CompiledName("accepted_prediction_tokens")>]
+                                    [<EmitProperty("accepted_prediction_tokens")>]
                                     abstract acceptedPredictionTokens: option<float> with get, set
 
-                                    [<CompiledName("audio_tokens")>]
+                                    [<EmitProperty("audio_tokens")>]
                                     abstract audioTokens: option<float> with get, set
 
-                                    [<CompiledName("reasoning_tokens")>]
+                                    [<EmitProperty("reasoning_tokens")>]
                                     abstract reasoningTokens: option<float> with get, set
 
                     type Choices =
                         abstract logprobs: option<Choices.Logprobs> with get, set
 
-                        [<CompiledName("finish_reason")>]
+                        [<EmitProperty("finish_reason")>]
                         abstract finishReason: Choices.FinishReason with get, set
 
                         abstract message: ChatCompletionResponseMessage with get, set
                         abstract index: float with get, set
 
                     type Usage =
-                        [<CompiledName("completion_tokens_details")>]
+                        [<EmitProperty("completion_tokens_details")>]
                         abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
 
-                        [<CompiledName("prompt_tokens_details")>]
+                        [<EmitProperty("prompt_tokens_details")>]
                         abstract promptTokensDetails: option<PromptTokensDetails> with get, set
 
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: float with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: float with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: float with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -2944,7 +2944,7 @@ module rec Cloudflare =
                                                     abstract token: option<D1SessionBookmark> with get, set
 
                                 type Logprobs =
-                                    [<CompiledName("top_logprobs")>]
+                                    [<EmitProperty("top_logprobs")>]
                                     abstract topLogprobs: option<Array<TopLogprob>> with get, set
 
                                     abstract logprob: float with get, set
@@ -2964,39 +2964,39 @@ module rec Cloudflare =
                     module rec PostProcessedOutputs =
                         module rec Usage =
                             type PromptTokensDetails =
-                                [<CompiledName("audio_tokens")>]
+                                [<EmitProperty("audio_tokens")>]
                                 abstract audioTokens: option<float> with get, set
 
-                                [<CompiledName("cached_tokens")>]
+                                [<EmitProperty("cached_tokens")>]
                                 abstract cachedTokens: option<float> with get, set
 
                             type CompletionTokensDetails =
-                                [<CompiledName("rejected_prediction_tokens")>]
+                                [<EmitProperty("rejected_prediction_tokens")>]
                                 abstract rejectedPredictionTokens: option<float> with get, set
 
-                                [<CompiledName("accepted_prediction_tokens")>]
+                                [<EmitProperty("accepted_prediction_tokens")>]
                                 abstract acceptedPredictionTokens: option<float> with get, set
 
-                                [<CompiledName("audio_tokens")>]
+                                [<EmitProperty("audio_tokens")>]
                                 abstract audioTokens: option<float> with get, set
 
-                                [<CompiledName("reasoning_tokens")>]
+                                [<EmitProperty("reasoning_tokens")>]
                                 abstract reasoningTokens: option<float> with get, set
 
                 type Usage =
-                    [<CompiledName("completion_tokens_details")>]
+                    [<EmitProperty("completion_tokens_details")>]
                     abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
 
-                    [<CompiledName("prompt_tokens_details")>]
+                    [<EmitProperty("prompt_tokens_details")>]
                     abstract promptTokensDetails: option<PromptTokensDetails> with get, set
 
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: float with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: float with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: float with get, set
 
             module rec Prediction =
@@ -3005,7 +3005,7 @@ module rec Cloudflare =
                         type Content =
                             abstract text: D1SessionBookmark with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: Content.Type with get, set
 
             module rec Prompt =
@@ -3033,7 +3033,7 @@ module rec Cloudflare =
                                     abstract Item: key: D1SessionBookmark -> option<obj>
 
                     type Format =
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Format.Type with get, set
 
                         abstract strict: option<bool> with get, set
@@ -3056,16 +3056,16 @@ module rec Cloudflare =
                     type UserLocation = | [<CompiledName("approximate")>] Approximate
 
             type ChatTemplateKwargs =
-                [<CompiledName("clear_thinking")>]
+                [<EmitProperty("clear_thinking")>]
                 abstract clearThinking: option<bool> with get, set
 
-                [<CompiledName("enable_thinking")>]
+                [<EmitProperty("enable_thinking")>]
                 abstract enableThinking: option<bool> with get, set
 
             type Prediction =
                 abstract content: U2<Array<ChatCompletionContentPartText>, string> with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Prediction.Type with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -3083,7 +3083,7 @@ module rec Cloudflare =
             type Tools =
                 abstract description: option<string> with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Tools.Type with get, set
 
                 abstract strict: option<bool> with get, set
@@ -3137,10 +3137,10 @@ module rec Cloudflare =
                 | [<CompiledName("high")>] High
 
             type StreamOptions =
-                [<CompiledName("include_obfuscation")>]
+                [<EmitProperty("include_obfuscation")>]
                 abstract includeObfuscation: option<bool> with get, set
 
-                [<CompiledName("include_usage")>]
+                [<EmitProperty("include_usage")>]
                 abstract includeUsage: option<bool> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -3152,19 +3152,19 @@ module rec Cloudflare =
             type Reasoning =
                 abstract summary: option<Reasoning.Summary> with get, set
 
-                [<CompiledName("generate_summary")>]
+                [<EmitProperty("generate_summary")>]
                 abstract generateSummary: option<Reasoning.GenerateSummary> with get, set
 
                 abstract effort: option<Reasoning.Effort> with get, set
 
             type Usage =
-                [<CompiledName("total_tokens")>]
+                [<EmitProperty("total_tokens")>]
                 abstract totalTokens: float with get, set
 
-                [<CompiledName("output_tokens")>]
+                [<EmitProperty("output_tokens")>]
                 abstract outputTokens: float with get, set
 
-                [<CompiledName("input_tokens")>]
+                [<EmitProperty("input_tokens")>]
                 abstract inputTokens: float with get, set
 
         module rec BaseAiCfOpenaiWhisper =
@@ -3191,17 +3191,17 @@ module rec Cloudflare =
             module rec PostProcessedOutputs =
                 module rec PostProcessedOutputs =
                     type Usage =
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: option<float> with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: option<float> with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: option<float> with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
@@ -3211,17 +3211,17 @@ module rec Cloudflare =
             module rec PostProcessedOutputs =
                 module rec PostProcessedOutputs =
                     type Usage =
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: option<float> with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: option<float> with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: option<float> with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<Array<PostProcessedOutputs.ToolCalls>> with get, set
 
                 abstract usage: option<PostProcessedOutputs.Usage> with get, set
@@ -3229,26 +3229,26 @@ module rec Cloudflare =
 
         module rec BaseAiCfUnumUformGen2Qwen500M =
             type Inputs =
-                [<CompiledName("max_tokens")>]
+                [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
                 abstract image: U2<Array<float>, Inputs.Image> with get, set
 
-                [<CompiledName("presence_penalty")>]
+                [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
 
-                [<CompiledName("frequency_penalty")>]
+                [<EmitProperty("frequency_penalty")>]
                 abstract frequencyPenalty: option<float> with get, set
 
-                [<CompiledName("repetition_penalty")>]
+                [<EmitProperty("repetition_penalty")>]
                 abstract repetitionPenalty: option<float> with get, set
 
                 abstract seed: option<float> with get, set
 
-                [<CompiledName("top_k")>]
+                [<EmitProperty("top_k")>]
                 abstract topK: option<float> with get, set
 
-                [<CompiledName("top_p")>]
+                [<EmitProperty("top_p")>]
                 abstract topP: option<float> with get, set
 
                 abstract raw: option<bool> with get, set
@@ -3275,7 +3275,7 @@ module rec Cloudflare =
                                                                         abstract token: D1SessionBookmark with get, set
 
                                                 type Content =
-                                                    [<CompiledName("top_logprobs")>]
+                                                    [<EmitProperty("top_logprobs")>]
                                                     abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
 
                                                     abstract bytes: option<Array<float>> with get, set
@@ -3297,10 +3297,10 @@ module rec Cloudflare =
                                                             module rec Message =
                                                                 module rec Annotations =
                                                                     type UrlCitation =
-                                                                        [<CompiledName("end_index")>]
+                                                                        [<EmitProperty("end_index")>]
                                                                         abstract endIndex: float with get, set
 
-                                                                        [<CompiledName("start_index")>]
+                                                                        [<EmitProperty("start_index")>]
                                                                         abstract startIndex: float with get, set
 
                                                                         abstract title: D1SessionBookmark with get, set
@@ -3309,7 +3309,7 @@ module rec Cloudflare =
                                                 type Audio =
                                                     abstract transcript: D1SessionBookmark with get, set
 
-                                                    [<CompiledName("expires_at")>]
+                                                    [<EmitProperty("expires_at")>]
                                                     abstract expiresAt: float with get, set
 
                                                     abstract data: D1SessionBookmark with get, set
@@ -3329,55 +3329,55 @@ module rec Cloudflare =
                         module rec PostProcessedOutputs =
                             module rec Usage =
                                 type CompletionTokensDetails =
-                                    [<CompiledName("rejected_prediction_tokens")>]
+                                    [<EmitProperty("rejected_prediction_tokens")>]
                                     abstract rejectedPredictionTokens: option<float> with get, set
 
-                                    [<CompiledName("accepted_prediction_tokens")>]
+                                    [<EmitProperty("accepted_prediction_tokens")>]
                                     abstract acceptedPredictionTokens: option<float> with get, set
 
-                                    [<CompiledName("audio_tokens")>]
+                                    [<EmitProperty("audio_tokens")>]
                                     abstract audioTokens: option<float> with get, set
 
-                                    [<CompiledName("reasoning_tokens")>]
+                                    [<EmitProperty("reasoning_tokens")>]
                                     abstract reasoningTokens: option<float> with get, set
 
                                 type PromptTokensDetails =
-                                    [<CompiledName("audio_tokens")>]
+                                    [<EmitProperty("audio_tokens")>]
                                     abstract audioTokens: option<float> with get, set
 
-                                    [<CompiledName("cached_tokens")>]
+                                    [<EmitProperty("cached_tokens")>]
                                     abstract cachedTokens: option<float> with get, set
 
                     type Choices =
                         abstract logprobs: option<Choices.Logprobs> with get, set
 
-                        [<CompiledName("finish_reason")>]
+                        [<EmitProperty("finish_reason")>]
                         abstract finishReason: Choices.FinishReason with get, set
 
                         abstract message: ChatCompletionResponseMessage with get, set
                         abstract index: float with get, set
 
                     type Usage =
-                        [<CompiledName("completion_tokens_details")>]
+                        [<EmitProperty("completion_tokens_details")>]
                         abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
 
-                        [<CompiledName("prompt_tokens_details")>]
+                        [<EmitProperty("prompt_tokens_details")>]
                         abstract promptTokensDetails: option<PromptTokensDetails> with get, set
 
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: float with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: float with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: float with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("service_tier")>]
+                [<EmitProperty("service_tier")>]
                 abstract serviceTier: option<PostProcessedOutputs.ServiceTier> with get, set
 
-                [<CompiledName("system_fingerprint")>]
+                [<EmitProperty("system_fingerprint")>]
                 abstract systemFingerprint: option<string> with get, set
 
                 abstract usage: option<CompletionUsage> with get, set
@@ -3400,29 +3400,29 @@ module rec Cloudflare =
                 abstract messages: option<Array<RoleScopedChatInput>> with get, set
                 abstract raw: option<bool> with get, set
 
-                [<CompiledName("presence_penalty")>]
+                [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
 
-                [<CompiledName("frequency_penalty")>]
+                [<EmitProperty("frequency_penalty")>]
                 abstract frequencyPenalty: option<float> with get, set
 
-                [<CompiledName("repetition_penalty")>]
+                [<EmitProperty("repetition_penalty")>]
                 abstract repetitionPenalty: option<float> with get, set
 
                 abstract seed: option<float> with get, set
 
-                [<CompiledName("top_k")>]
+                [<EmitProperty("top_k")>]
                 abstract topK: option<float> with get, set
 
-                [<CompiledName("top_p")>]
+                [<EmitProperty("top_p")>]
                 abstract topP: option<float> with get, set
 
-                [<CompiledName("ignore_eos")>]
+                [<EmitProperty("ignore_eos")>]
                 abstract ignoreEos: option<bool> with get, set
 
                 abstract temperature: option<float> with get, set
 
-                [<CompiledName("max_tokens")>]
+                [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
                 abstract prompt: option<D1SessionBookmark> with get, set
@@ -3446,26 +3446,26 @@ module rec Cloudflare =
                 abstract messages: option<Array<RoleScopedChatInput>> with get, set
                 abstract raw: option<bool> with get, set
 
-                [<CompiledName("presence_penalty")>]
+                [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
 
-                [<CompiledName("frequency_penalty")>]
+                [<EmitProperty("frequency_penalty")>]
                 abstract frequencyPenalty: option<float> with get, set
 
-                [<CompiledName("repetition_penalty")>]
+                [<EmitProperty("repetition_penalty")>]
                 abstract repetitionPenalty: option<float> with get, set
 
                 abstract seed: option<float> with get, set
 
-                [<CompiledName("top_k")>]
+                [<EmitProperty("top_k")>]
                 abstract topK: option<float> with get, set
 
-                [<CompiledName("top_p")>]
+                [<EmitProperty("top_p")>]
                 abstract topP: option<float> with get, set
 
                 abstract temperature: option<float> with get, set
 
-                [<CompiledName("max_tokens")>]
+                [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
                 abstract prompt: option<D1SessionBookmark> with get, set
@@ -3476,29 +3476,29 @@ module rec Cloudflare =
                 abstract messages: option<Array<RoleScopedChatInput>> with get, set
                 abstract raw: option<bool> with get, set
 
-                [<CompiledName("presence_penalty")>]
+                [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
 
-                [<CompiledName("frequency_penalty")>]
+                [<EmitProperty("frequency_penalty")>]
                 abstract frequencyPenalty: option<float> with get, set
 
-                [<CompiledName("repetition_penalty")>]
+                [<EmitProperty("repetition_penalty")>]
                 abstract repetitionPenalty: option<float> with get, set
 
                 abstract seed: option<float> with get, set
 
-                [<CompiledName("top_k")>]
+                [<EmitProperty("top_k")>]
                 abstract topK: option<float> with get, set
 
-                [<CompiledName("top_p")>]
+                [<EmitProperty("top_p")>]
                 abstract topP: option<float> with get, set
 
-                [<CompiledName("ignore_eos")>]
+                [<EmitProperty("ignore_eos")>]
                 abstract ignoreEos: option<bool> with get, set
 
                 abstract temperature: option<float> with get, set
 
-                [<CompiledName("max_tokens")>]
+                [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
                 abstract prompt: option<D1SessionBookmark> with get, set
@@ -3525,10 +3525,10 @@ module rec Cloudflare =
                 abstract summary: D1SessionBookmark with get, set
 
             type Inputs =
-                [<CompiledName("max_length")>]
+                [<EmitProperty("max_length")>]
                 abstract maxLength: option<float> with get, set
 
-                [<CompiledName("input_text")>]
+                [<EmitProperty("input_text")>]
                 abstract inputText: D1SessionBookmark with get, set
 
         module rec BaseAiTextClassification =
@@ -3574,7 +3574,7 @@ module rec Cloudflare =
                                                                                                         D1SessionBookmark
                                                                                                      > with get, set
 
-                                                                                                [<CompiledName("type")>]
+                                                                                                [<EmitProperty("type")>]
                                                                                                 abstract ``type``:
                                                                                                     D1SessionBookmark with get, set
 
@@ -3586,7 +3586,7 @@ module rec Cloudflare =
                                                     abstract required: Array<D1SessionBookmark> with get, set
                                                     abstract properties: Parameters.Properties with get, set
 
-                                                    [<CompiledName("type")>]
+                                                    [<EmitProperty("type")>]
                                                     abstract ``type``: U2<Parameters.Type, Parameters.Type> with get, set
 
                                 type Function =
@@ -3599,10 +3599,10 @@ module rec Cloudflare =
                         abstract name: D1SessionBookmark with get, set
 
                     type ResponseFormat =
-                        [<CompiledName("json_schema")>]
+                        [<EmitProperty("json_schema")>]
                         abstract jsonSchema: option<obj> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: D1SessionBookmark with get, set
 
                     type Tools =
@@ -3610,28 +3610,28 @@ module rec Cloudflare =
                         abstract description: D1SessionBookmark with get, set
                         abstract name: D1SessionBookmark with get, set
 
-                        [<CompiledName("function")>]
+                        [<EmitProperty("function")>]
                         abstract ``function``: Tools.Function with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: U2<Tools.Type, Tools.Type> with get, set
 
             module rec PostProcessedOutputs =
                 module rec PostProcessedOutputs =
                     type Usage =
-                        [<CompiledName("total_tokens")>]
+                        [<EmitProperty("total_tokens")>]
                         abstract totalTokens: float with get, set
 
-                        [<CompiledName("completion_tokens")>]
+                        [<EmitProperty("completion_tokens")>]
                         abstract completionTokens: float with get, set
 
-                        [<CompiledName("prompt_tokens")>]
+                        [<EmitProperty("prompt_tokens")>]
                         abstract promptTokens: float with get, set
 
             type PostProcessedOutputs =
                 abstract usage: option<UsageTags> with get, set
 
-                [<CompiledName("tool_calls")>]
+                [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<PostProcessedOutputs.ToolCalls> with get, set
 
                 abstract response: option<D1SessionBookmark> with get, set
@@ -3642,31 +3642,31 @@ module rec Cloudflare =
                 abstract tools:
                     option<U3<Array<AiTextGenerationToolInput>, Array<AiTextGenerationToolLegacyInput>, obj>> with get, set
 
-                [<CompiledName("response_format")>]
+                [<EmitProperty("response_format")>]
                 abstract responseFormat: option<AiTextGenerationResponseFormat> with get, set
 
                 abstract messages: option<Array<RoleScopedChatInput>> with get, set
 
-                [<CompiledName("presence_penalty")>]
+                [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
 
-                [<CompiledName("frequency_penalty")>]
+                [<EmitProperty("frequency_penalty")>]
                 abstract frequencyPenalty: option<float> with get, set
 
-                [<CompiledName("repetition_penalty")>]
+                [<EmitProperty("repetition_penalty")>]
                 abstract repetitionPenalty: option<float> with get, set
 
                 abstract seed: option<float> with get, set
 
-                [<CompiledName("top_k")>]
+                [<EmitProperty("top_k")>]
                 abstract topK: option<float> with get, set
 
-                [<CompiledName("top_p")>]
+                [<EmitProperty("top_p")>]
                 abstract topP: option<float> with get, set
 
                 abstract temperature: option<float> with get, set
 
-                [<CompiledName("max_tokens")>]
+                [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
                 abstract stream: option<bool> with get, set
@@ -3679,19 +3679,19 @@ module rec Cloudflare =
                 abstract guidance: option<float> with get, set
                 abstract strength: option<float> with get, set
 
-                [<CompiledName("num_steps")>]
+                [<EmitProperty("num_steps")>]
                 abstract numSteps: option<float> with get, set
 
                 abstract mask: option<AiSentenceSimilarityOutput> with get, set
 
-                [<CompiledName("image_b64")>]
+                [<EmitProperty("image_b64")>]
                 abstract imageB64: option<D1SessionBookmark> with get, set
 
                 abstract image: option<AiSentenceSimilarityOutput> with get, set
                 abstract width: option<float> with get, set
                 abstract height: option<float> with get, set
 
-                [<CompiledName("negative_prompt")>]
+                [<EmitProperty("negative_prompt")>]
                 abstract negativePrompt: option<D1SessionBookmark> with get, set
 
                 abstract prompt: D1SessionBookmark with get, set
@@ -3706,16 +3706,16 @@ module rec Cloudflare =
 
         module rec BaseAiTranslation =
             type Inputs =
-                [<CompiledName("source_lang")>]
+                [<EmitProperty("source_lang")>]
                 abstract sourceLang: option<D1SessionBookmark> with get, set
 
-                [<CompiledName("target_lang")>]
+                [<EmitProperty("target_lang")>]
                 abstract targetLang: D1SessionBookmark with get, set
 
                 abstract text: D1SessionBookmark with get, set
 
             type PostProcessedOutputs =
-                [<CompiledName("translated_text")>]
+                [<EmitProperty("translated_text")>]
                 abstract translatedText: option<D1SessionBookmark> with get, set
 
         module rec ChatCompletionChoice =
@@ -3736,10 +3736,10 @@ module rec Cloudflare =
                                                 module rec Message =
                                                     module rec Annotations =
                                                         type UrlCitation =
-                                                            [<CompiledName("end_index")>]
+                                                            [<EmitProperty("end_index")>]
                                                             abstract endIndex: float with get, set
 
-                                                            [<CompiledName("start_index")>]
+                                                            [<EmitProperty("start_index")>]
                                                             abstract startIndex: float with get, set
 
                                                             abstract title: D1SessionBookmark with get, set
@@ -3751,17 +3751,17 @@ module rec Cloudflare =
                                     type Audio =
                                         abstract transcript: D1SessionBookmark with get, set
 
-                                        [<CompiledName("expires_at")>]
+                                        [<EmitProperty("expires_at")>]
                                         abstract expiresAt: float with get, set
 
                                         abstract data: D1SessionBookmark with get, set
                                         abstract id: D1SessionBookmark with get, set
 
                     type Message =
-                        [<CompiledName("function_call")>]
+                        [<EmitProperty("function_call")>]
                         abstract functionCall: option<Message.FunctionCall> with get, set
 
-                        [<CompiledName("tool_calls")>]
+                        [<EmitProperty("tool_calls")>]
                         abstract toolCalls: option<Array<ChatCompletionMessageToolCall>> with get, set
 
                         abstract audio: option<ChatCompletionAudio> with get, set
@@ -3776,10 +3776,10 @@ module rec Cloudflare =
                     type File =
                         abstract filename: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("file_id")>]
+                        [<EmitProperty("file_id")>]
                         abstract fileId: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("file_data")>]
+                        [<EmitProperty("file_data")>]
                         abstract fileData: option<D1SessionBookmark> with get, set
 
             module rec Search =
@@ -3804,10 +3804,10 @@ module rec Cloudflare =
                     type File =
                         abstract filename: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("file_id")>]
+                        [<EmitProperty("file_id")>]
                         abstract fileId: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("file_data")>]
+                        [<EmitProperty("file_data")>]
                         abstract fileData: option<D1SessionBookmark> with get, set
 
         module rec ChatCompletionContentPartImage =
@@ -3835,7 +3835,7 @@ module rec Cloudflare =
                                                 | [<CompiledName("regex")>] Regex
 
                             type Format =
-                                [<CompiledName("type")>]
+                                [<EmitProperty("type")>]
                                 abstract ``type``: Format.Type with get, set
 
                                 abstract grammar: Format.Grammar with get, set
@@ -3880,7 +3880,7 @@ module rec Cloudflare =
                         type Audio =
                             abstract transcript: D1SessionBookmark with get, set
 
-                            [<CompiledName("expires_at")>]
+                            [<EmitProperty("expires_at")>]
                             abstract expiresAt: float with get, set
 
                             abstract data: D1SessionBookmark with get, set
@@ -3920,13 +3920,13 @@ module rec Cloudflare =
                     abstract name: D1SessionBookmark with get, set
 
             type ToolChoice =
-                [<CompiledName("function")>]
+                [<EmitProperty("function")>]
                 abstract ``function``: ToolChoice.Function with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: ToolChoice.Type with get, set
 
-                [<CompiledName("allowed_tools")>]
+                [<EmitProperty("allowed_tools")>]
                 abstract allowedTools: ToolChoice.AllowedTools with get, set
 
                 abstract custom: ToolChoice.Custom with get, set
@@ -3937,10 +3937,10 @@ module rec Cloudflare =
                     module rec Message =
                         module rec Annotations =
                             type UrlCitation =
-                                [<CompiledName("end_index")>]
+                                [<EmitProperty("end_index")>]
                                 abstract endIndex: float with get, set
 
-                                [<CompiledName("start_index")>]
+                                [<EmitProperty("start_index")>]
                                 abstract startIndex: float with get, set
 
                                 abstract title: D1SessionBookmark with get, set
@@ -3958,7 +3958,7 @@ module rec Cloudflare =
                         type Content =
                             abstract text: D1SessionBookmark with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: Content.Type with get, set
 
             module rec WebSearchOptions =
@@ -3982,17 +3982,17 @@ module rec Cloudflare =
                 | [<CompiledName("high")>] High
 
             type StreamOptions =
-                [<CompiledName("include_obfuscation")>]
+                [<EmitProperty("include_obfuscation")>]
                 abstract includeObfuscation: option<bool> with get, set
 
-                [<CompiledName("include_usage")>]
+                [<EmitProperty("include_usage")>]
                 abstract includeUsage: option<bool> with get, set
 
             type ChatTemplateKwargs =
-                [<CompiledName("clear_thinking")>]
+                [<EmitProperty("clear_thinking")>]
                 abstract clearThinking: option<bool> with get, set
 
-                [<CompiledName("enable_thinking")>]
+                [<EmitProperty("enable_thinking")>]
                 abstract enableThinking: option<bool> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -4051,7 +4051,7 @@ module rec Cloudflare =
                                                     abstract definition: D1SessionBookmark with get, set
 
                                 type Format =
-                                    [<CompiledName("type")>]
+                                    [<EmitProperty("type")>]
                                     abstract ``type``: Format.Type with get, set
 
                                     abstract grammar: Format.Grammar with get, set
@@ -4081,14 +4081,14 @@ module rec Cloudflare =
                     type UserLocation =
                         abstract approximate: UserLocation.Approximate with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: UserLocation.Type with get, set
 
             type StreamOptions =
-                [<CompiledName("include_obfuscation")>]
+                [<EmitProperty("include_obfuscation")>]
                 abstract includeObfuscation: option<bool> with get, set
 
-                [<CompiledName("include_usage")>]
+                [<EmitProperty("include_usage")>]
                 abstract includeUsage: option<bool> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -4118,26 +4118,26 @@ module rec Cloudflare =
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
             type WebSearchOptions =
-                [<CompiledName("user_location")>]
+                [<EmitProperty("user_location")>]
                 abstract userLocation: option<WebSearchUserLocation> with get, set
 
-                [<CompiledName("search_context_size")>]
+                [<EmitProperty("search_context_size")>]
                 abstract searchContextSize: option<WebSearchOptions.SearchContextSize> with get, set
 
             type Tools =
-                [<CompiledName("function")>]
+                [<EmitProperty("function")>]
                 abstract ``function``: FunctionDefinition with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Tools.Type with get, set
 
                 abstract custom: Tools.Custom with get, set
 
             type ChatTemplateKwargs =
-                [<CompiledName("clear_thinking")>]
+                [<EmitProperty("clear_thinking")>]
                 abstract clearThinking: option<bool> with get, set
 
-                [<CompiledName("enable_thinking")>]
+                [<EmitProperty("enable_thinking")>]
                 abstract enableThinking: option<bool> with get, set
 
         module rec ChatCompletionsInput =
@@ -4152,7 +4152,7 @@ module rec Cloudflare =
                         type Content =
                             abstract text: D1SessionBookmark with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: Content.Type with get, set
 
             module rec WebSearchOptions =
@@ -4173,10 +4173,10 @@ module rec Cloudflare =
             type Prediction = | [<CompiledName("content")>] Content
 
             type WebSearchOptions =
-                [<CompiledName("user_location")>]
+                [<EmitProperty("user_location")>]
                 abstract userLocation: option<WebSearchUserLocation> with get, set
 
-                [<CompiledName("search_context_size")>]
+                [<EmitProperty("search_context_size")>]
                 abstract searchContextSize: option<WebSearchOptions.SearchContextSize> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -4189,17 +4189,17 @@ module rec Cloudflare =
                 | [<CompiledName("pcm16")>] Pcm16
 
             type ChatTemplateKwargs =
-                [<CompiledName("clear_thinking")>]
+                [<EmitProperty("clear_thinking")>]
                 abstract clearThinking: option<bool> with get, set
 
-                [<CompiledName("enable_thinking")>]
+                [<EmitProperty("enable_thinking")>]
                 abstract enableThinking: option<bool> with get, set
 
             type StreamOptions =
-                [<CompiledName("include_obfuscation")>]
+                [<EmitProperty("include_obfuscation")>]
                 abstract includeObfuscation: option<bool> with get, set
 
-                [<CompiledName("include_usage")>]
+                [<EmitProperty("include_usage")>]
                 abstract includeUsage: option<bool> with get, set
 
         module rec ChatCompletionsMessagesInput =
@@ -4215,10 +4215,10 @@ module rec Cloudflare =
                                 type File =
                                     abstract filename: option<D1SessionBookmark> with get, set
 
-                                    [<CompiledName("file_id")>]
+                                    [<EmitProperty("file_id")>]
                                     abstract fileId: option<D1SessionBookmark> with get, set
 
-                                    [<CompiledName("file_data")>]
+                                    [<EmitProperty("file_data")>]
                                     abstract fileData: option<D1SessionBookmark> with get, set
 
                                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -4276,7 +4276,7 @@ module rec Cloudflare =
                     type UserLocation =
                         abstract approximate: UserLocation.Approximate with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: UserLocation.Type with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -4286,17 +4286,17 @@ module rec Cloudflare =
                 | [<CompiledName("high")>] High
 
             type StreamOptions =
-                [<CompiledName("include_obfuscation")>]
+                [<EmitProperty("include_obfuscation")>]
                 abstract includeObfuscation: option<bool> with get, set
 
-                [<CompiledName("include_usage")>]
+                [<EmitProperty("include_usage")>]
                 abstract includeUsage: option<bool> with get, set
 
             type ChatTemplateKwargs =
-                [<CompiledName("clear_thinking")>]
+                [<EmitProperty("clear_thinking")>]
                 abstract clearThinking: option<bool> with get, set
 
-                [<CompiledName("enable_thinking")>]
+                [<EmitProperty("enable_thinking")>]
                 abstract enableThinking: option<bool> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -4325,39 +4325,39 @@ module rec Cloudflare =
                     module rec PostProcessedOutputs =
                         module rec Usage =
                             type CompletionTokensDetails =
-                                [<CompiledName("rejected_prediction_tokens")>]
+                                [<EmitProperty("rejected_prediction_tokens")>]
                                 abstract rejectedPredictionTokens: option<float> with get, set
 
-                                [<CompiledName("accepted_prediction_tokens")>]
+                                [<EmitProperty("accepted_prediction_tokens")>]
                                 abstract acceptedPredictionTokens: option<float> with get, set
 
-                                [<CompiledName("audio_tokens")>]
+                                [<EmitProperty("audio_tokens")>]
                                 abstract audioTokens: option<float> with get, set
 
-                                [<CompiledName("reasoning_tokens")>]
+                                [<EmitProperty("reasoning_tokens")>]
                                 abstract reasoningTokens: option<float> with get, set
 
                             type PromptTokensDetails =
-                                [<CompiledName("audio_tokens")>]
+                                [<EmitProperty("audio_tokens")>]
                                 abstract audioTokens: option<float> with get, set
 
-                                [<CompiledName("cached_tokens")>]
+                                [<EmitProperty("cached_tokens")>]
                                 abstract cachedTokens: option<float> with get, set
 
                 type Usage =
-                    [<CompiledName("completion_tokens_details")>]
+                    [<EmitProperty("completion_tokens_details")>]
                     abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
 
-                    [<CompiledName("prompt_tokens_details")>]
+                    [<EmitProperty("prompt_tokens_details")>]
                     abstract promptTokensDetails: option<PromptTokensDetails> with get, set
 
-                    [<CompiledName("total_tokens")>]
+                    [<EmitProperty("total_tokens")>]
                     abstract totalTokens: float with get, set
 
-                    [<CompiledName("completion_tokens")>]
+                    [<EmitProperty("completion_tokens")>]
                     abstract completionTokens: float with get, set
 
-                    [<CompiledName("prompt_tokens")>]
+                    [<EmitProperty("prompt_tokens")>]
                     abstract promptTokens: float with get, set
 
         module rec ChatCompletionsPromptInput =
@@ -4405,17 +4405,17 @@ module rec Cloudflare =
             type Prediction = | [<CompiledName("content")>] Content
 
             type StreamOptions =
-                [<CompiledName("include_obfuscation")>]
+                [<EmitProperty("include_obfuscation")>]
                 abstract includeObfuscation: option<bool> with get, set
 
-                [<CompiledName("include_usage")>]
+                [<EmitProperty("include_usage")>]
                 abstract includeUsage: option<bool> with get, set
 
             type ChatTemplateKwargs =
-                [<CompiledName("clear_thinking")>]
+                [<EmitProperty("clear_thinking")>]
                 abstract clearThinking: option<bool> with get, set
 
-                [<CompiledName("enable_thinking")>]
+                [<EmitProperty("enable_thinking")>]
                 abstract enableThinking: option<bool> with get, set
 
         module rec Cloudflare =
@@ -4657,14 +4657,14 @@ module rec Cloudflare =
                                  >
                              > with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: D1SessionBookmark with get, set
 
                     type Params =
                         abstract Item: key: D1SessionBookmark -> option<obj>
 
                 type WaitForEvent =
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: D1SessionBookmark with get, set
 
                     abstract timestamp: Date with get, set
@@ -5175,7 +5175,7 @@ module rec Cloudflare =
                 abstract env: 'Env with get, set
                 abstract ctx: ExecutionContext<option<obj>> with get, set
 
-                [<CompiledName("[Rpc.__WORKFLOW_ENTRYPOINT_BRAND]")>]
+                [<EmitProperty("[Rpc.__WORKFLOW_ENTRYPOINT_BRAND]")>]
                 abstract rpc_WORKFLOWENTRYPOINTBRAND: unit with get, set
 
                 abstract run: event: WorkflowEntrypoint.Run.Event * step: WorkflowStep -> Promise<option<obj>>
@@ -5183,12 +5183,12 @@ module rec Cloudflare =
             type WorkerEntrypoint =
                 abstract attributes: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
-                [<CompiledName("return")>]
+                [<EmitProperty("return")>]
                 abstract ``return``: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
                 abstract log: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
-                [<CompiledName("exception")>]
+                [<EmitProperty("exception")>]
                 abstract ``exception``: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
                 abstract diagnosticChannel: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
@@ -5200,7 +5200,7 @@ module rec Cloudflare =
             type RpcTarget private () =
                 inherit Rpc.RpcTargetBranded()
 
-                [<CompiledName("[Rpc.__RPC_TARGET_BRAND]")>]
+                [<EmitProperty("[Rpc.__RPC_TARGET_BRAND]")>]
                 abstract rpc_RPCTARGETBRAND: unit with get, set
 
             [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowEvent")>]
@@ -5211,7 +5211,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowStepEvent")>]
             type WorkflowStepEvent<'T> =
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: D1SessionBookmark with get, set
 
                 abstract timestamp: Date with get, set
@@ -5277,7 +5277,7 @@ module rec Cloudflare =
                 abstract env: 'Env with get, set
                 abstract ctx: DurableObjectState<'Props> with get, set
 
-                [<CompiledName("[Rpc.__DURABLE_OBJECT_BRAND]")>]
+                [<EmitProperty("[Rpc.__DURABLE_OBJECT_BRAND]")>]
                 abstract rpc_DURABLEOBJECTBRAND: unit with get, set
 
                 abstract webSocketError: ws: Typescript.WebSocket * ?error: obj -> option<Promise<unit>>
@@ -5323,23 +5323,23 @@ module rec Cloudflare =
             module rec PostProcessedOutputs =
                 module rec Usage =
                     type CompletionTokensDetails =
-                        [<CompiledName("rejected_prediction_tokens")>]
+                        [<EmitProperty("rejected_prediction_tokens")>]
                         abstract rejectedPredictionTokens: option<float> with get, set
 
-                        [<CompiledName("accepted_prediction_tokens")>]
+                        [<EmitProperty("accepted_prediction_tokens")>]
                         abstract acceptedPredictionTokens: option<float> with get, set
 
-                        [<CompiledName("audio_tokens")>]
+                        [<EmitProperty("audio_tokens")>]
                         abstract audioTokens: option<float> with get, set
 
-                        [<CompiledName("reasoning_tokens")>]
+                        [<EmitProperty("reasoning_tokens")>]
                         abstract reasoningTokens: option<float> with get, set
 
                     type PromptTokensDetails =
-                        [<CompiledName("audio_tokens")>]
+                        [<EmitProperty("audio_tokens")>]
                         abstract audioTokens: option<float> with get, set
 
-                        [<CompiledName("cached_tokens")>]
+                        [<EmitProperty("cached_tokens")>]
                         abstract cachedTokens: option<float> with get, set
 
         module rec Container =
@@ -5441,12 +5441,12 @@ module rec Cloudflare =
 
         module rec D1DatabaseSession =
             type Timings =
-                [<CompiledName("sql_duration_ms")>]
+                [<EmitProperty("sql_duration_ms")>]
                 abstract sqlDurationMs: float with get, set
 
         module rec D1Meta =
             type Timings =
-                [<CompiledName("sql_duration_ms")>]
+                [<EmitProperty("sql_duration_ms")>]
                 abstract sqlDurationMs: float with get, set
 
         module rec D1PreparedStatement =
@@ -5455,17 +5455,17 @@ module rec Cloudflare =
                 type Options = | [<CompiledValue(false)>] False
 
             type Timings =
-                [<CompiledName("sql_duration_ms")>]
+                [<EmitProperty("sql_duration_ms")>]
                 abstract sqlDurationMs: float with get, set
 
         module rec D1Response =
             type Timings =
-                [<CompiledName("sql_duration_ms")>]
+                [<EmitProperty("sql_duration_ms")>]
                 abstract sqlDurationMs: float with get, set
 
         module rec D1Result =
             type Timings =
-                [<CompiledName("sql_duration_ms")>]
+                [<EmitProperty("sql_duration_ms")>]
                 abstract sqlDurationMs: float with get, set
 
         module rec DispatchNamespace =
@@ -5546,12 +5546,12 @@ module rec Cloudflare =
             type TailStream =
                 abstract attributes: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
-                [<CompiledName("return")>]
+                [<EmitProperty("return")>]
                 abstract ``return``: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
                 abstract log: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
-                [<CompiledName("exception")>]
+                [<EmitProperty("exception")>]
                 abstract ``exception``: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
                 abstract diagnosticChannel: option<TailStream.TailEvent<'Event> -> option<Promise<unit>>> with get, set
@@ -5736,7 +5736,7 @@ module rec Cloudflare =
                 type Options =
                     abstract cacheTtl: option<float> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: option<unit> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -5750,7 +5750,7 @@ module rec Cloudflare =
                 abstract cursor: D1SessionBookmark with get, set
                 abstract keys: Array<KVNamespaceListKey<'Metadata, 'Key>> with get, set
 
-                [<CompiledName("list_complete")>]
+                [<EmitProperty("list_complete")>]
                 abstract listComplete: List.ListComplete with get, set
 
         module rec LoopbackDurableObjectClass =
@@ -5902,14 +5902,14 @@ module rec Cloudflare =
                                                 abstract token: option<D1SessionBookmark> with get, set
 
                             type Logprobs =
-                                [<CompiledName("top_logprobs")>]
+                                [<EmitProperty("top_logprobs")>]
                                 abstract topLogprobs: option<Array<TopLogprob>> with get, set
 
                                 abstract logprob: float with get, set
                                 abstract token: D1SessionBookmark with get, set
 
                 type Content =
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: Content.Type with get, set
 
                     abstract refusal: D1SessionBookmark with get, set
@@ -5919,12 +5919,12 @@ module rec Cloudflare =
             module rec Prompt =
                 module rec Variables =
                     type Item =
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Item.Type with get, set
 
                         abstract text: D1SessionBookmark with get, set
 
-                        [<CompiledName("image_url")>]
+                        [<EmitProperty("image_url")>]
                         abstract imageUrl: option<string> with get, set
 
                         abstract detail: Item.Detail with get, set
@@ -5955,12 +5955,12 @@ module rec Cloudflare =
             module rec Prompt =
                 module rec Variables =
                     type Item =
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Item.Type with get, set
 
                         abstract text: D1SessionBookmark with get, set
 
-                        [<CompiledName("image_url")>]
+                        [<EmitProperty("image_url")>]
                         abstract imageUrl: option<string> with get, set
 
                         abstract detail: Item.Detail with get, set
@@ -5980,14 +5980,14 @@ module rec Cloudflare =
                                                     abstract token: option<D1SessionBookmark> with get, set
 
                                 type Logprobs =
-                                    [<CompiledName("top_logprobs")>]
+                                    [<EmitProperty("top_logprobs")>]
                                     abstract topLogprobs: option<Array<TopLogprob>> with get, set
 
                                     abstract logprob: float with get, set
                                     abstract token: D1SessionBookmark with get, set
 
                     type Content =
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Content.Type with get, set
 
                         abstract refusal: D1SessionBookmark with get, set
@@ -5995,7 +5995,7 @@ module rec Cloudflare =
                         abstract text: D1SessionBookmark with get, set
 
                     type Summary =
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Summary.Type with get, set
 
                         abstract text: D1SessionBookmark with get, set
@@ -6029,7 +6029,7 @@ module rec Cloudflare =
                                                     abstract token: option<D1SessionBookmark> with get, set
 
                                 type Logprobs =
-                                    [<CompiledName("top_logprobs")>]
+                                    [<EmitProperty("top_logprobs")>]
                                     abstract topLogprobs: option<Array<TopLogprob>> with get, set
 
                                     abstract logprob: float with get, set
@@ -6038,14 +6038,14 @@ module rec Cloudflare =
                     type Content =
                         abstract logprobs: option<Array<Logprob>> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Content.Type with get, set
 
                         abstract text: D1SessionBookmark with get, set
                         abstract refusal: D1SessionBookmark with get, set
 
             type Instructions =
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Instructions.Type with get, set
 
                 abstract status: Instructions.Status with get, set
@@ -6063,7 +6063,7 @@ module rec Cloudflare =
                                     abstract Item: key: D1SessionBookmark -> option<obj>
 
                     type Format =
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Format.Type with get, set
 
                         abstract strict: option<bool> with get, set
@@ -6095,13 +6095,13 @@ module rec Cloudflare =
                 abstract format: option<ResponseFormatTextConfig> with get, set
 
             type Usage =
-                [<CompiledName("total_tokens")>]
+                [<EmitProperty("total_tokens")>]
                 abstract totalTokens: float with get, set
 
-                [<CompiledName("output_tokens")>]
+                [<EmitProperty("output_tokens")>]
                 abstract outputTokens: float with get, set
 
-                [<CompiledName("input_tokens")>]
+                [<EmitProperty("input_tokens")>]
                 abstract inputTokens: float with get, set
 
         module rec Rpc =
@@ -6168,14 +6168,14 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.Rpc", "RpcTargetBranded")>]
             type RpcTargetBranded =
-                [<CompiledName("[__RPC_TARGET_BRAND]")>]
+                [<EmitProperty("[__RPC_TARGET_BRAND]")>]
                 abstract __RPC_TARGET_BRAND: unit with get, set
 
             type Serializable<'T> = option<obj>
 
             [<Import("@cloudflare/workers-types.Rpc", "WorkflowEntrypointBranded")>]
             type WorkflowEntrypointBranded =
-                [<CompiledName("[__WORKFLOW_ENTRYPOINT_BRAND]")>]
+                [<EmitProperty("[__WORKFLOW_ENTRYPOINT_BRAND]")>]
                 abstract __WORKFLOW_ENTRYPOINT_BRAND: unit with get, set
 
             type Stubable = obj
@@ -6199,14 +6199,14 @@ module rec Cloudflare =
             type StubBase<'T when 'T :> Stubable> =
                 inherit Typescript.Disposable
 
-                [<CompiledName("[__RPC_STUB_BRAND]")>]
+                [<EmitProperty("[__RPC_STUB_BRAND]")>]
                 abstract __RPC_STUB_BRAND: 'T with get, set
 
                 abstract dup: unit -> 'StubBase
 
             [<Import("@cloudflare/workers-types.Rpc", "WorkerEntrypointBranded")>]
             type WorkerEntrypointBranded =
-                [<CompiledName("[__WORKER_ENTRYPOINT_BRAND]")>]
+                [<EmitProperty("[__WORKER_ENTRYPOINT_BRAND]")>]
                 abstract __WORKER_ENTRYPOINT_BRAND: unit with get, set
 
             type MaybeDisposable<'T> = U2<Typescript.Disposable, option<obj>>
@@ -6214,7 +6214,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.Rpc", "UnstubifyAll")>]
             type UnstubifyAll<'A when 'A :> Array<option<obj>>> =
-                [<CompiledName("[Symbol.unscopables]")>]
+                [<EmitProperty("[Symbol.unscopables]")>]
                 abstract symbolUnscopables: UnstubifyAll.SymbolUnscopables with get
 
                 abstract length: float with get, set
@@ -6286,7 +6286,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.Rpc", "Stub")>]
             type Stub<'T when 'T :> Stubable> =
-                [<CompiledName("[__RPC_STUB_BRAND]")>]
+                [<EmitProperty("[__RPC_STUB_BRAND]")>]
                 abstract __RPC_STUB_BRAND: 'T with get, set
 
                 abstract symbolDispose: unit -> unit
@@ -6305,7 +6305,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.Rpc", "DurableObjectBranded")>]
             type DurableObjectBranded =
-                [<CompiledName("[__DURABLE_OBJECT_BRAND]")>]
+                [<EmitProperty("[__DURABLE_OBJECT_BRAND]")>]
                 abstract __DURABLE_OBJECT_BRAND: unit with get, set
 
             type MaybeCallableProvider<'T> = obj
@@ -6493,7 +6493,7 @@ module rec Cloudflare =
                                 | [<CompiledName("done")>] Done
 
                 type Args =
-                    [<CompiledName("[Symbol.unscopables]")>]
+                    [<EmitProperty("[Symbol.unscopables]")>]
                     abstract symbolUnscopables: Args.SymbolUnscopables with get
 
                     abstract length: float with get, set
@@ -6545,7 +6545,7 @@ module rec Cloudflare =
                             type Attachments =
                                 abstract content: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, string> with get, set
 
-                                [<CompiledName("type")>]
+                                [<EmitProperty("type")>]
                                 abstract ``type``: D1SessionBookmark with get, set
 
                                 abstract filename: D1SessionBookmark with get, set
@@ -6563,7 +6563,7 @@ module rec Cloudflare =
                     abstract replyTo: option<U2<EmailAddress, string>> with get, set
                     abstract subject: D1SessionBookmark with get, set
 
-                    [<CompiledName("to")>]
+                    [<EmitProperty("to")>]
                     abstract ``to``: U2<Array<D1SessionBookmark>, string> with get, set
 
                     abstract from: U2<EmailAddress, string> with get, set
@@ -6598,10 +6598,10 @@ module rec Cloudflare =
             module rec WebSocketPair =
                 module rec WebSocketPair =
                     type Create =
-                        [<CompiledName("1")>]
+                        [<EmitProperty("1")>]
                         abstract ``1``: Typescript.WebSocket with get, set
 
-                        [<CompiledName("0")>]
+                        [<EmitProperty("0")>]
                         abstract ``0``: Typescript.WebSocket with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -6943,12 +6943,12 @@ module rec Cloudflare =
             type Next =
                 abstract value: 'T with get, set
 
-                [<CompiledName("done")>]
+                [<EmitProperty("done")>]
                 abstract ``done``: option<Next.Done> with get, set
 
                 abstract value: option<unit> with get, set
 
-                [<CompiledName("done")>]
+                [<EmitProperty("done")>]
                 abstract ``done``: Next.Done with get, set
 
         module rec StreamBinding =
@@ -7010,7 +7010,7 @@ module rec Cloudflare =
                     abstract percentComplete: float with get, set
 
             type Generate =
-                [<CompiledName("default")>]
+                [<EmitProperty("default")>]
                 abstract ``default``: option<StreamDownload> with get, set
 
                 abstract audio: option<StreamDownload> with get, set
@@ -7042,10 +7042,10 @@ module rec Cloudflare =
             type PublicDetails =
                 abstract logo: option<string> with get, set
 
-                [<CompiledName("channel_link")>]
+                [<EmitProperty("channel_link")>]
                 abstract channelLink: option<string> with get, set
 
-                [<CompiledName("share_link")>]
+                [<EmitProperty("share_link")>]
                 abstract shareLink: option<string> with get, set
 
                 abstract title: option<string> with get, set
@@ -7121,7 +7121,7 @@ module rec Cloudflare =
                 abstract spanId: D1SessionBookmark with get
                 abstract attributes: Array<Attribute> with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Onset.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "QueueEventInfo")>]
@@ -7129,7 +7129,7 @@ module rec Cloudflare =
                 abstract batchSize: float with get
                 abstract queueName: D1SessionBookmark with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: QueueEventInfo.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "SpanOpen")>]
@@ -7138,7 +7138,7 @@ module rec Cloudflare =
                 abstract spanId: D1SessionBookmark with get
                 abstract name: D1SessionBookmark with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: SpanOpen.Type with get
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -7185,7 +7185,7 @@ module rec Cloudflare =
                 abstract message: D1SessionBookmark with get
                 abstract name: D1SessionBookmark with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Exception.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "ScriptVersion")>]
@@ -7206,7 +7206,7 @@ module rec Cloudflare =
             type FetchResponseInfo =
                 abstract statusCode: float with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: FetchResponseInfo.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "EmailEventInfo")>]
@@ -7215,7 +7215,7 @@ module rec Cloudflare =
                 abstract rcptTo: D1SessionBookmark with get
                 abstract mailFrom: D1SessionBookmark with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: EmailEventInfo.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfoClose")>]
@@ -7223,7 +7223,7 @@ module rec Cloudflare =
                 abstract wasClean: bool with get
                 abstract code: float with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: HibernatableWebSocketEventInfoClose.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "TracePreviewInfo")>]
@@ -7236,12 +7236,12 @@ module rec Cloudflare =
             type TailEventHandlerObject =
                 abstract attributes: option<TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
-                [<CompiledName("return")>]
+                [<EmitProperty("return")>]
                 abstract ``return``: option<TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
                 abstract log: option<TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
-                [<CompiledName("exception")>]
+                [<EmitProperty("exception")>]
                 abstract ``exception``: option<TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
                 abstract diagnosticChannel: option<TailEvent<'Event> -> option<Promise<unit>>> with get, set
@@ -7253,12 +7253,12 @@ module rec Cloudflare =
             type Attributes =
                 abstract info: Array<Attribute> with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Attributes.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfoMessage")>]
             type HibernatableWebSocketEventInfoMessage =
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: HibernatableWebSocketEventInfoMessage.Type with get
 
             type TailEventHandlerType = obj
@@ -7268,7 +7268,7 @@ module rec Cloudflare =
                 abstract message: option<obj> with get
                 abstract channel: D1SessionBookmark with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: DiagnosticChannelEvent.Type with get
 
             type EventType = obj
@@ -7294,7 +7294,7 @@ module rec Cloudflare =
                 abstract message: obj with get
                 abstract level: Log.Level with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Log.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "ScheduledEventInfo")>]
@@ -7302,7 +7302,7 @@ module rec Cloudflare =
                 abstract cron: D1SessionBookmark with get
                 abstract scheduledTime: Date with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: ScheduledEventInfo.Type with get
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -7324,12 +7324,12 @@ module rec Cloudflare =
             type SpanClose =
                 abstract outcome: EventOutcome with get
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: SpanClose.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "ConnectEventInfo")>]
             type ConnectEventInfo =
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: ConnectEventInfo.Type with get
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -7473,10 +7473,10 @@ module rec Cloudflare =
                     type File =
                         abstract filename: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("file_id")>]
+                        [<EmitProperty("file_id")>]
                         abstract fileId: option<D1SessionBookmark> with get, set
 
-                        [<CompiledName("file_data")>]
+                        [<EmitProperty("file_data")>]
                         abstract fileData: option<D1SessionBookmark> with get, set
 
         module rec VectorizeIndexDetails =
@@ -7666,7 +7666,7 @@ module rec Cloudflare =
                 type UserLocation =
                     abstract approximate: UserLocation.Approximate with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: UserLocation.Type with get, set
 
         module rec WebSearchUserLocation =
@@ -7699,7 +7699,7 @@ module rec Cloudflare =
                 type Typepayload =
                     abstract payload: option<obj> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: D1SessionBookmark with get, set
 
             module rec Status =
@@ -7853,13 +7853,13 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchMultiSearchOptions")>]
         type AiSearchMultiSearchOptions =
-            [<CompiledName("instance_ids")>]
+            [<EmitProperty("instance_ids")>]
             abstract instanceIds: Array<D1SessionBookmark> with get, set
 
             abstract cache: option<AiSearchMultiSearchOptions.Cache> with get, set
             abstract reranking: option<AiSearchMultiSearchOptions.Reranking> with get, set
 
-            [<CompiledName("query_rewrite")>]
+            [<EmitProperty("query_rewrite")>]
             abstract queryRewrite: option<AiSearchMultiSearchOptions.QueryRewrite> with get, set
 
             abstract retrieval: option<AiSearchMultiSearchOptions.Retrieval> with get, set
@@ -7884,32 +7884,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Messages_1")>]
         type AiCfQwenQwen330BA3BFp8Messages1 =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfQwenQwen330BA3BFp8JSONMode3> with get, set
 
             abstract tools:
@@ -7974,7 +7974,7 @@ module rec Cloudflare =
             abstract score: float with get, set
             abstract metadata: option<VectorizeMatch.Metadata> with get, set
 
-            [<CompiledName("namespace")>]
+            [<EmitProperty("namespace")>]
             abstract ``namespace``: option<string> with get, set
 
             abstract id: D1SessionBookmark with get, set
@@ -8023,32 +8023,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast_Messages")>]
         type AiCfMetaLlama3370BInstructFp8FastMessages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfMetaLlama3370BInstructFp8FastJSONMode1> with get, set
 
             abstract tools:
@@ -8116,7 +8116,7 @@ module rec Cloudflare =
             abstract composed: bool with get
             abstract eventPhase: float with get
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: D1SessionBookmark with get
 
             abstract composedPath: unit -> Array<EventTarget>
@@ -8174,7 +8174,7 @@ module rec Cloudflare =
             abstract vtt: option<D1SessionBookmark> with get, set
             abstract words: option<Array<AiCfOpenaiWhisperOutput.Words>> with get, set
 
-            [<CompiledName("word_count")>]
+            [<EmitProperty("word_count")>]
             abstract wordCount: option<float> with get, set
 
             abstract text: D1SessionBookmark with get, set
@@ -8188,7 +8188,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchJobLogsParams")>]
         type AiSearchJobLogsParams =
-            [<CompiledName("per_page")>]
+            [<EmitProperty("per_page")>]
             abstract perPage: option<float> with get, set
 
             abstract page: option<float> with get, set
@@ -8207,20 +8207,20 @@ module rec Cloudflare =
         /// </deprecated>
         [<Import("@cloudflare/workers-types", "AutoRagAiSearchRequest")>]
         type AutoRagAiSearchRequest =
-            [<CompiledName("system_prompt")>]
+            [<EmitProperty("system_prompt")>]
             abstract systemPrompt: option<D1SessionBookmark> with get, set
 
             abstract stream: option<bool> with get, set
 
-            [<CompiledName("rewrite_query")>]
+            [<EmitProperty("rewrite_query")>]
             abstract rewriteQuery: option<bool> with get, set
 
             abstract reranking: option<AutoRagAiSearchRequest.Reranking> with get, set
 
-            [<CompiledName("ranking_options")>]
+            [<EmitProperty("ranking_options")>]
             abstract rankingOptions: option<AutoRagAiSearchRequest.RankingOptions> with get, set
 
-            [<CompiledName("max_num_results")>]
+            [<EmitProperty("max_num_results")>]
             abstract maxNumResults: option<float> with get, set
 
             abstract filters: option<U2<AutoRagAiSearchRequest.Filters, AutoRagAiSearchRequest.Filters>> with get, set
@@ -8292,12 +8292,12 @@ module rec Cloudflare =
         type AiSearchMultiSearchError =
             abstract message: D1SessionBookmark with get, set
 
-            [<CompiledName("instance_id")>]
+            [<EmitProperty("instance_id")>]
             abstract instanceId: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Output")>]
         type AiCfMetaLlama4Scout17B16EInstructOutput =
-            [<CompiledName("tool_calls")>]
+            [<EmitProperty("tool_calls")>]
             abstract toolCalls: option<Array<AiCfMetaLlama4Scout17B16EInstructOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfMetaLlama4Scout17B16EInstructOutput.Usage> with get, set
@@ -8344,13 +8344,13 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseOutputItemAddedEvent")>]
         type ResponseOutputItemAddedEvent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseOutputItemAddedEvent.Type with get, set
 
-            [<CompiledName("sequence_number")>]
+            [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
-            [<CompiledName("output_index")>]
+            [<EmitProperty("output_index")>]
             abstract outputIndex: float with get, set
 
             abstract item: ResponseOutputItem with get, set
@@ -8459,73 +8459,73 @@ module rec Cloudflare =
         type ChatCompletionsPromptInput =
             abstract functions: option<Array<FunctionDefinition>> with get, set
 
-            [<CompiledName("function_call")>]
+            [<EmitProperty("function_call")>]
             abstract functionCall:
                 option<U2<ChatCompletionsPromptInput.FunctionCall, ChatCompletionsPromptInput.FunctionCall>> with get, set
 
-            [<CompiledName("web_search_options")>]
+            [<EmitProperty("web_search_options")>]
             abstract webSearchOptions: option<WebSearchOptions> with get, set
 
             abstract user: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract tools: option<Array<ChatCompletionTool>> with get, set
 
-            [<CompiledName("tool_choice")>]
+            [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("stream_options")>]
+            [<EmitProperty("stream_options")>]
             abstract streamOptions: option<ChatCompletionsStreamOptions> with get, set
 
             abstract stream: option<bool> with get, set
             abstract store: option<bool> with get, set
             abstract stop: option<U2<Array<D1SessionBookmark>, string>> with get, set
 
-            [<CompiledName("service_tier")>]
+            [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ChatCompletionsPromptInput.ServiceTier> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<ResponseFormat> with get, set
 
-            [<CompiledName("chat_template_kwargs")>]
+            [<EmitProperty("chat_template_kwargs")>]
             abstract chatTemplateKwargs: option<ChatTemplateKwargs> with get, set
 
-            [<CompiledName("reasoning_effort")>]
+            [<EmitProperty("reasoning_effort")>]
             abstract reasoningEffort: option<ChatCompletionsPromptInput.ReasoningEffort> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
             abstract prediction: option<PredictionContent> with get, set
 
-            [<CompiledName("parallel_tool_calls")>]
+            [<EmitProperty("parallel_tool_calls")>]
             abstract parallelToolCalls: option<bool> with get, set
 
             abstract n: option<float> with get, set
             abstract modalities: option<Array<ChatCompletionsPromptInput.Modalities>> with get, set
             abstract metadata: option<ChatCompletionsPromptInput.Metadata> with get, set
 
-            [<CompiledName("max_completion_tokens")>]
+            [<EmitProperty("max_completion_tokens")>]
             abstract maxCompletionTokens: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
-            [<CompiledName("top_logprobs")>]
+            [<EmitProperty("top_logprobs")>]
             abstract topLogprobs: option<float> with get, set
 
             abstract logprobs: option<bool> with get, set
 
-            [<CompiledName("logit_bias")>]
+            [<EmitProperty("logit_bias")>]
             abstract logitBias: option<ChatCompletionsPromptInput.LogitBias> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
             abstract audio: option<AudioParams> with get, set
@@ -8534,15 +8534,15 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast_JSON_Mode_2")>]
         type AiCfMetaLlama3370BInstructFp8FastJSONMode2 =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<AiCfMetaLlama3370BInstructFp8FastJSONMode2.Type> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_Large_En_V1_5_AsyncResponse")>]
         type AiCfBaaiBgeLargeEnV15AsyncResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "WorkflowError")>]
@@ -8552,35 +8552,35 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Messages_Inner")>]
         type AiCfMetaLlama4Scout17B16EInstructMessagesInner =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfMetaLlama4Scout17B16EInstructJSONMode> with get, set
 
             abstract tools:
@@ -8693,7 +8693,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchListJobsParams")>]
         type AiSearchListJobsParams =
-            [<CompiledName("per_page")>]
+            [<EmitProperty("per_page")>]
             abstract perPage: option<float> with get, set
 
             abstract page: option<float> with get, set
@@ -8735,12 +8735,12 @@ module rec Cloudflare =
             abstract source: option<float> with get, set
             abstract search: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("per_page")>]
+            [<EmitProperty("per_page")>]
             abstract perPage: option<float> with get, set
 
             abstract page: option<float> with get, set
 
-            [<CompiledName("hide_experimental")>]
+            [<EmitProperty("hide_experimental")>]
             abstract hideExperimental: option<bool> with get, set
 
             abstract author: option<D1SessionBookmark> with get, set
@@ -8758,7 +8758,7 @@ module rec Cloudflare =
         type AiCfBaaiBgeRerankerBaseInput =
             abstract contexts: Array<AiCfBaaiBgeRerankerBaseInput.Contexts> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
         [<Import("@cloudflare/workers-types", "BaseAiSummarization"); AbstractClass; AllowNullLiteral>]
@@ -8805,21 +8805,21 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseRefusalDoneEvent")>]
         type ResponseRefusalDoneEvent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseRefusalDoneEvent.Type with get, set
 
-            [<CompiledName("sequence_number")>]
+            [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
             abstract refusal: D1SessionBookmark with get, set
 
-            [<CompiledName("output_index")>]
+            [<EmitProperty("output_index")>]
             abstract outputIndex: float with get, set
 
-            [<CompiledName("item_id")>]
+            [<EmitProperty("item_id")>]
             abstract itemId: D1SessionBookmark with get, set
 
-            [<CompiledName("content_index")>]
+            [<EmitProperty("content_index")>]
             abstract contentIndex: float with get, set
 
         [<Import("@cloudflare/workers-types", "ContainerStartupOptions")>]
@@ -8841,26 +8841,26 @@ module rec Cloudflare =
             abstract messages: option<Array<RoleScopedChatInput>> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract prompt: option<D1SessionBookmark> with get, set
@@ -9131,7 +9131,7 @@ module rec Cloudflare =
         type ChatCompletionChoice =
             abstract logprobs: option<ChatCompletionChoice.Logprobs> with get, set
 
-            [<CompiledName("finish_reason")>]
+            [<EmitProperty("finish_reason")>]
             abstract finishReason: ChatCompletionChoice.FinishReason with get, set
 
             abstract message: ChatCompletionResponseMessage with get, set
@@ -9147,7 +9147,7 @@ module rec Cloudflare =
             abstract cache: option<AiSearchOptions.Cache> with get, set
             abstract reranking: option<AiSearchOptions.Reranking> with get, set
 
-            [<CompiledName("query_rewrite")>]
+            [<EmitProperty("query_rewrite")>]
             abstract queryRewrite: option<AiSearchOptions.QueryRewrite> with get, set
 
             abstract retrieval: option<AiSearchOptions.Retrieval> with get, set
@@ -9507,10 +9507,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionFunctionTool")>]
         type ChatCompletionFunctionTool =
-            [<CompiledName("function")>]
+            [<EmitProperty("function")>]
             abstract ``function``: FunctionDefinition with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionFunctionTool.Type with get, set
 
         [<Import("@cloudflare/workers-types", "ArtifactsTokenListResult")>]
@@ -9566,51 +9566,51 @@ module rec Cloudflare =
         type AutoRAG =
             abstract response: D1SessionBookmark with get, set
 
-            [<CompiledName("next_page")>]
+            [<EmitProperty("next_page")>]
             abstract nextPage: option<string> with get, set
 
-            [<CompiledName("has_more")>]
+            [<EmitProperty("has_more")>]
             abstract hasMore: bool with get, set
 
             abstract data: Array<AutoRAG.Data> with get, set
 
-            [<CompiledName("search_query")>]
+            [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
 
             abstract object: AutoRAG.Object with get, set
 
-            [<CompiledName("system_prompt")>]
+            [<EmitProperty("system_prompt")>]
             abstract systemPrompt: option<D1SessionBookmark> with get, set
 
             abstract stream: option<bool> with get, set
 
-            [<CompiledName("rewrite_query")>]
+            [<EmitProperty("rewrite_query")>]
             abstract rewriteQuery: option<bool> with get, set
 
             abstract reranking: option<AutoRAG.Reranking> with get, set
 
-            [<CompiledName("ranking_options")>]
+            [<EmitProperty("ranking_options")>]
             abstract rankingOptions: option<AutoRAG.RankingOptions> with get, set
 
-            [<CompiledName("max_num_results")>]
+            [<EmitProperty("max_num_results")>]
             abstract maxNumResults: option<float> with get, set
 
             abstract filters: option<U2<AutoRAG.Filters, AutoRAG.Filters>> with get, set
             abstract query: D1SessionBookmark with get, set
             abstract stream: AutoRAG.Stream with get, set
 
-            [<CompiledName("system_prompt")>]
+            [<EmitProperty("system_prompt")>]
             abstract systemPrompt: option<string> with get, set
 
-            [<CompiledName("rewrite_query")>]
+            [<EmitProperty("rewrite_query")>]
             abstract rewriteQuery: option<AutoRAG.RewriteQuery> with get, set
 
             abstract reranking: option<AutoRAG.Reranking> with get, set
 
-            [<CompiledName("ranking_options")>]
+            [<EmitProperty("ranking_options")>]
             abstract rankingOptions: option<AutoRAG.RankingOptions> with get, set
 
-            [<CompiledName("max_num_results")>]
+            [<EmitProperty("max_num_results")>]
             abstract maxNumResults: option<float> with get, set
 
             abstract filters: option<U2<AutoRAG.Filters, AutoRAG.Filters>> with get, set
@@ -9684,7 +9684,7 @@ module rec Cloudflare =
         type VectorizeVector =
             abstract metadata: option<WebAssembly.ModuleImports> with get, set
 
-            [<CompiledName("namespace")>]
+            [<EmitProperty("namespace")>]
             abstract ``namespace``: option<D1SessionBookmark> with get, set
 
             abstract values: U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, Array<float>> with get, set
@@ -9713,7 +9713,7 @@ module rec Cloudflare =
         type ChatCompletionToolChoiceCustom =
             abstract custom: ChatCompletionToolChoiceCustom.Custom with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionToolChoiceCustom.Type with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Async_Batch")>]
@@ -9723,7 +9723,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_M2M100_1_2B_AsyncResponse")>]
         type AiCfMetaM2M10012BAsyncResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "ExportedHandlerTailHandler")>]
@@ -9751,7 +9751,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionTokenLogprob")>]
         type ChatCompletionTokenLogprob =
-            [<CompiledName("top_logprobs")>]
+            [<EmitProperty("top_logprobs")>]
             abstract topLogprobs: Array<ChatCompletionTopLogprob> with get, set
 
             abstract bytes: option<Array<float>> with get, set
@@ -9779,7 +9779,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast_AsyncResponse")>]
         type AiCfMetaLlama3370BInstructFp8FastAsyncResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Meta_M2M100_1_2B"); AbstractClass; AllowNullLiteral>]
@@ -9925,17 +9925,17 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_M3_Input_Embedding")>]
         type AiCfBaaiBgeM3InputEmbedding =
-            [<CompiledName("truncate_inputs")>]
+            [<EmitProperty("truncate_inputs")>]
             abstract truncateInputs: option<bool> with get, set
 
             abstract text: U2<Array<D1SessionBookmark>, string> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Leonardo_Phoenix_1_0_Input")>]
         type AiCfLeonardoPhoenix10Input =
-            [<CompiledName("negative_prompt")>]
+            [<EmitProperty("negative_prompt")>]
             abstract negativePrompt: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("num_steps")>]
+            [<EmitProperty("num_steps")>]
             abstract numSteps: option<float> with get, set
 
             abstract width: option<float> with get, set
@@ -9959,35 +9959,35 @@ module rec Cloudflare =
             abstract meta: D1DatabaseSession.Meta with get, set
             abstract success: D1DatabaseSession.Success with get, set
 
-            [<CompiledName("total_attempts")>]
+            [<EmitProperty("total_attempts")>]
             abstract totalAttempts: option<float> with get, set
 
             abstract timings: option<D1DatabaseSession.Timings> with get, set
 
-            [<CompiledName("served_by_primary")>]
+            [<EmitProperty("served_by_primary")>]
             abstract servedByPrimary: option<bool> with get, set
 
-            [<CompiledName("served_by_colo")>]
+            [<EmitProperty("served_by_colo")>]
             abstract servedByColo: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("served_by_region")>]
+            [<EmitProperty("served_by_region")>]
             abstract servedByRegion: option<D1SessionBookmark> with get, set
 
             abstract changes: float with get, set
 
-            [<CompiledName("changed_db")>]
+            [<EmitProperty("changed_db")>]
             abstract changedDb: bool with get, set
 
-            [<CompiledName("last_row_id")>]
+            [<EmitProperty("last_row_id")>]
             abstract lastRowId: float with get, set
 
-            [<CompiledName("rows_written")>]
+            [<EmitProperty("rows_written")>]
             abstract rowsWritten: float with get, set
 
-            [<CompiledName("rows_read")>]
+            [<EmitProperty("rows_read")>]
             abstract rowsRead: float with get, set
 
-            [<CompiledName("size_after")>]
+            [<EmitProperty("size_after")>]
             abstract sizeAfter: float with get, set
 
             abstract duration: float with get, set
@@ -10000,155 +10000,155 @@ module rec Cloudflare =
         type ServiceWorkerGlobalScope private () =
             inherit WorkerGlobalScope()
 
-            [<CompiledName("HTMLRewriter")>]
+            [<EmitProperty("HTMLRewriter")>]
             abstract hTMLRewriter: ServiceWorkerGlobalScope.HTMLRewriter with get, set
 
-            [<CompiledName("IdentityTransformStream")>]
+            [<EmitProperty("IdentityTransformStream")>]
             abstract identityTransformStream: ServiceWorkerGlobalScope.IdentityTransformStream with get, set
 
-            [<CompiledName("FixedLengthStream")>]
+            [<EmitProperty("FixedLengthStream")>]
             abstract fixedLengthStream: ServiceWorkerGlobalScope.FixedLengthStream with get, set
 
-            [<CompiledName("Cache")>]
+            [<EmitProperty("Cache")>]
             abstract cache: ServiceWorkerGlobalScope.Cache with get, set
 
-            [<CompiledName("CacheStorage")>]
+            [<EmitProperty("CacheStorage")>]
             abstract cacheStorage: ServiceWorkerGlobalScope.CacheStorage with get, set
 
-            [<CompiledName("CryptoKey")>]
+            [<EmitProperty("CryptoKey")>]
             abstract cryptoKey: ServiceWorkerGlobalScope.CryptoKey with get, set
 
-            [<CompiledName("SubtleCrypto")>]
+            [<EmitProperty("SubtleCrypto")>]
             abstract subtleCrypto: ServiceWorkerGlobalScope.SubtleCrypto with get, set
 
-            [<CompiledName("Crypto")>]
+            [<EmitProperty("Crypto")>]
             abstract crypto: ServiceWorkerGlobalScope.Crypto with get, set
 
-            [<CompiledName("FormData")>]
+            [<EmitProperty("FormData")>]
             abstract formData: ServiceWorkerGlobalScope.FormData with get, set
 
-            [<CompiledName("File")>]
+            [<EmitProperty("File")>]
             abstract file: ServiceWorkerGlobalScope.File with get, set
 
-            [<CompiledName("Blob")>]
+            [<EmitProperty("Blob")>]
             abstract blob: ServiceWorkerGlobalScope.Blob with get, set
 
-            [<CompiledName("URLPattern")>]
+            [<EmitProperty("URLPattern")>]
             abstract uRLPattern: ServiceWorkerGlobalScope.URLPattern with get, set
 
-            [<CompiledName("URLSearchParams")>]
+            [<EmitProperty("URLSearchParams")>]
             abstract uRLSearchParams: ServiceWorkerGlobalScope.URLSearchParams with get, set
 
             abstract URL: ServiceWorkerGlobalScope.URL with get, set
 
-            [<CompiledName("TextEncoder")>]
+            [<EmitProperty("TextEncoder")>]
             abstract textEncoder: ServiceWorkerGlobalScope.TextEncoder with get, set
 
-            [<CompiledName("TextDecoder")>]
+            [<EmitProperty("TextDecoder")>]
             abstract textDecoder: ServiceWorkerGlobalScope.TextDecoder with get, set
 
-            [<CompiledName("AbortSignal")>]
+            [<EmitProperty("AbortSignal")>]
             abstract abortSignal: ServiceWorkerGlobalScope.AbortSignal with get, set
 
-            [<CompiledName("AbortController")>]
+            [<EmitProperty("AbortController")>]
             abstract abortController: ServiceWorkerGlobalScope.AbortController with get, set
 
-            [<CompiledName("WebSocketRequestResponsePair")>]
+            [<EmitProperty("WebSocketRequestResponsePair")>]
             abstract webSocketRequestResponsePair: ServiceWorkerGlobalScope.WebSocketRequestResponsePair with get, set
 
-            [<CompiledName("WebSocketPair")>]
+            [<EmitProperty("WebSocketPair")>]
             abstract webSocketPair: ServiceWorkerGlobalScope.WebSocketPair with get, set
 
-            [<CompiledName("WebSocket")>]
+            [<EmitProperty("WebSocket")>]
             abstract webSocket: ServiceWorkerGlobalScope.WebSocket with get, set
 
-            [<CompiledName("Response")>]
+            [<EmitProperty("Response")>]
             abstract response: ServiceWorkerGlobalScope.Response with get, set
 
-            [<CompiledName("Request")>]
+            [<EmitProperty("Request")>]
             abstract request: ServiceWorkerGlobalScope.Request with get, set
 
-            [<CompiledName("Body")>]
+            [<EmitProperty("Body")>]
             abstract body: ServiceWorkerGlobalScope.Body with get, set
 
-            [<CompiledName("Headers")>]
+            [<EmitProperty("Headers")>]
             abstract headers: ServiceWorkerGlobalScope.Headers with get, set
 
-            [<CompiledName("TextDecoderStream")>]
+            [<EmitProperty("TextDecoderStream")>]
             abstract textDecoderStream: ServiceWorkerGlobalScope.TextDecoderStream with get, set
 
-            [<CompiledName("TextEncoderStream")>]
+            [<EmitProperty("TextEncoderStream")>]
             abstract textEncoderStream: ServiceWorkerGlobalScope.TextEncoderStream with get, set
 
-            [<CompiledName("DecompressionStream")>]
+            [<EmitProperty("DecompressionStream")>]
             abstract decompressionStream: ServiceWorkerGlobalScope.DecompressionStream with get, set
 
-            [<CompiledName("CompressionStream")>]
+            [<EmitProperty("CompressionStream")>]
             abstract compressionStream: ServiceWorkerGlobalScope.CompressionStream with get, set
 
-            [<CompiledName("EventSource")>]
+            [<EmitProperty("EventSource")>]
             abstract eventSource: ServiceWorkerGlobalScope.EventSource with get, set
 
-            [<CompiledName("ErrorEvent")>]
+            [<EmitProperty("ErrorEvent")>]
             abstract errorEvent: ServiceWorkerGlobalScope.ErrorEvent with get, set
 
-            [<CompiledName("CountQueuingStrategy")>]
+            [<EmitProperty("CountQueuingStrategy")>]
             abstract countQueuingStrategy: ServiceWorkerGlobalScope.CountQueuingStrategy with get, set
 
-            [<CompiledName("ByteLengthQueuingStrategy")>]
+            [<EmitProperty("ByteLengthQueuingStrategy")>]
             abstract byteLengthQueuingStrategy: ServiceWorkerGlobalScope.ByteLengthQueuingStrategy with get, set
 
-            [<CompiledName("TransformStream")>]
+            [<EmitProperty("TransformStream")>]
             abstract transformStream: ServiceWorkerGlobalScope.TransformStream with get, set
 
-            [<CompiledName("WritableStreamDefaultWriter")>]
+            [<EmitProperty("WritableStreamDefaultWriter")>]
             abstract writableStreamDefaultWriter: ServiceWorkerGlobalScope.WritableStreamDefaultWriter with get, set
 
-            [<CompiledName("WritableStream")>]
+            [<EmitProperty("WritableStream")>]
             abstract writableStream: ServiceWorkerGlobalScope.WritableStream with get, set
 
-            [<CompiledName("ReadableStream")>]
+            [<EmitProperty("ReadableStream")>]
             abstract readableStream: ServiceWorkerGlobalScope.ReadableStream with get, set
 
-            [<CompiledName("ReadableStreamBYOBReader")>]
+            [<EmitProperty("ReadableStreamBYOBReader")>]
             abstract readableStreamBYOBReader: ServiceWorkerGlobalScope.ReadableStreamBYOBReader with get, set
 
-            [<CompiledName("ReadableStreamDefaultReader")>]
+            [<EmitProperty("ReadableStreamDefaultReader")>]
             abstract readableStreamDefaultReader: ServiceWorkerGlobalScope.ReadableStreamDefaultReader with get, set
 
-            [<CompiledName("CloseEvent")>]
+            [<EmitProperty("CloseEvent")>]
             abstract closeEvent: ServiceWorkerGlobalScope.CloseEvent with get, set
 
-            [<CompiledName("MessageEvent")>]
+            [<EmitProperty("MessageEvent")>]
             abstract messageEvent: ServiceWorkerGlobalScope.MessageEvent with get, set
 
-            [<CompiledName("ScheduledEvent")>]
+            [<EmitProperty("ScheduledEvent")>]
             abstract scheduledEvent: ServiceWorkerGlobalScope.ScheduledEvent with get, set
 
-            [<CompiledName("TraceEvent")>]
+            [<EmitProperty("TraceEvent")>]
             abstract traceEvent: ServiceWorkerGlobalScope.TraceEvent with get, set
 
-            [<CompiledName("TailEvent")>]
+            [<EmitProperty("TailEvent")>]
             abstract tailEvent: ServiceWorkerGlobalScope.TailEvent with get, set
 
-            [<CompiledName("FetchEvent")>]
+            [<EmitProperty("FetchEvent")>]
             abstract fetchEvent: ServiceWorkerGlobalScope.FetchEvent with get, set
 
-            [<CompiledName("PromiseRejectionEvent")>]
+            [<EmitProperty("PromiseRejectionEvent")>]
             abstract promiseRejectionEvent: ServiceWorkerGlobalScope.PromiseRejectionEvent with get, set
 
-            [<CompiledName("CustomEvent")>]
+            [<EmitProperty("CustomEvent")>]
             abstract customEvent: ServiceWorkerGlobalScope.CustomEvent with get, set
 
-            [<CompiledName("ExtendableEvent")>]
+            [<EmitProperty("ExtendableEvent")>]
             abstract extendableEvent: ServiceWorkerGlobalScope.ExtendableEvent with get, set
 
-            [<CompiledName("Event")>]
+            [<EmitProperty("Event")>]
             abstract event: ServiceWorkerGlobalScope.Event with get, set
 
             abstract origin: D1SessionBookmark with get
 
-            [<CompiledName("Cloudflare")>]
+            [<EmitProperty("Cloudflare")>]
             abstract cloudflare: Cloudflare with get, set
 
             abstract performance: Performance with get, set
@@ -10157,10 +10157,10 @@ module rec Cloudflare =
             abstract crypto: Crypto with get, set
             abstract self: ServiceWorkerGlobalScope with get, set
 
-            [<CompiledName("WorkerGlobalScope")>]
+            [<EmitProperty("WorkerGlobalScope")>]
             abstract workerGlobalScope: ServiceWorkerGlobalScope.WorkerGlobalScope with get, set
 
-            [<CompiledName("DOMException")>]
+            [<EmitProperty("DOMException")>]
             abstract dOMException: ServiceWorkerGlobalScope.DOMException with get, set
 
             abstract fetch:
@@ -10233,7 +10233,7 @@ module rec Cloudflare =
         type ResponseOutputText =
             abstract logprobs: option<Array<Logprob>> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseOutputText.Type with get, set
 
             abstract text: D1SessionBookmark with get, set
@@ -10285,7 +10285,7 @@ module rec Cloudflare =
                 ?options: BlobOptions ->
                     Blob
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: D1SessionBookmark with get
 
             abstract size: float with get
@@ -10302,69 +10302,69 @@ module rec Cloudflare =
         type ChatCompletionsInput =
             abstract functions: option<unit> with get, set
 
-            [<CompiledName("function_call")>]
+            [<EmitProperty("function_call")>]
             abstract functionCall: option<unit> with get, set
 
-            [<CompiledName("web_search_options")>]
+            [<EmitProperty("web_search_options")>]
             abstract webSearchOptions: option<unit> with get, set
 
             abstract user: option<unit> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<unit> with get, set
 
             abstract tools: option<unit> with get, set
 
-            [<CompiledName("tool_choice")>]
+            [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<unit> with get, set
 
             abstract temperature: option<unit> with get, set
 
-            [<CompiledName("stream_options")>]
+            [<EmitProperty("stream_options")>]
             abstract streamOptions: option<unit> with get, set
 
             abstract store: option<unit> with get, set
 
-            [<CompiledName("service_tier")>]
+            [<EmitProperty("service_tier")>]
             abstract serviceTier: option<unit> with get, set
 
             abstract seed: option<unit> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<unit> with get, set
 
-            [<CompiledName("chat_template_kwargs")>]
+            [<EmitProperty("chat_template_kwargs")>]
             abstract chatTemplateKwargs: option<unit> with get, set
 
-            [<CompiledName("reasoning_effort")>]
+            [<EmitProperty("reasoning_effort")>]
             abstract reasoningEffort: option<unit> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<unit> with get, set
 
             abstract prediction: option<unit> with get, set
 
-            [<CompiledName("parallel_tool_calls")>]
+            [<EmitProperty("parallel_tool_calls")>]
             abstract parallelToolCalls: option<unit> with get, set
 
             abstract n: option<unit> with get, set
             abstract modalities: option<unit> with get, set
 
-            [<CompiledName("max_completion_tokens")>]
+            [<EmitProperty("max_completion_tokens")>]
             abstract maxCompletionTokens: option<unit> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<unit> with get, set
 
-            [<CompiledName("top_logprobs")>]
+            [<EmitProperty("top_logprobs")>]
             abstract topLogprobs: option<unit> with get, set
 
             abstract logprobs: option<unit> with get, set
 
-            [<CompiledName("logit_bias")>]
+            [<EmitProperty("logit_bias")>]
             abstract logitBias: option<unit> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<unit> with get, set
 
             abstract model: option<unit> with get, set
@@ -10378,72 +10378,72 @@ module rec Cloudflare =
             abstract requests: option<unit> with get, set
             abstract functions: option<Array<FunctionDefinition>> with get, set
 
-            [<CompiledName("function_call")>]
+            [<EmitProperty("function_call")>]
             abstract functionCall: option<U2<ChatCompletionsInput.FunctionCall, ChatCompletionsInput.FunctionCall>> with get, set
 
-            [<CompiledName("web_search_options")>]
+            [<EmitProperty("web_search_options")>]
             abstract webSearchOptions: option<WebSearchOptions> with get, set
 
             abstract user: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract tools: option<Array<ChatCompletionTool>> with get, set
 
-            [<CompiledName("tool_choice")>]
+            [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("stream_options")>]
+            [<EmitProperty("stream_options")>]
             abstract streamOptions: option<ChatCompletionsStreamOptions> with get, set
 
             abstract stream: option<bool> with get, set
             abstract store: option<bool> with get, set
             abstract stop: option<U2<Array<D1SessionBookmark>, string>> with get, set
 
-            [<CompiledName("service_tier")>]
+            [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ChatCompletionsInput.ServiceTier> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<ResponseFormat> with get, set
 
-            [<CompiledName("chat_template_kwargs")>]
+            [<EmitProperty("chat_template_kwargs")>]
             abstract chatTemplateKwargs: option<ChatTemplateKwargs> with get, set
 
-            [<CompiledName("reasoning_effort")>]
+            [<EmitProperty("reasoning_effort")>]
             abstract reasoningEffort: option<ChatCompletionsInput.ReasoningEffort> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
             abstract prediction: option<PredictionContent> with get, set
 
-            [<CompiledName("parallel_tool_calls")>]
+            [<EmitProperty("parallel_tool_calls")>]
             abstract parallelToolCalls: option<bool> with get, set
 
             abstract n: option<float> with get, set
             abstract modalities: option<Array<ChatCompletionsInput.Modalities>> with get, set
             abstract metadata: option<ChatCompletionsInput.Metadata> with get, set
 
-            [<CompiledName("max_completion_tokens")>]
+            [<EmitProperty("max_completion_tokens")>]
             abstract maxCompletionTokens: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
-            [<CompiledName("top_logprobs")>]
+            [<EmitProperty("top_logprobs")>]
             abstract topLogprobs: option<float> with get, set
 
             abstract logprobs: option<bool> with get, set
 
-            [<CompiledName("logit_bias")>]
+            [<EmitProperty("logit_bias")>]
             abstract logitBias: option<ChatCompletionsInput.LogitBias> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
             abstract audio: option<AudioParams> with get, set
@@ -10481,7 +10481,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "StreamDownloadGetResponse")>]
         type StreamDownloadGetResponse =
-            [<CompiledName("default")>]
+            [<EmitProperty("default")>]
             abstract ``default``: option<StreamDownload> with get, set
 
             abstract audio: option<StreamDownload> with get, set
@@ -10491,10 +10491,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseCompletedEvent")>]
         type ResponseCompletedEvent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseCompletedEvent.Type with get, set
 
-            [<CompiledName("sequence_number")>]
+            [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
             abstract response: Typescript.Response with get, set
@@ -10508,27 +10508,27 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Deepgram_Flux_Output")>]
         type AiCfDeepgramFluxOutput =
-            [<CompiledName("end_of_turn_confidence")>]
+            [<EmitProperty("end_of_turn_confidence")>]
             abstract endOfTurnConfidence: option<float> with get, set
 
             abstract words: option<Array<AiCfDeepgramFluxOutput.Words>> with get, set
             abstract transcript: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("audio_window_end")>]
+            [<EmitProperty("audio_window_end")>]
             abstract audioWindowEnd: option<float> with get, set
 
-            [<CompiledName("audio_window_start")>]
+            [<EmitProperty("audio_window_start")>]
             abstract audioWindowStart: option<float> with get, set
 
-            [<CompiledName("turn_index")>]
+            [<EmitProperty("turn_index")>]
             abstract turnIndex: option<float> with get, set
 
             abstract event: option<AiCfDeepgramFluxOutput.Event> with get, set
 
-            [<CompiledName("sequence_id")>]
+            [<EmitProperty("sequence_id")>]
             abstract sequenceId: option<float> with get, set
 
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Zai_Org_Glm_4_7_Flash"); AbstractClass; AllowNullLiteral>]
@@ -10571,7 +10571,7 @@ module rec Cloudflare =
         type WorkerGlobalScope private () =
             inherit Typescript.Body()
 
-            [<CompiledName("EventTarget")>]
+            [<EmitProperty("EventTarget")>]
             abstract eventTarget: WorkerGlobalScope.EventTarget with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -10579,7 +10579,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchJobLogsResponse")>]
         type AiSearchJobLogsResponse =
-            [<CompiledName("result_info")>]
+            [<EmitProperty("result_info")>]
             abstract resultInfo: option<AiSearchJobLogsResponse.ResultInfo> with get, set
 
             abstract result: Array<AiSearchJobLog> with get, set
@@ -10603,7 +10603,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchListJobsResponse")>]
         type AiSearchListJobsResponse =
-            [<CompiledName("result_info")>]
+            [<EmitProperty("result_info")>]
             abstract resultInfo: option<AiSearchListJobsResponse.ResultInfo> with get, set
 
             abstract result: Array<AiSearchJobInfo> with get, set
@@ -10615,7 +10615,7 @@ module rec Cloudflare =
         type FlagshipEvaluationContext = obj
 
         type RpcStub =
-            [<CompiledName("[__RPC_STUB_BRAND]")>]
+            [<EmitProperty("[__RPC_STUB_BRAND]")>]
             abstract __RPC_STUB_BRAND: 'T with get, set
 
             abstract symbolDispose: unit -> unit
@@ -10639,15 +10639,15 @@ module rec Cloudflare =
         type AutoRagAiSearchResponse =
             abstract response: D1SessionBookmark with get, set
 
-            [<CompiledName("next_page")>]
+            [<EmitProperty("next_page")>]
             abstract nextPage: option<string> with get, set
 
-            [<CompiledName("has_more")>]
+            [<EmitProperty("has_more")>]
             abstract hasMore: bool with get, set
 
             abstract data: Array<AutoRagAiSearchResponse.Data> with get, set
 
-            [<CompiledName("search_query")>]
+            [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
 
             abstract object: AutoRagAiSearchResponse.Object with get, set
@@ -10661,7 +10661,7 @@ module rec Cloudflare =
             abstract vtt: option<D1SessionBookmark> with get, set
             abstract words: option<Array<AiCfOpenaiWhisperTinyEnOutput.Words>> with get, set
 
-            [<CompiledName("word_count")>]
+            [<EmitProperty("word_count")>]
             abstract wordCount: option<float> with get, set
 
             abstract text: D1SessionBookmark with get, set
@@ -10853,7 +10853,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Logprob")>]
         type Logprob =
-            [<CompiledName("top_logprobs")>]
+            [<EmitProperty("top_logprobs")>]
             abstract topLogprobs: option<Array<TopLogprob>> with get, set
 
             abstract logprob: float with get, set
@@ -11158,54 +11158,54 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSummarizationInput")>]
         type AiSummarizationInput =
-            [<CompiledName("max_length")>]
+            [<EmitProperty("max_length")>]
             abstract maxLength: option<float> with get, set
 
-            [<CompiledName("input_text")>]
+            [<EmitProperty("input_text")>]
             abstract inputText: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "ResponseFunctionToolCallOutputItem")>]
         type ResponseFunctionToolCallOutputItem =
             abstract status: option<ResponseFunctionToolCallOutputItem.Status> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseFunctionToolCallOutputItem.Type with get, set
 
             abstract output: U2<Array<ResponseInputContent>, string> with get, set
 
-            [<CompiledName("call_id")>]
+            [<EmitProperty("call_id")>]
             abstract callId: D1SessionBookmark with get, set
 
             abstract id: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Messages")>]
         type AiCfQwenQwen330BA3BFp8Messages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfQwenQwen330BA3BFp8JSONMode1> with get, set
 
             abstract tools:
@@ -11221,32 +11221,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Google_Gemma_3_12B_It_Prompt")>]
         type AiCfGoogleGemma312BItPrompt =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
             abstract prompt: D1SessionBookmark with get, set
@@ -11378,10 +11378,10 @@ module rec Cloudflare =
         type AiSearchItemChunk =
             abstract item: option<AiSearchItemChunk.Item> with get, set
 
-            [<CompiledName("end_byte")>]
+            [<EmitProperty("end_byte")>]
             abstract endByte: float with get, set
 
-            [<CompiledName("start_byte")>]
+            [<EmitProperty("start_byte")>]
             abstract startByte: float with get, set
 
             abstract text: D1SessionBookmark with get, set
@@ -11398,43 +11398,43 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen2_5_Coder_32B_Instruct_JSON_Mode")>]
         type AiCfQwenQwen25Coder32BInstructJSONMode =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<AiCfQwenQwen25Coder32BInstructJSONMode.Type> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Prompt_Inner")>]
         type AiCfMetaLlama4Scout17B16EInstructPromptInner =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfMetaLlama4Scout17B16EInstructJSONMode> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
             abstract prompt: D1SessionBookmark with get, set
@@ -11485,72 +11485,72 @@ module rec Cloudflare =
             abstract prompt: option<unit> with get, set
             abstract functions: option<Array<FunctionDefinition>> with get, set
 
-            [<CompiledName("function_call")>]
+            [<EmitProperty("function_call")>]
             abstract functionCall: option<U2<ChatCompletionsBase.FunctionCall, ChatCompletionsBase.FunctionCall>> with get, set
 
-            [<CompiledName("web_search_options")>]
+            [<EmitProperty("web_search_options")>]
             abstract webSearchOptions: option<WebSearchOptions> with get, set
 
             abstract user: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract tools: option<Array<ChatCompletionTool>> with get, set
 
-            [<CompiledName("tool_choice")>]
+            [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("stream_options")>]
+            [<EmitProperty("stream_options")>]
             abstract streamOptions: option<ChatCompletionsStreamOptions> with get, set
 
             abstract stream: option<bool> with get, set
             abstract store: option<bool> with get, set
             abstract stop: option<U2<Array<D1SessionBookmark>, string>> with get, set
 
-            [<CompiledName("service_tier")>]
+            [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ChatCompletionsBase.ServiceTier> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<ResponseFormat> with get, set
 
-            [<CompiledName("chat_template_kwargs")>]
+            [<EmitProperty("chat_template_kwargs")>]
             abstract chatTemplateKwargs: option<ChatTemplateKwargs> with get, set
 
-            [<CompiledName("reasoning_effort")>]
+            [<EmitProperty("reasoning_effort")>]
             abstract reasoningEffort: option<ChatCompletionsBase.ReasoningEffort> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
             abstract prediction: option<PredictionContent> with get, set
 
-            [<CompiledName("parallel_tool_calls")>]
+            [<EmitProperty("parallel_tool_calls")>]
             abstract parallelToolCalls: option<bool> with get, set
 
             abstract n: option<float> with get, set
             abstract modalities: option<Array<ChatCompletionsBase.Modalities>> with get, set
             abstract metadata: option<ChatCompletionsBase.Metadata> with get, set
 
-            [<CompiledName("max_completion_tokens")>]
+            [<EmitProperty("max_completion_tokens")>]
             abstract maxCompletionTokens: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
-            [<CompiledName("top_logprobs")>]
+            [<EmitProperty("top_logprobs")>]
             abstract topLogprobs: option<float> with get, set
 
             abstract logprobs: option<bool> with get, set
 
-            [<CompiledName("logit_bias")>]
+            [<EmitProperty("logit_bias")>]
             abstract logitBias: option<ChatCompletionsBase.LogitBias> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
             abstract audio: option<AudioParams> with get, set
@@ -11580,32 +11580,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwq_32B_Prompt")>]
         type AiCfQwenQwq32BPrompt =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
             abstract prompt: D1SessionBookmark with get, set
@@ -11614,7 +11614,7 @@ module rec Cloudflare =
         type AiSearchSearchResponse =
             abstract chunks: Array<AiSearchSearchResponse.Chunks> with get, set
 
-            [<CompiledName("search_query")>]
+            [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
 
         /// <deprecated>
@@ -11658,15 +11658,15 @@ module rec Cloudflare =
         /// </deprecated>
         [<Import("@cloudflare/workers-types", "AutoRagSearchRequest")>]
         type AutoRagSearchRequest =
-            [<CompiledName("rewrite_query")>]
+            [<EmitProperty("rewrite_query")>]
             abstract rewriteQuery: option<bool> with get, set
 
             abstract reranking: option<AutoRagSearchRequest.Reranking> with get, set
 
-            [<CompiledName("ranking_options")>]
+            [<EmitProperty("ranking_options")>]
             abstract rankingOptions: option<AutoRagSearchRequest.RankingOptions> with get, set
 
-            [<CompiledName("max_num_results")>]
+            [<EmitProperty("max_num_results")>]
             abstract maxNumResults: option<float> with get, set
 
             abstract filters: option<U2<AutoRagSearchRequest.Filters, AutoRagSearchRequest.Filters>> with get, set
@@ -11737,7 +11737,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_2_11B_Vision_Instruct_Output")>]
         type AiCfMetaLlama3211BVisionInstructOutput =
-            [<CompiledName("tool_calls")>]
+            [<EmitProperty("tool_calls")>]
             abstract toolCalls: option<Array<AiCfMetaLlama3211BVisionInstructOutput.ToolCalls>> with get, set
 
             abstract response: option<D1SessionBookmark> with get, set
@@ -11814,10 +11814,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionToolChoiceFunction")>]
         type ChatCompletionToolChoiceFunction =
-            [<CompiledName("function")>]
+            [<EmitProperty("function")>]
             abstract ``function``: ChatCompletionToolChoiceFunction.Function with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionToolChoiceFunction.Type with get, set
 
         [<Import("@cloudflare/workers-types", "AiSearchInternalError"); AbstractClass; AllowNullLiteral>]
@@ -11830,7 +11830,7 @@ module rec Cloudflare =
         type AiTextGenerationOutput =
             abstract usage: option<UsageTags> with get, set
 
-            [<CompiledName("tool_calls")>]
+            [<EmitProperty("tool_calls")>]
             abstract toolCalls: option<AiTextGenerationOutput.ToolCalls> with get, set
 
             abstract response: option<D1SessionBookmark> with get, set
@@ -11839,26 +11839,26 @@ module rec Cloudflare =
         type AiCfMetaLlama3211BVisionInstructPrompt =
             abstract lora: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
@@ -11917,7 +11917,7 @@ module rec Cloudflare =
             abstract score: float with get, set
             abstract metadata: option<VectorizeMatches.Metadata> with get, set
 
-            [<CompiledName("namespace")>]
+            [<EmitProperty("namespace")>]
             abstract ``namespace``: option<string> with get, set
 
             abstract id: D1SessionBookmark with get, set
@@ -11981,13 +11981,13 @@ module rec Cloudflare =
             abstract queueRequest: option<bool> with get, set
 
         type AiSearchMultiChatCompletionsRequest =
-            [<CompiledName("instance_ids")>]
+            [<EmitProperty("instance_ids")>]
             abstract instanceIds: Array<D1SessionBookmark> with get, set
 
             abstract cache: option<AiSearchMultiChatCompletionsRequest.Cache> with get, set
             abstract reranking: option<AiSearchMultiChatCompletionsRequest.Reranking> with get, set
 
-            [<CompiledName("query_rewrite")>]
+            [<EmitProperty("query_rewrite")>]
             abstract queryRewrite: option<AiSearchMultiChatCompletionsRequest.QueryRewrite> with get, set
 
             abstract retrieval: option<AiSearchMultiChatCompletionsRequest.Retrieval> with get, set
@@ -12025,7 +12025,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionCustomToolTextFormat")>]
         type ChatCompletionCustomToolTextFormat =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionCustomToolTextFormat.Type with get, set
 
         [<Import("@cloudflare/workers-types", "HostedImagesBinding")>]
@@ -12092,32 +12092,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Prompt_1")>]
         type AiCfQwenQwen330BA3BFp8Prompt1 =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfQwenQwen330BA3BFp8JSONMode2> with get, set
 
             abstract lora: option<D1SessionBookmark> with get, set
@@ -12169,7 +12169,7 @@ module rec Cloudflare =
         type AiSearchStatsResponse =
             abstract engine: option<AiSearchStatsResponse.Engine> with get, set
 
-            [<CompiledName("last_activity")>]
+            [<EmitProperty("last_activity")>]
             abstract lastActivity: option<D1SessionBookmark> with get, set
 
             abstract outdated: option<float> with get, set
@@ -12291,35 +12291,35 @@ module rec Cloudflare =
             abstract meta: D1PreparedStatement.Meta with get, set
             abstract success: D1PreparedStatement.Success with get, set
 
-            [<CompiledName("total_attempts")>]
+            [<EmitProperty("total_attempts")>]
             abstract totalAttempts: option<float> with get, set
 
             abstract timings: option<D1PreparedStatement.Timings> with get, set
 
-            [<CompiledName("served_by_primary")>]
+            [<EmitProperty("served_by_primary")>]
             abstract servedByPrimary: option<bool> with get, set
 
-            [<CompiledName("served_by_colo")>]
+            [<EmitProperty("served_by_colo")>]
             abstract servedByColo: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("served_by_region")>]
+            [<EmitProperty("served_by_region")>]
             abstract servedByRegion: option<D1SessionBookmark> with get, set
 
             abstract changes: float with get, set
 
-            [<CompiledName("changed_db")>]
+            [<EmitProperty("changed_db")>]
             abstract changedDb: bool with get, set
 
-            [<CompiledName("last_row_id")>]
+            [<EmitProperty("last_row_id")>]
             abstract lastRowId: float with get, set
 
-            [<CompiledName("rows_written")>]
+            [<EmitProperty("rows_written")>]
             abstract rowsWritten: float with get, set
 
-            [<CompiledName("rows_read")>]
+            [<EmitProperty("rows_read")>]
             abstract rowsRead: float with get, set
 
-            [<CompiledName("size_after")>]
+            [<EmitProperty("size_after")>]
             abstract sizeAfter: float with get, set
 
             abstract duration: float with get, set
@@ -12390,35 +12390,35 @@ module rec Cloudflare =
             abstract list: ?params: AiSearchListJobsParams -> Promise<AiSearchListJobsResponse>
 
         type D1Response =
-            [<CompiledName("total_attempts")>]
+            [<EmitProperty("total_attempts")>]
             abstract totalAttempts: option<float> with get, set
 
             abstract timings: option<D1Response.Timings> with get, set
 
-            [<CompiledName("served_by_primary")>]
+            [<EmitProperty("served_by_primary")>]
             abstract servedByPrimary: option<bool> with get, set
 
-            [<CompiledName("served_by_colo")>]
+            [<EmitProperty("served_by_colo")>]
             abstract servedByColo: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("served_by_region")>]
+            [<EmitProperty("served_by_region")>]
             abstract servedByRegion: option<D1SessionBookmark> with get, set
 
             abstract changes: float with get, set
 
-            [<CompiledName("changed_db")>]
+            [<EmitProperty("changed_db")>]
             abstract changedDb: bool with get, set
 
-            [<CompiledName("last_row_id")>]
+            [<EmitProperty("last_row_id")>]
             abstract lastRowId: float with get, set
 
-            [<CompiledName("rows_written")>]
+            [<EmitProperty("rows_written")>]
             abstract rowsWritten: float with get, set
 
-            [<CompiledName("rows_read")>]
+            [<EmitProperty("rows_read")>]
             abstract rowsRead: float with get, set
 
-            [<CompiledName("size_after")>]
+            [<EmitProperty("size_after")>]
             abstract sizeAfter: float with get, set
 
             abstract duration: float with get, set
@@ -12429,15 +12429,15 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_JSON_Mode_2")>]
         type AiCfQwenQwen330BA3BFp8JSONMode2 =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<AiCfQwenQwen330BA3BFp8JSONMode2.Type> with get, set
 
         [<Import("@cloudflare/workers-types", "AiSearchListItemsResponse")>]
         type AiSearchListItemsResponse =
-            [<CompiledName("result_info")>]
+            [<EmitProperty("result_info")>]
             abstract resultInfo: option<AiSearchListItemsResponse.ResultInfo> with get, set
 
             abstract result: Array<AiSearchItemInfo> with get, set
@@ -12446,7 +12446,7 @@ module rec Cloudflare =
         type ChatCompletionAudio =
             abstract transcript: D1SessionBookmark with get, set
 
-            [<CompiledName("expires_at")>]
+            [<EmitProperty("expires_at")>]
             abstract expiresAt: float with get, set
 
             abstract data: D1SessionBookmark with get, set
@@ -12466,7 +12466,7 @@ module rec Cloudflare =
         type Reasoning =
             abstract summary: option<Reasoning.Summary> with get, set
 
-            [<CompiledName("generate_summary")>]
+            [<EmitProperty("generate_summary")>]
             abstract generateSummary: option<Reasoning.GenerateSummary> with get, set
 
             abstract effort: option<Reasoning.Effort> with get, set
@@ -12502,12 +12502,12 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_Base_En_V1_5_AsyncResponse")>]
         type AiCfBaaiBgeBaseEnV15AsyncResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "ChatCompletionsResponseFormatJSONObject")>]
         type ChatCompletionsResponseFormatJSONObject =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionsResponseFormatJSONObject.Type with get, set
 
         type ResponseInputItem =
@@ -12533,35 +12533,35 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Messages")>]
         type AiCfMetaLlama4Scout17B16EInstructMessages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfMetaLlama4Scout17B16EInstructJSONMode> with get, set
 
             abstract tools:
@@ -12594,15 +12594,15 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast_JSON_Mode")>]
         type AiCfMetaLlama3370BInstructFp8FastJSONMode =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<AiCfMetaLlama3370BInstructFp8FastJSONMode.Type> with get, set
 
         [<Import("@cloudflare/workers-types", "AiSearchListResponse")>]
         type AiSearchListResponse =
-            [<CompiledName("result_info")>]
+            [<EmitProperty("result_info")>]
             abstract resultInfo: option<AiSearchListResponse.ResultInfo> with get, set
 
             abstract result: Array<AiSearchInstanceInfo> with get, set
@@ -12651,7 +12651,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseInputText")>]
         type ResponseInputText =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseInputText.Type with get, set
 
             abstract text: D1SessionBookmark with get, set
@@ -12697,7 +12697,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "BlobOptions")>]
         type BlobOptions =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Ai4Bharat_Indictrans2_En_Indic_1B");
@@ -12717,29 +12717,29 @@ module rec Cloudflare =
             abstract messages: option<Array<RoleScopedChatInput>> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
-            [<CompiledName("ignore_eos")>]
+            [<EmitProperty("ignore_eos")>]
             abstract ignoreEos: option<bool> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract prompt: option<D1SessionBookmark> with get, set
@@ -12781,32 +12781,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Prompt_1")>]
         type AiCfAisingaporeGemmaSeaLionV427BItPrompt1 =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfAisingaporeGemmaSeaLionV427BItJSONMode2> with get, set
 
             abstract lora: option<D1SessionBookmark> with get, set
@@ -12935,7 +12935,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ToolChoiceFunction")>]
         type ToolChoiceFunction =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ToolChoiceFunction.Type with get, set
 
             abstract name: D1SessionBookmark with get, set
@@ -12994,47 +12994,47 @@ module rec Cloudflare =
         /// </deprecated>
         [<Import("@cloudflare/workers-types", "AutoRagSearchResponse")>]
         type AutoRagSearchResponse =
-            [<CompiledName("next_page")>]
+            [<EmitProperty("next_page")>]
             abstract nextPage: option<string> with get, set
 
-            [<CompiledName("has_more")>]
+            [<EmitProperty("has_more")>]
             abstract hasMore: bool with get, set
 
             abstract data: Array<AutoRagSearchResponse.Data> with get, set
 
-            [<CompiledName("search_query")>]
+            [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
 
             abstract object: AutoRagSearchResponse.Object with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Prompt")>]
         type AiCfQwenQwen330BA3BFp8Prompt =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfQwenQwen330BA3BFp8JSONMode> with get, set
 
             abstract lora: option<D1SessionBookmark> with get, set
@@ -13059,18 +13059,18 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseFunctionCallArgumentsDoneEvent")>]
         type ResponseFunctionCallArgumentsDoneEvent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseFunctionCallArgumentsDoneEvent.Type with get, set
 
-            [<CompiledName("sequence_number")>]
+            [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
-            [<CompiledName("output_index")>]
+            [<EmitProperty("output_index")>]
             abstract outputIndex: float with get, set
 
             abstract name: D1SessionBookmark with get, set
 
-            [<CompiledName("item_id")>]
+            [<EmitProperty("item_id")>]
             abstract itemId: D1SessionBookmark with get, set
 
             abstract arguments: D1SessionBookmark with get, set
@@ -13079,10 +13079,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "WebSearchOptions")>]
         type WebSearchOptions =
-            [<CompiledName("user_location")>]
+            [<EmitProperty("user_location")>]
             abstract userLocation: option<WebSearchUserLocation> with get, set
 
-            [<CompiledName("search_context_size")>]
+            [<EmitProperty("search_context_size")>]
             abstract searchContextSize: option<WebSearchOptions.SearchContextSize> with get, set
 
         [<Import("@cloudflare/workers-types", "DeveloperMessage")>]
@@ -13114,7 +13114,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_M3_AsyncResponse")>]
         type AiCfBaaiBgeM3AsyncResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "EndTag")>]
@@ -13200,16 +13200,16 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "CompletionTokensDetails")>]
         type CompletionTokensDetails =
-            [<CompiledName("rejected_prediction_tokens")>]
+            [<EmitProperty("rejected_prediction_tokens")>]
             abstract rejectedPredictionTokens: option<float> with get, set
 
-            [<CompiledName("accepted_prediction_tokens")>]
+            [<EmitProperty("accepted_prediction_tokens")>]
             abstract acceptedPredictionTokens: option<float> with get, set
 
-            [<CompiledName("audio_tokens")>]
+            [<EmitProperty("audio_tokens")>]
             abstract audioTokens: option<float> with get, set
 
-            [<CompiledName("reasoning_tokens")>]
+            [<EmitProperty("reasoning_tokens")>]
             abstract reasoningTokens: option<float> with get, set
 
         [<Import("@cloudflare/workers-types", "Queue")>]
@@ -13245,32 +13245,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Prompt")>]
         type AiCfAisingaporeGemmaSeaLionV427BItPrompt =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfAisingaporeGemmaSeaLionV427BItJSONMode> with get, set
 
             abstract lora: option<D1SessionBookmark> with get, set
@@ -13567,32 +13567,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Messages")>]
         type AiCfAisingaporeGemmaSeaLionV427BItMessages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfAisingaporeGemmaSeaLionV427BItJSONMode1> with get, set
 
             abstract tools:
@@ -13654,10 +13654,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "SqlStorage")>]
         type SqlStorage =
-            [<CompiledName("Statement")>]
+            [<EmitProperty("Statement")>]
             abstract statement: SqlStorage.Statement with get, set
 
-            [<CompiledName("Cursor")>]
+            [<EmitProperty("Cursor")>]
             abstract cursor: SqlStorage.Cursor with get, set
 
             abstract databaseSize: float with get
@@ -13688,7 +13688,7 @@ module rec Cloudflare =
 
             abstract extractable: bool with get
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: D1SessionBookmark with get
 
         [<Import("@cloudflare/workers-types", "ChatCompletionLogprobs")>]
@@ -13700,7 +13700,7 @@ module rec Cloudflare =
         type PredictionContent =
             abstract content: U2<Array<ChatCompletionContentPartText>, string> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: PredictionContent.Type with get, set
 
         [<Import("@cloudflare/workers-types", "StreamScopedCaptions")>]
@@ -13712,21 +13712,21 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiTranslationOutput")>]
         type AiTranslationOutput =
-            [<CompiledName("translated_text")>]
+            [<EmitProperty("translated_text")>]
             abstract translatedText: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "ResponseFunctionCallArgumentsDeltaEvent")>]
         type ResponseFunctionCallArgumentsDeltaEvent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseFunctionCallArgumentsDeltaEvent.Type with get, set
 
-            [<CompiledName("sequence_number")>]
+            [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
-            [<CompiledName("output_index")>]
+            [<EmitProperty("output_index")>]
             abstract outputIndex: float with get, set
 
-            [<CompiledName("item_id")>]
+            [<EmitProperty("item_id")>]
             abstract itemId: D1SessionBookmark with get, set
 
             abstract delta: D1SessionBookmark with get, set
@@ -13756,7 +13756,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_Small_En_V1_5_AsyncResponse")>]
         type AiCfBaaiBgeSmallEnV15AsyncResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "SyncKvListOptions")>]
@@ -13765,7 +13765,7 @@ module rec Cloudflare =
             abstract reverse: option<bool> with get, set
             abstract prefix: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("end")>]
+            [<EmitProperty("end")>]
             abstract ``end``: option<D1SessionBookmark> with get, set
 
             abstract startAfter: option<D1SessionBookmark> with get, set
@@ -13793,7 +13793,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "CacheStorage"); AbstractClass; AllowNullLiteral>]
         type CacheStorage private () =
-            [<CompiledName("default")>]
+            [<EmitProperty("default")>]
             abstract ``default``: Cache with get
 
             abstract ``open``: cacheName: D1SessionBookmark -> Promise<Cache>
@@ -13865,7 +13865,7 @@ module rec Cloudflare =
             abstract reverse: option<bool> with get, set
             abstract prefix: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("end")>]
+            [<EmitProperty("end")>]
             abstract ``end``: option<D1SessionBookmark> with get, set
 
             abstract startAfter: option<D1SessionBookmark> with get, set
@@ -13893,17 +13893,17 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast_JSON_Mode_1")>]
         type AiCfMetaLlama3370BInstructFp8FastJSONMode1 =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<AiCfMetaLlama3370BInstructFp8FastJSONMode1.Type> with get, set
 
         [<Import("@cloudflare/workers-types", "ChatCompletionContentPartRefusal")>]
         type ChatCompletionContentPartRefusal =
             abstract refusal: D1SessionBookmark with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionContentPartRefusal.Type with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -13917,30 +13917,30 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Openai_Whisper_Large_V3_Turbo_Input")>]
         type AiCfOpenaiWhisperLargeV3TurboInput =
-            [<CompiledName("hallucination_silence_threshold")>]
+            [<EmitProperty("hallucination_silence_threshold")>]
             abstract hallucinationSilenceThreshold: option<float> with get, set
 
-            [<CompiledName("log_prob_threshold")>]
+            [<EmitProperty("log_prob_threshold")>]
             abstract logProbThreshold: option<float> with get, set
 
-            [<CompiledName("compression_ratio_threshold")>]
+            [<EmitProperty("compression_ratio_threshold")>]
             abstract compressionRatioThreshold: option<float> with get, set
 
-            [<CompiledName("no_speech_threshold")>]
+            [<EmitProperty("no_speech_threshold")>]
             abstract noSpeechThreshold: option<float> with get, set
 
-            [<CompiledName("condition_on_previous_text")>]
+            [<EmitProperty("condition_on_previous_text")>]
             abstract conditionOnPreviousText: option<bool> with get, set
 
-            [<CompiledName("beam_size")>]
+            [<EmitProperty("beam_size")>]
             abstract beamSize: option<float> with get, set
 
             abstract prefix: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("initial_prompt")>]
+            [<EmitProperty("initial_prompt")>]
             abstract initialPrompt: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("vad_filter")>]
+            [<EmitProperty("vad_filter")>]
             abstract vadFilter: option<bool> with get, set
 
             abstract language: option<D1SessionBookmark> with get, set
@@ -13959,7 +13959,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchItemLogsResponse")>]
         type AiSearchItemLogsResponse =
-            [<CompiledName("result_info")>]
+            [<EmitProperty("result_info")>]
             abstract resultInfo: AiSearchItemLogsResponse.ResultInfo with get, set
 
             abstract result: Array<AiSearchItemLog> with get, set
@@ -13979,18 +13979,18 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchListItemsParams")>]
         type AiSearchListItemsParams =
-            [<CompiledName("metadata_filter")>]
+            [<EmitProperty("metadata_filter")>]
             abstract metadataFilter: option<D1SessionBookmark> with get, set
 
             abstract source: option<D1SessionBookmark> with get, set
             abstract status: option<AiSearchListItemsParams.Status> with get, set
 
-            [<CompiledName("sort_by")>]
+            [<EmitProperty("sort_by")>]
             abstract sortBy: option<AiSearchListItemsParams.SortBy> with get, set
 
             abstract search: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("per_page")>]
+            [<EmitProperty("per_page")>]
             abstract perPage: option<float> with get, set
 
             abstract page: option<float> with get, set
@@ -14065,7 +14065,7 @@ module rec Cloudflare =
             abstract errors: option<Array<AiSearchMultiSearchError>> with get, set
             abstract chunks: Array<AiSearchMultiSearchChunk> with get, set
 
-            [<CompiledName("ai_search_options")>]
+            [<EmitProperty("ai_search_options")>]
             abstract aiSearchOptions: AiSearchMultiSearchOptions with get, set
 
             abstract stream: AiSearchNamespace.Stream with get, set
@@ -14085,26 +14085,26 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_2_11B_Vision_Instruct_Messages")>]
         type AiCfMetaLlama3211BVisionInstructMessages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
@@ -14132,7 +14132,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "FacetStartupOptions")>]
         type FacetStartupOptions<'T when 'T :> Rpc.DurableObjectBranded> =
-            [<CompiledName("class")>]
+            [<EmitProperty("class")>]
             abstract ``class``: DurableObjectClass<'T> with get, set
 
             abstract id: option<U2<DurableObjectId, string>> with get, set
@@ -14155,32 +14155,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen2_5_Coder_32B_Instruct_Messages")>]
         type AiCfQwenQwen25Coder32BInstructMessages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfQwenQwen25Coder32BInstructJSONMode1> with get, set
 
             abstract tools:
@@ -14211,7 +14211,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchItemChunksResponse")>]
         type AiSearchItemChunksResponse =
-            [<CompiledName("result_info")>]
+            [<EmitProperty("result_info")>]
             abstract resultInfo: AiSearchItemChunksResponse.ResultInfo with get, set
 
             abstract result: Array<AiSearchItemChunk> with get, set
@@ -14270,7 +14270,7 @@ module rec Cloudflare =
         type AiCfPipecatAiSmartTurnV2Output =
             abstract probability: option<float> with get, set
 
-            [<CompiledName("is_complete")>]
+            [<EmitProperty("is_complete")>]
             abstract isComplete: option<bool> with get, set
 
         [<Import("@cloudflare/workers-types", "IdentityTransformStream"); AbstractClass; AllowNullLiteral>]
@@ -14286,12 +14286,12 @@ module rec Cloudflare =
             | [<CompiledName("json_schema")>] JsonSchema
 
         type ResponseFunctionCallOutputItem =
-            [<CompiledName("image_url")>]
+            [<EmitProperty("image_url")>]
             abstract imageUrl: option<string> with get, set
 
             abstract detail: option<ResponseFunctionCallOutputItem.Detail> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseFunctionCallOutputItem.Type with get, set
 
             abstract text: D1SessionBookmark with get, set
@@ -14366,7 +14366,7 @@ module rec Cloudflare =
         type SubtleCryptoDeriveKeyAlgorithm =
             abstract info: option<BufferSource> with get, set
 
-            [<CompiledName("$public")>]
+            [<EmitProperty("$public")>]
             abstract ``public``: option<CryptoKey> with get, set
 
             abstract hash: option<U2<SubtleCryptoHashAlgorithm, string>> with get, set
@@ -14437,10 +14437,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiTextGenerationResponseFormat")>]
         type AiTextGenerationResponseFormat =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: D1SessionBookmark with get, set
 
         type ResponseInputMessageContentList = obj
@@ -14454,7 +14454,7 @@ module rec Cloudflare =
         type FileOptions =
             abstract lastModified: option<float> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<D1SessionBookmark> with get, set
 
         type AddEventListener =
@@ -14478,7 +14478,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseInputMessageItem")>]
         type ResponseInputMessageItem =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<ResponseInputMessageItem.Type> with get, set
 
             abstract status: option<ResponseInputMessageItem.Status> with get, set
@@ -14548,7 +14548,7 @@ module rec Cloudflare =
         type ComparisonFilter =
             abstract value: U3<string, float, bool> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ComparisonFilter.Type with get, set
 
             abstract key: D1SessionBookmark with get, set
@@ -14561,13 +14561,13 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseUsage")>]
         type ResponseUsage =
-            [<CompiledName("total_tokens")>]
+            [<EmitProperty("total_tokens")>]
             abstract totalTokens: float with get, set
 
-            [<CompiledName("output_tokens")>]
+            [<EmitProperty("output_tokens")>]
             abstract outputTokens: float with get, set
 
-            [<CompiledName("input_tokens")>]
+            [<EmitProperty("input_tokens")>]
             abstract inputTokens: float with get, set
 
         [<Import("@cloudflare/workers-types", "Without")>]
@@ -14600,32 +14600,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwq_32B_Messages")>]
         type AiCfQwenQwq32BMessages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
             abstract tools: option<Array<U2<AiCfQwenQwq32BMessages.Tools, AiCfQwenQwq32BMessages.Tools>>> with get, set
@@ -14746,7 +14746,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_M3_Input_QueryAnd_Contexts")>]
         type AiCfBaaiBgeM3InputQueryAndContexts =
-            [<CompiledName("truncate_inputs")>]
+            [<EmitProperty("truncate_inputs")>]
             abstract truncateInputs: option<bool> with get, set
 
             abstract contexts: Array<AiCfBaaiBgeM3InputQueryAndContexts.Contexts> with get, set
@@ -14848,7 +14848,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiAsyncBatchResponse")>]
         type AiAsyncBatchResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "ContentOptions")>]
@@ -14865,17 +14865,17 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchMultiSearchChunk")>]
         type AiSearchMultiSearchChunk =
-            [<CompiledName("instance_id")>]
+            [<EmitProperty("instance_id")>]
             abstract instanceId: D1SessionBookmark with get, set
 
-            [<CompiledName("scoring_details")>]
+            [<EmitProperty("scoring_details")>]
             abstract scoringDetails: option<AiSearchMultiSearchChunk.ScoringDetails> with get, set
 
             abstract item: AiSearchMultiSearchChunk.Item with get, set
             abstract text: D1SessionBookmark with get, set
             abstract score: float with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: D1SessionBookmark with get, set
 
             abstract id: D1SessionBookmark with get, set
@@ -14888,7 +14888,7 @@ module rec Cloudflare =
         type EmailMessage =
             abstract prototype: EmailMessage with get, set
 
-            [<CompiledName("to")>]
+            [<EmitProperty("to")>]
             abstract ``to``: D1SessionBookmark with get
 
             abstract from: D1SessionBookmark with get
@@ -14906,50 +14906,50 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseFailedEvent")>]
         type ResponseFailedEvent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseFailedEvent.Type with get, set
 
-            [<CompiledName("sequence_number")>]
+            [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
             abstract response: Typescript.Response with get, set
 
         [<Import("@cloudflare/workers-types", "ChatCompletionToolChoiceAllowedTools")>]
         type ChatCompletionToolChoiceAllowedTools =
-            [<CompiledName("allowed_tools")>]
+            [<EmitProperty("allowed_tools")>]
             abstract allowedTools: ChatCompletionToolChoiceAllowedTools.AllowedTools with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionToolChoiceAllowedTools.Type with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Mistralai_Mistral_Small_3_1_24B_Instruct_Prompt")>]
         type AiCfMistralaiMistralSmall3124BInstructPrompt =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
             abstract prompt: D1SessionBookmark with get, set
@@ -14966,32 +14966,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen2_5_Coder_32B_Instruct_Prompt")>]
         type AiCfQwenQwen25Coder32BInstructPrompt =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfQwenQwen25Coder32BInstructJSONMode> with get, set
 
             abstract lora: option<D1SessionBookmark> with get, set
@@ -15021,10 +15021,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionsStreamOptions")>]
         type ChatCompletionsStreamOptions =
-            [<CompiledName("include_obfuscation")>]
+            [<EmitProperty("include_obfuscation")>]
             abstract includeObfuscation: option<bool> with get, set
 
-            [<CompiledName("include_usage")>]
+            [<EmitProperty("include_usage")>]
             abstract includeUsage: option<bool> with get, set
 
         [<Import("@cloudflare/workers-types", "ContainerDirectorySnapshot")>]
@@ -15052,32 +15052,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast_Prompt")>]
         type AiCfMetaLlama3370BInstructFp8FastPrompt =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfMetaLlama3370BInstructFp8FastJSONMode> with get, set
 
             abstract lora: option<D1SessionBookmark> with get, set
@@ -15098,35 +15098,35 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_4_Scout_17B_16E_Instruct_Prompt")>]
         type AiCfMetaLlama4Scout17B16EInstructPrompt =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfMetaLlama4Scout17B16EInstructJSONMode> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
             abstract prompt: D1SessionBookmark with get, set
@@ -15161,7 +15161,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_AsyncResponse")>]
         type AiCfQwenQwen330BA3BFp8AsyncResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "VectorizeVectorMetadataFilter")>]
@@ -15195,7 +15195,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_M3_Input_Embedding_1")>]
         type AiCfBaaiBgeM3InputEmbedding1 =
-            [<CompiledName("truncate_inputs")>]
+            [<EmitProperty("truncate_inputs")>]
             abstract truncateInputs: option<bool> with get, set
 
             abstract text: U2<Array<D1SessionBookmark>, string> with get, set
@@ -15261,32 +15261,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Mistralai_Mistral_Small_3_1_24B_Instruct_Messages")>]
         type AiCfMistralaiMistralSmall3124BInstructMessages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
             abstract tools:
@@ -15306,7 +15306,7 @@ module rec Cloudflare =
         type WebSocketEventMap =
             abstract error: ErrorEvent with get, set
 
-            [<CompiledName("open")>]
+            [<EmitProperty("open")>]
             abstract ``open``: Event with get, set
 
             abstract message: MessageEvent<option<obj>> with get, set
@@ -15314,20 +15314,20 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiTranslationInput")>]
         type AiTranslationInput =
-            [<CompiledName("source_lang")>]
+            [<EmitProperty("source_lang")>]
             abstract sourceLang: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("target_lang")>]
+            [<EmitProperty("target_lang")>]
             abstract targetLang: D1SessionBookmark with get, set
 
             abstract text: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "AiSearchJobLog")>]
         type AiSearchJobLog =
-            [<CompiledName("created_at")>]
+            [<EmitProperty("created_at")>]
             abstract createdAt: float with get, set
 
-            [<CompiledName("message_type")>]
+            [<EmitProperty("message_type")>]
             abstract messageType: float with get, set
 
             abstract message: D1SessionBookmark with get, set
@@ -15351,73 +15351,73 @@ module rec Cloudflare =
         type ChatCompletionsCommonOptions =
             abstract functions: option<Array<FunctionDefinition>> with get, set
 
-            [<CompiledName("function_call")>]
+            [<EmitProperty("function_call")>]
             abstract functionCall:
                 option<U2<ChatCompletionsCommonOptions.FunctionCall, ChatCompletionsCommonOptions.FunctionCall>> with get, set
 
-            [<CompiledName("web_search_options")>]
+            [<EmitProperty("web_search_options")>]
             abstract webSearchOptions: option<WebSearchOptions> with get, set
 
             abstract user: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract tools: option<Array<ChatCompletionTool>> with get, set
 
-            [<CompiledName("tool_choice")>]
+            [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("stream_options")>]
+            [<EmitProperty("stream_options")>]
             abstract streamOptions: option<ChatCompletionsStreamOptions> with get, set
 
             abstract stream: option<bool> with get, set
             abstract store: option<bool> with get, set
             abstract stop: option<U2<Array<D1SessionBookmark>, string>> with get, set
 
-            [<CompiledName("service_tier")>]
+            [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ChatCompletionsCommonOptions.ServiceTier> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<ResponseFormat> with get, set
 
-            [<CompiledName("chat_template_kwargs")>]
+            [<EmitProperty("chat_template_kwargs")>]
             abstract chatTemplateKwargs: option<ChatTemplateKwargs> with get, set
 
-            [<CompiledName("reasoning_effort")>]
+            [<EmitProperty("reasoning_effort")>]
             abstract reasoningEffort: option<ChatCompletionsCommonOptions.ReasoningEffort> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
             abstract prediction: option<PredictionContent> with get, set
 
-            [<CompiledName("parallel_tool_calls")>]
+            [<EmitProperty("parallel_tool_calls")>]
             abstract parallelToolCalls: option<bool> with get, set
 
             abstract n: option<float> with get, set
             abstract modalities: option<Array<ChatCompletionsCommonOptions.Modalities>> with get, set
             abstract metadata: option<ChatCompletionsCommonOptions.Metadata> with get, set
 
-            [<CompiledName("max_completion_tokens")>]
+            [<EmitProperty("max_completion_tokens")>]
             abstract maxCompletionTokens: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
-            [<CompiledName("top_logprobs")>]
+            [<EmitProperty("top_logprobs")>]
             abstract topLogprobs: option<float> with get, set
 
             abstract logprobs: option<bool> with get, set
 
-            [<CompiledName("logit_bias")>]
+            [<EmitProperty("logit_bias")>]
             abstract logitBias: option<ChatCompletionsCommonOptions.LogitBias> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
             abstract audio: option<AudioParams> with get, set
@@ -15429,10 +15429,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseFormatJSONSchema")>]
         type ResponseFormatJSONSchema =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: ResponseFormatJSONSchema.JsonSchema with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseFormatJSONSchema.Type with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -15494,10 +15494,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatCompletionContentPartImage")>]
         type ChatCompletionContentPartImage =
-            [<CompiledName("image_url")>]
+            [<EmitProperty("image_url")>]
             abstract imageUrl: ChatCompletionContentPartImage.ImageUrl with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionContentPartImage.Type with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_M3_Output_Query")>]
@@ -15580,21 +15580,21 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseReasoningTextDoneEvent")>]
         type ResponseReasoningTextDoneEvent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseReasoningTextDoneEvent.Type with get, set
 
             abstract text: D1SessionBookmark with get, set
 
-            [<CompiledName("sequence_number")>]
+            [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
-            [<CompiledName("output_index")>]
+            [<EmitProperty("output_index")>]
             abstract outputIndex: float with get, set
 
-            [<CompiledName("item_id")>]
+            [<EmitProperty("item_id")>]
             abstract itemId: D1SessionBookmark with get, set
 
-            [<CompiledName("content_index")>]
+            [<EmitProperty("content_index")>]
             abstract contentIndex: float with get, set
 
         type ChatCompletionMessageToolCall = obj
@@ -15624,7 +15624,7 @@ module rec Cloudflare =
         type Tool =
             abstract description: option<string> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: Tool.Type with get, set
 
             abstract strict: option<bool> with get, set
@@ -15633,7 +15633,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseFormatText")>]
         type ResponseFormatText =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseFormatText.Type with get, set
 
         [<Import("@cloudflare/workers-types", "AlreadyUploadedError")>]
@@ -15680,12 +15680,12 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Meta_Llama_Guard_3_8B_Input")>]
         type AiCfMetaLlamaGuard38BInput =
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfMetaLlamaGuard38BInput.ResponseFormat> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract messages: Array<AiCfMetaLlamaGuard38BInput.Messages> with get, set
@@ -15709,27 +15709,27 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_JSON_Mode_1")>]
         type AiCfAisingaporeGemmaSeaLionV427BItJSONMode1 =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<AiCfAisingaporeGemmaSeaLionV427BItJSONMode1.Type> with get, set
 
         [<Import("@cloudflare/workers-types", "CompletionUsage")>]
         type CompletionUsage =
-            [<CompiledName("completion_tokens_details")>]
+            [<EmitProperty("completion_tokens_details")>]
             abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
 
-            [<CompiledName("prompt_tokens_details")>]
+            [<EmitProperty("prompt_tokens_details")>]
             abstract promptTokensDetails: option<PromptTokensDetails> with get, set
 
-            [<CompiledName("total_tokens")>]
+            [<EmitProperty("total_tokens")>]
             abstract totalTokens: float with get, set
 
-            [<CompiledName("completion_tokens")>]
+            [<EmitProperty("completion_tokens")>]
             abstract completionTokens: float with get, set
 
-            [<CompiledName("prompt_tokens")>]
+            [<EmitProperty("prompt_tokens")>]
             abstract promptTokens: float with get, set
 
         [<Import("@cloudflare/workers-types", "AnalyticsEngineDataset")>]
@@ -15780,7 +15780,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_M3_Input_QueryAnd_Contexts_1")>]
         type AiCfBaaiBgeM3InputQueryAndContexts1 =
-            [<CompiledName("truncate_inputs")>]
+            [<EmitProperty("truncate_inputs")>]
             abstract truncateInputs: option<bool> with get, set
 
             abstract contexts: Array<AiCfBaaiBgeM3InputQueryAndContexts1.Contexts> with get, set
@@ -15862,35 +15862,35 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "D1Meta")>]
         type D1Meta =
-            [<CompiledName("total_attempts")>]
+            [<EmitProperty("total_attempts")>]
             abstract totalAttempts: option<float> with get, set
 
             abstract timings: option<D1Meta.Timings> with get, set
 
-            [<CompiledName("served_by_primary")>]
+            [<EmitProperty("served_by_primary")>]
             abstract servedByPrimary: option<bool> with get, set
 
-            [<CompiledName("served_by_colo")>]
+            [<EmitProperty("served_by_colo")>]
             abstract servedByColo: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("served_by_region")>]
+            [<EmitProperty("served_by_region")>]
             abstract servedByRegion: option<D1SessionBookmark> with get, set
 
             abstract changes: float with get, set
 
-            [<CompiledName("changed_db")>]
+            [<EmitProperty("changed_db")>]
             abstract changedDb: bool with get, set
 
-            [<CompiledName("last_row_id")>]
+            [<EmitProperty("last_row_id")>]
             abstract lastRowId: float with get, set
 
-            [<CompiledName("rows_written")>]
+            [<EmitProperty("rows_written")>]
             abstract rowsWritten: float with get, set
 
-            [<CompiledName("rows_read")>]
+            [<EmitProperty("rows_read")>]
             abstract rowsRead: float with get, set
 
-            [<CompiledName("size_after")>]
+            [<EmitProperty("size_after")>]
             abstract sizeAfter: float with get, set
 
             abstract duration: float with get, set
@@ -15915,7 +15915,7 @@ module rec Cloudflare =
             abstract items: AiSearchItems with get
             abstract stream: AiSearchInstance.Stream with get, set
 
-            [<CompiledName("ai_search_options")>]
+            [<EmitProperty("ai_search_options")>]
             abstract aiSearchOptions: option<AiSearchOptions> with get, set
 
             abstract stream: option<bool> with get, set
@@ -15995,7 +15995,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiSearchChatCompletionsRequest")>]
         type AiSearchChatCompletionsRequest =
-            [<CompiledName("ai_search_options")>]
+            [<EmitProperty("ai_search_options")>]
             abstract aiSearchOptions: option<AiSearchOptions> with get, set
 
             abstract stream: option<bool> with get, set
@@ -16044,26 +16044,26 @@ module rec Cloudflare =
             abstract guidance: option<float> with get, set
             abstract strength: option<float> with get, set
 
-            [<CompiledName("num_steps")>]
+            [<EmitProperty("num_steps")>]
             abstract numSteps: option<float> with get, set
 
             abstract mask: option<AiSentenceSimilarityOutput> with get, set
 
-            [<CompiledName("image_b64")>]
+            [<EmitProperty("image_b64")>]
             abstract imageB64: option<D1SessionBookmark> with get, set
 
             abstract image: option<AiSentenceSimilarityOutput> with get, set
             abstract width: option<float> with get, set
             abstract height: option<float> with get, set
 
-            [<CompiledName("negative_prompt")>]
+            [<EmitProperty("negative_prompt")>]
             abstract negativePrompt: option<D1SessionBookmark> with get, set
 
             abstract prompt: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "Crypto"); AbstractClass; AllowNullLiteral>]
         type Crypto private () =
-            [<CompiledName("DigestStream")>]
+            [<EmitProperty("DigestStream")>]
             abstract digestStream: Crypto.DigestStream with get, set
 
             abstract subtle: SubtleCrypto with get
@@ -16177,59 +16177,59 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiGatewayLog")>]
         type AiGatewayLog =
-            [<CompiledName("created_at")>]
+            [<EmitProperty("created_at")>]
             abstract createdAt: Date with get, set
 
-            [<CompiledName("response_head_complete")>]
+            [<EmitProperty("response_head_complete")>]
             abstract responseHeadComplete: bool with get, set
 
-            [<CompiledName("response_head")>]
+            [<EmitProperty("response_head")>]
             abstract responseHead: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("response_size")>]
+            [<EmitProperty("response_size")>]
             abstract responseSize: float with get, set
 
-            [<CompiledName("request_head_complete")>]
+            [<EmitProperty("request_head_complete")>]
             abstract requestHeadComplete: bool with get, set
 
-            [<CompiledName("request_head")>]
+            [<EmitProperty("request_head")>]
             abstract requestHead: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("request_size")>]
+            [<EmitProperty("request_size")>]
             abstract requestSize: float with get, set
 
-            [<CompiledName("custom_cost")>]
+            [<EmitProperty("custom_cost")>]
             abstract customCost: option<bool> with get, set
 
             abstract cost: option<float> with get, set
             abstract step: option<float> with get, set
             abstract metadata: option<WebAssembly.ModuleImports> with get, set
 
-            [<CompiledName("tokens_out")>]
+            [<EmitProperty("tokens_out")>]
             abstract tokensOut: option<float> with get, set
 
-            [<CompiledName("tokens_in")>]
+            [<EmitProperty("tokens_in")>]
             abstract tokensIn: option<float> with get, set
 
             abstract cached: bool with get, set
             abstract success: bool with get, set
 
-            [<CompiledName("response_content_type")>]
+            [<EmitProperty("response_content_type")>]
             abstract responseContentType: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("status_code")>]
+            [<EmitProperty("status_code")>]
             abstract statusCode: float with get, set
 
-            [<CompiledName("request_content_type")>]
+            [<EmitProperty("request_content_type")>]
             abstract requestContentType: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("request_type")>]
+            [<EmitProperty("request_type")>]
             abstract requestType: option<D1SessionBookmark> with get, set
 
             abstract duration: float with get, set
             abstract path: D1SessionBookmark with get, set
 
-            [<CompiledName("model_type")>]
+            [<EmitProperty("model_type")>]
             abstract modelType: option<D1SessionBookmark> with get, set
 
             abstract model: D1SessionBookmark with get, set
@@ -16238,7 +16238,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen2_5_Coder_32B_Instruct_Output")>]
         type AiCfQwenQwen25Coder32BInstructOutput =
-            [<CompiledName("tool_calls")>]
+            [<EmitProperty("tool_calls")>]
             abstract toolCalls: option<Array<AiCfQwenQwen25Coder32BInstructOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfQwenQwen25Coder32BInstructOutput.Usage> with get, set
@@ -16302,20 +16302,20 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseInputImage")>]
         type ResponseInputImage =
-            [<CompiledName("image_url")>]
+            [<EmitProperty("image_url")>]
             abstract imageUrl: option<string> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseInputImage.Type with get, set
 
             abstract detail: ResponseInputImage.Detail with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_JSON_Mode")>]
         type AiCfQwenQwen330BA3BFp8JSONMode =
-            [<CompiledName("json_schema")>]
+            [<EmitProperty("json_schema")>]
             abstract jsonSchema: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<AiCfQwenQwen330BA3BFp8JSONMode.Type> with get, set
 
         [<Import("@cloudflare/workers-types", "DurableObjectStorage")>]
@@ -16371,32 +16371,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Messages_1")>]
         type AiCfAisingaporeGemmaSeaLionV427BItMessages1 =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiCfAisingaporeGemmaSeaLionV427BItJSONMode3> with get, set
 
             abstract tools:
@@ -16416,47 +16416,47 @@ module rec Cloudflare =
         type ChatCompletionCustomTool =
             abstract custom: ChatCompletionCustomTool.Custom with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionCustomTool.Type with get, set
 
         [<Import("@cloudflare/workers-types", "ResponsesInput")>]
         type ResponsesInput =
             abstract truncation: option<ResponsesInput.Truncation> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract tools: option<Array<Tool>> with get, set
 
-            [<CompiledName("tool_choice")>]
+            [<EmitProperty("tool_choice")>]
             abstract toolChoice: option<U2<ResponsesInput.ToolChoice, ResponsesInput.ToolChoice>> with get, set
 
             abstract text: option<ResponseTextConfig> with get, set
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("stream_options")>]
+            [<EmitProperty("stream_options")>]
             abstract streamOptions: option<ResponsesInput.StreamOptions> with get, set
 
             abstract stream: option<bool> with get, set
 
-            [<CompiledName("service_tier")>]
+            [<EmitProperty("service_tier")>]
             abstract serviceTier: option<ResponsesInput.ServiceTier> with get, set
 
-            [<CompiledName("safety_identifier")>]
+            [<EmitProperty("safety_identifier")>]
             abstract safetyIdentifier: option<D1SessionBookmark> with get, set
 
             abstract reasoning: option<ResponsesInput.Reasoning> with get, set
 
-            [<CompiledName("prompt_cache_key")>]
+            [<EmitProperty("prompt_cache_key")>]
             abstract promptCacheKey: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("previous_response_id")>]
+            [<EmitProperty("previous_response_id")>]
             abstract previousResponseId: option<string> with get, set
 
-            [<CompiledName("parallel_tool_calls")>]
+            [<EmitProperty("parallel_tool_calls")>]
             abstract parallelToolCalls: option<bool> with get, set
 
-            [<CompiledName("max_output_tokens")>]
+            [<EmitProperty("max_output_tokens")>]
             abstract maxOutputTokens: option<float> with get, set
 
             abstract instructions: option<string> with get, set
@@ -16479,15 +16479,15 @@ module rec Cloudflare =
         type UserMessageContentPart =
             abstract file: option<UserMessageContentPart.File> with get, set
 
-            [<CompiledName("input_audio")>]
+            [<EmitProperty("input_audio")>]
             abstract inputAudio: option<UserMessageContentPart.InputAudio> with get, set
 
-            [<CompiledName("image_url")>]
+            [<EmitProperty("image_url")>]
             abstract imageUrl: option<UserMessageContentPart.ImageUrl> with get, set
 
             abstract text: option<D1SessionBookmark> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: UserMessageContentPart.Type with get, set
 
         [<Import("@cloudflare/workers-types", "EmailEvent"); AbstractClass; AllowNullLiteral>]
@@ -16643,7 +16643,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Google_Gemma_3_12B_It_Output")>]
         type AiCfGoogleGemma312BItOutput =
-            [<CompiledName("tool_calls")>]
+            [<EmitProperty("tool_calls")>]
             abstract toolCalls: option<Array<AiCfGoogleGemma312BItOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfGoogleGemma312BItOutput.Usage> with get, set
@@ -16654,31 +16654,31 @@ module rec Cloudflare =
             abstract functions: option<Array<AiTextGenerationFunctionsInput>> with get, set
             abstract tools: option<U3<Array<AiTextGenerationToolInput>, Array<AiTextGenerationToolLegacyInput>, obj>> with get, set
 
-            [<CompiledName("response_format")>]
+            [<EmitProperty("response_format")>]
             abstract responseFormat: option<AiTextGenerationResponseFormat> with get, set
 
             abstract messages: option<Array<RoleScopedChatInput>> with get, set
 
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
@@ -16716,7 +16716,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwq_32B_Output")>]
         type AiCfQwenQwq32BOutput =
-            [<CompiledName("tool_calls")>]
+            [<EmitProperty("tool_calls")>]
             abstract toolCalls: option<Array<AiCfQwenQwq32BOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfQwenQwq32BOutput.Usage> with get, set
@@ -16729,17 +16729,17 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "PromptTokensDetails")>]
         type PromptTokensDetails =
-            [<CompiledName("audio_tokens")>]
+            [<EmitProperty("audio_tokens")>]
             abstract audioTokens: option<float> with get, set
 
-            [<CompiledName("cached_tokens")>]
+            [<EmitProperty("cached_tokens")>]
             abstract cachedTokens: option<float> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Leonardo_Lucid_Origin_Input")>]
         type AiCfLeonardoLucidOriginInput =
             abstract steps: option<float> with get, set
 
-            [<CompiledName("num_steps")>]
+            [<EmitProperty("num_steps")>]
             abstract numSteps: option<float> with get, set
 
             abstract width: option<float> with get, set
@@ -16789,10 +16789,10 @@ module rec Cloudflare =
         type StreamPublicDetails =
             abstract logo: option<string> with get, set
 
-            [<CompiledName("channel_link")>]
+            [<EmitProperty("channel_link")>]
             abstract channelLink: option<string> with get, set
 
-            [<CompiledName("share_link")>]
+            [<EmitProperty("share_link")>]
             abstract shareLink: option<string> with get, set
 
             abstract title: option<string> with get, set
@@ -16881,32 +16881,32 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Google_Gemma_3_12B_It_Messages")>]
         type AiCfGoogleGemma312BItMessages =
-            [<CompiledName("presence_penalty")>]
+            [<EmitProperty("presence_penalty")>]
             abstract presencePenalty: option<float> with get, set
 
-            [<CompiledName("frequency_penalty")>]
+            [<EmitProperty("frequency_penalty")>]
             abstract frequencyPenalty: option<float> with get, set
 
-            [<CompiledName("repetition_penalty")>]
+            [<EmitProperty("repetition_penalty")>]
             abstract repetitionPenalty: option<float> with get, set
 
             abstract seed: option<float> with get, set
 
-            [<CompiledName("top_k")>]
+            [<EmitProperty("top_k")>]
             abstract topK: option<float> with get, set
 
-            [<CompiledName("top_p")>]
+            [<EmitProperty("top_p")>]
             abstract topP: option<float> with get, set
 
             abstract temperature: option<float> with get, set
 
-            [<CompiledName("max_tokens")>]
+            [<EmitProperty("max_tokens")>]
             abstract maxTokens: option<float> with get, set
 
             abstract stream: option<bool> with get, set
             abstract raw: option<bool> with get, set
 
-            [<CompiledName("guided_json")>]
+            [<EmitProperty("guided_json")>]
             abstract guidedJson: option<obj> with get, set
 
             abstract tools: option<Array<U2<AiCfGoogleGemma312BItMessages.Tools, AiCfGoogleGemma312BItMessages.Tools>>> with get, set
@@ -16944,7 +16944,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Tracing")>]
         type Tracing =
-            [<CompiledName("Span")>]
+            [<EmitProperty("Span")>]
             abstract span: Tracing.Span with get, set
 
             abstract enterSpan:
@@ -16952,278 +16952,278 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiModels")>]
         type AiModels =
-            [<CompiledName("@cf/nvidia/nemotron-3-120b-a12b")>]
+            [<EmitProperty("@cf/nvidia/nemotron-3-120b-a12b")>]
             abstract cfNvidiaNemotron3120bA12b: BaseAiCfNvidiaNemotron3120BA12B with get, set
 
-            [<CompiledName("@cf/moonshotai/kimi-k2.5")>]
+            [<EmitProperty("@cf/moonshotai/kimi-k2.5")>]
             abstract cfMoonshotaiKimiK25: BaseAiCfMoonshotaiKimiK25 with get, set
 
-            [<CompiledName("@cf/zai-org/glm-4.7-flash")>]
+            [<EmitProperty("@cf/zai-org/glm-4.7-flash")>]
             abstract cfZaiOrgGlm47Flash: BaseAiCfZaiOrgGlm47Flash with get, set
 
-            [<CompiledName("@cf/black-forest-labs/flux-2-klein-9b")>]
+            [<EmitProperty("@cf/black-forest-labs/flux-2-klein-9b")>]
             abstract cfBlackForestLabsFlux2Klein9b: BaseAiCfBlackForestLabsFlux2Klein9B with get, set
 
-            [<CompiledName("@cf/black-forest-labs/flux-2-klein-4b")>]
+            [<EmitProperty("@cf/black-forest-labs/flux-2-klein-4b")>]
             abstract cfBlackForestLabsFlux2Klein4b: BaseAiCfBlackForestLabsFlux2Klein4B with get, set
 
-            [<CompiledName("@cf/black-forest-labs/flux-2-dev")>]
+            [<EmitProperty("@cf/black-forest-labs/flux-2-dev")>]
             abstract cfBlackForestLabsFlux2Dev: BaseAiCfBlackForestLabsFlux2Dev with get, set
 
-            [<CompiledName("@cf/deepgram/aura-2-es")>]
+            [<EmitProperty("@cf/deepgram/aura-2-es")>]
             abstract cfDeepgramAura2Es: BaseAiCfDeepgramAura2Es with get, set
 
-            [<CompiledName("@cf/deepgram/aura-2-en")>]
+            [<EmitProperty("@cf/deepgram/aura-2-en")>]
             abstract cfDeepgramAura2En: BaseAiCfDeepgramAura2En with get, set
 
-            [<CompiledName("@cf/deepgram/flux")>]
+            [<EmitProperty("@cf/deepgram/flux")>]
             abstract cfDeepgramFlux: BaseAiCfDeepgramFlux with get, set
 
-            [<CompiledName("@cf/pfnet/plamo-embedding-1b")>]
+            [<EmitProperty("@cf/pfnet/plamo-embedding-1b")>]
             abstract cfPfnetPlamoEmbedding1b: BaseAiCfPfnetPlamoEmbedding1B with get, set
 
-            [<CompiledName("@cf/aisingapore/gemma-sea-lion-v4-27b-it")>]
+            [<EmitProperty("@cf/aisingapore/gemma-sea-lion-v4-27b-it")>]
             abstract cfAisingaporeGemmaSeaLionV427bIt: BaseAiCfAisingaporeGemmaSeaLionV427BIt with get, set
 
-            [<CompiledName("@cf/ai4bharat/indictrans2-en-indic-1B")>]
+            [<EmitProperty("@cf/ai4bharat/indictrans2-en-indic-1B")>]
             abstract cfAi4bharatIndictrans2EnIndic1B: BaseAiCfAi4BharatIndictrans2EnIndic1B with get, set
 
-            [<CompiledName("@cf/deepgram/aura-1")>]
+            [<EmitProperty("@cf/deepgram/aura-1")>]
             abstract cfDeepgramAura1: BaseAiCfDeepgramAura1 with get, set
 
-            [<CompiledName("@cf/leonardo/lucid-origin")>]
+            [<EmitProperty("@cf/leonardo/lucid-origin")>]
             abstract cfLeonardoLucidOrigin: BaseAiCfLeonardoLucidOrigin with get, set
 
-            [<CompiledName("@cf/leonardo/phoenix-1.0")>]
+            [<EmitProperty("@cf/leonardo/phoenix-1.0")>]
             abstract cfLeonardoPhoenix10: BaseAiCfLeonardoPhoenix10 with get, set
 
-            [<CompiledName("@cf/openai/gpt-oss-20b")>]
+            [<EmitProperty("@cf/openai/gpt-oss-20b")>]
             abstract cfOpenaiGptOss20b: BaseAiCfOpenaiGptOss20B with get, set
 
-            [<CompiledName("@cf/openai/gpt-oss-120b")>]
+            [<EmitProperty("@cf/openai/gpt-oss-120b")>]
             abstract cfOpenaiGptOss120b: BaseAiCfOpenaiGptOss120B with get, set
 
-            [<CompiledName("@cf/pipecat-ai/smart-turn-v2")>]
+            [<EmitProperty("@cf/pipecat-ai/smart-turn-v2")>]
             abstract cfPipecatAiSmartTurnV2: BaseAiCfPipecatAiSmartTurnV2 with get, set
 
-            [<CompiledName("@cf/qwen/qwen3-embedding-0.6b")>]
+            [<EmitProperty("@cf/qwen/qwen3-embedding-0.6b")>]
             abstract cfQwenQwen3Embedding06b: BaseAiCfQwenQwen3Embedding06B with get, set
 
-            [<CompiledName("@cf/deepgram/nova-3")>]
+            [<EmitProperty("@cf/deepgram/nova-3")>]
             abstract cfDeepgramNova3: BaseAiCfDeepgramNova3 with get, set
 
-            [<CompiledName("@cf/qwen/qwen3-30b-a3b-fp8")>]
+            [<EmitProperty("@cf/qwen/qwen3-30b-a3b-fp8")>]
             abstract cfQwenQwen330bA3bFp8: BaseAiCfQwenQwen330BA3BFp8 with get, set
 
-            [<CompiledName("@cf/meta/llama-4-scout-17b-16e-instruct")>]
+            [<EmitProperty("@cf/meta/llama-4-scout-17b-16e-instruct")>]
             abstract cfMetaLlama4Scout17b16eInstruct: BaseAiCfMetaLlama4Scout17B16EInstruct with get, set
 
-            [<CompiledName("@cf/google/gemma-3-12b-it")>]
+            [<EmitProperty("@cf/google/gemma-3-12b-it")>]
             abstract cfGoogleGemma312bIt: BaseAiCfGoogleGemma312BIt with get, set
 
-            [<CompiledName("@cf/mistralai/mistral-small-3.1-24b-instruct")>]
+            [<EmitProperty("@cf/mistralai/mistral-small-3.1-24b-instruct")>]
             abstract cfMistralaiMistralSmall3124bInstruct: BaseAiCfMistralaiMistralSmall3124BInstruct with get, set
 
-            [<CompiledName("@cf/qwen/qwq-32b")>]
+            [<EmitProperty("@cf/qwen/qwq-32b")>]
             abstract cfQwenQwq32b: BaseAiCfQwenQwq32B with get, set
 
-            [<CompiledName("@cf/qwen/qwen2.5-coder-32b-instruct")>]
+            [<EmitProperty("@cf/qwen/qwen2.5-coder-32b-instruct")>]
             abstract cfQwenQwen25Coder32bInstruct: BaseAiCfQwenQwen25Coder32BInstruct with get, set
 
-            [<CompiledName("@cf/baai/bge-reranker-base")>]
+            [<EmitProperty("@cf/baai/bge-reranker-base")>]
             abstract cfBaaiBgeRerankerBase: BaseAiCfBaaiBgeRerankerBase with get, set
 
-            [<CompiledName("@cf/meta/llama-guard-3-8b")>]
+            [<EmitProperty("@cf/meta/llama-guard-3-8b")>]
             abstract cfMetaLlamaGuard38b: BaseAiCfMetaLlamaGuard38B with get, set
 
-            [<CompiledName("@cf/meta/llama-3.3-70b-instruct-fp8-fast")>]
+            [<EmitProperty("@cf/meta/llama-3.3-70b-instruct-fp8-fast")>]
             abstract cfMetaLlama3370bInstructFp8Fast: BaseAiCfMetaLlama3370BInstructFp8Fast with get, set
 
-            [<CompiledName("@cf/meta/llama-3.2-11b-vision-instruct")>]
+            [<EmitProperty("@cf/meta/llama-3.2-11b-vision-instruct")>]
             abstract cfMetaLlama3211bVisionInstruct: BaseAiCfMetaLlama3211BVisionInstruct with get, set
 
-            [<CompiledName("@cf/black-forest-labs/flux-1-schnell")>]
+            [<EmitProperty("@cf/black-forest-labs/flux-1-schnell")>]
             abstract cfBlackForestLabsFlux1Schnell: BaseAiCfBlackForestLabsFlux1Schnell with get, set
 
-            [<CompiledName("@cf/baai/bge-m3")>]
+            [<EmitProperty("@cf/baai/bge-m3")>]
             abstract cfBaaiBgeM3: BaseAiCfBaaiBgeM3 with get, set
 
-            [<CompiledName("@cf/openai/whisper-large-v3-turbo")>]
+            [<EmitProperty("@cf/openai/whisper-large-v3-turbo")>]
             abstract cfOpenaiWhisperLargeV3Turbo: BaseAiCfOpenaiWhisperLargeV3Turbo with get, set
 
-            [<CompiledName("@cf/openai/whisper-tiny-en")>]
+            [<EmitProperty("@cf/openai/whisper-tiny-en")>]
             abstract cfOpenaiWhisperTinyEn: BaseAiCfOpenaiWhisperTinyEn with get, set
 
-            [<CompiledName("@cf/unum/uform-gen2-qwen-500m")>]
+            [<EmitProperty("@cf/unum/uform-gen2-qwen-500m")>]
             abstract cfUnumUformGen2Qwen500m: BaseAiCfUnumUformGen2Qwen500M with get, set
 
-            [<CompiledName("@cf/baai/bge-large-en-v1.5")>]
+            [<EmitProperty("@cf/baai/bge-large-en-v1.5")>]
             abstract cfBaaiBgeLargeEnV15: BaseAiCfBaaiBgeLargeEnV15 with get, set
 
-            [<CompiledName("@cf/baai/bge-small-en-v1.5")>]
+            [<EmitProperty("@cf/baai/bge-small-en-v1.5")>]
             abstract cfBaaiBgeSmallEnV15: BaseAiCfBaaiBgeSmallEnV15 with get, set
 
-            [<CompiledName("@cf/meta/m2m100-1.2b")>]
+            [<EmitProperty("@cf/meta/m2m100-1.2b")>]
             abstract cfMetaM2m10012b: BaseAiCfMetaM2M10012B with get, set
 
-            [<CompiledName("@cf/openai/whisper")>]
+            [<EmitProperty("@cf/openai/whisper")>]
             abstract cfOpenaiWhisper: BaseAiCfOpenaiWhisper with get, set
 
-            [<CompiledName("@cf/baai/bge-base-en-v1.5")>]
+            [<EmitProperty("@cf/baai/bge-base-en-v1.5")>]
             abstract cfBaaiBgeBaseEnV15: BaseAiCfBaaiBgeBaseEnV15 with get, set
 
-            [<CompiledName("@cf/llava-hf/llava-1.5-7b-hf")>]
+            [<EmitProperty("@cf/llava-hf/llava-1.5-7b-hf")>]
             abstract cfLlavaHfLlava157bHf: BaseAiImageToText with get, set
 
-            [<CompiledName("@cf/facebook/bart-large-cnn")>]
+            [<EmitProperty("@cf/facebook/bart-large-cnn")>]
             abstract cfFacebookBartLargeCnn: BaseAiSummarization with get, set
 
-            [<CompiledName("@cf/ibm-granite/granite-4.0-h-micro")>]
+            [<EmitProperty("@cf/ibm-granite/granite-4.0-h-micro")>]
             abstract cfIbmGraniteGranite40HMicro: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b")>]
+            [<EmitProperty("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b")>]
             abstract cfDeepseekAiDeepseekR1DistillQwen32b: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta/llama-3.2-1b-instruct")>]
+            [<EmitProperty("@cf/meta/llama-3.2-1b-instruct")>]
             abstract cfMetaLlama321bInstruct: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta/llama-3.2-3b-instruct")>]
+            [<EmitProperty("@cf/meta/llama-3.2-3b-instruct")>]
             abstract cfMetaLlama323bInstruct: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta/llama-3.1-8b-instruct-awq")>]
+            [<EmitProperty("@cf/meta/llama-3.1-8b-instruct-awq")>]
             abstract cfMetaLlama318bInstructAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta/llama-3.1-8b-instruct-fp8")>]
+            [<EmitProperty("@cf/meta/llama-3.1-8b-instruct-fp8")>]
             abstract cfMetaLlama318bInstructFp8: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta/llama-3-8b-instruct-awq")>]
+            [<EmitProperty("@cf/meta/llama-3-8b-instruct-awq")>]
             abstract cfMetaLlama38bInstructAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/fblgit/una-cybertron-7b-v2-bf16")>]
+            [<EmitProperty("@cf/fblgit/una-cybertron-7b-v2-bf16")>]
             abstract cfFblgitUnaCybertron7bV2Bf16: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta/llama-3-8b-instruct")>]
+            [<EmitProperty("@cf/meta/llama-3-8b-instruct")>]
             abstract cfMetaLlama38bInstruct: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/mistral/mistral-7b-instruct-v0.2")>]
+            [<EmitProperty("@hf/mistral/mistral-7b-instruct-v0.2")>]
             abstract hfMistralMistral7bInstructV02: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/google/gemma-7b-it-lora")>]
+            [<EmitProperty("@cf/google/gemma-7b-it-lora")>]
             abstract cfGoogleGemma7bItLora: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/google/gemma-2b-it-lora")>]
+            [<EmitProperty("@cf/google/gemma-2b-it-lora")>]
             abstract cfGoogleGemma2bItLora: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta-llama/llama-2-7b-chat-hf-lora")>]
+            [<EmitProperty("@cf/meta-llama/llama-2-7b-chat-hf-lora")>]
             abstract cfMetaLlamaLlama27bChatHfLora: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/google/gemma-7b-it")>]
+            [<EmitProperty("@hf/google/gemma-7b-it")>]
             abstract hfGoogleGemma7bIt: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/nexusflow/starling-lm-7b-beta")>]
+            [<EmitProperty("@hf/nexusflow/starling-lm-7b-beta")>]
             abstract hfNexusflowStarlingLm7bBeta: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/nousresearch/hermes-2-pro-mistral-7b")>]
+            [<EmitProperty("@hf/nousresearch/hermes-2-pro-mistral-7b")>]
             abstract hfNousresearchHermes2ProMistral7b: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/mistral/mistral-7b-instruct-v0.2-lora")>]
+            [<EmitProperty("@cf/mistral/mistral-7b-instruct-v0.2-lora")>]
             abstract cfMistralMistral7bInstructV02Lora: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/qwen/qwen1.5-1.8b-chat")>]
+            [<EmitProperty("@cf/qwen/qwen1.5-1.8b-chat")>]
             abstract cfQwenQwen1518bChat: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/microsoft/phi-2")>]
+            [<EmitProperty("@cf/microsoft/phi-2")>]
             abstract cfMicrosoftPhi2: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/tinyllama/tinyllama-1.1b-chat-v1.0")>]
+            [<EmitProperty("@cf/tinyllama/tinyllama-1.1b-chat-v1.0")>]
             abstract cfTinyllamaTinyllama11bChatV10: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/qwen/qwen1.5-14b-chat-awq")>]
+            [<EmitProperty("@cf/qwen/qwen1.5-14b-chat-awq")>]
             abstract cfQwenQwen1514bChatAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/qwen/qwen1.5-7b-chat-awq")>]
+            [<EmitProperty("@cf/qwen/qwen1.5-7b-chat-awq")>]
             abstract cfQwenQwen157bChatAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/qwen/qwen1.5-0.5b-chat")>]
+            [<EmitProperty("@cf/qwen/qwen1.5-0.5b-chat")>]
             abstract cfQwenQwen1505bChat: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/thebloke/discolm-german-7b-v1-awq")>]
+            [<EmitProperty("@cf/thebloke/discolm-german-7b-v1-awq")>]
             abstract cfTheblokeDiscolmGerman7bV1Awq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/tiiuae/falcon-7b-instruct")>]
+            [<EmitProperty("@cf/tiiuae/falcon-7b-instruct")>]
             abstract cfTiiuaeFalcon7bInstruct: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/openchat/openchat-3.5-0106")>]
+            [<EmitProperty("@cf/openchat/openchat-3.5-0106")>]
             abstract cfOpenchatOpenchat350106: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/defog/sqlcoder-7b-2")>]
+            [<EmitProperty("@cf/defog/sqlcoder-7b-2")>]
             abstract cfDefogSqlcoder7b2: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/deepseek-ai/deepseek-math-7b-instruct")>]
+            [<EmitProperty("@cf/deepseek-ai/deepseek-math-7b-instruct")>]
             abstract cfDeepseekAiDeepseekMath7bInstruct: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/thebloke/deepseek-coder-6.7b-instruct-awq")>]
+            [<EmitProperty("@hf/thebloke/deepseek-coder-6.7b-instruct-awq")>]
             abstract hfTheblokeDeepseekCoder67bInstructAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/thebloke/deepseek-coder-6.7b-base-awq")>]
+            [<EmitProperty("@hf/thebloke/deepseek-coder-6.7b-base-awq")>]
             abstract hfTheblokeDeepseekCoder67bBaseAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/thebloke/neural-chat-7b-v3-1-awq")>]
+            [<EmitProperty("@hf/thebloke/neural-chat-7b-v3-1-awq")>]
             abstract hfTheblokeNeuralChat7bV31Awq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/thebloke/openhermes-2.5-mistral-7b-awq")>]
+            [<EmitProperty("@hf/thebloke/openhermes-2.5-mistral-7b-awq")>]
             abstract hfTheblokeOpenhermes25Mistral7bAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/thebloke/zephyr-7b-beta-awq")>]
+            [<EmitProperty("@hf/thebloke/zephyr-7b-beta-awq")>]
             abstract hfTheblokeZephyr7bBetaAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/thebloke/mistral-7b-instruct-v0.1-awq")>]
+            [<EmitProperty("@hf/thebloke/mistral-7b-instruct-v0.1-awq")>]
             abstract hfTheblokeMistral7bInstructV01Awq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@hf/thebloke/llama-2-13b-chat-awq")>]
+            [<EmitProperty("@hf/thebloke/llama-2-13b-chat-awq")>]
             abstract hfTheblokeLlama213bChatAwq: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta/llama-2-7b-chat-fp16")>]
+            [<EmitProperty("@cf/meta/llama-2-7b-chat-fp16")>]
             abstract cfMetaLlama27bChatFp16: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/mistral/mistral-7b-instruct-v0.1")>]
+            [<EmitProperty("@cf/mistral/mistral-7b-instruct-v0.1")>]
             abstract cfMistralMistral7bInstructV01: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/meta/llama-2-7b-chat-int8")>]
+            [<EmitProperty("@cf/meta/llama-2-7b-chat-int8")>]
             abstract cfMetaLlama27bChatInt8: BaseAiTextGeneration with get, set
 
-            [<CompiledName("@cf/microsoft/resnet-50")>]
+            [<EmitProperty("@cf/microsoft/resnet-50")>]
             abstract cfMicrosoftResnet50: BaseAiImageClassification with get, set
 
-            [<CompiledName("@cf/google/embeddinggemma-300m")>]
+            [<EmitProperty("@cf/google/embeddinggemma-300m")>]
             abstract cfGoogleEmbeddinggemma300m: BaseAiTextEmbeddings with get, set
 
-            [<CompiledName("@cf/myshell-ai/melotts")>]
+            [<EmitProperty("@cf/myshell-ai/melotts")>]
             abstract cfMyshellAiMelotts: BaseAiTextToSpeech with get, set
 
-            [<CompiledName("@cf/bytedance/stable-diffusion-xl-lightning")>]
+            [<EmitProperty("@cf/bytedance/stable-diffusion-xl-lightning")>]
             abstract cfBytedanceStableDiffusionXlLightning: BaseAiTextToImage with get, set
 
-            [<CompiledName("@cf/lykon/dreamshaper-8-lcm")>]
+            [<EmitProperty("@cf/lykon/dreamshaper-8-lcm")>]
             abstract cfLykonDreamshaper8Lcm: BaseAiTextToImage with get, set
 
-            [<CompiledName("@cf/runwayml/stable-diffusion-v1-5-img2img")>]
+            [<EmitProperty("@cf/runwayml/stable-diffusion-v1-5-img2img")>]
             abstract cfRunwaymlStableDiffusionV15Img2img: BaseAiTextToImage with get, set
 
-            [<CompiledName("@cf/runwayml/stable-diffusion-v1-5-inpainting")>]
+            [<EmitProperty("@cf/runwayml/stable-diffusion-v1-5-inpainting")>]
             abstract cfRunwaymlStableDiffusionV15Inpainting: BaseAiTextToImage with get, set
 
-            [<CompiledName("@cf/stabilityai/stable-diffusion-xl-base-1.0")>]
+            [<EmitProperty("@cf/stabilityai/stable-diffusion-xl-base-1.0")>]
             abstract cfStabilityaiStableDiffusionXlBase10: BaseAiTextToImage with get, set
 
-            [<CompiledName("@cf/huggingface/distilbert-sst-2-int8")>]
+            [<EmitProperty("@cf/huggingface/distilbert-sst-2-int8")>]
             abstract cfHuggingfaceDistilbertSst2Int8: BaseAiTextClassification with get, set
 
         type VectorFloatArray = U2<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>>
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_AsyncResponse")>]
         type AiCfAisingaporeGemmaSeaLionV427BItAsyncResponse =
-            [<CompiledName("request_id")>]
+            [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
 
         [<Import("@cloudflare/workers-types", "ImageTransformationOutputOptions")>]
@@ -17232,10 +17232,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ChatTemplateKwargs")>]
         type ChatTemplateKwargs =
-            [<CompiledName("clear_thinking")>]
+            [<EmitProperty("clear_thinking")>]
             abstract clearThinking: option<bool> with get, set
 
-            [<CompiledName("enable_thinking")>]
+            [<EmitProperty("enable_thinking")>]
             abstract enableThinking: option<bool> with get, set
 
         [<Import("@cloudflare/workers-types", "CompressionStream"); AbstractClass; AllowNullLiteral>]
@@ -17268,13 +17268,13 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "UsageTags")>]
         type UsageTags =
-            [<CompiledName("total_tokens")>]
+            [<EmitProperty("total_tokens")>]
             abstract totalTokens: float with get, set
 
-            [<CompiledName("completion_tokens")>]
+            [<EmitProperty("completion_tokens")>]
             abstract completionTokens: float with get, set
 
-            [<CompiledName("prompt_tokens")>]
+            [<EmitProperty("prompt_tokens")>]
             abstract promptTokens: float with get, set
 
         type AiCfMetaLlama4Scout17B16EInstructInput = obj
@@ -17284,17 +17284,17 @@ module rec Cloudflare =
             abstract vtt: option<D1SessionBookmark> with get, set
             abstract segments: option<Array<AiCfOpenaiWhisperLargeV3TurboOutput.Segments>> with get, set
 
-            [<CompiledName("word_count")>]
+            [<EmitProperty("word_count")>]
             abstract wordCount: option<float> with get, set
 
             abstract text: D1SessionBookmark with get, set
 
-            [<CompiledName("transcription_info")>]
+            [<EmitProperty("transcription_info")>]
             abstract transcriptionInfo: option<AiCfOpenaiWhisperLargeV3TurboOutput.TranscriptionInfo> with get, set
 
         [<Import("@cloudflare/workers-types", "StreamOptions")>]
         type StreamOptions =
-            [<CompiledName("include_obfuscation")>]
+            [<EmitProperty("include_obfuscation")>]
             abstract includeObfuscation: option<bool> with get, set
 
         [<Import("@cloudflare/workers-types", "ExportedHandlerTraceHandler")>]
@@ -17304,7 +17304,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Mistralai_Mistral_Small_3_1_24B_Instruct_Output")>]
         type AiCfMistralaiMistralSmall3124BInstructOutput =
-            [<CompiledName("tool_calls")>]
+            [<EmitProperty("tool_calls")>]
             abstract toolCalls: option<Array<AiCfMistralaiMistralSmall3124BInstructOutput.ToolCalls>> with get, set
 
             abstract usage: option<AiCfMistralaiMistralSmall3124BInstructOutput.Usage> with get, set
@@ -17377,13 +17377,13 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseOutputItemDoneEvent")>]
         type ResponseOutputItemDoneEvent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseOutputItemDoneEvent.Type with get, set
 
-            [<CompiledName("sequence_number")>]
+            [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
-            [<CompiledName("output_index")>]
+            [<EmitProperty("output_index")>]
             abstract outputIndex: float with get, set
 
             abstract item: ResponseOutputItem with get, set
@@ -17398,10 +17398,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "AiTextGenerationToolInput")>]
         type AiTextGenerationToolInput =
-            [<CompiledName("function")>]
+            [<EmitProperty("function")>]
             abstract ``function``: AiTextGenerationToolInput.Function with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: U2<AiTextGenerationToolInput.Type, AiTextGenerationToolInput.Type> with get, set
 
         [<Import("@cloudflare/workers-types", "AiSearchItemChunksParams")>]
@@ -17413,7 +17413,7 @@ module rec Cloudflare =
         type KVNamespaceGetOptions<'Type> =
             abstract cacheTtl: option<float> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: 'Type with get, set
 
         type D1SessionBookmark = obj
@@ -17473,7 +17473,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ResponseInputTextContent")>]
         type ResponseInputTextContent =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseInputTextContent.Type with get, set
 
             abstract text: D1SessionBookmark with get, set
@@ -17506,12 +17506,12 @@ module rec Cloudflare =
             abstract errors: option<Array<AiSearchMultiSearchError>> with get, set
             abstract chunks: Array<AiSearchMultiSearchChunk> with get, set
 
-            [<CompiledName("search_query")>]
+            [<EmitProperty("search_query")>]
             abstract searchQuery: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "ResponseContentReasoningText")>]
         type ResponseContentReasoningText =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseContentReasoningText.Type with get, set
 
             abstract text: D1SessionBookmark with get, set

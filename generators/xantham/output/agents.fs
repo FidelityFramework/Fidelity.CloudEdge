@@ -63,7 +63,7 @@ module rec Agents =
             | [<CompiledName("reasoning")>] Reasoning
 
         type Input =
-            [<CompiledName("__@unscopables@2222")>]
+            [<EmitProperty("__@unscopables@2222")>]
             abstract _unscopables2222:
                 option<
                     U10<
@@ -417,7 +417,7 @@ module rec Agents =
                      >
                  > with get, set
 
-            [<CompiledName("__@iterator@494")>]
+            [<EmitProperty("__@iterator@494")>]
             abstract _iterator494:
                 option<
                     U10<
@@ -771,7 +771,7 @@ module rec Agents =
                      >
                  > with get, set
 
-            [<CompiledName("with")>]
+            [<EmitProperty("with")>]
             abstract ``with``:
                 option<
                     U10<
@@ -11391,123 +11391,123 @@ module rec Agents =
 
     module rec DurableObjectOAuthClientProvider =
         type ClientMetadata =
-            [<CompiledName("software_statement")>]
+            [<EmitProperty("software_statement")>]
             abstract softwareStatement: option<string> with get, set
 
-            [<CompiledName("software_version")>]
+            [<EmitProperty("software_version")>]
             abstract softwareVersion: option<string> with get, set
 
-            [<CompiledName("software_id")>]
+            [<EmitProperty("software_id")>]
             abstract softwareId: option<string> with get, set
 
             abstract jwks: option<AgentContext> with get, set
 
-            [<CompiledName("jwks_uri")>]
+            [<EmitProperty("jwks_uri")>]
             abstract jwksUri: option<string> with get, set
 
-            [<CompiledName("policy_uri")>]
+            [<EmitProperty("policy_uri")>]
             abstract policyUri: option<string> with get, set
 
-            [<CompiledName("tos_uri")>]
+            [<EmitProperty("tos_uri")>]
             abstract tosUri: option<string> with get, set
 
             abstract contacts: option<Array<string>> with get, set
             abstract scope: option<string> with get, set
 
-            [<CompiledName("logo_uri")>]
+            [<EmitProperty("logo_uri")>]
             abstract logoUri: option<string> with get, set
 
-            [<CompiledName("client_uri")>]
+            [<EmitProperty("client_uri")>]
             abstract clientUri: option<string> with get, set
 
-            [<CompiledName("client_name")>]
+            [<EmitProperty("client_name")>]
             abstract clientName: option<string> with get, set
 
-            [<CompiledName("response_types")>]
+            [<EmitProperty("response_types")>]
             abstract responseTypes: option<Array<string>> with get, set
 
-            [<CompiledName("grant_types")>]
+            [<EmitProperty("grant_types")>]
             abstract grantTypes: option<Array<string>> with get, set
 
-            [<CompiledName("token_endpoint_auth_method")>]
+            [<EmitProperty("token_endpoint_auth_method")>]
             abstract tokenEndpointAuthMethod: option<string> with get, set
 
-            [<CompiledName("redirect_uris")>]
+            [<EmitProperty("redirect_uris")>]
             abstract redirectUris: Array<string> with get, set
 
         type Tokens =
-            [<CompiledName("refresh_token")>]
+            [<EmitProperty("refresh_token")>]
             abstract refreshToken: option<string> with get, set
 
             abstract scope: option<string> with get, set
 
-            [<CompiledName("expires_in")>]
+            [<EmitProperty("expires_in")>]
             abstract expiresIn: option<float> with get, set
 
-            [<CompiledName("id_token")>]
+            [<EmitProperty("id_token")>]
             abstract idToken: option<string> with get, set
 
-            [<CompiledName("token_type")>]
+            [<EmitProperty("token_type")>]
             abstract tokenType: string with get, set
 
-            [<CompiledName("access_token")>]
+            [<EmitProperty("access_token")>]
             abstract accessToken: string with get, set
 
         type ClientInformation =
-            [<CompiledName("client_secret_expires_at")>]
+            [<EmitProperty("client_secret_expires_at")>]
             abstract clientSecretExpiresAt: option<float> with get, set
 
-            [<CompiledName("client_id_issued_at")>]
+            [<EmitProperty("client_id_issued_at")>]
             abstract clientIdIssuedAt: option<float> with get, set
 
-            [<CompiledName("client_secret")>]
+            [<EmitProperty("client_secret")>]
             abstract clientSecret: option<string> with get, set
 
-            [<CompiledName("software_statement")>]
+            [<EmitProperty("software_statement")>]
             abstract softwareStatement: option<string> with get, set
 
-            [<CompiledName("software_version")>]
+            [<EmitProperty("software_version")>]
             abstract softwareVersion: option<string> with get, set
 
-            [<CompiledName("software_id")>]
+            [<EmitProperty("software_id")>]
             abstract softwareId: option<string> with get, set
 
             abstract jwks: option<AgentContext> with get, set
 
-            [<CompiledName("jwks_uri")>]
+            [<EmitProperty("jwks_uri")>]
             abstract jwksUri: option<string> with get, set
 
-            [<CompiledName("policy_uri")>]
+            [<EmitProperty("policy_uri")>]
             abstract policyUri: option<string> with get, set
 
-            [<CompiledName("tos_uri")>]
+            [<EmitProperty("tos_uri")>]
             abstract tosUri: option<string> with get, set
 
             abstract contacts: option<Array<string>> with get, set
             abstract scope: option<string> with get, set
 
-            [<CompiledName("logo_uri")>]
+            [<EmitProperty("logo_uri")>]
             abstract logoUri: option<string> with get, set
 
-            [<CompiledName("client_uri")>]
+            [<EmitProperty("client_uri")>]
             abstract clientUri: option<string> with get, set
 
-            [<CompiledName("client_name")>]
+            [<EmitProperty("client_name")>]
             abstract clientName: option<string> with get, set
 
-            [<CompiledName("response_types")>]
+            [<EmitProperty("response_types")>]
             abstract responseTypes: option<Array<string>> with get, set
 
-            [<CompiledName("grant_types")>]
+            [<EmitProperty("grant_types")>]
             abstract grantTypes: option<Array<string>> with get, set
 
-            [<CompiledName("token_endpoint_auth_method")>]
+            [<EmitProperty("token_endpoint_auth_method")>]
             abstract tokenEndpointAuthMethod: option<string> with get, set
 
-            [<CompiledName("client_id")>]
+            [<EmitProperty("client_id")>]
             abstract clientId: string with get, set
 
-            [<CompiledName("redirect_uris")>]
+            [<EmitProperty("redirect_uris")>]
             abstract redirectUris: Array<string> with get, set
 
     module rec GetAgentByName =
@@ -11528,7 +11528,7 @@ module rec Agents =
                             abstract required: option<Array<string>> with get, set
                             abstract properties: option<InputSchema.Properties> with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: InputSchema.Type with get, set
 
             module rec GetMcpServers =
@@ -11738,7 +11738,7 @@ module rec Agents =
     type StateUpdateMessage =
         abstract state: option<obj> with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: StateUpdateMessage.Type.CF_AGENT_STATE with get, set
 
     [<Import("agents", "SqlError"); AbstractClass; AllowNullLiteral>]
@@ -11783,7 +11783,7 @@ module rec Agents =
     type MCPServerMessage =
         abstract mcp: ``.``.AgentToolTypesDSteYkkSJs.MCPServersState with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: MCPServerMessage.Type.CF_AGENT_MCP_SERVERS with get, set
 
     type RouteSubAgentRequest =
@@ -11977,7 +11977,7 @@ module rec Ai =
             abstract input: option<obj> with get, set
 
         type InputSchema =
-            [<CompiledName("[schemaSymbol]")>]
+            [<EmitProperty("[schemaSymbol]")>]
             abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
             abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
@@ -11998,7 +11998,7 @@ module rec Ai =
                     abstract providerMetadata: option<AiSdk.Provider.SharedV3ProviderMetadata> with get, set
                     abstract text: string with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: Content.Type with get, set
 
                     abstract Item: key: string -> option<Agents.AgentContext>
@@ -12007,7 +12007,7 @@ module rec Ai =
             abstract toolCall: U2<Content.ToolCall, proptypekey<Content.ToolCall, keyof<'TOOLS>>> with get, set
             abstract approvalId: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: Content.Type with get, set
 
             abstract providerMetadata: option<AiSdk.Provider.SharedV3ProviderMetadata> with get, set
@@ -12143,7 +12143,7 @@ module rec Ai =
                      >
                  > with get
 
-            [<CompiledName("experimental_context")>]
+            [<EmitProperty("experimental_context")>]
             abstract experimentalContext: option<obj> with get
 
             abstract metadata: option<Steps.Metadata> with get
@@ -12344,7 +12344,7 @@ module rec Ai =
                      >
                  > with get
 
-            [<CompiledName("experimental_context")>]
+            [<EmitProperty("experimental_context")>]
             abstract experimentalContext: option<obj> with get
 
             abstract metadata: option<Steps.Metadata> with get
@@ -12390,7 +12390,7 @@ module rec Ai =
                         abstract delta: string with get, set
                         abstract id: string with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Stream.Type with get, set
 
                         abstract title: option<string> with get, set
@@ -12495,7 +12495,7 @@ module rec Ai =
             abstract id: string with get, set
             abstract sourceType: CreateElementStreamTransform.SourceType with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: CreateElementStreamTransform.Type with get, set
 
             abstract filename: option<string> with get, set
@@ -12520,7 +12520,7 @@ module rec Ai =
             abstract name: option<string> with get, set
             abstract schema: option<Agents.AgentContext> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ResponseFormat.Type with get, set
 
     module rec StaticToolCall =
@@ -12558,7 +12558,7 @@ module rec Ai =
                     abstract providerMetadata: option<AiSdk.Provider.SharedV3ProviderMetadata> with get, set
                     abstract text: string with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: Content.Type with get, set
 
                     abstract Item: key: string -> option<Agents.AgentContext>
@@ -12571,7 +12571,7 @@ module rec Ai =
                             abstract toolCallId: string with get, set
                             abstract approvalId: string with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: Content.Type with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -12637,7 +12637,7 @@ module rec Ai =
             abstract toolName: string with get, set
             abstract toolCallId: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ToolResults.Type with get, set
 
         type Vocabulary =
@@ -12654,7 +12654,7 @@ module rec Ai =
                                     abstract toolCallId: string with get, set
                                     abstract approvalId: string with get, set
 
-                                    [<CompiledName("type")>]
+                                    [<EmitProperty("type")>]
                                     abstract ``type``: Content.Type with get, set
 
                     type Messages =
@@ -12741,7 +12741,7 @@ module rec Ai =
                          >
                      > with get
 
-                [<CompiledName("experimental_context")>]
+                [<EmitProperty("experimental_context")>]
                 abstract experimentalContext: option<obj> with get
 
                 abstract metadata: option<Steps.Metadata> with get
@@ -12887,7 +12887,7 @@ module rec Ai =
             abstract toolName: string with get, set
             abstract toolCallId: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ToolResults.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -12900,7 +12900,7 @@ module rec Ai =
             abstract Item: key: string -> option<Agents.AgentContext>
 
         type Parts =
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: Parts.Type with get, set
 
             abstract providerMetadata: option<AiSdk.Provider.SharedV3ProviderMetadata> with get, set
@@ -12932,7 +12932,7 @@ module rec Ai =
         abstract toolName: string with get, set
         abstract toolCallId: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: DynamicToolError.Type with get, set
 
     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -12940,7 +12940,7 @@ module rec Ai =
 
     [<Import("ai", "StepStartUIPart")>]
     type StepStartUIPart =
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: StepStartUIPart.Type with get, set
 
     type TypedToolResult<'TOOLS when 'TOOLS :> ToolSet> =
@@ -12988,7 +12988,7 @@ module rec Ai =
         abstract state: option<ReasoningUIPart.State> with get, set
         abstract text: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: ReasoningUIPart.Type with get, set
 
     type ToolChoice<'TOOLS when 'TOOLS :> ToolChoice> = U2<ToolChoice, ToolChoice>
@@ -13347,7 +13347,7 @@ module rec Ai =
         abstract providerExecuted: option<bool> with get, set
         abstract toolCallId: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: BaseToolCall.Type with get, set
 
     [<Import("ai", "FileUIPart")>]
@@ -13357,14 +13357,14 @@ module rec Ai =
         abstract filename: option<string> with get, set
         abstract mediaType: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: FileUIPart.Type with get, set
 
     [<Import("ai", "OnStepStartEvent")>]
     type OnStepStartEvent<'INCLUDE, 'OUTPUT, 'TOOLS
         when 'OUTPUT :> Output<option<Agents.AgentContext>, option<Agents.AgentContext>, option<Agents.AgentContext>>
         and 'TOOLS :> ToolSet> =
-        [<CompiledName("experimental_context")>]
+        [<EmitProperty("experimental_context")>]
         abstract experimentalContext: option<obj> with get
 
         abstract metadata: option<OnStepStartEvent.Metadata> with get
@@ -13600,17 +13600,17 @@ module rec Ai =
         abstract state: option<TextUIPart.State> with get, set
         abstract text: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: TextUIPart.Type with get, set
 
     type AsUITool =
-        [<CompiledName("~standard")>]
+        [<EmitProperty("~standard")>]
         abstract ``~standard``: StandardSchema.Spec.StandardJSONSchemaV1.Props<'Input, 'Output> with get
 
-        [<CompiledName("~standard")>]
+        [<EmitProperty("~standard")>]
         abstract ``~standard``: StandardSchema.Spec.StandardSchemaV1.Props<'Input, 'Output> with get
 
-        [<CompiledName("experimental_context")>]
+        [<EmitProperty("experimental_context")>]
         abstract experimentalContext: option<obj> with get, set
 
         abstract abortSignal: option<AbortSignal> with get, set
@@ -13619,7 +13619,7 @@ module rec Ai =
         abstract input: U2<option<obj>, 'INPUT> with get, set
         abstract inputTextDelta: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: option<AsUITool.Type> with get, set
 
         abstract outputSchema:
@@ -13667,7 +13667,7 @@ module rec Ai =
         abstract title: option<string> with get, set
         abstract description: option<string> with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: AsUITool.Type with get, set
 
         abstract supportsDeferredResults: option<bool> with get, set
@@ -13871,7 +13871,7 @@ module rec Ai =
         abstract metadata: option<OnFinishEvent.Metadata> with get
         abstract functionId: option<string> with get
 
-        [<CompiledName("experimental_context")>]
+        [<EmitProperty("experimental_context")>]
         abstract experimentalContext: option<obj> with get, set
 
         abstract totalUsage: LanguageModelUsage with get
@@ -13916,7 +13916,7 @@ module rec Ai =
                  >
              > with get
 
-        [<CompiledName("experimental_context")>]
+        [<EmitProperty("experimental_context")>]
         abstract experimentalContext: option<obj> with get
 
         abstract metadata: option<OnFinishEvent.Metadata> with get
@@ -14152,7 +14152,7 @@ module rec Ai =
 
     [<Import("ai", "OnToolCallStartEvent")>]
     type OnToolCallStartEvent<'TOOLS when 'TOOLS :> ToolSet> =
-        [<CompiledName("experimental_context")>]
+        [<EmitProperty("experimental_context")>]
         abstract experimentalContext: option<obj> with get
 
         abstract metadata: option<OnToolCallStartEvent.Metadata> with get
@@ -14527,7 +14527,7 @@ module rec Ai =
         abstract toolCallId: string with get, set
         abstract toolName: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: UIMessagePart.Type with get, set
 
         abstract approval: option<unit> with get, set
@@ -14572,7 +14572,7 @@ module rec Ai =
         abstract id: string with get, set
         abstract sourceType: StepResult.SourceType with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: StepResult.Type with get, set
 
         abstract filename: option<string> with get, set
@@ -14606,7 +14606,7 @@ module rec Ai =
         abstract toolCallId: string with get, set
         abstract toolName: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: DynamicToolUIPart.Type with get, set
 
         abstract input: option<obj> with get, set
@@ -14658,7 +14658,7 @@ module rec Ai =
         abstract providerMetadata: option<AiSdk.Provider.SharedV3ProviderMetadata> with get, set
         abstract text: string with get, set
 
-        [<CompiledName("type")>]
+        [<EmitProperty("type")>]
         abstract ``type``: ReasoningOutput.Type with get, set
 
         abstract Item: key: string -> option<Agents.AgentContext>
@@ -14713,7 +14713,7 @@ module rec Ai =
                  >
              > with get
 
-        [<CompiledName("experimental_context")>]
+        [<EmitProperty("experimental_context")>]
         abstract experimentalContext: option<obj> with get
 
         abstract metadata: option<OnStepFinishEvent.Metadata> with get
@@ -14909,7 +14909,7 @@ module rec AiSdk =
                 | [<CompiledName("auto")>] Auto
 
             type ResponseFormat =
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: ResponseFormat.Type with get, set
 
                 abstract description: option<string> with get, set
@@ -14924,7 +14924,7 @@ module rec AiSdk =
                 abstract description: option<string> with get, set
                 abstract name: string with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Tools.Type with get, set
 
                 abstract args: Tools.Args with get, set
@@ -15012,7 +15012,7 @@ module rec AiSdk =
                         abstract toolName: string with get, set
                         abstract toolCallId: string with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Content.Type with get, set
 
                         abstract preliminary: option<bool> with get, set
@@ -15091,7 +15091,7 @@ module rec AiSdk =
                         abstract providerOptions: option<SharedV3ProviderOptions> with get, set
                         abstract fileId: U2<Value.FileId, string> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Value.Type with get, set
 
                         abstract url: string with get, set
@@ -15115,7 +15115,7 @@ module rec AiSdk =
                          >
                      > with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Output.Type with get, set
 
                 abstract providerOptions: option<SharedV3ProviderOptions> with get, set
@@ -15195,7 +15195,7 @@ module rec AiSdk =
                                             abstract data: U2<Uint8Array<ArrayBufferLike>, string> with get, set
                                             abstract mediaType: string with get, set
 
-                                            [<CompiledName("type")>]
+                                            [<EmitProperty("type")>]
                                             abstract ``type``: Files.Type with get, set
 
                                             abstract url: string with get, set
@@ -15329,7 +15329,7 @@ module rec AiSdk =
                         abstract timestamp: option<Date> with get, set
                         abstract id: option<string> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: DoStream.Type with get, set
 
                         abstract response: option<DoStream.Response> with get, set
@@ -15349,7 +15349,7 @@ module rec AiSdk =
                         abstract id: string with get, set
                         abstract sourceType: DoGenerate.SourceType with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: DoGenerate.Type with get, set
 
                         abstract title: option<string> with get, set
@@ -15699,7 +15699,7 @@ module rec AiSdk =
             abstract providerOptions: option<SharedV3ProviderOptions> with get, set
             abstract text: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: LanguageModelV3TextPart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -15742,7 +15742,7 @@ module rec AiSdk =
             abstract providerOptions: option<SharedV3ProviderOptions> with get, set
             abstract text: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: LanguageModelV3ReasoningPart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -15774,7 +15774,7 @@ module rec AiSdk =
             abstract providerMetadata: option<SharedV3ProviderMetadata> with get, set
             abstract text: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: LanguageModelV3Reasoning.Type with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -15789,7 +15789,7 @@ module rec AiSdk =
             abstract data: LanguageModelV3DataContent with get, set
             abstract filename: option<string> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: LanguageModelV3FilePart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -15853,7 +15853,7 @@ module rec AiSdk =
             abstract toolName: string with get, set
             abstract toolCallId: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: LanguageModelV3ToolCallPart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -15912,7 +15912,7 @@ module rec AiSdk =
             abstract approved: bool with get, set
             abstract approvalId: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: LanguageModelV3ToolApprovalResponsePart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -15924,7 +15924,7 @@ module rec AiSdk =
             abstract providerMetadata: option<SharedV3ProviderMetadata> with get, set
             abstract text: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: LanguageModelV3Text.Type with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -15961,7 +15961,7 @@ module rec AiSdk =
                             abstract value: 'OBJECT with get, set
 
             type InputSchema =
-                [<CompiledName("[schemaSymbol]")>]
+                [<EmitProperty("[schemaSymbol]")>]
                 abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
                 abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
@@ -15992,7 +15992,7 @@ module rec AiSdk =
                         abstract toolCallId: string with get, set
 
             type InputSchema =
-                [<CompiledName("[schemaSymbol]")>]
+                [<EmitProperty("[schemaSymbol]")>]
                 abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
                 abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
@@ -16016,7 +16016,7 @@ module rec AiSdk =
                             | [<CompiledValue(true)>] True
 
             type InputSchema =
-                [<CompiledName("[schemaSymbol]")>]
+                [<EmitProperty("[schemaSymbol]")>]
                 abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
                 abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
@@ -16067,7 +16067,7 @@ module rec AiSdk =
                                     abstract toolCallId: string with get, set
                                     abstract approvalId: string with get, set
 
-                                    [<CompiledName("type")>]
+                                    [<EmitProperty("type")>]
                                     abstract ``type``: Content.Type with get, set
 
                     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -16087,7 +16087,7 @@ module rec AiSdk =
                         type Value =
                             abstract providerOptions: option<Provider.SharedV3ProviderOptions> with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: Value.Type with get, set
 
                             abstract text: string with get, set
@@ -16115,7 +16115,7 @@ module rec AiSdk =
                     key: string -> option<U5<Item.Item, Item.Item, Array<option<Provider.JSONValue>>, string, float>>
 
             type NeedsApproval =
-                [<CompiledName("experimental_context")>]
+                [<EmitProperty("experimental_context")>]
                 abstract experimentalContext: option<obj> with get, set
 
                 abstract messages: Array<ModelMessage> with get, set
@@ -16125,7 +16125,7 @@ module rec AiSdk =
                 abstract input: 'INPUT with get, set
 
             type InputSchema =
-                [<CompiledName("[schemaSymbol]")>]
+                [<EmitProperty("[schemaSymbol]")>]
                 abstract schemaSymbol: InputSchema.SchemaSymbol with get, set
 
                 abstract jsonSchema: option<U2<PromiseLike<option<Agents.AgentContext>>, obj>> with get
@@ -16143,7 +16143,7 @@ module rec AiSdk =
                 abstract providerOptions: option<Provider.SharedV3ProviderOptions> with get, set
                 abstract reason: option<string> with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: Output.Type with get, set
 
                 abstract value: option<Provider.JSONValue> with get, set
@@ -16166,7 +16166,7 @@ module rec AiSdk =
                         | [<CompiledName("user")>] User
 
             type NeedsApproval =
-                [<CompiledName("experimental_context")>]
+                [<EmitProperty("experimental_context")>]
                 abstract experimentalContext: option<obj> with get, set
 
                 abstract messages: Array<ModelMessage> with get, set
@@ -16194,7 +16194,7 @@ module rec AiSdk =
             abstract filename: option<string> with get, set
             abstract data: U2<Typescript.Body, URL> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: FilePart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -16204,7 +16204,7 @@ module rec AiSdk =
             abstract toolCallId: string with get, set
             abstract approvalId: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ToolApprovalRequest.Type with get, set
 
         type ToolResultOutput = obj
@@ -16270,10 +16270,10 @@ module rec AiSdk =
              >
 
         type FlexibleSchema =
-            [<CompiledName("~standard")>]
+            [<EmitProperty("~standard")>]
             abstract ``~standard``: StandardSchema.Spec.StandardJSONSchemaV1.Props<'Input, 'Output> with get
 
-            [<CompiledName("~standard")>]
+            [<EmitProperty("~standard")>]
             abstract ``~standard``: StandardSchema.Spec.StandardSchemaV1.Props<'Input, 'Output> with get
 
         type ToolContent = obj
@@ -16287,7 +16287,7 @@ module rec AiSdk =
             abstract toolName: string with get, set
             abstract toolCallId: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ToolResultPart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -16297,7 +16297,7 @@ module rec AiSdk =
 
         [<Import("@ai-sdk/provider-utils", "ToolExecutionOptions")>]
         type ToolExecutionOptions =
-            [<CompiledName("experimental_context")>]
+            [<EmitProperty("experimental_context")>]
             abstract experimentalContext: option<obj> with get, set
 
             abstract abortSignal: option<AbortSignal> with get, set
@@ -16310,7 +16310,7 @@ module rec AiSdk =
             abstract mediaType: option<string> with get, set
             abstract image: U2<Typescript.Body, URL> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ImagePart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -16322,17 +16322,17 @@ module rec AiSdk =
 
         [<Import("@ai-sdk/provider-utils", "StandardSchema")>]
         type StandardSchema<'SCHEMA> =
-            [<CompiledName("~standard")>]
+            [<EmitProperty("~standard")>]
             abstract ``~standard``: StandardSchema.Spec.StandardJSONSchemaV1.Props<'Input, 'Output> with get
 
-            [<CompiledName("~standard")>]
+            [<EmitProperty("~standard")>]
             abstract ``~standard``: StandardSchema.Spec.StandardSchemaV1.Props<'Input, 'Output> with get
 
         type TextPart =
             abstract providerOptions: option<Provider.SharedV3ProviderOptions> with get, set
             abstract text: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: TextPart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -16370,7 +16370,7 @@ module rec AiSdk =
             abstract toolName: string with get, set
             abstract toolCallId: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ToolCallPart.Type with get, set
 
             abstract Item: key: string -> option<Agents.AgentContext>
@@ -16378,7 +16378,7 @@ module rec AiSdk =
 module rec Eventsource =
     module rec EventSourceFetchInit =
         type Headers =
-            [<CompiledName("Accept")>]
+            [<EmitProperty("Accept")>]
             abstract accept: Headers.Accept with get, set
 
             abstract Item: key: string -> string
@@ -16397,7 +16397,7 @@ module rec Eventsource =
         type Read =
             abstract value: option<obj> with get, set
 
-            [<CompiledName("done")>]
+            [<EmitProperty("done")>]
             abstract ``done``: Read.Done with get, set
 
             abstract value: option<unit> with get, set
@@ -16450,12 +16450,12 @@ module rec JsonSchemaTyped =
                     abstract unevaluatedItems:
                         option<U2<AdditionalItems.UnevaluatedItems, AdditionalItems.UnevaluatedItems>> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: option<'SchemaType> with get, set
 
                     abstract title: option<string> with get, set
 
-                    [<CompiledName("then")>]
+                    [<EmitProperty("then")>]
                     abstract ``then``: option<JSONSchema> with get, set
 
                     abstract required: option<U2<Array<string>, ReadonlyArray<string>>> with get, set
@@ -16477,7 +16477,7 @@ module rec JsonSchemaTyped =
                     abstract pattern: option<string> with get, set
                     abstract oneOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
-                    [<CompiledName("not")>]
+                    [<EmitProperty("not")>]
                     abstract ``not``: option<JSONSchema> with get, set
 
                     abstract multipleOf: option<float> with get, set
@@ -16493,7 +16493,7 @@ module rec JsonSchemaTyped =
                     abstract maxContains: option<float> with get, set
                     abstract items: option<U2<AdditionalItems.Items, AdditionalItems.Items>> with get, set
 
-                    [<CompiledName("if")>]
+                    [<EmitProperty("if")>]
                     abstract ``if``: option<JSONSchema> with get, set
 
                     abstract format: option<string> with get, set
@@ -16502,7 +16502,7 @@ module rec JsonSchemaTyped =
                     abstract examples: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
                     abstract enum: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
 
-                    [<CompiledName("else")>]
+                    [<EmitProperty("else")>]
                     abstract ``else``: option<JSONSchema> with get, set
 
                     abstract description: option<string> with get, set
@@ -16519,7 +16519,7 @@ module rec JsonSchemaTyped =
                     /// </deprecated>
                     abstract definitions: option<AdditionalItems.Definitions> with get, set
 
-                    [<CompiledName("default")>]
+                    [<EmitProperty("default")>]
                     abstract ``default``: option<'Value> with get, set
 
                     abstract contentSchema: option<JSONSchema> with get, set
@@ -16527,7 +16527,7 @@ module rec JsonSchemaTyped =
                     abstract contentEncoding: option<AdditionalItems.ContentEncoding> with get, set
                     abstract contains: option<JSONSchema> with get, set
 
-                    [<CompiledName("const")>]
+                    [<EmitProperty("const")>]
                     abstract ``const``: option<'Value> with get, set
 
                     abstract anyOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
@@ -16543,31 +16543,31 @@ module rec JsonSchemaTyped =
                     abstract additionalItems:
                         option<U2<AdditionalItems.AdditionalItems, AdditionalItems.AdditionalItems>> with get, set
 
-                    [<CompiledName("$vocabulary")>]
+                    [<EmitProperty("$vocabulary")>]
                     abstract vocabulary: option<AdditionalItems.Vocabulary> with get, set
 
-                    [<CompiledName("$schema")>]
+                    [<EmitProperty("$schema")>]
                     abstract schema: option<string> with get, set
 
-                    [<CompiledName("$ref")>]
+                    [<EmitProperty("$ref")>]
                     abstract ref: option<string> with get, set
 
-                    [<CompiledName("$id")>]
+                    [<EmitProperty("$id")>]
                     abstract id: option<string> with get, set
 
-                    [<CompiledName("$dynamicRef")>]
+                    [<EmitProperty("$dynamicRef")>]
                     abstract dynamicRef: option<string> with get, set
 
-                    [<CompiledName("$dynamicAnchor")>]
+                    [<EmitProperty("$dynamicAnchor")>]
                     abstract dynamicAnchor: option<string> with get, set
 
-                    [<CompiledName("$defs")>]
+                    [<EmitProperty("$defs")>]
                     abstract defs: option<AdditionalItems.Defs> with get, set
 
-                    [<CompiledName("$comment")>]
+                    [<EmitProperty("$comment")>]
                     abstract comment: option<string> with get, set
 
-                    [<CompiledName("$anchor")>]
+                    [<EmitProperty("$anchor")>]
                     abstract anchor: option<string> with get, set
 
         module rec Invoke =
@@ -16600,12 +16600,12 @@ module rec JsonSchemaTyped =
                     abstract unevaluatedItems:
                         option<U2<AdditionalItems.UnevaluatedItems, AdditionalItems.UnevaluatedItems>> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: option<'SchemaType> with get, set
 
                     abstract title: option<string> with get, set
 
-                    [<CompiledName("then")>]
+                    [<EmitProperty("then")>]
                     abstract ``then``: option<JSONSchema> with get, set
 
                     abstract required: option<U2<Array<string>, ReadonlyArray<string>>> with get, set
@@ -16627,7 +16627,7 @@ module rec JsonSchemaTyped =
                     abstract pattern: option<string> with get, set
                     abstract oneOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
-                    [<CompiledName("not")>]
+                    [<EmitProperty("not")>]
                     abstract ``not``: option<JSONSchema> with get, set
 
                     abstract multipleOf: option<float> with get, set
@@ -16643,7 +16643,7 @@ module rec JsonSchemaTyped =
                     abstract maxContains: option<float> with get, set
                     abstract items: option<U2<AdditionalItems.Items, AdditionalItems.Items>> with get, set
 
-                    [<CompiledName("if")>]
+                    [<EmitProperty("if")>]
                     abstract ``if``: option<JSONSchema> with get, set
 
                     abstract format: option<string> with get, set
@@ -16652,7 +16652,7 @@ module rec JsonSchemaTyped =
                     abstract examples: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
                     abstract enum: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
 
-                    [<CompiledName("else")>]
+                    [<EmitProperty("else")>]
                     abstract ``else``: option<JSONSchema> with get, set
 
                     abstract description: option<string> with get, set
@@ -16669,7 +16669,7 @@ module rec JsonSchemaTyped =
                     /// </deprecated>
                     abstract definitions: option<AdditionalItems.Definitions> with get, set
 
-                    [<CompiledName("default")>]
+                    [<EmitProperty("default")>]
                     abstract ``default``: option<'Value> with get, set
 
                     abstract contentSchema: option<JSONSchema> with get, set
@@ -16677,7 +16677,7 @@ module rec JsonSchemaTyped =
                     abstract contentEncoding: option<AdditionalItems.ContentEncoding> with get, set
                     abstract contains: option<JSONSchema> with get, set
 
-                    [<CompiledName("const")>]
+                    [<EmitProperty("const")>]
                     abstract ``const``: option<'Value> with get, set
 
                     abstract anyOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
@@ -16693,31 +16693,31 @@ module rec JsonSchemaTyped =
                     abstract additionalItems:
                         option<U2<AdditionalItems.AdditionalItems, AdditionalItems.AdditionalItems>> with get, set
 
-                    [<CompiledName("$vocabulary")>]
+                    [<EmitProperty("$vocabulary")>]
                     abstract vocabulary: option<AdditionalItems.Vocabulary> with get, set
 
-                    [<CompiledName("$schema")>]
+                    [<EmitProperty("$schema")>]
                     abstract schema: option<string> with get, set
 
-                    [<CompiledName("$ref")>]
+                    [<EmitProperty("$ref")>]
                     abstract ref: option<string> with get, set
 
-                    [<CompiledName("$id")>]
+                    [<EmitProperty("$id")>]
                     abstract id: option<string> with get, set
 
-                    [<CompiledName("$dynamicRef")>]
+                    [<EmitProperty("$dynamicRef")>]
                     abstract dynamicRef: option<string> with get, set
 
-                    [<CompiledName("$dynamicAnchor")>]
+                    [<EmitProperty("$dynamicAnchor")>]
                     abstract dynamicAnchor: option<string> with get, set
 
-                    [<CompiledName("$defs")>]
+                    [<EmitProperty("$defs")>]
                     abstract defs: option<AdditionalItems.Defs> with get, set
 
-                    [<CompiledName("$comment")>]
+                    [<EmitProperty("$comment")>]
                     abstract comment: option<string> with get, set
 
-                    [<CompiledName("$anchor")>]
+                    [<EmitProperty("$anchor")>]
                     abstract anchor: option<string> with get, set
 
         module rec TypeValue =
@@ -16733,12 +16733,12 @@ module rec JsonSchemaTyped =
                         abstract unevaluatedItems:
                             option<U2<AdditionalItems.UnevaluatedItems, AdditionalItems.UnevaluatedItems>> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<'SchemaType> with get, set
 
                         abstract title: option<string> with get, set
 
-                        [<CompiledName("then")>]
+                        [<EmitProperty("then")>]
                         abstract ``then``: option<JSONSchema> with get, set
 
                         abstract required: option<U2<Array<string>, ReadonlyArray<string>>> with get, set
@@ -16760,7 +16760,7 @@ module rec JsonSchemaTyped =
                         abstract pattern: option<string> with get, set
                         abstract oneOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
 
-                        [<CompiledName("not")>]
+                        [<EmitProperty("not")>]
                         abstract ``not``: option<JSONSchema> with get, set
 
                         abstract multipleOf: option<float> with get, set
@@ -16776,7 +16776,7 @@ module rec JsonSchemaTyped =
                         abstract maxContains: option<float> with get, set
                         abstract items: option<U2<AdditionalItems.Items, AdditionalItems.Items>> with get, set
 
-                        [<CompiledName("if")>]
+                        [<EmitProperty("if")>]
                         abstract ``if``: option<JSONSchema> with get, set
 
                         abstract format: option<string> with get, set
@@ -16785,7 +16785,7 @@ module rec JsonSchemaTyped =
                         abstract examples: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
                         abstract enum: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
 
-                        [<CompiledName("else")>]
+                        [<EmitProperty("else")>]
                         abstract ``else``: option<JSONSchema> with get, set
 
                         abstract description: option<string> with get, set
@@ -16802,7 +16802,7 @@ module rec JsonSchemaTyped =
                         /// </deprecated>
                         abstract definitions: option<AdditionalItems.Definitions> with get, set
 
-                        [<CompiledName("default")>]
+                        [<EmitProperty("default")>]
                         abstract ``default``: option<'Value> with get, set
 
                         abstract contentSchema: option<JSONSchema> with get, set
@@ -16810,7 +16810,7 @@ module rec JsonSchemaTyped =
                         abstract contentEncoding: option<AdditionalItems.ContentEncoding> with get, set
                         abstract contains: option<JSONSchema> with get, set
 
-                        [<CompiledName("const")>]
+                        [<EmitProperty("const")>]
                         abstract ``const``: option<'Value> with get, set
 
                         abstract anyOf: option<U2<Array<JSONSchema>, ReadonlyArray<JSONSchema>>> with get, set
@@ -16826,31 +16826,31 @@ module rec JsonSchemaTyped =
                         abstract additionalItems:
                             option<U2<AdditionalItems.AdditionalItems, AdditionalItems.AdditionalItems>> with get, set
 
-                        [<CompiledName("$vocabulary")>]
+                        [<EmitProperty("$vocabulary")>]
                         abstract vocabulary: option<AdditionalItems.Vocabulary> with get, set
 
-                        [<CompiledName("$schema")>]
+                        [<EmitProperty("$schema")>]
                         abstract schema: option<string> with get, set
 
-                        [<CompiledName("$ref")>]
+                        [<EmitProperty("$ref")>]
                         abstract ref: option<string> with get, set
 
-                        [<CompiledName("$id")>]
+                        [<EmitProperty("$id")>]
                         abstract id: option<string> with get, set
 
-                        [<CompiledName("$dynamicRef")>]
+                        [<EmitProperty("$dynamicRef")>]
                         abstract dynamicRef: option<string> with get, set
 
-                        [<CompiledName("$dynamicAnchor")>]
+                        [<EmitProperty("$dynamicAnchor")>]
                         abstract dynamicAnchor: option<string> with get, set
 
-                        [<CompiledName("$defs")>]
+                        [<EmitProperty("$defs")>]
                         abstract defs: option<AdditionalItems.Defs> with get, set
 
-                        [<CompiledName("$comment")>]
+                        [<EmitProperty("$comment")>]
                         abstract comment: option<string> with get, set
 
-                        [<CompiledName("$anchor")>]
+                        [<EmitProperty("$anchor")>]
                         abstract anchor: option<string> with get, set
 
             module rec Invoke =
@@ -16896,7 +16896,7 @@ module rec JsonSchemaTyped =
             abstract additionalItems: option<U2<TypeValue.AdditionalItems, TypeValue.AdditionalItems>> with get, set
             abstract writeOnly: option<TypeValue.WriteOnly> with get, set
 
-            [<CompiledName("then")>]
+            [<EmitProperty("then")>]
             abstract ``then``: option<U2<TypeValue.Then, TypeValue.Then>> with get, set
 
             abstract readOnly: option<TypeValue.ReadOnly> with get, set
@@ -16906,10 +16906,10 @@ module rec JsonSchemaTyped =
                     U2<Array<U2<TypeValue.OneOf, TypeValue.OneOf>>, ReadonlyArray<U2<TypeValue.OneOf, TypeValue.OneOf>>>
                  > with get, set
 
-            [<CompiledName("not")>]
+            [<EmitProperty("not")>]
             abstract ``not``: option<U2<TypeValue.Not, TypeValue.Not>> with get, set
 
-            [<CompiledName("if")>]
+            [<EmitProperty("if")>]
             abstract ``if``: option<U2<TypeValue.If, TypeValue.If>> with get, set
 
             abstract examples:
@@ -16992,7 +16992,7 @@ module rec JsonSchemaTyped =
                      >
                  > with get, set
 
-            [<CompiledName("else")>]
+            [<EmitProperty("else")>]
             abstract ``else``: option<U2<TypeValue.Else, TypeValue.Else>> with get, set
 
             abstract deprecated: option<TypeValue.Deprecated> with get, set
@@ -17008,36 +17008,36 @@ module rec JsonSchemaTyped =
                     U2<Array<U2<TypeValue.AllOf, TypeValue.AllOf>>, ReadonlyArray<U2<TypeValue.AllOf, TypeValue.AllOf>>>
                  > with get, set
 
-            [<CompiledName("$vocabulary")>]
+            [<EmitProperty("$vocabulary")>]
             abstract vocabulary: option<TypeValue.Vocabulary> with get, set
 
-            [<CompiledName("$schema")>]
+            [<EmitProperty("$schema")>]
             abstract schema: option<string> with get, set
 
-            [<CompiledName("$ref")>]
+            [<EmitProperty("$ref")>]
             abstract ref: option<string> with get, set
 
-            [<CompiledName("$id")>]
+            [<EmitProperty("$id")>]
             abstract id: option<string> with get, set
 
-            [<CompiledName("$dynamicRef")>]
+            [<EmitProperty("$dynamicRef")>]
             abstract dynamicRef: option<string> with get, set
 
-            [<CompiledName("$dynamicAnchor")>]
+            [<EmitProperty("$dynamicAnchor")>]
             abstract dynamicAnchor: option<string> with get, set
 
-            [<CompiledName("$defs")>]
+            [<EmitProperty("$defs")>]
             abstract defs: option<TypeValue.Defs> with get, set
 
-            [<CompiledName("$comment")>]
+            [<EmitProperty("$comment")>]
             abstract comment: option<string> with get, set
 
-            [<CompiledName("$anchor")>]
+            [<EmitProperty("$anchor")>]
             abstract anchor: option<string> with get, set
 
             abstract description: option<string> with get, set
 
-            [<CompiledName("const")>]
+            [<EmitProperty("const")>]
             abstract ``const``:
                 option<
                     U33<
@@ -17077,7 +17077,7 @@ module rec JsonSchemaTyped =
                      >
                  > with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: option<TypeValue.Type> with get, set
 
             abstract enum:
@@ -17163,7 +17163,7 @@ module rec JsonSchemaTyped =
             abstract format: option<string> with get, set
             abstract title: option<string> with get, set
 
-            [<CompiledName("default")>]
+            [<EmitProperty("default")>]
             abstract ``default``:
                 option<
                     U33<
@@ -17358,166 +17358,166 @@ module rec Modelcontextprotocol =
                                         | [<CompiledValue(true)>] True
 
                             type ClientMetadata =
-                                [<CompiledName("software_statement")>]
+                                [<EmitProperty("software_statement")>]
                                 abstract softwareStatement: option<string> with get, set
 
-                                [<CompiledName("software_version")>]
+                                [<EmitProperty("software_version")>]
                                 abstract softwareVersion: option<string> with get, set
 
-                                [<CompiledName("software_id")>]
+                                [<EmitProperty("software_id")>]
                                 abstract softwareId: option<string> with get, set
 
                                 abstract jwks: option<Agents.AgentContext> with get, set
 
-                                [<CompiledName("jwks_uri")>]
+                                [<EmitProperty("jwks_uri")>]
                                 abstract jwksUri: option<string> with get, set
 
-                                [<CompiledName("policy_uri")>]
+                                [<EmitProperty("policy_uri")>]
                                 abstract policyUri: option<string> with get, set
 
-                                [<CompiledName("tos_uri")>]
+                                [<EmitProperty("tos_uri")>]
                                 abstract tosUri: option<string> with get, set
 
                                 abstract contacts: option<Array<string>> with get, set
                                 abstract scope: option<string> with get, set
 
-                                [<CompiledName("logo_uri")>]
+                                [<EmitProperty("logo_uri")>]
                                 abstract logoUri: option<string> with get, set
 
-                                [<CompiledName("client_uri")>]
+                                [<EmitProperty("client_uri")>]
                                 abstract clientUri: option<string> with get, set
 
-                                [<CompiledName("client_name")>]
+                                [<EmitProperty("client_name")>]
                                 abstract clientName: option<string> with get, set
 
-                                [<CompiledName("response_types")>]
+                                [<EmitProperty("response_types")>]
                                 abstract responseTypes: option<Array<string>> with get, set
 
-                                [<CompiledName("grant_types")>]
+                                [<EmitProperty("grant_types")>]
                                 abstract grantTypes: option<Array<string>> with get, set
 
-                                [<CompiledName("token_endpoint_auth_method")>]
+                                [<EmitProperty("token_endpoint_auth_method")>]
                                 abstract tokenEndpointAuthMethod: option<string> with get, set
 
-                                [<CompiledName("redirect_uris")>]
+                                [<EmitProperty("redirect_uris")>]
                                 abstract redirectUris: Array<string> with get, set
 
                             type Tokens =
-                                [<CompiledName("refresh_token")>]
+                                [<EmitProperty("refresh_token")>]
                                 abstract refreshToken: option<string> with get, set
 
                                 abstract scope: option<string> with get, set
 
-                                [<CompiledName("expires_in")>]
+                                [<EmitProperty("expires_in")>]
                                 abstract expiresIn: option<float> with get, set
 
-                                [<CompiledName("id_token")>]
+                                [<EmitProperty("id_token")>]
                                 abstract idToken: option<string> with get, set
 
-                                [<CompiledName("token_type")>]
+                                [<EmitProperty("token_type")>]
                                 abstract tokenType: string with get, set
 
-                                [<CompiledName("access_token")>]
+                                [<EmitProperty("access_token")>]
                                 abstract accessToken: string with get, set
 
                             type ClientInformation =
-                                [<CompiledName("client_secret_expires_at")>]
+                                [<EmitProperty("client_secret_expires_at")>]
                                 abstract clientSecretExpiresAt: option<float> with get, set
 
-                                [<CompiledName("client_id_issued_at")>]
+                                [<EmitProperty("client_id_issued_at")>]
                                 abstract clientIdIssuedAt: option<float> with get, set
 
-                                [<CompiledName("client_secret")>]
+                                [<EmitProperty("client_secret")>]
                                 abstract clientSecret: option<string> with get, set
 
-                                [<CompiledName("software_statement")>]
+                                [<EmitProperty("software_statement")>]
                                 abstract softwareStatement: option<string> with get, set
 
-                                [<CompiledName("software_version")>]
+                                [<EmitProperty("software_version")>]
                                 abstract softwareVersion: option<string> with get, set
 
-                                [<CompiledName("software_id")>]
+                                [<EmitProperty("software_id")>]
                                 abstract softwareId: option<string> with get, set
 
                                 abstract jwks: option<Agents.AgentContext> with get, set
 
-                                [<CompiledName("jwks_uri")>]
+                                [<EmitProperty("jwks_uri")>]
                                 abstract jwksUri: option<string> with get, set
 
-                                [<CompiledName("policy_uri")>]
+                                [<EmitProperty("policy_uri")>]
                                 abstract policyUri: option<string> with get, set
 
-                                [<CompiledName("tos_uri")>]
+                                [<EmitProperty("tos_uri")>]
                                 abstract tosUri: option<string> with get, set
 
                                 abstract contacts: option<Array<string>> with get, set
                                 abstract scope: option<string> with get, set
 
-                                [<CompiledName("logo_uri")>]
+                                [<EmitProperty("logo_uri")>]
                                 abstract logoUri: option<string> with get, set
 
-                                [<CompiledName("client_uri")>]
+                                [<EmitProperty("client_uri")>]
                                 abstract clientUri: option<string> with get, set
 
-                                [<CompiledName("client_name")>]
+                                [<EmitProperty("client_name")>]
                                 abstract clientName: option<string> with get, set
 
-                                [<CompiledName("response_types")>]
+                                [<EmitProperty("response_types")>]
                                 abstract responseTypes: option<Array<string>> with get, set
 
-                                [<CompiledName("grant_types")>]
+                                [<EmitProperty("grant_types")>]
                                 abstract grantTypes: option<Array<string>> with get, set
 
-                                [<CompiledName("token_endpoint_auth_method")>]
+                                [<EmitProperty("token_endpoint_auth_method")>]
                                 abstract tokenEndpointAuthMethod: option<string> with get, set
 
-                                [<CompiledName("client_id")>]
+                                [<EmitProperty("client_id")>]
                                 abstract clientId: string with get, set
 
-                                [<CompiledName("redirect_uris")>]
+                                [<EmitProperty("redirect_uris")>]
                                 abstract redirectUris: Array<string> with get, set
 
                         module rec OAuthServerInfo =
                             type ResourceMetadata =
-                                [<CompiledName("dpop_bound_access_tokens_required")>]
+                                [<EmitProperty("dpop_bound_access_tokens_required")>]
                                 abstract dpopBoundAccessTokensRequired:
                                     option<ResourceMetadata.DpopBoundAccessTokensRequired> with get, set
 
-                                [<CompiledName("dpop_signing_alg_values_supported")>]
+                                [<EmitProperty("dpop_signing_alg_values_supported")>]
                                 abstract dpopSigningAlgValuesSupported: option<Array<string>> with get, set
 
-                                [<CompiledName("authorization_details_types_supported")>]
+                                [<EmitProperty("authorization_details_types_supported")>]
                                 abstract authorizationDetailsTypesSupported: option<Array<string>> with get, set
 
-                                [<CompiledName("tls_client_certificate_bound_access_tokens")>]
+                                [<EmitProperty("tls_client_certificate_bound_access_tokens")>]
                                 abstract tlsClientCertificateBoundAccessTokens:
                                     option<ResourceMetadata.TlsClientCertificateBoundAccessTokens> with get, set
 
-                                [<CompiledName("resource_tos_uri")>]
+                                [<EmitProperty("resource_tos_uri")>]
                                 abstract resourceTosUri: option<string> with get, set
 
-                                [<CompiledName("resource_policy_uri")>]
+                                [<EmitProperty("resource_policy_uri")>]
                                 abstract resourcePolicyUri: option<string> with get, set
 
-                                [<CompiledName("resource_documentation")>]
+                                [<EmitProperty("resource_documentation")>]
                                 abstract resourceDocumentation: option<string> with get, set
 
-                                [<CompiledName("resource_name")>]
+                                [<EmitProperty("resource_name")>]
                                 abstract resourceName: option<string> with get, set
 
-                                [<CompiledName("resource_signing_alg_values_supported")>]
+                                [<EmitProperty("resource_signing_alg_values_supported")>]
                                 abstract resourceSigningAlgValuesSupported: option<Array<string>> with get, set
 
-                                [<CompiledName("bearer_methods_supported")>]
+                                [<EmitProperty("bearer_methods_supported")>]
                                 abstract bearerMethodsSupported: option<Array<string>> with get, set
 
-                                [<CompiledName("scopes_supported")>]
+                                [<EmitProperty("scopes_supported")>]
                                 abstract scopesSupported: option<Array<string>> with get, set
 
-                                [<CompiledName("jwks_uri")>]
+                                [<EmitProperty("jwks_uri")>]
                                 abstract jwksUri: option<string> with get, set
 
-                                [<CompiledName("authorization_servers")>]
+                                [<EmitProperty("authorization_servers")>]
                                 abstract authorizationServers: option<Array<string>> with get, set
 
                                 abstract resource: string with get, set
@@ -17679,7 +17679,7 @@ module rec Modelcontextprotocol =
                                                     abstract taskId: string with get, set
 
                                     type _meta =
-                                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                         abstract ioModelcontextprotocolRelatedTask:
                                             option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -18539,7 +18539,7 @@ module rec Modelcontextprotocol =
                                                                 type Ref =
                                                                     abstract name: string with get, set
 
-                                                                    [<CompiledName("type")>]
+                                                                    [<EmitProperty("type")>]
                                                                     abstract ``type``: Ref.Type with get, set
 
                                                                     abstract uri: string with get, set
@@ -18569,7 +18569,7 @@ module rec Modelcontextprotocol =
                                         module rec T =
                                             module rec T =
                                                 type _meta =
-                                                    [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                                    [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                                     abstract ioModelcontextprotocolRelatedTask:
                                                         option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -18793,7 +18793,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -18851,7 +18851,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -18899,7 +18899,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -18975,7 +18975,7 @@ module rec Modelcontextprotocol =
                                                             abstract taskId: string with get, set
 
                                             type _meta =
-                                                [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                                [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                                 abstract ioModelcontextprotocolRelatedTask:
                                                     option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -18999,7 +18999,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -19038,7 +19038,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -19094,7 +19094,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -19125,7 +19125,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -19246,7 +19246,7 @@ module rec Modelcontextprotocol =
                                              >
                                          > with get, set
 
-                                    [<CompiledName("default")>]
+                                    [<EmitProperty("default")>]
                                     abstract ``default``:
                                         U2<
                                             proptypekey<'S, CreateTask.Default>,
@@ -19274,7 +19274,7 @@ module rec Modelcontextprotocol =
                                              >
                                          > with get, set
 
-                                    [<CompiledName("and")>]
+                                    [<EmitProperty("and")>]
                                     abstract ``and``:
                                         U2<
                                             proptypekey<'S, CreateTask.And>,
@@ -19287,7 +19287,7 @@ module rec Modelcontextprotocol =
                                              >
                                          > with get, set
 
-                                    [<CompiledName("or")>]
+                                    [<EmitProperty("or")>]
                                     abstract ``or``:
                                         U2<
                                             proptypekey<'S, CreateTask.Or>,
@@ -19465,7 +19465,7 @@ module rec Modelcontextprotocol =
                                              >
                                          > with get, set
 
-                                    [<CompiledName("~validate")>]
+                                    [<EmitProperty("~validate")>]
                                     abstract ``~validate``:
                                         U2<
                                             proptypekey<'S, CreateTask.``~validate``>,
@@ -19595,7 +19595,7 @@ module rec Modelcontextprotocol =
                                              >
                                          > with get, set
 
-                                    [<CompiledName("~standard")>]
+                                    [<EmitProperty("~standard")>]
                                     abstract ``~standard``:
                                         U2<
                                             proptypekey<'S, CreateTask.``~standard``>,
@@ -19679,7 +19679,7 @@ module rec Modelcontextprotocol =
                                 inherit BaseQueuedMessage
                                 abstract message: QueuedRequest.Message with get, set
 
-                                [<CompiledName("type")>]
+                                [<EmitProperty("type")>]
                                 abstract ``type``: QueuedRequest.Type with get, set
 
                             [<Import("../experimental/tasks/interfaces.js", "TaskRequestHandlerExtra")>]
@@ -19717,14 +19717,14 @@ module rec Modelcontextprotocol =
                                 inherit BaseQueuedMessage
                                 abstract message: QueuedNotification.Message with get, set
 
-                                [<CompiledName("type")>]
+                                [<EmitProperty("type")>]
                                 abstract ``type``: QueuedNotification.Type with get, set
 
                             [<Import("../experimental/tasks/interfaces.js", "BaseQueuedMessage")>]
                             type BaseQueuedMessage =
                                 abstract timestamp: float with get, set
 
-                                [<CompiledName("type")>]
+                                [<EmitProperty("type")>]
                                 abstract ``type``: string with get, set
 
                             [<Import("../experimental/tasks/interfaces.js", "TaskStore")>]
@@ -19763,7 +19763,7 @@ module rec Modelcontextprotocol =
                                 inherit BaseQueuedMessage
                                 abstract message: QueuedError.Message with get, set
 
-                                [<CompiledName("type")>]
+                                [<EmitProperty("type")>]
                                 abstract ``type``: QueuedError.Type with get, set
 
                             type BaseToolCallback<'Args, 'ExtraT, 'SendResultT
@@ -19797,7 +19797,7 @@ module rec Modelcontextprotocol =
                                 inherit BaseQueuedMessage
                                 abstract message: QueuedResponse.Message with get, set
 
-                                [<CompiledName("type")>]
+                                [<EmitProperty("type")>]
                                 abstract ``type``: QueuedResponse.Type with get, set
 
                             [<Import("../experimental/tasks/interfaces.js", "CreateTaskRequestHandlerExtra")>]
@@ -20073,7 +20073,7 @@ module rec Modelcontextprotocol =
                                                      >
                                                  > with get, set
 
-                                            [<CompiledName("default")>]
+                                            [<EmitProperty("default")>]
                                             abstract ``default``:
                                                 U2<
                                                     proptypekey<'S, Handler.Default>,
@@ -20104,7 +20104,7 @@ module rec Modelcontextprotocol =
                                                      >
                                                  > with get, set
 
-                                            [<CompiledName("and")>]
+                                            [<EmitProperty("and")>]
                                             abstract ``and``:
                                                 U2<
                                                     proptypekey<'S, Handler.And>,
@@ -20117,7 +20117,7 @@ module rec Modelcontextprotocol =
                                                      >
                                                  > with get, set
 
-                                            [<CompiledName("or")>]
+                                            [<EmitProperty("or")>]
                                             abstract ``or``:
                                                 U2<
                                                     proptypekey<'S, Handler.Or>,
@@ -20301,7 +20301,7 @@ module rec Modelcontextprotocol =
                                                      >
                                                  > with get, set
 
-                                            [<CompiledName("~validate")>]
+                                            [<EmitProperty("~validate")>]
                                             abstract ``~validate``:
                                                 U2<
                                                     proptypekey<'S, Handler.``~validate``>,
@@ -20431,7 +20431,7 @@ module rec Modelcontextprotocol =
                                                      >
                                                  > with get, set
 
-                                            [<CompiledName("~standard")>]
+                                            [<EmitProperty("~standard")>]
                                             abstract ``~standard``:
                                                 U2<
                                                     proptypekey<'S, Handler.``~standard``>,
@@ -20597,7 +20597,7 @@ module rec Modelcontextprotocol =
                                                     abstract required: option<Array<string>> with get, set
                                                     abstract properties: RequestedSchema.Properties with get, set
 
-                                                    [<CompiledName("type")>]
+                                                    [<EmitProperty("type")>]
                                                     abstract ``type``: RequestedSchema.Type with get, set
 
                                     [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -20663,7 +20663,7 @@ module rec Modelcontextprotocol =
 
                                                                         abstract text: string with get, set
 
-                                                                        [<CompiledName("type")>]
+                                                                        [<EmitProperty("type")>]
                                                                         abstract ``type``: Content.Type with get, set
 
                                                                         abstract mimeType: string with get, set
@@ -20686,7 +20686,7 @@ module rec Modelcontextprotocol =
                                                                             abstract properties:
                                                                                 option<InputSchema.Properties> with get, set
 
-                                                                            [<CompiledName("type")>]
+                                                                            [<EmitProperty("type")>]
                                                                             abstract ``type``: InputSchema.Type with get, set
 
                                                             module rec RegisterToolTask =
@@ -20776,7 +20776,7 @@ module rec Modelcontextprotocol =
                                                                 abstract taskId: string with get, set
 
                                                 type _meta =
-                                                    [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                                    [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                                     abstract ioModelcontextprotocolRelatedTask:
                                                         option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -21042,7 +21042,7 @@ module rec Modelcontextprotocol =
                                                                 abstract required: option<Array<string>> with get, set
                                                                 abstract properties: option<InputSchema.Properties> with get, set
 
-                                                                [<CompiledName("type")>]
+                                                                [<EmitProperty("type")>]
                                                                 abstract ``type``: InputSchema.Type with get, set
 
                                                 module rec RegisterToolTask =
@@ -21155,7 +21155,7 @@ module rec Modelcontextprotocol =
                                                     abstract taskId: string with get, set
 
                                     type _meta =
-                                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                         abstract ioModelcontextprotocolRelatedTask:
                                             option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -21655,7 +21655,7 @@ module rec Modelcontextprotocol =
                                                     abstract taskId: string with get, set
 
                                     type _meta =
-                                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                         abstract ioModelcontextprotocolRelatedTask:
                                             option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -21790,7 +21790,7 @@ module rec Modelcontextprotocol =
                                                     abstract mimeType: string with get, set
                                                     abstract data: string with get, set
 
-                                                    [<CompiledName("type")>]
+                                                    [<EmitProperty("type")>]
                                                     abstract ``type``: Content.Type with get, set
 
                                                     abstract text: string with get, set
@@ -21963,7 +21963,7 @@ module rec Modelcontextprotocol =
                                                  >
                                              > with get, set
 
-                                        [<CompiledName("default")>]
+                                        [<EmitProperty("default")>]
                                         abstract ``default``:
                                             U2<
                                                 proptypekey<'S, Handler.Default>,
@@ -21991,7 +21991,7 @@ module rec Modelcontextprotocol =
                                                  >
                                              > with get, set
 
-                                        [<CompiledName("and")>]
+                                        [<EmitProperty("and")>]
                                         abstract ``and``:
                                             U2<
                                                 proptypekey<'S, Handler.And>,
@@ -22004,7 +22004,7 @@ module rec Modelcontextprotocol =
                                                  >
                                              > with get, set
 
-                                        [<CompiledName("or")>]
+                                        [<EmitProperty("or")>]
                                         abstract ``or``:
                                             U2<
                                                 proptypekey<'S, Handler.Or>,
@@ -22173,7 +22173,7 @@ module rec Modelcontextprotocol =
                                                  >
                                              > with get, set
 
-                                        [<CompiledName("~validate")>]
+                                        [<EmitProperty("~validate")>]
                                         abstract ``~validate``:
                                             U2<
                                                 proptypekey<'S, Handler.``~validate``>,
@@ -22300,7 +22300,7 @@ module rec Modelcontextprotocol =
                                                  >
                                              > with get, set
 
-                                        [<CompiledName("~standard")>]
+                                        [<EmitProperty("~standard")>]
                                         abstract ``~standard``:
                                             U2<
                                                 proptypekey<'S, Handler.``~standard``>,
@@ -23330,7 +23330,7 @@ module rec Modelcontextprotocol =
                                                     abstract taskId: string with get, set
 
                                     type _meta =
-                                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                         abstract ioModelcontextprotocolRelatedTask:
                                             option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -23434,7 +23434,7 @@ module rec Modelcontextprotocol =
                                                 abstract taskId: string with get, set
 
                                 type _meta =
-                                    [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                    [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                     abstract ioModelcontextprotocolRelatedTask:
                                         option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -23467,7 +23467,7 @@ module rec Modelcontextprotocol =
                                                     abstract taskId: string with get, set
 
                                     type _meta =
-                                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                         abstract ioModelcontextprotocolRelatedTask:
                                             option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -23798,7 +23798,7 @@ module rec Modelcontextprotocol =
                                                     abstract taskId: string with get, set
 
                                     type _meta =
-                                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                         abstract ioModelcontextprotocolRelatedTask:
                                             option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -23817,7 +23817,7 @@ module rec Modelcontextprotocol =
                                                     abstract taskId: string with get, set
 
                                     type _meta =
-                                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                         abstract ioModelcontextprotocolRelatedTask:
                                             option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -23849,7 +23849,7 @@ module rec Modelcontextprotocol =
                             inherit BaseResponseMessage
                             abstract result: 'T with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: ResultMessage.Type with get, set
 
                         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -23863,7 +23863,7 @@ module rec Modelcontextprotocol =
                             inherit BaseResponseMessage
                             abstract task: TaskCreatedMessage.Task with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: TaskCreatedMessage.Type with get, set
 
                         type ResponseMessage<'T when 'T :> ResponseMessage> =
@@ -23871,7 +23871,7 @@ module rec Modelcontextprotocol =
 
                         [<Import("../../shared/responseMessage.js", "BaseResponseMessage")>]
                         type BaseResponseMessage =
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: string with get, set
 
                     module rec Transport =
@@ -24066,7 +24066,7 @@ module rec Modelcontextprotocol =
                                                         type Ref =
                                                             abstract uri: string with get, set
 
-                                                            [<CompiledName("type")>]
+                                                            [<EmitProperty("type")>]
                                                             abstract ``type``: Ref.Type with get, set
 
                                                             abstract name: string with get, set
@@ -24118,7 +24118,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -24206,7 +24206,7 @@ module rec Modelcontextprotocol =
                                                 abstract taskId: string with get, set
 
                                 type _meta =
-                                    [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                    [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                     abstract ioModelcontextprotocolRelatedTask:
                                         option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -24288,7 +24288,7 @@ module rec Modelcontextprotocol =
                                                         abstract mimeType: string with get, set
                                                         abstract data: string with get, set
 
-                                                        [<CompiledName("type")>]
+                                                        [<EmitProperty("type")>]
                                                         abstract ``type``: Content.Type with get, set
 
                                                         abstract text: string with get, set
@@ -24308,7 +24308,7 @@ module rec Modelcontextprotocol =
                                                             abstract required: option<Array<string>> with get, set
                                                             abstract properties: option<InputSchema.Properties> with get, set
 
-                                                            [<CompiledName("type")>]
+                                                            [<EmitProperty("type")>]
                                                             abstract ``type``: InputSchema.Type with get, set
 
                                             module rec RegisterToolTask =
@@ -24586,7 +24586,7 @@ module rec Modelcontextprotocol =
                                                         abstract taskId: string with get, set
 
                                         type _meta =
-                                            [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                            [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                             abstract ioModelcontextprotocolRelatedTask:
                                                 option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -24799,7 +24799,7 @@ module rec Modelcontextprotocol =
                                                 abstract taskId: string with get, set
 
                                 type _meta =
-                                    [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                    [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                     abstract ioModelcontextprotocolRelatedTask:
                                         option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
@@ -24953,12 +24953,12 @@ module rec Modelcontextprotocol =
                             abstract unevaluatedItems:
                                 option<U2<JsonSchemaType.UnevaluatedItems, JsonSchemaType.UnevaluatedItems>> with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: option<'SchemaType> with get, set
 
                             abstract title: option<string> with get, set
 
-                            [<CompiledName("then")>]
+                            [<EmitProperty("then")>]
                             abstract ``then``: option<JsonSchemaTyped.JSONSchema> with get, set
 
                             abstract required: option<U2<Array<string>, ReadonlyArray<string>>> with get, set
@@ -24985,7 +24985,7 @@ module rec Modelcontextprotocol =
                             abstract oneOf:
                                 option<U2<Array<JsonSchemaTyped.JSONSchema>, ReadonlyArray<JsonSchemaTyped.JSONSchema>>> with get, set
 
-                            [<CompiledName("not")>]
+                            [<EmitProperty("not")>]
                             abstract ``not``: option<JsonSchemaTyped.JSONSchema> with get, set
 
                             abstract multipleOf: option<float> with get, set
@@ -25001,7 +25001,7 @@ module rec Modelcontextprotocol =
                             abstract maxContains: option<float> with get, set
                             abstract items: option<U2<JsonSchemaType.Items, JsonSchemaType.Items>> with get, set
 
-                            [<CompiledName("if")>]
+                            [<EmitProperty("if")>]
                             abstract ``if``: option<JsonSchemaTyped.JSONSchema> with get, set
 
                             abstract format: option<string> with get, set
@@ -25010,7 +25010,7 @@ module rec Modelcontextprotocol =
                             abstract examples: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
                             abstract enum: option<U2<Array<'Value>, ReadonlyArray<'Value>>> with get, set
 
-                            [<CompiledName("else")>]
+                            [<EmitProperty("else")>]
                             abstract ``else``: option<JsonSchemaTyped.JSONSchema> with get, set
 
                             abstract description: option<string> with get, set
@@ -25027,7 +25027,7 @@ module rec Modelcontextprotocol =
                             /// </deprecated>
                             abstract definitions: option<JsonSchemaType.Definitions> with get, set
 
-                            [<CompiledName("default")>]
+                            [<EmitProperty("default")>]
                             abstract ``default``: option<'Value> with get, set
 
                             abstract contentSchema: option<JsonSchemaTyped.JSONSchema> with get, set
@@ -25035,7 +25035,7 @@ module rec Modelcontextprotocol =
                             abstract contentEncoding: option<JsonSchemaType.ContentEncoding> with get, set
                             abstract contains: option<JsonSchemaTyped.JSONSchema> with get, set
 
-                            [<CompiledName("const")>]
+                            [<EmitProperty("const")>]
                             abstract ``const``: option<'Value> with get, set
 
                             abstract anyOf:
@@ -25054,31 +25054,31 @@ module rec Modelcontextprotocol =
                             abstract additionalItems:
                                 option<U2<JsonSchemaType.AdditionalItems, JsonSchemaType.AdditionalItems>> with get, set
 
-                            [<CompiledName("$vocabulary")>]
+                            [<EmitProperty("$vocabulary")>]
                             abstract vocabulary: option<JsonSchemaType.Vocabulary> with get, set
 
-                            [<CompiledName("$schema")>]
+                            [<EmitProperty("$schema")>]
                             abstract schema: option<string> with get, set
 
-                            [<CompiledName("$ref")>]
+                            [<EmitProperty("$ref")>]
                             abstract ref: option<string> with get, set
 
-                            [<CompiledName("$id")>]
+                            [<EmitProperty("$id")>]
                             abstract id: option<string> with get, set
 
-                            [<CompiledName("$dynamicRef")>]
+                            [<EmitProperty("$dynamicRef")>]
                             abstract dynamicRef: option<string> with get, set
 
-                            [<CompiledName("$dynamicAnchor")>]
+                            [<EmitProperty("$dynamicAnchor")>]
                             abstract dynamicAnchor: option<string> with get, set
 
-                            [<CompiledName("$defs")>]
+                            [<EmitProperty("$defs")>]
                             abstract defs: option<JsonSchemaType.Defs> with get, set
 
-                            [<CompiledName("$comment")>]
+                            [<EmitProperty("$comment")>]
                             abstract comment: option<string> with get, set
 
-                            [<CompiledName("$anchor")>]
+                            [<EmitProperty("$anchor")>]
                             abstract anchor: option<string> with get, set
 
         module rec TypesJs =
@@ -25325,12 +25325,12 @@ module rec StandardSchema =
 
         [<Import("@standard-schema/spec", "StandardJSONSchemaV1")>]
         type StandardJSONSchemaV1<'Output, 'Input> =
-            [<CompiledName("~standard")>]
+            [<EmitProperty("~standard")>]
             abstract ``~standard``: StandardJSONSchemaV1.Props<'Input, 'Output> with get
 
         [<Import("@standard-schema/spec", "StandardSchemaV1")>]
         type StandardSchemaV1<'Output, 'Input> =
-            [<CompiledName("~standard")>]
+            [<EmitProperty("~standard")>]
             abstract ``~standard``: StandardSchemaV1.Props<'Input, 'Output> with get
 
 module rec Zod =
@@ -25704,7 +25704,7 @@ module rec Zod =
                 module rec Create =
                     module rec Create =
                         type Effect =
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: Effect.Type with get, set
 
                             abstract transform: arg: 'T * ctx: RefinementCtx -> option<Agents.AgentContext>
@@ -25725,10 +25725,10 @@ module rec Zod =
                             abstract description: option<string> with get, set
                             abstract message: option<string> with get, set
 
-                            [<CompiledName("required_error")>]
+                            [<EmitProperty("required_error")>]
                             abstract requiredError: option<string> with get, set
 
-                            [<CompiledName("invalid_type_error")>]
+                            [<EmitProperty("invalid_type_error")>]
                             abstract invalidTypeError: option<string> with get, set
 
                             abstract errorMap:
@@ -25820,12 +25820,12 @@ module rec Zod =
                 module rec Create =
                     module rec Create =
                         type Invoke =
-                            [<CompiledName("[Symbol.unscopables]")>]
+                            [<EmitProperty("[Symbol.unscopables]")>]
                             abstract symbolUnscopables: Invoke.SymbolUnscopables with get
 
                             abstract length: float with get, set
 
-                            [<CompiledName("0")>]
+                            [<EmitProperty("0")>]
                             abstract ``0``: 'U with get, set
 
                             abstract symbolIterator: unit -> ArrayIterator<'T>
@@ -25939,12 +25939,12 @@ module rec Zod =
                         abstract data: option<Agents.AgentContext> with get, set
 
                 type Extract =
-                    [<CompiledName("[Symbol.unscopables]")>]
+                    [<EmitProperty("[Symbol.unscopables]")>]
                     abstract symbolUnscopables: Extract.SymbolUnscopables with get
 
                     abstract length: float with get, set
 
-                    [<CompiledName("0")>]
+                    [<EmitProperty("0")>]
                     abstract ``0``: proptypekey<'T, float> with get, set
 
                     abstract symbolIterator: unit -> ArrayIterator<'T>
@@ -26092,10 +26092,10 @@ module rec Zod =
                             abstract description: option<string> with get, set
                             abstract message: option<string> with get, set
 
-                            [<CompiledName("required_error")>]
+                            [<EmitProperty("required_error")>]
                             abstract requiredError: option<string> with get, set
 
-                            [<CompiledName("invalid_type_error")>]
+                            [<EmitProperty("invalid_type_error")>]
                             abstract invalidTypeError: option<string> with get, set
 
                             abstract errorMap:
@@ -26261,7 +26261,7 @@ module rec Zod =
                 inherit ZodTypeDef
                 abstract typeName: ZodPromiseDef.TypeName.ZodPromise with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: 'T with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -26290,7 +26290,7 @@ module rec Zod =
                 abstract exactLength: option<ZodArrayDef.ExactLength> with get, set
                 abstract typeName: ZodArrayDef.TypeName.ZodArray with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: 'T with get, set
 
             [<Import("./types.cjs", "ZodUnionDef")>]
@@ -26304,7 +26304,7 @@ module rec Zod =
                 inherit ZodTypeDef
                 abstract typeName: ZodBrandedDef.TypeName.ZodBranded with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: 'T with get, set
 
             [<Import("./types.cjs", "ZodOptionalDef")>]
@@ -26355,7 +26355,7 @@ module rec Zod =
                 abstract code: ZodType.Code with get, set
                 abstract message: option<string> with get, set
 
-                [<CompiledName("~standard")>]
+                [<EmitProperty("~standard")>]
                 abstract ``~standard``: StandardSchema.StandardSchemaV1.Props<'Input, 'Output> with get, set
 
                 abstract description: option<string> with get
@@ -26377,7 +26377,7 @@ module rec Zod =
                 abstract received: ZodType.Received with get, set
                 abstract expected: ZodType.Expected with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: ZodType.Type with get, set
 
                 abstract exact: option<ZodType.Exact> with get, set
@@ -26722,14 +26722,14 @@ module rec Zod =
 
             [<Import("./types.cjs", "TransformEffect")>]
             type TransformEffect<'T> =
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: TransformEffect.Type with get, set
 
                 abstract transform: arg: 'T * ctx: RefinementCtx -> option<Agents.AgentContext>
 
             [<Import("./types.cjs", "BRAND")>]
             type BRAND<'T when 'T :> PropertyKey> =
-                [<CompiledName("[BRAND]")>]
+                [<EmitProperty("[BRAND]")>]
                 abstract BRAND: BRAND.BRAND with get, set
 
             type CatchallInput<'T
@@ -26748,7 +26748,7 @@ module rec Zod =
                 abstract typeName: ZodPipelineDef.TypeName.ZodPipeline with get, set
                 abstract out: 'B with get, set
 
-                [<CompiledName("in")>]
+                [<EmitProperty("in")>]
                 abstract ``in``: 'A with get, set
 
             [<Import("./types.cjs", "ZodEffectsDef")>]
@@ -26772,10 +26772,10 @@ module rec Zod =
                 inherit ZodType<proptypekey<'T, float>, ZodEnumDef<'T>, proptypekey<'T, float>>()
                 abstract create: ZodEnum.Create with get, set
 
-                [<CompiledName("Enum")>]
+                [<EmitProperty("Enum")>]
                 abstract enum: ZodEnum.Enum with get
 
-                [<CompiledName("Values")>]
+                [<EmitProperty("Values")>]
                 abstract values: ZodEnum.Values with get
 
                 abstract enum: ZodEnum.Enum with get
@@ -26824,7 +26824,7 @@ module rec Zod =
 
             [<Import("./types.cjs", "RefinementEffect")>]
             type RefinementEffect<'T> =
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: RefinementEffect.Type with get, set
 
                 abstract refinement: arg: 'T * ctx: RefinementCtx -> option<Agents.AgentContext>
@@ -26987,13 +26987,13 @@ module rec Zod =
                                     abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
 
                             type SymbolUnscopables =
-                                [<CompiledName("__@unscopables@2222")>]
+                                [<EmitProperty("__@unscopables@2222")>]
                                 abstract _unscopables2222: option<SymbolUnscopables._Unscopables2222> with get, set
 
-                                [<CompiledName("__@iterator@494")>]
+                                [<EmitProperty("__@iterator@494")>]
                                 abstract _iterator494: option<SymbolUnscopables._Iterator494> with get, set
 
-                                [<CompiledName("with")>]
+                                [<EmitProperty("with")>]
                                 abstract ``with``: option<SymbolUnscopables.With> with get, set
 
                                 abstract toSpliced: option<SymbolUnscopables.ToSpliced> with get, set
@@ -27091,12 +27091,12 @@ module rec Zod =
 
             [<Import("./ZodError.cjs", "ZodFormattedError")>]
             type ZodFormattedError<'U, 'T> =
-                [<CompiledName("[Symbol.unscopables]")>]
+                [<EmitProperty("[Symbol.unscopables]")>]
                 abstract symbolUnscopables: ZodFormattedError.SymbolUnscopables with get
 
                 abstract length: float with get, set
 
-                [<CompiledName("0")>]
+                [<EmitProperty("0")>]
                 abstract ``0``: option<ZodFormattedError.``0``> with get, set
 
                 abstract _errors: Array<'U> with get, set
@@ -27171,12 +27171,12 @@ module rec Zod =
             type StringValidation = U4<StringValidation, StringValidation, StringValidation, StringValidation>
 
             type ZodError =
-                [<CompiledName("[Symbol.unscopables]")>]
+                [<EmitProperty("[Symbol.unscopables]")>]
                 abstract symbolUnscopables: ZodError.SymbolUnscopables with get
 
                 abstract length: float with get, set
 
-                [<CompiledName("0")>]
+                [<EmitProperty("0")>]
                 abstract ``0``: option<ZodError.``0``> with get, set
 
                 abstract _errors: Array<'U> with get, set
@@ -27192,7 +27192,7 @@ module rec Zod =
                 abstract keys: Array<string> with get, set
                 abstract multipleOf: float with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: ZodError.Type with get, set
 
                 abstract exact: option<bool> with get, set
@@ -27335,7 +27335,7 @@ module rec Zod =
             type ZodTooSmallIssue =
                 inherit ZodIssueBase
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: ZodTooSmallIssue.Type with get, set
 
                 abstract exact: option<bool> with get, set
@@ -27404,12 +27404,12 @@ module rec Zod =
                                         | [<CompiledValue(true)>] True
 
                     type ToString =
-                        [<CompiledName("[Symbol.unscopables]")>]
+                        [<EmitProperty("[Symbol.unscopables]")>]
                         abstract symbolUnscopables: ToString.SymbolUnscopables with get
 
                         abstract length: float with get, set
 
-                        [<CompiledName("0")>]
+                        [<EmitProperty("0")>]
                         abstract ``0``: option<ToString.``0``> with get, set
 
                         abstract _errors: Array<'U> with get, set
@@ -27559,7 +27559,7 @@ module rec Zod =
                             type Content = interface end
 
                         type ResultSchema =
-                            [<CompiledName("in")>]
+                            [<EmitProperty("in")>]
                             abstract ``in``: ResultSchema.In with get, set
 
                             abstract out: ResultSchema.Out with get, set
@@ -27575,7 +27575,7 @@ module rec Zod =
                                     k: string -> U2<proptypekey<proptypekey<'T, Out.Item>, Out.Item>, option<obj>>
 
                     type Config =
-                        [<CompiledName("in")>]
+                        [<EmitProperty("in")>]
                         abstract ``in``: Config.In with get, set
 
                         abstract out: Config.Out with get, set
@@ -27586,7 +27586,7 @@ module rec Zod =
                     type Strict = interface end
 
                     type Catchall =
-                        [<CompiledName("in")>]
+                        [<EmitProperty("in")>]
                         abstract ``in``: Catchall.In with get, set
 
                         abstract out: Catchall.Out with get, set
@@ -27748,7 +27748,7 @@ module rec Zod =
                                      >
                                  > with get, set
 
-                            [<CompiledName("when")>]
+                            [<EmitProperty("when")>]
                             abstract ``when``: option<Core.Schemas.ParsePayload<option<obj>> -> bool> with get, set
 
                             abstract params: option<Params.Params> with get, set
@@ -27772,14 +27772,14 @@ module rec Zod =
                                             abstract readOnly: option<bool> with get, set
                                             abstract deprecated: option<bool> with get, set
 
-                                            [<CompiledName("default")>]
+                                            [<EmitProperty("default")>]
                                             abstract ``default``: option<obj> with get, set
 
                                             abstract description: option<string> with get, set
                                             abstract title: option<string> with get, set
                                             abstract id: option<string> with get, set
 
-                                            [<CompiledName("const")>]
+                                            [<EmitProperty("const")>]
                                             abstract ``const``: option<U3<string, float, bool>> with get, set
 
                                             abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
@@ -27801,20 +27801,20 @@ module rec Zod =
                                             abstract maximum: option<float> with get, set
                                             abstract multipleOf: option<float> with get, set
 
-                                            [<CompiledName("not")>]
+                                            [<EmitProperty("not")>]
                                             abstract ``not``: option<Core.JsonSchema._JSONSchema> with get, set
 
                                             abstract oneOf: option<Array<obj>> with get, set
                                             abstract anyOf: option<Array<obj>> with get, set
                                             abstract allOf: option<Array<obj>> with get, set
 
-                                            [<CompiledName("else")>]
+                                            [<EmitProperty("else")>]
                                             abstract ``else``: option<Core.JsonSchema._JSONSchema> with get, set
 
-                                            [<CompiledName("then")>]
+                                            [<EmitProperty("then")>]
                                             abstract ``then``: option<Core.JsonSchema._JSONSchema> with get, set
 
-                                            [<CompiledName("if")>]
+                                            [<EmitProperty("if")>]
                                             abstract ``if``: option<Core.JsonSchema._JSONSchema> with get, set
 
                                             abstract propertyNames: option<Core.JsonSchema._JSONSchema> with get, set
@@ -27838,40 +27838,40 @@ module rec Zod =
                                             abstract unevaluatedItems: option<Core.JsonSchema._JSONSchema> with get, set
                                             abstract additionalItems: option<Core.JsonSchema._JSONSchema> with get, set
 
-                                            [<CompiledName("type")>]
+                                            [<EmitProperty("type")>]
                                             abstract ``type``: option<AdditionalItems.Type> with get, set
 
-                                            [<CompiledName("$defs")>]
+                                            [<EmitProperty("$defs")>]
                                             abstract defs: option<AdditionalItems.Defs> with get, set
 
-                                            [<CompiledName("$comment")>]
+                                            [<EmitProperty("$comment")>]
                                             abstract comment: option<string> with get, set
 
-                                            [<CompiledName("$vocabulary")>]
+                                            [<EmitProperty("$vocabulary")>]
                                             abstract vocabulary: option<AdditionalItems.Vocabulary> with get, set
 
-                                            [<CompiledName("$dynamicAnchor")>]
+                                            [<EmitProperty("$dynamicAnchor")>]
                                             abstract dynamicAnchor: option<string> with get, set
 
-                                            [<CompiledName("$dynamicRef")>]
+                                            [<EmitProperty("$dynamicRef")>]
                                             abstract dynamicRef: option<string> with get, set
 
-                                            [<CompiledName("$ref")>]
+                                            [<EmitProperty("$ref")>]
                                             abstract ref: option<string> with get, set
 
-                                            [<CompiledName("$anchor")>]
+                                            [<EmitProperty("$anchor")>]
                                             abstract anchor: option<string> with get, set
 
-                                            [<CompiledName("$id")>]
+                                            [<EmitProperty("$id")>]
                                             abstract id: option<string> with get, set
 
-                                            [<CompiledName("$schema")>]
+                                            [<EmitProperty("$schema")>]
                                             abstract schema: option<AdditionalItems.Schema> with get, set
 
                                             abstract Item: key: string -> option<obj>
 
                                         type Config =
-                                            [<CompiledName("in")>]
+                                            [<EmitProperty("in")>]
                                             abstract ``in``: Config.In with get, set
 
                                             abstract out: Config.Out with get, set
@@ -27891,7 +27891,7 @@ module rec Zod =
                             abstract unrepresentable: option<Params.Unrepresentable> with get, set
                             abstract target: option<U2<Params.Target, Params.Target>> with get, set
 
-                            [<CompiledName("override")>]
+                            [<EmitProperty("override")>]
                             abstract ``override``: option<Params.Override -> unit> with get, set
 
                             abstract metadata:
@@ -27913,7 +27913,7 @@ module rec Zod =
                         abstract output: _zod.Output with get, set
                         abstract input: _zod.Input with get, set
 
-                        [<CompiledName("[$brand]")>]
+                        [<EmitProperty("[$brand]")>]
                         abstract brand: _zod.Brand with get, set
 
                     type Meta =
@@ -28052,7 +28052,7 @@ module rec Zod =
                 type ZodPrefault<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodPrefaultInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodPrefault, 'Input> with get, set
 
                     abstract unwrap: unit -> 'T
@@ -28063,7 +28063,7 @@ module rec Zod =
                 type ZodExactOptional<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodExactOptionalInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodExactOptional, 'Input> with get, set
 
                     abstract unwrap: unit -> 'T
@@ -28097,7 +28097,7 @@ module rec Zod =
                     abstract valueType: 'Value with get, set
                     abstract keyType: 'Key with get, set
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodRecord, 'Input> with get, set
 
                 [<Import("./schemas.cjs", "ZodUnknown")>]
@@ -28117,14 +28117,14 @@ module rec Zod =
                     inherit _ZodType<Core.Schemas.ZodUnionInternals<'T>>
                     abstract options: 'T with get, set
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodUnion, 'Input> with get, set
 
                 [<Import("./schemas.cjs", "ZodIntersection")>]
                 type ZodIntersection<'B, 'A when 'B :> Core.Schemas.SomeType and 'A :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodIntersectionInternals<'A, 'B>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodIntersection, 'Input> with get, set
 
                 type ZodObject =
@@ -28134,7 +28134,7 @@ module rec Zod =
                 type ZodReadonly<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodReadonlyInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodReadonly, 'Input> with get, set
 
                     abstract unwrap: unit -> 'T
@@ -28149,7 +28149,7 @@ module rec Zod =
                 type ZodDefault<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodDefaultInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodDefault, 'Input> with get, set
 
                     abstract removeDefault: unit -> 'T
@@ -28159,7 +28159,7 @@ module rec Zod =
                 type ZodNonOptional<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodNonOptionalInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodNonOptional, 'Input> with get, set
 
                     abstract unwrap: unit -> 'T
@@ -28180,7 +28180,7 @@ module rec Zod =
                 type ZodCatch<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodCatchInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodCatch, 'Input> with get, set
 
                     abstract removeCatch: unit -> 'T
@@ -28193,7 +28193,7 @@ module rec Zod =
                     abstract def: Core.Schemas.ZodDiscriminatedUnionDef<'Options, 'Disc> with get, set
                     abstract _zod: Core.Schemas.ZodDiscriminatedUnionInternals<'Options, 'Disc> with get, set
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``:
                         Core.StandardSchema.StandardSchemaWithJSONProps<'ZodDiscriminatedUnion, 'Input> with get, set
 
@@ -28203,14 +28203,14 @@ module rec Zod =
                     abstract value: 'T with get, set
                     abstract values: Set<'T> with get, set
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodLiteral, 'Input> with get, set
 
                 [<Import("./schemas.cjs", "ZodOptional")>]
                 type ZodOptional<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodOptionalInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodOptional, 'Input> with get, set
 
                     abstract unwrap: unit -> 'T
@@ -28219,7 +28219,7 @@ module rec Zod =
                 type ZodArray<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodArrayInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodArray, 'Input> with get, set
 
                     abstract element: 'T with get, set
@@ -28263,14 +28263,14 @@ module rec Zod =
                 type ZodCustom<'I, 'O> =
                     inherit _ZodType<Core.Schemas.ZodCustomInternals<'O, 'I>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodCustom, 'Input> with get, set
 
                 [<Import("./schemas.cjs", "ZodNullable")>]
                 type ZodNullable<'T when 'T :> Core.Schemas.SomeType> =
                     inherit _ZodType<Core.Schemas.ZodNullableInternals<'T>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodNullable, 'Input> with get, set
 
                     abstract unwrap: unit -> 'T
@@ -28281,7 +28281,7 @@ module rec Zod =
                     abstract options: Array<proptypekey<'T, keyof<'T>>> with get, set
                     abstract enum: 'T with get, set
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodEnum, 'Input> with get, set
 
                     abstract exclude:
@@ -28295,10 +28295,10 @@ module rec Zod =
                     inherit _ZodType<Core.Schemas.ZodPipeInternals<'A, 'B>>
                     abstract out: 'B with get, set
 
-                    [<CompiledName("in")>]
+                    [<EmitProperty("in")>]
                     abstract ``in``: 'A with get, set
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodPipe, 'Input> with get, set
 
                 [<Import("./schemas.cjs", "SafeExtendShape")>]
@@ -28309,7 +28309,7 @@ module rec Zod =
                 type ZodTransform<'I, 'O> =
                     inherit _ZodType<Core.Schemas.ZodTransformInternals<'O, 'I>>
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: Core.StandardSchema.StandardSchemaWithJSONProps<'ZodTransform, 'Input> with get, set
 
                 [<Import("./schemas.cjs", "ZodString")>]
@@ -28418,7 +28418,7 @@ module rec Zod =
 
                 [<Import("./api.cjs", "$ZodSuperRefineParams")>]
                 type ZodSuperRefineParams =
-                    [<CompiledName("when")>]
+                    [<EmitProperty("when")>]
                     abstract ``when``: option<Schemas.ParsePayload<option<obj>> -> bool> with get, set
 
             module rec Checks =
@@ -28473,7 +28473,7 @@ module rec Zod =
 
                 [<Import("./checks.cjs", "$ZodCheckDef")>]
                 type ZodCheckDef =
-                    [<CompiledName("when")>]
+                    [<EmitProperty("when")>]
                     abstract ``when``: option<Schemas.ParsePayload<option<obj>> -> bool> with get, set
 
                     abstract abort: option<bool> with get, set
@@ -28498,7 +28498,7 @@ module rec Zod =
                         abstract output: _zod.Output with get, set
                         abstract input: _zod.Input with get, set
 
-                        [<CompiledName("[$brand]")>]
+                        [<EmitProperty("[$brand]")>]
                         abstract brand: _zod.Brand with get, set
 
                     type T =
@@ -28515,7 +28515,7 @@ module rec Zod =
 
                 [<Import("./core.cjs", "$brand")>]
                 type Brand<'T when 'T :> PropertyKey> =
-                    [<CompiledName("[$brand]")>]
+                    [<EmitProperty("[$brand]")>]
                     abstract brand: Brand.Brand with get, set
 
                 type ICore =
@@ -28556,7 +28556,7 @@ module rec Zod =
                     abstract _zod: ZodError._zod with get, set
                     abstract issues: Array<ZodIssue> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: 'T with get, set
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -28695,14 +28695,14 @@ module rec Zod =
                         abstract readOnly: option<bool> with get, set
                         abstract deprecated: option<bool> with get, set
 
-                        [<CompiledName("default")>]
+                        [<EmitProperty("default")>]
                         abstract ``default``: option<obj> with get, set
 
                         abstract description: option<string> with get, set
                         abstract title: option<string> with get, set
                         abstract id: option<string> with get, set
 
-                        [<CompiledName("const")>]
+                        [<EmitProperty("const")>]
                         abstract ``const``: option<U3<string, float, bool>> with get, set
 
                         abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
@@ -28724,20 +28724,20 @@ module rec Zod =
                         abstract maximum: option<float> with get, set
                         abstract multipleOf: option<float> with get, set
 
-                        [<CompiledName("not")>]
+                        [<EmitProperty("not")>]
                         abstract ``not``: option<_JSONSchema> with get, set
 
                         abstract oneOf: option<Array<obj>> with get, set
                         abstract anyOf: option<Array<obj>> with get, set
                         abstract allOf: option<Array<obj>> with get, set
 
-                        [<CompiledName("else")>]
+                        [<EmitProperty("else")>]
                         abstract ``else``: option<_JSONSchema> with get, set
 
-                        [<CompiledName("then")>]
+                        [<EmitProperty("then")>]
                         abstract ``then``: option<_JSONSchema> with get, set
 
-                        [<CompiledName("if")>]
+                        [<EmitProperty("if")>]
                         abstract ``if``: option<_JSONSchema> with get, set
 
                         abstract propertyNames: option<_JSONSchema> with get, set
@@ -28752,34 +28752,34 @@ module rec Zod =
                         abstract unevaluatedItems: option<_JSONSchema> with get, set
                         abstract additionalItems: option<_JSONSchema> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<AdditionalItems.Type> with get, set
 
-                        [<CompiledName("$defs")>]
+                        [<EmitProperty("$defs")>]
                         abstract defs: option<AdditionalItems.Defs> with get, set
 
-                        [<CompiledName("$comment")>]
+                        [<EmitProperty("$comment")>]
                         abstract comment: option<string> with get, set
 
-                        [<CompiledName("$vocabulary")>]
+                        [<EmitProperty("$vocabulary")>]
                         abstract vocabulary: option<AdditionalItems.Vocabulary> with get, set
 
-                        [<CompiledName("$dynamicAnchor")>]
+                        [<EmitProperty("$dynamicAnchor")>]
                         abstract dynamicAnchor: option<string> with get, set
 
-                        [<CompiledName("$dynamicRef")>]
+                        [<EmitProperty("$dynamicRef")>]
                         abstract dynamicRef: option<string> with get, set
 
-                        [<CompiledName("$ref")>]
+                        [<EmitProperty("$ref")>]
                         abstract ref: option<string> with get, set
 
-                        [<CompiledName("$anchor")>]
+                        [<EmitProperty("$anchor")>]
                         abstract anchor: option<string> with get, set
 
-                        [<CompiledName("$id")>]
+                        [<EmitProperty("$id")>]
                         abstract id: option<string> with get, set
 
-                        [<CompiledName("$schema")>]
+                        [<EmitProperty("$schema")>]
                         abstract schema: option<AdditionalItems.Schema> with get, set
 
                         abstract Item: key: string -> option<obj>
@@ -28874,14 +28874,14 @@ module rec Zod =
                                                     | [<CompiledName("recur")>] Recur
 
                                                 type SymbolUnscopables =
-                                                    [<CompiledName("__@unscopables@2222")>]
+                                                    [<EmitProperty("__@unscopables@2222")>]
                                                     abstract _unscopables2222:
                                                         option<SymbolUnscopables._Unscopables2222> with get, set
 
-                                                    [<CompiledName("__@iterator@494")>]
+                                                    [<EmitProperty("__@iterator@494")>]
                                                     abstract _iterator494: option<SymbolUnscopables._Iterator494> with get, set
 
-                                                    [<CompiledName("with")>]
+                                                    [<EmitProperty("with")>]
                                                     abstract ``with``: option<SymbolUnscopables.With> with get, set
 
                                                     abstract toSpliced: option<SymbolUnscopables.ToSpliced> with get, set
@@ -28924,7 +28924,7 @@ module rec Zod =
                                                     abstract length: option<SymbolUnscopables.Length> with get, set
 
                                 type Args =
-                                    [<CompiledName("[Symbol.unscopables]")>]
+                                    [<EmitProperty("[Symbol.unscopables]")>]
                                     abstract symbolUnscopables: Args.SymbolUnscopables with get
 
                                     abstract length: float with get, set
@@ -29346,7 +29346,7 @@ module rec Zod =
                         abstract Item: key: string -> option<Agents.AgentContext>
 
                     type Config =
-                        [<CompiledName("in")>]
+                        [<EmitProperty("in")>]
                         abstract ``in``: Config.In with get, set
 
                         abstract out: Config.Out with get, set
@@ -29357,7 +29357,7 @@ module rec Zod =
 
                 module rec ZodObjectInternals =
                     type Config =
-                        [<CompiledName("in")>]
+                        [<EmitProperty("in")>]
                         abstract ``in``: Config.In with get, set
 
                         abstract out: Config.Out with get, set
@@ -29516,7 +29516,7 @@ module rec Zod =
                                 | [<CompiledValue(true)>] True
 
                     type Output =
-                        [<CompiledName("[Symbol.unscopables]")>]
+                        [<EmitProperty("[Symbol.unscopables]")>]
                         abstract symbolUnscopables: Output.SymbolUnscopables with get
 
                         abstract length: float with get
@@ -29579,14 +29579,14 @@ module rec Zod =
                             abstract readOnly: option<bool> with get, set
                             abstract deprecated: option<bool> with get, set
 
-                            [<CompiledName("default")>]
+                            [<EmitProperty("default")>]
                             abstract ``default``: option<obj> with get, set
 
                             abstract description: option<string> with get, set
                             abstract title: option<string> with get, set
                             abstract id: option<string> with get, set
 
-                            [<CompiledName("const")>]
+                            [<EmitProperty("const")>]
                             abstract ``const``: option<U3<string, float, bool>> with get, set
 
                             abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
@@ -29608,20 +29608,20 @@ module rec Zod =
                             abstract maximum: option<float> with get, set
                             abstract multipleOf: option<float> with get, set
 
-                            [<CompiledName("not")>]
+                            [<EmitProperty("not")>]
                             abstract ``not``: option<JsonSchema._JSONSchema> with get, set
 
                             abstract oneOf: option<Array<obj>> with get, set
                             abstract anyOf: option<Array<obj>> with get, set
                             abstract allOf: option<Array<obj>> with get, set
 
-                            [<CompiledName("else")>]
+                            [<EmitProperty("else")>]
                             abstract ``else``: option<JsonSchema._JSONSchema> with get, set
 
-                            [<CompiledName("then")>]
+                            [<EmitProperty("then")>]
                             abstract ``then``: option<JsonSchema._JSONSchema> with get, set
 
-                            [<CompiledName("if")>]
+                            [<EmitProperty("if")>]
                             abstract ``if``: option<JsonSchema._JSONSchema> with get, set
 
                             abstract propertyNames: option<JsonSchema._JSONSchema> with get, set
@@ -29639,34 +29639,34 @@ module rec Zod =
                             abstract unevaluatedItems: option<JsonSchema._JSONSchema> with get, set
                             abstract additionalItems: option<JsonSchema._JSONSchema> with get, set
 
-                            [<CompiledName("type")>]
+                            [<EmitProperty("type")>]
                             abstract ``type``: option<AdditionalItems.Type> with get, set
 
-                            [<CompiledName("$defs")>]
+                            [<EmitProperty("$defs")>]
                             abstract defs: option<AdditionalItems.Defs> with get, set
 
-                            [<CompiledName("$comment")>]
+                            [<EmitProperty("$comment")>]
                             abstract comment: option<string> with get, set
 
-                            [<CompiledName("$vocabulary")>]
+                            [<EmitProperty("$vocabulary")>]
                             abstract vocabulary: option<AdditionalItems.Vocabulary> with get, set
 
-                            [<CompiledName("$dynamicAnchor")>]
+                            [<EmitProperty("$dynamicAnchor")>]
                             abstract dynamicAnchor: option<string> with get, set
 
-                            [<CompiledName("$dynamicRef")>]
+                            [<EmitProperty("$dynamicRef")>]
                             abstract dynamicRef: option<string> with get, set
 
-                            [<CompiledName("$ref")>]
+                            [<EmitProperty("$ref")>]
                             abstract ref: option<string> with get, set
 
-                            [<CompiledName("$anchor")>]
+                            [<EmitProperty("$anchor")>]
                             abstract anchor: option<string> with get, set
 
-                            [<CompiledName("$id")>]
+                            [<EmitProperty("$id")>]
                             abstract id: option<string> with get, set
 
-                            [<CompiledName("$schema")>]
+                            [<EmitProperty("$schema")>]
                             abstract schema: option<AdditionalItems.Schema> with get, set
 
                             abstract Item: key: string -> option<obj>
@@ -29712,7 +29712,7 @@ module rec Zod =
                     inherit ZodTypeDef
                     abstract innerType: 'T with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodReadonlyDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodNeverInternals")>]
@@ -29757,7 +29757,7 @@ module rec Zod =
                     inherit ZodTypeDef
                     abstract entries: 'T with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodEnumDef.Type with get, set
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -29839,7 +29839,7 @@ module rec Zod =
                     inherit ZodTypeDef
                     abstract coerce: option<bool> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodBigIntDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodStringFormatDef")>]
@@ -29888,7 +29888,7 @@ module rec Zod =
                     abstract checks: option<Array<Checks.ZodCheck<string>>> with get, set
                     abstract coerce: option<bool> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodStringDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodString")>]
@@ -29952,7 +29952,7 @@ module rec Zod =
                 type ZodTransformDef =
                     inherit ZodTypeDef
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodTransformDef.Type with get, set
 
                     abstract transform: ?input: obj * payload: ParsePayload<option<obj>> -> option<obj>
@@ -30081,7 +30081,7 @@ module rec Zod =
                     inherit ZodTypeDef
                     abstract element: 'T with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodArrayDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodTemplateLiteralInternals")>]
@@ -30095,12 +30095,12 @@ module rec Zod =
                 type ZodNullDef =
                     inherit ZodTypeDef
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodNullDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$catchall")>]
                 type Catchall<'T when 'T :> SomeType> =
-                    [<CompiledName("in")>]
+                    [<EmitProperty("in")>]
                     abstract ``in``: Catchall.In with get, set
 
                     abstract out: Catchall.Out with get, set
@@ -30120,7 +30120,7 @@ module rec Zod =
                     inherit ZodTypeDef
                     abstract innerType: 'T with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodSuccessDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodSymbol")>]
@@ -30191,7 +30191,7 @@ module rec Zod =
                     abstract valueType: 'Value with get, set
                     abstract keyType: 'Key with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodMapDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodObject")>]
@@ -30242,7 +30242,7 @@ module rec Zod =
                 type ZodUnknownDef =
                     inherit ZodTypeDef
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodUnknownDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodCustomInternals")>]
@@ -30255,7 +30255,7 @@ module rec Zod =
 
                 [<Import("./schemas.cjs", "$ZodType")>]
                 type ZodType<'Internals, 'I, 'O when 'Internals :> ZodTypeInternals<'O, 'I>> =
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: StandardSchema.StandardSchemaV1.Props<'$ZodType, 'Input> with get, set
 
                     abstract _zod: 'Internals with get, set
@@ -30300,7 +30300,7 @@ module rec Zod =
                     abstract checks: option<Array<Checks.ZodCheck<bool>>> with get, set
                     abstract coerce: option<bool> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodBooleanDef.Type with get, set
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -30321,10 +30321,10 @@ module rec Zod =
                     inherit ZodTypeDef
                     abstract out: 'B with get, set
 
-                    [<CompiledName("in")>]
+                    [<EmitProperty("in")>]
                     abstract ``in``: 'A with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodPipeDef.Type with get, set
 
                     abstract reverseTransform:
@@ -30550,7 +30550,7 @@ module rec Zod =
                     inherit File
                     abstract size: float with get
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: string with get
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -30677,7 +30677,7 @@ module rec Zod =
 
                 [<Import("./schemas.cjs", "$partial")>]
                 type Partial =
-                    [<CompiledName("~~partial")>]
+                    [<EmitProperty("~~partial")>]
                     abstract ``~~partial``: Partial.``~~partial`` with get, set
 
                 [<Import("./schemas.cjs", "$ZodCatchInternals")>]
@@ -30743,7 +30743,7 @@ module rec Zod =
                 type ZodNeverDef =
                     inherit ZodTypeDef
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodNeverDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodReadonly")>]
@@ -30826,7 +30826,7 @@ module rec Zod =
                 type ZodFileDef =
                     inherit ZodTypeDef
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodFileDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodAnyInternals")>]
@@ -30893,7 +30893,7 @@ module rec Zod =
                     inherit ZodTypeDef
                     abstract innerType: 'T with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodCatchDef.Type with get, set
 
                     abstract catchValue: ctx: ZodCatchCtx -> option<obj>
@@ -30977,7 +30977,7 @@ module rec Zod =
 
                 [<Import("./schemas.cjs", "$loose")>]
                 type Loose =
-                    [<CompiledName("in")>]
+                    [<EmitProperty("in")>]
                     abstract ``in``: Loose.In with get, set
 
                     abstract out: Loose.Out with get, set
@@ -31025,14 +31025,14 @@ module rec Zod =
 
                     abstract innerType: 'T with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodPrefaultDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodVoidDef")>]
                 type ZodVoidDef =
                     inherit ZodTypeDef
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodVoidDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodDateInternals")>]
@@ -31051,7 +31051,7 @@ module rec Zod =
                     abstract rest: 'Rest with get, set
                     abstract items: 'T with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodTupleDef.Type with get, set
 
                 type ZodTypes = obj
@@ -31107,7 +31107,7 @@ module rec Zod =
 
                 [<Import("./schemas.cjs", "$ZodObjectConfig")>]
                 type ZodObjectConfig =
-                    [<CompiledName("in")>]
+                    [<EmitProperty("in")>]
                     abstract ``in``: ZodObjectConfig.In with get, set
 
                     abstract out: ZodObjectConfig.Out with get, set
@@ -31129,7 +31129,7 @@ module rec Zod =
                 type ZodAnyDef =
                     inherit ZodTypeDef
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodAnyDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodIntersection")>]
@@ -31151,7 +31151,7 @@ module rec Zod =
                     abstract inclusive: option<bool> with get, set
                     abstract options: 'Options with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: ZodUnionDef.Type with get, set
 
                 [<Import("./schemas.cjs", "$ZodLiteral")>]
@@ -31381,7 +31381,7 @@ module rec Zod =
                                     | [<CompiledName("http://json-schema.org/draft-04/schema#")>] ``Http:/jsonSchemaOrgDraft04Schema#``
 
                                 type Config =
-                                    [<CompiledName("in")>]
+                                    [<EmitProperty("in")>]
                                     abstract ``in``: Config.In with get, set
 
                                     abstract out: Config.Out with get, set
@@ -31421,14 +31421,14 @@ module rec Zod =
                         abstract readOnly: option<bool> with get, set
                         abstract deprecated: option<bool> with get, set
 
-                        [<CompiledName("default")>]
+                        [<EmitProperty("default")>]
                         abstract ``default``: option<obj> with get, set
 
                         abstract description: option<string> with get, set
                         abstract title: option<string> with get, set
                         abstract id: option<string> with get, set
 
-                        [<CompiledName("const")>]
+                        [<EmitProperty("const")>]
                         abstract ``const``: option<U3<string, float, bool>> with get, set
 
                         abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
@@ -31450,20 +31450,20 @@ module rec Zod =
                         abstract maximum: option<float> with get, set
                         abstract multipleOf: option<float> with get, set
 
-                        [<CompiledName("not")>]
+                        [<EmitProperty("not")>]
                         abstract ``not``: option<JsonSchema._JSONSchema> with get, set
 
                         abstract oneOf: option<Array<obj>> with get, set
                         abstract anyOf: option<Array<obj>> with get, set
                         abstract allOf: option<Array<obj>> with get, set
 
-                        [<CompiledName("else")>]
+                        [<EmitProperty("else")>]
                         abstract ``else``: option<JsonSchema._JSONSchema> with get, set
 
-                        [<CompiledName("then")>]
+                        [<EmitProperty("then")>]
                         abstract ``then``: option<JsonSchema._JSONSchema> with get, set
 
-                        [<CompiledName("if")>]
+                        [<EmitProperty("if")>]
                         abstract ``if``: option<JsonSchema._JSONSchema> with get, set
 
                         abstract propertyNames: option<JsonSchema._JSONSchema> with get, set
@@ -31481,34 +31481,34 @@ module rec Zod =
                         abstract unevaluatedItems: option<JsonSchema._JSONSchema> with get, set
                         abstract additionalItems: option<JsonSchema._JSONSchema> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<AdditionalItems.Type> with get, set
 
-                        [<CompiledName("$defs")>]
+                        [<EmitProperty("$defs")>]
                         abstract defs: option<AdditionalItems.Defs> with get, set
 
-                        [<CompiledName("$comment")>]
+                        [<EmitProperty("$comment")>]
                         abstract comment: option<string> with get, set
 
-                        [<CompiledName("$vocabulary")>]
+                        [<EmitProperty("$vocabulary")>]
                         abstract vocabulary: option<AdditionalItems.Vocabulary> with get, set
 
-                        [<CompiledName("$dynamicAnchor")>]
+                        [<EmitProperty("$dynamicAnchor")>]
                         abstract dynamicAnchor: option<string> with get, set
 
-                        [<CompiledName("$dynamicRef")>]
+                        [<EmitProperty("$dynamicRef")>]
                         abstract dynamicRef: option<string> with get, set
 
-                        [<CompiledName("$ref")>]
+                        [<EmitProperty("$ref")>]
                         abstract ref: option<string> with get, set
 
-                        [<CompiledName("$anchor")>]
+                        [<EmitProperty("$anchor")>]
                         abstract anchor: option<string> with get, set
 
-                        [<CompiledName("$id")>]
+                        [<EmitProperty("$id")>]
                         abstract id: option<string> with get, set
 
-                        [<CompiledName("$schema")>]
+                        [<EmitProperty("$schema")>]
                         abstract schema: option<AdditionalItems.Schema> with get, set
 
                         abstract Item: key: string -> option<obj>
@@ -31586,7 +31586,7 @@ module rec Zod =
                                             | [<CompiledName("http://json-schema.org/draft-04/schema#")>] ``Http:/jsonSchemaOrgDraft04Schema#``
 
                                         type Config =
-                                            [<CompiledName("in")>]
+                                            [<EmitProperty("in")>]
                                             abstract ``in``: Config.In with get, set
 
                                             abstract out: Config.Out with get, set
@@ -31606,7 +31606,7 @@ module rec Zod =
                             abstract unrepresentable: option<Params.Unrepresentable> with get, set
                             abstract target: option<U2<Params.Target, Params.Target>> with get, set
 
-                            [<CompiledName("override")>]
+                            [<EmitProperty("override")>]
                             abstract ``override``: option<Params.Override -> unit> with get, set
 
                             abstract metadata:
@@ -31637,14 +31637,14 @@ module rec Zod =
                         abstract readOnly: option<bool> with get, set
                         abstract deprecated: option<bool> with get, set
 
-                        [<CompiledName("default")>]
+                        [<EmitProperty("default")>]
                         abstract ``default``: option<obj> with get, set
 
                         abstract description: option<string> with get, set
                         abstract title: option<string> with get, set
                         abstract id: option<string> with get, set
 
-                        [<CompiledName("const")>]
+                        [<EmitProperty("const")>]
                         abstract ``const``: option<U3<string, float, bool>> with get, set
 
                         abstract enum: option<Array<option<U3<string, float, bool>>>> with get, set
@@ -31666,20 +31666,20 @@ module rec Zod =
                         abstract maximum: option<float> with get, set
                         abstract multipleOf: option<float> with get, set
 
-                        [<CompiledName("not")>]
+                        [<EmitProperty("not")>]
                         abstract ``not``: option<JsonSchema._JSONSchema> with get, set
 
                         abstract oneOf: option<Array<obj>> with get, set
                         abstract anyOf: option<Array<obj>> with get, set
                         abstract allOf: option<Array<obj>> with get, set
 
-                        [<CompiledName("else")>]
+                        [<EmitProperty("else")>]
                         abstract ``else``: option<JsonSchema._JSONSchema> with get, set
 
-                        [<CompiledName("then")>]
+                        [<EmitProperty("then")>]
                         abstract ``then``: option<JsonSchema._JSONSchema> with get, set
 
-                        [<CompiledName("if")>]
+                        [<EmitProperty("if")>]
                         abstract ``if``: option<JsonSchema._JSONSchema> with get, set
 
                         abstract propertyNames: option<JsonSchema._JSONSchema> with get, set
@@ -31697,34 +31697,34 @@ module rec Zod =
                         abstract unevaluatedItems: option<JsonSchema._JSONSchema> with get, set
                         abstract additionalItems: option<JsonSchema._JSONSchema> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<AdditionalItems.Type> with get, set
 
-                        [<CompiledName("$defs")>]
+                        [<EmitProperty("$defs")>]
                         abstract defs: option<AdditionalItems.Defs> with get, set
 
-                        [<CompiledName("$comment")>]
+                        [<EmitProperty("$comment")>]
                         abstract comment: option<string> with get, set
 
-                        [<CompiledName("$vocabulary")>]
+                        [<EmitProperty("$vocabulary")>]
                         abstract vocabulary: option<AdditionalItems.Vocabulary> with get, set
 
-                        [<CompiledName("$dynamicAnchor")>]
+                        [<EmitProperty("$dynamicAnchor")>]
                         abstract dynamicAnchor: option<string> with get, set
 
-                        [<CompiledName("$dynamicRef")>]
+                        [<EmitProperty("$dynamicRef")>]
                         abstract dynamicRef: option<string> with get, set
 
-                        [<CompiledName("$ref")>]
+                        [<EmitProperty("$ref")>]
                         abstract ref: option<string> with get, set
 
-                        [<CompiledName("$anchor")>]
+                        [<EmitProperty("$anchor")>]
                         abstract anchor: option<string> with get, set
 
-                        [<CompiledName("$id")>]
+                        [<EmitProperty("$id")>]
                         abstract id: option<string> with get, set
 
-                        [<CompiledName("$schema")>]
+                        [<EmitProperty("$schema")>]
                         abstract schema: option<AdditionalItems.Schema> with get, set
 
                         abstract Item: key: string -> option<obj>
@@ -31759,7 +31759,7 @@ module rec Zod =
                 type ZodStandardJSONSchemaPayload<'T> =
                     inherit JsonSchema.JSONSchema
 
-                    [<CompiledName("~standard")>]
+                    [<EmitProperty("~standard")>]
                     abstract ``~standard``: StandardSchema.StandardSchemaWithJSONProps<'T, 'Input> with get, set
 
                 [<Import("./to-json-schema.cjs", "Processor")>]
@@ -31858,7 +31858,7 @@ module rec Zod =
                 type EnumValue = U2<string, float>
 
                 type BuiltIn =
-                    [<CompiledName("[Symbol.toStringTag]")>]
+                    [<EmitProperty("[Symbol.toStringTag]")>]
                     abstract symbolToStringTag: string with get
 
                     abstract Create:
@@ -31924,7 +31924,7 @@ module rec ``.`` =
                             abstract Item: key: string -> option<Agents.AgentContext>
 
                     type Transport =
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: option<TransportType> with get, set
 
                         abstract headers: option<HeadersInit> with get, set
@@ -32189,10 +32189,10 @@ module rec ``.`` =
                                     abstract error: option<string> with get, set
                                     abstract state: MCPConnectionState with get, set
 
-                                    [<CompiledName("auth_url")>]
+                                    [<EmitProperty("auth_url")>]
                                     abstract authUrl: option<string> with get, set
 
-                                    [<CompiledName("server_url")>]
+                                    [<EmitProperty("server_url")>]
                                     abstract serverUrl: string with get, set
 
                                     abstract name: string with get, set
@@ -32284,7 +32284,7 @@ module rec ``.`` =
                                     type Options =
                                         abstract raw: string with get, set
 
-                                        [<CompiledName("to")>]
+                                        [<EmitProperty("to")>]
                                         abstract ``to``: string with get, set
 
                                         abstract from: string with get, set
@@ -32302,7 +32302,7 @@ module rec ``.`` =
                     abstract rawSize: float with get, set
                     abstract headers: Headers with get, set
 
-                    [<CompiledName("to")>]
+                    [<EmitProperty("to")>]
                     abstract ``to``: string with get, set
 
                     abstract from: string with get, set
@@ -32360,7 +32360,7 @@ module rec ``.`` =
                                                     abstract replyTo: option<U2<Message.ReplyTo, string>> with get, set
                                                     abstract subject: string with get, set
 
-                                                    [<CompiledName("to")>]
+                                                    [<EmitProperty("to")>]
                                                     abstract ``to``: U2<Array<string>, string> with get, set
 
                                                     abstract from: U2<Message.From, string> with get, set
@@ -32385,7 +32385,7 @@ module rec ``.`` =
                     abstract subject: string with get, set
                     abstract from: U2<Options.From, string> with get, set
 
-                    [<CompiledName("to")>]
+                    [<EmitProperty("to")>]
                     abstract ``to``: U2<Array<string>, string> with get, set
 
                     abstract binding: EmailSendBinding with get, set
@@ -32394,7 +32394,7 @@ module rec ``.`` =
                 type Event =
                     abstract payload: option<obj> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: string with get, set
 
             module rec ShouldConnectionBeReadonly =
@@ -32403,16 +32403,16 @@ module rec ``.`` =
 
             module rec _cfDispatchScheduledCallback =
                 type Row =
-                    [<CompiledName("owner_path_key")>]
+                    [<EmitProperty("owner_path_key")>]
                     abstract ownerPathKey: option<string> with get, set
 
-                    [<CompiledName("owner_path")>]
+                    [<EmitProperty("owner_path")>]
                     abstract ownerPath: option<string> with get, set
 
-                    [<CompiledName("retry_options")>]
+                    [<EmitProperty("retry_options")>]
                     abstract retryOptions: option<string> with get, set
 
-                    [<CompiledName("execution_started_at")>]
+                    [<EmitProperty("execution_started_at")>]
                     abstract executionStartedAt: option<float> with get, set
 
                     abstract running: option<float> with get, set
@@ -32422,7 +32422,7 @@ module rec ``.`` =
                     abstract delayInSeconds: option<float> with get, set
                     abstract time: float with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: Row.Type with get, set
 
                     abstract payload: string with get, set
@@ -32434,7 +32434,7 @@ module rec ``.`` =
                     module rec _cfListSchedulesForFacet =
                         module rec Criteria =
                             type TimeRange =
-                                [<CompiledName("end")>]
+                                [<EmitProperty("end")>]
                                 abstract ``end``: option<Date> with get, set
 
                                 abstract start: option<Date> with get, set
@@ -32442,7 +32442,7 @@ module rec ``.`` =
                 type Criteria =
                     abstract timeRange: option<Criteria.TimeRange> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: option<Criteria.Type> with get, set
 
                     abstract id: option<string> with get, set
@@ -32468,7 +32468,7 @@ module rec ``.`` =
                     abstract rawSize: float with get, set
                     abstract headers: Headers with get, set
 
-                    [<CompiledName("to")>]
+                    [<EmitProperty("to")>]
                     abstract ``to``: string with get, set
 
                     abstract from: string with get, set
@@ -32516,7 +32516,7 @@ module rec ``.`` =
             type GetQueue =
                 abstract retry: option<RetriesFLD8cGNfJs.RetryOptions> with get, set
 
-                [<CompiledName("created_at")>]
+                [<EmitProperty("created_at")>]
                 abstract createdAt: float with get, set
 
                 abstract callback: GetQueue.Callback with get, set
@@ -32578,7 +32578,7 @@ module rec ``.`` =
                             type Options =
                                 abstract raw: string with get, set
 
-                                [<CompiledName("to")>]
+                                [<EmitProperty("to")>]
                                 abstract ``to``: string with get, set
 
                                 abstract from: string with get, set
@@ -32603,7 +32603,7 @@ module rec ``.`` =
                                         abstract required: option<Array<string>> with get, set
                                         abstract properties: option<InputSchema.Properties> with get, set
 
-                                        [<CompiledName("type")>]
+                                        [<EmitProperty("type")>]
                                         abstract ``type``: InputSchema.Type with get, set
 
                         module rec RegisterToolTask =
@@ -32662,7 +32662,7 @@ module rec ``.`` =
                         abstract required: option<Array<string>> with get, set
                         abstract properties: option<InputSchema.Properties> with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: InputSchema.Type with get, set
 
                         abstract Item: x: string -> option<obj>
@@ -32751,7 +32751,7 @@ module rec ``.`` =
                                     abstract taskId: string with get, set
 
                     type _meta =
-                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                         abstract ioModelcontextprotocolRelatedTask: option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
                         abstract progressToken: option<U2<string, float>> with get, set
@@ -32863,7 +32863,7 @@ module rec ``.`` =
                                     abstract Item: x: string -> option<obj>
 
                     type _meta =
-                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                         abstract ioModelcontextprotocolRelatedTask: option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
                         abstract progressToken: option<U2<string, float>> with get, set
@@ -32875,7 +32875,7 @@ module rec ``.`` =
                         abstract mimeType: string with get, set
                         abstract data: string with get, set
 
-                        [<CompiledName("type")>]
+                        [<EmitProperty("type")>]
                         abstract ``type``: Content.Type with get, set
 
                         abstract title: option<string> with get, set
@@ -32971,7 +32971,7 @@ module rec ``.`` =
                                         type Content = interface end
 
                             type _meta =
-                                [<CompiledName("io.modelcontextprotocol/related-task")>]
+                                [<EmitProperty("io.modelcontextprotocol/related-task")>]
                                 abstract ioModelcontextprotocolRelatedTask:
                                     Zod.V4.Classic.Schemas.ZodOptional<
                                         Zod.V4.Classic.Schemas.ZodObject<
@@ -33009,7 +33009,7 @@ module rec ``.`` =
                                          >
                                      > with get, set
 
-                                [<CompiledName("type")>]
+                                [<EmitProperty("type")>]
                                 abstract ``type``: Zod.V4.Classic.Schemas.ZodLiteral<Content.Type> with get, set
 
                                 abstract mimeType: Zod.V4.Classic.Schemas.ZodString with get, set
@@ -33039,7 +33039,7 @@ module rec ``.`` =
                                 abstract uri: Zod.V4.Classic.Schemas.ZodString with get, set
 
                         type ResultSchema =
-                            [<CompiledName("in")>]
+                            [<EmitProperty("in")>]
                             abstract ``in``: ResultSchema.In with get, set
 
                             abstract out: ResultSchema.Out with get, set
@@ -33097,7 +33097,7 @@ module rec ``.`` =
                     abstract transport: option<MCPTransportOptions> with get, set
                     abstract reconnect: option<Options.Reconnect> with get, set
 
-                    [<CompiledName("type")>]
+                    [<EmitProperty("type")>]
                     abstract ``type``: option<TransportType> with get, set
 
                     abstract authProvider: option<DoOauthClientProviderC38aWbFVJs.AgentMcpOAuthProvider> with get, set
@@ -33112,7 +33112,7 @@ module rec ``.`` =
                     abstract props: option<Options.Props> with get, set
                     abstract name: string with get, set
 
-                    [<CompiledName("namespace")>]
+                    [<EmitProperty("namespace")>]
                     abstract ``namespace``: option<Agents.AgentContext> with get, set
 
                     abstract fetch: url: U2<URL, string> * ?init: RequestInit -> Promise<Response>
@@ -33219,19 +33219,19 @@ module rec ``.`` =
                 abstract id: string with get, set
 
             type GetRpcServersFromStorage =
-                [<CompiledName("server_options")>]
+                [<EmitProperty("server_options")>]
                 abstract serverOptions: option<string> with get, set
 
-                [<CompiledName("callback_url")>]
+                [<EmitProperty("callback_url")>]
                 abstract callbackUrl: string with get, set
 
-                [<CompiledName("auth_url")>]
+                [<EmitProperty("auth_url")>]
                 abstract authUrl: option<string> with get, set
 
-                [<CompiledName("client_id")>]
+                [<EmitProperty("client_id")>]
                 abstract clientId: option<string> with get, set
 
-                [<CompiledName("server_url")>]
+                [<EmitProperty("server_url")>]
                 abstract serverUrl: string with get, set
 
                 abstract name: string with get, set
@@ -33243,7 +33243,7 @@ module rec ``.`` =
                 abstract name: option<string> with get, set
                 abstract agent: option<string> with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: 'T with get, set
 
             type Options =
@@ -33372,7 +33372,7 @@ module rec ``.`` =
                                     abstract taskId: string with get, set
 
                     type _meta =
-                        [<CompiledName("io.modelcontextprotocol/related-task")>]
+                        [<EmitProperty("io.modelcontextprotocol/related-task")>]
                         abstract ioModelcontextprotocolRelatedTask: option<_meta.IoModelcontextprotocolRelatedTask> with get, set
 
                         abstract progressToken: option<U2<string, float>> with get, set
@@ -33416,7 +33416,7 @@ module rec ``.`` =
             module rec _cfListSchedulesForFacet =
                 module rec Criteria =
                     type TimeRange =
-                        [<CompiledName("end")>]
+                        [<EmitProperty("end")>]
                         abstract ``end``: option<Date> with get, set
 
                         abstract start: option<Date> with get, set
@@ -33438,7 +33438,7 @@ module rec ``.`` =
                                             abstract replyTo: option<U2<Message.ReplyTo, string>> with get, set
                                             abstract subject: string with get, set
 
-                                            [<CompiledName("to")>]
+                                            [<EmitProperty("to")>]
                                             abstract ``to``: U2<Array<string>, string> with get, set
 
                                             abstract from: U2<Message.From, string> with get, set
@@ -33731,19 +33731,19 @@ module rec ``.`` =
 
         [<Import("./agent-tool-types-DSteYkkS.js", "MCPServerRow")>]
         type MCPServerRow =
-            [<CompiledName("server_options")>]
+            [<EmitProperty("server_options")>]
             abstract serverOptions: option<string> with get, set
 
-            [<CompiledName("callback_url")>]
+            [<EmitProperty("callback_url")>]
             abstract callbackUrl: string with get, set
 
-            [<CompiledName("auth_url")>]
+            [<EmitProperty("auth_url")>]
             abstract authUrl: option<string> with get, set
 
-            [<CompiledName("client_id")>]
+            [<EmitProperty("client_id")>]
             abstract clientId: option<string> with get, set
 
-            [<CompiledName("server_url")>]
+            [<EmitProperty("server_url")>]
             abstract serverUrl: string with get, set
 
             abstract name: string with get, set
@@ -34017,7 +34017,7 @@ module rec ``.`` =
             [<EmitConstructor>]
             abstract Create: ?email: Agents.AgentContext -> EmailBridge
 
-            [<CompiledName("#private")>]
+            [<EmitProperty("#private")>]
             abstract ``#private``: option<Agents.AgentContext> with get, set
 
             abstract symbolDispose: unit -> unit
@@ -34049,7 +34049,7 @@ module rec ``.`` =
             abstract subject: string with get, set
             abstract from: U2<SendEmailOptions.From, string> with get, set
 
-            [<CompiledName("to")>]
+            [<EmitProperty("to")>]
             abstract ``to``: U2<Array<string>, string> with get, set
 
             abstract binding: EmailSendBinding with get, set
@@ -34153,10 +34153,10 @@ module rec ``.`` =
             abstract error: option<string> with get, set
             abstract state: MCPConnectionState with get, set
 
-            [<CompiledName("auth_url")>]
+            [<EmitProperty("auth_url")>]
             abstract authUrl: option<string> with get, set
 
-            [<CompiledName("server_url")>]
+            [<EmitProperty("server_url")>]
             abstract serverUrl: string with get, set
 
             abstract name: string with get, set
@@ -34202,7 +34202,7 @@ module rec ``.`` =
             abstract props: option<RPCClientTransportOptions.Props> with get, set
             abstract name: string with get, set
 
-            [<CompiledName("namespace")>]
+            [<EmitProperty("namespace")>]
             abstract ``namespace``: option<Agents.AgentContext> with get, set
 
         type MCPConnectionResult = obj
@@ -34228,16 +34228,16 @@ module rec ``.`` =
 
         [<Import("./agent-tool-types-DSteYkkS.js", "ScheduleStorageRow")>]
         type ScheduleStorageRow =
-            [<CompiledName("owner_path_key")>]
+            [<EmitProperty("owner_path_key")>]
             abstract ownerPathKey: option<string> with get, set
 
-            [<CompiledName("owner_path")>]
+            [<EmitProperty("owner_path")>]
             abstract ownerPath: option<string> with get, set
 
-            [<CompiledName("retry_options")>]
+            [<EmitProperty("retry_options")>]
             abstract retryOptions: option<string> with get, set
 
-            [<CompiledName("execution_started_at")>]
+            [<EmitProperty("execution_started_at")>]
             abstract executionStartedAt: option<float> with get, set
 
             abstract running: option<float> with get, set
@@ -34247,7 +34247,7 @@ module rec ``.`` =
             abstract delayInSeconds: option<float> with get, set
             abstract time: float with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: ScheduleStorageRow.Type with get, set
 
             abstract payload: string with get, set
@@ -34272,7 +34272,7 @@ module rec ``.`` =
                 connection: SubAgentConnectionBridge.Connection * ?broadcast: SubAgentConnectionBridge.Broadcast ->
                     SubAgentConnectionBridge
 
-            [<CompiledName("#private")>]
+            [<EmitProperty("#private")>]
             abstract ``#private``: option<Agents.AgentContext> with get, set
 
             abstract broadcast:
@@ -34424,13 +34424,13 @@ module rec ``.`` =
                                     abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
 
                             type SymbolUnscopables =
-                                [<CompiledName("__@unscopables@2222")>]
+                                [<EmitProperty("__@unscopables@2222")>]
                                 abstract _unscopables2222: option<SymbolUnscopables._Unscopables2222> with get, set
 
-                                [<CompiledName("__@iterator@494")>]
+                                [<EmitProperty("__@iterator@494")>]
                                 abstract _iterator494: option<SymbolUnscopables._Iterator494> with get, set
 
-                                [<CompiledName("with")>]
+                                [<EmitProperty("with")>]
                                 abstract ``with``: option<SymbolUnscopables.With> with get, set
 
                                 abstract toSpliced: option<SymbolUnscopables.ToSpliced> with get, set
@@ -34476,12 +34476,12 @@ module rec ``.`` =
                 abstract Item: key: string -> option<Agents.AgentContext>
 
             type ToString =
-                [<CompiledName("[Symbol.unscopables]")>]
+                [<EmitProperty("[Symbol.unscopables]")>]
                 abstract symbolUnscopables: ToString.SymbolUnscopables with get
 
                 abstract length: float with get, set
 
-                [<CompiledName("0")>]
+                [<EmitProperty("0")>]
                 abstract ``0``: option<ToString.``0``> with get, set
 
                 abstract _errors: Array<'U> with get, set
@@ -34599,7 +34599,7 @@ module rec ``.`` =
                 abstract name: option<string> with get, set
                 abstract agent: option<string> with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: 'T with get, set
 
         module rec BaseEvent =
@@ -34613,7 +34613,7 @@ module rec ``.`` =
                 abstract name: option<string> with get, set
                 abstract agent: option<string> with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: 'T with get, set
 
         module rec Observability =
@@ -34623,7 +34623,7 @@ module rec ``.`` =
                 abstract name: option<string> with get, set
                 abstract agent: option<string> with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: 'T with get, set
 
         module rec ObservabilityEvent =
@@ -34633,7 +34633,7 @@ module rec ``.`` =
                 abstract name: option<string> with get, set
                 abstract agent: option<string> with get, set
 
-                [<CompiledName("type")>]
+                [<EmitProperty("type")>]
                 abstract ``type``: 'T with get, set
 
         type ObservabilityEvent = ObservabilityEvent
@@ -34647,7 +34647,7 @@ module rec ``.`` =
             abstract name: option<string> with get, set
             abstract agent: option<string> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: 'T with get, set
 
         [<Import("./index-Biv6K70p.js", "Observability")>]
@@ -34665,7 +34665,7 @@ module rec ``.`` =
                                     type Options =
                                         abstract raw: string with get, set
 
-                                        [<CompiledName("to")>]
+                                        [<EmitProperty("to")>]
                                         abstract ``to``: string with get, set
 
                                         abstract from: string with get, set
@@ -34675,7 +34675,7 @@ module rec ``.`` =
                     abstract rawSize: float with get, set
                     abstract headers: Headers with get, set
 
-                    [<CompiledName("to")>]
+                    [<EmitProperty("to")>]
                     abstract ``to``: string with get, set
 
                     abstract from: string with get, set
@@ -34695,7 +34695,7 @@ module rec ``.`` =
                             type Options =
                                 abstract raw: string with get, set
 
-                                [<CompiledName("to")>]
+                                [<EmitProperty("to")>]
                                 abstract ``to``: string with get, set
 
                                 abstract from: string with get, set
@@ -34715,7 +34715,7 @@ module rec ``.`` =
             abstract rawSize: float with get, set
             abstract headers: Headers with get, set
 
-            [<CompiledName("to")>]
+            [<EmitProperty("to")>]
             abstract ``to``: string with get, set
 
             abstract from: string with get, set
@@ -34826,13 +34826,13 @@ module rec ``.`` =
                         abstract Invoke: value: 'T * index: float * array: ReadonlyArray -> option<obj>
 
                 type SymbolUnscopables =
-                    [<CompiledName("__@unscopables@2222")>]
+                    [<EmitProperty("__@unscopables@2222")>]
                     abstract _unscopables2222: option<SymbolUnscopables._Unscopables2222> with get, set
 
-                    [<CompiledName("__@iterator@494")>]
+                    [<EmitProperty("__@iterator@494")>]
                     abstract _iterator494: option<SymbolUnscopables._Iterator494> with get, set
 
-                    [<CompiledName("with")>]
+                    [<EmitProperty("with")>]
                     abstract ``with``: option<SymbolUnscopables.With> with get, set
 
                     abstract toSpliced: option<SymbolUnscopables.ToSpliced> with get, set
@@ -34867,7 +34867,7 @@ module rec ``.`` =
 
         [<Import("./schemas.cjs", "TupleInputTypeNoOptionals")>]
         type TupleInputTypeNoOptionals<'T when 'T :> Zod.V4.Core.Util.TupleItems> =
-            [<CompiledName("[Symbol.unscopables]")>]
+            [<EmitProperty("[Symbol.unscopables]")>]
             abstract symbolUnscopables: TupleInputTypeNoOptionals.SymbolUnscopables with get
 
             abstract length: float with get
@@ -35061,7 +35061,7 @@ module rec ``.`` =
 
         [<Import("./schemas.cjs", "TupleOutputTypeNoOptionals")>]
         type TupleOutputTypeNoOptionals<'T when 'T :> Zod.V4.Core.Util.TupleItems> =
-            [<CompiledName("[Symbol.unscopables]")>]
+            [<EmitProperty("[Symbol.unscopables]")>]
             abstract symbolUnscopables: TupleOutputTypeNoOptionals.SymbolUnscopables with get
 
             abstract length: float with get
@@ -35197,7 +35197,7 @@ module rec ``.`` =
         type WorkflowEventPayload =
             abstract payload: option<obj> with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: string with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -35251,12 +35251,12 @@ module rec ``.`` =
         type WorkflowErrorCallback =
             abstract error: string with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: WorkflowErrorCallback.Type with get, set
 
             abstract timestamp: float with get, set
 
-            [<CompiledName("type")>]
+            [<EmitProperty("type")>]
             abstract ``type``: WorkflowCallbackType with get, set
 
             abstract workflowId: string with get, set
@@ -35311,13 +35311,13 @@ module rec ``.`` =
                                 abstract Invoke: value: 'T * index: float * array: Array -> option<obj>
 
                         type SymbolUnscopables =
-                            [<CompiledName("__@unscopables@2222")>]
+                            [<EmitProperty("__@unscopables@2222")>]
                             abstract _unscopables2222: option<SymbolUnscopables._Unscopables2222> with get, set
 
-                            [<CompiledName("__@iterator@494")>]
+                            [<EmitProperty("__@iterator@494")>]
                             abstract _iterator494: option<SymbolUnscopables._Iterator494> with get, set
 
-                            [<CompiledName("with")>]
+                            [<EmitProperty("with")>]
                             abstract ``with``: option<SymbolUnscopables.With> with get, set
 
                             abstract toSpliced: option<SymbolUnscopables.ToSpliced> with get, set
@@ -35367,12 +35367,12 @@ module rec ``.`` =
                 abstract Item: key: string -> option<Agents.AgentContext>
 
         type RecursiveZodFormattedError =
-            [<CompiledName("[Symbol.unscopables]")>]
+            [<EmitProperty("[Symbol.unscopables]")>]
             abstract symbolUnscopables: RecursiveZodFormattedError.SymbolUnscopables with get
 
             abstract length: float with get, set
 
-            [<CompiledName("0")>]
+            [<EmitProperty("0")>]
             abstract ``0``: option<RecursiveZodFormattedError.``0``> with get, set
 
             abstract symbolIterator: unit -> ArrayIterator<'T>
