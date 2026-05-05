@@ -7870,11 +7870,9 @@ module rec Cloudflare =
             abstract postProcessedOutputs: AiTextToSpeechOutput with get, set
             abstract inputs: AiTextToSpeechInput with get, set
 
-        [<Import("@cloudflare/workers-types", "AiGatewayInternalError")>]
-        type AiGatewayInternalError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AiGatewayInternalError"); AbstractClass; AllowNullLiteral>]
+        type AiGatewayInternalError private () =
+            inherit exn()
 
         type EventPluginContext =
             abstract ASSETS: EventPluginContext.ASSETS with get, set
@@ -8340,11 +8338,9 @@ module rec Cloudflare =
             abstract shape: AiSentenceSimilarityOutput with get, set
             abstract data: Array<AiSentenceSimilarityOutput> with get, set
 
-        [<Import("@cloudflare/workers-types", "InferenceUpstreamError")>]
-        type InferenceUpstreamError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "InferenceUpstreamError"); AbstractClass; AllowNullLiteral>]
+        type InferenceUpstreamError private () =
+            inherit exn()
 
         [<Import("@cloudflare/workers-types", "ResponseOutputItemAddedEvent")>]
         type ResponseOutputItemAddedEvent =
@@ -9694,11 +9690,9 @@ module rec Cloudflare =
             abstract values: U3<Float32Array<ArrayBufferLike>, Float64Array<ArrayBufferLike>, Array<float>> with get, set
             abstract id: D1SessionBookmark with get, set
 
-        [<Import("@cloudflare/workers-types", "LoopbackColoLocalActorNamespace")>]
-        type LoopbackColoLocalActorNamespace =
-            interface
-                inherit ColoLocalActorNamespace
-            end
+        [<Import("@cloudflare/workers-types", "LoopbackColoLocalActorNamespace"); AbstractClass; AllowNullLiteral>]
+        type LoopbackColoLocalActorNamespace private () =
+            inherit ColoLocalActorNamespace()
 
         [<Import("@cloudflare/workers-types", "R2MultipartOptions")>]
         type R2MultipartOptions =
@@ -9921,9 +9915,9 @@ module rec Cloudflare =
             abstract requests:
                 Array<U2<AiCfMetaLlama4Scout17B16EInstructPromptInner, AiCfMetaLlama4Scout17B16EInstructMessagesInner>> with get, set
 
-        [<Import("@cloudflare/workers-types", "StreamError")>]
-        type StreamError =
-            inherit exn
+        [<Import("@cloudflare/workers-types", "StreamError"); AbstractClass; AllowNullLiteral>]
+        type StreamError private () =
+            inherit exn()
             abstract stack: option<D1SessionBookmark> with get
             abstract message: D1SessionBookmark with get
             abstract statusCode: float with get
@@ -10002,9 +9996,9 @@ module rec Cloudflare =
             abstract prepare: query: D1SessionBookmark -> D1PreparedStatement
             abstract Item: key: D1SessionBookmark -> option<obj>
 
-        [<Import("@cloudflare/workers-types", "ServiceWorkerGlobalScope")>]
-        type ServiceWorkerGlobalScope =
-            inherit WorkerGlobalScope
+        [<Import("@cloudflare/workers-types", "ServiceWorkerGlobalScope"); AbstractClass; AllowNullLiteral>]
+        type ServiceWorkerGlobalScope private () =
+            inherit WorkerGlobalScope()
 
             [<CompiledName("HTMLRewriter")>]
             abstract hTMLRewriter: ServiceWorkerGlobalScope.HTMLRewriter with get, set
@@ -10216,11 +10210,9 @@ module rec Cloudflare =
             abstract namedCurve: D1SessionBookmark with get, set
             abstract name: D1SessionBookmark with get, set
 
-        [<Import("@cloudflare/workers-types", "FlagshipEvaluationError")>]
-        type FlagshipEvaluationError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "FlagshipEvaluationError"); AbstractClass; AllowNullLiteral>]
+        type FlagshipEvaluationError private () =
+            inherit exn()
 
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Deepgram_Aura_2_En"); AbstractClass; AllowNullLiteral>]
         type BaseAiCfDeepgramAura2En private () =
@@ -10272,9 +10264,9 @@ module rec Cloudflare =
             abstract height: float with get, set
             abstract width: float with get, set
 
-        [<Import("@cloudflare/workers-types", "ImagesError")>]
-        type ImagesError =
-            inherit exn
+        [<Import("@cloudflare/workers-types", "ImagesError"); AbstractClass; AllowNullLiteral>]
+        type ImagesError private () =
+            inherit exn()
             abstract stack: option<D1SessionBookmark> with get
             abstract message: D1SessionBookmark with get
             abstract code: float with get
@@ -11629,11 +11621,9 @@ module rec Cloudflare =
         /// Use the standalone AI Search Workers binding instead.<br/>
         /// See https://developers.cloudflare.com/ai-search/usage/workers-binding/
         /// </deprecated>
-        [<Import("@cloudflare/workers-types", "AutoRAGInternalError")>]
-        type AutoRAGInternalError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AutoRAGInternalError"); AbstractClass; AllowNullLiteral>]
+        type AutoRAGInternalError private () =
+            inherit exn()
 
         [<Import("@cloudflare/workers-types", "MessageBatchMetadata")>]
         type MessageBatchMetadata =
@@ -11830,11 +11820,9 @@ module rec Cloudflare =
             [<CompiledName("type")>]
             abstract ``type``: ChatCompletionToolChoiceFunction.Type with get, set
 
-        [<Import("@cloudflare/workers-types", "AiSearchInternalError")>]
-        type AiSearchInternalError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AiSearchInternalError"); AbstractClass; AllowNullLiteral>]
+        type AiSearchInternalError private () =
+            inherit exn()
 
         type ChatCompletionTool = obj
 
@@ -11977,11 +11965,9 @@ module rec Cloudflare =
         /// Use the standalone AI Search Workers binding instead.<br/>
         /// See https://developers.cloudflare.com/ai-search/usage/workers-binding/
         /// </deprecated>
-        [<Import("@cloudflare/workers-types", "AutoRAGNotFoundError")>]
-        type AutoRAGNotFoundError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AutoRAGNotFoundError"); AbstractClass; AllowNullLiteral>]
+        type AutoRAGNotFoundError private () =
+            inherit exn()
 
         [<Import("@cloudflare/workers-types", "AiOptions")>]
         type AiOptions =
@@ -12010,9 +11996,9 @@ module rec Cloudflare =
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type ResponseRefusalDeltaEvent = | [<CompiledName("response.refusal.delta")>] ResponseRefusalDelta
 
-        [<Import("@cloudflare/workers-types", "QueueEvent")>]
-        type QueueEvent<'Body> =
-            inherit ExtendableEvent
+        [<Import("@cloudflare/workers-types", "QueueEvent"); AbstractClass; AllowNullLiteral>]
+        type QueueEvent<'Body> private () =
+            inherit ExtendableEvent()
             abstract metadata: MessageBatchMetadata with get
             abstract queue: D1SessionBookmark with get
             abstract messages: ReadonlyArray<Message<'Body>> with get
@@ -12638,11 +12624,9 @@ module rec Cloudflare =
             | [<CompiledValue(false)>] False
             | [<CompiledValue(true)>] True
 
-        [<Import("@cloudflare/workers-types", "AiSearchNotFoundError")>]
-        type AiSearchNotFoundError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AiSearchNotFoundError"); AbstractClass; AllowNullLiteral>]
+        type AiSearchNotFoundError private () =
+            inherit exn()
 
         [<Import("@cloudflare/workers-types", "ReadableStream")>]
         type ReadableStream<'R> =
@@ -13900,11 +13884,9 @@ module rec Cloudflare =
                     BaseAiCfOpenaiGptOss120B.Inputs
                  > with get, set
 
-        [<Import("@cloudflare/workers-types", "AiGatewayLogNotFound")>]
-        type AiGatewayLogNotFound =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AiGatewayLogNotFound"); AbstractClass; AllowNullLiteral>]
+        type AiGatewayLogNotFound private () =
+            inherit exn()
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type ResponseFormatJSONObject = | [<CompiledName("json_object")>] JsonObject
@@ -14509,11 +14491,9 @@ module rec Cloudflare =
             abstract allowUnconfirmed: option<bool> with get, set
             abstract allowConcurrency: option<bool> with get, set
 
-        [<Import("@cloudflare/workers-types", "AiInternalError")>]
-        type AiInternalError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AiInternalError"); AbstractClass; AllowNullLiteral>]
+        type AiInternalError private () =
+            inherit exn()
 
         [<Import("@cloudflare/workers-types", "MediaTransformationInputOptions")>]
         type MediaTransformationInputOptions =
@@ -15629,9 +15609,9 @@ module rec Cloudflare =
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type ChatCompletionContentPartText = | [<CompiledName("text")>] Text
 
-        [<Import("@cloudflare/workers-types", "R2ObjectBody")>]
-        type R2ObjectBody =
-            inherit R2Object
+        [<Import("@cloudflare/workers-types", "R2ObjectBody"); AbstractClass; AllowNullLiteral>]
+        type R2ObjectBody private () =
+            inherit R2Object()
             abstract bodyUsed: bool with get
             abstract body: AiTextToImageOutput with get
             abstract blob: unit -> Promise<Blob>
@@ -16000,11 +15980,9 @@ module rec Cloudflare =
             abstract postProcessedOutputs: AiCfUnumUformGen2Qwen500MOutput with get, set
             abstract inputs: AiCfUnumUformGen2Qwen500MInput with get, set
 
-        [<Import("@cloudflare/workers-types", "LoopbackDurableObjectNamespace")>]
-        type LoopbackDurableObjectNamespace =
-            interface
-                inherit DurableObjectNamespace<unit>
-            end
+        [<Import("@cloudflare/workers-types", "LoopbackDurableObjectNamespace"); AbstractClass; AllowNullLiteral>]
+        type LoopbackDurableObjectNamespace private () =
+            inherit DurableObjectNamespace<unit>()
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type ResponseContent = | [<CompiledName("reasoning_text")>] ReasoningText
@@ -16387,11 +16365,9 @@ module rec Cloudflare =
         /// Use the standalone AI Search Workers binding instead.<br/>
         /// See https://developers.cloudflare.com/ai-search/usage/workers-binding/
         /// </deprecated>
-        [<Import("@cloudflare/workers-types", "AutoRAGUnauthorizedError")>]
-        type AutoRAGUnauthorizedError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AutoRAGUnauthorizedError"); AbstractClass; AllowNullLiteral>]
+        type AutoRAGUnauthorizedError private () =
+            inherit exn()
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Aisingapore_Gemma_Sea_Lion_V4_27B_It_Messages_1")>]
         type AiCfAisingaporeGemmaSeaLionV427BItMessages1 =
@@ -16709,9 +16685,9 @@ module rec Cloudflare =
             abstract raw: option<bool> with get, set
             abstract prompt: option<D1SessionBookmark> with get, set
 
-        [<Import("@cloudflare/workers-types", "R2Error")>]
-        type R2Error =
-            inherit exn
+        [<Import("@cloudflare/workers-types", "R2Error"); AbstractClass; AllowNullLiteral>]
+        type R2Error private () =
+            inherit exn()
             abstract stack: option<obj> with get
             abstract action: D1SessionBookmark with get
             abstract message: D1SessionBookmark with get
@@ -17451,11 +17427,9 @@ module rec Cloudflare =
         /// Use the standalone AI Search Workers binding instead.<br/>
         /// See https://developers.cloudflare.com/ai-search/usage/workers-binding/
         /// </deprecated>
-        [<Import("@cloudflare/workers-types", "AutoRAGNameNotSetError")>]
-        type AutoRAGNameNotSetError =
-            interface
-                inherit exn
-            end
+        [<Import("@cloudflare/workers-types", "AutoRAGNameNotSetError"); AbstractClass; AllowNullLiteral>]
+        type AutoRAGNameNotSetError private () =
+            inherit exn()
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type AiCfDeepgramAura1Input =
