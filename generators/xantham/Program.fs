@@ -66,20 +66,16 @@ let main argv =
                      | QualifiedNamePart.Abnormal(text,_) ->
                          text.Contains("babel", StringComparison.OrdinalIgnoreCase)
                          || text.Contains("typescript", StringComparison.OrdinalIgnoreCase)
-                 Customisation.Interceptors.Paths.TypePaths = fun ctx typ s ->
-                     match typ with
-                     | Choice1Of4 { IsLibEs = true }
-                     | Choice2Of4 { IsLibEs = true }
-                     | Choice3Of4 { IsLibEs = true }
-                     | Choice4Of4 { IsLibEs = true } ->
-                         TypePath.pruneParent (_.Name >> Name.Case.valueOrModified >> (=) "Typescript") s
-                     | _ -> s
-                 Customisation.Interceptors.Paths.MemberPaths = fun ctx typ s ->
-                     match typ with
-                     | Choice1Of2 { IsLibEs = true }
-                     | Choice2Of2 { IsLibEs = true } ->
-                         MemberPath.pruneParent (_.Name >> Name.Case.valueOrModified >> (=) "Typescript") s
-                     | _ -> s
+                 // Prune `Typescript` parent unconditionally — there is no
+                 // `Typescript` module emitted in the output so any
+                 // `Typescript.X` reference is unresolvable. The IsLibEs
+                 // gate left ~200 references unpruned because not every
+                 // lib.es type in a `lib.*.d.ts` file is flagged IsLibEs
+                 // by the encoder.
+                 Customisation.Interceptors.Paths.TypePaths = fun ctx _ s ->
+                     TypePath.pruneParent (_.Name >> Name.Case.valueOrModified >> (=) "Typescript") s
+                 Customisation.Interceptors.Paths.MemberPaths = fun ctx _ s ->
+                     MemberPath.pruneParent (_.Name >> Name.Case.valueOrModified >> (=) "Typescript") s
          })
 
     ArenaInterner.prerenderTypeAliases generatorContext interner

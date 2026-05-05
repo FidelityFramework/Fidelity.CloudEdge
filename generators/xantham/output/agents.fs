@@ -16314,7 +16314,7 @@ module rec AiSdk =
             abstract providerOptions: option<Provider.SharedV3ProviderOptions> with get, set
             abstract mediaType: string with get, set
             abstract filename: option<string> with get, set
-            abstract data: U2<Typescript.Body, URL> with get, set
+            abstract data: U2<Body, URL> with get, set
 
             [<EmitProperty("type")>]
             abstract ``type``: FilePart.Type with get, set
@@ -16430,7 +16430,7 @@ module rec AiSdk =
         type ImagePart =
             abstract providerOptions: option<Provider.SharedV3ProviderOptions> with get, set
             abstract mediaType: option<string> with get, set
-            abstract image: U2<Typescript.Body, URL> with get, set
+            abstract image: U2<Body, URL> with get, set
 
             [<EmitProperty("type")>]
             abstract ``type``: ImagePart.Type with get, set
@@ -33558,7 +33558,7 @@ module rec ``.`` =
 
             module rec Mount =
                 type Opts =
-                    abstract jurisdiction: option<Typescript.Body> with get, set
+                    abstract jurisdiction: option<Body> with get, set
                     abstract corsOptions: option<CORSOptions> with get, set
                     abstract binding: option<string> with get, set
 
@@ -34225,7 +34225,7 @@ module rec ``.`` =
 
         [<Import("./agent-tool-types-DSteYkkS.js", "EmailBridge"); AbstractClass; AllowNullLiteral>]
         type EmailBridge private () =
-            inherit Typescript.Body()
+            inherit Body()
 
             [<EmitConstructor>]
             abstract Create: ?email: Agents.AgentContext -> EmailBridge
@@ -34477,7 +34477,7 @@ module rec ``.`` =
 
         [<Import("./agent-tool-types-DSteYkkS.js", "SubAgentConnectionBridge"); AbstractClass; AllowNullLiteral>]
         type SubAgentConnectionBridge private () =
-            inherit Typescript.Body()
+            inherit Body()
             inherit SubAgentConnectionBridgeLike()
 
             [<EmitConstructor>]

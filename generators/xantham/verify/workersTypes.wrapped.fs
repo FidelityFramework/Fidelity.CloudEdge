@@ -4822,7 +4822,7 @@ module rec Cloudflare =
                     WorkflowEntrypoint,
                     RegExp,
                     exn,
-                    Typescript.Response,
+                    Response,
                     ArrayBuffer,
                     Headers,
                     Date,
@@ -4840,7 +4840,7 @@ module rec Cloudflare =
                     DataView<ArrayBufferLike>,
                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                    Typescript.Request,
+                    Request,
                     Rpc.RpcTargetBranded,
                     WorkflowEntrypoint,
                     Map<
@@ -4850,7 +4850,7 @@ module rec Cloudflare =
                                     WorkflowEntrypoint,
                                     RegExp,
                                     exn,
-                                    Typescript.Response,
+                                    Response,
                                     ArrayBuffer,
                                     Headers,
                                     Date,
@@ -4868,7 +4868,7 @@ module rec Cloudflare =
                                     DataView<ArrayBufferLike>,
                                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                                    Typescript.Request,
+                                    Request,
                                     Rpc.RpcTargetBranded,
                                     WorkflowEntrypoint,
                                     WorkflowEntrypoint,
@@ -4879,7 +4879,7 @@ module rec Cloudflare =
                                                     WorkflowEntrypoint,
                                                     RegExp,
                                                     exn,
-                                                    Typescript.Response,
+                                                    Response,
                                                     ArrayBuffer,
                                                     Headers,
                                                     Date,
@@ -4897,7 +4897,7 @@ module rec Cloudflare =
                                                     DataView<ArrayBufferLike>,
                                                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                                                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                                                    Typescript.Request,
+                                                    Request,
                                                     Rpc.RpcTargetBranded,
                                                     WorkflowEntrypoint,
                                                     WorkflowEntrypoint,
@@ -4928,7 +4928,7 @@ module rec Cloudflare =
                                     WorkflowEntrypoint,
                                     RegExp,
                                     exn,
-                                    Typescript.Response,
+                                    Response,
                                     ArrayBuffer,
                                     Headers,
                                     Date,
@@ -4946,7 +4946,7 @@ module rec Cloudflare =
                                     DataView<ArrayBufferLike>,
                                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                                    Typescript.Request,
+                                    Request,
                                     Rpc.RpcTargetBranded,
                                     WorkflowEntrypoint,
                                     WorkflowEntrypoint,
@@ -4957,7 +4957,7 @@ module rec Cloudflare =
                                                     WorkflowEntrypoint,
                                                     RegExp,
                                                     exn,
-                                                    Typescript.Response,
+                                                    Response,
                                                     ArrayBuffer,
                                                     Headers,
                                                     Date,
@@ -4975,7 +4975,7 @@ module rec Cloudflare =
                                                     DataView<ArrayBufferLike>,
                                                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                                                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                                                    Typescript.Request,
+                                                    Request,
                                                     Rpc.RpcTargetBranded,
                                                     WorkflowEntrypoint,
                                                     WorkflowEntrypoint,
@@ -5008,7 +5008,7 @@ module rec Cloudflare =
                                     WorkflowEntrypoint,
                                     RegExp,
                                     exn,
-                                    Typescript.Response,
+                                    Response,
                                     ArrayBuffer,
                                     Headers,
                                     Date,
@@ -5026,7 +5026,7 @@ module rec Cloudflare =
                                     DataView<ArrayBufferLike>,
                                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                                    Typescript.Request,
+                                    Request,
                                     Rpc.RpcTargetBranded,
                                     WorkflowEntrypoint,
                                     WorkflowEntrypoint,
@@ -5037,7 +5037,7 @@ module rec Cloudflare =
                                                     WorkflowEntrypoint,
                                                     RegExp,
                                                     exn,
-                                                    Typescript.Response,
+                                                    Response,
                                                     ArrayBuffer,
                                                     Headers,
                                                     Date,
@@ -5055,7 +5055,7 @@ module rec Cloudflare =
                                                     DataView<ArrayBufferLike>,
                                                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                                                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                                                    Typescript.Request,
+                                                    Request,
                                                     Rpc.RpcTargetBranded,
                                                     WorkflowEntrypoint,
                                                     WorkflowEntrypoint,
@@ -5088,7 +5088,7 @@ module rec Cloudflare =
                                     WorkflowEntrypoint,
                                     RegExp,
                                     exn,
-                                    Typescript.Response,
+                                    Response,
                                     ArrayBuffer,
                                     Headers,
                                     Date,
@@ -5106,7 +5106,7 @@ module rec Cloudflare =
                                     DataView<ArrayBufferLike>,
                                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                                    Typescript.Request,
+                                    Request,
                                     Rpc.RpcTargetBranded,
                                     WorkflowEntrypoint,
                                     WorkflowEntrypoint,
@@ -5117,7 +5117,7 @@ module rec Cloudflare =
                                                     WorkflowEntrypoint,
                                                     RegExp,
                                                     exn,
-                                                    Typescript.Response,
+                                                    Response,
                                                     ArrayBuffer,
                                                     Headers,
                                                     Date,
@@ -5135,7 +5135,7 @@ module rec Cloudflare =
                                                     DataView<ArrayBufferLike>,
                                                     ReadableStream<Uint8Array<ArrayBufferLike>>,
                                                     WritableStream<Uint8Array<ArrayBufferLike>>,
-                                                    Typescript.Request,
+                                                    Request,
                                                     Rpc.RpcTargetBranded,
                                                     WorkflowEntrypoint,
                                                     WorkflowEntrypoint,
@@ -5280,17 +5280,14 @@ module rec Cloudflare =
                 [<EmitProperty("[Rpc.__DURABLE_OBJECT_BRAND]")>]
                 abstract rpc_DURABLEOBJECTBRAND: unit with get, set
 
-                abstract webSocketError: ws: Typescript.WebSocket * ?error: obj -> option<Promise<unit>>
+                abstract webSocketError: ws: WebSocket * ?error: obj -> option<Promise<unit>>
 
                 abstract webSocketClose:
-                    ws: Typescript.WebSocket * code: float * reason: D1SessionBookmark * wasClean: bool ->
-                        option<Promise<unit>>
+                    ws: WebSocket * code: float * reason: D1SessionBookmark * wasClean: bool -> option<Promise<unit>>
 
-                abstract webSocketMessage:
-                    ws: Typescript.WebSocket * message: U2<ArrayBuffer, string> -> option<Promise<unit>>
-
+                abstract webSocketMessage: ws: WebSocket * message: U2<ArrayBuffer, string> -> option<Promise<unit>>
                 abstract connect: socket: Socket -> option<Promise<unit>>
-                abstract fetch: request: Typescript.Request -> U2<Typescript.Response, Promise<Typescript.Response>>
+                abstract fetch: request: Request -> U2<Response, Promise<Response>>
                 abstract alarm: ?alarmInfo: AlarmInvocationInfo -> option<Promise<unit>>
 
             type WorkflowRetentionDuration = obj
@@ -5314,10 +5311,7 @@ module rec Cloudflare =
         module rec ColoLocalActorNamespace =
             type Get =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-                abstract fetch:
-                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                        Promise<Typescript.Response>
+                abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
         module rec CompletionUsage =
             module rec PostProcessedOutputs =
@@ -5345,10 +5339,7 @@ module rec Cloudflare =
         module rec Container =
             type Get =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-                abstract fetch:
-                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                        Promise<Typescript.Response>
+                abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
         module rec ConversionOptions =
             module rec Transform =
@@ -5474,10 +5465,7 @@ module rec Cloudflare =
 
             type Get =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-                abstract fetch:
-                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                        Promise<Typescript.Response>
+                abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
         module rec DurableObjectStorage =
             type Params =
@@ -5491,13 +5479,8 @@ module rec Cloudflare =
             module rec ASSETS =
                 module rec ASSETS =
                     type Fetch =
-                        abstract Invoke:
-                            input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                                Promise<Typescript.Response>
-
-                        abstract Invoke:
-                            input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                                Promise<Typescript.Response>
+                        abstract Invoke: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
+                        abstract Invoke: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
             type ASSETS =
                 abstract fetch: ASSETS.Fetch with get, set
@@ -5506,13 +5489,8 @@ module rec Cloudflare =
             module rec ASSETS =
                 module rec ASSETS =
                     type Fetch =
-                        abstract Invoke:
-                            input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                                Promise<Typescript.Response>
-
-                        abstract Invoke:
-                            input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                                Promise<Typescript.Response>
+                        abstract Invoke: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
+                        abstract Invoke: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
             type ASSETS =
                 abstract fetch: ASSETS.Fetch with get, set
@@ -5520,10 +5498,7 @@ module rec Cloudflare =
         module rec EventSourceEventSourceInit =
             type Get =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-                abstract fetch:
-                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                        Promise<Typescript.Response>
+                abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
         module rec EventTarget =
             type Params =
@@ -5580,8 +5555,7 @@ module rec Cloudflare =
 
             type Fetch =
                 abstract Invoke:
-                    request: Typescript.Request * env: 'Env * ctx: ExecutionContext<'Props> ->
-                        U2<Typescript.Response, Promise<Typescript.Response>>
+                    request: Request * env: 'Env * ctx: ExecutionContext<'Props> -> U2<Response, Promise<Response>>
 
             type Scheduled =
                 abstract Invoke:
@@ -5590,13 +5564,8 @@ module rec Cloudflare =
         module rec Fetch =
             module rec ASSETS =
                 type Fetch =
-                    abstract Invoke:
-                        input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                            Promise<Typescript.Response>
-
-                    abstract Invoke:
-                        input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                            Promise<Typescript.Response>
+                    abstract Invoke: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
+                    abstract Invoke: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
         module rec Flagship =
             module rec Get =
@@ -5770,10 +5739,7 @@ module rec Cloudflare =
 
             type Get =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-                abstract fetch:
-                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                        Promise<Typescript.Response>
+                abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
         module rec LoopbackServiceStub =
             module rec Invoke =
@@ -5812,13 +5778,8 @@ module rec Cloudflare =
             module rec ASSETS =
                 module rec ASSETS =
                     type Fetch =
-                        abstract Invoke:
-                            input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                                Promise<Typescript.Response>
-
-                        abstract Invoke:
-                            input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                                Promise<Typescript.Response>
+                        abstract Invoke: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
+                        abstract Invoke: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
             type ASSETS =
                 abstract fetch: ASSETS.Fetch with get, set
@@ -5837,12 +5798,10 @@ module rec Cloudflare =
                         module rec ASSETS =
                             type Fetch =
                                 abstract Invoke:
-                                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                                        Promise<Typescript.Response>
+                                    input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
                                 abstract Invoke:
-                                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                                        Promise<Typescript.Response>
+                                    input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
                     type ASSETS =
                         abstract fetch: ASSETS.Fetch with get, set
@@ -5854,8 +5813,8 @@ module rec Cloudflare =
                     abstract params: WebAssembly.ModuleImports with get, set
                     abstract env: Context.Env with get, set
                     abstract functionPath: D1SessionBookmark with get, set
-                    abstract request: Typescript.Request with get, set
-                    abstract next: ?input: RequestInfo * ?init: Typescript.RequestInit -> Promise<Typescript.Response>
+                    abstract request: Request with get, set
+                    abstract next: ?input: RequestInfo * ?init: RequestInit -> Promise<Response>
                     abstract passThroughOnException: unit -> unit
                     abstract waitUntil: promise: Promise<option<obj>> -> unit
 
@@ -6199,7 +6158,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.Rpc", "StubBase")>]
             type StubBase<'T when 'T :> Stubable> =
-                inherit Typescript.Disposable
+                inherit Disposable
 
                 [<EmitProperty("[__RPC_STUB_BRAND]")>]
                 abstract __RPC_STUB_BRAND: 'T with get, set
@@ -6211,7 +6170,7 @@ module rec Cloudflare =
                 [<EmitProperty("[__WORKER_ENTRYPOINT_BRAND]")>]
                 abstract __WORKER_ENTRYPOINT_BRAND: unit with get, set
 
-            type MaybeDisposable<'T> = U2<Typescript.Disposable, option<obj>>
+            type MaybeDisposable<'T> = U2<Disposable, option<obj>>
             type BaseType = option<obj>
 
             [<Import("@cloudflare/workers-types.Rpc", "UnstubifyAll")>]
@@ -6580,10 +6539,7 @@ module rec Cloudflare =
         module rec Service =
             type Get =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-                abstract fetch:
-                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                        Promise<Typescript.Response>
+                abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
             type T =
                 abstract Create: [<ParamArray>] args: ResizeArray<option<obj>> -> Rpc.WorkerEntrypointBranded
@@ -6608,10 +6564,10 @@ module rec Cloudflare =
                 module rec WebSocketPair =
                     type Create =
                         [<EmitProperty("1")>]
-                        abstract ``1``: Typescript.WebSocket with get, set
+                        abstract ``1``: WebSocket with get, set
 
                         [<EmitProperty("0")>]
-                        abstract ``0``: Typescript.WebSocket with get, set
+                        abstract ``0``: WebSocket with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type CompressionStream =
@@ -6639,28 +6595,26 @@ module rec Cloudflare =
                 abstract Create: ?init: HeadersInit -> Headers
 
             type Body =
-                abstract prototype: Typescript.Body with get, set
-                abstract Create: unit -> Typescript.Body
+                abstract prototype: Body with get, set
+                abstract Create: unit -> Body
 
             type Request =
-                abstract prototype: Typescript.Request with get, set
-
-                abstract Create:
-                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit -> Typescript.Request
+                abstract prototype: Request with get, set
+                abstract Create: input: U3<Request, URL, string> * ?init: RequestInit -> Request
 
             type CloseEvent =
                 abstract prototype: CloseEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: Typescript.CloseEventInit -> CloseEvent
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: CloseEventInit -> CloseEvent
 
             type ReadableStreamDefaultReader =
                 abstract prototype: ReadableStreamDefaultReader<option<obj>> with get, set
                 abstract Create: stream: ReadableStream<'R> -> ReadableStreamDefaultReader<'R>
 
             type Response =
-                abstract prototype: Typescript.Response with get, set
-                abstract redirect: url: U2<URL, string> * ?status: float -> Typescript.Response
-                abstract json: ?data: obj * ?init: Typescript.ResponseInit -> Typescript.Response
-                abstract error: unit -> Typescript.Response
+                abstract prototype: Response with get, set
+                abstract redirect: url: U2<URL, string> * ?status: float -> Response
+                abstract json: ?data: obj * ?init: ResponseInit -> Response
+                abstract error: unit -> Response
 
                 abstract Create:
                     ?body:
@@ -6673,31 +6627,30 @@ module rec Cloudflare =
                             URLSearchParams,
                             string
                          > *
-                    ?init: Typescript.ResponseInit ->
-                        Typescript.Response
+                    ?init: ResponseInit ->
+                        Response
 
             type WebSocket =
                 abstract CLOSED: WebSocket.CLOSED with get
                 abstract CLOSING: WebSocket.CLOSING with get
                 abstract OPEN: WebSocket.OPEN with get
                 abstract CONNECTING: WebSocket.CONNECTING with get
-                abstract prototype: Typescript.WebSocket with get, set
+                abstract prototype: WebSocket with get, set
 
                 abstract Create:
-                    url: U2<URL, string> * ?protocols: U2<ResizeArray<D1SessionBookmark>, string> ->
-                        Typescript.WebSocket
+                    url: U2<URL, string> * ?protocols: U2<ResizeArray<D1SessionBookmark>, string> -> WebSocket
 
             type ByteLengthQueuingStrategy =
                 abstract prototype: ByteLengthQueuingStrategy with get, set
-                abstract Create: init: Typescript.QueuingStrategyInit -> ByteLengthQueuingStrategy
+                abstract Create: init: QueuingStrategyInit -> ByteLengthQueuingStrategy
 
             type TransformStream =
                 abstract prototype: TransformStream<option<obj>, option<obj>> with get, set
 
                 abstract Create:
-                    ?transformer: Typescript.Transformer<'I, 'O> *
-                    ?writableStrategy: Typescript.QueuingStrategy<'I> *
-                    ?readableStrategy: Typescript.QueuingStrategy<'O> ->
+                    ?transformer: Transformer<'I, 'O> *
+                    ?writableStrategy: QueuingStrategy<'I> *
+                    ?readableStrategy: QueuingStrategy<'O> ->
                         TransformStream<'I, 'O>
 
             type WritableStreamDefaultWriter =
@@ -6708,22 +6661,19 @@ module rec Cloudflare =
                 abstract prototype: WritableStream<option<obj>> with get, set
 
                 abstract Create:
-                    ?underlyingSink: Typescript.UnderlyingSink<'W> * ?strategy: Typescript.QueuingStrategy<'W> ->
-                        WritableStream<'W>
+                    ?underlyingSink: UnderlyingSink<'W> * ?strategy: QueuingStrategy<'W> -> WritableStream<'W>
 
             type ReadableStream =
                 abstract prototype: AiTextToImageOutput with get, set
 
                 abstract Create:
-                    ?underlyingSource: Typescript.UnderlyingSource<'R> * ?strategy: Typescript.QueuingStrategy<'R> ->
-                        ReadableStream<'R>
+                    ?underlyingSource: UnderlyingSource<'R> * ?strategy: QueuingStrategy<'R> -> ReadableStream<'R>
 
                 abstract Create:
-                    underlyingSource: UnderlyingDefaultSource<'R> * ?strategy: Typescript.QueuingStrategy<'R> ->
-                        ReadableStream<'R>
+                    underlyingSource: UnderlyingDefaultSource<'R> * ?strategy: QueuingStrategy<'R> -> ReadableStream<'R>
 
                 abstract Create:
-                    underlyingSource: Typescript.UnderlyingByteSource * ?strategy: ReadableStream.Create.Strategy ->
+                    underlyingSource: UnderlyingByteSource * ?strategy: ReadableStream.Create.Strategy ->
                         ReadableStream<Uint8Array<ArrayBuffer>>
 
             type WebSocketPair =
@@ -6739,7 +6689,7 @@ module rec Cloudflare =
 
             type CountQueuingStrategy =
                 abstract prototype: CountQueuingStrategy with get, set
-                abstract Create: init: Typescript.QueuingStrategyInit -> CountQueuingStrategy
+                abstract Create: init: QueuingStrategyInit -> CountQueuingStrategy
 
             type DecompressionStream =
                 abstract prototype: DecompressionStream with get, set
@@ -6754,7 +6704,7 @@ module rec Cloudflare =
                 abstract CAPTURING_PHASE: ScheduledEvent.CAPTURING_PHASE with get
                 abstract NONE: ScheduledEvent.NONE with get
                 abstract prototype: ScheduledEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: Typescript.EventInit -> ScheduledEvent
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: EventInit -> ScheduledEvent
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type DOMException =
@@ -6790,7 +6740,7 @@ module rec Cloudflare =
                 abstract CAPTURING_PHASE: TailEvent.CAPTURING_PHASE with get
                 abstract NONE: TailEvent.NONE with get
                 abstract prototype: TailEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: Typescript.EventInit -> TailEvent
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: EventInit -> TailEvent
 
             type FetchEvent =
                 abstract BUBBLING_PHASE: FetchEvent.BUBBLING_PHASE with get
@@ -6798,7 +6748,7 @@ module rec Cloudflare =
                 abstract CAPTURING_PHASE: FetchEvent.CAPTURING_PHASE with get
                 abstract NONE: FetchEvent.NONE with get
                 abstract prototype: FetchEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: Typescript.EventInit -> FetchEvent
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: EventInit -> FetchEvent
 
             type PromiseRejectionEvent =
                 abstract prototype: PromiseRejectionEvent with get, set
@@ -6816,7 +6766,7 @@ module rec Cloudflare =
                 abstract CAPTURING_PHASE: ExtendableEvent.CAPTURING_PHASE with get
                 abstract NONE: ExtendableEvent.NONE with get
                 abstract prototype: ExtendableEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: Typescript.EventInit -> ExtendableEvent
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: EventInit -> ExtendableEvent
 
             type WebSocketRequestResponsePair =
                 abstract prototype: WebSocketRequestResponsePair with get, set
@@ -6829,9 +6779,7 @@ module rec Cloudflare =
 
             type MessageEvent =
                 abstract prototype: MessageEvent<option<obj>> with get, set
-
-                abstract Create:
-                    ``type``: D1SessionBookmark * ?eventInitDict: Typescript.MessageEventInit<'T> -> MessageEvent<'T>
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: MessageEventInit<'T> -> MessageEvent<'T>
 
             type AbortController =
                 abstract prototype: AbortController with get, set
@@ -7546,7 +7494,7 @@ module rec Cloudflare =
             [<Import("@cloudflare/workers-types.WebAssembly", "Memory"); AbstractClass; AllowNullLiteral>]
             type Memory private () =
                 [<EmitConstructor>]
-                abstract Create: descriptor: Typescript.WebAssembly.MemoryDescriptor -> Memory
+                abstract Create: descriptor: WebAssembly.MemoryDescriptor -> Memory
 
                 abstract buffer: ArrayBuffer with get
                 abstract grow: delta: float -> float
@@ -7559,7 +7507,7 @@ module rec Cloudflare =
             [<Import("@cloudflare/workers-types.WebAssembly", "Global"); AbstractClass; AllowNullLiteral>]
             type Global private () =
                 [<EmitConstructor>]
-                abstract Create: descriptor: Typescript.WebAssembly.GlobalDescriptor<ValueType> * ?value: obj -> Global
+                abstract Create: descriptor: WebAssembly.GlobalDescriptor<ValueType> * ?value: obj -> Global
 
                 abstract value: option<obj> with get, set
                 abstract valueOf: unit -> option<obj>
@@ -7623,7 +7571,7 @@ module rec Cloudflare =
             [<Import("@cloudflare/workers-types.WebAssembly", "Table"); AbstractClass; AllowNullLiteral>]
             type Table private () =
                 [<EmitConstructor>]
-                abstract Create: descriptor: Typescript.WebAssembly.TableDescriptor * ?value: obj -> Table
+                abstract Create: descriptor: WebAssembly.TableDescriptor * ?value: obj -> Table
 
                 abstract length: float with get
                 abstract set: index: float * ?value: obj -> unit
@@ -7639,11 +7587,8 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types.WebAssembly", "Module"); AbstractClass; AllowNullLiteral>]
             type Module private () =
-                abstract imports:
-                    ``module``: WebAssembly.Module -> ResizeArray<Typescript.WebAssembly.ModuleImportDescriptor>
-
-                abstract exports:
-                    ``module``: WebAssembly.Module -> ResizeArray<Typescript.WebAssembly.ModuleExportDescriptor>
+                abstract imports: ``module``: WebAssembly.Module -> ResizeArray<WebAssembly.ModuleImportDescriptor>
+                abstract exports: ``module``: WebAssembly.Module -> ResizeArray<WebAssembly.ModuleExportDescriptor>
 
                 abstract customSections:
                     ``module``: WebAssembly.Module * sectionName: D1SessionBookmark -> ResizeArray<ArrayBuffer>
@@ -7707,10 +7652,7 @@ module rec Cloudflare =
         module rec WorkerLoaderWorkerCode =
             type Get =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-                abstract fetch:
-                    input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                        Promise<Typescript.Response>
+                abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
 
             type Params =
                 abstract Item: key: D1SessionBookmark -> option<obj>
@@ -7954,11 +7896,7 @@ module rec Cloudflare =
             abstract name: option<D1SessionBookmark> with get
             abstract id: DurableObjectId with get
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
             abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
 
@@ -8111,7 +8049,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "Event"); AbstractClass; AllowNullLiteral>]
         type Event private () =
             [<EmitConstructor>]
-            abstract Create: ``type``: D1SessionBookmark * ?init: Typescript.EventInit -> Event
+            abstract Create: ``type``: D1SessionBookmark * ?init: EventInit -> Event
 
             abstract BUBBLING_PHASE: float with get
             abstract AT_TARGET: float with get
@@ -8413,12 +8351,11 @@ module rec Cloudflare =
                 wrapAlgorithm: U2<SubtleCryptoEncryptAlgorithm, string> ->
                     Promise<ArrayBuffer>
 
-            abstract exportKey:
-                format: D1SessionBookmark * key: CryptoKey -> Promise<U2<ArrayBuffer, Typescript.JsonWebKey>>
+            abstract exportKey: format: D1SessionBookmark * key: CryptoKey -> Promise<U2<ArrayBuffer, JsonWebKey>>
 
             abstract importKey:
                 format: D1SessionBookmark *
-                keyData: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, Typescript.JsonWebKey> *
+                keyData: U3<ArrayBuffer, ArrayBufferView<ArrayBufferLike>, JsonWebKey> *
                 algorithm: U2<SubtleCryptoImportKeyAlgorithm, string> *
                 extractable: bool *
                 keyUsages: ResizeArray<D1SessionBookmark> ->
@@ -8440,7 +8377,7 @@ module rec Cloudflare =
                 algorithm: U2<SubtleCryptoGenerateKeyAlgorithm, string> *
                 extractable: bool *
                 keyUsages: ResizeArray<D1SessionBookmark> ->
-                    Promise<U2<CryptoKey, Typescript.CryptoKeyPair>>
+                    Promise<U2<CryptoKey, CryptoKeyPair>>
 
             abstract digest:
                 algorithm: U2<SubtleCryptoHashAlgorithm, string> * data: BufferSource -> Promise<ArrayBuffer>
@@ -8620,8 +8557,8 @@ module rec Cloudflare =
             abstract messages: ResizeArray<AiCfMetaLlama4Scout17B16EInstructMessagesInner.Messages> with get, set
 
         type StructuredClone =
-            abstract Invoke: value: 'T * ?options: Typescript.StructuredSerializeOptions -> 'T
-            abstract Invoke: value: 'T * ?options: Typescript.StructuredSerializeOptions -> 'T
+            abstract Invoke: value: 'T * ?options: StructuredSerializeOptions -> 'T
+            abstract Invoke: value: 'T * ?options: StructuredSerializeOptions -> 'T
 
         [<Import("@cloudflare/workers-types", "QueueSendBatchMetadata")>]
         type QueueSendBatchMetadata =
@@ -8683,7 +8620,7 @@ module rec Cloudflare =
                 model: 'Name *
                 inputs: proptypekey<proptypekey<'AiModelList, 'Name>, Ai.Run.Inputs> *
                 options: Ai.Run.Options ->
-                    Promise<Typescript.Response>
+                    Promise<Response>
 
             abstract run:
                 model: 'Name * inputs: Ai.Run.Inputs * options: Ai.Run.Options -> Promise<AiAsyncBatchResponse>
@@ -8737,11 +8674,7 @@ module rec Cloudflare =
             when 'Reserved :> D1SessionBookmark
             and 'T :> U3<Rpc.WorkerEntrypointBranded, Rpc.DurableObjectBranded, Rpc.WorkflowEntrypointBranded>> =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
             abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
 
@@ -8816,7 +8749,7 @@ module rec Cloudflare =
             abstract encoding: D1SessionBookmark with get
 
             abstract encodeInto:
-                input: D1SessionBookmark * buffer: Uint8Array<ArrayBufferLike> -> Typescript.TextEncoderEncodeIntoResult
+                input: D1SessionBookmark * buffer: Uint8Array<ArrayBufferLike> -> TextEncoderEncodeIntoResult
 
             abstract encode: ?input: D1SessionBookmark -> Uint8Array<ArrayBufferLike>
 
@@ -9492,8 +9425,7 @@ module rec Cloudflare =
             inherit Event()
 
             [<EmitConstructor>]
-            abstract Create:
-                ``type``: D1SessionBookmark * initializer: Typescript.MessageEventInit<option<obj>> -> MessageEvent
+            abstract Create: ``type``: D1SessionBookmark * initializer: MessageEventInit<option<obj>> -> MessageEvent
 
             abstract ports: ResizeArray<MessagePort> with get
             abstract source: option<MessagePort> with get
@@ -9637,9 +9569,9 @@ module rec Cloudflare =
             abstract maxNumResults: option<float> with get, set
 
             abstract filters: option<U2<AutoRAG.Filters, AutoRAG.Filters>> with get, set
-            abstract aiSearch: params: AutoRagAiSearchRequest -> Promise<U2<Typescript.Response, AutoRAG.AiSearch>>
+            abstract aiSearch: params: AutoRagAiSearchRequest -> Promise<U2<Response, AutoRAG.AiSearch>>
             abstract aiSearch: params: AutoRagAiSearchRequest -> Promise<AutoRagAiSearchResponse>
-            abstract aiSearch: params: AutoRagAiSearchRequestStreaming -> Promise<Typescript.Response>
+            abstract aiSearch: params: AutoRagAiSearchRequestStreaming -> Promise<Response>
             abstract search: params: AutoRagSearchRequest -> Promise<AutoRagSearchResponse>
             abstract list: unit -> Promise<AutoRagListResponse>
 
@@ -9825,8 +9757,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "PagesFunction")>]
         type PagesFunction<'Data, 'Params, 'Env when 'Data :> WebAssembly.ModuleImports and 'Params :> D1SessionBookmark>
             =
-            abstract Invoke:
-                context: PagesFunction.Invoke.Context -> U2<Typescript.Response, Promise<Typescript.Response>>
+            abstract Invoke: context: PagesFunction.Invoke.Context -> U2<Response, Promise<Response>>
 
         [<Import("@cloudflare/workers-types", "ImageHandle")>]
         type ImageHandle =
@@ -10191,12 +10122,9 @@ module rec Cloudflare =
             [<EmitProperty("DOMException")>]
             abstract dOMException: ServiceWorkerGlobalScope.DOMException with get, set
 
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract reportError: ?error: obj -> unit
-            abstract structuredClone: value: 'T * ?options: Typescript.StructuredSerializeOptions -> 'T
+            abstract structuredClone: value: 'T * ?options: StructuredSerializeOptions -> 'T
             abstract queueMicrotask: task: Function -> unit
             abstract clearInterval: ?timeoutId: float -> unit
 
@@ -10525,7 +10453,7 @@ module rec Cloudflare =
             [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
-            abstract response: Typescript.Response with get, set
+            abstract response: Response with get, set
 
         [<Import("@cloudflare/workers-types", "SyncKvStorage")>]
         type SyncKvStorage =
@@ -10576,15 +10504,15 @@ module rec Cloudflare =
         type ImageTransformationResult =
             abstract image: ?options: ImageTransformationOutputOptions -> ReadableStream<Uint8Array<ArrayBufferLike>>
             abstract contentType: unit -> D1SessionBookmark
-            abstract response: unit -> Typescript.Response
+            abstract response: unit -> Response
 
         [<Import("@cloudflare/workers-types", "TransformStream"); AbstractClass; AllowNullLiteral>]
         type TransformStream<'O, 'I> private () =
             [<EmitConstructor>]
             abstract Create:
-                ?transformer: Typescript.Transformer<'I, 'O> *
-                ?writableStrategy: Typescript.QueuingStrategy<'I> *
-                ?readableStrategy: Typescript.QueuingStrategy<'O> ->
+                ?transformer: Transformer<'I, 'O> *
+                ?writableStrategy: QueuingStrategy<'I> *
+                ?readableStrategy: QueuingStrategy<'O> ->
                     TransformStream
 
             abstract writable: WritableStream<'I> with get
@@ -10597,7 +10525,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "WorkerGlobalScope"); AbstractClass; AllowNullLiteral>]
         type WorkerGlobalScope private () =
-            inherit Typescript.Body()
+            inherit Body()
 
             [<EmitProperty("EventTarget")>]
             abstract eventTarget: WorkerGlobalScope.EventTarget with get, set
@@ -11474,11 +11402,7 @@ module rec Cloudflare =
             abstract Invoke: opts: LoopbackServiceStub.Invoke.Opts -> LoopbackServiceStub.Invoke
             abstract Invoke: opts: LoopbackServiceStub.Invoke.Opts -> LoopbackServiceStub.Invoke
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
             abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
 
@@ -11967,7 +11891,7 @@ module rec Cloudflare =
             inherit Event()
 
             [<EmitConstructor>]
-            abstract Create: ``type``: D1SessionBookmark * ?initializer: Typescript.CloseEventInit -> CloseEvent
+            abstract Create: ``type``: D1SessionBookmark * ?initializer: CloseEventInit -> CloseEvent
 
             abstract wasClean: bool with get
             abstract reason: D1SessionBookmark with get
@@ -12164,14 +12088,14 @@ module rec Cloudflare =
             abstract id: DurableObjectId with get
             abstract props: 'Props with get
             abstract abort: ?reason: D1SessionBookmark -> unit
-            abstract getTags: ws: Typescript.WebSocket -> ResizeArray<D1SessionBookmark>
+            abstract getTags: ws: WebSocket -> ResizeArray<D1SessionBookmark>
             abstract getHibernatableWebSocketEventTimeout: unit -> option<float>
             abstract setHibernatableWebSocketEventTimeout: ?timeoutMs: float -> unit
-            abstract getWebSocketAutoResponseTimestamp: ws: Typescript.WebSocket -> option<Date>
+            abstract getWebSocketAutoResponseTimestamp: ws: WebSocket -> option<Date>
             abstract getWebSocketAutoResponse: unit -> option<WebSocketRequestResponsePair>
             abstract setWebSocketAutoResponse: ?maybeReqResp: WebSocketRequestResponsePair -> unit
-            abstract getWebSockets: ?tag: D1SessionBookmark -> ResizeArray<Typescript.WebSocket>
-            abstract acceptWebSocket: ws: Typescript.WebSocket * ?tags: ResizeArray<D1SessionBookmark> -> unit
+            abstract getWebSockets: ?tag: D1SessionBookmark -> ResizeArray<WebSocket>
+            abstract acceptWebSocket: ws: WebSocket * ?tags: ResizeArray<D1SessionBookmark> -> unit
             abstract blockConcurrencyWhile: callback: unit -> Promise<'T> -> Promise<'T>
             abstract waitUntil: promise: Promise<option<obj>> -> unit
 
@@ -12298,14 +12222,12 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "Cache"); AbstractClass; AllowNullLiteral>]
         type Cache private () =
-            abstract put: request: U3<Typescript.Request, URL, string> * response: Typescript.Response -> Promise<unit>
+            abstract put: request: U3<Request, URL, string> * response: Response -> Promise<unit>
 
             abstract ``match``:
-                request: U3<Typescript.Request, URL, string> * ?options: Typescript.CacheQueryOptions ->
-                    Promise<option<Typescript.Response>>
+                request: U3<Request, URL, string> * ?options: CacheQueryOptions -> Promise<option<Response>>
 
-            abstract delete:
-                request: U3<Typescript.Request, URL, string> * ?options: Typescript.CacheQueryOptions -> Promise<bool>
+            abstract delete: request: U3<Request, URL, string> * ?options: CacheQueryOptions -> Promise<bool>
 
         [<Import("@cloudflare/workers-types", "IncomingRequestCfPropertiesBotManagement")>]
         type IncomingRequestCfPropertiesBotManagement =
@@ -12379,11 +12301,7 @@ module rec Cloudflare =
                     DurableObjectFacets.Get
 
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
             abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
 
@@ -12675,13 +12593,12 @@ module rec Cloudflare =
                 ?options: ReadableStreamValuesOptions -> AsyncIterableIterator<'R, option<obj>, option<obj>>
 
             abstract tee: unit -> ReadableStream<'R> * ReadableStream<'R>
-            abstract pipeTo: destination: WritableStream<'R> * ?options: Typescript.StreamPipeOptions -> Promise<unit>
+            abstract pipeTo: destination: WritableStream<'R> * ?options: StreamPipeOptions -> Promise<unit>
 
             abstract pipeThrough:
-                transform: Typescript.ReadableWritablePair<'T, 'R> * ?options: Typescript.StreamPipeOptions ->
-                    ReadableStream<'T>
+                transform: ReadableWritablePair<'T, 'R> * ?options: StreamPipeOptions -> ReadableStream<'T>
 
-            abstract getReader: options: Typescript.ReadableStreamGetReaderOptions -> ReadableStreamBYOBReader
+            abstract getReader: options: ReadableStreamGetReaderOptions -> ReadableStreamBYOBReader
             abstract getReader: unit -> ReadableStreamDefaultReader<'R>
             abstract cancel: ?reason: obj -> Promise<unit>
 
@@ -13010,8 +12927,7 @@ module rec Cloudflare =
         type WritableStream<'W> private () =
             [<EmitConstructor>]
             abstract Create:
-                ?underlyingSink: Typescript.UnderlyingSink<option<obj>> *
-                ?queuingStrategy: Typescript.QueuingStrategy<option<obj>> ->
+                ?underlyingSink: UnderlyingSink<option<obj>> * ?queuingStrategy: QueuingStrategy<option<obj>> ->
                     WritableStream
 
             abstract locked: bool with get
@@ -13159,12 +13075,10 @@ module rec Cloudflare =
             abstract remove: unit -> EndTag
 
             abstract after:
-                content: U3<ReadableStream<option<obj>>, Typescript.Response, string> * ?options: ContentOptions ->
-                    EndTag
+                content: U3<ReadableStream<option<obj>>, Response, string> * ?options: ContentOptions -> EndTag
 
             abstract before:
-                content: U3<ReadableStream<option<obj>>, Typescript.Response, string> * ?options: ContentOptions ->
-                    EndTag
+                content: U3<ReadableStream<option<obj>>, Response, string> * ?options: ContentOptions -> EndTag
 
         [<Import("@cloudflare/workers-types", "KVNamespaceListKey")>]
         type KVNamespaceListKey<'Key, 'Metadata when 'Key :> D1SessionBookmark> =
@@ -13174,10 +13088,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "ByteLengthQueuingStrategy"); AbstractClass; AllowNullLiteral>]
         type ByteLengthQueuingStrategy private () =
-            inherit Typescript.QueuingStrategy<ArrayBufferView<ArrayBufferLike>>()
+            inherit QueuingStrategy<ArrayBufferView<ArrayBufferLike>>()
 
             [<EmitConstructor>]
-            abstract Create: init: Typescript.QueuingStrategyInit -> ByteLengthQueuingStrategy
+            abstract Create: init: QueuingStrategyInit -> ByteLengthQueuingStrategy
 
             abstract highWaterMark: float with get
             abstract size: ?chunk: obj -> float
@@ -14071,7 +13985,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "MediaTransformationResult")>]
         type MediaTransformationResult =
             abstract contentType: unit -> Promise<D1SessionBookmark>
-            abstract response: unit -> Promise<Typescript.Response>
+            abstract response: unit -> Promise<Response>
             abstract media: unit -> Promise<ReadableStream<Uint8Array<ArrayBufferLike>>>
 
         type ImageInfoResponse = obj
@@ -14369,8 +14283,8 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "HTMLRewriterDocumentContentHandlers")>]
         type HTMLRewriterDocumentContentHandlers =
             abstract ``end``: ``end``: DocumentEnd -> option<Promise<unit>>
-            abstract text: text: Typescript.Text -> option<Promise<unit>>
-            abstract comments: comment: Typescript.Comment -> option<Promise<unit>>
+            abstract text: text: Text -> option<Promise<unit>>
+            abstract comments: comment: Comment -> option<Promise<unit>>
             abstract doctype: doctype: Doctype -> option<Promise<unit>>
 
         [<Import("@cloudflare/workers-types", "CacheContext")>]
@@ -14497,8 +14411,7 @@ module rec Cloudflare =
 
         type AddEventListener =
             abstract Invoke:
-                ``type``: 'Type * handler: Typescript.Body * ?options: U2<EventTargetAddEventListenerOptions, bool> ->
-                    unit
+                ``type``: 'Type * handler: Body * ?options: U2<EventTargetAddEventListenerOptions, bool> -> unit
 
             abstract Invoke:
                 ``type``: D1SessionBookmark *
@@ -14594,8 +14507,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "PagesPluginFunction")>]
         type PagesPluginFunction<'PluginArgs, 'Data, 'Params, 'Env
             when 'Data :> WebAssembly.ModuleImports and 'Params :> D1SessionBookmark> =
-            abstract Invoke:
-                context: PagesPluginFunction.Invoke.Context -> U2<Typescript.Response, Promise<Typescript.Response>>
+            abstract Invoke: context: PagesPluginFunction.Invoke.Context -> U2<Response, Promise<Response>>
 
         [<Import("@cloudflare/workers-types", "ResponseUsage")>]
         type ResponseUsage =
@@ -14704,7 +14616,7 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "JsonWebKeyWithKid")>]
         type JsonWebKeyWithKid =
-            inherit Typescript.JsonWebKey
+            inherit JsonWebKey
             abstract kid: D1SessionBookmark with get
 
         [<Import("@cloudflare/workers-types", "AiTextEmbeddingsInput")>]
@@ -14873,7 +14785,7 @@ module rec Cloudflare =
             [<EmitConstructor>]
             abstract Create: unit -> HTMLRewriter
 
-            abstract transform: response: Typescript.Response -> Typescript.Response
+            abstract transform: response: Response -> Response
             abstract onDocument: handlers: HTMLRewriterDocumentContentHandlers -> HTMLRewriter
             abstract on: selector: D1SessionBookmark * handlers: HTMLRewriterElementContentHandlers -> HTMLRewriter
 
@@ -14951,7 +14863,7 @@ module rec Cloudflare =
             [<EmitProperty("sequence_number")>]
             abstract sequenceNumber: float with get, set
 
-            abstract response: Typescript.Response with get, set
+            abstract response: Response with get, set
 
         [<Import("@cloudflare/workers-types", "ChatCompletionToolChoiceAllowedTools")>]
         type ChatCompletionToolChoiceAllowedTools =
@@ -15043,11 +14955,7 @@ module rec Cloudflare =
 
         type Service =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
             abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
 
@@ -15177,11 +15085,7 @@ module rec Cloudflare =
             abstract name: option<D1SessionBookmark> with get
             abstract id: DurableObjectId with get
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
             abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
 
@@ -15242,11 +15146,7 @@ module rec Cloudflare =
         type LoopbackForExport =
             abstract Invoke: opts: LoopbackForExport.Invoke.Opts -> LoopbackForExport.Invoke
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Invoke: opts: LoopbackForExport.Invoke.Opts -> DurableObjectClass<'T>
             abstract Item: key: D1SessionBookmark -> option<obj>
             abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
@@ -15689,9 +15589,9 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "FetchEvent"); AbstractClass; AllowNullLiteral>]
         type FetchEvent private () =
             inherit ExtendableEvent()
-            abstract request: Typescript.Request with get
+            abstract request: Request with get
             abstract passThroughOnException: unit -> unit
-            abstract respondWith: promise: U2<Typescript.Response, Promise<Typescript.Response>> -> unit
+            abstract respondWith: promise: U2<Response, Promise<Response>> -> unit
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type InstanceStatus =
@@ -15708,8 +15608,7 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "ExportedHandlerFetchHandler")>]
         type ExportedHandlerFetchHandler<'Props, 'CfHostMetadata, 'Env> =
             abstract Invoke:
-                request: Typescript.Request * env: 'Env * ctx: ExecutionContext<'Props> ->
-                    U2<Typescript.Response, Promise<Typescript.Response>>
+                request: Request * env: 'Env * ctx: ExecutionContext<'Props> -> U2<Response, Promise<Response>>
 
         [<Import("@cloudflare/workers-types", "BasicImageTransformationsGravityCoordinates")>]
         type BasicImageTransformationsGravityCoordinates =
@@ -15782,10 +15681,10 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "CountQueuingStrategy"); AbstractClass; AllowNullLiteral>]
         type CountQueuingStrategy private () =
-            inherit Typescript.QueuingStrategy<option<obj>>()
+            inherit QueuingStrategy<option<obj>>()
 
             [<EmitConstructor>]
-            abstract Create: init: Typescript.QueuingStrategyInit -> CountQueuingStrategy
+            abstract Create: init: QueuingStrategyInit -> CountQueuingStrategy
 
             abstract highWaterMark: float with get
             abstract size: ?chunk: obj -> float
@@ -15942,11 +15841,10 @@ module rec Cloudflare =
             abstract dispatchEvent: event: proptypekey<'EventMap, keyof<'EventMap>> -> bool
 
             abstract removeEventListener:
-                ``type``: 'Type * handler: Typescript.Body * ?options: U2<EventTargetEventListenerOptions, bool> -> unit
+                ``type``: 'Type * handler: Body * ?options: U2<EventTargetEventListenerOptions, bool> -> unit
 
             abstract addEventListener:
-                ``type``: 'Type * handler: Typescript.Body * ?options: U2<EventTargetAddEventListenerOptions, bool> ->
-                    unit
+                ``type``: 'Type * handler: Body * ?options: U2<EventTargetAddEventListenerOptions, bool> -> unit
 
         [<Import("@cloudflare/workers-types", "AiSearchInstance"); AbstractClass; AllowNullLiteral>]
         type AiSearchInstance private () =
@@ -15990,11 +15888,7 @@ module rec Cloudflare =
 
         type WorkerStub =
             abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-
-            abstract fetch:
-                input: U3<Typescript.Request, URL, string> * ?init: Typescript.RequestInit ->
-                    Promise<Typescript.Response>
-
+            abstract fetch: input: U3<Request, URL, string> * ?init: RequestInit -> Promise<Response>
             abstract Item: key: D1SessionBookmark -> option<obj>
             abstract catch: ?onrejected: option<obj> -> U2<'TResult, PromiseLike<'TResult>> -> Promise<U2<'T, 'TResult>>
 
@@ -16824,9 +16718,9 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "HTMLRewriterElementContentHandlers")>]
         type HTMLRewriterElementContentHandlers =
-            abstract text: element: Typescript.Text -> option<Promise<unit>>
-            abstract comments: comment: Typescript.Comment -> option<Promise<unit>>
-            abstract element: element: Typescript.Element -> option<Promise<unit>>
+            abstract text: element: Text -> option<Promise<unit>>
+            abstract comments: comment: Comment -> option<Promise<unit>>
+            abstract element: element: Element -> option<Promise<unit>>
 
         [<Import("@cloudflare/workers-types", "StreamPublicDetails")>]
         type StreamPublicDetails =
@@ -16884,8 +16778,8 @@ module rec Cloudflare =
             abstract params: WebAssembly.ModuleImports with get, set
             abstract env: OnRequest.Env with get, set
             abstract functionPath: D1SessionBookmark with get, set
-            abstract request: Typescript.Request with get, set
-            abstract next: ?input: RequestInfo * ?init: Typescript.RequestInit -> Promise<Typescript.Response>
+            abstract request: Request with get, set
+            abstract next: ?input: RequestInfo * ?init: RequestInit -> Promise<Response>
             abstract passThroughOnException: unit -> unit
             abstract waitUntil: promise: Promise<option<obj>> -> unit
 
@@ -17396,18 +17290,15 @@ module rec Cloudflare =
 
         [<Import("@cloudflare/workers-types", "DurableObject")>]
         type DurableObject =
-            abstract webSocketError: ws: Typescript.WebSocket * ?error: obj -> option<Promise<unit>>
+            abstract webSocketError: ws: WebSocket * ?error: obj -> option<Promise<unit>>
 
             abstract webSocketClose:
-                ws: Typescript.WebSocket * code: float * reason: D1SessionBookmark * wasClean: bool ->
-                    option<Promise<unit>>
+                ws: WebSocket * code: float * reason: D1SessionBookmark * wasClean: bool -> option<Promise<unit>>
 
-            abstract webSocketMessage:
-                ws: Typescript.WebSocket * message: U2<ArrayBuffer, string> -> option<Promise<unit>>
-
+            abstract webSocketMessage: ws: WebSocket * message: U2<ArrayBuffer, string> -> option<Promise<unit>>
             abstract alarm: ?alarmInfo: AlarmInvocationInfo -> option<Promise<unit>>
             abstract connect: socket: Socket -> option<Promise<unit>>
-            abstract fetch: request: Typescript.Request -> U2<Typescript.Response, Promise<Typescript.Response>>
+            abstract fetch: request: Request -> U2<Response, Promise<Response>>
 
         [<Import("@cloudflare/workers-types", "ExportedHandlerTestHandler")>]
         type ExportedHandlerTestHandler<'Props, 'Env> =
@@ -17587,7 +17478,7 @@ module rec Cloudflare =
 
             [<Import("@cloudflare/workers-types", "addEventListener")>]
             static member addEventListener
-                (``type``: 'Type, handler: Typescript.Body, ?options: U2<EventTargetAddEventListenerOptions, bool>)
+                (``type``: 'Type, handler: Body, ?options: U2<EventTargetAddEventListenerOptions, bool>)
                 : unit =
                 JS.undefined
 
@@ -17601,8 +17492,7 @@ module rec Cloudflare =
                 JS.undefined
 
             [<Erase>]
-            member onRequest: OnRequest -> U2<Typescript.Response, Promise<Typescript.Response>> =
-                JS.undefined
+            member onRequest: OnRequest -> U2<Response, Promise<Response>> = JS.undefined
 
             [<CompiledName("EmailMessage")>]
             member emailMessage: EmailMessage = JS.undefined
@@ -17635,12 +17525,10 @@ module rec Cloudflare =
             member tracing: Tracing = JS.undefined
 
             [<Import("@cloudflare/workers-types", "structuredClone")>]
-            static member structuredClone(value: 'T, ?options: Typescript.StructuredSerializeOptions) : 'T =
-                JS.undefined
+            static member structuredClone(value: 'T, ?options: StructuredSerializeOptions) : 'T = JS.undefined
 
             [<Import("@cloudflare/workers-types", "structuredClone")>]
-            static member structuredClone(value: 'T, ?options: Typescript.StructuredSerializeOptions) : 'T =
-                JS.undefined
+            static member structuredClone(value: 'T, ?options: StructuredSerializeOptions) : 'T = JS.undefined
 
             [<Import("@cloudflare/workers-types", "setInterval")>]
             static member setInterval
@@ -17709,20 +17597,14 @@ module rec Cloudflare =
                 JS.undefined
 
             [<Import("@cloudflare/workers-types", "fetch")>]
-            static member fetch
-                (input: U3<Typescript.Request, URL, string>, ?init: Typescript.RequestInit)
-                : Promise<Typescript.Response> =
-                JS.undefined
+            static member fetch(input: U3<Request, URL, string>, ?init: RequestInit) : Promise<Response> = JS.undefined
 
             [<Import("@cloudflare/workers-types", "fetch")>]
-            static member fetch
-                (input: U3<Typescript.Request, URL, string>, ?init: Typescript.RequestInit)
-                : Promise<Typescript.Response> =
-                JS.undefined
+            static member fetch(input: U3<Request, URL, string>, ?init: RequestInit) : Promise<Response> = JS.undefined
 
             [<Import("@cloudflare/workers-types", "removeEventListener")>]
             static member removeEventListener
-                (``type``: 'Type, handler: Typescript.Body, ?options: U2<EventTargetEventListenerOptions, bool>)
+                (``type``: 'Type, handler: Body, ?options: U2<EventTargetEventListenerOptions, bool>)
                 : unit =
                 JS.undefined
 
