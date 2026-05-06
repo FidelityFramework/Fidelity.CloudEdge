@@ -3906,23 +3906,7 @@ module rec Cloudflare =
                 | [<CompiledName("unknown")>] Unknown
 
             type WorkflowSleepDuration =
-                U15<
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    WorkflowSleepDuration,
-                    float
-                 >
+                U15<obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, float>
 
             [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkerEntrypoint");
               AbstractClass;
@@ -11040,13 +11024,7 @@ module rec Cloudflare =
             abstract decode: ?input: BufferSource * ?options: TextDecoderDecodeOptions -> D1SessionBookmark
 
         type VectorizeVectorMetadata =
-            U5<
-                VectorizeVectorMetadata,
-                ResizeArray<D1SessionBookmark>,
-                Typescript.CSSViewTransitionRule._Lit44,
-                string,
-                float
-             >
+            U5<obj, ResizeArray<D1SessionBookmark>, Typescript.CSSViewTransitionRule._Lit44, string, float>
 
         [<Import("@cloudflare/workers-types", "TraceItemAlarmEventInfo")>]
         type TraceItemAlarmEventInfo =
@@ -13309,7 +13287,7 @@ module rec Cloudflare =
 
             abstract prompt: D1SessionBookmark with get, set
 
-        type CfProperties<'HostMetadata> = U2<CfProperties, RequestInitCfProperties>
+        type CfProperties<'HostMetadata> = U2<obj, RequestInitCfProperties>
 
         [<Import("@cloudflare/workers-types", "AiSearchJobLogsResponse")>]
         type AiSearchJobLogsResponse =
@@ -16881,3 +16859,436 @@ module rec WebAssembly =
         abstract shared: option<bool> with get, set
         abstract maximum: option<float> with get, set
         abstract initial: float with get, set
+
+/// <summary>
+/// Erased union type to represent 1 of 10 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U10<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+/// <summary>
+/// Erased union type to represent 1 of 11 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U11<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+/// <summary>
+/// Erased union type to represent 1 of 15 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U15<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+/// <summary>
+/// Erased union type to represent 1 of 31 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U31<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P, 'Q, 'R, 'S, 'T, 'U, 'V, 'W, 'X, 'Y, 'Z, 'AA, 'BB, 'CC, 'DD, 'EE>
+    =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+    | Case17 of 'Q
+    | Case18 of 'R
+    | Case19 of 'S
+    | Case20 of 'T
+    | Case21 of 'U
+    | Case22 of 'V
+    | Case23 of 'W
+    | Case24 of 'X
+    | Case25 of 'Y
+    | Case26 of 'Z
+    | Case27 of 'AA
+    | Case28 of 'BB
+    | Case29 of 'CC
+    | Case30 of 'DD
+    | Case31 of 'EE
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Q = Case17 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'R = Case18 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'S = Case19 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'T = Case20 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'U = Case21 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'V = Case22 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'W = Case23 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'X = Case24 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Y = Case25 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Z = Case26 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'AA = Case27 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'BB = Case28 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'CC = Case29 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'DD = Case30 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'EE = Case31 x
+
+/// <summary>
+/// Erased union type to represent 1 of 32 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U32<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P, 'Q, 'R, 'S, 'T, 'U, 'V, 'W, 'X, 'Y, 'Z, 'AA, 'BB, 'CC, 'DD, 'EE, 'FF>
+    =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+    | Case17 of 'Q
+    | Case18 of 'R
+    | Case19 of 'S
+    | Case20 of 'T
+    | Case21 of 'U
+    | Case22 of 'V
+    | Case23 of 'W
+    | Case24 of 'X
+    | Case25 of 'Y
+    | Case26 of 'Z
+    | Case27 of 'AA
+    | Case28 of 'BB
+    | Case29 of 'CC
+    | Case30 of 'DD
+    | Case31 of 'EE
+    | Case32 of 'FF
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Q = Case17 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'R = Case18 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'S = Case19 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'T = Case20 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'U = Case21 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'V = Case22 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'W = Case23 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'X = Case24 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Y = Case25 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Z = Case26 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'AA = Case27 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'BB = Case28 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'CC = Case29 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'DD = Case30 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'EE = Case31 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'FF = Case32 x

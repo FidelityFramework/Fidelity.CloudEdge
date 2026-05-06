@@ -6770,14 +6770,14 @@ module rec Ai =
                                                                      >,
                                                                     System.Collections.Generic.IReadOnlyList<option<obj>>,
                                                                     ResizeArray<option<obj>>,
-                                                                    DeepPartialInternal,
+                                                                    obj,
                                                                     Typescript.ProcessingInstruction._Lit1799,
                                                                     obj
                                                                  >
                                                              >
                                                          >,
                                                         ResizeArray<option<obj>>,
-                                                        DeepPartialInternal,
+                                                        obj,
                                                         Typescript.ProcessingInstruction._Lit1799,
                                                         obj
                                                      >
@@ -6785,7 +6785,7 @@ module rec Ai =
                                              >,
                                             ResizeArray<option<obj>>
                                          >,
-                                        DeepPartialInternal
+                                        obj
                                      >,
                                     Typescript.ProcessingInstruction._Lit1799
                                  >,
@@ -6884,14 +6884,14 @@ module rec Ai =
                                                                             option<obj>
                                                                          >,
                                                                         ResizeArray<option<obj>>,
-                                                                        PartialMap,
+                                                                        obj,
                                                                         Typescript.ProcessingInstruction._Lit1799,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
                                                             ResizeArray<option<obj>>,
-                                                            PartialMap,
+                                                            obj,
                                                             Typescript.ProcessingInstruction._Lit1799,
                                                             obj
                                                          >
@@ -6899,7 +6899,7 @@ module rec Ai =
                                                  >,
                                                 ResizeArray<option<obj>>
                                              >,
-                                            PartialMap
+                                            obj
                                          >,
                                         Typescript.ProcessingInstruction._Lit1799
                                      >,
@@ -7037,7 +7037,7 @@ module rec Ai =
             TelemetryIntegration._Lit117,
             TelemetryIntegration._Lit118,
             TelemetryIntegration._Lit119,
-            TextStreamPart,
+            obj,
             TelemetryIntegration._Lit121,
             TelemetryIntegration._Lit122,
             TelemetryIntegration._Lit123,
@@ -7065,7 +7065,7 @@ module rec Ai =
             Agents.AgentToolRunState._Lit49,
             Agents.AgentToolRunState._Lit50,
             Agents.AgentToolRunState._Lit51
-         >> = U2<AsUITool, 'TOOL>
+         >> = U2<obj, 'TOOL>
 
     [<Import("ai", "LanguageModelResponseMetadata")>]
     type LanguageModelResponseMetadata =
@@ -7160,7 +7160,7 @@ module rec Ai =
             TelemetryIntegration._Lit62,
             TelemetryIntegration._Lit69,
             TelemetryIntegration._Lit73,
-            ContentPart
+            obj
          >
 
     type UIMessagePart =
@@ -7218,14 +7218,14 @@ module rec Ai =
                                                                             option<obj>
                                                                          >,
                                                                         ResizeArray<option<obj>>,
-                                                                        PartialSet,
+                                                                        obj,
                                                                         Typescript.ProcessingInstruction._Lit1799,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
                                                             ResizeArray<option<obj>>,
-                                                            PartialSet,
+                                                            obj,
                                                             Typescript.ProcessingInstruction._Lit1799,
                                                             obj
                                                          >
@@ -7233,7 +7233,7 @@ module rec Ai =
                                                  >,
                                                 ResizeArray<option<obj>>
                                              >,
-                                            PartialSet
+                                            obj
                                          >,
                                         Typescript.ProcessingInstruction._Lit1799
                                      >,
@@ -7530,14 +7530,14 @@ module rec Ai =
                                                                             option<obj>
                                                                          >,
                                                                         ResizeArray<option<obj>>,
-                                                                        PartialReadonlySet,
+                                                                        obj,
                                                                         Typescript.ProcessingInstruction._Lit1799,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
                                                             ResizeArray<option<obj>>,
-                                                            PartialReadonlySet,
+                                                            obj,
                                                             Typescript.ProcessingInstruction._Lit1799,
                                                             obj
                                                          >
@@ -7545,7 +7545,7 @@ module rec Ai =
                                                  >,
                                                 ResizeArray<option<obj>>
                                              >,
-                                            PartialReadonlySet
+                                            obj
                                          >,
                                         Typescript.ProcessingInstruction._Lit1799
                                      >,
@@ -7610,14 +7610,14 @@ module rec Ai =
                                                                             option<obj>
                                                                          >,
                                                                         ResizeArray<option<obj>>,
-                                                                        DeepPartial,
+                                                                        obj,
                                                                         Typescript.ProcessingInstruction._Lit1799,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
                                                             ResizeArray<option<obj>>,
-                                                            DeepPartial,
+                                                            obj,
                                                             Typescript.ProcessingInstruction._Lit1799,
                                                             obj
                                                          >
@@ -7625,7 +7625,7 @@ module rec Ai =
                                                  >,
                                                 ResizeArray<option<obj>>
                                              >,
-                                            DeepPartial
+                                            obj
                                          >,
                                         Typescript.ProcessingInstruction._Lit1799
                                      >,
@@ -7686,14 +7686,14 @@ module rec Ai =
                                                                             option<obj>
                                                                          >,
                                                                         ResizeArray<option<obj>>,
-                                                                        DeepPartial,
+                                                                        obj,
                                                                         Typescript.ProcessingInstruction._Lit1799,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
                                                             ResizeArray<option<obj>>,
-                                                            DeepPartial,
+                                                            obj,
                                                             Typescript.ProcessingInstruction._Lit1799,
                                                             obj
                                                          >
@@ -7701,7 +7701,7 @@ module rec Ai =
                                                  >,
                                                 ResizeArray<option<obj>>
                                              >,
-                                            DeepPartial
+                                            obj
                                          >,
                                         Typescript.ProcessingInstruction._Lit1799
                                      >,
@@ -7792,14 +7792,14 @@ module rec Ai =
                                                                             option<obj>
                                                                          >,
                                                                         ResizeArray<option<obj>>,
-                                                                        PartialReadonlyMap,
+                                                                        obj,
                                                                         Typescript.ProcessingInstruction._Lit1799,
                                                                         obj
                                                                      >
                                                                  >
                                                              >,
                                                             ResizeArray<option<obj>>,
-                                                            PartialReadonlyMap,
+                                                            obj,
                                                             Typescript.ProcessingInstruction._Lit1799,
                                                             obj
                                                          >
@@ -7807,7 +7807,7 @@ module rec Ai =
                                                  >,
                                                 ResizeArray<option<obj>>
                                              >,
-                                            PartialReadonlyMap
+                                            obj
                                          >,
                                         Typescript.ProcessingInstruction._Lit1799
                                      >,
@@ -8505,7 +8505,7 @@ module rec AiSdk =
                     option<Agents.AgentContext>,
                     Zod.V4.Core.Schemas.ZodTypeInternals<'SCHEMA, option<Agents.AgentContext>>
                  >,
-                FlexibleSchema
+                obj
              >
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -11296,7 +11296,7 @@ module rec Modelcontextprotocol =
                                 and 'ExtraT :> ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit274
                                 and 'SendResultT :> ``.``.AgentToolTypesDSteYkkSJs.AddMcpServerOptions._Lit7> =
                                 U2<
-                                    BaseToolCallback
+                                    obj
                                         -> 'ExtraT
                                         -> U2<
                                             ``.``.AgentToolTypesDSteYkkSJs.AddMcpServerOptions._Lit7,
@@ -12077,7 +12077,7 @@ module rec Modelcontextprotocol =
                             and 'Extra :> ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit274
                             and 'SendResultT :> ``.``.AgentToolTypesDSteYkkSJs.AddMcpServerOptions._Lit7> =
                             U2<
-                                BaseToolCallback
+                                obj
                                     -> 'Extra
                                     -> U2<
                                         ``.``.AgentToolTypesDSteYkkSJs.AddMcpServerOptions._Lit7,
@@ -12085,14 +12085,8 @@ module rec Modelcontextprotocol =
                                      >,
                                 U2<
                                     U2<
-                                        proptypekey<'S, BaseToolCallback>,
-                                        U2<
-                                            U2<
-                                                proptypekey<proptypekey<'T, BaseToolCallback>, BaseToolCallback>,
-                                                option<obj>
-                                             >,
-                                            unit
-                                         >
+                                        proptypekey<'S, obj>,
+                                        U2<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>, unit>
                                      >
                                         -> 'Extra
                                         -> U2<
@@ -12154,18 +12148,15 @@ module rec Modelcontextprotocol =
                                  >
                              >> =
                             U4<
-                                AnyToolHandler
+                                obj
                                     -> 'Extra
                                     -> U2<
                                         ``.``.AgentToolTypesDSteYkkSJs.AddMcpServerOptions._Lit7,
                                         Promise<'SendResultT>
                                      >,
                                 U2<
-                                    proptypekey<'S, AnyToolHandler>,
-                                    U2<
-                                        U2<proptypekey<proptypekey<'T, AnyToolHandler>, AnyToolHandler>, option<obj>>,
-                                        unit
-                                     >
+                                    proptypekey<'S, obj>,
+                                    U2<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>, unit>
                                  >
                                     -> 'Extra
                                     -> U2<
@@ -12227,10 +12218,7 @@ module rec Modelcontextprotocol =
                         type ZodRawShapeCompat = obj
 
                         type SchemaOutput<'S> =
-                            U2<
-                                proptypekey<'S, SchemaOutput>,
-                                U2<U2<proptypekey<proptypekey<'T, SchemaOutput>, SchemaOutput>, option<obj>>, unit>
-                             >
+                            U2<proptypekey<'S, obj>, U2<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>, unit>>
 
                         [<Import("./zod-compat.js", "ShapeOutput")>]
                         type ShapeOutput<'Shape when 'Shape :> ZodRawShapeCompat> =
@@ -13443,8 +13431,8 @@ module rec Zod =
                         U2<
                             Types.ZodObject<
                                 Typescript.ProcessingInstruction._Lit1799,
-                                proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
-                                proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
+                                proptypekey<proptypekey<'T, obj>, obj>,
+                                proptypekey<proptypekey<'T, obj>, obj>,
                                 ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit404,
                                 ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit405
                              >,
@@ -13453,8 +13441,8 @@ module rec Zod =
                                     U2<
                                         Types.ZodObject<
                                             Typescript.ProcessingInstruction._Lit1799,
-                                            proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
-                                            proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
+                                            proptypekey<proptypekey<'T, obj>, obj>,
+                                            proptypekey<proptypekey<'T, obj>, obj>,
                                             ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit404,
                                             ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit405
                                          >,
@@ -13465,8 +13453,8 @@ module rec Zod =
                                                     U2<
                                                         Types.ZodObject<
                                                             Typescript.ProcessingInstruction._Lit1799,
-                                                            proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
-                                                            proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
+                                                            proptypekey<proptypekey<'T, obj>, obj>,
+                                                            proptypekey<proptypekey<'T, obj>, obj>,
                                                             ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit404,
                                                             ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit405
                                                          >,
@@ -13478,8 +13466,8 @@ module rec Zod =
                                                         U2<
                                                             Types.ZodObject<
                                                                 Typescript.ProcessingInstruction._Lit1799,
-                                                                proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
-                                                                proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
+                                                                proptypekey<proptypekey<'T, obj>, obj>,
+                                                                proptypekey<proptypekey<'T, obj>, obj>,
                                                                 ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit404,
                                                                 ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit405
                                                              >,
@@ -13498,8 +13486,8 @@ module rec Zod =
                                         U2<
                                             Types.ZodObject<
                                                 Typescript.ProcessingInstruction._Lit1799,
-                                                proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
-                                                proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
+                                                proptypekey<proptypekey<'T, obj>, obj>,
+                                                proptypekey<proptypekey<'T, obj>, obj>,
                                                 ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit404,
                                                 ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit405
                                              >,
@@ -13511,8 +13499,8 @@ module rec Zod =
                                             U2<
                                                 Types.ZodObject<
                                                     Typescript.ProcessingInstruction._Lit1799,
-                                                    proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
-                                                    proptypekey<proptypekey<'T, DeepPartial>, DeepPartial>,
+                                                    proptypekey<proptypekey<'T, obj>, obj>,
+                                                    proptypekey<proptypekey<'T, obj>, obj>,
                                                     ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit404,
                                                     ``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit405
                                                  >,
@@ -14184,7 +14172,7 @@ module rec Zod =
             type ZodRawShape =
                 abstract Item: k: string -> ZodTypeAny
 
-            type SafeParseReturnType<'Output, 'Input> = U2<SafeParseReturnType, SafeParseReturnType>
+            type SafeParseReturnType<'Output, 'Input> = U2<obj, obj>
 
             type CatchallOutput<'T
                 when 'T :> ZodType<option<Agents.AgentContext>, ZodTypeDef, option<Agents.AgentContext>>> =
@@ -14458,15 +14446,12 @@ module rec Zod =
                 abstract shape: unit -> 'T
 
             type ArrayOutputType<'Cardinality, 'T when 'Cardinality :> ArrayCardinality and 'T :> ZodTypeAny> =
-                U2<
-                    proptypekey<'T, ArrayOutputType> * ResizeArray<proptypekey<'T, ArrayOutputType>>,
-                    ResizeArray<proptypekey<'T, ArrayOutputType>>
-                 >
+                U2<proptypekey<'T, obj> * ResizeArray<proptypekey<'T, obj>>, ResizeArray<proptypekey<'T, obj>>>
 
             type OutputTypeOfTupleWithRest<'Rest, 'T
                 when 'Rest :> ZodType<option<Agents.AgentContext>, ZodTypeDef, 'Output>
                 and 'T :> U2<ZodTypeAny * ResizeArray<ZodTypeAny>, unit>> =
-                U2<U2<'T, unit> * ResizeArray<proptypekey<'Rest, OutputTypeOfTupleWithRest>>, U2<'T, unit>>
+                U2<U2<'T, unit> * ResizeArray<proptypekey<'Rest, obj>>, U2<'T, unit>>
 
             type InputTypeOfTuple<'T when 'T :> U2<ZodTypeAny * ResizeArray<ZodTypeAny>, unit>> = InputTypeOfTuple
 
@@ -14525,7 +14510,7 @@ module rec Zod =
                             Promise<proptypekey<'ZodUnion, ZodUnion._parse>>
                          >
 
-            type Effect<'T> = U3<Effect, Effect, Effect>
+            type Effect<'T> = U3<obj, obj, obj>
             type RawCreateParams = option<``.``.AgentToolTypesDSteYkkSJs.McpAgent._Lit211>
 
             [<Import("./types.cjs", "Writeable")>]
@@ -16871,8 +16856,8 @@ module rec Zod =
                         | [<CompiledName("out")>] Out
                         | [<CompiledName("inout")>] Inout
 
-                type Output<'T> = U2<proptypekey<proptypekey<'T, Output>, Output>, option<obj>>
-                type Input<'T> = U2<proptypekey<proptypekey<'T, Input>, Input>, option<obj>>
+                type Output<'T> = U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>
+                type Input<'T> = U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>
 
                 [<Import("./core.cjs", "$brand")>]
                 type Brand<'T when 'T :> PropertyKey> =
@@ -17386,14 +17371,14 @@ module rec Zod =
                         Schemas.ZodTypeInternals<option<Agents.AgentContext>, option<Agents.AgentContext>>
                      >> =
                     U2<
-                        U2<proptypekey<proptypekey<'T, Replace>, Replace>, option<obj>>,
+                        U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>,
                         U2<
-                            U2<proptypekey<proptypekey<'T, Replace>, Replace>, option<obj>>,
+                            U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>,
                             U2<
                                 ResizeArray<
                                     U2<
-                                        U2<proptypekey<proptypekey<'T, Replace>, Replace>, option<obj>>,
-                                        U2<U2<proptypekey<proptypekey<'T, Replace>, Replace>, option<obj>>, option<obj>>
+                                        U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>,
+                                        U2<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>, option<obj>>
                                      >
                                  >,
                                 U2<Typescript.WeakMap._Lit3, U2<Typescript.ProcessingInstruction._Lit1799, 'Meta>>
@@ -18182,7 +18167,7 @@ module rec Zod =
                     abstract pattern: RegExp with get, set
 
                 type InferUnionInput<'T when 'T :> SomeType> =
-                    U2<U2<proptypekey<proptypekey<'T, InferUnionInput>, InferUnionInput>, option<obj>>, unit>
+                    U2<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>, unit>
 
                 [<Import("./schemas.cjs", "$ZodArrayInternals")>]
                 type ZodArrayInternals<'T when 'T :> SomeType> =
@@ -19029,7 +19014,7 @@ module rec Zod =
                     abstract _zod: ZodAnyInternals with get, set
 
                 type InferUnionOutput<'T when 'T :> SomeType> =
-                    U2<U2<proptypekey<proptypekey<'T, InferUnionOutput>, InferUnionOutput>, option<obj>>, unit>
+                    U2<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>, unit>
 
                 [<Import("./schemas.cjs", "$ZodSymbolInternals")>]
                 type ZodSymbolInternals =
@@ -25314,7 +25299,7 @@ module rec ``.`` =
                 U2<_ZodFormattedError._Lit1, U2<Typescript.ProcessingInstruction._Lit1799, option<Agents.AgentContext>>>
              >
 
-        type RawIssue<'T when 'T :> Zod.V4.Core.Errors.ZodIssueBase> = U2<RawIssue, unit>
+        type RawIssue<'T when 'T :> Zod.V4.Core.Errors.ZodIssueBase> = U2<obj, unit>
 
     module rec Helpers =
         module rec EnumUtilCjs =
@@ -25405,17 +25390,10 @@ module rec ``.`` =
         type InferTupleOutputType<'Rest, 'T
             when 'Rest :> Zod.V4.Classic.Schemas.ZodType._Lit25 and 'T :> Zod.V4.Core.Util.TupleItems> =
             U2<
-                U2<
-                    U2<U2<option<obj>, InferTupleOutputType>, unit> *
-                    option<U2<proptypekey<proptypekey<'T, InferTupleOutputType>, InferTupleOutputType>, option<obj>>>,
-                    InferTupleOutputType
-                 >,
+                U2<U2<U2<option<obj>, obj>, unit> * option<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>>, obj>,
                 unit
              > *
-            U2<
-                ResizeArray<U2<proptypekey<proptypekey<'T, InferTupleOutputType>, InferTupleOutputType>, option<obj>>>,
-                unit
-             >
+            U2<ResizeArray<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>>, unit>
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type IsOptionalOut =
@@ -25429,46 +25407,21 @@ module rec ``.`` =
 
         type TupleOutputTypeWithOptionals<'T when 'T :> Zod.V4.Core.Util.TupleItems> =
             U2<
-                U2<
-                    U2<U2<option<obj>, TupleOutputTypeWithOptionals>, unit> *
-                    option<
-                        U2<
-                            proptypekey<proptypekey<'T, TupleOutputTypeWithOptionals>, TupleOutputTypeWithOptionals>,
-                            option<obj>
-                         >
-                     >,
-                    TupleOutputTypeWithOptionals
-                 >,
+                U2<U2<U2<option<obj>, obj>, unit> * option<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>>, obj>,
                 unit
              >
 
         type InferTupleInputType<'Rest, 'T
             when 'Rest :> Zod.V4.Classic.Schemas.ZodType._Lit25 and 'T :> Zod.V4.Core.Util.TupleItems> =
             U2<
-                U2<
-                    U2<U2<option<obj>, InferTupleInputType>, unit> *
-                    option<U2<proptypekey<proptypekey<'T, InferTupleInputType>, InferTupleInputType>, option<obj>>>,
-                    InferTupleInputType
-                 >,
+                U2<U2<U2<option<obj>, obj>, unit> * option<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>>, obj>,
                 unit
              > *
-            U2<
-                ResizeArray<U2<proptypekey<proptypekey<'T, InferTupleInputType>, InferTupleInputType>, option<obj>>>,
-                unit
-             >
+            U2<ResizeArray<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>>, unit>
 
         type TupleInputTypeWithOptionals<'T when 'T :> Zod.V4.Core.Util.TupleItems> =
             U2<
-                U2<
-                    U2<U2<option<obj>, TupleInputTypeWithOptionals>, unit> *
-                    option<
-                        U2<
-                            proptypekey<proptypekey<'T, TupleInputTypeWithOptionals>, TupleInputTypeWithOptionals>,
-                            option<obj>
-                         >
-                     >,
-                    TupleInputTypeWithOptionals
-                 >,
+                U2<U2<U2<option<obj>, obj>, unit> * option<U2<proptypekey<proptypekey<'T, obj>, obj>, option<obj>>>, obj>,
                 unit
              >
 
@@ -25813,3 +25766,889 @@ module rec ``.`` =
                 AgentToolTypesDSteYkkSJs.McpAgent._Lit100,
                 U2<AgentToolTypesDSteYkkSJs.McpAgent._Lit109, U2<Typescript.ProcessingInstruction._Lit1799, option<obj>>>
              >
+
+/// <summary>
+/// Erased union type to represent 1 of 9 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U9<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+/// <summary>
+/// Erased union type to represent 1 of 10 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U10<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+/// <summary>
+/// Erased union type to represent 1 of 12 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U12<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+/// <summary>
+/// Erased union type to represent 1 of 13 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U13<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+/// <summary>
+/// Erased union type to represent 1 of 16 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U16<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+/// <summary>
+/// Erased union type to represent 1 of 18 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U18<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P, 'Q, 'R> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+    | Case17 of 'Q
+    | Case18 of 'R
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Q = Case17 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'R = Case18 x
+
+/// <summary>
+/// Erased union type to represent 1 of 20 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U20<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P, 'Q, 'R, 'S, 'T> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+    | Case17 of 'Q
+    | Case18 of 'R
+    | Case19 of 'S
+    | Case20 of 'T
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Q = Case17 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'R = Case18 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'S = Case19 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'T = Case20 x
+
+/// <summary>
+/// Erased union type to represent 1 of 21 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U21<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P, 'Q, 'R, 'S, 'T, 'U> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+    | Case17 of 'Q
+    | Case18 of 'R
+    | Case19 of 'S
+    | Case20 of 'T
+    | Case21 of 'U
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Q = Case17 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'R = Case18 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'S = Case19 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'T = Case20 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'U = Case21 x
+
+/// <summary>
+/// Erased union type to represent 1 of 23 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U23<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P, 'Q, 'R, 'S, 'T, 'U, 'V, 'W> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+    | Case17 of 'Q
+    | Case18 of 'R
+    | Case19 of 'S
+    | Case20 of 'T
+    | Case21 of 'U
+    | Case22 of 'V
+    | Case23 of 'W
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Q = Case17 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'R = Case18 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'S = Case19 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'T = Case20 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'U = Case21 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'V = Case22 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'W = Case23 x
+
+/// <summary>
+/// Erased union type to represent 1 of 27 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U27<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P, 'Q, 'R, 'S, 'T, 'U, 'V, 'W, 'X, 'Y, 'Z, 'AA> =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+    | Case17 of 'Q
+    | Case18 of 'R
+    | Case19 of 'S
+    | Case20 of 'T
+    | Case21 of 'U
+    | Case22 of 'V
+    | Case23 of 'W
+    | Case24 of 'X
+    | Case25 of 'Y
+    | Case26 of 'Z
+    | Case27 of 'AA
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Q = Case17 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'R = Case18 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'S = Case19 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'T = Case20 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'U = Case21 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'V = Case22 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'W = Case23 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'X = Case24 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Y = Case25 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Z = Case26 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'AA = Case27 x
+
+/// <summary>
+/// Erased union type to represent 1 of 33 possible values.
+/// <a href="https://fable.io/docs/javascript/features.html#erased-unions">Read more</a>
+/// </summary>
+[<Erase>]
+type U33<'A, 'B, 'C, 'D, 'E, 'F, 'G, 'H, 'I, 'J, 'K, 'L, 'M, 'N, 'O, 'P, 'Q, 'R, 'S, 'T, 'U, 'V, 'W, 'X, 'Y, 'Z, 'AA, 'BB, 'CC, 'DD, 'EE, 'FF, 'GG>
+    =
+    | Case1 of 'A
+    | Case2 of 'B
+    | Case3 of 'C
+    | Case4 of 'D
+    | Case5 of 'E
+    | Case6 of 'F
+    | Case7 of 'G
+    | Case8 of 'H
+    | Case9 of 'I
+    | Case10 of 'J
+    | Case11 of 'K
+    | Case12 of 'L
+    | Case13 of 'M
+    | Case14 of 'N
+    | Case15 of 'O
+    | Case16 of 'P
+    | Case17 of 'Q
+    | Case18 of 'R
+    | Case19 of 'S
+    | Case20 of 'T
+    | Case21 of 'U
+    | Case22 of 'V
+    | Case23 of 'W
+    | Case24 of 'X
+    | Case25 of 'Y
+    | Case26 of 'Z
+    | Case27 of 'AA
+    | Case28 of 'BB
+    | Case29 of 'CC
+    | Case30 of 'DD
+    | Case31 of 'EE
+    | Case32 of 'FF
+    | Case33 of 'GG
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'A = Case1 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'B = Case2 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'C = Case3 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'D = Case4 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'E = Case5 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'F = Case6 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'G = Case7 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'H = Case8 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'I = Case9 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'J = Case10 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'K = Case11 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'L = Case12 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'M = Case13 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'N = Case14 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'O = Case15 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'P = Case16 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Q = Case17 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'R = Case18 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'S = Case19 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'T = Case20 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'U = Case21 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'V = Case22 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'W = Case23 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'X = Case24 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Y = Case25 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'Z = Case26 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'AA = Case27 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'BB = Case28 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'CC = Case29 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'DD = Case30 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'EE = Case31 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'FF = Case32 x
+
+    [<Emit("$0")>]
+    static member op_ErasedCast x: 'GG = Case33 x
