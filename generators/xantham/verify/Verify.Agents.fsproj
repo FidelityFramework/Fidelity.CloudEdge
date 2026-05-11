@@ -6,11 +6,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="../../../../speakez-xantham/src/Xantham.Fable.Core/Library.fs">
+            <Link>XanthamFableCoreLibrary.fs</Link>
+        </Compile>
         <Compile Include="agents.wrapped.fs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Fable.Core" Version="4.3.0" />
+        <PackageReference Include="Fable.Core" Version="5.0.0-beta.4" />
     </ItemGroup>
 
 </Project>
