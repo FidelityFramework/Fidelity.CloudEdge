@@ -87,7 +87,7 @@ module rec Cloudflare =
                 type ITestsFixturesDynamicWorkflowsNodeModulesCloudflareDynamicWorkflowsDistEntrypoint =
                     [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/entrypoint",
                              "dispatchWorkflow")>]
-                    static member dispatchWorkflow<'Result, 'Params, 'Env>
+                    static member dispatchWorkflow<'Env, 'Params, 'Result>
                         (
                             context: DispatchWorkflow._Lit1,
                             event:
@@ -105,7 +105,7 @@ module rec Cloudflare =
 
                     [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/entrypoint",
                              "createDynamicWorkflowEntrypoint")>]
-                    static member createDynamicWorkflowEntrypoint<'Result, 'Params, 'Env>
+                    static member createDynamicWorkflowEntrypoint<'Env, 'Params, 'Result>
                         (
                             loadRunner:
                                 TestsFixturesDynamicWorkflowsNodeModulesCloudflareDynamicWorkflowsDistTypes.LoadWorkflowRunnerContext<
@@ -132,14 +132,14 @@ module rec Cloudflare =
 
                 [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/types",
                          "WorkflowRunner")>]
-                type WorkflowRunner<'R, 'T> =
+                type WorkflowRunner<'T, 'R> =
                     abstract run: event: WorkflowEventLike<'T> * step: obj -> Promise<'R>
 
                 type DispatcherMetadata = obj
 
                 [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/types",
                          "LoadWorkflowRunner")>]
-                type LoadWorkflowRunner<'R, 'T, 'Env> =
+                type LoadWorkflowRunner<'Env, 'T, 'R> =
                     abstract Invoke:
                         context: LoadWorkflowRunnerContext<'Env> ->
                             U2<Promise<LoadWorkflowRunner.Invoke>, LoadWorkflowRunner.Invoke>
