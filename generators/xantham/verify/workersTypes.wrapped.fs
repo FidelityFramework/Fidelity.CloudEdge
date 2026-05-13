@@ -78,7 +78,7 @@ module rec Cloudflare =
 
             module rec _Lit20 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Stream = | [<CompiledValue(true)>] True
 
             module rec _Lit68 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -86,7 +86,7 @@ module rec Cloudflare =
 
             module rec _Lit79 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Stream = | [<CompiledValue(true)>] True
 
             module rec _Lit85 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -94,15 +94,39 @@ module rec Cloudflare =
 
             module rec _Lit89 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type ReturnRawResponse = | [<CompiledValue(true)>] True
 
             module rec _Lit91 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Websocket = | [<CompiledValue(true)>] True
 
             module rec _Lit93 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Stream = | [<CompiledValue(true)>] True
+
+            type _Lit35 =
+                | ``3600`` = 3600
+                | ``7200`` = 7200
+                | ``14400`` = 14400
+                | ``21600`` = 21600
+                | ``43200`` = 43200
+                | ``86400`` = 86400
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit12 =
+                | [<CompiledName("super_strict_match")>] SuperStrictMatch
+                | [<CompiledName("close_enough")>] CloseEnough
+                | [<CompiledName("flexible_friend")>] FlexibleFriend
+                | [<CompiledName("anything_goes")>] AnythingGoes
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit6 =
+                | [<CompiledName("max")>] Max
+                | [<CompiledName("rrf")>] Rrf
+
+            type _Lit27 =
+                abstract keyword: option<bool> with get, set
+                abstract vector: option<bool> with get, set
 
             type _Lit4 =
                 [<EmitProperty("boost_by")>]
@@ -136,62 +160,16 @@ module rec Cloudflare =
 
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
-            type _Lit35 =
-                | ``3600`` = 3600
-                | ``7200`` = 7200
-                | ``14400`` = 14400
-                | ``21600`` = 21600
-                | ``43200`` = 43200
-                | ``86400`` = 86400
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit12 =
-                | [<CompiledName("super_strict_match")>] SuperStrictMatch
-                | [<CompiledName("close_enough")>] CloseEnough
-                | [<CompiledName("flexible_friend")>] FlexibleFriend
-                | [<CompiledName("anything_goes")>] AnythingGoes
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit6 =
-                | [<CompiledName("max")>] Max
-                | [<CompiledName("rrf")>] Rrf
-
-            type _Lit27 =
-                abstract keyword: option<bool> with get, set
-                abstract vector: option<bool> with get, set
-
-            type _Lit47 =
-                [<EmitProperty("total_count")>]
-                abstract totalCount: float with get, set
-
-                [<EmitProperty("per_page")>]
-                abstract perPage: float with get, set
-
-                abstract page: float with get, set
-                abstract count: float with get, set
+            type _Lit50 =
+                abstract timeoutMs: option<float> with get, set
+                abstract pollIntervalMs: option<float> with get, set
+                abstract metadata: option<WebAssembly.ModuleImports> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit5 =
                 | [<CompiledName("hybrid")>] Hybrid
                 | [<CompiledName("vector")>] Vector
                 | [<CompiledName("keyword")>] Keyword
-
-            type _Lit44 =
-                [<EmitProperty("result_info")>]
-                abstract resultInfo: option<_Lit47> with get, set
-
-                abstract result: ResizeArray<AiSearchItemInfo> with get, set
-
-            type _Lit7 =
-                abstract direction: option<_Lit8> with get, set
-                abstract field: D1SessionBookmark with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit8 =
-                | [<CompiledName("desc")>] Desc
-                | [<CompiledName("asc")>] Asc
-                | [<CompiledName("exists")>] Exists
-                | [<CompiledName("not_exists")>] NotExists
 
             type _Lit72 =
                 [<EmitProperty("instance_ids")>]
@@ -206,6 +184,29 @@ module rec Cloudflare =
                 abstract retrieval: option<_Lit4> with get, set
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
+            type _Lit7 =
+                abstract direction: option<_Lit8> with get, set
+                abstract field: D1SessionBookmark with get, set
+
+            type _Lit47 =
+                [<EmitProperty("total_count")>]
+                abstract totalCount: float with get, set
+
+                [<EmitProperty("per_page")>]
+                abstract perPage: float with get, set
+
+                abstract page: float with get, set
+                abstract count: float with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit42 =
+                | [<CompiledName("status")>] Status
+                | [<CompiledName("modified_at")>] ModifiedAt
+
+            type _Lit14 =
+                abstract content: option<string> with get, set
+                abstract role: _Lit15 with get, set
+
             type _Lit3 =
                 abstract cache: option<_Lit11> with get, set
                 abstract reranking: option<_Lit10> with get, set
@@ -216,14 +217,6 @@ module rec Cloudflare =
                 abstract retrieval: option<_Lit4> with get, set
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
-            type _Lit9 =
-                [<EmitProperty("rewrite_prompt")>]
-                abstract rewritePrompt: option<D1SessionBookmark> with get, set
-
-                abstract model: option<D1SessionBookmark> with get, set
-                abstract enabled: option<bool> with get, set
-                abstract Item: key: D1SessionBookmark -> option<obj>
-
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit15 =
                 | [<CompiledName("user")>] User
@@ -231,6 +224,21 @@ module rec Cloudflare =
                 | [<CompiledName("assistant")>] Assistant
                 | [<CompiledName("system")>] System
                 | [<CompiledName("developer")>] Developer
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit8 =
+                | [<CompiledName("desc")>] Desc
+                | [<CompiledName("asc")>] Asc
+                | [<CompiledName("exists")>] Exists
+                | [<CompiledName("not_exists")>] NotExists
+
+            type _Lit9 =
+                [<EmitProperty("rewrite_prompt")>]
+                abstract rewritePrompt: option<D1SessionBookmark> with get, set
+
+                abstract model: option<D1SessionBookmark> with get, set
+                abstract enabled: option<bool> with get, set
+                abstract Item: key: D1SessionBookmark -> option<obj>
 
             type _Lit10 =
                 [<EmitProperty("match_threshold")>]
@@ -246,14 +254,20 @@ module rec Cloudflare =
 
                 abstract enabled: option<bool> with get, set
 
-            type _Lit14 =
-                abstract content: option<string> with get, set
-                abstract role: _Lit15 with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit43 =
+                | [<CompiledName("queued")>] Queued
+                | [<CompiledName("running")>] Running
+                | [<CompiledName("error")>] Error
+                | [<CompiledName("completed")>] Completed
+                | [<CompiledName("skipped")>] Skipped
+                | [<CompiledName("outdated")>] Outdated
 
-            type _Lit82 =
-                abstract errors: option<ResizeArray<AiSearchMultiSearchError>> with get, set
-                abstract chunks: ResizeArray<AiSearchMultiSearchChunk> with get, set
-                abstract Item: key: D1SessionBookmark -> option<obj>
+            type _Lit44 =
+                [<EmitProperty("result_info")>]
+                abstract resultInfo: option<_Lit47> with get, set
+
+                abstract result: ResizeArray<AiSearchItemInfo> with get, set
 
             type _Lit71 =
                 [<EmitProperty("ai_search_options")>]
@@ -261,8 +275,6 @@ module rec Cloudflare =
 
                 abstract messages: option<unit> with get, set
                 abstract query: D1SessionBookmark with get, set
-
-            type _Lit94 = interface end
 
             type _Lit41 =
                 [<EmitProperty("metadata_filter")>]
@@ -281,19 +293,7 @@ module rec Cloudflare =
 
                 abstract page: option<float> with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit42 =
-                | [<CompiledName("status")>] Status
-                | [<CompiledName("modified_at")>] ModifiedAt
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit43 =
-                | [<CompiledName("queued")>] Queued
-                | [<CompiledName("running")>] Running
-                | [<CompiledName("error")>] Error
-                | [<CompiledName("completed")>] Completed
-                | [<CompiledName("skipped")>] Skipped
-                | [<CompiledName("outdated")>] Outdated
+            type _Lit94 = interface end
 
             type _Lit59 =
                 abstract offset: float with get, set
@@ -328,14 +328,14 @@ module rec Cloudflare =
                 abstract offset: option<float> with get, set
                 abstract limit: option<float> with get, set
 
-            type _Lit54 =
-                abstract errorType: option<D1SessionBookmark> with get, set
-                abstract processingTimeMs: option<float> with get, set
-                abstract chunkCount: option<float> with get, set
-                abstract fileKey: option<D1SessionBookmark> with get, set
-                abstract message: D1SessionBookmark with get, set
-                abstract action: D1SessionBookmark with get, set
-                abstract timestamp: D1SessionBookmark with get, set
+            type _Lit55 =
+                abstract truncated: bool with get, set
+                abstract cursor: option<string> with get, set
+
+                [<EmitProperty("per_page")>]
+                abstract perPage: float with get, set
+
+                abstract count: float with get, set
 
             type _Lit53 =
                 [<EmitProperty("result_info")>]
@@ -414,25 +414,114 @@ module rec Cloudflare =
                 abstract messages: ResizeArray<AiSearchMessage> with get, set
                 abstract query: option<unit> with get, set
 
-            type _Lit55 =
-                abstract truncated: bool with get, set
-                abstract cursor: option<string> with get, set
-
-                [<EmitProperty("per_page")>]
-                abstract perPage: float with get, set
-
-                abstract count: float with get, set
-
-            type _Lit81 =
-                [<EmitProperty("ai_search_options")>]
-                abstract aiSearchOptions: AiSearchMultiSearchOptions with get, set
-
+            type _Lit82 =
+                abstract errors: option<ResizeArray<AiSearchMultiSearchError>> with get, set
+                abstract chunks: ResizeArray<AiSearchMultiSearchChunk> with get, set
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
-            type _Lit50 =
-                abstract timeoutMs: option<float> with get, set
-                abstract pollIntervalMs: option<float> with get, set
+            type _Lit54 =
+                abstract errorType: option<D1SessionBookmark> with get, set
+                abstract processingTimeMs: option<float> with get, set
+                abstract chunkCount: option<float> with get, set
+                abstract fileKey: option<D1SessionBookmark> with get, set
+                abstract message: D1SessionBookmark with get, set
+                abstract action: D1SessionBookmark with get, set
+                abstract timestamp: D1SessionBookmark with get, set
+
+            type _Lit49 =
                 abstract metadata: option<WebAssembly.ModuleImports> with get, set
+
+            type _Lit36 =
+                abstract metadata: option<WebAssembly.ModuleImports> with get, set
+
+                [<EmitProperty("sync_interval")>]
+                abstract syncInterval: option<_Lit35> with get, set
+
+                [<EmitProperty("custom_metadata")>]
+                abstract customMetadata: option<ResizeArray<_Lit33>> with get, set
+
+                [<EmitProperty("cache_threshold")>]
+                abstract cacheThreshold: option<_Lit12> with get, set
+
+                abstract cache: option<bool> with get, set
+
+                [<EmitProperty("max_num_results")>]
+                abstract maxNumResults: option<float> with get, set
+
+                [<EmitProperty("score_threshold")>]
+                abstract scoreThreshold: option<float> with get, set
+
+                [<EmitProperty("chunk_overlap")>]
+                abstract chunkOverlap: option<float> with get, set
+
+                [<EmitProperty("chunk_size")>]
+                abstract chunkSize: option<float> with get, set
+
+                abstract chunk: option<bool> with get, set
+
+                [<EmitProperty("retrieval_options")>]
+                abstract retrievalOptions: option<_Lit32> with get, set
+
+                [<EmitProperty("indexing_options")>]
+                abstract indexingOptions: option<_Lit29> with get, set
+
+                [<EmitProperty("fusion_method")>]
+                abstract fusionMethod: option<_Lit6> with get, set
+
+                [<EmitProperty("index_method")>]
+                abstract indexMethod: option<_Lit27> with get, set
+
+                /// <deprecated>
+                /// Use index_method instead.
+                /// </deprecated>
+                [<EmitProperty("hybrid_search_enabled")>]
+                abstract hybridSearchEnabled: option<bool> with get, set
+
+                [<EmitProperty("reranking_model")>]
+                abstract rerankingModel: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("rewrite_model")>]
+                abstract rewriteModel: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("ai_search_model")>]
+                abstract aiSearchModel: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("embedding_model")>]
+                abstract embeddingModel: option<D1SessionBookmark> with get, set
+
+                abstract reranking: option<bool> with get, set
+
+                [<EmitProperty("rewrite_query")>]
+                abstract rewriteQuery: option<bool> with get, set
+
+                [<EmitProperty("ai_gateway_id")>]
+                abstract aiGatewayId: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("token_id")>]
+                abstract tokenId: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("modified_at")>]
+                abstract modifiedAt: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("created_at")>]
+                abstract createdAt: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("namespace")>]
+                abstract ``namespace``: option<D1SessionBookmark> with get, set
+
+                abstract status: option<D1SessionBookmark> with get, set
+                abstract paused: option<bool> with get, set
+
+                [<EmitProperty("source_params")>]
+                abstract sourceParams: option<obj> with get, set
+
+                abstract source: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: option<U2<_Lit36.Type, string>> with get, set
+
+                abstract id: D1SessionBookmark with get, set
+                abstract Item: key: D1SessionBookmark -> option<obj>
 
             type _Lit25 =
                 abstract metadata: option<WebAssembly.ModuleImports> with get, set
@@ -537,28 +626,28 @@ module rec Cloudflare =
 
                 abstract page: option<float> with get, set
 
-            type _Lit23 =
-                abstract message: _Lit24 with get, set
-                abstract index: option<float> with get, set
-                abstract Item: key: D1SessionBookmark -> option<obj>
-
             type _Lit38 =
                 abstract r2: option<_Lit40> with get, set
                 abstract vectorize: option<_Lit39> with get, set
+
+            type _Lit39 =
+                abstract dimensions: float with get, set
+                abstract vectorsCount: float with get, set
 
             type _Lit97 =
                 abstract description: D1SessionBookmark with get, set
                 abstract name: D1SessionBookmark with get, set
                 abstract id: D1SessionBookmark with get, set
 
-            type _Lit39 =
-                abstract dimensions: float with get, set
-                abstract vectorsCount: float with get, set
-
             type _Lit40 =
                 abstract objectCount: float with get, set
                 abstract metadataSizeBytes: float with get, set
                 abstract payloadSizeBytes: float with get, set
+
+            type _Lit23 =
+                abstract message: _Lit24 with get, set
+                abstract index: option<float> with get, set
+                abstract Item: key: D1SessionBookmark -> option<obj>
 
             type _Lit24 =
                 abstract content: option<string> with get, set
@@ -586,106 +675,10 @@ module rec Cloudflare =
                 [<EmitProperty("keyword_match_mode")>]
                 abstract keywordMatchMode: option<AutoRAG._Lit5> with get, set
 
-            type _Lit49 =
-                abstract metadata: option<WebAssembly.ModuleImports> with get, set
-
-            type _Lit60 =
-                [<EmitProperty("per_page")>]
-                abstract perPage: option<float> with get, set
-
-                abstract page: option<float> with get, set
-
-            type _Lit36 =
-                abstract metadata: option<WebAssembly.ModuleImports> with get, set
-
-                [<EmitProperty("sync_interval")>]
-                abstract syncInterval: option<_Lit35> with get, set
-
-                [<EmitProperty("custom_metadata")>]
-                abstract customMetadata: option<ResizeArray<_Lit33>> with get, set
-
-                [<EmitProperty("cache_threshold")>]
-                abstract cacheThreshold: option<_Lit12> with get, set
-
-                abstract cache: option<bool> with get, set
-
-                [<EmitProperty("max_num_results")>]
-                abstract maxNumResults: option<float> with get, set
-
-                [<EmitProperty("score_threshold")>]
-                abstract scoreThreshold: option<float> with get, set
-
-                [<EmitProperty("chunk_overlap")>]
-                abstract chunkOverlap: option<float> with get, set
-
-                [<EmitProperty("chunk_size")>]
-                abstract chunkSize: option<float> with get, set
-
-                abstract chunk: option<bool> with get, set
-
-                [<EmitProperty("retrieval_options")>]
-                abstract retrievalOptions: option<_Lit32> with get, set
-
-                [<EmitProperty("indexing_options")>]
-                abstract indexingOptions: option<_Lit29> with get, set
-
-                [<EmitProperty("fusion_method")>]
-                abstract fusionMethod: option<_Lit6> with get, set
-
-                [<EmitProperty("index_method")>]
-                abstract indexMethod: option<_Lit27> with get, set
-
-                /// <deprecated>
-                /// Use index_method instead.
-                /// </deprecated>
-                [<EmitProperty("hybrid_search_enabled")>]
-                abstract hybridSearchEnabled: option<bool> with get, set
-
-                [<EmitProperty("reranking_model")>]
-                abstract rerankingModel: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("rewrite_model")>]
-                abstract rewriteModel: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("ai_search_model")>]
-                abstract aiSearchModel: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("embedding_model")>]
-                abstract embeddingModel: option<D1SessionBookmark> with get, set
-
-                abstract reranking: option<bool> with get, set
-
-                [<EmitProperty("rewrite_query")>]
-                abstract rewriteQuery: option<bool> with get, set
-
-                [<EmitProperty("ai_gateway_id")>]
-                abstract aiGatewayId: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("token_id")>]
-                abstract tokenId: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("modified_at")>]
-                abstract modifiedAt: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("created_at")>]
-                abstract createdAt: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("namespace")>]
-                abstract ``namespace``: option<D1SessionBookmark> with get, set
-
-                abstract status: option<D1SessionBookmark> with get, set
-                abstract paused: option<bool> with get, set
-
-                [<EmitProperty("source_params")>]
-                abstract sourceParams: option<obj> with get, set
-
-                abstract source: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: option<U2<_Lit36.Type, string>> with get, set
-
-                abstract id: D1SessionBookmark with get, set
-                abstract Item: key: D1SessionBookmark -> option<obj>
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit30 =
+                | [<CompiledName("porter")>] Porter
+                | [<CompiledName("trigram")>] Trigram
 
             type _Lit29 =
                 [<EmitProperty("keyword_tokenizer")>]
@@ -704,25 +697,6 @@ module rec Cloudflare =
 
                 abstract id: D1SessionBookmark with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit30 =
-                | [<CompiledName("porter")>] Porter
-                | [<CompiledName("trigram")>] Trigram
-
-            type _Lit85 =
-                abstract queueRequest: _Lit85.QueueRequest with get, set
-                abstract signal: option<obj> with get, set
-                abstract extraHeaders: option<obj> with get, set
-                abstract prefix: option<D1SessionBookmark> with get, set
-                abstract returnRawResponse: option<bool> with get, set
-                abstract gateway: option<GatewayOptions> with get, set
-                abstract tags: option<ResizeArray<D1SessionBookmark>> with get, set
-                abstract websocket: option<bool> with get, set
-                abstract queueRequest: option<bool> with get, set
-
-            type _Lit84 =
-                abstract requests: ResizeArray<proptypekey<proptypekey<'AiModelList, 'Name>, _Lit84.Requests>> with get, set
-
             type _Lit79 =
                 abstract stream: _Lit79.Stream with get, set
 
@@ -730,6 +704,9 @@ module rec Cloudflare =
                 abstract aiSearchOptions: AiSearchMultiSearchOptions with get, set
 
                 abstract Item: key: D1SessionBookmark -> option<obj>
+
+            type _Lit84 =
+                abstract requests: ResizeArray<proptypekey<proptypekey<'AiModelList, 'Name>, _Lit84.Requests>> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit63 =
@@ -743,8 +720,14 @@ module rec Cloudflare =
                 [<EmitProperty("search_query")>]
                 abstract searchQuery: D1SessionBookmark with get, set
 
-            type _Lit89 =
-                abstract returnRawResponse: _Lit89.ReturnRawResponse with get, set
+            type _Lit81 =
+                [<EmitProperty("ai_search_options")>]
+                abstract aiSearchOptions: AiSearchMultiSearchOptions with get, set
+
+                abstract Item: key: D1SessionBookmark -> option<obj>
+
+            type _Lit85 =
+                abstract queueRequest: _Lit85.QueueRequest with get, set
                 abstract signal: option<obj> with get, set
                 abstract extraHeaders: option<obj> with get, set
                 abstract prefix: option<D1SessionBookmark> with get, set
@@ -753,6 +736,10 @@ module rec Cloudflare =
                 abstract tags: option<ResizeArray<D1SessionBookmark>> with get, set
                 abstract websocket: option<bool> with get, set
                 abstract queueRequest: option<bool> with get, set
+
+            type _Lit88 =
+                [<EmitProperty("request_id")>]
+                abstract requestId: D1SessionBookmark with get, set
 
             type AiModelList =
                 abstract Item: key: D1SessionBookmark -> option<obj>
@@ -763,10 +750,6 @@ module rec Cloudflare =
                 [<EmitProperty("property_id")>]
                 abstract propertyId: D1SessionBookmark with get, set
 
-            type _Lit88 =
-                [<EmitProperty("request_id")>]
-                abstract requestId: D1SessionBookmark with get, set
-
             type _Lit96 =
                 abstract properties: ResizeArray<_Lit98> with get, set
                 abstract tags: ResizeArray<D1SessionBookmark> with get, set
@@ -775,21 +758,6 @@ module rec Cloudflare =
                 abstract name: D1SessionBookmark with get, set
                 abstract source: float with get, set
                 abstract id: D1SessionBookmark with get, set
-
-            type _Lit95 =
-                abstract task: option<D1SessionBookmark> with get, set
-                abstract source: option<float> with get, set
-                abstract search: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("per_page")>]
-                abstract perPage: option<float> with get, set
-
-                abstract page: option<float> with get, set
-
-                [<EmitProperty("hide_experimental")>]
-                abstract hideExperimental: option<bool> with get, set
-
-                abstract author: option<D1SessionBookmark> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type Run = | [<CompiledName("postProcessedOutputs")>] PostProcessedOutputs
@@ -818,25 +786,37 @@ module rec Cloudflare =
                 abstract websocket: option<bool> with get, set
                 abstract queueRequest: option<bool> with get, set
 
-            type _Lit61 =
-                [<EmitProperty("result_info")>]
-                abstract resultInfo: option<_Lit47> with get, set
+            type _Lit89 =
+                abstract returnRawResponse: _Lit89.ReturnRawResponse with get, set
+                abstract signal: option<obj> with get, set
+                abstract extraHeaders: option<obj> with get, set
+                abstract prefix: option<D1SessionBookmark> with get, set
+                abstract returnRawResponse: option<bool> with get, set
+                abstract gateway: option<GatewayOptions> with get, set
+                abstract tags: option<ResizeArray<D1SessionBookmark>> with get, set
+                abstract websocket: option<bool> with get, set
+                abstract queueRequest: option<bool> with get, set
 
-                abstract result: ResizeArray<AiSearchJobInfo> with get, set
+            type _Lit95 =
+                abstract task: option<D1SessionBookmark> with get, set
+                abstract source: option<float> with get, set
+                abstract search: option<D1SessionBookmark> with get, set
 
-            type _Lit65 =
                 [<EmitProperty("per_page")>]
                 abstract perPage: option<float> with get, set
 
                 abstract page: option<float> with get, set
 
-            type _Lit22 =
-                abstract chunks: ResizeArray<_Lit17> with get, set
-                abstract choices: ResizeArray<_Lit23> with get, set
-                abstract model: option<D1SessionBookmark> with get, set
-                abstract object: option<D1SessionBookmark> with get, set
-                abstract id: option<D1SessionBookmark> with get, set
-                abstract Item: key: D1SessionBookmark -> option<obj>
+                [<EmitProperty("hide_experimental")>]
+                abstract hideExperimental: option<bool> with get, set
+
+                abstract author: option<D1SessionBookmark> with get, set
+
+            type _Lit60 =
+                [<EmitProperty("per_page")>]
+                abstract perPage: option<float> with get, set
+
+                abstract page: option<float> with get, set
 
             type _Lit62 =
                 [<EmitProperty("end_reason")>]
@@ -855,14 +835,53 @@ module rec Cloudflare =
                 abstract source: _Lit63 with get, set
                 abstract id: D1SessionBookmark with get, set
 
-            type _Lit21 =
+            type _Lit67 =
+                [<EmitProperty("created_at")>]
+                abstract createdAt: float with get, set
+
+                [<EmitProperty("message_type")>]
+                abstract messageType: float with get, set
+
+                abstract message: D1SessionBookmark with get, set
+                abstract id: float with get, set
+
+            type _Lit76 =
+                [<EmitProperty("instance_id")>]
+                abstract instanceId: D1SessionBookmark with get, set
+
+                [<EmitProperty("scoring_details")>]
+                abstract scoringDetails: option<_Lit19> with get, set
+
+                abstract item: _Lit18 with get, set
+                abstract text: D1SessionBookmark with get, set
+                abstract score: float with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: D1SessionBookmark with get, set
+
+                abstract id: D1SessionBookmark with get, set
+
+            type _Lit2 =
                 [<EmitProperty("ai_search_options")>]
                 abstract aiSearchOptions: option<AiSearchOptions> with get, set
 
-                abstract stream: option<bool> with get, set
-                abstract model: option<D1SessionBookmark> with get, set
-                abstract messages: ResizeArray<AiSearchMessage> with get, set
-                abstract Item: key: D1SessionBookmark -> option<obj>
+                abstract messages: option<unit> with get, set
+                abstract query: D1SessionBookmark with get, set
+
+            type _Lit78 =
+                abstract message: D1SessionBookmark with get, set
+
+                [<EmitProperty("instance_id")>]
+                abstract instanceId: D1SessionBookmark with get, set
+
+            type _Lit61 =
+                [<EmitProperty("result_info")>]
+                abstract resultInfo: option<_Lit47> with get, set
+
+                abstract result: ResizeArray<AiSearchJobInfo> with get, set
+
+            type _Lit64 =
+                abstract description: option<D1SessionBookmark> with get, set
 
             type _Lit20 =
                 abstract stream: _Lit20.Stream with get, set
@@ -881,25 +900,19 @@ module rec Cloudflare =
                 [<EmitProperty("search_query")>]
                 abstract searchQuery: D1SessionBookmark with get, set
 
-            type _Lit13 =
-                [<EmitProperty("ai_search_options")>]
-                abstract aiSearchOptions: option<AiSearchOptions> with get, set
+            type _Lit65 =
+                [<EmitProperty("per_page")>]
+                abstract perPage: option<float> with get, set
 
-                abstract messages: ResizeArray<AiSearchMessage> with get, set
-                abstract query: option<unit> with get, set
+                abstract page: option<float> with get, set
 
-            type _Lit2 =
-                [<EmitProperty("ai_search_options")>]
-                abstract aiSearchOptions: option<AiSearchOptions> with get, set
-
-                abstract messages: option<unit> with get, set
-                abstract query: D1SessionBookmark with get, set
-
-            type _Lit78 =
-                abstract message: D1SessionBookmark with get, set
-
-                [<EmitProperty("instance_id")>]
-                abstract instanceId: D1SessionBookmark with get, set
+            type _Lit22 =
+                abstract chunks: ResizeArray<_Lit17> with get, set
+                abstract choices: ResizeArray<_Lit23> with get, set
+                abstract model: option<D1SessionBookmark> with get, set
+                abstract object: option<D1SessionBookmark> with get, set
+                abstract id: option<D1SessionBookmark> with get, set
+                abstract Item: key: D1SessionBookmark -> option<obj>
 
             type _Lit66 =
                 [<EmitProperty("result_info")>]
@@ -907,34 +920,14 @@ module rec Cloudflare =
 
                 abstract result: ResizeArray<AiSearchJobLog> with get, set
 
-            type _Lit76 =
-                [<EmitProperty("instance_id")>]
-                abstract instanceId: D1SessionBookmark with get, set
+            type _Lit21 =
+                [<EmitProperty("ai_search_options")>]
+                abstract aiSearchOptions: option<AiSearchOptions> with get, set
 
-                [<EmitProperty("scoring_details")>]
-                abstract scoringDetails: option<_Lit19> with get, set
-
-                abstract item: _Lit18 with get, set
-                abstract text: D1SessionBookmark with get, set
-                abstract score: float with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: D1SessionBookmark with get, set
-
-                abstract id: D1SessionBookmark with get, set
-
-            type _Lit64 =
-                abstract description: option<D1SessionBookmark> with get, set
-
-            type _Lit67 =
-                [<EmitProperty("created_at")>]
-                abstract createdAt: float with get, set
-
-                [<EmitProperty("message_type")>]
-                abstract messageType: float with get, set
-
-                abstract message: D1SessionBookmark with get, set
-                abstract id: float with get, set
+                abstract stream: option<bool> with get, set
+                abstract model: option<D1SessionBookmark> with get, set
+                abstract messages: ResizeArray<AiSearchMessage> with get, set
+                abstract Item: key: D1SessionBookmark -> option<obj>
 
             type _Lit37 =
                 abstract engine: option<_Lit38> with get, set
@@ -948,6 +941,13 @@ module rec Cloudflare =
                 abstract completed: option<float> with get, set
                 abstract running: option<float> with get, set
                 abstract queued: option<float> with get, set
+
+            type _Lit13 =
+                [<EmitProperty("ai_search_options")>]
+                abstract aiSearchOptions: option<AiSearchOptions> with get, set
+
+                abstract messages: ResizeArray<AiSearchMessage> with get, set
+                abstract query: option<unit> with get, set
 
         module rec AiCfAisingaporeGemmaSeaLionV427BItChatCompletionResponse =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -970,23 +970,21 @@ module rec Cloudflare =
             type Object = | [<CompiledName("text_completion")>] TextCompletion
 
         module rec AiGateway =
-            type _Lit2 =
-                | ``1`` = 1
-                | ``-1`` = -1
+            type _Lit12 =
+                [<EmitProperty("per_token_out")>]
+                abstract perTokenOut: option<float> with get, set
+
+                [<EmitProperty("per_token_in")>]
+                abstract perTokenIn: option<float> with get, set
 
             type _Lit1 =
                 abstract metadata: option<Typescript.Headers._Lit5> with get, set
                 abstract feedback: option<_Lit2> with get, set
                 abstract score: option<float> with get, set
 
-            type _Lit13 =
-                [<EmitProperty("total_cost")>]
-                abstract totalCost: option<float> with get, set
-
-            type _Lit15 =
-                abstract signal: option<obj> with get, set
-                abstract extraHeaders: option<obj> with get, set
-                abstract gateway: option<UniversalGatewayOptions> with get, set
+            type _Lit2 =
+                | ``1`` = 1
+                | ``-1`` = -1
 
             type _Lit4 =
                 [<EmitProperty("created_at")>]
@@ -1048,6 +1046,34 @@ module rec Cloudflare =
                 abstract provider: D1SessionBookmark with get, set
                 abstract id: D1SessionBookmark with get, set
 
+            type _Lit6 =
+                abstract query: option<obj> with get, set
+                abstract headers: _Lit6.Headers with get, set
+                abstract endpoint: D1SessionBookmark with get, set
+                abstract provider: U2<_Lit6.Provider, string> with get, set
+
+            type _Lit15 =
+                abstract signal: option<obj> with get, set
+                abstract extraHeaders: option<obj> with get, set
+                abstract gateway: option<UniversalGatewayOptions> with get, set
+
+            type _Lit16 =
+                /// <deprecated />
+                abstract id: option<D1SessionBookmark> with get, set
+                abstract retries: option<GatewayRetries> with get, set
+                abstract requestTimeoutMs: option<float> with get, set
+                abstract eventId: option<D1SessionBookmark> with get, set
+                abstract collectLog: option<bool> with get, set
+                abstract metadata: option<WebAssembly.ModuleImports> with get, set
+                abstract skipCache: option<bool> with get, set
+                abstract cacheTtl: option<float> with get, set
+                abstract cacheKey: option<D1SessionBookmark> with get, set
+                abstract id: D1SessionBookmark with get, set
+
+            type _Lit13 =
+                [<EmitProperty("total_cost")>]
+                abstract totalCost: option<float> with get, set
+
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit8 =
                 | [<CompiledName("workers-ai")>] WorkersAi
@@ -1070,32 +1096,6 @@ module rec Cloudflare =
                 | [<CompiledName("cartesia")>] Cartesia
                 | [<CompiledName("elevenlabs")>] Elevenlabs
                 | [<CompiledName("adobe-firefly")>] AdobeFirefly
-
-            type _Lit12 =
-                [<EmitProperty("per_token_out")>]
-                abstract perTokenOut: option<float> with get, set
-
-                [<EmitProperty("per_token_in")>]
-                abstract perTokenIn: option<float> with get, set
-
-            type _Lit6 =
-                abstract query: option<obj> with get, set
-                abstract headers: _Lit6.Headers with get, set
-                abstract endpoint: D1SessionBookmark with get, set
-                abstract provider: U2<_Lit6.Provider, string> with get, set
-
-            type _Lit16 =
-                /// <deprecated />
-                abstract id: option<D1SessionBookmark> with get, set
-                abstract retries: option<GatewayRetries> with get, set
-                abstract requestTimeoutMs: option<float> with get, set
-                abstract eventId: option<D1SessionBookmark> with get, set
-                abstract collectLog: option<bool> with get, set
-                abstract metadata: option<WebAssembly.ModuleImports> with get, set
-                abstract skipCache: option<bool> with get, set
-                abstract cacheTtl: option<float> with get, set
-                abstract cacheKey: option<D1SessionBookmark> with get, set
-                abstract id: D1SessionBookmark with get, set
 
         module rec AiModelListType =
             type AiModelList =
@@ -1228,14 +1228,14 @@ module rec Cloudflare =
 
             module rec _Lit228 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type Type = | [<CompiledName("function")>] Function
+                type Role = | [<CompiledName("function")>] Function
 
             module rec _Lit245 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type Role = | [<CompiledName("assistant")>] Assistant
+                type Type = | [<CompiledName("message")>] Message
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type Type = | [<CompiledName("message")>] Message
+                type Role = | [<CompiledName("assistant")>] Assistant
 
             module rec _Lit247 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -1293,49 +1293,80 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("url_citation")>] UrlCitation
 
-            type _Lit159 =
-                abstract description: option<string> with get, set
+            type _Lit20 =
+                abstract Item: key: D1SessionBookmark -> _Lit21
+
+            type _Lit87 =
+                [<EmitProperty("total_tokens")>]
+                abstract totalTokens: option<float> with get, set
+
+                [<EmitProperty("completion_tokens")>]
+                abstract completionTokens: option<float> with get, set
+
+                [<EmitProperty("prompt_tokens")>]
+                abstract promptTokens: option<float> with get, set
+
+            type _Lit18 =
+                abstract required: ResizeArray<D1SessionBookmark> with get, set
+                abstract properties: _Lit20 with get, set
 
                 [<EmitProperty("type")>]
-                abstract ``type``: _Lit159.Type with get, set
-
-                abstract strict: option<bool> with get, set
-                abstract parameters: option<_Lit154> with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit199 =
-                [<EmitProperty("user_location")>]
-                abstract userLocation: option<WebSearchUserLocation> with get, set
-
-                [<EmitProperty("search_context_size")>]
-                abstract searchContextSize: option<_Lit200> with get, set
-
-            type _Lit261 =
-                abstract status: option<_Lit263> with get, set
-                abstract id: option<string> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit261.Type with get, set
-
-                abstract output: U2<ResizeArray<'T>, string> with get, set
-
-                [<EmitProperty("call_id")>]
-                abstract callId: D1SessionBookmark with get, set
-
-            type _Lit24 =
-                abstract usage: option<UsageTags> with get, set
-
-                [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<_Lit25> with get, set
-
-                abstract response: option<D1SessionBookmark> with get, set
+                abstract ``type``: U2<_Lit18.Type, Ai._Lit94> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit258 =
-                | [<CompiledName("user")>] User
-                | [<CompiledName("assistant")>] Assistant
-                | [<CompiledName("system")>] System
-                | [<CompiledName("developer")>] Developer
+            type _Lit294 =
+                | [<CompiledName("asm_Beng")>] AsmBeng
+                | [<CompiledName("awa_Deva")>] AwaDeva
+                | [<CompiledName("ben_Beng")>] BenBeng
+                | [<CompiledName("bho_Deva")>] BhoDeva
+                | [<CompiledName("brx_Deva")>] BrxDeva
+                | [<CompiledName("doi_Deva")>] DoiDeva
+                | [<CompiledName("eng_Latn")>] EngLatn
+                | [<CompiledName("gom_Deva")>] GomDeva
+                | [<CompiledName("gon_Deva")>] GonDeva
+                | [<CompiledName("guj_Gujr")>] GujGujr
+                | [<CompiledName("hin_Deva")>] HinDeva
+                | [<CompiledName("hne_Deva")>] HneDeva
+                | [<CompiledName("kan_Knda")>] KanKnda
+                | [<CompiledName("kas_Arab")>] KasArab
+                | [<CompiledName("kas_Deva")>] KasDeva
+                | [<CompiledName("kha_Latn")>] KhaLatn
+                | [<CompiledName("lus_Latn")>] LusLatn
+                | [<CompiledName("mag_Deva")>] MagDeva
+                | [<CompiledName("mai_Deva")>] MaiDeva
+                | [<CompiledName("mal_Mlym")>] MalMlym
+                | [<CompiledName("mar_Deva")>] MarDeva
+                | [<CompiledName("mni_Beng")>] MniBeng
+                | [<CompiledName("mni_Mtei")>] MniMtei
+                | [<CompiledName("npi_Deva")>] NpiDeva
+                | [<CompiledName("ory_Orya")>] OryOrya
+                | [<CompiledName("pan_Guru")>] PanGuru
+                | [<CompiledName("san_Deva")>] SanDeva
+                | [<CompiledName("sat_Olck")>] SatOlck
+                | [<CompiledName("snd_Arab")>] SndArab
+                | [<CompiledName("snd_Deva")>] SndDeva
+                | [<CompiledName("tam_Taml")>] TamTaml
+                | [<CompiledName("tel_Telu")>] TelTelu
+                | [<CompiledName("urd_Arab")>] UrdArab
+                | [<CompiledName("unr_Deva")>] UnrDeva
+
+            type _Lit17 =
+                abstract parameters: option<_Lit18> with get, set
+                abstract description: D1SessionBookmark with get, set
+                abstract name: D1SessionBookmark with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit298 =
+                | [<CompiledName("true")>] True
+                | [<CompiledName("false")>] False
+
+            type _Lit57 =
+                abstract contentType: option<D1SessionBookmark> with get, set
+                abstract body: option<obj> with get, set
+
+            type _Lit28 =
+                abstract arguments: D1SessionBookmark with get, set
+                abstract name: D1SessionBookmark with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit293 =
@@ -1354,85 +1385,77 @@ module rec Cloudflare =
                 | [<CompiledName("alaw")>] Alaw
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit301 =
-                | [<CompiledName("amalthea")>] Amalthea
-                | [<CompiledName("andromeda")>] Andromeda
-                | [<CompiledName("apollo")>] Apollo
-                | [<CompiledName("arcas")>] Arcas
-                | [<CompiledName("aries")>] Aries
-                | [<CompiledName("asteria")>] Asteria
-                | [<CompiledName("athena")>] Athena
-                | [<CompiledName("atlas")>] Atlas
-                | [<CompiledName("aurora")>] Aurora
-                | [<CompiledName("callista")>] Callista
-                | [<CompiledName("cora")>] Cora
-                | [<CompiledName("cordelia")>] Cordelia
-                | [<CompiledName("delia")>] Delia
-                | [<CompiledName("draco")>] Draco
-                | [<CompiledName("electra")>] Electra
-                | [<CompiledName("harmonia")>] Harmonia
-                | [<CompiledName("helena")>] Helena
-                | [<CompiledName("hera")>] Hera
-                | [<CompiledName("hermes")>] Hermes
-                | [<CompiledName("hyperion")>] Hyperion
-                | [<CompiledName("iris")>] Iris
-                | [<CompiledName("janus")>] Janus
-                | [<CompiledName("juno")>] Juno
-                | [<CompiledName("jupiter")>] Jupiter
-                | [<CompiledName("luna")>] Luna
-                | [<CompiledName("mars")>] Mars
-                | [<CompiledName("minerva")>] Minerva
-                | [<CompiledName("neptune")>] Neptune
-                | [<CompiledName("odysseus")>] Odysseus
-                | [<CompiledName("ophelia")>] Ophelia
-                | [<CompiledName("orion")>] Orion
-                | [<CompiledName("orpheus")>] Orpheus
-                | [<CompiledName("pandora")>] Pandora
-                | [<CompiledName("phoebe")>] Phoebe
-                | [<CompiledName("pluto")>] Pluto
-                | [<CompiledName("saturn")>] Saturn
-                | [<CompiledName("thalia")>] Thalia
-                | [<CompiledName("theia")>] Theia
-                | [<CompiledName("vesta")>] Vesta
-                | [<CompiledName("zeus")>] Zeus
+            type _Lit302 =
+                | [<CompiledName("sirio")>] Sirio
+                | [<CompiledName("nestor")>] Nestor
+                | [<CompiledName("carina")>] Carina
+                | [<CompiledName("celeste")>] Celeste
+                | [<CompiledName("alvaro")>] Alvaro
+                | [<CompiledName("diana")>] Diana
+                | [<CompiledName("aquila")>] Aquila
+                | [<CompiledName("selena")>] Selena
+                | [<CompiledName("estrella")>] Estrella
+                | [<CompiledName("javier")>] Javier
 
-            type _Lit184 =
-                abstract name: D1SessionBookmark with get, set
+            type _Lit67 =
+                abstract content: option<U3<ResizeArray<_Lit69>, _Lit69, string>> with get, set
 
-            type _Lit252 =
-                abstract status: option<_Lit251> with get, set
-                abstract id: option<D1SessionBookmark> with get, set
+                [<EmitProperty("tool_call_id")>]
+                abstract toolCallId: option<D1SessionBookmark> with get, set
+
+                abstract role: option<D1SessionBookmark> with get, set
+
+            type _Lit69 =
+                [<EmitProperty("image_url")>]
+                abstract imageUrl: option<_Lit70> with get, set
+
+                abstract text: option<D1SessionBookmark> with get, set
 
                 [<EmitProperty("type")>]
-                abstract ``type``: _Lit252.Type with get, set
+                abstract ``type``: option<D1SessionBookmark> with get, set
 
-                abstract name: D1SessionBookmark with get, set
+            type _Lit70 =
+                abstract url: option<D1SessionBookmark> with get, set
 
-                [<EmitProperty("call_id")>]
-                abstract callId: D1SessionBookmark with get, set
+            type _Lit35 =
+                abstract requests: ResizeArray<_Lit36> with get, set
 
-                abstract arguments: D1SessionBookmark with get, set
+            type _Lit36 =
+                abstract pooling: option<_Lit37> with get, set
+                abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit260 =
-                | [<CompiledName("user")>] User
-                | [<CompiledName("system")>] System
-                | [<CompiledName("developer")>] Developer
+            type _Lit37 =
+                | [<CompiledName("mean")>] Mean
+                | [<CompiledName("cls")>] Cls
 
-            type _Lit259 =
+            type _Lit21 =
+                abstract description: option<D1SessionBookmark> with get, set
+
                 [<EmitProperty("type")>]
-                abstract ``type``: option<_Lit259.Type> with get, set
+                abstract ``type``: D1SessionBookmark with get, set
 
-                abstract status: option<_Lit251> with get, set
-                abstract role: _Lit260 with get, set
-                abstract content: ResponseInputMessageContentList with get, set
+            type _Lit107 =
+                [<EmitProperty("function")>]
+                abstract ``function``: option<_Lit108> with get, set
 
-            type _Lit47 =
-                [<EmitProperty("translated_text")>]
-                abstract translatedText: option<D1SessionBookmark> with get, set
+                [<EmitProperty("type")>]
+                abstract ``type``: option<D1SessionBookmark> with get, set
 
-            type _Lit154 =
-                abstract Item: key: D1SessionBookmark -> option<obj>
+                abstract id: option<D1SessionBookmark> with get, set
+
+            type _Lit108 =
+                abstract arguments: option<obj> with get, set
+                abstract name: option<D1SessionBookmark> with get, set
+
+            type _Lit120 =
+                abstract sentiments: option<_Lit125> with get, set
+                abstract summary: option<_Lit124> with get, set
+                abstract channels: option<ResizeArray<_Lit121>> with get, set
+
+            type _Lit131 =
+                abstract dtype: option<_Lit130> with get, set
+                abstract audio: D1SessionBookmark with get, set
 
             type _Lit289 =
                 [<EmitProperty("audio_tokens")>]
@@ -1441,65 +1464,22 @@ module rec Cloudflare =
                 [<EmitProperty("cached_tokens")>]
                 abstract cachedTokens: option<float> with get, set
 
-            type _Lit13 =
-                [<EmitProperty("json_schema")>]
-                abstract jsonSchema: option<obj> with get, set
+            type _Lit122 =
+                abstract words: option<ResizeArray<_Lit123>> with get, set
+                abstract transcript: option<D1SessionBookmark> with get, set
+                abstract confidence: option<float> with get, set
 
-                [<EmitProperty("type")>]
-                abstract ``type``: D1SessionBookmark with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit156 =
+                | [<CompiledName("high")>] High
+                | [<CompiledName("low")>] Low
+                | [<CompiledName("medium")>] Medium
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit251 =
                 | [<CompiledName("completed")>] Completed
                 | [<CompiledName("in_progress")>] InProgress
                 | [<CompiledName("incomplete")>] Incomplete
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit80 =
-                | [<CompiledName("json_schema")>] JsonSchema
-                | [<CompiledName("json_object")>] JsonObject
-
-            type _Lit181 =
-                [<EmitProperty("include_obfuscation")>]
-                abstract includeObfuscation: option<bool> with get, set
-
-                [<EmitProperty("include_usage")>]
-                abstract includeUsage: option<bool> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit263 =
-                | [<CompiledName("completed")>] Completed
-                | [<CompiledName("in_progress")>] InProgress
-                | [<CompiledName("incomplete")>] Incomplete
-
-            type _Lit62 =
-                abstract requests: ResizeArray<U2<AiCfBaaiBgeM3InputQueryAndContexts1, AiCfBaaiBgeM3InputEmbedding1>> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit140 =
-                | [<CompiledName("message.input_image.image_url")>] MessageInputImageImageUrl
-                | [<CompiledName("message.output_text.logprobs")>] MessageOutputTextLogprobs
-
-            type _Lit11 =
-                abstract name: option<D1SessionBookmark> with get, set
-                abstract content: D1SessionBookmark with get, set
-                abstract role: U2<_Lit11.Role, Ai._Lit94> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit161 =
-                | [<CompiledName("auto")>] Auto
-                | [<CompiledName("disabled")>] Disabled
-
-            type _Lit166 =
-                abstract format: _Lit168 with get, set
-                abstract voice: U2<_Lit138, string> with get, set
-
-            type _Lit277 =
-                [<EmitProperty("url_citation")>]
-                abstract urlCitation: _Lit278 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit277.Type with get, set
 
             type _Lit278 =
                 [<EmitProperty("end_index")>]
@@ -1511,121 +1491,59 @@ module rec Cloudflare =
                 abstract title: D1SessionBookmark with get, set
                 abstract url: D1SessionBookmark with get, set
 
-            type _Lit279 =
-                abstract transcript: D1SessionBookmark with get, set
-
-                [<EmitProperty("expires_at")>]
-                abstract expiresAt: float with get, set
-
-                abstract data: D1SessionBookmark with get, set
-                abstract id: D1SessionBookmark with get, set
-
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit281 =
-                | [<CompiledName("length")>] Length
-                | [<CompiledName("stop")>] Stop
-                | [<CompiledName("function_call")>] FunctionCall
-                | [<CompiledName("tool_calls")>] ToolCalls
-                | [<CompiledName("content_filter")>] ContentFilter
+            type _Lit260 =
+                | [<CompiledName("user")>] User
+                | [<CompiledName("system")>] System
+                | [<CompiledName("developer")>] Developer
 
-            type _Lit283 =
-                abstract refusal: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
-                abstract content: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
-
-            type _Lit174 =
-                [<EmitProperty("clear_thinking")>]
-                abstract clearThinking: option<bool> with get, set
-
-                [<EmitProperty("enable_thinking")>]
-                abstract enableThinking: option<bool> with get, set
-
-            type _Lit285 =
-                [<EmitProperty("top_logprobs")>]
-                abstract topLogprobs: ResizeArray<ChatCompletionTopLogprob> with get, set
-
-                abstract bytes: option<ResizeArray<float>> with get, set
-                abstract logprob: float with get, set
-                abstract token: D1SessionBookmark with get, set
-
-            type _Lit29 =
-                [<EmitProperty("total_tokens")>]
-                abstract totalTokens: float with get, set
-
-                [<EmitProperty("completion_tokens")>]
-                abstract completionTokens: float with get, set
-
-                [<EmitProperty("prompt_tokens")>]
-                abstract promptTokens: float with get, set
-
-            type _Lit287 =
-                abstract bytes: option<ResizeArray<float>> with get, set
-                abstract logprob: float with get, set
-                abstract token: D1SessionBookmark with get, set
-
-            type _Lit25 = interface end
-
-            type _Lit288 =
-                [<EmitProperty("completion_tokens_details")>]
-                abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
-
-                [<EmitProperty("prompt_tokens_details")>]
-                abstract promptTokensDetails: option<PromptTokensDetails> with get, set
-
-                [<EmitProperty("total_tokens")>]
-                abstract totalTokens: float with get, set
-
-                [<EmitProperty("completion_tokens")>]
-                abstract completionTokens: float with get, set
-
-                [<EmitProperty("prompt_tokens")>]
-                abstract promptTokens: float with get, set
-
-            type _Lit158 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit158.Type with get, set
-
+            type _Lit193 =
+                abstract format: option<ChatCompletionCustomToolFormat> with get, set
+                abstract description: option<D1SessionBookmark> with get, set
                 abstract name: D1SessionBookmark with get, set
 
-            type _Lit53 =
-                [<EmitProperty("max_tokens")>]
-                abstract maxTokens: option<float> with get, set
-
-                abstract image: U2<Ai._Lit94, ResizeArray<float>> with get, set
-
-                [<EmitProperty("presence_penalty")>]
-                abstract presencePenalty: option<float> with get, set
-
-                [<EmitProperty("frequency_penalty")>]
-                abstract frequencyPenalty: option<float> with get, set
-
-                [<EmitProperty("repetition_penalty")>]
-                abstract repetitionPenalty: option<float> with get, set
-
-                abstract seed: option<float> with get, set
-
-                [<EmitProperty("top_k")>]
-                abstract topK: option<float> with get, set
-
-                [<EmitProperty("top_p")>]
-                abstract topP: option<float> with get, set
-
-                abstract raw: option<bool> with get, set
-                abstract prompt: option<D1SessionBookmark> with get, set
-
-            type _Lit172 =
-                abstract content: U2<ResizeArray<ChatCompletionContentPartText>, string> with get, set
-
+            type _Lit195 =
                 [<EmitProperty("type")>]
-                abstract ``type``: _Lit172.Type with get, set
+                abstract ``type``: _Lit195.Type with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit168 =
-                | [<CompiledName("opus")>] Opus
-                | [<CompiledName("wav")>] Wav
-                | [<CompiledName("aac")>] Aac
-                | [<CompiledName("mp3")>] Mp3
-                | [<CompiledName("flac")>] Flac
-                | [<CompiledName("pcm16")>] Pcm16
+            type _Lit80 =
+                | [<CompiledName("json_schema")>] JsonSchema
+                | [<CompiledName("json_object")>] JsonObject
+
+            type _Lit124 =
+                abstract short: option<D1SessionBookmark> with get, set
+                abstract result: option<D1SessionBookmark> with get, set
+
+            type _Lit125 =
+                abstract average: option<_Lit127> with get, set
+                abstract segments: option<ResizeArray<_Lit126>> with get, set
+
+            type _Lit196 =
+                abstract grammar: _Lit197 with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit196.Type with get, set
+
+            type _Lit126 =
+                [<EmitProperty("sentiment_score")>]
+                abstract sentimentScore: option<float> with get, set
+
+                abstract sentiment: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("end_word")>]
+                abstract endWord: option<float> with get, set
+
+                [<EmitProperty("start_word")>]
+                abstract startWord: option<float> with get, set
+
+                abstract text: option<D1SessionBookmark> with get, set
+
+            type _Lit127 =
+                [<EmitProperty("sentiment_score")>]
+                abstract sentimentScore: option<float> with get, set
+
+                abstract sentiment: option<D1SessionBookmark> with get, set
 
             type _Lit290 =
                 [<EmitProperty("rejected_prediction_tokens")>]
@@ -1640,26 +1558,28 @@ module rec Cloudflare =
                 [<EmitProperty("reasoning_tokens")>]
                 abstract reasoningTokens: option<float> with get, set
 
-            type _Lit238 =
-                abstract message: D1SessionBookmark with get, set
-                abstract code: _Lit239 with get, set
+            type _Lit197 =
+                abstract syntax: _Lit198 with get, set
+                abstract definition: D1SessionBookmark with get, set
 
-            type _Lit250 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit250.Type with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit198 =
+                | [<CompiledName("lark")>] Lark
+                | [<CompiledName("regex")>] Regex
 
-                abstract refusal: D1SessionBookmark with get, set
+            type _Lit129 =
+                abstract dtype: option<_Lit130> with get, set
+                abstract audio: _Lit116 with get, set
 
-            type _Lit249 =
-                abstract logprob: option<float> with get, set
-                abstract token: option<D1SessionBookmark> with get, set
+            type _Lit116 =
+                abstract contentType: D1SessionBookmark with get, set
+                abstract body: obj with get, set
 
-            type _Lit248 =
-                [<EmitProperty("top_logprobs")>]
-                abstract topLogprobs: option<ResizeArray<TopLogprob>> with get, set
-
-                abstract logprob: float with get, set
-                abstract token: D1SessionBookmark with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit130 =
+                | [<CompiledName("uint8")>] Uint8
+                | [<CompiledName("float32")>] Float32
+                | [<CompiledName("float64")>] Float64
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit239 =
@@ -1682,27 +1602,156 @@ module rec Cloudflare =
                 | [<CompiledName("failed_to_download_image")>] FailedToDownloadImage
                 | [<CompiledName("image_file_not_found")>] ImageFileNotFound
 
-            type _Lit218 =
-                abstract filename: option<D1SessionBookmark> with get, set
+            type _Lit39 =
+                abstract pooling: option<_Lit37> with get, set
+                abstract data: option<ResizeArray<AiSentenceSimilarityOutput>> with get, set
+                abstract shape: option<AiSentenceSimilarityOutput> with get, set
 
-                [<EmitProperty("file_id")>]
-                abstract fileId: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("file_data")>]
-                abstract fileData: option<D1SessionBookmark> with get, set
+            type _Lit121 =
+                abstract alternatives: option<ResizeArray<_Lit122>> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit217 =
-                | [<CompiledName("wav")>] Wav
-                | [<CompiledName("mp3")>] Mp3
+            type _Lit291 =
+                | [<CompiledName("arcas")>] Arcas
+                | [<CompiledName("asteria")>] Asteria
+                | [<CompiledName("athena")>] Athena
+                | [<CompiledName("hera")>] Hera
+                | [<CompiledName("luna")>] Luna
+                | [<CompiledName("orion")>] Orion
+                | [<CompiledName("orpheus")>] Orpheus
+                | [<CompiledName("zeus")>] Zeus
+                | [<CompiledName("angus")>] Angus
+                | [<CompiledName("perseus")>] Perseus
+                | [<CompiledName("helios")>] Helios
+                | [<CompiledName("stella")>] Stella
 
-            type _Lit247 =
-                abstract logprobs: option<ResizeArray<Logprob>> with get, set
+            type _Lit123 =
+                abstract word: option<D1SessionBookmark> with get, set
+                abstract start: option<float> with get, set
+
+                [<EmitProperty("end")>]
+                abstract ``end``: option<float> with get, set
+
+                abstract confidence: option<float> with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit89 =
+                | [<CompiledName("user")>] User
+                | [<CompiledName("assistant")>] Assistant
+
+            type _Lit78 =
+                abstract name: option<D1SessionBookmark> with get, set
+                abstract arguments: option<obj> with get, set
+
+            type _Lit274 =
+                [<EmitProperty("service_tier")>]
+                abstract serviceTier: option<_Lit147> with get, set
+
+                [<EmitProperty("system_fingerprint")>]
+                abstract systemFingerprint: option<string> with get, set
+
+                abstract usage: option<CompletionUsage> with get, set
+                abstract choices: ResizeArray<ChatCompletionChoice> with get, set
+                abstract model: D1SessionBookmark with get, set
+                abstract created: float with get, set
+                abstract object: D1SessionBookmark with get, set
+                abstract id: D1SessionBookmark with get, set
+
+            type _Lit275 =
+                abstract logprobs: option<_Lit283> with get, set
+
+                [<EmitProperty("finish_reason")>]
+                abstract finishReason: _Lit281 with get, set
+
+                abstract message: ChatCompletionResponseMessage with get, set
+                abstract index: float with get, set
+
+            type _Lit276 =
+                [<EmitProperty("function_call")>]
+                abstract functionCall: option<_Lit28> with get, set
+
+                [<EmitProperty("tool_calls")>]
+                abstract toolCalls: option<ResizeArray<ChatCompletionMessageToolCall>> with get, set
+
+                abstract audio: option<ChatCompletionAudio> with get, set
+                abstract annotations: option<ResizeArray<ChatCompletionUrlCitation>> with get, set
+                abstract refusal: option<string> with get, set
+                abstract content: option<string> with get, set
+                abstract role: _Lit276.Role with get, set
+
+            type _Lit277 =
+                [<EmitProperty("url_citation")>]
+                abstract urlCitation: _Lit278 with get, set
 
                 [<EmitProperty("type")>]
-                abstract ``type``: _Lit247.Type with get, set
+                abstract ``type``: _Lit277.Type with get, set
 
-                abstract text: D1SessionBookmark with get, set
+            type _Lit279 =
+                abstract transcript: D1SessionBookmark with get, set
+
+                [<EmitProperty("expires_at")>]
+                abstract expiresAt: float with get, set
+
+                abstract data: D1SessionBookmark with get, set
+                abstract id: D1SessionBookmark with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit281 =
+                | [<CompiledName("length")>] Length
+                | [<CompiledName("stop")>] Stop
+                | [<CompiledName("function_call")>] FunctionCall
+                | [<CompiledName("tool_calls")>] ToolCalls
+                | [<CompiledName("content_filter")>] ContentFilter
+
+            type _Lit283 =
+                abstract refusal: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
+                abstract content: option<ResizeArray<ChatCompletionTokenLogprob>> with get, set
+
+            type _Lit285 =
+                [<EmitProperty("top_logprobs")>]
+                abstract topLogprobs: ResizeArray<ChatCompletionTopLogprob> with get, set
+
+                abstract bytes: option<ResizeArray<float>> with get, set
+                abstract logprob: float with get, set
+                abstract token: D1SessionBookmark with get, set
+
+            type _Lit287 =
+                abstract bytes: option<ResizeArray<float>> with get, set
+                abstract logprob: float with get, set
+                abstract token: D1SessionBookmark with get, set
+
+            type _Lit288 =
+                [<EmitProperty("completion_tokens_details")>]
+                abstract completionTokensDetails: option<CompletionTokensDetails> with get, set
+
+                [<EmitProperty("prompt_tokens_details")>]
+                abstract promptTokensDetails: option<PromptTokensDetails> with get, set
+
+                [<EmitProperty("total_tokens")>]
+                abstract totalTokens: float with get, set
+
+                [<EmitProperty("completion_tokens")>]
+                abstract completionTokens: float with get, set
+
+                [<EmitProperty("prompt_tokens")>]
+                abstract promptTokens: float with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit147 =
+                | [<CompiledName("default")>] Default
+                | [<CompiledName("auto")>] Auto
+                | [<CompiledName("flex")>] Flex
+                | [<CompiledName("scale")>] Scale
+                | [<CompiledName("priority")>] Priority
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit272 =
+                | [<CompiledName("queued")>] Queued
+                | [<CompiledName("failed")>] Failed
+                | [<CompiledName("completed")>] Completed
+                | [<CompiledName("in_progress")>] InProgress
+                | [<CompiledName("cancelled")>] Cancelled
+                | [<CompiledName("incomplete")>] Incomplete
 
             type _Lit245 =
                 [<EmitProperty("type")>]
@@ -1713,168 +1762,74 @@ module rec Cloudflare =
                 abstract content: ResizeArray<U2<_Lit247, _Lit250>> with get, set
                 abstract id: D1SessionBookmark with get, set
 
-            type _Lit202 =
-                abstract timezone: option<D1SessionBookmark> with get, set
-                abstract region: option<D1SessionBookmark> with get, set
-                abstract country: option<D1SessionBookmark> with get, set
-                abstract city: option<D1SessionBookmark> with get, set
-
-            type _Lit201 =
-                abstract approximate: _Lit202 with get, set
+            type _Lit247 =
+                abstract logprobs: option<ResizeArray<Logprob>> with get, set
 
                 [<EmitProperty("type")>]
-                abstract ``type``: _Lit201.Type with get, set
-
-            type _Lit58 =
-                [<EmitProperty("duration_after_vad")>]
-                abstract durationAfterVad: option<float> with get, set
-
-                abstract duration: option<float> with get, set
-
-                [<EmitProperty("language_probability")>]
-                abstract languageProbability: option<float> with get, set
-
-                abstract language: option<D1SessionBookmark> with get, set
-
-            type _Lit65 =
-                abstract score: option<float> with get, set
-                abstract id: option<float> with get, set
-
-            type _Lit216 =
-                abstract format: option<_Lit217> with get, set
-                abstract data: option<D1SessionBookmark> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit242 =
-                | [<CompiledName("content_filter")>] ContentFilter
-                | [<CompiledName("max_output_tokens")>] MaxOutputTokens
-
-            type _Lit241 =
-                abstract reason: option<_Lit242> with get, set
-
-            type _Lit59 =
-                abstract words: option<ResizeArray<_Lit42>> with get, set
-
-                [<EmitProperty("no_speech_prob")>]
-                abstract noSpeechProb: option<float> with get, set
-
-                [<EmitProperty("compression_ratio")>]
-                abstract compressionRatio: option<float> with get, set
-
-                [<EmitProperty("avg_logprob")>]
-                abstract avgLogprob: option<float> with get, set
-
-                abstract temperature: option<float> with get, set
-                abstract text: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("end")>]
-                abstract ``end``: option<float> with get, set
-
-                abstract start: option<float> with get, set
-
-            type _Lit42 =
-                [<EmitProperty("end")>]
-                abstract ``end``: option<float> with get, set
-
-                abstract start: option<float> with get, set
-                abstract word: option<D1SessionBookmark> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit222 =
-                | [<CompiledName("text")>] Text
-                | [<CompiledName("refusal")>] Refusal
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit200 =
-                | [<CompiledName("high")>] High
-                | [<CompiledName("low")>] Low
-                | [<CompiledName("medium")>] Medium
-
-            type _Lit61 =
-                abstract text: option<D1SessionBookmark> with get, set
-
-            type _Lit256 =
-                [<EmitProperty("type")>]
-                abstract ``type``: option<_Lit256.Type> with get, set
-
-                abstract role: _Lit258 with get, set
-                abstract content: U2<ResizeArray<'T>, string> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit37 =
-                | [<CompiledName("mean")>] Mean
-                | [<CompiledName("cls")>] Cls
-
-            type _Lit39 =
-                abstract pooling: option<_Lit37> with get, set
-                abstract data: option<ResizeArray<AiSentenceSimilarityOutput>> with get, set
-                abstract shape: option<AiSentenceSimilarityOutput> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit214 =
-                | [<CompiledName("text")>] Text
-                | [<CompiledName("file")>] File
-                | [<CompiledName("image_url")>] ImageUrl
-                | [<CompiledName("input_audio")>] InputAudio
-
-            type _Lit255 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit255.Type with get, set
+                abstract ``type``: _Lit247.Type with get, set
 
                 abstract text: D1SessionBookmark with get, set
 
-            type _Lit226 =
-                abstract input: D1SessionBookmark with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit225 =
-                abstract custom: _Lit226 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit225.Type with get, set
-
-                abstract id: D1SessionBookmark with get, set
-
-            type _Lit28 =
-                abstract arguments: D1SessionBookmark with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit224 =
-                [<EmitProperty("function")>]
-                abstract ``function``: _Lit28 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit224.Type with get, set
-
-                abstract id: D1SessionBookmark with get, set
-
-            type _Lit94 =
-                abstract content: D1SessionBookmark with get, set
-                abstract role: D1SessionBookmark with get, set
-
-            type _Lit138 =
-                abstract id: D1SessionBookmark with get, set
-
-            type _Lit221 =
-                abstract refusal: option<D1SessionBookmark> with get, set
-                abstract text: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit222 with get, set
-
-            type _Lit31 =
-                abstract summary: D1SessionBookmark with get, set
-
-            type _Lit10 =
-                abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
-
-                abstract tools:
-                    option<U3<ResizeArray<AiTextGenerationToolInput>, ResizeArray<AiTextGenerationToolLegacyInput>, obj>> with get, set
-
+            type _Lit84 =
                 [<EmitProperty("response_format")>]
-                abstract responseFormat: option<AiTextGenerationResponseFormat> with get, set
+                abstract responseFormat: option<AiCfMetaLlama3370BInstructFp8FastJSONMode2> with get, set
 
+                [<EmitProperty("presence_penalty")>]
+                abstract presencePenalty: option<float> with get, set
+
+                [<EmitProperty("frequency_penalty")>]
+                abstract frequencyPenalty: option<float> with get, set
+
+                [<EmitProperty("repetition_penalty")>]
+                abstract repetitionPenalty: option<float> with get, set
+
+                abstract seed: option<float> with get, set
+
+                [<EmitProperty("top_p")>]
+                abstract topP: option<float> with get, set
+
+                abstract temperature: option<float> with get, set
+
+                [<EmitProperty("max_tokens")>]
+                abstract maxTokens: option<float> with get, set
+
+                abstract stream: option<bool> with get, set
+                abstract prompt: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("external_reference")>]
+                abstract externalReference: option<D1SessionBookmark> with get, set
+
+            type _Lit248 =
+                [<EmitProperty("top_logprobs")>]
+                abstract topLogprobs: option<ResizeArray<TopLogprob>> with get, set
+
+                abstract logprob: float with get, set
+                abstract token: D1SessionBookmark with get, set
+
+            type _Lit191 =
+                abstract strict: option<bool> with get, set
+                abstract parameters: option<WebAssembly.ModuleImports> with get, set
+                abstract description: option<D1SessionBookmark> with get, set
+                abstract name: D1SessionBookmark with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit258 =
+                | [<CompiledName("user")>] User
+                | [<CompiledName("assistant")>] Assistant
+                | [<CompiledName("system")>] System
+                | [<CompiledName("developer")>] Developer
+
+            type _Lit62 =
+                abstract requests: ResizeArray<U2<AiCfBaaiBgeM3InputQueryAndContexts1, AiCfBaaiBgeM3InputEmbedding1>> with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit140 =
+                | [<CompiledName("message.input_image.image_url")>] MessageInputImageImageUrl
+                | [<CompiledName("message.output_text.logprobs")>] MessageOutputTextLogprobs
+
+            type _Lit32 =
                 abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
+                abstract raw: option<bool> with get, set
 
                 [<EmitProperty("presence_penalty")>]
                 abstract presencePenalty: option<float> with get, set
@@ -1898,68 +1853,37 @@ module rec Cloudflare =
                 [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
-                abstract stream: option<bool> with get, set
-                abstract raw: option<bool> with get, set
                 abstract prompt: option<D1SessionBookmark> with get, set
+                abstract image: AiSentenceSimilarityOutput with get, set
 
-            type _Lit86 =
+            type _Lit33 =
+                abstract description: D1SessionBookmark with get, set
+
+            type _Lit41 =
+                abstract audio: AiSentenceSimilarityOutput with get, set
+
+            type _Lit99 =
                 [<EmitProperty("tool_calls")>]
                 abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
 
                 abstract usage: option<_Lit87> with get, set
                 abstract response: D1SessionBookmark with get, set
 
-            type _Lit254 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit254.Type with get, set
-
-                abstract text: D1SessionBookmark with get, set
-
-            type _Lit6 =
-                abstract audio: D1SessionBookmark with get, set
-
-            type _Lit253 =
-                abstract status: option<_Lit251> with get, set
-
-                [<EmitProperty("encrypted_content")>]
-                abstract encryptedContent: option<string> with get, set
-
-                abstract content: option<ResizeArray<ResponseReasoningContentItem>> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit253.Type with get, set
-
-                abstract summary: ResizeArray<ResponseReasoningSummaryItem> with get, set
-                abstract id: D1SessionBookmark with get, set
-
-            type _Lit2 =
-                abstract label: option<D1SessionBookmark> with get, set
-                abstract score: option<float> with get, set
-
-            type _Lit87 =
-                [<EmitProperty("total_tokens")>]
-                abstract totalTokens: option<float> with get, set
-
-                [<EmitProperty("completion_tokens")>]
-                abstract completionTokens: option<float> with get, set
-
-                [<EmitProperty("prompt_tokens")>]
-                abstract promptTokens: option<float> with get, set
-
-            type _Lit215 =
-                abstract detail: option<RequestPriority> with get, set
-                abstract url: option<D1SessionBookmark> with get, set
-
-            type _Lit266 =
-                abstract version: option<string> with get, set
-                abstract variables: option<_Lit268> with get, set
-                abstract id: D1SessionBookmark with get, set
-
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit146 =
-                | [<CompiledName("auto")>] Auto
-                | [<CompiledName("concise")>] Concise
-                | [<CompiledName("detailed")>] Detailed
+            type _Lit263 =
+                | [<CompiledName("completed")>] Completed
+                | [<CompiledName("in_progress")>] InProgress
+                | [<CompiledName("incomplete")>] Incomplete
+
+            type _Lit103 =
+                [<EmitProperty("tool_calls")>]
+                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
+
+                abstract usage: option<_Lit87> with get, set
+                abstract response: D1SessionBookmark with get, set
+
+            type _Lit184 =
+                abstract name: D1SessionBookmark with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit144 =
@@ -1968,82 +1892,308 @@ module rec Cloudflare =
                 | [<CompiledName("medium")>] Medium
                 | [<CompiledName("minimal")>] Minimal
 
-            type _Lit9 =
-                abstract image: AiSentenceSimilarityOutput with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit146 =
+                | [<CompiledName("auto")>] Auto
+                | [<CompiledName("concise")>] Concise
+                | [<CompiledName("detailed")>] Detailed
 
-            type _Lit133 =
-                abstract Item: key: D1SessionBookmark -> option<obj>
-
-            type _Lit135 =
-                abstract Item: key: D1SessionBookmark -> option<obj>
-
-            type _Lit41 =
-                abstract audio: AiSentenceSimilarityOutput with get, set
-
-            type _Lit30 =
-                [<EmitProperty("max_length")>]
-                abstract maxLength: option<float> with get, set
-
-                [<EmitProperty("input_text")>]
-                abstract inputText: D1SessionBookmark with get, set
-
-            type _Lit179 =
-                abstract strict: option<bool> with get, set
-                abstract schema: option<WebAssembly.ModuleImports> with get, set
-                abstract description: option<D1SessionBookmark> with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit178 =
-                [<EmitProperty("json_schema")>]
-                abstract jsonSchema: _Lit179 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit178.Type with get, set
-
-            type _Lit177 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit177.Type with get, set
-
-            type _Lit176 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit176.Type with get, set
+            type _Lit138 =
+                abstract id: D1SessionBookmark with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit156 =
+            type _Lit168 =
+                | [<CompiledName("opus")>] Opus
+                | [<CompiledName("wav")>] Wav
+                | [<CompiledName("aac")>] Aac
+                | [<CompiledName("mp3")>] Mp3
+                | [<CompiledName("flac")>] Flac
+                | [<CompiledName("pcm16")>] Pcm16
+
+            type _Lit2 =
+                abstract label: option<D1SessionBookmark> with get, set
+                abstract score: option<float> with get, set
+
+            type _Lit249 =
+                abstract logprob: option<float> with get, set
+                abstract token: option<D1SessionBookmark> with get, set
+
+            type _Lit250 =
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit250.Type with get, set
+
+                abstract refusal: D1SessionBookmark with get, set
+
+            type _Lit86 =
+                [<EmitProperty("tool_calls")>]
+                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
+
+                abstract usage: option<_Lit87> with get, set
+                abstract response: D1SessionBookmark with get, set
+
+            type _Lit166 =
+                abstract format: _Lit168 with get, set
+                abstract voice: U2<_Lit138, string> with get, set
+
+            type _Lit172 =
+                abstract content: U2<ResizeArray<ChatCompletionContentPartText>, string> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit172.Type with get, set
+
+            type _Lit174 =
+                [<EmitProperty("clear_thinking")>]
+                abstract clearThinking: option<bool> with get, set
+
+                [<EmitProperty("enable_thinking")>]
+                abstract enableThinking: option<bool> with get, set
+
+            type _Lit181 =
+                [<EmitProperty("include_obfuscation")>]
+                abstract includeObfuscation: option<bool> with get, set
+
+                [<EmitProperty("include_usage")>]
+                abstract includeUsage: option<bool> with get, set
+
+            type _Lit199 =
+                [<EmitProperty("user_location")>]
+                abstract userLocation: option<WebSearchUserLocation> with get, set
+
+                [<EmitProperty("search_context_size")>]
+                abstract searchContextSize: option<_Lit200> with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit200 =
                 | [<CompiledName("high")>] High
                 | [<CompiledName("low")>] Low
                 | [<CompiledName("medium")>] Medium
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit272 =
-                | [<CompiledName("queued")>] Queued
-                | [<CompiledName("failed")>] Failed
-                | [<CompiledName("completed")>] Completed
-                | [<CompiledName("in_progress")>] InProgress
-                | [<CompiledName("cancelled")>] Cancelled
-                | [<CompiledName("incomplete")>] Incomplete
+            type _Lit201 =
+                abstract approximate: _Lit202 with get, set
 
-            type _Lit116 =
-                abstract contentType: D1SessionBookmark with get, set
-                abstract body: obj with get, set
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit201.Type with get, set
+
+            type _Lit202 =
+                abstract timezone: option<D1SessionBookmark> with get, set
+                abstract region: option<D1SessionBookmark> with get, set
+                abstract country: option<D1SessionBookmark> with get, set
+                abstract city: option<D1SessionBookmark> with get, set
+
+            type _Lit47 =
+                [<EmitProperty("translated_text")>]
+                abstract translatedText: option<D1SessionBookmark> with get, set
+
+            type _Lit97 =
+                [<EmitProperty("tool_calls")>]
+                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
+
+                abstract usage: option<_Lit87> with get, set
+                abstract response: D1SessionBookmark with get, set
+
+            type _Lit61 =
+                abstract text: option<D1SessionBookmark> with get, set
+
+            type _Lit226 =
+                abstract input: D1SessionBookmark with get, set
+                abstract name: D1SessionBookmark with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit171 =
-                | [<CompiledName("audio")>] Audio
+            type _Lit242 =
+                | [<CompiledName("content_filter")>] ContentFilter
+                | [<CompiledName("max_output_tokens")>] MaxOutputTokens
+
+            type _Lit101 =
+                abstract content: option<U2<ResizeArray<_Lit69>, string>> with get, set
+                abstract role: option<D1SessionBookmark> with get, set
+
+            type _Lit92 =
+                abstract categories: option<ResizeArray<D1SessionBookmark>> with get, set
+                abstract safe: option<bool> with get, set
+
+            type _Lit115 =
+                [<EmitProperty("prompt_logprobs")>]
+                abstract promptLogprobs: option<obj> with get, set
+
+                abstract logprobs: option<obj> with get, set
+
+                [<EmitProperty("stop_reason")>]
+                abstract stopReason: option<string> with get, set
+
+                [<EmitProperty("finish_reason")>]
+                abstract finishReason: D1SessionBookmark with get, set
+
+                abstract text: D1SessionBookmark with get, set
+                abstract index: float with get, set
+
+            type _Lit218 =
+                abstract filename: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("file_id")>]
+                abstract fileId: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("file_data")>]
+                abstract fileData: option<D1SessionBookmark> with get, set
+
+            type _Lit252 =
+                abstract status: option<_Lit251> with get, set
+                abstract id: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit252.Type with get, set
+
+                abstract name: D1SessionBookmark with get, set
+
+                [<EmitProperty("call_id")>]
+                abstract callId: D1SessionBookmark with get, set
+
+                abstract arguments: D1SessionBookmark with get, set
+
+            type _Lit154 =
+                abstract Item: key: D1SessionBookmark -> option<obj>
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit217 =
+                | [<CompiledName("wav")>] Wav
+                | [<CompiledName("mp3")>] Mp3
+
+            type _Lit65 =
+                abstract score: option<float> with get, set
+                abstract id: option<float> with get, set
+
+            type _Lit216 =
+                abstract format: option<_Lit217> with get, set
+                abstract data: option<D1SessionBookmark> with get, set
+
+            type _Lit215 =
+                abstract detail: option<RequestPriority> with get, set
+                abstract url: option<D1SessionBookmark> with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit214 =
                 | [<CompiledName("text")>] Text
+                | [<CompiledName("file")>] File
+                | [<CompiledName("image_url")>] ImageUrl
+                | [<CompiledName("input_audio")>] InputAudio
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit188 =
-                | [<CompiledName("auto")>] Auto
-                | [<CompiledName("required")>] Required
+            type _Lit90 =
+                [<EmitProperty("type")>]
+                abstract ``type``: option<D1SessionBookmark> with get, set
 
-            type _Lit163 =
-                abstract requests: option<unit> with get, set
+            type _Lit77 =
+                [<EmitProperty("tool_calls")>]
+                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
+
+                abstract response: option<D1SessionBookmark> with get, set
+
+            type _Lit219 =
+                [<EmitProperty("function_call")>]
+                abstract functionCall: option<_Lit28> with get, set
+
+                [<EmitProperty("tool_calls")>]
+                abstract toolCalls: option<ResizeArray<ChatCompletionMessageToolCall>> with get, set
+
+                abstract audio: option<ResponseConversationParam> with get, set
+                abstract name: option<D1SessionBookmark> with get, set
+                abstract refusal: option<string> with get, set
+                abstract content: option<U2<ResizeArray<AssistantMessageContentPart>, string>> with get, set
+                abstract role: _Lit219.Role with get, set
+
+            type _Lit227 =
+                [<EmitProperty("tool_call_id")>]
+                abstract toolCallId: D1SessionBookmark with get, set
+
+                abstract content: U2<ResizeArray<ChatCompletionContentPartText>, string> with get, set
+                abstract role: _Lit227.Role with get, set
+
+            type _Lit228 =
+                abstract name: D1SessionBookmark with get, set
+                abstract content: D1SessionBookmark with get, set
+                abstract role: _Lit228.Role with get, set
+
+            type _Lit230 =
+                abstract functions: option<unit> with get, set
+
+                [<EmitProperty("function_call")>]
+                abstract functionCall: option<unit> with get, set
+
+                [<EmitProperty("web_search_options")>]
+                abstract webSearchOptions: option<unit> with get, set
+
+                abstract user: option<unit> with get, set
+
+                [<EmitProperty("top_p")>]
+                abstract topP: option<unit> with get, set
+
+                abstract tools: option<unit> with get, set
+
+                [<EmitProperty("tool_choice")>]
+                abstract toolChoice: option<unit> with get, set
+
+                abstract temperature: option<unit> with get, set
+
+                [<EmitProperty("stream_options")>]
+                abstract streamOptions: option<unit> with get, set
+
+                abstract store: option<unit> with get, set
+
+                [<EmitProperty("service_tier")>]
+                abstract serviceTier: option<unit> with get, set
+
+                abstract seed: option<unit> with get, set
+
+                [<EmitProperty("response_format")>]
+                abstract responseFormat: option<unit> with get, set
+
+                [<EmitProperty("chat_template_kwargs")>]
+                abstract chatTemplateKwargs: option<unit> with get, set
+
+                [<EmitProperty("reasoning_effort")>]
+                abstract reasoningEffort: option<unit> with get, set
+
+                [<EmitProperty("presence_penalty")>]
+                abstract presencePenalty: option<unit> with get, set
+
+                abstract prediction: option<unit> with get, set
+
+                [<EmitProperty("parallel_tool_calls")>]
+                abstract parallelToolCalls: option<unit> with get, set
+
+                abstract n: option<unit> with get, set
+                abstract modalities: option<unit> with get, set
+
+                [<EmitProperty("max_completion_tokens")>]
+                abstract maxCompletionTokens: option<unit> with get, set
+
+                [<EmitProperty("max_tokens")>]
+                abstract maxTokens: option<unit> with get, set
+
+                [<EmitProperty("top_logprobs")>]
+                abstract topLogprobs: option<unit> with get, set
+
+                abstract logprobs: option<unit> with get, set
+
+                [<EmitProperty("logit_bias")>]
+                abstract logitBias: option<unit> with get, set
+
+                [<EmitProperty("frequency_penalty")>]
+                abstract frequencyPenalty: option<unit> with get, set
+
+                abstract model: option<unit> with get, set
+                abstract messages: option<unit> with get, set
+                abstract stream: option<unit> with get, set
+                abstract prompt: option<unit> with get, set
+                abstract stop: option<unit> with get, set
+                abstract metadata: option<unit> with get, set
+                abstract audio: option<unit> with get, set
+                abstract requests: ResizeArray<ChatCompletionsBase> with get, set
+
+            type _Lit233 =
                 abstract messages: option<unit> with get, set
                 abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
 
                 [<EmitProperty("function_call")>]
-                abstract functionCall: option<U2<_Lit163.FunctionCall, _Lit184>> with get, set
+                abstract functionCall: option<U2<_Lit233.FunctionCall, _Lit184>> with get, set
 
                 [<EmitProperty("web_search_options")>]
                 abstract webSearchOptions: option<WebSearchOptions> with get, set
@@ -2114,88 +2264,100 @@ module rec Cloudflare =
                 abstract model: option<D1SessionBookmark> with get, set
                 abstract prompt: D1SessionBookmark with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit147 =
-                | [<CompiledName("default")>] Default
-                | [<CompiledName("auto")>] Auto
-                | [<CompiledName("flex")>] Flex
-                | [<CompiledName("scale")>] Scale
-                | [<CompiledName("priority")>] Priority
+            type _Lit234 =
+                abstract prompt: option<unit> with get, set
+                abstract messages: ResizeArray<ChatCompletionMessageParam> with get, set
+                abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
 
-            type _Lit276 =
                 [<EmitProperty("function_call")>]
-                abstract functionCall: option<_Lit28> with get, set
+                abstract functionCall: option<U2<_Lit234.FunctionCall, _Lit184>> with get, set
 
-                [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<ResizeArray<ChatCompletionMessageToolCall>> with get, set
+                [<EmitProperty("web_search_options")>]
+                abstract webSearchOptions: option<WebSearchOptions> with get, set
 
-                abstract audio: option<ChatCompletionAudio> with get, set
-                abstract annotations: option<ResizeArray<ChatCompletionUrlCitation>> with get, set
-                abstract refusal: option<string> with get, set
-                abstract content: option<string> with get, set
-                abstract role: _Lit276.Role with get, set
-
-            type _Lit275 =
-                abstract logprobs: option<_Lit283> with get, set
-
-                [<EmitProperty("finish_reason")>]
-                abstract finishReason: _Lit281 with get, set
-
-                abstract message: ChatCompletionResponseMessage with get, set
-                abstract index: float with get, set
-
-            type _Lit274 =
-                [<EmitProperty("service_tier")>]
-                abstract serviceTier: option<_Lit147> with get, set
-
-                [<EmitProperty("system_fingerprint")>]
-                abstract systemFingerprint: option<string> with get, set
-
-                abstract usage: option<CompletionUsage> with get, set
-                abstract choices: ResizeArray<ChatCompletionChoice> with get, set
-                abstract model: D1SessionBookmark with get, set
-                abstract created: float with get, set
-                abstract object: D1SessionBookmark with get, set
-                abstract id: D1SessionBookmark with get, set
-
-            type _Lit84 =
-                [<EmitProperty("response_format")>]
-                abstract responseFormat: option<AiCfMetaLlama3370BInstructFp8FastJSONMode2> with get, set
-
-                [<EmitProperty("presence_penalty")>]
-                abstract presencePenalty: option<float> with get, set
-
-                [<EmitProperty("frequency_penalty")>]
-                abstract frequencyPenalty: option<float> with get, set
-
-                [<EmitProperty("repetition_penalty")>]
-                abstract repetitionPenalty: option<float> with get, set
-
-                abstract seed: option<float> with get, set
+                abstract user: option<D1SessionBookmark> with get, set
 
                 [<EmitProperty("top_p")>]
                 abstract topP: option<float> with get, set
 
+                abstract tools: option<ResizeArray<ChatCompletionTool>> with get, set
+
+                [<EmitProperty("tool_choice")>]
+                abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
+
                 abstract temperature: option<float> with get, set
+
+                [<EmitProperty("stream_options")>]
+                abstract streamOptions: option<ChatCompletionsStreamOptions> with get, set
+
+                abstract stream: option<bool> with get, set
+                abstract store: option<bool> with get, set
+                abstract stop: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
+
+                [<EmitProperty("service_tier")>]
+                abstract serviceTier: option<_Lit147> with get, set
+
+                abstract seed: option<float> with get, set
+
+                [<EmitProperty("response_format")>]
+                abstract responseFormat: option<ResponseFormat> with get, set
+
+                [<EmitProperty("chat_template_kwargs")>]
+                abstract chatTemplateKwargs: option<ChatTemplateKwargs> with get, set
+
+                [<EmitProperty("reasoning_effort")>]
+                abstract reasoningEffort: option<_Lit156> with get, set
+
+                [<EmitProperty("presence_penalty")>]
+                abstract presencePenalty: option<float> with get, set
+
+                abstract prediction: option<PredictionContent> with get, set
+
+                [<EmitProperty("parallel_tool_calls")>]
+                abstract parallelToolCalls: option<bool> with get, set
+
+                abstract n: option<float> with get, set
+                abstract modalities: option<ResizeArray<_Lit171>> with get, set
+                abstract metadata: option<Typescript.Headers._Lit5> with get, set
+
+                [<EmitProperty("max_completion_tokens")>]
+                abstract maxCompletionTokens: option<float> with get, set
 
                 [<EmitProperty("max_tokens")>]
                 abstract maxTokens: option<float> with get, set
 
-                abstract stream: option<bool> with get, set
-                abstract prompt: option<D1SessionBookmark> with get, set
+                [<EmitProperty("top_logprobs")>]
+                abstract topLogprobs: option<float> with get, set
 
-                [<EmitProperty("external_reference")>]
-                abstract externalReference: option<D1SessionBookmark> with get, set
+                abstract logprobs: option<bool> with get, set
 
-            type _Lit78 =
+                [<EmitProperty("logit_bias")>]
+                abstract logitBias: option<Typescript.Headers._Lit5> with get, set
+
+                [<EmitProperty("frequency_penalty")>]
+                abstract frequencyPenalty: option<float> with get, set
+
+                abstract audio: option<AudioParams> with get, set
+                abstract model: option<D1SessionBookmark> with get, set
+
+            type _Lit213 =
+                abstract file: option<_Lit218> with get, set
+
+                [<EmitProperty("input_audio")>]
+                abstract inputAudio: option<_Lit216> with get, set
+
+                [<EmitProperty("image_url")>]
+                abstract imageUrl: option<_Lit215> with get, set
+
+                abstract text: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit214 with get, set
+
+            type _Lit211 =
                 abstract name: option<D1SessionBookmark> with get, set
-                abstract arguments: option<obj> with get, set
-
-            type _Lit191 =
-                abstract strict: option<bool> with get, set
-                abstract parameters: option<WebAssembly.ModuleImports> with get, set
-                abstract description: option<D1SessionBookmark> with get, set
-                abstract name: D1SessionBookmark with get, set
+                abstract content: U2<ResizeArray<UserMessageContentPart>, string> with get, set
+                abstract role: _Lit211.Role with get, set
 
             type _Lit183 =
                 [<EmitProperty("function")>]
@@ -2204,8 +2366,40 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: _Lit183.Type with get, set
 
-            type _Lit35 =
-                abstract requests: ResizeArray<_Lit36> with get, set
+            type _Lit185 =
+                abstract custom: _Lit184 with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit185.Type with get, set
+
+            type _Lit186 =
+                [<EmitProperty("allowed_tools")>]
+                abstract allowedTools: _Lit187 with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit186.Type with get, set
+
+            type _Lit187 =
+                abstract tools: ResizeArray<WebAssembly.ModuleImports> with get, set
+                abstract mode: _Lit188 with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit188 =
+                | [<CompiledName("auto")>] Auto
+                | [<CompiledName("required")>] Required
+
+            type _Lit190 =
+                [<EmitProperty("function")>]
+                abstract ``function``: FunctionDefinition with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit190.Type with get, set
+
+            type _Lit192 =
+                abstract custom: _Lit193 with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit192.Type with get, set
 
             type _Lit206 =
                 abstract requests: option<unit> with get, set
@@ -2294,606 +2488,8 @@ module rec Cloudflare =
                 abstract content: U2<ResizeArray<ChatCompletionContentPartText>, string> with get, set
                 abstract role: _Lit210.Role with get, set
 
-            type _Lit211 =
-                abstract name: option<D1SessionBookmark> with get, set
-                abstract content: U2<ResizeArray<UserMessageContentPart>, string> with get, set
-                abstract role: _Lit211.Role with get, set
-
-            type _Lit271 =
-                [<EmitProperty("image_url")>]
-                abstract imageUrl: option<string> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit271.Type with get, set
-
-                abstract detail: RequestPriority with get, set
-
-            type _Lit213 =
-                abstract file: option<_Lit218> with get, set
-
-                [<EmitProperty("input_audio")>]
-                abstract inputAudio: option<_Lit216> with get, set
-
-                [<EmitProperty("image_url")>]
-                abstract imageUrl: option<_Lit215> with get, set
-
-                abstract text: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit214 with get, set
-
-            type _Lit270 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit270.Type with get, set
-
-                abstract text: D1SessionBookmark with get, set
-
-            type _Lit268 =
-                abstract Item: key: D1SessionBookmark -> U3<_Lit270, _Lit271, string>
-
-            type _Lit33 =
-                abstract description: D1SessionBookmark with get, set
-
-            type _Lit234 =
-                abstract prompt: option<unit> with get, set
-                abstract messages: ResizeArray<ChatCompletionMessageParam> with get, set
-                abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
-
-                [<EmitProperty("function_call")>]
-                abstract functionCall: option<U2<_Lit234.FunctionCall, _Lit184>> with get, set
-
-                [<EmitProperty("web_search_options")>]
-                abstract webSearchOptions: option<WebSearchOptions> with get, set
-
-                abstract user: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("top_p")>]
-                abstract topP: option<float> with get, set
-
-                abstract tools: option<ResizeArray<ChatCompletionTool>> with get, set
-
-                [<EmitProperty("tool_choice")>]
-                abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
-
-                abstract temperature: option<float> with get, set
-
-                [<EmitProperty("stream_options")>]
-                abstract streamOptions: option<ChatCompletionsStreamOptions> with get, set
-
-                abstract stream: option<bool> with get, set
-                abstract store: option<bool> with get, set
-                abstract stop: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
-
-                [<EmitProperty("service_tier")>]
-                abstract serviceTier: option<_Lit147> with get, set
-
-                abstract seed: option<float> with get, set
-
-                [<EmitProperty("response_format")>]
-                abstract responseFormat: option<ResponseFormat> with get, set
-
-                [<EmitProperty("chat_template_kwargs")>]
-                abstract chatTemplateKwargs: option<ChatTemplateKwargs> with get, set
-
-                [<EmitProperty("reasoning_effort")>]
-                abstract reasoningEffort: option<_Lit156> with get, set
-
-                [<EmitProperty("presence_penalty")>]
-                abstract presencePenalty: option<float> with get, set
-
-                abstract prediction: option<PredictionContent> with get, set
-
-                [<EmitProperty("parallel_tool_calls")>]
-                abstract parallelToolCalls: option<bool> with get, set
-
-                abstract n: option<float> with get, set
-                abstract modalities: option<ResizeArray<_Lit171>> with get, set
-                abstract metadata: option<Typescript.Headers._Lit5> with get, set
-
-                [<EmitProperty("max_completion_tokens")>]
-                abstract maxCompletionTokens: option<float> with get, set
-
-                [<EmitProperty("max_tokens")>]
-                abstract maxTokens: option<float> with get, set
-
-                [<EmitProperty("top_logprobs")>]
-                abstract topLogprobs: option<float> with get, set
-
-                abstract logprobs: option<bool> with get, set
-
-                [<EmitProperty("logit_bias")>]
-                abstract logitBias: option<Typescript.Headers._Lit5> with get, set
-
-                [<EmitProperty("frequency_penalty")>]
-                abstract frequencyPenalty: option<float> with get, set
-
-                abstract audio: option<AudioParams> with get, set
-                abstract model: option<D1SessionBookmark> with get, set
-
-            type _Lit233 =
-                abstract messages: option<unit> with get, set
-                abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
-
-                [<EmitProperty("function_call")>]
-                abstract functionCall: option<U2<_Lit233.FunctionCall, _Lit184>> with get, set
-
-                [<EmitProperty("web_search_options")>]
-                abstract webSearchOptions: option<WebSearchOptions> with get, set
-
-                abstract user: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("top_p")>]
-                abstract topP: option<float> with get, set
-
-                abstract tools: option<ResizeArray<ChatCompletionTool>> with get, set
-
-                [<EmitProperty("tool_choice")>]
-                abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
-
-                abstract temperature: option<float> with get, set
-
-                [<EmitProperty("stream_options")>]
-                abstract streamOptions: option<ChatCompletionsStreamOptions> with get, set
-
-                abstract stream: option<bool> with get, set
-                abstract store: option<bool> with get, set
-                abstract stop: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
-
-                [<EmitProperty("service_tier")>]
-                abstract serviceTier: option<_Lit147> with get, set
-
-                abstract seed: option<float> with get, set
-
-                [<EmitProperty("response_format")>]
-                abstract responseFormat: option<ResponseFormat> with get, set
-
-                [<EmitProperty("chat_template_kwargs")>]
-                abstract chatTemplateKwargs: option<ChatTemplateKwargs> with get, set
-
-                [<EmitProperty("reasoning_effort")>]
-                abstract reasoningEffort: option<_Lit156> with get, set
-
-                [<EmitProperty("presence_penalty")>]
-                abstract presencePenalty: option<float> with get, set
-
-                abstract prediction: option<PredictionContent> with get, set
-
-                [<EmitProperty("parallel_tool_calls")>]
-                abstract parallelToolCalls: option<bool> with get, set
-
-                abstract n: option<float> with get, set
-                abstract modalities: option<ResizeArray<_Lit171>> with get, set
-                abstract metadata: option<Typescript.Headers._Lit5> with get, set
-
-                [<EmitProperty("max_completion_tokens")>]
-                abstract maxCompletionTokens: option<float> with get, set
-
-                [<EmitProperty("max_tokens")>]
-                abstract maxTokens: option<float> with get, set
-
-                [<EmitProperty("top_logprobs")>]
-                abstract topLogprobs: option<float> with get, set
-
-                abstract logprobs: option<bool> with get, set
-
-                [<EmitProperty("logit_bias")>]
-                abstract logitBias: option<Typescript.Headers._Lit5> with get, set
-
-                [<EmitProperty("frequency_penalty")>]
-                abstract frequencyPenalty: option<float> with get, set
-
-                abstract audio: option<AudioParams> with get, set
-                abstract model: option<D1SessionBookmark> with get, set
-                abstract prompt: D1SessionBookmark with get, set
-
-            type _Lit230 =
-                abstract functions: option<unit> with get, set
-
-                [<EmitProperty("function_call")>]
-                abstract functionCall: option<unit> with get, set
-
-                [<EmitProperty("web_search_options")>]
-                abstract webSearchOptions: option<unit> with get, set
-
-                abstract user: option<unit> with get, set
-
-                [<EmitProperty("top_p")>]
-                abstract topP: option<unit> with get, set
-
-                abstract tools: option<unit> with get, set
-
-                [<EmitProperty("tool_choice")>]
-                abstract toolChoice: option<unit> with get, set
-
-                abstract temperature: option<unit> with get, set
-
-                [<EmitProperty("stream_options")>]
-                abstract streamOptions: option<unit> with get, set
-
-                abstract store: option<unit> with get, set
-
-                [<EmitProperty("service_tier")>]
-                abstract serviceTier: option<unit> with get, set
-
-                abstract seed: option<unit> with get, set
-
-                [<EmitProperty("response_format")>]
-                abstract responseFormat: option<unit> with get, set
-
-                [<EmitProperty("chat_template_kwargs")>]
-                abstract chatTemplateKwargs: option<unit> with get, set
-
-                [<EmitProperty("reasoning_effort")>]
-                abstract reasoningEffort: option<unit> with get, set
-
-                [<EmitProperty("presence_penalty")>]
-                abstract presencePenalty: option<unit> with get, set
-
-                abstract prediction: option<unit> with get, set
-
-                [<EmitProperty("parallel_tool_calls")>]
-                abstract parallelToolCalls: option<unit> with get, set
-
-                abstract n: option<unit> with get, set
-                abstract modalities: option<unit> with get, set
-
-                [<EmitProperty("max_completion_tokens")>]
-                abstract maxCompletionTokens: option<unit> with get, set
-
-                [<EmitProperty("max_tokens")>]
-                abstract maxTokens: option<unit> with get, set
-
-                [<EmitProperty("top_logprobs")>]
-                abstract topLogprobs: option<unit> with get, set
-
-                abstract logprobs: option<unit> with get, set
-
-                [<EmitProperty("logit_bias")>]
-                abstract logitBias: option<unit> with get, set
-
-                [<EmitProperty("frequency_penalty")>]
-                abstract frequencyPenalty: option<unit> with get, set
-
-                abstract model: option<unit> with get, set
-                abstract messages: option<unit> with get, set
-                abstract stream: option<unit> with get, set
-                abstract prompt: option<unit> with get, set
-                abstract stop: option<unit> with get, set
-                abstract metadata: option<unit> with get, set
-                abstract audio: option<unit> with get, set
-                abstract requests: ResizeArray<ChatCompletionsBase> with get, set
-
-            type _Lit227 =
-                [<EmitProperty("tool_call_id")>]
-                abstract toolCallId: D1SessionBookmark with get, set
-
-                abstract content: U2<ResizeArray<ChatCompletionContentPartText>, string> with get, set
-                abstract role: _Lit227.Role with get, set
-
-            type _Lit219 =
-                [<EmitProperty("function_call")>]
-                abstract functionCall: option<_Lit28> with get, set
-
-                [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<ResizeArray<ChatCompletionMessageToolCall>> with get, set
-
-                abstract audio: option<ResponseConversationParam> with get, set
-                abstract name: option<D1SessionBookmark> with get, set
-                abstract refusal: option<string> with get, set
-                abstract content: option<U2<ResizeArray<AssistantMessageContentPart>, string>> with get, set
-                abstract role: _Lit219.Role with get, set
-
-            type _Lit32 =
-                abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
-                abstract raw: option<bool> with get, set
-
-                [<EmitProperty("presence_penalty")>]
-                abstract presencePenalty: option<float> with get, set
-
-                [<EmitProperty("frequency_penalty")>]
-                abstract frequencyPenalty: option<float> with get, set
-
-                [<EmitProperty("repetition_penalty")>]
-                abstract repetitionPenalty: option<float> with get, set
-
-                abstract seed: option<float> with get, set
-
-                [<EmitProperty("top_k")>]
-                abstract topK: option<float> with get, set
-
-                [<EmitProperty("top_p")>]
-                abstract topP: option<float> with get, set
-
-                abstract temperature: option<float> with get, set
-
-                [<EmitProperty("max_tokens")>]
-                abstract maxTokens: option<float> with get, set
-
-                abstract prompt: option<D1SessionBookmark> with get, set
-                abstract image: AiSentenceSimilarityOutput with get, set
-
-            type _Lit228 =
-                abstract name: D1SessionBookmark with get, set
-                abstract content: D1SessionBookmark with get, set
-                abstract role: _Lit228.Role with get, set
-
-            type _Lit36 =
-                abstract pooling: option<_Lit37> with get, set
-                abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
-
-            type _Lit69 =
-                [<EmitProperty("image_url")>]
-                abstract imageUrl: option<_Lit70> with get, set
-
-                abstract text: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: option<D1SessionBookmark> with get, set
-
-            type _Lit103 =
-                [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
-
-                abstract usage: option<_Lit87> with get, set
-                abstract response: D1SessionBookmark with get, set
-
-            type _Lit70 =
-                abstract url: option<D1SessionBookmark> with get, set
-
-            type _Lit187 =
-                abstract tools: ResizeArray<WebAssembly.ModuleImports> with get, set
-                abstract mode: _Lit188 with get, set
-
-            type _Lit186 =
-                [<EmitProperty("allowed_tools")>]
-                abstract allowedTools: _Lit187 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit186.Type with get, set
-
-            type _Lit185 =
-                abstract custom: _Lit184 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit185.Type with get, set
-
-            type _Lit190 =
-                [<EmitProperty("function")>]
-                abstract ``function``: FunctionDefinition with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit190.Type with get, set
-
-            type _Lit99 =
-                [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
-
-                abstract usage: option<_Lit87> with get, set
-                abstract response: D1SessionBookmark with get, set
-
-            type _Lit192 =
-                abstract custom: _Lit193 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit192.Type with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit198 =
-                | [<CompiledName("lark")>] Lark
-                | [<CompiledName("regex")>] Regex
-
-            type _Lit197 =
-                abstract syntax: _Lit198 with get, set
-                abstract definition: D1SessionBookmark with get, set
-
-            type _Lit273 =
-                [<EmitProperty("total_tokens")>]
-                abstract totalTokens: float with get, set
-
-                [<EmitProperty("output_tokens")>]
-                abstract outputTokens: float with get, set
-
-                [<EmitProperty("input_tokens")>]
-                abstract inputTokens: float with get, set
-
-            type _Lit92 =
-                abstract categories: option<ResizeArray<D1SessionBookmark>> with get, set
-                abstract safe: option<bool> with get, set
-
-            type _Lit196 =
-                abstract grammar: _Lit197 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit196.Type with get, set
-
-            type _Lit101 =
-                abstract content: option<U2<ResizeArray<_Lit69>, string>> with get, set
-                abstract role: option<D1SessionBookmark> with get, set
-
-            type _Lit195 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit195.Type with get, set
-
-            type _Lit193 =
-                abstract format: option<ChatCompletionCustomToolFormat> with get, set
-                abstract description: option<D1SessionBookmark> with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit131 =
-                abstract dtype: option<_Lit130> with get, set
+            type _Lit6 =
                 abstract audio: D1SessionBookmark with get, set
-
-            type _Lit23 =
-                abstract code: D1SessionBookmark with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit22 =
-                abstract parameters: option<_Lit18> with get, set
-                abstract description: D1SessionBookmark with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit21 =
-                abstract description: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: D1SessionBookmark with get, set
-
-            type _Lit20 =
-                abstract Item: key: D1SessionBookmark -> _Lit21
-
-            type _Lit18 =
-                abstract required: ResizeArray<D1SessionBookmark> with get, set
-                abstract properties: _Lit20 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: U2<_Lit18.Type, Ai._Lit94> with get, set
-
-            type _Lit17 =
-                abstract parameters: option<_Lit18> with get, set
-                abstract description: D1SessionBookmark with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit15 =
-                [<EmitProperty("function")>]
-                abstract ``function``: _Lit17 with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: U2<_Lit15.Type, Ai._Lit94> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit89 =
-                | [<CompiledName("user")>] User
-                | [<CompiledName("assistant")>] Assistant
-
-            type _Lit77 =
-                [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
-
-                abstract response: option<D1SessionBookmark> with get, set
-
-            type _Lit97 =
-                [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
-
-                abstract usage: option<_Lit87> with get, set
-                abstract response: D1SessionBookmark with get, set
-
-            type _Lit76 =
-                abstract description: D1SessionBookmark with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: D1SessionBookmark with get, set
-
-            type _Lit106 =
-                [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<ResizeArray<_Lit107>> with get, set
-
-                abstract usage: option<_Lit87> with get, set
-                abstract response: D1SessionBookmark with get, set
-
-            type _Lit90 =
-                [<EmitProperty("type")>]
-                abstract ``type``: option<D1SessionBookmark> with get, set
-
-            type _Lit155 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit155.Type with get, set
-
-            type _Lit75 =
-                abstract Item: k: D1SessionBookmark -> _Lit76
-
-            type _Lit74 =
-                abstract properties: _Lit75 with get, set
-                abstract required: option<ResizeArray<D1SessionBookmark>> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: D1SessionBookmark with get, set
-
-            type _Lit73 =
-                abstract parameters: _Lit74 with get, set
-                abstract description: D1SessionBookmark with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit291 =
-                | [<CompiledName("arcas")>] Arcas
-                | [<CompiledName("asteria")>] Asteria
-                | [<CompiledName("athena")>] Athena
-                | [<CompiledName("hera")>] Hera
-                | [<CompiledName("luna")>] Luna
-                | [<CompiledName("orion")>] Orion
-                | [<CompiledName("orpheus")>] Orpheus
-                | [<CompiledName("zeus")>] Zeus
-                | [<CompiledName("angus")>] Angus
-                | [<CompiledName("perseus")>] Perseus
-                | [<CompiledName("helios")>] Helios
-                | [<CompiledName("stella")>] Stella
-
-            type _Lit127 =
-                [<EmitProperty("sentiment_score")>]
-                abstract sentimentScore: option<float> with get, set
-
-                abstract sentiment: option<D1SessionBookmark> with get, set
-
-            type _Lit126 =
-                [<EmitProperty("sentiment_score")>]
-                abstract sentimentScore: option<float> with get, set
-
-                abstract sentiment: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("end_word")>]
-                abstract endWord: option<float> with get, set
-
-                [<EmitProperty("start_word")>]
-                abstract startWord: option<float> with get, set
-
-                abstract text: option<D1SessionBookmark> with get, set
-
-            type _Lit45 =
-                [<EmitProperty("target_lang")>]
-                abstract targetLang: D1SessionBookmark with get, set
-
-                [<EmitProperty("source_lang")>]
-                abstract sourceLang: option<D1SessionBookmark> with get, set
-
-                abstract text: D1SessionBookmark with get, set
-
-            type _Lit44 =
-                abstract requests: ResizeArray<_Lit45> with get, set
-
-            type _Lit125 =
-                abstract average: option<_Lit127> with get, set
-                abstract segments: option<ResizeArray<_Lit126>> with get, set
-
-            type _Lit124 =
-                abstract short: option<D1SessionBookmark> with get, set
-                abstract result: option<D1SessionBookmark> with get, set
-
-            type _Lit123 =
-                abstract word: option<D1SessionBookmark> with get, set
-                abstract start: option<float> with get, set
-
-                [<EmitProperty("end")>]
-                abstract ``end``: option<float> with get, set
-
-                abstract confidence: option<float> with get, set
-
-            type _Lit122 =
-                abstract words: option<ResizeArray<_Lit123>> with get, set
-                abstract transcript: option<D1SessionBookmark> with get, set
-                abstract confidence: option<float> with get, set
-
-            type _Lit121 =
-                abstract alternatives: option<ResizeArray<_Lit122>> with get, set
-
-            type _Lit120 =
-                abstract sentiments: option<_Lit125> with get, set
-                abstract summary: option<_Lit124> with get, set
-                abstract channels: option<ResizeArray<_Lit121>> with get, set
-
-            type _Lit57 =
-                abstract contentType: option<D1SessionBookmark> with get, set
-                abstract body: option<obj> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit117 =
@@ -2917,145 +2513,141 @@ module rec Cloudflare =
                 | [<CompiledName("medical")>] Medical
                 | [<CompiledName("finance")>] Finance
 
-            type _Lit88 =
-                abstract content: D1SessionBookmark with get, set
-                abstract role: _Lit89 with get, set
+            type _Lit179 =
+                abstract strict: option<bool> with get, set
+                abstract schema: option<WebAssembly.ModuleImports> with get, set
+                abstract description: option<D1SessionBookmark> with get, set
+                abstract name: D1SessionBookmark with get, set
+
+            type _Lit58 =
+                [<EmitProperty("duration_after_vad")>]
+                abstract durationAfterVad: option<float> with get, set
+
+                abstract duration: option<float> with get, set
+
+                [<EmitProperty("language_probability")>]
+                abstract languageProbability: option<float> with get, set
+
+                abstract language: option<D1SessionBookmark> with get, set
+
+            type _Lit59 =
+                abstract words: option<ResizeArray<_Lit42>> with get, set
+
+                [<EmitProperty("no_speech_prob")>]
+                abstract noSpeechProb: option<float> with get, set
+
+                [<EmitProperty("compression_ratio")>]
+                abstract compressionRatio: option<float> with get, set
+
+                [<EmitProperty("avg_logprob")>]
+                abstract avgLogprob: option<float> with get, set
+
+                abstract temperature: option<float> with get, set
+                abstract text: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("end")>]
+                abstract ``end``: option<float> with get, set
+
+                abstract start: option<float> with get, set
+
+            type _Lit42 =
+                [<EmitProperty("end")>]
+                abstract ``end``: option<float> with get, set
+
+                abstract start: option<float> with get, set
+                abstract word: option<D1SessionBookmark> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit298 =
-                | [<CompiledName("true")>] True
-                | [<CompiledName("false")>] False
+            type _Lit222 =
+                | [<CompiledName("text")>] Text
+                | [<CompiledName("refusal")>] Refusal
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit294 =
-                | [<CompiledName("asm_Beng")>] AsmBeng
-                | [<CompiledName("awa_Deva")>] AwaDeva
-                | [<CompiledName("ben_Beng")>] BenBeng
-                | [<CompiledName("bho_Deva")>] BhoDeva
-                | [<CompiledName("brx_Deva")>] BrxDeva
-                | [<CompiledName("doi_Deva")>] DoiDeva
-                | [<CompiledName("eng_Latn")>] EngLatn
-                | [<CompiledName("gom_Deva")>] GomDeva
-                | [<CompiledName("gon_Deva")>] GonDeva
-                | [<CompiledName("guj_Gujr")>] GujGujr
-                | [<CompiledName("hin_Deva")>] HinDeva
-                | [<CompiledName("hne_Deva")>] HneDeva
-                | [<CompiledName("kan_Knda")>] KanKnda
-                | [<CompiledName("kas_Arab")>] KasArab
-                | [<CompiledName("kas_Deva")>] KasDeva
-                | [<CompiledName("kha_Latn")>] KhaLatn
-                | [<CompiledName("lus_Latn")>] LusLatn
-                | [<CompiledName("mag_Deva")>] MagDeva
-                | [<CompiledName("mai_Deva")>] MaiDeva
-                | [<CompiledName("mal_Mlym")>] MalMlym
-                | [<CompiledName("mar_Deva")>] MarDeva
-                | [<CompiledName("mni_Beng")>] MniBeng
-                | [<CompiledName("mni_Mtei")>] MniMtei
-                | [<CompiledName("npi_Deva")>] NpiDeva
-                | [<CompiledName("ory_Orya")>] OryOrya
-                | [<CompiledName("pan_Guru")>] PanGuru
-                | [<CompiledName("san_Deva")>] SanDeva
-                | [<CompiledName("sat_Olck")>] SatOlck
-                | [<CompiledName("snd_Arab")>] SndArab
-                | [<CompiledName("snd_Deva")>] SndDeva
-                | [<CompiledName("tam_Taml")>] TamTaml
-                | [<CompiledName("tel_Telu")>] TelTelu
-                | [<CompiledName("urd_Arab")>] UrdArab
-                | [<CompiledName("unr_Deva")>] UnrDeva
+            type _Lit10 =
+                abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
 
-            type _Lit67 =
-                abstract content: option<U3<ResizeArray<_Lit69>, _Lit69, string>> with get, set
+                abstract tools:
+                    option<U3<ResizeArray<AiTextGenerationToolInput>, ResizeArray<AiTextGenerationToolLegacyInput>, obj>> with get, set
 
-                [<EmitProperty("tool_call_id")>]
-                abstract toolCallId: option<D1SessionBookmark> with get, set
+                [<EmitProperty("response_format")>]
+                abstract responseFormat: option<AiTextGenerationResponseFormat> with get, set
 
-                abstract role: option<D1SessionBookmark> with get, set
+                abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
 
-            type _Lit72 =
-                [<EmitProperty("function")>]
-                abstract ``function``: _Lit73 with get, set
+                [<EmitProperty("presence_penalty")>]
+                abstract presencePenalty: option<float> with get, set
+
+                [<EmitProperty("frequency_penalty")>]
+                abstract frequencyPenalty: option<float> with get, set
+
+                [<EmitProperty("repetition_penalty")>]
+                abstract repetitionPenalty: option<float> with get, set
+
+                abstract seed: option<float> with get, set
+
+                [<EmitProperty("top_k")>]
+                abstract topK: option<float> with get, set
+
+                [<EmitProperty("top_p")>]
+                abstract topP: option<float> with get, set
+
+                abstract temperature: option<float> with get, set
+
+                [<EmitProperty("max_tokens")>]
+                abstract maxTokens: option<float> with get, set
+
+                abstract stream: option<bool> with get, set
+                abstract raw: option<bool> with get, set
+                abstract prompt: option<D1SessionBookmark> with get, set
+
+            type _Lit13 =
+                [<EmitProperty("json_schema")>]
+                abstract jsonSchema: option<obj> with get, set
 
                 [<EmitProperty("type")>]
                 abstract ``type``: D1SessionBookmark with get, set
 
-            type _Lit83 =
-                abstract text: option<D1SessionBookmark> with get, set
+            type _Lit24 =
+                abstract usage: option<UsageTags> with get, set
+
+                [<EmitProperty("tool_calls")>]
+                abstract toolCalls: option<_Lit25> with get, set
+
+                abstract response: option<D1SessionBookmark> with get, set
+
+            type _Lit25 = interface end
+
+            type _Lit29 =
+                [<EmitProperty("total_tokens")>]
+                abstract totalTokens: float with get, set
+
+                [<EmitProperty("completion_tokens")>]
+                abstract completionTokens: float with get, set
+
+                [<EmitProperty("prompt_tokens")>]
+                abstract promptTokens: float with get, set
+
+            type _Lit178 =
+                [<EmitProperty("json_schema")>]
+                abstract jsonSchema: _Lit179 with get, set
 
                 [<EmitProperty("type")>]
-                abstract ``type``: option<D1SessionBookmark> with get, set
+                abstract ``type``: _Lit178.Type with get, set
 
-            type _Lit81 =
-                abstract content: U2<ResizeArray<_Lit83>, string> with get, set
-                abstract role: D1SessionBookmark with get, set
-
-            type _Lit115 =
-                [<EmitProperty("prompt_logprobs")>]
-                abstract promptLogprobs: option<obj> with get, set
-
-                abstract logprobs: option<obj> with get, set
-
-                [<EmitProperty("stop_reason")>]
-                abstract stopReason: option<string> with get, set
-
-                [<EmitProperty("finish_reason")>]
-                abstract finishReason: D1SessionBookmark with get, set
-
-                abstract text: D1SessionBookmark with get, set
-                abstract index: float with get, set
-
-            type _Lit108 =
-                abstract arguments: option<obj> with get, set
-                abstract name: option<D1SessionBookmark> with get, set
-
-            type _Lit107 =
-                [<EmitProperty("function")>]
-                abstract ``function``: option<_Lit108> with get, set
-
+            type _Lit176 =
                 [<EmitProperty("type")>]
-                abstract ``type``: option<D1SessionBookmark> with get, set
+                abstract ``type``: _Lit176.Type with get, set
 
-                abstract id: option<D1SessionBookmark> with get, set
+            type _Lit149 =
+                [<EmitProperty("include_obfuscation")>]
+                abstract includeObfuscation: option<bool> with get, set
 
-            type _Lit4 =
-                abstract lang: option<D1SessionBookmark> with get, set
-                abstract prompt: D1SessionBookmark with get, set
+            type _Lit150 =
+                abstract verbosity: option<_Lit156> with get, set
+                abstract format: option<ResponseFormatTextConfig> with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit302 =
-                | [<CompiledName("sirio")>] Sirio
-                | [<CompiledName("nestor")>] Nestor
-                | [<CompiledName("carina")>] Carina
-                | [<CompiledName("celeste")>] Celeste
-                | [<CompiledName("alvaro")>] Alvaro
-                | [<CompiledName("diana")>] Diana
-                | [<CompiledName("aquila")>] Aquila
-                | [<CompiledName("selena")>] Selena
-                | [<CompiledName("estrella")>] Estrella
-                | [<CompiledName("javier")>] Javier
-
-            type _Lit143 =
-                abstract summary: option<_Lit146> with get, set
-
-                [<EmitProperty("generate_summary")>]
-                abstract generateSummary: option<_Lit146> with get, set
-
-                abstract effort: option<_Lit144> with get, set
-
-            type _Lit300 =
-                abstract confidence: float with get, set
-                abstract word: D1SessionBookmark with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit299 =
-                | Update
-                | StartOfTurn
-                | EagerEndOfTurn
-                | TurnResumed
-                | EndOfTurn
-
-            type _Lit129 =
-                abstract dtype: option<_Lit130> with get, set
-                abstract audio: _Lit116 with get, set
+            type _Lit152 =
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit152.Type with get, set
 
             type _Lit153 =
                 abstract strict: option<bool> with get, set
@@ -3067,49 +2659,119 @@ module rec Cloudflare =
                 abstract schema: _Lit154 with get, set
                 abstract name: D1SessionBookmark with get, set
 
-            type _Lit150 =
-                abstract verbosity: option<_Lit156> with get, set
-                abstract format: option<ResponseFormatTextConfig> with get, set
-
-            type _Lit152 =
+            type _Lit155 =
                 [<EmitProperty("type")>]
-                abstract ``type``: _Lit152.Type with get, set
+                abstract ``type``: _Lit155.Type with get, set
 
-            type _Lit149 =
-                [<EmitProperty("include_obfuscation")>]
-                abstract includeObfuscation: option<bool> with get, set
+            type _Lit158 =
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit158.Type with get, set
 
-            type _Lit3 =
-                abstract seed: option<float> with get, set
-                abstract guidance: option<float> with get, set
-                abstract strength: option<float> with get, set
+                abstract name: D1SessionBookmark with get, set
 
-                [<EmitProperty("num_steps")>]
-                abstract numSteps: option<float> with get, set
+            type _Lit159 =
+                abstract description: option<string> with get, set
 
-                abstract mask: option<AiSentenceSimilarityOutput> with get, set
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit159.Type with get, set
 
-                [<EmitProperty("image_b64")>]
-                abstract imageB64: option<D1SessionBookmark> with get, set
+                abstract strict: option<bool> with get, set
+                abstract parameters: option<_Lit154> with get, set
+                abstract name: D1SessionBookmark with get, set
 
-                abstract image: option<AiSentenceSimilarityOutput> with get, set
-                abstract width: option<float> with get, set
-                abstract height: option<float> with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit161 =
+                | [<CompiledName("auto")>] Auto
+                | [<CompiledName("disabled")>] Disabled
 
-                [<EmitProperty("negative_prompt")>]
-                abstract negativePrompt: option<D1SessionBookmark> with get, set
+            type _Lit238 =
+                abstract message: D1SessionBookmark with get, set
+                abstract code: _Lit239 with get, set
 
-                abstract prompt: D1SessionBookmark with get, set
+            type _Lit241 =
+                abstract reason: option<_Lit242> with get, set
 
-            type _Lit95 =
+            type _Lit143 =
+                abstract summary: option<_Lit146> with get, set
+
+                [<EmitProperty("generate_summary")>]
+                abstract generateSummary: option<_Lit146> with get, set
+
+                abstract effort: option<_Lit144> with get, set
+
+            type _Lit271 =
+                [<EmitProperty("image_url")>]
+                abstract imageUrl: option<string> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit271.Type with get, set
+
+                abstract detail: RequestPriority with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit301 =
+                | [<CompiledName("amalthea")>] Amalthea
+                | [<CompiledName("andromeda")>] Andromeda
+                | [<CompiledName("apollo")>] Apollo
+                | [<CompiledName("arcas")>] Arcas
+                | [<CompiledName("aries")>] Aries
+                | [<CompiledName("asteria")>] Asteria
+                | [<CompiledName("athena")>] Athena
+                | [<CompiledName("atlas")>] Atlas
+                | [<CompiledName("aurora")>] Aurora
+                | [<CompiledName("callista")>] Callista
+                | [<CompiledName("cora")>] Cora
+                | [<CompiledName("cordelia")>] Cordelia
+                | [<CompiledName("delia")>] Delia
+                | [<CompiledName("draco")>] Draco
+                | [<CompiledName("electra")>] Electra
+                | [<CompiledName("harmonia")>] Harmonia
+                | [<CompiledName("helena")>] Helena
+                | [<CompiledName("hera")>] Hera
+                | [<CompiledName("hermes")>] Hermes
+                | [<CompiledName("hyperion")>] Hyperion
+                | [<CompiledName("iris")>] Iris
+                | [<CompiledName("janus")>] Janus
+                | [<CompiledName("juno")>] Juno
+                | [<CompiledName("jupiter")>] Jupiter
+                | [<CompiledName("luna")>] Luna
+                | [<CompiledName("mars")>] Mars
+                | [<CompiledName("minerva")>] Minerva
+                | [<CompiledName("neptune")>] Neptune
+                | [<CompiledName("odysseus")>] Odysseus
+                | [<CompiledName("ophelia")>] Ophelia
+                | [<CompiledName("orion")>] Orion
+                | [<CompiledName("orpheus")>] Orpheus
+                | [<CompiledName("pandora")>] Pandora
+                | [<CompiledName("phoebe")>] Phoebe
+                | [<CompiledName("pluto")>] Pluto
+                | [<CompiledName("saturn")>] Saturn
+                | [<CompiledName("thalia")>] Thalia
+                | [<CompiledName("theia")>] Theia
+                | [<CompiledName("vesta")>] Vesta
+                | [<CompiledName("zeus")>] Zeus
+
+            type _Lit270 =
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit270.Type with get, set
+
+                abstract text: D1SessionBookmark with get, set
+
+            type _Lit106 =
                 [<EmitProperty("tool_calls")>]
-                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
+                abstract toolCalls: option<ResizeArray<_Lit107>> with get, set
 
                 abstract usage: option<_Lit87> with get, set
                 abstract response: D1SessionBookmark with get, set
 
-            type _Lit7 =
-                abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
+            type _Lit27 =
+                [<EmitProperty("function")>]
+                abstract ``function``: _Lit28 with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit27.Type with get, set
+
+                abstract id: D1SessionBookmark with get, set
 
             type _Lit113 =
                 [<EmitProperty("tool_calls")>]
@@ -3133,27 +2795,365 @@ module rec Cloudflare =
                 abstract message: option<_Lit113> with get, set
                 abstract index: option<float> with get, set
 
+            type _Lit9 =
+                abstract image: AiSentenceSimilarityOutput with get, set
+
+            type _Lit133 =
+                abstract Item: key: D1SessionBookmark -> option<obj>
+
+            type _Lit135 =
+                abstract Item: key: D1SessionBookmark -> option<obj>
+
+            type _Lit30 =
+                [<EmitProperty("max_length")>]
+                abstract maxLength: option<float> with get, set
+
+                [<EmitProperty("input_text")>]
+                abstract inputText: D1SessionBookmark with get, set
+
+            type _Lit31 =
+                abstract summary: D1SessionBookmark with get, set
+
+            type _Lit163 =
+                abstract requests: option<unit> with get, set
+                abstract messages: option<unit> with get, set
+                abstract functions: option<ResizeArray<FunctionDefinition>> with get, set
+
+                [<EmitProperty("function_call")>]
+                abstract functionCall: option<U2<_Lit163.FunctionCall, _Lit184>> with get, set
+
+                [<EmitProperty("web_search_options")>]
+                abstract webSearchOptions: option<WebSearchOptions> with get, set
+
+                abstract user: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("top_p")>]
+                abstract topP: option<float> with get, set
+
+                abstract tools: option<ResizeArray<ChatCompletionTool>> with get, set
+
+                [<EmitProperty("tool_choice")>]
+                abstract toolChoice: option<ChatCompletionToolChoiceOption> with get, set
+
+                abstract temperature: option<float> with get, set
+
+                [<EmitProperty("stream_options")>]
+                abstract streamOptions: option<ChatCompletionsStreamOptions> with get, set
+
+                abstract stream: option<bool> with get, set
+                abstract store: option<bool> with get, set
+                abstract stop: option<U2<ResizeArray<D1SessionBookmark>, string>> with get, set
+
+                [<EmitProperty("service_tier")>]
+                abstract serviceTier: option<_Lit147> with get, set
+
+                abstract seed: option<float> with get, set
+
+                [<EmitProperty("response_format")>]
+                abstract responseFormat: option<ResponseFormat> with get, set
+
+                [<EmitProperty("chat_template_kwargs")>]
+                abstract chatTemplateKwargs: option<ChatTemplateKwargs> with get, set
+
+                [<EmitProperty("reasoning_effort")>]
+                abstract reasoningEffort: option<_Lit156> with get, set
+
+                [<EmitProperty("presence_penalty")>]
+                abstract presencePenalty: option<float> with get, set
+
+                abstract prediction: option<PredictionContent> with get, set
+
+                [<EmitProperty("parallel_tool_calls")>]
+                abstract parallelToolCalls: option<bool> with get, set
+
+                abstract n: option<float> with get, set
+                abstract modalities: option<ResizeArray<_Lit171>> with get, set
+                abstract metadata: option<Typescript.Headers._Lit5> with get, set
+
+                [<EmitProperty("max_completion_tokens")>]
+                abstract maxCompletionTokens: option<float> with get, set
+
+                [<EmitProperty("max_tokens")>]
+                abstract maxTokens: option<float> with get, set
+
+                [<EmitProperty("top_logprobs")>]
+                abstract topLogprobs: option<float> with get, set
+
+                abstract logprobs: option<bool> with get, set
+
+                [<EmitProperty("logit_bias")>]
+                abstract logitBias: option<Typescript.Headers._Lit5> with get, set
+
+                [<EmitProperty("frequency_penalty")>]
+                abstract frequencyPenalty: option<float> with get, set
+
+                abstract audio: option<AudioParams> with get, set
+                abstract model: option<D1SessionBookmark> with get, set
+                abstract prompt: D1SessionBookmark with get, set
+
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit130 =
-                | [<CompiledName("uint8")>] Uint8
-                | [<CompiledName("float32")>] Float32
-                | [<CompiledName("float64")>] Float64
+            type _Lit171 =
+                | [<CompiledName("audio")>] Audio
+                | [<CompiledName("text")>] Text
+
+            type _Lit177 =
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit177.Type with get, set
+
+            type _Lit253 =
+                abstract status: option<_Lit251> with get, set
+
+                [<EmitProperty("encrypted_content")>]
+                abstract encryptedContent: option<string> with get, set
+
+                abstract content: option<ResizeArray<ResponseReasoningContentItem>> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit253.Type with get, set
+
+                abstract summary: ResizeArray<ResponseReasoningSummaryItem> with get, set
+                abstract id: D1SessionBookmark with get, set
+
+            type _Lit254 =
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit254.Type with get, set
+
+                abstract text: D1SessionBookmark with get, set
+
+            type _Lit255 =
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit255.Type with get, set
+
+                abstract text: D1SessionBookmark with get, set
+
+            type _Lit256 =
+                [<EmitProperty("type")>]
+                abstract ``type``: option<_Lit256.Type> with get, set
+
+                abstract role: _Lit258 with get, set
+                abstract content: U2<ResizeArray<'T>, string> with get, set
+
+            type _Lit259 =
+                [<EmitProperty("type")>]
+                abstract ``type``: option<_Lit259.Type> with get, set
+
+                abstract status: option<_Lit251> with get, set
+                abstract role: _Lit260 with get, set
+                abstract content: ResponseInputMessageContentList with get, set
+
+            type _Lit261 =
+                abstract status: option<_Lit263> with get, set
+                abstract id: option<string> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit261.Type with get, set
+
+                abstract output: U2<ResizeArray<'T>, string> with get, set
+
+                [<EmitProperty("call_id")>]
+                abstract callId: D1SessionBookmark with get, set
+
+            type _Lit266 =
+                abstract version: option<string> with get, set
+                abstract variables: option<_Lit268> with get, set
+                abstract id: D1SessionBookmark with get, set
+
+            type _Lit268 =
+                abstract Item: key: D1SessionBookmark -> U3<_Lit270, _Lit271, string>
+
+            type _Lit273 =
+                [<EmitProperty("total_tokens")>]
+                abstract totalTokens: float with get, set
+
+                [<EmitProperty("output_tokens")>]
+                abstract outputTokens: float with get, set
+
+                [<EmitProperty("input_tokens")>]
+                abstract inputTokens: float with get, set
 
             type _Lit1 =
                 abstract text: D1SessionBookmark with get, set
+
+            type _Lit4 =
+                abstract lang: option<D1SessionBookmark> with get, set
+                abstract prompt: D1SessionBookmark with get, set
+
+            type _Lit3 =
+                abstract seed: option<float> with get, set
+                abstract guidance: option<float> with get, set
+                abstract strength: option<float> with get, set
+
+                [<EmitProperty("num_steps")>]
+                abstract numSteps: option<float> with get, set
+
+                abstract mask: option<AiSentenceSimilarityOutput> with get, set
+
+                [<EmitProperty("image_b64")>]
+                abstract imageB64: option<D1SessionBookmark> with get, set
+
+                abstract image: option<AiSentenceSimilarityOutput> with get, set
+                abstract width: option<float> with get, set
+                abstract height: option<float> with get, set
+
+                [<EmitProperty("negative_prompt")>]
+                abstract negativePrompt: option<D1SessionBookmark> with get, set
+
+                abstract prompt: D1SessionBookmark with get, set
+
+            type _Lit72 =
+                [<EmitProperty("function")>]
+                abstract ``function``: _Lit73 with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: D1SessionBookmark with get, set
+
+            type _Lit224 =
+                [<EmitProperty("function")>]
+                abstract ``function``: _Lit28 with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit224.Type with get, set
+
+                abstract id: D1SessionBookmark with get, set
+
+            type _Lit225 =
+                abstract custom: _Lit226 with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit225.Type with get, set
+
+                abstract id: D1SessionBookmark with get, set
+
+            type _Lit221 =
+                abstract refusal: option<D1SessionBookmark> with get, set
+                abstract text: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit222 with get, set
+
+            type _Lit73 =
+                abstract parameters: _Lit74 with get, set
+                abstract description: D1SessionBookmark with get, set
+                abstract name: D1SessionBookmark with get, set
+
+            type _Lit53 =
+                [<EmitProperty("max_tokens")>]
+                abstract maxTokens: option<float> with get, set
+
+                abstract image: U2<Ai._Lit94, ResizeArray<float>> with get, set
+
+                [<EmitProperty("presence_penalty")>]
+                abstract presencePenalty: option<float> with get, set
+
+                [<EmitProperty("frequency_penalty")>]
+                abstract frequencyPenalty: option<float> with get, set
+
+                [<EmitProperty("repetition_penalty")>]
+                abstract repetitionPenalty: option<float> with get, set
+
+                abstract seed: option<float> with get, set
+
+                [<EmitProperty("top_k")>]
+                abstract topK: option<float> with get, set
+
+                [<EmitProperty("top_p")>]
+                abstract topP: option<float> with get, set
+
+                abstract raw: option<bool> with get, set
+                abstract prompt: option<D1SessionBookmark> with get, set
 
             type _Lit8 =
                 abstract data: ResizeArray<AiSentenceSimilarityOutput> with get, set
                 abstract shape: AiSentenceSimilarityOutput with get, set
 
-            type _Lit27 =
+            type _Lit7 =
+                abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
+
+            type _Lit15 =
                 [<EmitProperty("function")>]
-                abstract ``function``: _Lit28 with get, set
+                abstract ``function``: _Lit17 with get, set
 
                 [<EmitProperty("type")>]
-                abstract ``type``: _Lit27.Type with get, set
+                abstract ``type``: U2<_Lit15.Type, Ai._Lit94> with get, set
 
-                abstract id: D1SessionBookmark with get, set
+            type _Lit23 =
+                abstract code: D1SessionBookmark with get, set
+                abstract name: D1SessionBookmark with get, set
+
+            type _Lit74 =
+                abstract properties: _Lit75 with get, set
+                abstract required: option<ResizeArray<D1SessionBookmark>> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: D1SessionBookmark with get, set
+
+            type _Lit95 =
+                [<EmitProperty("tool_calls")>]
+                abstract toolCalls: option<ResizeArray<_Lit78>> with get, set
+
+                abstract usage: option<_Lit87> with get, set
+                abstract response: D1SessionBookmark with get, set
+
+            type _Lit22 =
+                abstract parameters: option<_Lit18> with get, set
+                abstract description: D1SessionBookmark with get, set
+                abstract name: D1SessionBookmark with get, set
+
+            type _Lit81 =
+                abstract content: U2<ResizeArray<_Lit83>, string> with get, set
+                abstract role: D1SessionBookmark with get, set
+
+            type _Lit88 =
+                abstract content: D1SessionBookmark with get, set
+                abstract role: _Lit89 with get, set
+
+            type _Lit75 =
+                abstract Item: k: D1SessionBookmark -> _Lit76
+
+            type _Lit94 =
+                abstract content: D1SessionBookmark with get, set
+                abstract role: D1SessionBookmark with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit299 =
+                | Update
+                | StartOfTurn
+                | EagerEndOfTurn
+                | TurnResumed
+                | EndOfTurn
+
+            type _Lit300 =
+                abstract confidence: float with get, set
+                abstract word: D1SessionBookmark with get, set
+
+            type _Lit11 =
+                abstract name: option<D1SessionBookmark> with get, set
+                abstract content: D1SessionBookmark with get, set
+                abstract role: U2<_Lit11.Role, Ai._Lit94> with get, set
+
+            type _Lit45 =
+                [<EmitProperty("target_lang")>]
+                abstract targetLang: D1SessionBookmark with get, set
+
+                [<EmitProperty("source_lang")>]
+                abstract sourceLang: option<D1SessionBookmark> with get, set
+
+                abstract text: D1SessionBookmark with get, set
+
+            type _Lit83 =
+                abstract text: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: option<D1SessionBookmark> with get, set
+
+            type _Lit76 =
+                abstract description: D1SessionBookmark with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: D1SessionBookmark with get, set
+
+            type _Lit44 =
+                abstract requests: ResizeArray<_Lit45> with get, set
 
         module rec AiSearchConfig =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -3167,11 +3167,9 @@ module rec Cloudflare =
                     module rec Update =
                         module rec Config =
                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type CacheThreshold =
-                                | [<CompiledName("super_strict_match")>] SuperStrictMatch
-                                | [<CompiledName("close_enough")>] CloseEnough
-                                | [<CompiledName("flexible_friend")>] FlexibleFriend
-                                | [<CompiledName("anything_goes")>] AnythingGoes
+                            type FusionMethod =
+                                | [<CompiledName("max")>] Max
+                                | [<CompiledName("rrf")>] Rrf
 
                             type SyncInterval =
                                 | ``3600`` = 3600
@@ -3182,9 +3180,11 @@ module rec Cloudflare =
                                 | ``86400`` = 86400
 
                             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type FusionMethod =
-                                | [<CompiledName("max")>] Max
-                                | [<CompiledName("rrf")>] Rrf
+                            type CacheThreshold =
+                                | [<CompiledName("super_strict_match")>] SuperStrictMatch
+                                | [<CompiledName("close_enough")>] CloseEnough
+                                | [<CompiledName("flexible_friend")>] FlexibleFriend
+                                | [<CompiledName("anything_goes")>] AnythingGoes
 
                 type Config =
                     abstract metadata: option<Typescript.Headers._Lit5> with get, set
@@ -3278,6 +3278,10 @@ module rec Cloudflare =
             type Name = | AlreadyUploadedError
 
         module rec Artifacts =
+            type _Lit9 =
+                abstract cursor: option<D1SessionBookmark> with get, set
+                abstract limit: option<float> with get, set
+
             type _Lit4 =
                 abstract defaultBranchOnly: option<bool> with get, set
                 abstract readOnly: option<bool> with get, set
@@ -3288,10 +3292,9 @@ module rec Cloudflare =
                 | [<CompiledName("write")>] Write
                 | [<CompiledName("read")>] Read
 
-            type _Lit1 =
-                abstract setDefaultBranch: option<D1SessionBookmark> with get, set
-                abstract description: option<D1SessionBookmark> with get, set
-                abstract readOnly: option<bool> with get, set
+            type _Lit5 =
+                abstract target: _Lit7 with get, set
+                abstract source: _Lit6 with get, set
 
             type _Lit6 =
                 abstract depth: option<float> with get, set
@@ -3302,23 +3305,20 @@ module rec Cloudflare =
                 abstract opts: option<_Lit8> with get, set
                 abstract name: D1SessionBookmark with get, set
 
+            type _Lit1 =
+                abstract setDefaultBranch: option<D1SessionBookmark> with get, set
+                abstract description: option<D1SessionBookmark> with get, set
+                abstract readOnly: option<bool> with get, set
+
             type _Lit8 =
                 abstract readOnly: option<bool> with get, set
                 abstract description: option<D1SessionBookmark> with get, set
-
-            type _Lit9 =
-                abstract cursor: option<D1SessionBookmark> with get, set
-                abstract limit: option<float> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit3 =
                 | [<CompiledName("active")>] Active
                 | [<CompiledName("expired")>] Expired
                 | [<CompiledName("revoked")>] Revoked
-
-            type _Lit5 =
-                abstract target: _Lit7 with get, set
-                abstract source: _Lit6 with get, set
 
         module rec ArtifactsRepoListResult =
             type Repos =
@@ -3347,11 +3347,19 @@ module rec Cloudflare =
 
             module rec _Lit14 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Stream = | [<CompiledValue(true)>] True
 
             module rec _Lit22 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Object = | [<CompiledName("vector_store.search_results.page")>] VectorStoreSearchResultsPage
+
+            type _Lit6 =
+                abstract value: U3<bool, float, string> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit7 with get, set
+
+                abstract key: D1SessionBookmark with get, set
 
             type _Lit13 =
                 abstract text: D1SessionBookmark with get, set
@@ -3359,29 +3367,50 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: _Lit13.Type with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit5 =
-                | [<CompiledName("and")>] And
-                | [<CompiledName("or")>] Or
+            type _Lit20 =
+                [<EmitProperty("system_prompt")>]
+                abstract systemPrompt: option<D1SessionBookmark> with get, set
+
+                abstract stream: option<bool> with get, set
+
+                [<EmitProperty("rewrite_query")>]
+                abstract rewriteQuery: option<bool> with get, set
+
+                abstract reranking: option<_Lit9> with get, set
+
+                [<EmitProperty("ranking_options")>]
+                abstract rankingOptions: option<_Lit8> with get, set
+
+                [<EmitProperty("max_num_results")>]
+                abstract maxNumResults: option<float> with get, set
+
+                abstract filters: option<U2<_Lit4, _Lit6>> with get, set
+                abstract query: D1SessionBookmark with get, set
 
             type _Lit9 =
                 abstract model: option<D1SessionBookmark> with get, set
                 abstract enabled: option<bool> with get, set
 
-            type _Lit1 =
-                abstract status: D1SessionBookmark with get, set
-                abstract paused: bool with get, set
+            type _Lit22 =
+                abstract response: D1SessionBookmark with get, set
 
-                [<EmitProperty("vectorize_name")>]
-                abstract vectorizeName: D1SessionBookmark with get, set
+                [<EmitProperty("next_page")>]
+                abstract nextPage: option<string> with get, set
 
-                abstract source: D1SessionBookmark with get, set
+                [<EmitProperty("has_more")>]
+                abstract hasMore: bool with get, set
 
-                [<EmitProperty("type")>]
-                abstract ``type``: D1SessionBookmark with get, set
+                abstract data: ResizeArray<_Lit11> with get, set
 
-                abstract enable: bool with get, set
-                abstract id: D1SessionBookmark with get, set
+                [<EmitProperty("search_query")>]
+                abstract searchQuery: D1SessionBookmark with get, set
+
+                abstract object: _Lit22.Object with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit5 =
+                | [<CompiledName("and")>] And
+                | [<CompiledName("or")>] Or
 
             type _Lit2 =
                 [<EmitProperty("rewrite_query")>]
@@ -3398,11 +3427,41 @@ module rec Cloudflare =
                 abstract filters: option<U2<_Lit4, _Lit6>> with get, set
                 abstract query: D1SessionBookmark with get, set
 
+            type _Lit8 =
+                [<EmitProperty("score_threshold")>]
+                abstract scoreThreshold: option<float> with get, set
+
+                abstract ranker: option<D1SessionBookmark> with get, set
+
+            type _Lit1 =
+                abstract status: D1SessionBookmark with get, set
+                abstract paused: bool with get, set
+
+                [<EmitProperty("vectorize_name")>]
+                abstract vectorizeName: D1SessionBookmark with get, set
+
+                abstract source: D1SessionBookmark with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: D1SessionBookmark with get, set
+
+                abstract enable: bool with get, set
+                abstract id: D1SessionBookmark with get, set
+
             type _Lit4 =
                 abstract filters: ResizeArray<ComparisonFilter> with get, set
 
                 [<EmitProperty("type")>]
                 abstract ``type``: _Lit5 with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit7 =
+                | [<CompiledName("eq")>] Eq
+                | [<CompiledName("gt")>] Gt
+                | [<CompiledName("gte")>] Gte
+                | [<CompiledName("lt")>] Lt
+                | [<CompiledName("lte")>] Lte
+                | [<CompiledName("ne")>] Ne
 
             type _Lit10 =
                 [<EmitProperty("next_page")>]
@@ -3427,14 +3486,6 @@ module rec Cloudflare =
                 [<EmitProperty("file_id")>]
                 abstract fileId: D1SessionBookmark with get, set
 
-            type _Lit6 =
-                abstract value: U3<bool, float, string> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit7 with get, set
-
-                abstract key: D1SessionBookmark with get, set
-
             type _Lit14 =
                 abstract stream: _Lit14.Stream with get, set
 
@@ -3455,60 +3506,9 @@ module rec Cloudflare =
                 abstract filters: option<U2<_Lit4, _Lit6>> with get, set
                 abstract query: D1SessionBookmark with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit7 =
-                | [<CompiledName("eq")>] Eq
-                | [<CompiledName("gt")>] Gt
-                | [<CompiledName("gte")>] Gte
-                | [<CompiledName("lt")>] Lt
-                | [<CompiledName("lte")>] Lte
-                | [<CompiledName("ne")>] Ne
-
-            type _Lit22 =
-                abstract response: D1SessionBookmark with get, set
-
-                [<EmitProperty("next_page")>]
-                abstract nextPage: option<string> with get, set
-
-                [<EmitProperty("has_more")>]
-                abstract hasMore: bool with get, set
-
-                abstract data: ResizeArray<_Lit11> with get, set
-
-                [<EmitProperty("search_query")>]
-                abstract searchQuery: D1SessionBookmark with get, set
-
-                abstract object: _Lit22.Object with get, set
-
-            type _Lit8 =
-                [<EmitProperty("score_threshold")>]
-                abstract scoreThreshold: option<float> with get, set
-
-                abstract ranker: option<D1SessionBookmark> with get, set
-
-            type _Lit20 =
-                [<EmitProperty("system_prompt")>]
-                abstract systemPrompt: option<D1SessionBookmark> with get, set
-
-                abstract stream: option<bool> with get, set
-
-                [<EmitProperty("rewrite_query")>]
-                abstract rewriteQuery: option<bool> with get, set
-
-                abstract reranking: option<_Lit9> with get, set
-
-                [<EmitProperty("ranking_options")>]
-                abstract rankingOptions: option<_Lit8> with get, set
-
-                [<EmitProperty("max_num_results")>]
-                abstract maxNumResults: option<float> with get, set
-
-                abstract filters: option<U2<_Lit4, _Lit6>> with get, set
-                abstract query: D1SessionBookmark with get, set
-
         module rec AutoRagAiSearchRequestStreaming =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type QueueRequest = | [<CompiledValue(true)>] True
+            type Stream = | [<CompiledValue(true)>] True
 
         module rec AutoRagAiSearchResponse =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -3543,63 +3543,6 @@ module rec Cloudflare =
             module rec PostProcessedOutputs =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Object = | [<CompiledName("response")>] Response
-
-            type PostProcessedOutputs =
-                [<EmitProperty("system_fingerprint")>]
-                abstract systemFingerprint: option<unit> with get, set
-
-                abstract choices: option<unit> with get, set
-                abstract created: option<unit> with get, set
-                abstract model: option<unit> with get, set
-                abstract usage: option<ResponseUsage> with get, set
-                abstract truncation: option<AiModels._Lit161> with get, set
-                abstract text: option<ResponseTextConfig> with get, set
-                abstract status: option<ResponseStatus> with get, set
-
-                [<EmitProperty("service_tier")>]
-                abstract serviceTier: option<AiModels._Lit147> with get, set
-
-                [<EmitProperty("safety_identifier")>]
-                abstract safetyIdentifier: option<D1SessionBookmark> with get, set
-
-                abstract reasoning: option<AiModels._Lit143> with get, set
-                abstract prompt: option<AiModels._Lit266> with get, set
-
-                [<EmitProperty("previous_response_id")>]
-                abstract previousResponseId: option<string> with get, set
-
-                [<EmitProperty("max_output_tokens")>]
-                abstract maxOutputTokens: option<float> with get, set
-
-                [<EmitProperty("top_p")>]
-                abstract topP: option<float> with get, set
-
-                abstract tools: option<ResizeArray<Tool>> with get, set
-
-                [<EmitProperty("tool_choice")>]
-                abstract toolChoice: option<U2<PostProcessedOutputs.ToolChoice, AiModels._Lit158>> with get, set
-
-                abstract temperature: option<float> with get, set
-
-                [<EmitProperty("parallel_tool_calls")>]
-                abstract parallelToolCalls: option<bool> with get, set
-
-                abstract output: option<ResizeArray<ResponseOutputItem>> with get, set
-                abstract object: option<PostProcessedOutputs.Object> with get, set
-                abstract instructions: option<U2<ResizeArray<ResponseInputItem>, string>> with get, set
-
-                [<EmitProperty("incomplete_details")>]
-                abstract incompleteDetails: option<AiModels._Lit241> with get, set
-
-                abstract error: option<AiModels._Lit238> with get, set
-
-                [<EmitProperty("output_text")>]
-                abstract outputText: option<D1SessionBookmark> with get, set
-
-                [<EmitProperty("created_at")>]
-                abstract createdAt: option<float> with get, set
-
-                abstract id: option<D1SessionBookmark> with get, set
 
             type Inputs =
                 abstract requests: option<unit> with get, set
@@ -3698,7 +3641,67 @@ module rec Cloudflare =
                 abstract conversation: option<U2<AiModels._Lit138, string>> with get, set
                 abstract background: option<bool> with get, set
 
+            type PostProcessedOutputs =
+                [<EmitProperty("system_fingerprint")>]
+                abstract systemFingerprint: option<unit> with get, set
+
+                abstract choices: option<unit> with get, set
+                abstract created: option<unit> with get, set
+                abstract model: option<unit> with get, set
+                abstract usage: option<ResponseUsage> with get, set
+                abstract truncation: option<AiModels._Lit161> with get, set
+                abstract text: option<ResponseTextConfig> with get, set
+                abstract status: option<ResponseStatus> with get, set
+
+                [<EmitProperty("service_tier")>]
+                abstract serviceTier: option<AiModels._Lit147> with get, set
+
+                [<EmitProperty("safety_identifier")>]
+                abstract safetyIdentifier: option<D1SessionBookmark> with get, set
+
+                abstract reasoning: option<AiModels._Lit143> with get, set
+                abstract prompt: option<AiModels._Lit266> with get, set
+
+                [<EmitProperty("previous_response_id")>]
+                abstract previousResponseId: option<string> with get, set
+
+                [<EmitProperty("max_output_tokens")>]
+                abstract maxOutputTokens: option<float> with get, set
+
+                [<EmitProperty("top_p")>]
+                abstract topP: option<float> with get, set
+
+                abstract tools: option<ResizeArray<Tool>> with get, set
+
+                [<EmitProperty("tool_choice")>]
+                abstract toolChoice: option<U2<PostProcessedOutputs.ToolChoice, AiModels._Lit158>> with get, set
+
+                abstract temperature: option<float> with get, set
+
+                [<EmitProperty("parallel_tool_calls")>]
+                abstract parallelToolCalls: option<bool> with get, set
+
+                abstract output: option<ResizeArray<ResponseOutputItem>> with get, set
+                abstract object: option<PostProcessedOutputs.Object> with get, set
+                abstract instructions: option<U2<ResizeArray<ResponseInputItem>, string>> with get, set
+
+                [<EmitProperty("incomplete_details")>]
+                abstract incompleteDetails: option<AiModels._Lit241> with get, set
+
+                abstract error: option<AiModels._Lit238> with get, set
+
+                [<EmitProperty("output_text")>]
+                abstract outputText: option<D1SessionBookmark> with get, set
+
+                [<EmitProperty("created_at")>]
+                abstract createdAt: option<float> with get, set
+
+                abstract id: option<D1SessionBookmark> with get, set
+
         module rec BaseAiMultimodalEmbeddings =
+            type _Lit2 =
+                abstract description: D1SessionBookmark with get, set
+
             type _Lit1 =
                 abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
                 abstract raw: option<bool> with get, set
@@ -3731,9 +3734,6 @@ module rec Cloudflare =
                 abstract prompt: option<D1SessionBookmark> with get, set
                 abstract image: D1SessionBookmark with get, set
 
-            type _Lit2 =
-                abstract description: D1SessionBookmark with get, set
-
         module rec BaseAiObjectDetection =
             type _Lit1 =
                 abstract image: AiSentenceSimilarityOutput with get, set
@@ -3754,6 +3754,13 @@ module rec Cloudflare =
                 abstract text: D1SessionBookmark with get, set
 
         module rec BasicImageTransformations =
+            type _Lit2 =
+                | ``0`` = 0
+                | ``90`` = 90
+                | ``180`` = 180
+                | ``270`` = 270
+                | ``360`` = 360
+
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type Gravity =
                 | [<CompiledName("auto")>] Auto
@@ -3764,13 +3771,6 @@ module rec Cloudflare =
                 | [<CompiledName("top")>] Top
                 | [<CompiledName("bottom")>] Bottom
                 | [<CompiledName("entropy")>] Entropy
-
-            type _Lit2 =
-                | ``0`` = 0
-                | ``90`` = 90
-                | ``180`` = 180
-                | ``270`` = 270
-                | ``360`` = 360
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type Segment = | [<CompiledName("foreground")>] Foreground
@@ -3802,6 +3802,9 @@ module rec Cloudflare =
                 abstract detail: option<RequestPriority> with get, set
                 abstract url: D1SessionBookmark with get, set
 
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Type = | [<CompiledName("image_url")>] ImageUrl
+
             type _Lit1 =
                 [<EmitProperty("image_url")>]
                 abstract imageUrl: _Lit2 with get, set
@@ -3809,20 +3812,17 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: _Lit1.Type with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("image_url")>] ImageUrl
-
         module rec ChatCompletionContentPartInputAudio =
             module rec _Lit1 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("input_audio")>] InputAudio
 
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Type = | [<CompiledName("input_audio")>] InputAudio
+
             type _Lit2 =
                 abstract format: AiModels._Lit217 with get, set
                 abstract data: D1SessionBookmark with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("input_audio")>] InputAudio
 
             type _Lit1 =
                 [<EmitProperty("input_audio")>]
@@ -3896,14 +3896,14 @@ module rec Cloudflare =
                 type _Lit1 =
                     abstract Item: key: D1SessionBookmark -> option<obj>
 
+            [<Import("@cloudflare/workers-types.Cloudflare", "GlobalProps")>]
+            type GlobalProps = interface end
+
             type GlobalProp = U2<proptypekey<GlobalProps, 'K>, 'Default>
 
             [<Import("@cloudflare/workers-types.Cloudflare", "Exports")>]
             type Exports =
                 abstract Item: key: D1SessionBookmark -> option<obj>
-
-            [<Import("@cloudflare/workers-types.Cloudflare", "GlobalProps")>]
-            type GlobalProps = interface end
 
             [<Import("@cloudflare/workers-types.Cloudflare", "Env")>]
             type Env = interface end
@@ -3925,41 +3925,6 @@ module rec Cloudflare =
                         abstract instanceId: D1SessionBookmark with get, set
                         abstract timestamp: Date with get, set
                         abstract payload: WebAssembly.ModuleImports with get, set
-
-                type _Lit6 =
-                    abstract timeout:
-                        option<
-                            U15<
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                _Lit6.Timeout,
-                                float
-                             >
-                         > with get, set
-
-                    abstract retries: option<_Lit7> with get, set
-
-                type _Lit14 =
-                    [<EmitProperty("type")>]
-                    abstract ``type``: D1SessionBookmark with get, set
-
-                    abstract timestamp: Date with get, set
-                    abstract payload: WebAssembly.ModuleImports with get, set
-
-                type _Lit5 =
-                    abstract count: float with get, set
-                    abstract name: D1SessionBookmark with get, set
 
                 type _Lit7 =
                     abstract backoff: option<WorkflowBackoff> with get, set
@@ -4010,10 +3975,45 @@ module rec Cloudflare =
                     [<EmitProperty("type")>]
                     abstract ``type``: D1SessionBookmark with get, set
 
+                type _Lit6 =
+                    abstract timeout:
+                        option<
+                            U15<
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                _Lit6.Timeout,
+                                float
+                             >
+                         > with get, set
+
+                    abstract retries: option<_Lit7> with get, set
+
+                type _Lit5 =
+                    abstract count: float with get, set
+                    abstract name: D1SessionBookmark with get, set
+
                 type _Lit4 =
                     abstract config: WorkflowStepConfig with get, set
                     abstract attempt: float with get, set
                     abstract step: _Lit5 with get, set
+
+                type _Lit14 =
+                    [<EmitProperty("type")>]
+                    abstract ``type``: D1SessionBookmark with get, set
+
+                    abstract timestamp: Date with get, set
+                    abstract payload: WebAssembly.ModuleImports with get, set
 
                 type T =
                     [<EmitProperty("[__RPC_STUB_BRAND]")>]
@@ -4031,6 +4031,66 @@ module rec Cloudflare =
                     abstract Item: key: D1SessionBookmark -> option<obj>
                     abstract symbolDispose: unit -> unit
                     abstract dup: unit -> 'StubBase
+
+            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "StepPromise")>]
+            type StepPromise<'T> =
+                inherit Promise<'T>
+
+                abstract rollback:
+                    config: WorkflowStepConfig * fn: RollbackContext<'T> -> Promise<unit> -> StepPromise<'T>
+
+                abstract rollback: fn: RollbackContext<'T> -> Promise<unit> -> StepPromise<'T>
+
+            type WorkflowTimeoutDuration = obj
+
+            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "RollbackContext")>]
+            type RollbackContext<'T> =
+                abstract stepName: D1SessionBookmark with get, set
+                abstract output: option<RollbackContext.Output> with get, set
+                abstract error: exn with get, set
+
+            type TemplateLiteral =
+                abstract Value: string
+                abstract Value: string
+                abstract Create: v0: float -> TemplateLiteral
+                abstract Create: v0: float -> TemplateLiteral
+
+            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowEvent")>]
+            type WorkflowEvent<'T> =
+                abstract instanceId: D1SessionBookmark with get, set
+                abstract timestamp: Date with get, set
+                abstract payload: WebAssembly.ModuleImports with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type WorkflowBackoff =
+                | [<CompiledName("constant")>] Constant
+                | [<CompiledName("linear")>] Linear
+                | [<CompiledName("exponential")>] Exponential
+
+            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "DurableObject");
+              AbstractClass;
+              AllowNullLiteral>]
+            type DurableObject<'Env, 'Props> private () =
+                inherit Rpc.DurableObjectBranded()
+
+                [<EmitConstructor>]
+                abstract Create: ctx: DurableObjectState<option<obj>> * env: 'Env -> DurableObject
+
+                abstract env: 'Env with get, set
+                abstract ctx: DurableObjectState<'Props> with get, set
+
+                [<EmitProperty("[Rpc.__DURABLE_OBJECT_BRAND]")>]
+                abstract rpc_DURABLEOBJECTBRAND: unit with get, set
+
+                abstract webSocketError: ws: obj * ?error: obj -> option<Promise<unit>>
+
+                abstract webSocketClose:
+                    ws: obj * code: float * reason: D1SessionBookmark * wasClean: bool -> option<Promise<unit>>
+
+                abstract webSocketMessage: ws: obj * message: U2<ArrayBuffer, string> -> option<Promise<unit>>
+                abstract connect: socket: Socket -> option<Promise<unit>>
+                abstract fetch: request: obj -> U2<Promise<obj>, obj>
+                abstract alarm: ?alarmInfo: AlarmInvocationInfo -> option<Promise<unit>>
 
             [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowStep");
               AbstractClass;
@@ -4649,158 +4709,6 @@ module rec Cloudflare =
                         string
                      >> : name: D1SessionBookmark * callback: WorkflowStepContext -> Promise<'T> -> StepPromise<'T>
 
-            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkerEntrypoint");
-              AbstractClass;
-              AllowNullLiteral>]
-            type WorkerEntrypoint<'Env, 'Props> private () =
-                inherit Rpc.WorkerEntrypointBranded()
-
-                [<EmitConstructor>]
-                abstract Create: ctx: ExecutionContext<option<obj>> * env: 'Env -> WorkerEntrypoint
-
-                abstract env: 'Env with get, set
-                abstract ctx: ExecutionContext<'Props> with get, set
-
-                [<EmitProperty("[Rpc.__WORKER_ENTRYPOINT_BRAND]")>]
-                abstract rpc_WORKERENTRYPOINTBRAND: unit with get, set
-
-                abstract trace: traces: ResizeArray<TraceItem> -> option<Promise<unit>>
-                abstract test: controller: TestController -> option<Promise<unit>>
-
-                abstract tailStream:
-                    event: TailStream.TailEvent<TailStream.Onset> ->
-                        U3<
-                            Promise<TailStream.TailEventHandlerType>,
-                            TailStream.TailEventHandlerObject._Lit1,
-                            TailStream.TailEvent<'Event> -> option<Promise<unit>>
-                         >
-
-                abstract tail: events: ResizeArray<TraceItem> -> option<Promise<unit>>
-                abstract scheduled: controller: ScheduledController -> option<Promise<unit>>
-                abstract queue: batch: MessageBatch<option<obj>> -> option<Promise<unit>>
-                abstract connect: socket: Socket -> option<Promise<unit>>
-                abstract fetch: request: obj -> U2<Promise<obj>, obj>
-                abstract email: message: ForwardableEmailMessage -> option<Promise<unit>>
-
-            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowStepConfig")>]
-            type WorkflowStepConfig =
-                abstract timeout:
-                    option<
-                        U15<
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            WorkflowStepConfig.Timeout,
-                            float
-                         >
-                     > with get, set
-
-                abstract retries: option<WorkflowEntrypoint._Lit7> with get, set
-
-            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "DurableObject");
-              AbstractClass;
-              AllowNullLiteral>]
-            type DurableObject<'Env, 'Props> private () =
-                inherit Rpc.DurableObjectBranded()
-
-                [<EmitConstructor>]
-                abstract Create: ctx: DurableObjectState<option<obj>> * env: 'Env -> DurableObject
-
-                abstract env: 'Env with get, set
-                abstract ctx: DurableObjectState<'Props> with get, set
-
-                [<EmitProperty("[Rpc.__DURABLE_OBJECT_BRAND]")>]
-                abstract rpc_DURABLEOBJECTBRAND: unit with get, set
-
-                abstract webSocketError: ws: obj * ?error: obj -> option<Promise<unit>>
-
-                abstract webSocketClose:
-                    ws: obj * code: float * reason: D1SessionBookmark * wasClean: bool -> option<Promise<unit>>
-
-                abstract webSocketMessage: ws: obj * message: U2<ArrayBuffer, string> -> option<Promise<unit>>
-                abstract connect: socket: Socket -> option<Promise<unit>>
-                abstract fetch: request: obj -> U2<Promise<obj>, obj>
-                abstract alarm: ?alarmInfo: AlarmInvocationInfo -> option<Promise<unit>>
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type WorkflowBackoff =
-                | [<CompiledName("constant")>] Constant
-                | [<CompiledName("linear")>] Linear
-                | [<CompiledName("exponential")>] Exponential
-
-            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowEvent")>]
-            type WorkflowEvent<'T> =
-                abstract instanceId: D1SessionBookmark with get, set
-                abstract timestamp: Date with get, set
-                abstract payload: WebAssembly.ModuleImports with get, set
-
-            type WithEnvAndExports =
-                abstract Invoke: ?newEnv: obj * ?newExports: obj * fn: unit -> option<obj> -> option<obj>
-
-            type WorkflowTimeoutDuration = obj
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type WorkflowDurationLabel =
-                | [<CompiledName("second")>] Second
-                | [<CompiledName("minute")>] Minute
-                | [<CompiledName("hour")>] Hour
-                | [<CompiledName("day")>] Day
-                | [<CompiledName("week")>] Week
-                | [<CompiledName("month")>] Month
-                | [<CompiledName("year")>] Year
-
-            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "RpcTarget"); AbstractClass; AllowNullLiteral>]
-            type RpcTarget private () =
-                inherit Rpc.RpcTargetBranded()
-
-                [<EmitProperty("[Rpc.__RPC_TARGET_BRAND]")>]
-                abstract rpc_RPCTARGETBRAND: unit with get, set
-
-            type RpcStub = obj
-
-            type TemplateLiteral =
-                abstract Value: string
-                abstract Value: string
-                abstract Create: v0: float -> TemplateLiteral
-                abstract Create: v0: float -> TemplateLiteral
-
-            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "RollbackContext")>]
-            type RollbackContext<'T> =
-                abstract stepName: D1SessionBookmark with get, set
-                abstract output: option<RollbackContext.Output> with get, set
-                abstract error: exn with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type WorkflowInstanceStatus =
-                | [<CompiledName("queued")>] Queued
-                | [<CompiledName("running")>] Running
-                | [<CompiledName("paused")>] Paused
-                | [<CompiledName("errored")>] Errored
-                | [<CompiledName("terminated")>] Terminated
-                | [<CompiledName("complete")>] Complete
-                | [<CompiledName("waiting")>] Waiting
-                | [<CompiledName("waitingForPause")>] WaitingForPause
-                | [<CompiledName("unknown")>] Unknown
-
-            type WorkflowSleepDuration = obj
-            type WorkflowDelayDuration = obj
-
-            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowStepContext")>]
-            type WorkflowStepContext =
-                abstract config: WorkflowStepConfig with get, set
-                abstract attempt: float with get, set
-                abstract step: WorkflowEntrypoint._Lit5 with get, set
-
             [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowEntrypoint");
               AbstractClass;
               AllowNullLiteral>]
@@ -5007,6 +4915,32 @@ module rec Cloudflare =
 
                 abstract run: event: WorkflowEntrypoint.Run.Event * step: WorkflowStep -> Promise<option<obj>>
 
+            type WithEnvAndExports =
+                abstract Invoke: ?newEnv: obj * ?newExports: obj * fn: unit -> option<obj> -> option<obj>
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type WorkflowInstanceStatus =
+                | [<CompiledName("queued")>] Queued
+                | [<CompiledName("running")>] Running
+                | [<CompiledName("paused")>] Paused
+                | [<CompiledName("errored")>] Errored
+                | [<CompiledName("terminated")>] Terminated
+                | [<CompiledName("complete")>] Complete
+                | [<CompiledName("waiting")>] Waiting
+                | [<CompiledName("waitingForPause")>] WaitingForPause
+                | [<CompiledName("unknown")>] Unknown
+
+            type RpcStub = obj
+
+            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "RpcTarget"); AbstractClass; AllowNullLiteral>]
+            type RpcTarget private () =
+                inherit Rpc.RpcTargetBranded()
+
+                [<EmitProperty("[Rpc.__RPC_TARGET_BRAND]")>]
+                abstract rpc_RPCTARGETBRAND: unit with get, set
+
+            type WorkflowRetentionDuration = obj
+
             [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowStepEvent")>]
             type WorkflowStepEvent<'T> =
                 [<EmitProperty("type")>]
@@ -5015,23 +4949,91 @@ module rec Cloudflare =
                 abstract timestamp: Date with get, set
                 abstract payload: WebAssembly.ModuleImports with get, set
 
-            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "StepPromise")>]
-            type StepPromise<'T> =
-                inherit Promise<'T>
+            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowStepConfig")>]
+            type WorkflowStepConfig =
+                abstract timeout:
+                    option<
+                        U15<
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            WorkflowStepConfig.Timeout,
+                            float
+                         >
+                     > with get, set
 
-                abstract rollback:
-                    config: WorkflowStepConfig * fn: RollbackContext<'T> -> Promise<unit> -> StepPromise<'T>
+                abstract retries: option<WorkflowEntrypoint._Lit7> with get, set
 
-                abstract rollback: fn: RollbackContext<'T> -> Promise<unit> -> StepPromise<'T>
+            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkerEntrypoint");
+              AbstractClass;
+              AllowNullLiteral>]
+            type WorkerEntrypoint<'Env, 'Props> private () =
+                inherit Rpc.WorkerEntrypointBranded()
 
-            type WorkflowRetentionDuration = obj
+                [<EmitConstructor>]
+                abstract Create: ctx: ExecutionContext<option<obj>> * env: 'Env -> WorkerEntrypoint
+
+                abstract env: 'Env with get, set
+                abstract ctx: ExecutionContext<'Props> with get, set
+
+                [<EmitProperty("[Rpc.__WORKER_ENTRYPOINT_BRAND]")>]
+                abstract rpc_WORKERENTRYPOINTBRAND: unit with get, set
+
+                abstract trace: traces: ResizeArray<TraceItem> -> option<Promise<unit>>
+                abstract test: controller: TestController -> option<Promise<unit>>
+
+                abstract tailStream:
+                    event: TailStream.TailEvent<TailStream.Onset> ->
+                        U3<
+                            Promise<TailStream.TailEventHandlerType>,
+                            TailStream.TailEventHandlerObject._Lit1,
+                            TailStream.TailEvent<'Event> -> option<Promise<unit>>
+                         >
+
+                abstract tail: events: ResizeArray<TraceItem> -> option<Promise<unit>>
+                abstract scheduled: controller: ScheduledController -> option<Promise<unit>>
+                abstract queue: batch: MessageBatch<option<obj>> -> option<Promise<unit>>
+                abstract connect: socket: Socket -> option<Promise<unit>>
+                abstract fetch: request: obj -> U2<Promise<obj>, obj>
+                abstract email: message: ForwardableEmailMessage -> option<Promise<unit>>
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type WorkflowDurationLabel =
+                | [<CompiledName("second")>] Second
+                | [<CompiledName("minute")>] Minute
+                | [<CompiledName("hour")>] Hour
+                | [<CompiledName("day")>] Day
+                | [<CompiledName("week")>] Week
+                | [<CompiledName("month")>] Month
+                | [<CompiledName("year")>] Year
+
+            type WorkflowDelayDuration = obj
+
+            [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "WorkflowStepContext")>]
+            type WorkflowStepContext =
+                abstract config: WorkflowStepConfig with get, set
+                abstract attempt: float with get, set
+                abstract step: WorkflowEntrypoint._Lit5 with get, set
+
+            type WorkflowSleepDuration =
+                U15<obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, obj, float>
 
             type ICloudflareWorkersModule =
-                [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "withEnv")>]
-                static member withEnv(newEnv: option<obj>, fn: unit -> option<obj>) : option<obj> = JS.undefined
+                [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "waitUntil")>]
+                static member waitUntil(promise: Promise<option<obj>>) : unit = JS.undefined
 
-                [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "withEnv")>]
-                static member withEnv(newEnv: option<obj>, fn: unit -> option<obj>) : option<obj> = JS.undefined
+                [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "waitUntil")>]
+                static member waitUntil(promise: Promise<option<obj>>) : unit = JS.undefined
 
                 [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "withEnvAndExports")>]
                 static member withEnvAndExports
@@ -5045,11 +5047,11 @@ module rec Cloudflare =
                     : option<obj> =
                     JS.undefined
 
-                [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "waitUntil")>]
-                static member waitUntil(promise: Promise<option<obj>>) : unit = JS.undefined
+                [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "withEnv")>]
+                static member withEnv(newEnv: option<obj>, fn: unit -> option<obj>) : option<obj> = JS.undefined
 
-                [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "waitUntil")>]
-                static member waitUntil(promise: Promise<option<obj>>) : unit = JS.undefined
+                [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "withEnv")>]
+                static member withEnv(newEnv: option<obj>, fn: unit -> option<obj>) : option<obj> = JS.undefined
 
                 [<Import("@cloudflare/workers-types.CloudflareWorkersModule", "withExports")>]
                 static member withExports(newExports: option<obj>, fn: unit -> option<obj>) : option<obj> = JS.undefined
@@ -5072,7 +5074,7 @@ module rec Cloudflare =
         module rec D1Database =
             module rec Batch =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Success = | [<CompiledValue(true)>] True
 
             module rec WithSession =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -5094,11 +5096,11 @@ module rec Cloudflare =
         module rec D1PreparedStatement =
             module rec Batch =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Success = | [<CompiledValue(true)>] True
 
             module rec _Lit7 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type ColumnNames = | [<CompiledValue(true)>] True
 
             module rec _Lit8 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -5139,15 +5141,15 @@ module rec Cloudflare =
                 abstract duration: float with get, set
                 abstract Item: key: D1SessionBookmark -> option<obj>
 
-            type _Lit7 =
-                abstract columnNames: _Lit7.ColumnNames with get, set
-
             type _Lit5 =
                 [<EmitProperty("sql_duration_ms")>]
                 abstract sqlDurationMs: float with get, set
 
             type _Lit8 =
                 abstract columnNames: option<_Lit8.ColumnNames> with get, set
+
+            type _Lit7 =
+                abstract columnNames: _Lit7.ColumnNames with get, set
 
             type Batch =
                 abstract results: ResizeArray<'T> with get, set
@@ -5157,11 +5159,11 @@ module rec Cloudflare =
 
         module rec D1Response =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type QueueRequest = | [<CompiledValue(true)>] True
+            type Success = | [<CompiledValue(true)>] True
 
         module rec D1Result =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type QueueRequest = | [<CompiledValue(true)>] True
+            type Success = | [<CompiledValue(true)>] True
 
         module rec DecompressionStream =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -5248,15 +5250,23 @@ module rec Cloudflare =
                     from: D1SessionBookmark * ``to``: D1SessionBookmark * raw: U2<obj, string> -> EmailMessage
 
         module rec ExportedHandler =
-            type Fetch =
-                abstract Invoke: request: obj * env: 'Env * ctx: ExecutionContext<'Props> -> U2<obj, Promise<obj>>
+            type Trace =
+                abstract Invoke:
+                    traces: ResizeArray<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
-            type Connect =
-                abstract Invoke: socket: Socket * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
+            type Queue =
+                abstract Invoke:
+                    batch: MessageBatch<'Message> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
             type Tail =
                 abstract Invoke:
                     events: ResizeArray<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
+
+            type Connect =
+                abstract Invoke: socket: Socket * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
+
+            type Fetch =
+                abstract Invoke: request: obj * env: 'Env * ctx: ExecutionContext<'Props> -> U2<obj, Promise<obj>>
 
             type TailStream =
                 abstract Invoke:
@@ -5271,22 +5281,14 @@ module rec Cloudflare =
                 abstract Invoke:
                     controller: ScheduledController * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
-            type Email =
-                abstract Invoke:
-                    message: ForwardableEmailMessage * env: 'Env * ctx: ExecutionContext<'Props> ->
-                        option<Promise<unit>>
-
-            type Queue =
-                abstract Invoke:
-                    batch: MessageBatch<'Message> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
-
             type Test =
                 abstract Invoke:
                     controller: TestController * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
-            type Trace =
+            type Email =
                 abstract Invoke:
-                    traces: ResizeArray<TraceItem> * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
+                    message: ForwardableEmailMessage * env: 'Env * ctx: ExecutionContext<'Props> ->
+                        option<Promise<unit>>
 
         module rec Flagship =
             type _Lit1 =
@@ -5302,7 +5304,7 @@ module rec Cloudflare =
 
         module rec FunctionMessage =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("function")>] Function
+            type Role = | [<CompiledName("function")>] Function
 
         module rec Headers =
             type _Lit1 =
@@ -5352,26 +5354,6 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Segment = | [<CompiledName("foreground")>] Foreground
 
-            type _Lit4 =
-                abstract right: option<float> with get, set
-                abstract left: option<float> with get, set
-                abstract bottom: option<float> with get, set
-                abstract top: option<float> with get, set
-
-            type _Lit3 =
-                abstract width: option<float> with get, set
-                abstract color: option<D1SessionBookmark> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit14 =
-                | [<CompiledName("rgb")>] Rgb
-                | [<CompiledName("image/jpeg")>] ImageJpeg
-                | [<CompiledName("image/png")>] ImagePng
-                | [<CompiledName("image/gif")>] ImageGif
-                | [<CompiledName("image/webp")>] ImageWebp
-                | [<CompiledName("image/avif")>] ImageAvif
-                | [<CompiledName("rgba")>] Rgba
-
             type _Lit7 =
                 abstract mode: _Lit8 with get, set
                 abstract y: option<float> with get, set
@@ -5386,6 +5368,16 @@ module rec Cloudflare =
                 | [<CompiledName("squeeze")>] Squeeze
                 | [<CompiledName("crop")>] Crop
 
+            type _Lit4 =
+                abstract right: option<float> with get, set
+                abstract left: option<float> with get, set
+                abstract bottom: option<float> with get, set
+                abstract top: option<float> with get, set
+
+            type _Lit3 =
+                abstract width: option<float> with get, set
+                abstract color: option<D1SessionBookmark> with get, set
+
             type _Lit9 =
                 | ``0`` = 0
                 | ``90`` = 90
@@ -5396,6 +5388,30 @@ module rec Cloudflare =
             type _Lit8 =
                 | [<CompiledName("remainder")>] Remainder
                 | [<CompiledName("box-center")>] BoxCenter
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit14 =
+                | [<CompiledName("rgb")>] Rgb
+                | [<CompiledName("image/jpeg")>] ImageJpeg
+                | [<CompiledName("image/png")>] ImagePng
+                | [<CompiledName("image/gif")>] ImageGif
+                | [<CompiledName("image/webp")>] ImageWebp
+                | [<CompiledName("image/avif")>] ImageAvif
+                | [<CompiledName("rgba")>] Rgba
+
+            type _Lit11 =
+                abstract right: option<float> with get, set
+                abstract bottom: option<float> with get, set
+                abstract left: option<float> with get, set
+                abstract top: option<float> with get, set
+                abstract repeat: option<U2<bool, string>> with get, set
+                abstract opacity: option<float> with get, set
+
+            type _Lit13 =
+                abstract anim: option<bool> with get, set
+                abstract background: option<D1SessionBookmark> with get, set
+                abstract quality: option<float> with get, set
+                abstract format: _Lit14 with get, set
 
             type _Lit1 =
                 abstract trim: option<U2<_Lit1.Trim, Typescript.Highlight._Lit2949>> with get, set
@@ -5415,20 +5431,6 @@ module rec Cloudflare =
                 abstract height: option<float> with get, set
                 abstract width: option<float> with get, set
 
-            type _Lit13 =
-                abstract anim: option<bool> with get, set
-                abstract background: option<D1SessionBookmark> with get, set
-                abstract quality: option<float> with get, set
-                abstract format: _Lit14 with get, set
-
-            type _Lit11 =
-                abstract right: option<float> with get, set
-                abstract bottom: option<float> with get, set
-                abstract left: option<float> with get, set
-                abstract top: option<float> with get, set
-                abstract repeat: option<U2<bool, string>> with get, set
-                abstract opacity: option<float> with get, set
-
         module rec ImageUploadOptions =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type Encoding = | [<CompiledName("base64")>] Base64
@@ -5442,12 +5444,6 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Format = | [<CompiledName("image/svg+xml")>] ``ImageSvg+xml``
 
-            type _Lit4 =
-                abstract height: float with get, set
-                abstract width: float with get, set
-                abstract fileSize: float with get, set
-                abstract format: D1SessionBookmark with get, set
-
             type _Lit1 =
                 abstract encoding: option<_Lit1.Encoding> with get, set
 
@@ -5455,6 +5451,12 @@ module rec Cloudflare =
             type _Lit8 =
                 | [<CompiledName("desc")>] Desc
                 | [<CompiledName("asc")>] Asc
+
+            type _Lit4 =
+                abstract height: float with get, set
+                abstract width: float with get, set
+                abstract fileSize: float with get, set
+                abstract format: D1SessionBookmark with get, set
 
             type _Lit3 =
                 abstract format: _Lit3.Format with get, set
@@ -5469,6 +5471,9 @@ module rec Cloudflare =
 
         module rec IncomingRequestCfPropertiesTLSClientAuth =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type CertPresented = | [<CompiledName("1")>] ``1``
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type CertVerified =
                 | SUCCESS
                 | [<CompiledName("FAILED:self signed certificate")>] ``FAILED:selfsignedcertificate``
@@ -5477,15 +5482,15 @@ module rec Cloudflare =
                 | [<CompiledName("FAILED:certificate has expired")>] ``FAILED:certificatehasexpired``
                 | FAILED
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type IsEUCountry = | [<CompiledName("1")>] ``1``
-
         module rec IncomingRequestCfPropertiesTLSClientAuthPlaceholder =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type CertVerified = | NONE
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type CertPresented = | [<CompiledName("0")>] ``0``
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type CertRevoked = | [<CompiledName("0")>] ``0``
 
         module rec InternalError =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -5497,25 +5502,33 @@ module rec Cloudflare =
 
         module rec KVNamespace =
             module rec Get =
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type Type = | [<CompiledName("json")>] Json
-
                 type Options =
                     abstract cacheTtl: option<float> with get, set
 
                     [<EmitProperty("type")>]
                     abstract ``type``: option<unit> with get, set
 
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type Type = | [<CompiledName("text")>] Text
+
+            module rec GetWithMetadata =
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type Type = | [<CompiledName("text")>] Text
+
             module rec _Lit4 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type ColumnNames = | [<CompiledValue(false)>] False
+                type ListComplete = | [<CompiledValue(false)>] False
 
             module rec _Lit5 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type ListComplete = | [<CompiledValue(true)>] True
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("text")>] Text
+            type _Lit5 =
+                abstract cacheStatus: option<string> with get, set
+                abstract keys: ResizeArray<KVNamespaceListKey<'Metadata, 'Key>> with get, set
+
+                [<EmitProperty("list_complete")>]
+                abstract listComplete: _Lit5.ListComplete with get, set
 
             type _Lit4 =
                 abstract cacheStatus: option<string> with get, set
@@ -5525,37 +5538,32 @@ module rec Cloudflare =
                 [<EmitProperty("list_complete")>]
                 abstract listComplete: _Lit4.ListComplete with get, set
 
-            type _Lit5 =
-                abstract cacheStatus: option<string> with get, set
-                abstract keys: ResizeArray<KVNamespaceListKey<'Metadata, 'Key>> with get, set
-
-                [<EmitProperty("list_complete")>]
-                abstract listComplete: _Lit5.ListComplete with get, set
-
         module rec LoopbackForExport =
             module rec _Lit20 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type ColumnNames = | [<CompiledValue(false)>] False
+                type Done = | [<CompiledValue(false)>] False
 
             module rec _Lit21 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Done = | [<CompiledValue(true)>] True
+
+            type T =
+                abstract Create: [<ParamArray>] args: ResizeArray<option<obj>> -> Rpc.EntrypointBranded
 
             type _Lit9 =
                 abstract props: option<'Props> with get, set
 
-            type _Lit20 =
-                abstract value: 'T with get, set
-
-                [<EmitProperty("done")>]
-                abstract ``done``: option<_Lit20.Done> with get, set
-
-            type _Lit18 =
-                abstract prototype: SqlStorageCursor<option<obj>> with get, set
-                abstract Create: unit -> SqlStorageCursor
-
             type _Lit11 =
                 abstract props: option<obj> with get, set
+
+            type _Lit1 =
+                abstract Create: [<ParamArray>] args: ResizeArray<option<obj>> -> Rpc.WorkerEntrypointBranded
+
+            type _Lit21 =
+                abstract value: option<unit> with get, set
+
+                [<EmitProperty("done")>]
+                abstract ``done``: _Lit21.Done with get, set
 
             type Invoke =
                 abstract Item: key: D1SessionBookmark -> option<obj>
@@ -5575,17 +5583,15 @@ module rec Cloudflare =
                 abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
                 abstract fetch: input: U3<obj, obj, string> * ?init: obj -> Promise<obj>
 
-            type _Lit21 =
-                abstract value: option<unit> with get, set
+            type _Lit20 =
+                abstract value: 'T with get, set
 
                 [<EmitProperty("done")>]
-                abstract ``done``: _Lit21.Done with get, set
+                abstract ``done``: option<_Lit20.Done> with get, set
 
-            type T =
-                abstract Create: [<ParamArray>] args: ResizeArray<option<obj>> -> Rpc.EntrypointBranded
-
-            type _Lit1 =
-                abstract Create: [<ParamArray>] args: ResizeArray<option<obj>> -> Rpc.WorkerEntrypointBranded
+            type _Lit18 =
+                abstract prototype: SqlStorageCursor<option<obj>> with get, set
+                abstract Create: unit -> SqlStorageCursor
 
             type _Lit22 =
                 abstract prototype: SqlStorageStatement with get, set
@@ -5608,13 +5614,12 @@ module rec Cloudflare =
                 abstract fit: option<_Lit2> with get, set
 
         module rec MediaTransformationOutputOptions =
-            type _Lit1 =
-                abstract format: option<_Lit3> with get, set
-                abstract imageCount: option<float> with get, set
-                abstract duration: option<D1SessionBookmark> with get, set
-                abstract time: option<D1SessionBookmark> with get, set
-                abstract audio: option<bool> with get, set
-                abstract mode: option<_Lit2> with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit2 =
+                | [<CompiledName("audio")>] Audio
+                | [<CompiledName("frame")>] Frame
+                | [<CompiledName("video")>] Video
+                | [<CompiledName("spritesheet")>] Spritesheet
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit3 =
@@ -5622,12 +5627,13 @@ module rec Cloudflare =
                 | [<CompiledName("png")>] Png
                 | [<CompiledName("m4a")>] M4a
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit2 =
-                | [<CompiledName("audio")>] Audio
-                | [<CompiledName("frame")>] Frame
-                | [<CompiledName("video")>] Video
-                | [<CompiledName("spritesheet")>] Spritesheet
+            type _Lit1 =
+                abstract format: option<_Lit3> with get, set
+                abstract imageCount: option<float> with get, set
+                abstract duration: option<D1SessionBookmark> with get, set
+                abstract time: option<D1SessionBookmark> with get, set
+                abstract audio: option<bool> with get, set
+                abstract mode: option<_Lit2> with get, set
 
         module rec MessageSendRequest =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -5642,15 +5648,15 @@ module rec Cloudflare =
             type Name = | NotFoundError
 
         module rec PagesFunction =
+            type _Lit6 =
+                abstract ASSETS: _Lit8 with get, set
+
             type _Lit9 =
                 abstract Invoke: input: U3<obj, obj, string> * ?init: obj -> Promise<obj>
                 abstract Invoke: input: U3<obj, obj, string> * ?init: obj -> Promise<obj>
 
             type _Lit8 =
                 abstract fetch: _Lit9 with get, set
-
-            type _Lit6 =
-                abstract ASSETS: _Lit8 with get, set
 
         module rec PagesPluginFunction =
             module rec Invoke =
@@ -5674,12 +5680,6 @@ module rec Cloudflare =
             type Name = | QuotaReachedError
 
         module rec R2Bucket =
-            type _Lit2 =
-                abstract onlyIf: U2<obj, R2Conditional> with get, set
-                abstract ssecKey: option<U2<ArrayBuffer, string>> with get, set
-                abstract range: option<U4<obj, R2Objects._Lit5, R2Objects._Lit6, R2Objects._Lit7>> with get, set
-                abstract onlyIf: option<U2<obj, R2Conditional>> with get, set
-
             type _Lit7 =
                 abstract onlyIf: U2<obj, R2Conditional> with get, set
                 abstract ssecKey: option<U2<ArrayBuffer, string>> with get, set
@@ -5693,34 +5693,40 @@ module rec Cloudflare =
                 abstract httpMetadata: option<U2<obj, R2HTTPMetadata>> with get, set
                 abstract onlyIf: option<U2<obj, R2Conditional>> with get, set
 
+            type _Lit2 =
+                abstract onlyIf: U2<obj, R2Conditional> with get, set
+                abstract ssecKey: option<U2<ArrayBuffer, string>> with get, set
+                abstract range: option<U4<obj, R2Objects._Lit5, R2Objects._Lit6, R2Objects._Lit7>> with get, set
+                abstract onlyIf: option<U2<obj, R2Conditional>> with get, set
+
         module rec R2Objects =
             module rec _Lit2 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Truncated = | [<CompiledValue(true)>] True
 
             module rec _Lit9 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type ColumnNames = | [<CompiledValue(false)>] False
+                type Truncated = | [<CompiledValue(false)>] False
+
+            type _Lit7 =
+                abstract suffix: float with get, set
 
             type _Lit6 =
                 abstract length: float with get, set
                 abstract offset: option<float> with get, set
 
-            type _Lit7 =
-                abstract suffix: float with get, set
-
             type _Lit5 =
                 abstract length: option<float> with get, set
                 abstract offset: float with get, set
 
-            type _Lit2 =
-                abstract cursor: D1SessionBookmark with get, set
-                abstract truncated: _Lit2.Truncated with get, set
+            type _Lit9 =
+                abstract truncated: _Lit9.Truncated with get, set
                 abstract delimitedPrefixes: ResizeArray<D1SessionBookmark> with get, set
                 abstract objects: ResizeArray<R2Object> with get, set
 
-            type _Lit9 =
-                abstract truncated: _Lit9.Truncated with get, set
+            type _Lit2 =
+                abstract cursor: D1SessionBookmark with get, set
+                abstract truncated: _Lit2.Truncated with get, set
                 abstract delimitedPrefixes: ResizeArray<D1SessionBookmark> with get, set
                 abstract objects: ResizeArray<R2Object> with get, set
 
@@ -5731,11 +5737,11 @@ module rec Cloudflare =
         module rec ReadableStreamReadResult =
             module rec _Lit2 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type ColumnNames = | [<CompiledValue(false)>] False
+                type Done = | [<CompiledValue(false)>] False
 
             module rec _Lit3 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type QueueRequest = | [<CompiledValue(true)>] True
+                type Done = | [<CompiledValue(true)>] True
 
             type _Lit3 =
                 abstract value: option<unit> with get, set
@@ -5861,25 +5867,22 @@ module rec Cloudflare =
 
         module rec RequestInitCfPropertiesImage =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type OriginAuth = | [<CompiledName("share-publicly")>] SharePublicly
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Compression = | [<CompiledName("fast")>] Fast
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type Quality =
                 | [<CompiledName("high")>] High
                 | [<CompiledName("low")>] Low
                 | [<CompiledName("medium-low")>] MediumLow
                 | [<CompiledName("medium-high")>] MediumHigh
 
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type OriginAuth = | [<CompiledName("share-publicly")>] SharePublicly
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Compression = | [<CompiledName("fast")>] Fast
+
         module rec ResponseCompletedEvent =
             module rec _Lit1 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("response.completed")>] ResponseCompleted
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("response.completed")>] ResponseCompleted
 
             type _Lit1 =
                 [<EmitProperty("type")>]
@@ -5889,6 +5892,9 @@ module rec Cloudflare =
                 abstract sequenceNumber: float with get, set
 
                 abstract response: obj with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Type = | [<CompiledName("response.completed")>] ResponseCompleted
 
         module rec ResponseContentReasoningText =
             module rec _Lit1 =
@@ -5909,6 +5915,9 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("response.created")>] ResponseCreated
 
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Type = | [<CompiledName("response.created")>] ResponseCreated
+
             type _Lit1 =
                 [<EmitProperty("type")>]
                 abstract ``type``: _Lit1.Type with get, set
@@ -5918,9 +5927,6 @@ module rec Cloudflare =
 
                 abstract response: obj with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("response.created")>] ResponseCreated
-
         module rec ResponseCustomToolCallOutput =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type Type = | [<CompiledName("custom_tool_call_output")>] CustomToolCallOutput
@@ -5928,7 +5934,7 @@ module rec Cloudflare =
         module rec ResponseErrorEvent =
             module rec _Lit1 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type Format = | [<CompiledName("error")>] Error
+                type Type = | [<CompiledName("error")>] Error
 
             type _Lit1 =
                 [<EmitProperty("type")>]
@@ -5942,15 +5948,12 @@ module rec Cloudflare =
                 abstract code: option<string> with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Format = | [<CompiledName("error")>] Error
+            type Type = | [<CompiledName("error")>] Error
 
         module rec ResponseFailedEvent =
             module rec _Lit1 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("response.failed")>] ResponseFailed
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("response.failed")>] ResponseFailed
 
             type _Lit1 =
                 [<EmitProperty("type")>]
@@ -5960,6 +5963,9 @@ module rec Cloudflare =
                 abstract sequenceNumber: float with get, set
 
                 abstract response: obj with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Type = | [<CompiledName("response.failed")>] ResponseFailed
 
         module rec ResponseFormatJSONObject =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -6036,6 +6042,12 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("input_image")>] InputImage
 
+            type _Lit2 =
+                [<EmitProperty("type")>]
+                abstract ``type``: _Lit2.Type with get, set
+
+                abstract text: D1SessionBookmark with get, set
+
             type _Lit3 =
                 [<EmitProperty("image_url")>]
                 abstract imageUrl: option<string> with get, set
@@ -6044,12 +6056,6 @@ module rec Cloudflare =
 
                 [<EmitProperty("type")>]
                 abstract ``type``: _Lit3.Type with get, set
-
-            type _Lit2 =
-                [<EmitProperty("type")>]
-                abstract ``type``: _Lit2.Type with get, set
-
-                abstract text: D1SessionBookmark with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit4 =
@@ -6165,9 +6171,6 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("response.output_item.done")>] ResponseOutputItemDone
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("response.output_item.done")>] ResponseOutputItemDone
-
             type _Lit1 =
                 [<EmitProperty("type")>]
                 abstract ``type``: _Lit1.Type with get, set
@@ -6179,6 +6182,9 @@ module rec Cloudflare =
                 abstract outputIndex: float with get, set
 
                 abstract item: ResponseOutputItem with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Type = | [<CompiledName("response.output_item.done")>] ResponseOutputItemDone
 
         module rec ResponseOutputMessage =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -6238,6 +6244,9 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("response.reasoning_text.done")>] ResponseReasoningTextDone
 
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Type = | [<CompiledName("response.reasoning_text.done")>] ResponseReasoningTextDone
+
             type _Lit1 =
                 [<EmitProperty("type")>]
                 abstract ``type``: _Lit1.Type with get, set
@@ -6256,13 +6265,13 @@ module rec Cloudflare =
                 [<EmitProperty("content_index")>]
                 abstract contentIndex: float with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("response.reasoning_text.done")>] ResponseReasoningTextDone
-
         module rec ResponseRefusalDeltaEvent =
             module rec _Lit1 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("response.refusal.delta")>] ResponseRefusalDelta
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Type = | [<CompiledName("response.refusal.delta")>] ResponseRefusalDelta
 
             type _Lit1 =
                 [<EmitProperty("type")>]
@@ -6281,9 +6290,6 @@ module rec Cloudflare =
 
                 [<EmitProperty("content_index")>]
                 abstract contentIndex: float with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type Type = | [<CompiledName("response.refusal.delta")>] ResponseRefusalDelta
 
         module rec ResponseRefusalDoneEvent =
             module rec _Lit1 =
@@ -6382,58 +6388,56 @@ module rec Cloudflare =
                     abstract dup: unit -> 'StubBase
 
             module rec UnstubifyAll =
-                module rec Invoke =
-                    module rec Args =
-                        module rec Flat =
-                            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type D = | [<CompiledValue(1)>] ``1``
+                module rec Flat =
+                    [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                    type D = | [<CompiledValue(1)>] ``1``
 
-            type Stubify = obj
-
-            [<Import("@cloudflare/workers-types.Rpc", "WorkflowEntrypointBranded")>]
-            type WorkflowEntrypointBranded =
-                [<EmitProperty("[__WORKFLOW_ENTRYPOINT_BRAND]")>]
-                abstract __WORKFLOW_ENTRYPOINT_BRAND: unit with get, set
+            type MethodOrProperty = obj
 
             [<Import("@cloudflare/workers-types.Rpc", "RpcTargetBranded")>]
             type RpcTargetBranded =
                 [<EmitProperty("[__RPC_TARGET_BRAND]")>]
                 abstract __RPC_TARGET_BRAND: unit with get, set
 
-            type Result = obj
-            type MaybeProvider = obj
+            type Stubable = obj
 
-            [<Import("@cloudflare/workers-types.Rpc", "Provider")>]
-            type Provider<'T, 'Reserved when 'T :> obj and 'Reserved :> D1SessionBookmark> =
-                abstract Item: key: D1SessionBookmark -> option<obj>
-
-                abstract catch<'TResult> :
-                    ?onrejected: option<obj> -> U2<Promise<'TResult>, 'TResult> -> Promise<U2<'TResult, 'T>>
-
-                abstract ``then``<'TResult1, 'TResult2> :
-                    ?onfulfilled: 'T -> U2<Promise<'TResult1>, 'TResult1> *
-                    ?onrejected: option<obj> -> U2<Promise<'TResult2>, 'TResult2> ->
-                        Promise<U2<'TResult1, 'TResult2>>
-
-                abstract Invoke:
-                    [<ParamArray>] args: Provider.Invoke.Args ->
-                        U2<Typescript.Highlight._Lit194, U2<Typescript.Highlight._Lit3044, unit>>
-
-            [<Import("@cloudflare/workers-types.Rpc", "StubBase")>]
-            type StubBase<'T when 'T :> Stubable> =
-                inherit System.IDisposable
-
-                [<EmitProperty("[__RPC_STUB_BRAND]")>]
-                abstract __RPC_STUB_BRAND: 'T with get, set
-
-                abstract dup: unit -> 'StubBase
-
-            type MaybeDisposable = obj
-
-            [<Import("@cloudflare/workers-types.Rpc", "DurableObjectBranded")>]
-            type DurableObjectBranded =
-                [<EmitProperty("[__DURABLE_OBJECT_BRAND]")>]
-                abstract __DURABLE_OBJECT_BRAND: unit with get, set
+            type Unstubify =
+                U2<
+                    'V,
+                    U2<
+                        System.Collections.Generic.IDictionary<
+                            U2<
+                                'V,
+                                U2<
+                                    option<obj>,
+                                    U2<
+                                        System.Collections.Generic.ISet<U2<'V, U2<option<obj>, option<obj>>>>,
+                                        U2<
+                                            ResizeArray<U2<'V, U2<option<obj>, option<obj>>>>,
+                                            U2<
+                                                System.Collections.Generic.IReadOnlyList<
+                                                    U2<'V, U2<option<obj>, option<obj>>>
+                                                 >,
+                                                U2<'T, U2<WebAssembly.ModuleImports, 'T>>
+                                             >
+                                         >
+                                     >
+                                 >
+                             >,
+                            U2<'V, U2<option<obj>, option<obj>>>
+                         >,
+                        U2<
+                            System.Collections.Generic.ISet<U2<'V, U2<option<obj>, option<obj>>>>,
+                            U2<
+                                ResizeArray<U2<'V, U2<option<obj>, option<obj>>>>,
+                                U2<
+                                    System.Collections.Generic.IReadOnlyList<U2<'V, U2<option<obj>, option<obj>>>>,
+                                    U2<'T, U2<WebAssembly.ModuleImports, 'T>>
+                                 >
+                             >
+                         >
+                     >
+                 >
 
             [<Import("@cloudflare/workers-types.Rpc", "Stub")>]
             type Stub<'T when 'T :> Stubable> =
@@ -6456,15 +6460,99 @@ module rec Cloudflare =
                     [<ParamArray>] args: Stub.Invoke.Args ->
                         U2<Typescript.Highlight._Lit194, U2<Typescript.Highlight._Lit3044, unit>>
 
-            type MaybeCallableProvider = obj
+            type EntrypointBranded = obj
+            type MaybeProvider = obj
             type BaseType = option<obj>
-            type Stubable = obj
 
-            type MethodOrProperty =
-                U2<
-                    Typescript.Highlight._Lit177,
-                    U2<Typescript.Highlight._Lit194, U2<Typescript.Highlight._Lit3044, unit>>
-                 >
+            [<Import("@cloudflare/workers-types.Rpc", "StubBase")>]
+            type StubBase<'T when 'T :> Stubable> =
+                inherit System.IDisposable
+
+                [<EmitProperty("[__RPC_STUB_BRAND]")>]
+                abstract __RPC_STUB_BRAND: 'T with get, set
+
+                abstract dup: unit -> 'StubBase
+
+            type MaybeDisposable = obj
+
+            [<Import("@cloudflare/workers-types.Rpc", "Provider")>]
+            type Provider<'T, 'Reserved when 'T :> obj and 'Reserved :> D1SessionBookmark> =
+                abstract Item: key: D1SessionBookmark -> option<obj>
+
+                abstract catch<'TResult> :
+                    ?onrejected: option<obj> -> U2<Promise<'TResult>, 'TResult> -> Promise<U2<'TResult, 'T>>
+
+                abstract ``then``<'TResult1, 'TResult2> :
+                    ?onfulfilled: 'T -> U2<Promise<'TResult1>, 'TResult1> *
+                    ?onrejected: option<obj> -> U2<Promise<'TResult2>, 'TResult2> ->
+                        Promise<U2<'TResult1, 'TResult2>>
+
+                abstract Invoke:
+                    [<ParamArray>] args: Provider.Invoke.Args ->
+                        U2<Typescript.Highlight._Lit194, U2<Typescript.Highlight._Lit3044, unit>>
+
+            [<Import("@cloudflare/workers-types.Rpc", "UnstubifyAll")>]
+            type UnstubifyAll<'A when 'A :> ResizeArray<option<obj>>> =
+                [<EmitProperty("[Symbol.unscopables]")>]
+                abstract symbolUnscopables: Typescript.Highlight._Lit192 with get
+
+                abstract length: float with get, set
+                abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
+                abstract ``with``: index: float * value: 'T -> ResizeArray
+                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
+                abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
+                abstract toReversed: unit -> ResizeArray
+                abstract findLastIndex: predicate: Typescript.Highlight._Lit181 * ?thisArg: obj -> float
+
+                abstract findLast<'S when 'S :> 'T> :
+                    predicate: Typescript.Highlight._Lit180 * ?thisArg: obj -> option<'S>
+
+                abstract at: index: float -> option<'T>
+
+                abstract flat<'A, 'D when 'D :> float> :
+                    this: 'A * ?depth: 'D ->
+                        ResizeArray<proptypekey<Typescript.Highlight._Lit191, U2<UnstubifyAll.Flat, UnstubifyAll.Flat>>>
+
+                abstract flatMap<'U, 'This> :
+                    callback: Typescript.Highlight._Lit189 * ?thisArg: 'This -> ResizeArray<'U>
+
+                abstract includes: searchElement: 'T * ?fromIndex: float -> bool
+                abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
+                abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
+                abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
+                abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
+                abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
+                abstract findIndex: predicate: Typescript.Highlight._Lit188 * ?thisArg: obj -> float
+                abstract find<'S when 'S :> 'T> : predicate: Typescript.Highlight._Lit186 * ?thisArg: obj -> option<'S>
+                abstract reduceRight: callbackfn: Typescript.Highlight._Lit184 -> 'T
+                abstract reduce: callbackfn: Typescript.Highlight._Lit184 -> 'T
+
+                abstract filter<'S when 'S :> 'T> :
+                    predicate: Typescript.Highlight._Lit180 * ?thisArg: obj -> ResizeArray<'S>
+
+                abstract map<'U> : callbackfn: Typescript.Highlight._Lit183 * ?thisArg: obj -> ResizeArray<'U>
+                abstract forEach: callbackfn: Typescript.Highlight._Lit182 * ?thisArg: obj -> unit
+                abstract some: predicate: Typescript.Highlight._Lit181 * ?thisArg: obj -> bool
+                abstract every<'S when 'S :> 'T> : predicate: Typescript.Highlight._Lit180 * ?thisArg: obj -> bool
+                abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
+                abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
+                abstract unshift: [<ParamArray>] items: ResizeArray -> float
+                abstract splice: start: float * ?deleteCount: float -> ResizeArray
+                abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
+                abstract slice: ?start: float * ?``end``: float -> ResizeArray
+                abstract shift: unit -> option<'T>
+                abstract reverse: unit -> ResizeArray
+                abstract join: ?separator: D1SessionBookmark -> D1SessionBookmark
+                abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
+                abstract push: [<ParamArray>] items: ResizeArray -> float
+                abstract pop: unit -> option<'T>
+                abstract toLocaleString: unit -> D1SessionBookmark
+                abstract toString: unit -> D1SessionBookmark
+
+            [<Import("@cloudflare/workers-types.Rpc", "WorkflowEntrypointBranded")>]
+            type WorkflowEntrypointBranded =
+                [<EmitProperty("[__WORKFLOW_ENTRYPOINT_BRAND]")>]
+                abstract __WORKFLOW_ENTRYPOINT_BRAND: unit with get, set
 
             type Serializable =
                 option<
@@ -6670,108 +6758,39 @@ module rec Cloudflare =
                      >
                  >
 
-            [<Import("@cloudflare/workers-types.Rpc", "UnstubifyAll")>]
-            type UnstubifyAll<'A when 'A :> ResizeArray<option<obj>>> =
-                [<EmitProperty("[Symbol.unscopables]")>]
-                abstract symbolUnscopables: Typescript.Highlight._Lit192 with get
-
-                abstract length: float with get, set
-                abstract symbolIterator: unit -> System.Collections.Generic.IEnumerator<'T>
-                abstract ``with``: index: float * value: 'T -> ResizeArray
-                abstract toSpliced: start: float * deleteCount: float * [<ParamArray>] items: ResizeArray -> ResizeArray
-                abstract toSorted: ?compareFn: 'T -> 'T -> float -> ResizeArray
-                abstract toReversed: unit -> ResizeArray
-                abstract findLastIndex: predicate: Typescript.Highlight._Lit181 * ?thisArg: obj -> float
-
-                abstract findLast<'S when 'S :> 'T> :
-                    predicate: Typescript.Highlight._Lit180 * ?thisArg: obj -> option<'S>
-
-                abstract at: index: float -> option<'T>
-
-                abstract flat<'A, 'D when 'D :> float> :
-                    this: 'A * ?depth: 'D ->
-                        ResizeArray<proptypekey<Typescript.Highlight._Lit191, U2<UnstubifyAll.Flat, UnstubifyAll.Flat>>>
-
-                abstract flatMap<'U, 'This> :
-                    callback: Typescript.Highlight._Lit189 * ?thisArg: 'This -> ResizeArray<'U>
-
-                abstract includes: searchElement: 'T * ?fromIndex: float -> bool
-                abstract values: unit -> System.Collections.Generic.IEnumerator<'T>
-                abstract keys: unit -> System.Collections.Generic.IEnumerator<float>
-                abstract entries: unit -> System.Collections.Generic.IEnumerator<float * 'T>
-                abstract copyWithin: target: float * start: float * ?``end``: float -> 'Array
-                abstract fill: value: 'T * ?start: float * ?``end``: float -> 'Array
-                abstract findIndex: predicate: Typescript.Highlight._Lit188 * ?thisArg: obj -> float
-                abstract find<'S when 'S :> 'T> : predicate: Typescript.Highlight._Lit186 * ?thisArg: obj -> option<'S>
-                abstract reduceRight: callbackfn: Typescript.Highlight._Lit184 -> 'T
-                abstract reduce: callbackfn: Typescript.Highlight._Lit184 -> 'T
-
-                abstract filter<'S when 'S :> 'T> :
-                    predicate: Typescript.Highlight._Lit180 * ?thisArg: obj -> ResizeArray<'S>
-
-                abstract map<'U> : callbackfn: Typescript.Highlight._Lit183 * ?thisArg: obj -> ResizeArray<'U>
-                abstract forEach: callbackfn: Typescript.Highlight._Lit182 * ?thisArg: obj -> unit
-                abstract some: predicate: Typescript.Highlight._Lit181 * ?thisArg: obj -> bool
-                abstract every<'S when 'S :> 'T> : predicate: Typescript.Highlight._Lit180 * ?thisArg: obj -> bool
-                abstract lastIndexOf: searchElement: 'T * ?fromIndex: float -> float
-                abstract indexOf: searchElement: 'T * ?fromIndex: float -> float
-                abstract unshift: [<ParamArray>] items: ResizeArray -> float
-                abstract splice: start: float * ?deleteCount: float -> ResizeArray
-                abstract sort: ?compareFn: 'T -> 'T -> float -> 'Array
-                abstract slice: ?start: float * ?``end``: float -> ResizeArray
-                abstract shift: unit -> option<'T>
-                abstract reverse: unit -> ResizeArray
-                abstract join: ?separator: D1SessionBookmark -> D1SessionBookmark
-                abstract concat: [<ParamArray>] items: ResizeArray<ConcatArray<'T>> -> ResizeArray
-                abstract push: [<ParamArray>] items: ResizeArray -> float
-                abstract pop: unit -> option<'T>
-                abstract toLocaleString: unit -> D1SessionBookmark
-                abstract toString: unit -> D1SessionBookmark
-
             [<Import("@cloudflare/workers-types.Rpc", "WorkerEntrypointBranded")>]
             type WorkerEntrypointBranded =
                 [<EmitProperty("[__WORKER_ENTRYPOINT_BRAND]")>]
                 abstract __WORKER_ENTRYPOINT_BRAND: unit with get, set
 
-            type Unstubify =
-                U2<
-                    'V,
-                    U2<
-                        System.Collections.Generic.IDictionary<
-                            U2<
-                                'V,
-                                U2<
-                                    option<obj>,
-                                    U2<
-                                        System.Collections.Generic.ISet<U2<'V, U2<option<obj>, option<obj>>>>,
-                                        U2<
-                                            ResizeArray<U2<'V, U2<option<obj>, option<obj>>>>,
-                                            U2<
-                                                System.Collections.Generic.IReadOnlyList<
-                                                    U2<'V, U2<option<obj>, option<obj>>>
-                                                 >,
-                                                U2<'T, U2<WebAssembly.ModuleImports, 'T>>
-                                             >
-                                         >
-                                     >
-                                 >
-                             >,
-                            U2<'V, U2<option<obj>, option<obj>>>
-                         >,
-                        U2<
-                            System.Collections.Generic.ISet<U2<'V, U2<option<obj>, option<obj>>>>,
-                            U2<
-                                ResizeArray<U2<'V, U2<option<obj>, option<obj>>>>,
-                                U2<
-                                    System.Collections.Generic.IReadOnlyList<U2<'V, U2<option<obj>, option<obj>>>>,
-                                    U2<'T, U2<WebAssembly.ModuleImports, 'T>>
-                                 >
-                             >
-                         >
-                     >
-                 >
+            type MaybeCallableProvider = obj
 
-            type EntrypointBranded = obj
+            type Stubify =
+                [<EmitProperty("[__RPC_STUB_BRAND]")>]
+                abstract __RPC_STUB_BRAND: 'T with get, set
+
+                abstract symbolDispose: unit -> unit
+                abstract dup: unit -> 'StubBase
+                abstract Item: key: D1SessionBookmark -> option<obj>
+
+                abstract catch<'TResult> :
+                    ?onrejected: option<obj> -> U2<Promise<'TResult>, 'TResult> -> Promise<U2<'TResult, 'T>>
+
+                abstract ``then``<'TResult1, 'TResult2> :
+                    ?onfulfilled: 'T -> U2<Promise<'TResult1>, 'TResult1> *
+                    ?onrejected: option<obj> -> U2<Promise<'TResult2>, 'TResult2> ->
+                        Promise<U2<'TResult1, 'TResult2>>
+
+                abstract Invoke:
+                    [<ParamArray>] args: Stubify.Invoke.Args ->
+                        U2<Typescript.Highlight._Lit194, U2<Typescript.Highlight._Lit3044, unit>>
+
+            [<Import("@cloudflare/workers-types.Rpc", "DurableObjectBranded")>]
+            type DurableObjectBranded =
+                [<EmitProperty("[__DURABLE_OBJECT_BRAND]")>]
+                abstract __DURABLE_OBJECT_BRAND: unit with get, set
+
+            type Result = obj
 
         module rec RpcStub =
             module rec _Lit1 =
@@ -6887,6 +6906,16 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Disposition = | [<CompiledName("attachment")>] Attachment
 
+            type _Lit6 =
+                abstract content: U3<ArrayBuffer, ArrayBufferView, string> with get, set
+
+                [<EmitProperty("type")>]
+                abstract ``type``: D1SessionBookmark with get, set
+
+                abstract filename: D1SessionBookmark with get, set
+                abstract contentId: option<unit> with get, set
+                abstract disposition: _Lit6.Disposition with get, set
+
             type _Lit1 =
                 abstract attachments: option<ResizeArray<EmailAttachment>> with get, set
                 abstract html: option<D1SessionBookmark> with get, set
@@ -6912,41 +6941,19 @@ module rec Cloudflare =
                 abstract contentId: D1SessionBookmark with get, set
                 abstract disposition: _Lit4.Disposition with get, set
 
-            type _Lit6 =
-                abstract content: U3<ArrayBuffer, ArrayBufferView, string> with get, set
-
-                [<EmitProperty("type")>]
-                abstract ``type``: D1SessionBookmark with get, set
-
-                abstract filename: D1SessionBookmark with get, set
-                abstract contentId: option<unit> with get, set
-                abstract disposition: _Lit6.Disposition with get, set
-
         module rec ServiceWorkerGlobalScope =
             module rec _Lit1 =
-                module rec Invoke =
-                    module rec Args =
-                        module rec Flat =
-                            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type D = | [<CompiledValue(1)>] ``1``
-
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type TYPE_MISMATCH_ERR = | [<CompiledValue(17)>] ``17``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type INVALID_CHARACTER_ERR = | [<CompiledValue(5)>] ``5``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type HIERARCHY_REQUEST_ERR = | [<CompiledValue(3)>] ``3``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type DATA_CLONE_ERR = | [<CompiledValue(25)>] ``25``
+                type INVALID_ACCESS_ERR = | [<CompiledValue(15)>] ``15``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type INVALID_NODE_TYPE_ERR = | [<CompiledValue(24)>] ``24``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type ABORT_ERR = | [<CompiledValue(20)>] ``20``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type INDEX_SIZE_ERR = | [<CompiledValue(1)>] ``1``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type TIMEOUT_ERR = | [<CompiledValue(23)>] ``23``
@@ -6955,13 +6962,19 @@ module rec Cloudflare =
                 type QUOTA_EXCEEDED_ERR = | [<CompiledValue(22)>] ``22``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type URL_MISMATCH_ERR = | [<CompiledValue(21)>] ``21``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type ABORT_ERR = | [<CompiledValue(20)>] ``20``
+                type DATA_CLONE_ERR = | [<CompiledValue(25)>] ``25``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NETWORK_ERR = | [<CompiledValue(19)>] ``19``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type INVALID_CHARACTER_ERR = | [<CompiledValue(5)>] ``5``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type HIERARCHY_REQUEST_ERR = | [<CompiledValue(3)>] ``3``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type WRONG_DOCUMENT_ERR = | [<CompiledValue(4)>] ``4``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type SECURITY_ERR = | [<CompiledValue(18)>] ``18``
@@ -6970,13 +6983,10 @@ module rec Cloudflare =
                 type NO_DATA_ALLOWED_ERR = | [<CompiledValue(6)>] ``6``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type VALIDATION_ERR = | [<CompiledValue(16)>] ``16``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NO_MODIFICATION_ALLOWED_ERR = | [<CompiledValue(7)>] ``7``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type WRONG_DOCUMENT_ERR = | [<CompiledValue(4)>] ``4``
+                type NOT_FOUND_ERR = | [<CompiledValue(8)>] ``8``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NOT_SUPPORTED_ERR = | [<CompiledValue(9)>] ``9``
@@ -6985,115 +6995,144 @@ module rec Cloudflare =
                 type INUSE_ATTRIBUTE_ERR = | [<CompiledValue(10)>] ``10``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type NOT_FOUND_ERR = | [<CompiledValue(8)>] ``8``
+                type INVALID_STATE_ERR = | [<CompiledValue(11)>] ``11``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type SYNTAX_ERR = | [<CompiledValue(12)>] ``12``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type TYPE_MISMATCH_ERR = | [<CompiledValue(17)>] ``17``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type INVALID_MODIFICATION_ERR = | [<CompiledValue(13)>] ``13``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type INVALID_STATE_ERR = | [<CompiledValue(11)>] ``11``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type INVALID_ACCESS_ERR = | [<CompiledValue(15)>] ``15``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NAMESPACE_ERR = | [<CompiledValue(14)>] ``14``
 
-            module rec _Lit10 =
-                module rec Invoke =
-                    module rec Args =
-                        module rec Flat =
-                            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type D = | [<CompiledValue(1)>] ``1``
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type HIERARCHY_REQUEST_ERR = | [<CompiledValue(3)>] ``3``
+                type VALIDATION_ERR = | [<CompiledValue(16)>] ``16``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type URL_MISMATCH_ERR = | [<CompiledValue(21)>] ``21``
+
+            module rec _Lit10 =
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type CAPTURING_PHASE = | [<CompiledValue(1)>] ``1``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type AT_TARGET = | [<CompiledValue(2)>] ``2``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type BUBBLING_PHASE = | [<CompiledValue(3)>] ``3``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NONE = | [<CompiledValue(0)>] ``0``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
 
             module rec _Lit11 =
-                module rec Invoke =
-                    module rec Args =
-                        module rec Flat =
-                            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type D = | [<CompiledValue(1)>] ``1``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type HIERARCHY_REQUEST_ERR = | [<CompiledValue(3)>] ``3``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
-
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NONE = | [<CompiledValue(0)>] ``0``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type CAPTURING_PHASE = | [<CompiledValue(1)>] ``1``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type AT_TARGET = | [<CompiledValue(2)>] ``2``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type BUBBLING_PHASE = | [<CompiledValue(3)>] ``3``
 
             module rec _Lit16 =
-                module rec Invoke =
-                    module rec Args =
-                        module rec Flat =
-                            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type D = | [<CompiledValue(1)>] ``1``
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type CONNECTING = | [<CompiledValue(0)>] ``0``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type NONE = | [<CompiledValue(0)>] ``0``
+                type OPEN = | [<CompiledValue(1)>] ``1``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
+                type CLOSED = | [<CompiledValue(2)>] ``2``
 
             module rec _Lit6 =
-                module rec Invoke =
-                    module rec Args =
-                        module rec Flat =
-                            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type D = | [<CompiledValue(1)>] ``1``
-
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NONE = | [<CompiledValue(0)>] ``0``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
+                type AT_TARGET = | [<CompiledValue(2)>] ``2``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type HIERARCHY_REQUEST_ERR = | [<CompiledValue(3)>] ``3``
+                type BUBBLING_PHASE = | [<CompiledValue(3)>] ``3``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type CAPTURING_PHASE = | [<CompiledValue(1)>] ``1``
 
             module rec _Lit7 =
-                module rec Invoke =
-                    module rec Args =
-                        module rec Flat =
-                            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type D = | [<CompiledValue(1)>] ``1``
-
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type HIERARCHY_REQUEST_ERR = | [<CompiledValue(3)>] ``3``
-
-                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
+                type BUBBLING_PHASE = | [<CompiledValue(3)>] ``3``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NONE = | [<CompiledValue(0)>] ``0``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type CAPTURING_PHASE = | [<CompiledValue(1)>] ``1``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type AT_TARGET = | [<CompiledValue(2)>] ``2``
 
             module rec _Lit9 =
-                module rec Invoke =
-                    module rec Args =
-                        module rec Flat =
-                            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                            type D = | [<CompiledValue(1)>] ``1``
-
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type NONE = | [<CompiledValue(0)>] ``0``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type HIERARCHY_REQUEST_ERR = | [<CompiledValue(3)>] ``3``
+                type CAPTURING_PHASE = | [<CompiledValue(1)>] ``1``
 
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
+                type BUBBLING_PHASE = | [<CompiledValue(3)>] ``3``
+
+                [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+                type AT_TARGET = | [<CompiledValue(2)>] ``2``
+
+            type _Lit19 =
+                abstract prototype: DecompressionStream with get, set
+                abstract Create: format: CompressionFormat -> DecompressionStream
+
+            type _Lit3 =
+                abstract prototype: obj with get, set
+                abstract Create: unit -> obj
+
+            type _Lit22 =
+                abstract Create: unit -> _Lit23
+
+            type _Lit23 =
+                [<EmitProperty("1")>]
+                abstract ``1``: obj with get, set
+
+                [<EmitProperty("0")>]
+                abstract ``0``: obj with get, set
+
+            type _Lit24 =
+                abstract prototype: WebSocketRequestResponsePair with get, set
+
+                abstract Create:
+                    request: D1SessionBookmark * response: D1SessionBookmark -> WebSocketRequestResponsePair
+
+            type _Lit25 =
+                abstract prototype: obj with get, set
+                abstract Create: unit -> obj
+
+            type _Lit26 =
+                abstract prototype: obj with get, set
+                abstract timeout: milliseconds: float -> obj
+                abstract any: signals: ResizeArray<obj> -> obj
+                abstract abort: ?reason: obj -> obj
+                abstract Create: unit -> obj
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit18 =
+                | [<CompiledName("deflate")>] Deflate
+                | [<CompiledName("deflate-raw")>] DeflateRaw
+                | [<CompiledName("gzip")>] Gzip
 
             type _Lit27 =
                 abstract prototype: URLPattern with get, set
@@ -7104,23 +7143,11 @@ module rec Cloudflare =
                     ?patternOptions: URLPatternOptions ->
                         URLPattern
 
-            type _Lit29 =
-                abstract prototype: obj with get, set
-                abstract Create: ?blobParts: ResizeArray<BlobPart> * ?options: BlobPropertyBag -> obj
-
             type _Lit32 =
                 abstract prototype: obj with get, set
 
                 abstract Create:
                     fileBits: ResizeArray<BlobPart> * fileName: D1SessionBookmark * ?options: FilePropertyBag -> obj
-
-            type _Lit10 =
-                abstract BUBBLING_PHASE: _Lit10.BUBBLING_PHASE with get
-                abstract AT_TARGET: _Lit10.AT_TARGET with get
-                abstract CAPTURING_PHASE: _Lit10.CAPTURING_PHASE with get
-                abstract NONE: _Lit10.NONE with get
-                abstract prototype: TailEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> TailEvent
 
             type _Lit33 =
                 abstract prototype: obj with get, set
@@ -7130,10 +7157,6 @@ module rec Cloudflare =
                 abstract prototype: obj with get, set
                 abstract Create: unit -> obj
 
-            type _Lit14 =
-                abstract prototype: obj with get, set
-                abstract Create: init: obj -> obj
-
             type _Lit35 =
                 abstract prototype: obj with get, set
                 abstract Create: unit -> obj
@@ -7141,18 +7164,6 @@ module rec Cloudflare =
             type _Lit36 =
                 abstract prototype: CacheStorage with get, set
                 abstract Create: unit -> CacheStorage
-
-            type _Lit40 =
-                abstract prototype: HTMLRewriter with get, set
-                abstract Create: unit -> HTMLRewriter
-
-            type _Lit9 =
-                abstract BUBBLING_PHASE: _Lit9.BUBBLING_PHASE with get
-                abstract AT_TARGET: _Lit9.AT_TARGET with get
-                abstract CAPTURING_PHASE: _Lit9.CAPTURING_PHASE with get
-                abstract NONE: _Lit9.NONE with get
-                abstract prototype: FetchEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> FetchEvent
 
             type _Lit37 =
                 abstract prototype: Cache with get, set
@@ -7169,40 +7180,9 @@ module rec Cloudflare =
                 abstract prototype: IdentityTransformStream with get, set
                 abstract Create: ?queuingStrategy: IdentityTransformStreamQueuingStrategy -> IdentityTransformStream
 
-            type _Lit3 =
-                abstract prototype: obj with get, set
-                abstract Create: unit -> obj
-
-            type _Lit26 =
-                abstract prototype: obj with get, set
-                abstract timeout: milliseconds: float -> obj
-                abstract any: signals: ResizeArray<obj> -> obj
-                abstract abort: ?reason: obj -> obj
-                abstract Create: unit -> obj
-
-            type _Lit23 =
-                [<EmitProperty("1")>]
-                abstract ``1``: obj with get, set
-
-                [<EmitProperty("0")>]
-                abstract ``0``: obj with get, set
-
-            type _Lit24 =
-                abstract prototype: WebSocketRequestResponsePair with get, set
-
-                abstract Create:
-                    request: D1SessionBookmark * response: D1SessionBookmark -> WebSocketRequestResponsePair
-
-            type _Lit15 =
-                abstract prototype: obj with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> obj
-
-            type _Lit16 =
-                abstract CLOSED: _Lit16.CLOSED with get
-                abstract OPEN: _Lit16.OPEN with get
-                abstract CONNECTING: _Lit16.CONNECTING with get
-                abstract prototype: EventSource with get, set
-                abstract Create: url: U2<obj, string> * ?eventSourceInitDict: EventSourceInit -> EventSource
+            type _Lit40 =
+                abstract prototype: HTMLRewriter with get, set
+                abstract Create: unit -> HTMLRewriter
 
             type _Lit1 =
                 abstract DATA_CLONE_ERR: _Lit1.DATA_CLONE_ERR with get
@@ -7233,56 +7213,47 @@ module rec Cloudflare =
                 abstract prototype: obj with get, set
                 abstract Create: ?message: D1SessionBookmark * ?name: D1SessionBookmark -> obj
 
-            type _Lit7 =
-                abstract BUBBLING_PHASE: _Lit7.BUBBLING_PHASE with get
-                abstract AT_TARGET: _Lit7.AT_TARGET with get
-                abstract CAPTURING_PHASE: _Lit7.CAPTURING_PHASE with get
-                abstract NONE: _Lit7.NONE with get
-                abstract prototype: ExtendableEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> ExtendableEvent
+            type _Lit29 =
+                abstract prototype: obj with get, set
+                abstract Create: ?blobParts: ResizeArray<BlobPart> * ?options: BlobPropertyBag -> obj
 
             type _Lit17 =
                 abstract prototype: CompressionStream with get, set
                 abstract Create: format: CompressionFormat -> CompressionStream
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit18 =
-                | [<CompiledName("deflate")>] Deflate
-                | [<CompiledName("deflate-raw")>] DeflateRaw
-                | [<CompiledName("gzip")>] Gzip
-
-            type _Lit19 =
-                abstract prototype: DecompressionStream with get, set
-                abstract Create: format: CompressionFormat -> DecompressionStream
-
-            type _Lit25 =
+            type _Lit20 =
                 abstract prototype: obj with get, set
                 abstract Create: unit -> obj
-
-            type _Lit6 =
-                abstract BUBBLING_PHASE: _Lit6.BUBBLING_PHASE with get
-                abstract AT_TARGET: _Lit6.AT_TARGET with get
-                abstract CAPTURING_PHASE: _Lit6.CAPTURING_PHASE with get
-                abstract NONE: _Lit6.NONE with get
-                abstract prototype: obj with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> obj
-
-            type _Lit12 =
-                abstract prototype: CloseEvent with get, set
-                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: CloseEventInit -> CloseEvent
 
             type _Lit4 =
                 abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> unit
 
-            type _Lit2 =
-                abstract prototype: WorkerGlobalScope with get, set
-
-            type _Lit22 =
-                abstract Create: unit -> _Lit23
-
             type _Lit8 =
                 abstract prototype: obj with get, set
                 abstract Create<'T> : ``type``: D1SessionBookmark * ?eventInitDict: obj -> obj
+
+            type _Lit15 =
+                abstract prototype: obj with get, set
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> obj
+
+            type _Lit16 =
+                abstract CLOSED: _Lit16.CLOSED with get
+                abstract OPEN: _Lit16.OPEN with get
+                abstract CONNECTING: _Lit16.CONNECTING with get
+                abstract prototype: EventSource with get, set
+                abstract Create: url: U2<obj, string> * ?eventSourceInitDict: EventSourceInit -> EventSource
+
+            type _Lit14 =
+                abstract prototype: obj with get, set
+                abstract Create: init: obj -> obj
+
+            type _Lit10 =
+                abstract BUBBLING_PHASE: _Lit10.BUBBLING_PHASE with get
+                abstract AT_TARGET: _Lit10.AT_TARGET with get
+                abstract CAPTURING_PHASE: _Lit10.CAPTURING_PHASE with get
+                abstract NONE: _Lit10.NONE with get
+                abstract prototype: TailEvent with get, set
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> TailEvent
 
             type _Lit11 =
                 abstract BUBBLING_PHASE: _Lit11.BUBBLING_PHASE with get
@@ -7292,16 +7263,43 @@ module rec Cloudflare =
                 abstract prototype: ScheduledEvent with get, set
                 abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> ScheduledEvent
 
-            type _Lit13 =
-                abstract prototype: obj with get, set
-                abstract Create: init: obj -> obj
+            type _Lit12 =
+                abstract prototype: CloseEvent with get, set
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: CloseEventInit -> CloseEvent
+
+            type _Lit7 =
+                abstract BUBBLING_PHASE: _Lit7.BUBBLING_PHASE with get
+                abstract AT_TARGET: _Lit7.AT_TARGET with get
+                abstract CAPTURING_PHASE: _Lit7.CAPTURING_PHASE with get
+                abstract NONE: _Lit7.NONE with get
+                abstract prototype: ExtendableEvent with get, set
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> ExtendableEvent
+
+            type _Lit2 =
+                abstract prototype: WorkerGlobalScope with get, set
+
+            type _Lit9 =
+                abstract BUBBLING_PHASE: _Lit9.BUBBLING_PHASE with get
+                abstract AT_TARGET: _Lit9.AT_TARGET with get
+                abstract CAPTURING_PHASE: _Lit9.CAPTURING_PHASE with get
+                abstract NONE: _Lit9.NONE with get
+                abstract prototype: FetchEvent with get, set
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> FetchEvent
 
             type _Lit5 =
                 abstract Invoke: [<ParamArray>] args: 'Args -> unit
 
-            type _Lit20 =
+            type _Lit6 =
+                abstract BUBBLING_PHASE: _Lit6.BUBBLING_PHASE with get
+                abstract AT_TARGET: _Lit6.AT_TARGET with get
+                abstract CAPTURING_PHASE: _Lit6.CAPTURING_PHASE with get
+                abstract NONE: _Lit6.NONE with get
                 abstract prototype: obj with get, set
-                abstract Create: unit -> obj
+                abstract Create: ``type``: D1SessionBookmark * ?eventInitDict: obj -> obj
+
+            type _Lit13 =
+                abstract prototype: obj with get, set
+                abstract Create: init: obj -> obj
 
         module rec StreamCaption =
             type _Lit1 =
@@ -7334,12 +7332,6 @@ module rec Cloudflare =
                 abstract id: D1SessionBookmark with get, set
 
         module rec StreamDownloadGetResponse =
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit3 =
-                | [<CompiledName("error")>] Error
-                | [<CompiledName("ready")>] Ready
-                | [<CompiledName("inprogress")>] Inprogress
-
             type _Lit2 =
                 abstract url: option<D1SessionBookmark> with get, set
                 abstract status: StreamDownloadStatus with get, set
@@ -7350,6 +7342,12 @@ module rec Cloudflare =
                 abstract ``default``: option<StreamDownload> with get, set
 
                 abstract audio: option<StreamDownload> with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit3 =
+                | [<CompiledName("error")>] Error
+                | [<CompiledName("ready")>] Ready
+                | [<CompiledName("inprogress")>] Inprogress
 
         module rec StreamDownloadStatus =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -7394,9 +7392,12 @@ module rec Cloudflare =
                 abstract allowedOrigins: option<ResizeArray<D1SessionBookmark>> with get, set
 
         module rec StreamVideos =
-            type _Lit2 =
-                abstract height: float with get, set
-                abstract width: float with get, set
+            type _Lit1 =
+                abstract errorReasonText: D1SessionBookmark with get, set
+                abstract errorReasonCode: D1SessionBookmark with get, set
+                abstract pctComplete: option<D1SessionBookmark> with get, set
+                abstract step: option<D1SessionBookmark> with get, set
+                abstract state: D1SessionBookmark with get, set
 
             type _Lit5 =
                 abstract logo: option<string> with get, set
@@ -7409,12 +7410,9 @@ module rec Cloudflare =
 
                 abstract title: option<string> with get, set
 
-            type _Lit1 =
-                abstract errorReasonText: D1SessionBookmark with get, set
-                abstract errorReasonCode: D1SessionBookmark with get, set
-                abstract pctComplete: option<D1SessionBookmark> with get, set
-                abstract step: option<D1SessionBookmark> with get, set
-                abstract state: D1SessionBookmark with get, set
+            type _Lit2 =
+                abstract height: float with get, set
+                abstract width: float with get, set
 
         module rec StreamVideosListParams =
             type _Lit1 =
@@ -7509,7 +7507,7 @@ module rec Cloudflare =
 
             module rec HibernatableWebSocketEventInfoError =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                type Format = | [<CompiledName("error")>] Error
+                type Type = | [<CompiledName("error")>] Error
 
             module rec HibernatableWebSocketEventInfoMessage =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -7599,6 +7597,36 @@ module rec Cloudflare =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Type = | [<CompiledName("trace")>] Trace
 
+            [<Import("@cloudflare/workers-types.TailStream", "CustomEventInfo")>]
+            type CustomEventInfo =
+                [<EmitProperty("type")>]
+                abstract ``type``: CustomEventInfo.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "Header")>]
+            type Header =
+                abstract value: D1SessionBookmark with get
+                abstract name: D1SessionBookmark with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "JsRpcEventInfo")>]
+            type JsRpcEventInfo =
+                [<EmitProperty("type")>]
+                abstract ``type``: JsRpcEventInfo.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfoMessage")>]
+            type HibernatableWebSocketEventInfoMessage =
+                [<EmitProperty("type")>]
+                abstract ``type``: HibernatableWebSocketEventInfoMessage.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "FetchEventInfo")>]
+            type FetchEventInfo =
+                abstract headers: ResizeArray<Header> with get
+                abstract cfJson: option<obj> with get
+                abstract url: D1SessionBookmark with get
+                abstract method: D1SessionBookmark with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: FetchEventInfo.Type with get
+
             [<Import("@cloudflare/workers-types.TailStream", "Exception")>]
             type Exception =
                 abstract stack: option<D1SessionBookmark> with get
@@ -7608,6 +7636,57 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: Exception.Type with get
 
+            [<Import("@cloudflare/workers-types.TailStream", "Return")>]
+            type Return =
+                abstract info: option<FetchResponseInfo> with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: Return.Type with get
+
+            type EventType =
+                U10<
+                    Onset,
+                    Outcome,
+                    SpanOpen,
+                    SpanClose,
+                    DiagnosticChannelEvent,
+                    Exception,
+                    Log,
+                    StreamDiagnostic,
+                    Return,
+                    Attributes
+                 >
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type EventOutcome =
+                | [<CompiledName("unknown")>] Unknown
+                | [<CompiledName("exception")>] Exception
+                | [<CompiledName("ok")>] Ok
+                | [<CompiledName("canceled")>] Canceled
+                | [<CompiledName("killSwitch")>] KillSwitch
+                | [<CompiledName("daemonDown")>] DaemonDown
+                | [<CompiledName("exceededCpu")>] ExceededCpu
+                | [<CompiledName("exceededMemory")>] ExceededMemory
+                | [<CompiledName("loadShed")>] LoadShed
+                | [<CompiledName("responseStreamDisconnected")>] ResponseStreamDisconnected
+                | [<CompiledName("scriptNotFound")>] ScriptNotFound
+                | [<CompiledName("internalError")>] InternalError
+
+            [<Import("@cloudflare/workers-types.TailStream", "SpanClose")>]
+            type SpanClose =
+                abstract outcome: EventOutcome with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: SpanClose.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "ScheduledEventInfo")>]
+            type ScheduledEventInfo =
+                abstract cron: D1SessionBookmark with get
+                abstract scheduledTime: Date with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: ScheduledEventInfo.Type with get
+
             [<Import("@cloudflare/workers-types.TailStream", "FetchResponseInfo")>]
             type FetchResponseInfo =
                 abstract statusCode: float with get
@@ -7615,13 +7694,18 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: FetchResponseInfo.Type with get
 
-            [<Import("@cloudflare/workers-types.TailStream", "DiagnosticChannelEvent")>]
-            type DiagnosticChannelEvent =
-                abstract message: option<obj> with get
-                abstract channel: D1SessionBookmark with get
+            type TailEventHandlerType = obj
 
-                [<EmitProperty("type")>]
-                abstract ``type``: DiagnosticChannelEvent.Type with get
+            [<Import("@cloudflare/workers-types.TailStream", "Attribute")>]
+            type Attribute =
+                abstract value:
+                    U6<ResizeArray<D1SessionBookmark>, ResizeArray<bool>, ResizeArray<float>, bool, float, string> with get
+
+                abstract name: D1SessionBookmark with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "TailEventHandler")>]
+            type TailEventHandler<'Event when 'Event :> EventType> =
+                abstract Invoke: event: TailEvent<'Event> -> option<Promise<unit>>
 
             [<Import("@cloudflare/workers-types.TailStream", "Onset")>]
             type Onset =
@@ -7652,40 +7736,18 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: Onset.Type with get
 
-            [<Import("@cloudflare/workers-types.TailStream", "QueueEventInfo")>]
-            type QueueEventInfo =
-                abstract batchSize: float with get
-                abstract queueName: D1SessionBookmark with get
+            [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfoError")>]
+            type HibernatableWebSocketEventInfoError =
+                [<EmitProperty("type")>]
+                abstract ``type``: HibernatableWebSocketEventInfoError.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "Log")>]
+            type Log =
+                abstract message: obj with get
+                abstract level: Log._Lit1 with get
 
                 [<EmitProperty("type")>]
-                abstract ``type``: QueueEventInfo.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "TailEvent")>]
-            type TailEvent<'Event when 'Event :> EventType> =
-                abstract event: 'Event with get
-                abstract sequence: float with get
-                abstract timestamp: Date with get
-                abstract spanContext: SpanContext with get
-                abstract invocationId: D1SessionBookmark with get
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type EventOutcome =
-                | [<CompiledName("unknown")>] Unknown
-                | [<CompiledName("exception")>] Exception
-                | [<CompiledName("ok")>] Ok
-                | [<CompiledName("canceled")>] Canceled
-                | [<CompiledName("killSwitch")>] KillSwitch
-                | [<CompiledName("daemonDown")>] DaemonDown
-                | [<CompiledName("exceededCpu")>] ExceededCpu
-                | [<CompiledName("exceededMemory")>] ExceededMemory
-                | [<CompiledName("loadShed")>] LoadShed
-                | [<CompiledName("responseStreamDisconnected")>] ResponseStreamDisconnected
-                | [<CompiledName("scriptNotFound")>] ScriptNotFound
-                | [<CompiledName("internalError")>] InternalError
-
-            [<Import("@cloudflare/workers-types.TailStream", "TailEventHandler")>]
-            type TailEventHandler<'Event when 'Event :> EventType> =
-                abstract Invoke: event: TailEvent<'Event> -> option<Promise<unit>>
+                abstract ``type``: Log.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "TraceEventInfo")>]
             type TraceEventInfo =
@@ -7694,60 +7756,13 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: TraceEventInfo.Type with get
 
-            [<Import("@cloudflare/workers-types.TailStream", "CustomEventInfo")>]
-            type CustomEventInfo =
-                [<EmitProperty("type")>]
-                abstract ``type``: CustomEventInfo.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "Attribute")>]
-            type Attribute =
-                abstract value:
-                    U6<ResizeArray<D1SessionBookmark>, ResizeArray<bool>, ResizeArray<float>, bool, float, string> with get
-
-                abstract name: D1SessionBookmark with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfoMessage")>]
-            type HibernatableWebSocketEventInfoMessage =
-                [<EmitProperty("type")>]
-                abstract ``type``: HibernatableWebSocketEventInfoMessage.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "FetchEventInfo")>]
-            type FetchEventInfo =
-                abstract headers: ResizeArray<Header> with get
-                abstract cfJson: option<obj> with get
-                abstract url: D1SessionBookmark with get
-                abstract method: D1SessionBookmark with get
+            [<Import("@cloudflare/workers-types.TailStream", "DiagnosticChannelEvent")>]
+            type DiagnosticChannelEvent =
+                abstract message: option<obj> with get
+                abstract channel: D1SessionBookmark with get
 
                 [<EmitProperty("type")>]
-                abstract ``type``: FetchEventInfo.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfoError")>]
-            type HibernatableWebSocketEventInfoError =
-                [<EmitProperty("type")>]
-                abstract ``type``: HibernatableWebSocketEventInfoError.Type with get
-
-            type EventType =
-                U10<
-                    Onset,
-                    Outcome,
-                    SpanOpen,
-                    SpanClose,
-                    DiagnosticChannelEvent,
-                    Exception,
-                    Log,
-                    StreamDiagnostic,
-                    Return,
-                    Attributes
-                 >
-
-            type TailEventHandlerType = obj
-
-            [<Import("@cloudflare/workers-types.TailStream", "Attributes")>]
-            type Attributes =
-                abstract info: ResizeArray<Attribute> with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: Attributes.Type with get
+                abstract ``type``: DiagnosticChannelEvent.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "AlarmEventInfo")>]
             type AlarmEventInfo =
@@ -7756,96 +7771,16 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: AlarmEventInfo.Type with get
 
-            [<Import("@cloudflare/workers-types.TailStream", "SpanClose")>]
-            type SpanClose =
-                abstract outcome: EventOutcome with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: SpanClose.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "Outcome")>]
-            type Outcome =
-                abstract wallTime: float with get
-                abstract cpuTime: float with get
-                abstract outcome: EventOutcome with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: Outcome.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "EmailEventInfo")>]
-            type EmailEventInfo =
-                abstract rawSize: float with get
-                abstract rcptTo: D1SessionBookmark with get
-                abstract mailFrom: D1SessionBookmark with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: EmailEventInfo.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "ScriptVersion")>]
-            type ScriptVersion =
-                abstract message: option<D1SessionBookmark> with get
-                abstract tag: option<D1SessionBookmark> with get
-                abstract id: D1SessionBookmark with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfoClose")>]
-            type HibernatableWebSocketEventInfoClose =
-                abstract wasClean: bool with get
-                abstract code: float with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: HibernatableWebSocketEventInfoClose.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "SpanOpen")>]
-            type SpanOpen =
-                abstract info: option<U3<Attributes, FetchEventInfo, JsRpcEventInfo>> with get
-                abstract spanId: D1SessionBookmark with get
-                abstract name: D1SessionBookmark with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: SpanOpen.Type with get
-
             [<Import("@cloudflare/workers-types.TailStream", "TracePreviewInfo")>]
             type TracePreviewInfo =
                 abstract name: D1SessionBookmark with get
                 abstract slug: D1SessionBookmark with get
                 abstract id: D1SessionBookmark with get
 
-            [<Import("@cloudflare/workers-types.TailStream", "Return")>]
-            type Return =
-                abstract info: option<FetchResponseInfo> with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: Return.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "StreamDiagnostic")>]
-            type StreamDiagnostic =
-                abstract diagnostic: DroppedEventsDiagnostic with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: StreamDiagnostic.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "ScheduledEventInfo")>]
-            type ScheduledEventInfo =
-                abstract cron: D1SessionBookmark with get
-                abstract scheduledTime: Date with get
-
-                [<EmitProperty("type")>]
-                abstract ``type``: ScheduledEventInfo.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "Header")>]
-            type Header =
-                abstract value: D1SessionBookmark with get
-                abstract name: D1SessionBookmark with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "JsRpcEventInfo")>]
-            type JsRpcEventInfo =
-                [<EmitProperty("type")>]
-                abstract ``type``: JsRpcEventInfo.Type with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "SpanContext")>]
-            type SpanContext =
-                abstract spanId: option<D1SessionBookmark> with get
-                abstract traceId: D1SessionBookmark with get
+            [<Import("@cloudflare/workers-types.TailStream", "DroppedEventsDiagnostic")>]
+            type DroppedEventsDiagnostic =
+                abstract count: float with get
+                abstract diagnosticsType: DroppedEventsDiagnostic.DiagnosticsType with get
 
             [<Import("@cloudflare/workers-types.TailStream", "ConnectEventInfo")>]
             type ConnectEventInfo =
@@ -7869,18 +7804,30 @@ module rec Cloudflare =
                 abstract spanOpen: option<TailEvent<'Event> -> option<Promise<unit>>> with get, set
                 abstract outcome: option<TailEvent<'Event> -> option<Promise<unit>>> with get, set
 
-            [<Import("@cloudflare/workers-types.TailStream", "DroppedEventsDiagnostic")>]
-            type DroppedEventsDiagnostic =
-                abstract count: float with get
-                abstract diagnosticsType: DroppedEventsDiagnostic.DiagnosticsType with get
-
-            [<Import("@cloudflare/workers-types.TailStream", "Log")>]
-            type Log =
-                abstract message: obj with get
-                abstract level: Log._Lit1 with get
+            [<Import("@cloudflare/workers-types.TailStream", "QueueEventInfo")>]
+            type QueueEventInfo =
+                abstract batchSize: float with get
+                abstract queueName: D1SessionBookmark with get
 
                 [<EmitProperty("type")>]
-                abstract ``type``: Log.Type with get
+                abstract ``type``: QueueEventInfo.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "TailEvent")>]
+            type TailEvent<'Event when 'Event :> EventType> =
+                abstract event: 'Event with get
+                abstract sequence: float with get
+                abstract timestamp: Date with get
+                abstract spanContext: SpanContext with get
+                abstract invocationId: D1SessionBookmark with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "EmailEventInfo")>]
+            type EmailEventInfo =
+                abstract rawSize: float with get
+                abstract rcptTo: D1SessionBookmark with get
+                abstract mailFrom: D1SessionBookmark with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: EmailEventInfo.Type with get
 
             [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfo")>]
             type HibernatableWebSocketEventInfo =
@@ -7894,6 +7841,57 @@ module rec Cloudflare =
                 [<EmitProperty("type")>]
                 abstract ``type``: HibernatableWebSocketEventInfo.Type with get
 
+            [<Import("@cloudflare/workers-types.TailStream", "StreamDiagnostic")>]
+            type StreamDiagnostic =
+                abstract diagnostic: DroppedEventsDiagnostic with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: StreamDiagnostic.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "SpanContext")>]
+            type SpanContext =
+                abstract spanId: option<D1SessionBookmark> with get
+                abstract traceId: D1SessionBookmark with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "HibernatableWebSocketEventInfoClose")>]
+            type HibernatableWebSocketEventInfoClose =
+                abstract wasClean: bool with get
+                abstract code: float with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: HibernatableWebSocketEventInfoClose.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "Outcome")>]
+            type Outcome =
+                abstract wallTime: float with get
+                abstract cpuTime: float with get
+                abstract outcome: EventOutcome with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: Outcome.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "Attributes")>]
+            type Attributes =
+                abstract info: ResizeArray<Attribute> with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: Attributes.Type with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "ScriptVersion")>]
+            type ScriptVersion =
+                abstract message: option<D1SessionBookmark> with get
+                abstract tag: option<D1SessionBookmark> with get
+                abstract id: D1SessionBookmark with get
+
+            [<Import("@cloudflare/workers-types.TailStream", "SpanOpen")>]
+            type SpanOpen =
+                abstract info: option<U3<Attributes, FetchEventInfo, JsRpcEventInfo>> with get
+                abstract spanId: D1SessionBookmark with get
+                abstract name: D1SessionBookmark with get
+
+                [<EmitProperty("type")>]
+                abstract ``type``: SpanOpen.Type with get
+
         module rec ToMarkdownService =
             module rec _Lit19 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -7902,40 +7900,6 @@ module rec Cloudflare =
             module rec _Lit20 =
                 [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
                 type Format = | [<CompiledName("error")>] Error
-
-            type _Lit2 =
-                abstract conversionOptions: option<ConversionOptions> with get, set
-                abstract extraHeaders: option<obj> with get, set
-                abstract gateway: option<GatewayOptions> with get, set
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit7 =
-                | [<CompiledName("constant")>] Constant
-                | [<CompiledName("linear")>] Linear
-                | [<CompiledName("exponential")>] Exponential
-
-            type _Lit17 =
-                abstract metadata: option<bool> with get, set
-                abstract images: option<EmbeddedImageConversionOptions> with get, set
-
-            type _Lit11 =
-                abstract descriptionLanguage: option<_Lit12> with get, set
-
-            type _Lit6 =
-                | ``2`` = 2
-                | ``3`` = 3
-                | ``1`` = 1
-                | ``4`` = 4
-                | ``5`` = 5
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit12 =
-                | [<CompiledName("en")>] En
-                | [<CompiledName("es")>] Es
-                | [<CompiledName("fr")>] Fr
-                | [<CompiledName("it")>] It
-                | [<CompiledName("pt")>] Pt
-                | [<CompiledName("de")>] De
 
             type _Lit3 =
                 abstract retries: option<GatewayRetries> with get, set
@@ -7953,26 +7917,29 @@ module rec Cloudflare =
                 abstract retryDelayMs: option<float> with get, set
                 abstract maxAttempts: option<_Lit6> with get, set
 
-            type _Lit16 =
-                abstract maxConvertedImages: option<float> with get, set
-                abstract convert: option<bool> with get, set
-                abstract descriptionLanguage: option<_Lit12> with get, set
+            type _Lit6 =
+                | ``2`` = 2
+                | ``3`` = 3
+                | ``1`` = 1
+                | ``4`` = 4
+                | ``5`` = 5
 
-            type _Lit15 =
-                abstract images: option<EmbeddedImageConversionOptions> with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit7 =
+                | [<CompiledName("constant")>] Constant
+                | [<CompiledName("linear")>] Linear
+                | [<CompiledName("exponential")>] Exponential
+
+            type _Lit8 =
+                abstract pdf: option<_Lit17> with get, set
+                abstract image: option<ImageConversionOptions> with get, set
+                abstract docx: option<_Lit15> with get, set
+                abstract html: option<_Lit9> with get, set
 
             type _Lit9 =
                 abstract cssSelector: option<D1SessionBookmark> with get, set
                 abstract hostname: option<D1SessionBookmark> with get, set
                 abstract images: option<_Lit10> with get, set
-
-            type _Lit1 =
-                abstract blob: obj with get, set
-                abstract name: D1SessionBookmark with get, set
-
-            type _Lit21 =
-                abstract extension: D1SessionBookmark with get, set
-                abstract mimeType: D1SessionBookmark with get, set
 
             type _Lit10 =
                 abstract convertOGImage: option<bool> with get, set
@@ -7980,11 +7947,36 @@ module rec Cloudflare =
                 abstract convert: option<bool> with get, set
                 abstract descriptionLanguage: option<_Lit12> with get, set
 
-            type _Lit8 =
-                abstract pdf: option<_Lit17> with get, set
-                abstract image: option<ImageConversionOptions> with get, set
-                abstract docx: option<_Lit15> with get, set
-                abstract html: option<_Lit9> with get, set
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit12 =
+                | [<CompiledName("en")>] En
+                | [<CompiledName("es")>] Es
+                | [<CompiledName("fr")>] Fr
+                | [<CompiledName("it")>] It
+                | [<CompiledName("pt")>] Pt
+                | [<CompiledName("de")>] De
+
+            type _Lit15 =
+                abstract images: option<EmbeddedImageConversionOptions> with get, set
+
+            type _Lit16 =
+                abstract maxConvertedImages: option<float> with get, set
+                abstract convert: option<bool> with get, set
+                abstract descriptionLanguage: option<_Lit12> with get, set
+
+            type _Lit11 =
+                abstract descriptionLanguage: option<_Lit12> with get, set
+
+            type _Lit17 =
+                abstract metadata: option<bool> with get, set
+                abstract images: option<EmbeddedImageConversionOptions> with get, set
+
+            type _Lit20 =
+                abstract error: D1SessionBookmark with get, set
+                abstract format: _Lit20.Format with get, set
+                abstract mimeType: D1SessionBookmark with get, set
+                abstract name: D1SessionBookmark with get, set
+                abstract id: D1SessionBookmark with get, set
 
             type _Lit19 =
                 abstract data: D1SessionBookmark with get, set
@@ -7994,12 +7986,18 @@ module rec Cloudflare =
                 abstract name: D1SessionBookmark with get, set
                 abstract id: D1SessionBookmark with get, set
 
-            type _Lit20 =
-                abstract error: D1SessionBookmark with get, set
-                abstract format: _Lit20.Format with get, set
-                abstract mimeType: D1SessionBookmark with get, set
+            type _Lit2 =
+                abstract conversionOptions: option<ConversionOptions> with get, set
+                abstract extraHeaders: option<obj> with get, set
+                abstract gateway: option<GatewayOptions> with get, set
+
+            type _Lit1 =
+                abstract blob: obj with get, set
                 abstract name: D1SessionBookmark with get, set
-                abstract id: D1SessionBookmark with get, set
+
+            type _Lit21 =
+                abstract extension: D1SessionBookmark with get, set
+                abstract mimeType: D1SessionBookmark with get, set
 
         module rec TooManyWatermarksError =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -8018,12 +8016,12 @@ module rec Cloudflare =
             type Role = | [<CompiledName("tool")>] Tool
 
         module rec Tracing =
-            type _Lit1 =
-                abstract Invoke: span: Span * [<ParamArray>] args: 'A -> 'T
-
             type _Lit3 =
                 abstract prototype: Span with get, set
                 abstract Create: unit -> Span
+
+            type _Lit1 =
+                abstract Invoke: span: Span * [<ParamArray>] args: 'A -> 'T
 
         module rec URLSearchParams =
             type _Lit1 =
@@ -8034,6 +8032,9 @@ module rec Cloudflare =
             type Role = | [<CompiledName("user")>] User
 
         module rec Vectorize =
+            type _Lit5 =
+                abstract Item: key: D1SessionBookmark -> option<U5<bool, _Lit7, _Lit9, float, string>>
+
             type _Lit7 =
                 [<EmitProperty("$gte")>]
                 abstract gte: option<U3<bool, float, string>> with get, set
@@ -8053,15 +8054,18 @@ module rec Cloudflare =
                 [<EmitProperty("$eq")>]
                 abstract eq: option<U3<bool, float, string>> with get, set
 
-            type _Lit5 =
-                abstract Item: key: D1SessionBookmark -> option<U5<bool, _Lit7, _Lit9, float, string>>
-
             type _Lit9 =
                 [<EmitProperty("$nin")>]
                 abstract nin: option<ResizeArray<U3<bool, float, string>>> with get, set
 
                 [<EmitProperty("$in")>]
                 abstract ``in``: option<ResizeArray<U3<bool, float, string>>> with get, set
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type _Lit4 =
+                | [<CompiledName("all")>] All
+                | [<CompiledName("indexed")>] Indexed
+                | [<CompiledName("none")>] None
 
             type _Lit12 =
                 abstract score: float with get, set
@@ -8073,15 +8077,10 @@ module rec Cloudflare =
                 abstract id: D1SessionBookmark with get, set
                 abstract values: option<U3<Float64Array, Float32Array, ResizeArray<float>>> with get, set
 
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type _Lit4 =
-                | [<CompiledName("all")>] All
-                | [<CompiledName("indexed")>] Indexed
-                | [<CompiledName("none")>] None
-
         module rec VectorizeIndex =
-            type _Lit4 =
-                abstract preset: D1SessionBookmark with get, set
+            type _Lit2 =
+                abstract metric: VectorizeDistanceMetric with get, set
+                abstract dimensions: float with get, set
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type _Lit3 =
@@ -8089,9 +8088,8 @@ module rec Cloudflare =
                 | [<CompiledName("cosine")>] Cosine
                 | [<CompiledName("dot-product")>] DotProduct
 
-            type _Lit2 =
-                abstract metric: VectorizeDistanceMetric with get, set
-                abstract dimensions: float with get, set
+            type _Lit4 =
+                abstract preset: D1SessionBookmark with get, set
 
         module rec VectorizeQueryOptions =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -8142,38 +8140,19 @@ module rec Cloudflare =
                     | [<CompiledName("i64")>] I64
                     | [<CompiledName("v128")>] V128
 
+            [<Import("@cloudflare/workers-types.WebAssembly", "CompileError"); AbstractClass; AllowNullLiteral>]
+            type CompileError private () =
+                inherit exn()
+
+                [<EmitConstructor>]
+                abstract Create: ?message: D1SessionBookmark -> CompileError
+
             [<Import("@cloudflare/workers-types.WebAssembly", "Instance"); AbstractClass; AllowNullLiteral>]
             type Instance private () =
                 [<EmitConstructor>]
                 abstract Create: ``module``: WebAssembly.Module * ?imports: WebAssembly.Imports -> Instance
 
                 abstract exports: WebAssembly.Exports with get
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type ImportExportKind =
-                | [<CompiledName("function")>] Function
-                | [<CompiledName("table")>] Table
-                | [<CompiledName("global")>] Global
-                | [<CompiledName("memory")>] Memory
-
-            [<Import("@cloudflare/workers-types.WebAssembly", "Table"); AbstractClass; AllowNullLiteral>]
-            type Table private () =
-                [<EmitConstructor>]
-                abstract Create: descriptor: WebAssembly.TableDescriptor * ?value: obj -> Table
-
-                abstract length: float with get
-                abstract set: index: float * ?value: obj -> unit
-                abstract grow: delta: float * ?value: obj -> float
-                abstract get: index: float -> option<obj>
-
-            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type TableKind =
-                | [<CompiledName("anyfunc")>] Anyfunc
-                | [<CompiledName("externref")>] Externref
-
-            type ModuleImports = obj
-            type ExportValue = U4<Function, WebAssembly.Table, WebAssembly.Memory, WebAssembly.Global<ValueType>>
-            type ImportValue = U5<Function, WebAssembly.Table, WebAssembly.Memory, WebAssembly.Global<ValueType>, float>
 
             [<Import("@cloudflare/workers-types.WebAssembly", "RuntimeError"); AbstractClass; AllowNullLiteral>]
             type RuntimeError private () =
@@ -8190,34 +8169,6 @@ module rec Cloudflare =
                 abstract buffer: ArrayBuffer with get
                 abstract grow: delta: float -> float
 
-            type Imports =
-                abstract Item: key: D1SessionBookmark -> option<obj>
-
-            type Exports = obj
-
-            [<Import("@cloudflare/workers-types.WebAssembly", "CompileError"); AbstractClass; AllowNullLiteral>]
-            type CompileError private () =
-                inherit exn()
-
-                [<EmitConstructor>]
-                abstract Create: ?message: D1SessionBookmark -> CompileError
-
-            [<Import("@cloudflare/workers-types.WebAssembly", "Global"); AbstractClass; AllowNullLiteral>]
-            type Global private () =
-                [<EmitConstructor>]
-                abstract Create: descriptor: WebAssembly.GlobalDescriptor<ValueType> * ?value: obj -> Global
-
-                abstract value: option<obj> with get, set
-                abstract valueOf: unit -> option<obj>
-
-            [<Import("@cloudflare/workers-types.WebAssembly", "Module"); AbstractClass; AllowNullLiteral>]
-            type Module private () =
-                abstract imports: ``module``: WebAssembly.Module -> ResizeArray<WebAssembly.ModuleImportDescriptor>
-                abstract exports: ``module``: WebAssembly.Module -> ResizeArray<WebAssembly.ModuleExportDescriptor>
-
-                abstract customSections:
-                    ``module``: WebAssembly.Module * sectionName: D1SessionBookmark -> ResizeArray<ArrayBuffer>
-
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
             type ValueType =
                 | [<CompiledName("f32")>] F32
@@ -8227,6 +8178,52 @@ module rec Cloudflare =
                 | [<CompiledName("i32")>] I32
                 | [<CompiledName("i64")>] I64
                 | [<CompiledName("v128")>] V128
+
+            type Exports = obj
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type ImportExportKind =
+                | [<CompiledName("function")>] Function
+                | [<CompiledName("table")>] Table
+                | [<CompiledName("global")>] Global
+                | [<CompiledName("memory")>] Memory
+
+            [<Import("@cloudflare/workers-types.WebAssembly", "Module"); AbstractClass; AllowNullLiteral>]
+            type Module private () =
+                abstract imports: ``module``: WebAssembly.Module -> ResizeArray<WebAssembly.ModuleImportDescriptor>
+                abstract exports: ``module``: WebAssembly.Module -> ResizeArray<WebAssembly.ModuleExportDescriptor>
+
+                abstract customSections:
+                    ``module``: WebAssembly.Module * sectionName: D1SessionBookmark -> ResizeArray<ArrayBuffer>
+
+            type ModuleImports = obj
+            type ExportValue = U4<Function, WebAssembly.Table, WebAssembly.Memory, WebAssembly.Global<ValueType>>
+
+            [<Import("@cloudflare/workers-types.WebAssembly", "Global"); AbstractClass; AllowNullLiteral>]
+            type Global private () =
+                [<EmitConstructor>]
+                abstract Create: descriptor: WebAssembly.GlobalDescriptor<ValueType> * ?value: obj -> Global
+
+                abstract value: option<obj> with get, set
+                abstract valueOf: unit -> option<obj>
+
+            [<Import("@cloudflare/workers-types.WebAssembly", "Table"); AbstractClass; AllowNullLiteral>]
+            type Table private () =
+                [<EmitConstructor>]
+                abstract Create: descriptor: WebAssembly.TableDescriptor * ?value: obj -> Table
+
+                abstract length: float with get
+                abstract set: index: float * ?value: obj -> unit
+                abstract grow: delta: float * ?value: obj -> float
+                abstract get: index: float -> option<obj>
+
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type TableKind =
+                | [<CompiledName("anyfunc")>] Anyfunc
+                | [<CompiledName("externref")>] Externref
+
+            type ImportValue = U5<Function, WebAssembly.Table, WebAssembly.Memory, WebAssembly.Global<ValueType>, float>
+            type Imports = obj
 
         module rec WebSearchUserLocation =
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
@@ -8269,11 +8266,11 @@ module rec Cloudflare =
 
         module rec ``Cloudflare:node`` =
             module rec HttpServerHandler =
-                type _Lit1 =
-                    abstract port: float with get, set
-
                 type _Lit2 =
                     abstract port: option<float> with get, set
+
+                type _Lit1 =
+                    abstract port: float with get, set
 
             type HttpServerHandler =
                 abstract Invoke:
@@ -8293,6 +8290,12 @@ module rec Cloudflare =
             type ``Cloudflare:node`` =
                 [<Import("@cloudflare/workers-types.cloudflare:node", "httpServerHandler")>]
                 static member httpServerHandler
+                    (server: NodeStyleServer)
+                    : ExportedHandler<option<obj>, option<obj>, option<obj>, option<obj>> =
+                    JS.undefined
+
+                [<Import("@cloudflare/workers-types.cloudflare:node", "httpServerHandler")>]
+                static member httpServerHandler
                     (options: HttpServerHandler._Lit1)
                     : ExportedHandler<option<obj>, option<obj>, option<obj>, option<obj>> =
                     JS.undefined
@@ -8300,12 +8303,6 @@ module rec Cloudflare =
                 [<Import("@cloudflare/workers-types.cloudflare:node", "httpServerHandler")>]
                 static member httpServerHandler
                     (port: float)
-                    : ExportedHandler<option<obj>, option<obj>, option<obj>, option<obj>> =
-                    JS.undefined
-
-                [<Import("@cloudflare/workers-types.cloudflare:node", "httpServerHandler")>]
-                static member httpServerHandler
-                    (server: NodeStyleServer)
                     : ExportedHandler<option<obj>, option<obj>, option<obj>, option<obj>> =
                     JS.undefined
 
@@ -8327,17 +8324,6 @@ module rec Cloudflare =
                 type I =
                     abstract Item: key: D1SessionBookmark -> option<obj>
 
-            [<Import("@cloudflare/workers-types.cloudflare:pipelines", "PipelineBatchMetadata")>]
-            type PipelineBatchMetadata =
-                abstract pipelineName: D1SessionBookmark with get, set
-                abstract pipelineId: D1SessionBookmark with get, set
-
-            type PipelineRecord = obj
-
-            [<Import("@cloudflare/workers-types.cloudflare:pipelines", "Pipeline")>]
-            type Pipeline<'T when 'T :> PipelineRecord> =
-                abstract send: records: ResizeArray<'T> -> Promise<unit>
-
             [<Import("@cloudflare/workers-types.cloudflare:pipelines", "PipelineTransformationEntrypoint");
               AbstractClass;
               AllowNullLiteral>]
@@ -8349,6 +8335,17 @@ module rec Cloudflare =
                 abstract ctx: ExecutionContext<option<obj>> with get, set
                 abstract env: 'Env with get, set
                 abstract run: records: ResizeArray<'I> * metadata: PipelineBatchMetadata -> Promise<ResizeArray<'O>>
+
+            type PipelineRecord = obj
+
+            [<Import("@cloudflare/workers-types.cloudflare:pipelines", "Pipeline")>]
+            type Pipeline<'T when 'T :> PipelineRecord> =
+                abstract send: records: ResizeArray<'T> -> Promise<unit>
+
+            [<Import("@cloudflare/workers-types.cloudflare:pipelines", "PipelineBatchMetadata")>]
+            type PipelineBatchMetadata =
+                abstract pipelineName: D1SessionBookmark with get, set
+                abstract pipelineId: D1SessionBookmark with get, set
 
         module rec ``Cloudflare:workflows`` =
             [<Import("@cloudflare/workers-types.cloudflare:workflows", "NonRetryableError");
@@ -15316,6 +15313,13 @@ module rec Cloudflare =
         type ExportedHandlerConnectHandler<'Env, 'Props> =
             abstract Invoke: socket: Socket * env: 'Env * ctx: ExecutionContext<'Props> -> option<Promise<unit>>
 
+        type AiCfMetaLlama4Scout17B16EInstructInput =
+            U3<
+                AiCfMetaLlama4Scout17B16EInstructPrompt,
+                AiCfMetaLlama4Scout17B16EInstructMessages,
+                AiCfMetaLlama4Scout17B16EInstructAsyncBatch
+             >
+
         [<Import("@cloudflare/workers-types", "EndTag")>]
         type EndTag =
             abstract name: D1SessionBookmark with get, set
@@ -15332,13 +15336,6 @@ module rec Cloudflare =
             abstract value: 'T with get, set
             abstract flagKey: D1SessionBookmark with get, set
 
-        [<Import("@cloudflare/workers-types", "FacetStartupOptions")>]
-        type FacetStartupOptions<'T when 'T :> Rpc.DurableObjectBranded> =
-            [<EmitProperty("class")>]
-            abstract ``class``: DurableObjectClass<'T> with get, set
-
-            abstract id: option<U2<DurableObjectId, string>> with get, set
-
         [<Import("@cloudflare/workers-types", "TextEncoderStream"); AbstractClass; AllowNullLiteral>]
         type TextEncoderStream private () =
             inherit obj<D1SessionBookmark, Uint8Array>()
@@ -15348,9 +15345,12 @@ module rec Cloudflare =
 
             abstract encoding: D1SessionBookmark with get
 
-        [<Import("@cloudflare/workers-types", "AiAutomaticSpeechRecognitionInput")>]
-        type AiAutomaticSpeechRecognitionInput =
-            abstract audio: AiSentenceSimilarityOutput with get, set
+        [<Import("@cloudflare/workers-types", "FacetStartupOptions")>]
+        type FacetStartupOptions<'T when 'T :> Rpc.DurableObjectBranded> =
+            [<EmitProperty("class")>]
+            abstract ``class``: DurableObjectClass<'T> with get, set
+
+            abstract id: option<U2<DurableObjectId, string>> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Google_Gemma_3_12B_It_Messages")>]
         type AiCfGoogleGemma312BItMessages =
@@ -15386,14 +15386,27 @@ module rec Cloudflare =
             abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
             abstract messages: ResizeArray<AiModels._Lit101> with get, set
 
-        [<Import("@cloudflare/workers-types", "EventListener")>]
-        type EventListener<'EventType when 'EventType :> obj> =
-            abstract Invoke: event: 'EventType -> unit
+        [<Import("@cloudflare/workers-types", "AiAutomaticSpeechRecognitionInput")>]
+        type AiAutomaticSpeechRecognitionInput =
+            abstract audio: AiSentenceSimilarityOutput with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Baai_Bge_Base_En_V1_5_AsyncResponse")>]
         type AiCfBaaiBgeBaseEnV15AsyncResponse =
             [<EmitProperty("request_id")>]
             abstract requestId: option<D1SessionBookmark> with get, set
+
+        [<Import("@cloudflare/workers-types", "EventListener")>]
+        type EventListener<'EventType when 'EventType :> obj> =
+            abstract Invoke: event: 'EventType -> unit
+
+        [<Import("@cloudflare/workers-types", "MediaTransformationOutputOptions")>]
+        type MediaTransformationOutputOptions =
+            abstract format: option<MediaTransformationOutputOptions._Lit3> with get, set
+            abstract imageCount: option<float> with get, set
+            abstract duration: option<D1SessionBookmark> with get, set
+            abstract time: option<D1SessionBookmark> with get, set
+            abstract audio: option<bool> with get, set
+            abstract mode: option<MediaTransformationOutputOptions._Lit2> with get, set
 
         [<Import("@cloudflare/workers-types", "StreamWatermark")>]
         type StreamWatermark =
@@ -15409,15 +15422,6 @@ module rec Cloudflare =
             abstract size: float with get, set
             abstract id: D1SessionBookmark with get, set
 
-        [<Import("@cloudflare/workers-types", "MediaTransformationOutputOptions")>]
-        type MediaTransformationOutputOptions =
-            abstract format: option<MediaTransformationOutputOptions._Lit3> with get, set
-            abstract imageCount: option<float> with get, set
-            abstract duration: option<D1SessionBookmark> with get, set
-            abstract time: option<D1SessionBookmark> with get, set
-            abstract audio: option<bool> with get, set
-            abstract mode: option<MediaTransformationOutputOptions._Lit2> with get, set
-
         [<Import("@cloudflare/workers-types", "URLPatternOptions")>]
         type URLPatternOptions =
             abstract ignoreCase: option<bool> with get, set
@@ -15427,12 +15431,17 @@ module rec Cloudflare =
             abstract postProcessedOutputs: D1SessionBookmark with get, set
             abstract inputs: AiCfLeonardoPhoenix10Input with get, set
 
+        type FlagshipEvaluationContext = obj
+
         [<Import("@cloudflare/workers-types", "VectorizeError")>]
         type VectorizeError =
             abstract error: D1SessionBookmark with get, set
             abstract code: option<float> with get, set
 
-        type FlagshipEvaluationContext = obj
+        [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_Embedding_0_6B_Output")>]
+        type AiCfQwenQwen3Embedding06BOutput =
+            abstract shape: option<AiSentenceSimilarityOutput> with get, set
+            abstract data: option<ResizeArray<AiSentenceSimilarityOutput>> with get, set
 
         [<Import("@cloudflare/workers-types", "ChatCompletionContentPartFile")>]
         type ChatCompletionContentPartFile =
@@ -15441,26 +15450,14 @@ module rec Cloudflare =
             [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionContentPartFile.Type with get, set
 
-        type AiCfMetaLlama4Scout17B16EInstructInput =
-            U3<
-                AiCfMetaLlama4Scout17B16EInstructPrompt,
-                AiCfMetaLlama4Scout17B16EInstructMessages,
-                AiCfMetaLlama4Scout17B16EInstructAsyncBatch
-             >
+        [<Import("@cloudflare/workers-types", "ChatCompletionMessageCustomToolCall")>]
+        type ChatCompletionMessageCustomToolCall =
+            abstract custom: AiModels._Lit226 with get, set
 
-        [<Import("@cloudflare/workers-types", "TraceItemHibernatableWebSocketEventInfo")>]
-        type TraceItemHibernatableWebSocketEventInfo =
-            abstract getWebSocketEvent:
-                U3<
-                    TraceItemHibernatableWebSocketEventInfoError,
-                    TraceItemHibernatableWebSocketEventInfoClose,
-                    TraceItemHibernatableWebSocketEventInfoMessage
-                 > with get
+            [<EmitProperty("type")>]
+            abstract ``type``: ChatCompletionMessageCustomToolCall.Type with get, set
 
-        [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_Embedding_0_6B_Output")>]
-        type AiCfQwenQwen3Embedding06BOutput =
-            abstract shape: option<AiSentenceSimilarityOutput> with get, set
-            abstract data: option<ResizeArray<AiSentenceSimilarityOutput>> with get, set
+            abstract id: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "StreamVideoInput")>]
         type StreamVideoInput =
@@ -15499,12 +15496,12 @@ module rec Cloudflare =
         type SchedulerWaitOptions =
             abstract signal: option<obj> with get, set
 
+        type AiCfBaaiBgeSmallEnV15Output = U2<AiCfBaaiBgeSmallEnV15AsyncResponse, AiModels._Lit39>
+
         [<Import("@cloudflare/workers-types", "Span"); AbstractClass; AllowNullLiteral>]
         type Span private () =
             abstract isTraced: bool with get
             abstract setAttribute: key: D1SessionBookmark * ?value: U3<bool, float, string> -> unit
-
-        type AiCfBaaiBgeSmallEnV15Output = U2<AiCfBaaiBgeSmallEnV15AsyncResponse, AiModels._Lit39>
 
         [<Import("@cloudflare/workers-types", "SocketAddress")>]
         type SocketAddress =
@@ -15514,10 +15511,6 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "IncomingRequestCfPropertiesCloudflareForSaaSEnterprise")>]
         type IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<'HostMetadata> =
             abstract hostMetadata: option<'HostMetadata> with get, set
-
-        [<Import("@cloudflare/workers-types", "ResponseIncompleteDetails")>]
-        type ResponseIncompleteDetails =
-            abstract reason: option<AiModels._Lit242> with get, set
 
         [<Import("@cloudflare/workers-types", "URLPatternInit")>]
         type URLPatternInit =
@@ -15536,6 +15529,12 @@ module rec Cloudflare =
             abstract cacheStatus: option<string> with get, set
             abstract metadata: option<'Metadata> with get, set
             abstract value: option<'Value> with get, set
+
+        [<Import("@cloudflare/workers-types", "AiSearchJobs"); AbstractClass; AllowNullLiteral>]
+        type AiSearchJobs private () =
+            abstract get: jobId: D1SessionBookmark -> AiSearchJob
+            abstract create: ?params: AiSearchCreateJobParams -> Promise<AiSearchJobInfo>
+            abstract list: ?params: AiSearchListJobsParams -> Promise<AiSearchListJobsResponse>
 
         [<Import("@cloudflare/workers-types", "ArtifactsRepoListResult")>]
         type ArtifactsRepoListResult =
@@ -15573,51 +15572,35 @@ module rec Cloudflare =
             abstract getReader: unit -> obj
             abstract cancel: ?reason: obj -> Promise<unit>
 
-        [<Import("@cloudflare/workers-types", "ChatCompletionMessageCustomToolCall")>]
-        type ChatCompletionMessageCustomToolCall =
-            abstract custom: AiModels._Lit226 with get, set
-
-            [<EmitProperty("type")>]
-            abstract ``type``: ChatCompletionMessageCustomToolCall.Type with get, set
-
-            abstract id: D1SessionBookmark with get, set
+        [<Import("@cloudflare/workers-types", "ResponseIncompleteDetails")>]
+        type ResponseIncompleteDetails =
+            abstract reason: option<AiModels._Lit242> with get, set
 
         [<Import("@cloudflare/workers-types", "VectorizeMatches")>]
         type VectorizeMatches =
             abstract count: float with get, set
             abstract matches: ResizeArray<VectorizeMatch> with get, set
 
-        [<Import("@cloudflare/workers-types", "MessagePort"); AbstractClass; AllowNullLiteral>]
-        type MessagePort private () =
-            inherit obj()
-            abstract onmessage: option<obj> with set
-            abstract onmessage: option<obj> with get
-            abstract start: unit -> unit
-            abstract close: unit -> unit
+        [<Import("@cloudflare/workers-types", "TraceItemHibernatableWebSocketEventInfo")>]
+        type TraceItemHibernatableWebSocketEventInfo =
+            abstract getWebSocketEvent:
+                U3<
+                    TraceItemHibernatableWebSocketEventInfoError,
+                    TraceItemHibernatableWebSocketEventInfoClose,
+                    TraceItemHibernatableWebSocketEventInfoMessage
+                 > with get
 
-            abstract postMessage:
-                ?data: obj * ?options: U2<ResizeArray<option<obj>>, MessagePortPostMessageOptions> -> unit
+        [<Import("@cloudflare/workers-types", "ResponseFunctionToolCallItem")>]
+        type ResponseFunctionToolCallItem =
+            inherit ResponseFunctionToolCall
+            abstract id: D1SessionBookmark with get, set
 
-        [<Import("@cloudflare/workers-types", "DurableObjectStub")>]
-        type DurableObjectStub<'T when 'T :> Rpc.DurableObjectBranded> =
-            abstract name: option<D1SessionBookmark> with get
-            abstract id: DurableObjectId with get
-            abstract Item: key: D1SessionBookmark -> option<obj>
-
-            abstract catch<'TResult> :
-                ?onrejected: option<obj> -> U2<Promise<'TResult>, 'TResult> -> Promise<U2<'TResult, 'T>>
-
-            abstract ``then``<'TResult1, 'TResult2> :
-                ?onfulfilled: 'T -> U2<Promise<'TResult1>, 'TResult1> *
-                ?onrejected: option<obj> -> U2<Promise<'TResult2>, 'TResult2> ->
-                    Promise<U2<'TResult1, 'TResult2>>
-
-            abstract Invoke:
-                [<ParamArray>] args: DurableObjectStub.Invoke.Args ->
-                    U2<Typescript.Highlight._Lit194, U2<Typescript.Highlight._Lit3044, unit>>
-
-            abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
-            abstract fetch: input: U3<obj, obj, string> * ?init: obj -> Promise<obj>
+        [<Import("@cloudflare/workers-types", "EventTargetAddEventListenerOptions")>]
+        type EventTargetAddEventListenerOptions =
+            abstract signal: option<obj> with get, set
+            abstract once: option<bool> with get, set
+            abstract passive: option<bool> with get, set
+            abstract capture: option<bool> with get, set
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Black_Forest_Labs_Flux_2_Dev_Output")>]
         type AiCfBlackForestLabsFlux2DevOutput =
@@ -15699,14 +15682,6 @@ module rec Cloudflare =
         type RateLimit =
             abstract limit: options: RateLimitOptions -> Promise<RateLimitOutcome>
 
-        [<Import("@cloudflare/workers-types", "ErrorEventErrorEventInit")>]
-        type ErrorEventErrorEventInit =
-            abstract error: option<obj> with get, set
-            abstract colno: option<float> with get, set
-            abstract lineno: option<float> with get, set
-            abstract filename: option<D1SessionBookmark> with get, set
-            abstract message: option<D1SessionBookmark> with get, set
-
         type AiCfBaaiBgeLargeEnV15Input = U2<AiModels._Lit35, AiModels._Lit36>
 
         [<Import("@cloudflare/workers-types", "DurableObjectState")>]
@@ -15733,35 +15708,97 @@ module rec Cloudflare =
             abstract duration: float with get, set
             abstract count: float with get, set
 
-        [<Import("@cloudflare/workers-types", "ResponseOutputItemAddedEvent")>]
-        type ResponseOutputItemAddedEvent =
-            [<EmitProperty("type")>]
-            abstract ``type``: ResponseOutputItemAddedEvent.Type with get, set
-
-            [<EmitProperty("sequence_number")>]
-            abstract sequenceNumber: float with get, set
-
-            [<EmitProperty("output_index")>]
-            abstract outputIndex: float with get, set
-
-            abstract item: ResponseOutputItem with get, set
-
-        [<Import("@cloudflare/workers-types", "EventTargetAddEventListenerOptions")>]
-        type EventTargetAddEventListenerOptions =
-            abstract signal: option<obj> with get, set
-            abstract once: option<bool> with get, set
-            abstract passive: option<bool> with get, set
-            abstract capture: option<bool> with get, set
-
-        [<Import("@cloudflare/workers-types", "ResponseFunctionToolCallItem")>]
-        type ResponseFunctionToolCallItem =
-            inherit ResponseFunctionToolCall
-            abstract id: D1SessionBookmark with get, set
+        [<Import("@cloudflare/workers-types", "ErrorEventErrorEventInit")>]
+        type ErrorEventErrorEventInit =
+            abstract error: option<obj> with get, set
+            abstract colno: option<float> with get, set
+            abstract lineno: option<float> with get, set
+            abstract filename: option<D1SessionBookmark> with get, set
+            abstract message: option<D1SessionBookmark> with get, set
 
         type AiCfOpenaiWhisperInput = U2<AiModels._Lit41, string>
 
-        [<Import("@cloudflare/workers-types", "TraceItemCustomEventInfo")>]
-        type TraceItemCustomEventInfo = interface end
+        [<Import("@cloudflare/workers-types", "MessagePort"); AbstractClass; AllowNullLiteral>]
+        type MessagePort private () =
+            inherit obj()
+            abstract onmessage: option<obj> with set
+            abstract onmessage: option<obj> with get
+            abstract start: unit -> unit
+            abstract close: unit -> unit
+
+            abstract postMessage:
+                ?data: obj * ?options: U2<ResizeArray<option<obj>>, MessagePortPostMessageOptions> -> unit
+
+        [<Import("@cloudflare/workers-types", "AIGatewayHeaders")>]
+        type AIGatewayHeaders =
+            [<EmitProperty("Content-Type")>]
+            abstract contentType: D1SessionBookmark with get, set
+
+            [<EmitProperty("Authorization")>]
+            abstract authorization: D1SessionBookmark with get, set
+
+            [<EmitProperty("cf-aig-collect-log")>]
+            abstract cfAigCollectLog: U2<bool, string> with get, set
+
+            [<EmitProperty("cf-aig-backoff")>]
+            abstract cfAigBackoff: D1SessionBookmark with get, set
+
+            [<EmitProperty("cf-aig-retry-delay")>]
+            abstract cfAigRetryDelay: U2<float, string> with get, set
+
+            [<EmitProperty("cf-aig-max-attempts")>]
+            abstract cfAigMaxAttempts: U2<float, string> with get, set
+
+            [<EmitProperty("cf-aig-request-timeout")>]
+            abstract cfAigRequestTimeout: U2<float, string> with get, set
+
+            [<EmitProperty("cf-aig-event-id")>]
+            abstract cfAigEventId: D1SessionBookmark with get, set
+
+            [<EmitProperty("cf-aig-cache-key")>]
+            abstract cfAigCacheKey: D1SessionBookmark with get, set
+
+            [<EmitProperty("cf-aig-skip-cache")>]
+            abstract cfAigSkipCache: U2<bool, string> with get, set
+
+            [<EmitProperty("cf-aig-cache-ttl")>]
+            abstract cfAigCacheTtl: U2<float, string> with get, set
+
+            [<EmitProperty("cf-aig-custom-cost")>]
+            abstract cfAigCustomCost: U3<AiGateway._Lit12, AiGateway._Lit13, string> with get, set
+
+            [<EmitProperty("cf-aig-metadata")>]
+            abstract cfAigMetadata: U2<Typescript.Headers._Lit5, string> with get, set
+
+            abstract Item: key: D1SessionBookmark -> U4<bool, obj, float, string>
+
+        [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast");
+          AbstractClass;
+          AllowNullLiteral>]
+        type BaseAiCfMetaLlama3370BInstructFp8Fast private () =
+            abstract postProcessedOutputs: AiCfMetaLlama3370BInstructFp8FastOutput with get, set
+            abstract inputs: AiCfMetaLlama3370BInstructFp8FastInput with get, set
+
+        [<Import("@cloudflare/workers-types", "DurableObjectStub")>]
+        type DurableObjectStub<'T when 'T :> Rpc.DurableObjectBranded> =
+            abstract name: option<D1SessionBookmark> with get
+            abstract id: DurableObjectId with get
+            abstract Item: key: D1SessionBookmark -> option<obj>
+
+            abstract catch<'TResult> :
+                ?onrejected: option<obj> -> U2<Promise<'TResult>, 'TResult> -> Promise<U2<'TResult, 'T>>
+
+            abstract ``then``<'TResult1, 'TResult2> :
+                ?onfulfilled: 'T -> U2<Promise<'TResult1>, 'TResult1> *
+                ?onrejected: option<obj> -> U2<Promise<'TResult2>, 'TResult2> ->
+                    Promise<U2<'TResult1, 'TResult2>>
+
+            abstract Invoke:
+                [<ParamArray>] args: DurableObjectStub.Invoke.Args ->
+                    U2<Typescript.Highlight._Lit194, U2<Typescript.Highlight._Lit3044, unit>>
+
+            abstract connect: address: U2<SocketAddress, string> * ?options: SocketOptions -> Socket
+            abstract fetch: input: U3<obj, obj, string> * ?init: obj -> Promise<obj>
 
         [<Import("@cloudflare/workers-types", "SystemMessage")>]
         type SystemMessage =
@@ -15851,55 +15888,8 @@ module rec Cloudflare =
 
         type AiCfBaaiBgeBaseEnV15Output = U2<AiModels._Lit39, AiCfBaaiBgeBaseEnV15AsyncResponse>
 
-        [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Meta_Llama_3_3_70B_Instruct_Fp8_Fast");
-          AbstractClass;
-          AllowNullLiteral>]
-        type BaseAiCfMetaLlama3370BInstructFp8Fast private () =
-            abstract postProcessedOutputs: AiCfMetaLlama3370BInstructFp8FastOutput with get, set
-            abstract inputs: AiCfMetaLlama3370BInstructFp8FastInput with get, set
-
-        [<Import("@cloudflare/workers-types", "AIGatewayHeaders")>]
-        type AIGatewayHeaders =
-            [<EmitProperty("Content-Type")>]
-            abstract contentType: D1SessionBookmark with get, set
-
-            [<EmitProperty("Authorization")>]
-            abstract authorization: D1SessionBookmark with get, set
-
-            [<EmitProperty("cf-aig-collect-log")>]
-            abstract cfAigCollectLog: U2<bool, string> with get, set
-
-            [<EmitProperty("cf-aig-backoff")>]
-            abstract cfAigBackoff: D1SessionBookmark with get, set
-
-            [<EmitProperty("cf-aig-retry-delay")>]
-            abstract cfAigRetryDelay: U2<float, string> with get, set
-
-            [<EmitProperty("cf-aig-max-attempts")>]
-            abstract cfAigMaxAttempts: U2<float, string> with get, set
-
-            [<EmitProperty("cf-aig-request-timeout")>]
-            abstract cfAigRequestTimeout: U2<float, string> with get, set
-
-            [<EmitProperty("cf-aig-event-id")>]
-            abstract cfAigEventId: D1SessionBookmark with get, set
-
-            [<EmitProperty("cf-aig-cache-key")>]
-            abstract cfAigCacheKey: D1SessionBookmark with get, set
-
-            [<EmitProperty("cf-aig-skip-cache")>]
-            abstract cfAigSkipCache: U2<bool, string> with get, set
-
-            [<EmitProperty("cf-aig-cache-ttl")>]
-            abstract cfAigCacheTtl: U2<float, string> with get, set
-
-            [<EmitProperty("cf-aig-custom-cost")>]
-            abstract cfAigCustomCost: U3<AiGateway._Lit12, AiGateway._Lit13, string> with get, set
-
-            [<EmitProperty("cf-aig-metadata")>]
-            abstract cfAigMetadata: U2<Typescript.Headers._Lit5, string> with get, set
-
-            abstract Item: key: D1SessionBookmark -> U4<bool, obj, float, string>
+        [<Import("@cloudflare/workers-types", "TraceItemCustomEventInfo")>]
+        type TraceItemCustomEventInfo = interface end
 
         [<Import("@cloudflare/workers-types", "AiTranslationInput")>]
         type AiTranslationInput =
@@ -16214,11 +16204,6 @@ module rec Cloudflare =
             [<EmitConstructor>]
             abstract Create: format: CompressionFormat -> CompressionStream
 
-        [<Import("@cloudflare/workers-types", "MarkdownDocument")>]
-        type MarkdownDocument =
-            abstract blob: obj with get, set
-            abstract name: D1SessionBookmark with get, set
-
         type AiCfBaaiBgeM3Output =
             U4<
                 AiCfBaaiBgeM3OutputQuery,
@@ -16227,15 +16212,10 @@ module rec Cloudflare =
                 AiCfBaaiBgeM3AsyncResponse
              >
 
-        [<Import("@cloudflare/workers-types", "Ai_Cf_Openai_Whisper_Output")>]
-        type AiCfOpenaiWhisperOutput =
-            abstract vtt: option<D1SessionBookmark> with get, set
-            abstract words: option<ResizeArray<AiModels._Lit42>> with get, set
-
-            [<EmitProperty("word_count")>]
-            abstract wordCount: option<float> with get, set
-
-            abstract text: D1SessionBookmark with get, set
+        [<Import("@cloudflare/workers-types", "MarkdownDocument")>]
+        type MarkdownDocument =
+            abstract blob: obj with get, set
+            abstract name: D1SessionBookmark with get, set
 
         type RequestInfo = U2<obj, string>
 
@@ -16280,6 +16260,16 @@ module rec Cloudflare =
             abstract key: D1SessionBookmark with get
             abstract writeHttpMetadata: headers: obj -> unit
 
+        [<Import("@cloudflare/workers-types", "Ai_Cf_Openai_Whisper_Output")>]
+        type AiCfOpenaiWhisperOutput =
+            abstract vtt: option<D1SessionBookmark> with get, set
+            abstract words: option<ResizeArray<AiModels._Lit42>> with get, set
+
+            [<EmitProperty("word_count")>]
+            abstract wordCount: option<float> with get, set
+
+            abstract text: D1SessionBookmark with get, set
+
         [<Import("@cloudflare/workers-types", "ChatCompletionCustomToolGrammarFormat")>]
         type ChatCompletionCustomToolGrammarFormat =
             abstract grammar: AiModels._Lit197 with get, set
@@ -16303,13 +16293,6 @@ module rec Cloudflare =
             abstract language: D1SessionBookmark with get, set
             abstract label: D1SessionBookmark with get, set
             abstract generated: option<bool> with get, set
-
-        [<Import("@cloudflare/workers-types", "AiSearchJobLogsResponse")>]
-        type AiSearchJobLogsResponse =
-            [<EmitProperty("result_info")>]
-            abstract resultInfo: option<Ai._Lit47> with get, set
-
-            abstract result: ResizeArray<AiSearchJobLog> with get, set
 
         [<Import("@cloudflare/workers-types", "IncomingRequestCfPropertiesBotManagementBase")>]
         type IncomingRequestCfPropertiesBotManagementBase =
@@ -16349,6 +16332,13 @@ module rec Cloudflare =
                 key: D1SessionBookmark * options: R2Bucket._Lit2 -> Promise<option<U2<R2Object, R2ObjectBody>>>
 
             abstract head: key: D1SessionBookmark -> Promise<option<R2Object>>
+
+        [<Import("@cloudflare/workers-types", "SubtleCryptoSignAlgorithm")>]
+        type SubtleCryptoSignAlgorithm =
+            abstract saltLength: option<float> with get, set
+            abstract dataLength: option<float> with get, set
+            abstract hash: option<U2<SubtleCryptoHashAlgorithm, string>> with get, set
+            abstract name: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "AiImageToTextOutput")>]
         type AiImageToTextOutput =
@@ -16456,12 +16446,32 @@ module rec Cloudflare =
             [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionContentPartImage.Type with get, set
 
-        [<Import("@cloudflare/workers-types", "SubtleCryptoSignAlgorithm")>]
-        type SubtleCryptoSignAlgorithm =
-            abstract saltLength: option<float> with get, set
-            abstract dataLength: option<float> with get, set
-            abstract hash: option<U2<SubtleCryptoHashAlgorithm, string>> with get, set
-            abstract name: D1SessionBookmark with get, set
+        [<Import("@cloudflare/workers-types", "AiSearchJobLogsResponse")>]
+        type AiSearchJobLogsResponse =
+            [<EmitProperty("result_info")>]
+            abstract resultInfo: option<Ai._Lit47> with get, set
+
+            abstract result: ResizeArray<AiSearchJobLog> with get, set
+
+        [<Import("@cloudflare/workers-types", "URL"); AbstractClass; AllowNullLiteral>]
+        type URL private () =
+            [<EmitConstructor>]
+            abstract Create: url: U2<obj, string> * ?``base``: U2<obj, string> -> URL
+
+            abstract hash: D1SessionBookmark with get, set
+            abstract searchParams: obj with get
+            abstract search: D1SessionBookmark with get, set
+            abstract pathname: D1SessionBookmark with get, set
+            abstract port: D1SessionBookmark with get, set
+            abstract hostname: D1SessionBookmark with get, set
+            abstract host: D1SessionBookmark with get, set
+            abstract password: D1SessionBookmark with get, set
+            abstract username: D1SessionBookmark with get, set
+            abstract protocol: D1SessionBookmark with get, set
+            abstract origin: D1SessionBookmark with get
+            abstract href: D1SessionBookmark with get, set
+            abstract toJSON: unit -> D1SessionBookmark
+            abstract toString: unit -> D1SessionBookmark
 
         [<Import("@cloudflare/workers-types", "DOMException"); AbstractClass; AllowNullLiteral>]
         type DOMException private () =
@@ -16507,26 +16517,6 @@ module rec Cloudflare =
         [<Import("@cloudflare/workers-types", "LoopbackDurableObjectNamespace"); AbstractClass; AllowNullLiteral>]
         type LoopbackDurableObjectNamespace private () =
             inherit DurableObjectNamespace<unit>()
-
-        [<Import("@cloudflare/workers-types", "URL"); AbstractClass; AllowNullLiteral>]
-        type URL private () =
-            [<EmitConstructor>]
-            abstract Create: url: U2<obj, string> * ?``base``: U2<obj, string> -> URL
-
-            abstract hash: D1SessionBookmark with get, set
-            abstract searchParams: obj with get
-            abstract search: D1SessionBookmark with get, set
-            abstract pathname: D1SessionBookmark with get, set
-            abstract port: D1SessionBookmark with get, set
-            abstract hostname: D1SessionBookmark with get, set
-            abstract host: D1SessionBookmark with get, set
-            abstract password: D1SessionBookmark with get, set
-            abstract username: D1SessionBookmark with get, set
-            abstract protocol: D1SessionBookmark with get, set
-            abstract origin: D1SessionBookmark with get
-            abstract href: D1SessionBookmark with get, set
-            abstract toJSON: unit -> D1SessionBookmark
-            abstract toString: unit -> D1SessionBookmark
 
         [<Import("@cloudflare/workers-types", "R2Error"); AbstractClass; AllowNullLiteral>]
         type R2Error private () =
@@ -16577,39 +16567,18 @@ module rec Cloudflare =
             abstract contentType: option<QueueContentType> with get, set
             abstract body: 'Body with get, set
 
-        [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Messages")>]
-        type AiCfQwenQwen330BA3BFp8Messages =
-            [<EmitProperty("presence_penalty")>]
-            abstract presencePenalty: option<float> with get, set
+        [<Import("@cloudflare/workers-types", "ResponseOutputItemAddedEvent")>]
+        type ResponseOutputItemAddedEvent =
+            [<EmitProperty("type")>]
+            abstract ``type``: ResponseOutputItemAddedEvent.Type with get, set
 
-            [<EmitProperty("frequency_penalty")>]
-            abstract frequencyPenalty: option<float> with get, set
+            [<EmitProperty("sequence_number")>]
+            abstract sequenceNumber: float with get, set
 
-            [<EmitProperty("repetition_penalty")>]
-            abstract repetitionPenalty: option<float> with get, set
+            [<EmitProperty("output_index")>]
+            abstract outputIndex: float with get, set
 
-            abstract seed: option<float> with get, set
-
-            [<EmitProperty("top_k")>]
-            abstract topK: option<float> with get, set
-
-            [<EmitProperty("top_p")>]
-            abstract topP: option<float> with get, set
-
-            abstract temperature: option<float> with get, set
-
-            [<EmitProperty("max_tokens")>]
-            abstract maxTokens: option<float> with get, set
-
-            abstract stream: option<bool> with get, set
-            abstract raw: option<bool> with get, set
-
-            [<EmitProperty("response_format")>]
-            abstract responseFormat: option<AiCfQwenQwen330BA3BFp8JSONMode1> with get, set
-
-            abstract tools: option<ResizeArray<U2<AiModels._Lit72, AiModels._Lit73>>> with get, set
-            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
-            abstract messages: ResizeArray<AiModels._Lit81> with get, set
+            abstract item: ResponseOutputItem with get, set
 
         [<Import("@cloudflare/workers-types", "ResponsesOutput")>]
         type ResponsesOutput =
@@ -16663,6 +16632,15 @@ module rec Cloudflare =
 
             abstract id: option<D1SessionBookmark> with get, set
 
+        [<Import("@cloudflare/workers-types", "ResponseInputItemMessage")>]
+        type ResponseInputItemMessage =
+            [<EmitProperty("type")>]
+            abstract ``type``: option<ResponseInputItemMessage.Type> with get, set
+
+            abstract status: option<AiModels._Lit251> with get, set
+            abstract role: AiModels._Lit260 with get, set
+            abstract content: ResponseInputMessageContentList with get, set
+
         [<Import("@cloudflare/workers-types", "AiImageTextToTextInput")>]
         type AiImageTextToTextInput =
             abstract messages: option<ResizeArray<RoleScopedChatInput>> with get, set
@@ -16695,15 +16673,6 @@ module rec Cloudflare =
 
             abstract prompt: option<D1SessionBookmark> with get, set
             abstract image: D1SessionBookmark with get, set
-
-        [<Import("@cloudflare/workers-types", "ResponseInputItemMessage")>]
-        type ResponseInputItemMessage =
-            [<EmitProperty("type")>]
-            abstract ``type``: option<ResponseInputItemMessage.Type> with get, set
-
-            abstract status: option<AiModels._Lit251> with get, set
-            abstract role: AiModels._Lit260 with get, set
-            abstract content: ResponseInputMessageContentList with get, set
 
         [<Import("@cloudflare/workers-types", "RequestInitCfPropertiesR2")>]
         type RequestInitCfPropertiesR2 =
@@ -16777,7 +16746,39 @@ module rec Cloudflare =
             [<EmitProperty("type")>]
             abstract ``type``: AiModels._Lit214 with get, set
 
-        type ResponseFunctionCallOutputItemList = obj
+        [<Import("@cloudflare/workers-types", "Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Messages")>]
+        type AiCfQwenQwen330BA3BFp8Messages =
+            [<EmitProperty("presence_penalty")>]
+            abstract presencePenalty: option<float> with get, set
+
+            [<EmitProperty("frequency_penalty")>]
+            abstract frequencyPenalty: option<float> with get, set
+
+            [<EmitProperty("repetition_penalty")>]
+            abstract repetitionPenalty: option<float> with get, set
+
+            abstract seed: option<float> with get, set
+
+            [<EmitProperty("top_k")>]
+            abstract topK: option<float> with get, set
+
+            [<EmitProperty("top_p")>]
+            abstract topP: option<float> with get, set
+
+            abstract temperature: option<float> with get, set
+
+            [<EmitProperty("max_tokens")>]
+            abstract maxTokens: option<float> with get, set
+
+            abstract stream: option<bool> with get, set
+            abstract raw: option<bool> with get, set
+
+            [<EmitProperty("response_format")>]
+            abstract responseFormat: option<AiCfQwenQwen330BA3BFp8JSONMode1> with get, set
+
+            abstract tools: option<ResizeArray<U2<AiModels._Lit72, AiModels._Lit73>>> with get, set
+            abstract functions: option<ResizeArray<AiTextGenerationFunctionsInput>> with get, set
+            abstract messages: ResizeArray<AiModels._Lit81> with get, set
 
         [<Import("@cloudflare/workers-types", "ChatCompletionToolChoiceAllowedTools")>]
         type ChatCompletionToolChoiceAllowedTools =
@@ -16787,6 +16788,12 @@ module rec Cloudflare =
             [<EmitProperty("type")>]
             abstract ``type``: ChatCompletionToolChoiceAllowedTools.Type with get, set
 
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type DurableObjectJurisdiction =
+            | [<CompiledName("eu")>] Eu
+            | [<CompiledName("fedramp")>] Fedramp
+            | [<CompiledName("fedramp-high")>] FedrampHigh
+
         [<Import("@cloudflare/workers-types", "AiSearchListJobsParams")>]
         type AiSearchListJobsParams =
             [<EmitProperty("per_page")>]
@@ -16795,15 +16802,6 @@ module rec Cloudflare =
             abstract page: option<float> with get, set
 
         type R2Range = obj
-
-        [<Import("@cloudflare/workers-types", "ResponseOutputText")>]
-        type ResponseOutputText =
-            abstract logprobs: option<ResizeArray<Logprob>> with get, set
-
-            [<EmitProperty("type")>]
-            abstract ``type``: ResponseOutputText.Type with get, set
-
-            abstract text: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "ResponseInputImageContent")>]
         type ResponseInputImageContent =
@@ -16815,17 +16813,28 @@ module rec Cloudflare =
             [<EmitProperty("type")>]
             abstract ``type``: ResponseInputImageContent.Type with get, set
 
+        [<Import("@cloudflare/workers-types", "ResponseOutputText")>]
+        type ResponseOutputText =
+            abstract logprobs: option<ResizeArray<Logprob>> with get, set
+
+            [<EmitProperty("type")>]
+            abstract ``type``: ResponseOutputText.Type with get, set
+
+            abstract text: D1SessionBookmark with get, set
+
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type StreamPaginationComparison =
+            | [<CompiledName("eq")>] Eq
+            | [<CompiledName("gt")>] Gt
+            | [<CompiledName("gte")>] Gte
+            | [<CompiledName("lt")>] Lt
+            | [<CompiledName("lte")>] Lte
+
         [<Import("@cloudflare/workers-types", "ScheduledController")>]
         type ScheduledController =
             abstract cron: D1SessionBookmark with get
             abstract scheduledTime: float with get
             abstract noRetry: unit -> unit
-
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type DurableObjectJurisdiction =
-            | [<CompiledName("eu")>] Eu
-            | [<CompiledName("fedramp")>] Fedramp
-            | [<CompiledName("fedramp-high")>] FedrampHigh
 
         [<Import("@cloudflare/workers-types", "ResponseContentReasoningText")>]
         type ResponseContentReasoningText =
@@ -16876,6 +16885,13 @@ module rec Cloudflare =
 
             abstract logprob: float with get, set
             abstract token: D1SessionBookmark with get, set
+
+        [<Import("@cloudflare/workers-types", "ConversionOptions")>]
+        type ConversionOptions =
+            abstract pdf: option<ToMarkdownService._Lit17> with get, set
+            abstract image: option<ImageConversionOptions> with get, set
+            abstract docx: option<ToMarkdownService._Lit15> with get, set
+            abstract html: option<ToMarkdownService._Lit9> with get, set
 
         [<Import("@cloudflare/workers-types", "ExportedHandlerTestHandler")>]
         type ExportedHandlerTestHandler<'Env, 'Props> =
@@ -16977,30 +16993,25 @@ module rec Cloudflare =
             abstract message: ChatCompletionResponseMessage with get, set
             abstract index: float with get, set
 
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type StreamPaginationComparison =
-            | [<CompiledName("eq")>] Eq
-            | [<CompiledName("gt")>] Gt
-            | [<CompiledName("gte")>] Gte
-            | [<CompiledName("lt")>] Lt
-            | [<CompiledName("lte")>] Lte
-
         [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Baai_Bge_Large_En_V1_5"); AbstractClass; AllowNullLiteral>]
         type BaseAiCfBaaiBgeLargeEnV15 private () =
             abstract postProcessedOutputs: AiCfBaaiBgeLargeEnV15Output with get, set
             abstract inputs: AiCfBaaiBgeLargeEnV15Input with get, set
 
-        [<Import("@cloudflare/workers-types", "ConversionOptions")>]
-        type ConversionOptions =
-            abstract pdf: option<ToMarkdownService._Lit17> with get, set
-            abstract image: option<ImageConversionOptions> with get, set
-            abstract docx: option<ToMarkdownService._Lit15> with get, set
-            abstract html: option<ToMarkdownService._Lit9> with get, set
+        [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Deepgram_Aura_2_Es"); AbstractClass; AllowNullLiteral>]
+        type BaseAiCfDeepgramAura2Es private () =
+            abstract postProcessedOutputs: D1SessionBookmark with get, set
+            abstract inputs: AiCfDeepgramAura2EsInput with get, set
 
         [<Import("@cloudflare/workers-types", "BaseAiSummarization"); AbstractClass; AllowNullLiteral>]
         type BaseAiSummarization private () =
             abstract postProcessedOutputs: AiSummarizationOutput with get, set
             abstract inputs: AiSummarizationInput with get, set
+
+        [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Openai_Whisper_Tiny_En"); AbstractClass; AllowNullLiteral>]
+        type BaseAiCfOpenaiWhisperTinyEn private () =
+            abstract postProcessedOutputs: AiCfOpenaiWhisperTinyEnOutput with get, set
+            abstract inputs: AiCfOpenaiWhisperTinyEnInput with get, set
 
         [<Import("@cloudflare/workers-types", "ArtifactsRepo")>]
         type ArtifactsRepo =
@@ -17025,10 +17036,12 @@ module rec Cloudflare =
 
             abstract prepare: query: D1SessionBookmark -> D1PreparedStatement
 
-        [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Openai_Whisper_Tiny_En"); AbstractClass; AllowNullLiteral>]
-        type BaseAiCfOpenaiWhisperTinyEn private () =
-            abstract postProcessedOutputs: AiCfOpenaiWhisperTinyEnOutput with get, set
-            abstract inputs: AiCfOpenaiWhisperTinyEnInput with get, set
+        [<Import("@cloudflare/workers-types", "AiSearchListItemsResponse")>]
+        type AiSearchListItemsResponse =
+            [<EmitProperty("result_info")>]
+            abstract resultInfo: option<Ai._Lit47> with get, set
+
+            abstract result: ResizeArray<AiSearchItemInfo> with get, set
 
         [<Import("@cloudflare/workers-types", "StreamWatermarkCreateParams")>]
         type StreamWatermarkCreateParams =
@@ -17037,12 +17050,6 @@ module rec Cloudflare =
             abstract padding: option<float> with get, set
             abstract opacity: option<float> with get, set
             abstract name: option<D1SessionBookmark> with get, set
-
-        [<Import("@cloudflare/workers-types", "AiSearchJobs"); AbstractClass; AllowNullLiteral>]
-        type AiSearchJobs private () =
-            abstract get: jobId: D1SessionBookmark -> AiSearchJob
-            abstract create: ?params: AiSearchCreateJobParams -> Promise<AiSearchJobInfo>
-            abstract list: ?params: AiSearchListJobsParams -> Promise<AiSearchListJobsResponse>
 
         type AiImageClassificationOutput = ResizeArray<AiModels._Lit2>
 
@@ -17054,38 +17061,36 @@ module rec Cloudflare =
             [<EmitProperty("type")>]
             abstract ``type``: AiModels._Lit222 with get, set
 
-        [<Import("@cloudflare/workers-types", "AiSearchListItemsResponse")>]
-        type AiSearchListItemsResponse =
-            [<EmitProperty("result_info")>]
-            abstract resultInfo: option<Ai._Lit47> with get, set
-
-            abstract result: ResizeArray<AiSearchItemInfo> with get, set
-
-        [<Import("@cloudflare/workers-types", "Base_Ai_Cf_Deepgram_Aura_2_Es"); AbstractClass; AllowNullLiteral>]
-        type BaseAiCfDeepgramAura2Es private () =
-            abstract postProcessedOutputs: D1SessionBookmark with get, set
-            abstract inputs: AiCfDeepgramAura2EsInput with get, set
+        [<Import("@cloudflare/workers-types", "RequestInitCfPropertiesImageDraw")>]
+        type RequestInitCfPropertiesImageDraw =
+            inherit BasicImageTransformations
+            abstract right: option<float> with get, set
+            abstract bottom: option<float> with get, set
+            abstract left: option<float> with get, set
+            abstract top: option<float> with get, set
+            abstract repeat: option<Typescript.Highlight._Lit2955> with get, set
+            abstract opacity: option<float> with get, set
+            abstract url: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "DurableObjectSetAlarmOptions")>]
         type DurableObjectSetAlarmOptions =
             abstract allowUnconfirmed: option<bool> with get, set
             abstract allowConcurrency: option<bool> with get, set
 
-        [<Import("@cloudflare/workers-types", "DurableObjectNamespace"); AbstractClass; AllowNullLiteral>]
-        type DurableObjectNamespace<'T when 'T :> Rpc.DurableObjectBranded> private () =
-            abstract jurisdiction: jurisdiction: DurableObjectJurisdiction -> DurableObjectNamespace<'T>
+        [<Import("@cloudflare/workers-types", "SyncKvListOptions")>]
+        type SyncKvListOptions =
+            abstract limit: option<float> with get, set
+            abstract reverse: option<bool> with get, set
+            abstract prefix: option<D1SessionBookmark> with get, set
 
-            abstract getByName:
-                name: D1SessionBookmark * ?options: DurableObjectNamespaceGetDurableObjectOptions ->
-                    DurableObjectNamespace.GetByName
+            [<EmitProperty("end")>]
+            abstract ``end``: option<D1SessionBookmark> with get, set
 
-            abstract get:
-                id: DurableObjectId * ?options: DurableObjectNamespaceGetDurableObjectOptions ->
-                    DurableObjectNamespace.Get
+            abstract startAfter: option<D1SessionBookmark> with get, set
+            abstract start: option<D1SessionBookmark> with get, set
 
-            abstract idFromString: id: D1SessionBookmark -> DurableObjectId
-            abstract idFromName: name: D1SessionBookmark -> DurableObjectId
-            abstract newUniqueId: ?options: DurableObjectNamespaceNewUniqueIdOptions -> DurableObjectId
+        type ResponseFunctionCallOutputItemList = obj
+        type EmailAttachment = U2<SendEmail._Lit4, SendEmail._Lit6>
 
         [<Import("@cloudflare/workers-types", "Ai_Cf_Ai4Bharat_Indictrans2_En_Indic_1B_Input")>]
         type AiCfAi4BharatIndictrans2EnIndic1BInput =
@@ -17093,8 +17098,6 @@ module rec Cloudflare =
             abstract targetLanguage: AiModels._Lit294 with get, set
 
             abstract text: U2<ResizeArray<D1SessionBookmark>, string> with get, set
-
-        type EmailAttachment = U2<SendEmail._Lit4, SendEmail._Lit6>
 
         [<Import("@cloudflare/workers-types", "MessageBatch")>]
         type MessageBatch<'Body> =
@@ -17175,28 +17178,26 @@ module rec Cloudflare =
 
             abstract encoding: AiCfDeepgramFluxInput.Encoding with get, set
 
-        [<Import("@cloudflare/workers-types", "SyncKvListOptions")>]
-        type SyncKvListOptions =
-            abstract limit: option<float> with get, set
-            abstract reverse: option<bool> with get, set
-            abstract prefix: option<D1SessionBookmark> with get, set
+        [<Import("@cloudflare/workers-types", "DurableObjectNamespace"); AbstractClass; AllowNullLiteral>]
+        type DurableObjectNamespace<'T when 'T :> Rpc.DurableObjectBranded> private () =
+            abstract jurisdiction: jurisdiction: DurableObjectJurisdiction -> DurableObjectNamespace<'T>
 
-            [<EmitProperty("end")>]
-            abstract ``end``: option<D1SessionBookmark> with get, set
+            abstract getByName:
+                name: D1SessionBookmark * ?options: DurableObjectNamespaceGetDurableObjectOptions ->
+                    DurableObjectNamespace.GetByName
 
-            abstract startAfter: option<D1SessionBookmark> with get, set
-            abstract start: option<D1SessionBookmark> with get, set
+            abstract get:
+                id: DurableObjectId * ?options: DurableObjectNamespaceGetDurableObjectOptions ->
+                    DurableObjectNamespace.Get
 
-        [<Import("@cloudflare/workers-types", "RequestInitCfPropertiesImageDraw")>]
-        type RequestInitCfPropertiesImageDraw =
-            inherit BasicImageTransformations
-            abstract right: option<float> with get, set
-            abstract bottom: option<float> with get, set
-            abstract left: option<float> with get, set
-            abstract top: option<float> with get, set
-            abstract repeat: option<Typescript.Highlight._Lit2955> with get, set
-            abstract opacity: option<float> with get, set
-            abstract url: D1SessionBookmark with get, set
+            abstract idFromString: id: D1SessionBookmark -> DurableObjectId
+            abstract idFromName: name: D1SessionBookmark -> DurableObjectId
+            abstract newUniqueId: ?options: DurableObjectNamespaceNewUniqueIdOptions -> DurableObjectId
+
+        [<Import("@cloudflare/workers-types", "AiTextToSpeechInput")>]
+        type AiTextToSpeechInput =
+            abstract lang: option<D1SessionBookmark> with get, set
+            abstract prompt: D1SessionBookmark with get, set
 
         [<Import("@cloudflare/workers-types", "ResponseInputMessageItem")>]
         type ResponseInputMessageItem =
@@ -17226,24 +17227,6 @@ module rec Cloudflare =
             abstract contentType: unit -> D1SessionBookmark
             abstract response: unit -> obj
 
-        [<Import("@cloudflare/workers-types", "BasicImageTransformations")>]
-        type BasicImageTransformations =
-            abstract rotate: option<BasicImageTransformations._Lit2> with get, set
-            abstract background: option<D1SessionBookmark> with get, set
-            abstract gravity: option<U2<BasicImageTransformations.Gravity, BasicImageTransformationsGravityCoordinates>> with get, set
-            abstract segment: option<BasicImageTransformations.Segment> with get, set
-            abstract fit: option<ImageTransformer._Lit5> with get, set
-            abstract height: option<float> with get, set
-            abstract width: option<float> with get, set
-
-        [<Import("@cloudflare/workers-types", "DurableObjectClass")>]
-        type DurableObjectClass<'_T when '_T :> Rpc.DurableObjectBranded> = interface end
-
-        [<Import("@cloudflare/workers-types", "AiTextToSpeechInput")>]
-        type AiTextToSpeechInput =
-            abstract lang: option<D1SessionBookmark> with get, set
-            abstract prompt: D1SessionBookmark with get, set
-
         [<Import("@cloudflare/workers-types", "UniversalGatewayOptions")>]
         type UniversalGatewayOptions =
             /// <deprecated />
@@ -17257,6 +17240,17 @@ module rec Cloudflare =
             abstract cacheTtl: option<float> with get, set
             abstract cacheKey: option<D1SessionBookmark> with get, set
             abstract id: D1SessionBookmark with get, set
+
+        [<Import("@cloudflare/workers-types", "AiSearchJob"); AbstractClass; AllowNullLiteral>]
+        type AiSearchJob private () =
+            abstract cancel: unit -> Promise<AiSearchJobInfo>
+            abstract logs: ?params: AiSearchJobLogsParams -> Promise<AiSearchJobLogsResponse>
+            abstract info: unit -> Promise<AiSearchJobInfo>
+
+        [<Import("@cloudflare/workers-types", "ArtifactsTokenListResult")>]
+        type ArtifactsTokenListResult =
+            abstract total: float with get, set
+            abstract tokens: ResizeArray<ArtifactsTokenInfo> with get, set
 
         [<Import("@cloudflare/workers-types", "Fetcher")>]
         type Fetcher<'T, 'Reserved
@@ -17291,23 +17285,25 @@ module rec Cloudflare =
                     BaseAiCfOpenaiGptOss20B.Inputs
                  > with get, set
 
-        [<Import("@cloudflare/workers-types", "AiSearchJob"); AbstractClass; AllowNullLiteral>]
-        type AiSearchJob private () =
-            abstract cancel: unit -> Promise<AiSearchJobInfo>
-            abstract logs: ?params: AiSearchJobLogsParams -> Promise<AiSearchJobLogsResponse>
-            abstract info: unit -> Promise<AiSearchJobInfo>
+        [<Import("@cloudflare/workers-types", "DurableObjectClass")>]
+        type DurableObjectClass<'_T when '_T :> Rpc.DurableObjectBranded> = interface end
 
-        [<Import("@cloudflare/workers-types", "ArtifactsTokenListResult")>]
-        type ArtifactsTokenListResult =
-            abstract total: float with get, set
-            abstract tokens: ResizeArray<ArtifactsTokenInfo> with get, set
+        [<Import("@cloudflare/workers-types", "BasicImageTransformations")>]
+        type BasicImageTransformations =
+            abstract rotate: option<BasicImageTransformations._Lit2> with get, set
+            abstract background: option<D1SessionBookmark> with get, set
+            abstract gravity: option<U2<BasicImageTransformations.Gravity, BasicImageTransformationsGravityCoordinates>> with get, set
+            abstract segment: option<BasicImageTransformations.Segment> with get, set
+            abstract fit: option<ImageTransformer._Lit5> with get, set
+            abstract height: option<float> with get, set
+            abstract width: option<float> with get, set
 
         type IWorkersTypes =
             [<CompiledName("RpcStub")>]
             member rpcStub: RpcStub._Lit1 = JS.undefined
 
             [<Erase>]
-            member tracing: Tracing = JS.undefined
+            member onRequest: OnRequest -> U2<obj, Promise<obj>> = JS.undefined
 
             [<Erase>]
             member __DURABLE_OBJECT_BRAND: __DURABLE_OBJECT_BRAND = JS.undefined
@@ -17322,19 +17318,19 @@ module rec Cloudflare =
             member __WORKFLOW_ENTRYPOINT_BRAND: __WORKFLOW_ENTRYPOINT_BRAND = JS.undefined
 
             [<Erase>]
-            member onRequest: OnRequest -> U2<obj, Promise<obj>> = JS.undefined
+            member tracing: Tracing = JS.undefined
 
             [<Import("@cloudflare/workers-types", "connect")>]
             static member connect(address: U2<SocketAddress, string>, ?options: SocketOptions) : Socket = JS.undefined
-
-            [<Erase>]
-            member __WORKER_ENTRYPOINT_BRAND: __WORKER_ENTRYPOINT_BRAND = JS.undefined
 
             [<Import("@cloudflare/workers-types", "connect")>]
             static member _connect(address: U2<SocketAddress, string>, ?options: SocketOptions) : Socket = JS.undefined
 
             [<CompiledName("EmailMessage")>]
             member emailMessage: EmailMessage._Lit1 = JS.undefined
+
+            [<Erase>]
+            member __WORKER_ENTRYPOINT_BRAND: __WORKER_ENTRYPOINT_BRAND = JS.undefined
 
             [<CompiledName("_EmailMessage")>]
             member _emailMessage: EmailMessage._Lit1 = JS.undefined
@@ -17367,58 +17363,19 @@ module rec Typescript =
 
     module rec Highlight =
         module rec _Lit191 =
-            module rec Invoke =
-                module rec Args =
-                    [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                    type Flat = | [<CompiledName("done")>] Done
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type Recur = | [<CompiledName("done")>] Done
 
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2954 =
-            | [<CompiledName("none")>] None
-            | [<CompiledName("keep")>] Keep
-            | [<CompiledName("copyright")>] Copyright
-
-        type _Lit2941 =
-            abstract connect:
-                address: U2<Cloudflare.WorkersTypes.SocketAddress, string> *
-                ?options: Cloudflare.WorkersTypes.SocketOptions ->
-                    Cloudflare.WorkersTypes.Socket
-
-            abstract fetch: input: U3<obj, obj, string> * ?init: obj -> Promise<obj>
-
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit259 =
-            | [<CompiledName("auto")>] Auto
-            | [<CompiledName("high")>] High
-            | [<CompiledName("low")>] Low
-
-        type _Lit174 =
-            abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> option<obj>
-
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2973 =
-            | [<CompiledName("off")>] Off
-            | [<CompiledName("on")>] On
-            | [<CompiledName("starttls")>] Starttls
-
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2953 =
-            | [<CompiledName("svg")>] Svg
-            | [<CompiledName("json")>] Json
-            | [<CompiledName("png")>] Png
-            | [<CompiledName("avif")>] Avif
-            | [<CompiledName("webp")>] Webp
-            | [<CompiledName("jpeg")>] Jpeg
-            | [<CompiledName("baseline-jpeg")>] BaselineJpeg
-            | [<CompiledName("png-force")>] PngForce
-
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit193 =
-            | [<CompiledValue(false)>] False
-            | [<CompiledValue(true)>] True
-
-        type _Lit182 =
-            abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
+        type _Lit2963 =
+            abstract ja3Hash: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
+            abstract detectionIds: Cloudflare.WorkersTypes.AiSentenceSimilarityOutput with get, set
+            abstract staticResource: bool with get, set
+            abstract corporateProxy: bool with get, set
+            abstract verifiedBot: bool with get, set
+            /// <example>
+            /// 54
+            /// </example>
+            abstract score: float with get, set
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type _Lit201 =
@@ -17432,13 +17389,10 @@ module rec Typescript =
             | [<CompiledName("waitingForPause")>] WaitingForPause
             | [<CompiledName("unknown")>] Unknown
 
-        type _Lit200 =
-            abstract output: option<obj> with get, set
-            abstract error: option<_Lit202> with get, set
-            abstract status: Cloudflare.WorkersTypes.CloudflareWorkersModule.WorkflowInstanceStatus with get, set
-
-        type _Lit177 =
-            abstract Invoke: [<ParamArray>] args: _Lit177.Invoke.Args -> U2<_Lit194, U2<_Lit3044, unit>>
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit193 =
+            | [<CompiledValue(false)>] False
+            | [<CompiledValue(true)>] True
 
         type _Lit194 =
             abstract Item: key: Cloudflare.WorkersTypes.D1SessionBookmark -> option<obj>
@@ -17452,286 +17406,100 @@ module rec Typescript =
                 ?onrejected: option<obj> -> U2<Promise<'TResult2>, 'TResult2> ->
                     Promise<U2<'TResult1, 'TResult2>>
 
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2966 =
-            | ES
-            | AF
-            | AS
-            | NA
-            | SA
-            | AD
-            | AE
-            | AG
-            | AI
-            | AL
-            | AM
-            | AO
-            | AQ
-            | AR
-            | AT
-            | AU
-            | AW
-            | AX
-            | AZ
-            | BA
-            | BB
-            | BD
-            | BE
-            | BF
-            | BG
-            | BH
-            | BI
-            | BJ
-            | BL
-            | BM
-            | BN
-            | BO
-            | BQ
-            | BR
-            | BS
-            | BT
-            | BV
-            | BW
-            | BY
-            | BZ
-            | CA
-            | CC
-            | CD
-            | CF
-            | CG
-            | CH
-            | CI
-            | CK
-            | CL
-            | CM
-            | CN
-            | CO
-            | CR
-            | CU
-            | CV
-            | CW
-            | CX
-            | CY
-            | CZ
-            | DE
-            | DJ
-            | DK
-            | DM
-            | DO
-            | DZ
-            | EC
-            | EE
-            | EG
-            | EH
-            | ER
-            | ET
-            | FI
-            | FJ
-            | FK
-            | FM
-            | FO
-            | FR
-            | GA
-            | GB
-            | GD
-            | GE
-            | GF
-            | GG
-            | GH
-            | GI
-            | GL
-            | GM
-            | GN
-            | GP
-            | GQ
-            | GR
-            | GS
-            | GT
-            | GU
-            | GW
-            | GY
-            | HK
-            | HM
-            | HN
-            | HR
-            | HT
-            | HU
-            | ID
-            | IE
-            | IL
-            | IM
-            | IN
-            | IO
-            | IQ
-            | IR
-            | IS
-            | IT
-            | JE
-            | JM
-            | JO
-            | JP
-            | KE
-            | KG
-            | KH
-            | KI
-            | KM
-            | KN
-            | KP
-            | KR
-            | KW
-            | KY
-            | KZ
-            | LA
-            | LB
-            | LC
-            | LI
-            | LK
-            | LR
-            | LS
-            | LT
-            | LU
-            | LV
-            | LY
-            | MA
-            | MC
-            | MD
-            | ME
-            | MF
-            | MG
-            | MH
-            | MK
-            | ML
-            | MM
-            | MN
-            | MO
-            | MP
-            | MQ
-            | MR
-            | MS
-            | MT
-            | MU
-            | MV
-            | MW
-            | MX
-            | MY
-            | MZ
-            | NC
-            | NE
-            | NF
-            | NG
-            | NI
-            | NL
-            | NO
-            | NP
-            | NR
-            | NU
-            | NZ
-            | OM
-            | PA
-            | PE
-            | PF
-            | PG
-            | PH
-            | PK
-            | PL
-            | PM
-            | PN
-            | PR
-            | PS
-            | PT
-            | PW
-            | PY
-            | QA
-            | RE
-            | RO
-            | RS
-            | RU
-            | RW
-            | SB
-            | SC
-            | SD
-            | SE
-            | SG
-            | SH
-            | SI
-            | SJ
-            | SK
-            | SL
-            | SM
-            | SN
-            | SO
-            | SR
-            | SS
-            | ST
-            | SV
-            | SX
-            | SY
-            | SZ
-            | TC
-            | TD
-            | TF
-            | TG
-            | TH
-            | TJ
-            | TK
-            | TL
-            | TM
-            | TN
-            | TO
-            | TR
-            | TT
-            | TV
-            | TW
-            | TZ
-            | UA
-            | UG
-            | UM
-            | US
-            | UY
-            | UZ
-            | VA
-            | VC
-            | VE
-            | VG
-            | VI
-            | VN
-            | VU
-            | WF
-            | WS
-            | YE
-            | YT
-            | ZA
-            | ZM
-            | ZW
+        type _Lit192 =
+            [<EmitProperty("__@unscopables@3142")>]
+            abstract _unscopables3142: option<_Lit193> with get, set
 
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2967 =
-            | AF
-            | AN
-            | AS
-            | EU
-            | NA
-            | OC
-            | SA
+            [<EmitProperty("__@iterator@3140")>]
+            abstract _iterator3140: option<_Lit193> with get, set
 
-        type _Lit202 =
-            abstract message: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
-            abstract name: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
+            [<EmitProperty("with")>]
+            abstract ``with``: option<_Lit193> with get, set
 
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2959 =
-            | [<CompiledName("h")>] H
-            | [<CompiledName("v")>] V
-            | [<CompiledName("hv")>] Hv
+            abstract toSpliced: option<_Lit193> with get, set
+            abstract toSorted: option<_Lit193> with get, set
+            abstract toReversed: option<_Lit193> with get, set
+            abstract findLastIndex: option<_Lit193> with get, set
+            abstract findLast: option<_Lit193> with get, set
+            abstract at: option<_Lit193> with get, set
+            abstract flat: option<_Lit193> with get, set
+            abstract flatMap: option<_Lit193> with get, set
+            abstract includes: option<_Lit193> with get, set
+            abstract values: option<_Lit193> with get, set
+            abstract keys: option<_Lit193> with get, set
+            abstract entries: option<_Lit193> with get, set
+            abstract copyWithin: option<_Lit193> with get, set
+            abstract fill: option<_Lit193> with get, set
+            abstract findIndex: option<_Lit193> with get, set
+            abstract find: option<_Lit193> with get, set
+            abstract reduceRight: option<_Lit193> with get, set
+            abstract reduce: option<_Lit193> with get, set
+            abstract filter: option<_Lit193> with get, set
+            abstract map: option<_Lit193> with get, set
+            abstract forEach: option<_Lit193> with get, set
+            abstract some: option<_Lit193> with get, set
+            abstract every: option<_Lit193> with get, set
+            abstract lastIndexOf: option<_Lit193> with get, set
+            abstract indexOf: option<_Lit193> with get, set
+            abstract unshift: option<_Lit193> with get, set
+            abstract splice: option<_Lit193> with get, set
+            abstract sort: option<_Lit193> with get, set
+            abstract slice: option<_Lit193> with get, set
+            abstract shift: option<_Lit193> with get, set
+            abstract reverse: option<_Lit193> with get, set
+            abstract join: option<_Lit193> with get, set
+            abstract concat: option<_Lit193> with get, set
+            abstract push: option<_Lit193> with get, set
+            abstract pop: option<_Lit193> with get, set
+            abstract toLocaleString: option<_Lit193> with get, set
+            abstract toString: option<_Lit193> with get, set
+            abstract length: option<_Lit193> with get, set
 
-        type _Lit2949 =
-            abstract border: option<U2<_Lit2951, bool>> with get, set
-            abstract height: option<float> with get, set
-            abstract width: option<float> with get, set
-            abstract right: option<float> with get, set
-            abstract left: option<float> with get, set
-            abstract bottom: option<float> with get, set
-            abstract top: option<float> with get, set
+        type _Lit2962 =
+            | ``0`` = 0
+            | ``2`` = 2
+            | ``3`` = 3
+            | ``1`` = 1
+            | ``4`` = 4
+            | ``5`` = 5
+
+        type _Lit3044 =
+            abstract Item: key: Cloudflare.WorkersTypes.D1SessionBookmark -> option<obj>
+            abstract Invoke: [<ParamArray>] args: _Lit3044.Invoke.Args -> U2<_Lit194, U2<_Lit3044, unit>>
+
+            abstract catch<'TResult> :
+                ?onrejected: option<obj> -> U2<Promise<'TResult>, 'TResult> -> Promise<U2<'TResult, 'T>>
+
+            abstract ``then``<'TResult1, 'TResult2> :
+                ?onfulfilled: 'T -> U2<Promise<'TResult1>, 'TResult1> *
+                ?onrejected: option<obj> -> U2<Promise<'TResult2>, 'TResult2> ->
+                    Promise<U2<'TResult1, 'TResult2>>
+
+        type _Lit191 =
+            abstract recur: U2<proptypekey<_Lit191, U2<_Lit191.Recur, _Lit191.Recur>>, 'Arr> with get, set
+
+            [<EmitProperty("done")>]
+            abstract ``done``: 'Arr with get, set
+
+        type _Lit189 =
+            abstract Invoke:
+                this: 'This * value: 'T * index: float * array: ResizeArray ->
+                    U2<System.Collections.Generic.IReadOnlyList<'U>, 'U>
+
+        type _Lit174 =
+            abstract Invoke: [<ParamArray>] args: ResizeArray<option<obj>> -> option<obj>
+
+        type _Lit183 =
+            abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
+
+        type _Lit182 =
+            abstract Invoke: value: 'T * index: float * array: ResizeArray -> unit
+
+        type _Lit181 =
+            abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
+
+        type _Lit180 =
+            abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type _Lit2965 =
@@ -17986,24 +17754,362 @@ module rec Typescript =
             | ZW
             | T1
 
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2973 =
+            | [<CompiledName("off")>] Off
+            | [<CompiledName("on")>] On
+            | [<CompiledName("starttls")>] Starttls
+
+        type _Lit184 =
+            abstract Invoke: previousValue: 'T * currentValue: 'T * currentIndex: float * array: ResizeArray -> 'T
+
+        type _Lit186 =
+            abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
+
+        type _Lit188 =
+            abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
+
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2960 =
+            | [<CompiledName("off")>] Off
+            | [<CompiledName("lossy")>] Lossy
+            | [<CompiledName("lossless")>] Lossless
+
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2967 =
+            | AF
+            | AN
+            | AS
+            | EU
+            | NA
+            | OC
+            | SA
+
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit259 =
+            | [<CompiledName("auto")>] Auto
+            | [<CompiledName("high")>] High
+            | [<CompiledName("low")>] Low
+
+        type _Lit177 =
+            abstract Invoke: [<ParamArray>] args: _Lit177.Invoke.Args -> U2<_Lit194, U2<_Lit3044, unit>>
+
+        type _Lit202 =
+            abstract message: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
+            abstract name: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
+
         type _Lit2951 =
             abstract keep: option<float> with get, set
             abstract tolerance: option<float> with get, set
             abstract color: option<Cloudflare.WorkersTypes.D1SessionBookmark> with get, set
 
-        type _Lit2962 =
-            | ``0`` = 0
-            | ``2`` = 2
-            | ``3`` = 3
-            | ``1`` = 1
-            | ``4`` = 4
-            | ``5`` = 5
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2966 =
+            | ES
+            | AF
+            | AS
+            | NA
+            | SA
+            | AD
+            | AE
+            | AG
+            | AI
+            | AL
+            | AM
+            | AO
+            | AQ
+            | AR
+            | AT
+            | AU
+            | AW
+            | AX
+            | AZ
+            | BA
+            | BB
+            | BD
+            | BE
+            | BF
+            | BG
+            | BH
+            | BI
+            | BJ
+            | BL
+            | BM
+            | BN
+            | BO
+            | BQ
+            | BR
+            | BS
+            | BT
+            | BV
+            | BW
+            | BY
+            | BZ
+            | CA
+            | CC
+            | CD
+            | CF
+            | CG
+            | CH
+            | CI
+            | CK
+            | CL
+            | CM
+            | CN
+            | CO
+            | CR
+            | CU
+            | CV
+            | CW
+            | CX
+            | CY
+            | CZ
+            | DE
+            | DJ
+            | DK
+            | DM
+            | DO
+            | DZ
+            | EC
+            | EE
+            | EG
+            | EH
+            | ER
+            | ET
+            | FI
+            | FJ
+            | FK
+            | FM
+            | FO
+            | FR
+            | GA
+            | GB
+            | GD
+            | GE
+            | GF
+            | GG
+            | GH
+            | GI
+            | GL
+            | GM
+            | GN
+            | GP
+            | GQ
+            | GR
+            | GS
+            | GT
+            | GU
+            | GW
+            | GY
+            | HK
+            | HM
+            | HN
+            | HR
+            | HT
+            | HU
+            | ID
+            | IE
+            | IL
+            | IM
+            | IN
+            | IO
+            | IQ
+            | IR
+            | IS
+            | IT
+            | JE
+            | JM
+            | JO
+            | JP
+            | KE
+            | KG
+            | KH
+            | KI
+            | KM
+            | KN
+            | KP
+            | KR
+            | KW
+            | KY
+            | KZ
+            | LA
+            | LB
+            | LC
+            | LI
+            | LK
+            | LR
+            | LS
+            | LT
+            | LU
+            | LV
+            | LY
+            | MA
+            | MC
+            | MD
+            | ME
+            | MF
+            | MG
+            | MH
+            | MK
+            | ML
+            | MM
+            | MN
+            | MO
+            | MP
+            | MQ
+            | MR
+            | MS
+            | MT
+            | MU
+            | MV
+            | MW
+            | MX
+            | MY
+            | MZ
+            | NC
+            | NE
+            | NF
+            | NG
+            | NI
+            | NL
+            | NO
+            | NP
+            | NR
+            | NU
+            | NZ
+            | OM
+            | PA
+            | PE
+            | PF
+            | PG
+            | PH
+            | PK
+            | PL
+            | PM
+            | PN
+            | PR
+            | PS
+            | PT
+            | PW
+            | PY
+            | QA
+            | RE
+            | RO
+            | RS
+            | RU
+            | RW
+            | SB
+            | SC
+            | SD
+            | SE
+            | SG
+            | SH
+            | SI
+            | SJ
+            | SK
+            | SL
+            | SM
+            | SN
+            | SO
+            | SR
+            | SS
+            | ST
+            | SV
+            | SX
+            | SY
+            | SZ
+            | TC
+            | TD
+            | TF
+            | TG
+            | TH
+            | TJ
+            | TK
+            | TL
+            | TM
+            | TN
+            | TO
+            | TR
+            | TT
+            | TV
+            | TW
+            | TZ
+            | UA
+            | UG
+            | UM
+            | US
+            | UY
+            | UZ
+            | VA
+            | VC
+            | VE
+            | VG
+            | VI
+            | VN
+            | VU
+            | WF
+            | WS
+            | YE
+            | YT
+            | ZA
+            | ZM
+            | ZW
+
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2959 =
+            | [<CompiledName("h")>] H
+            | [<CompiledName("v")>] V
+            | [<CompiledName("hv")>] Hv
+
+        type _Lit2949 =
+            abstract border: option<U2<_Lit2951, bool>> with get, set
+            abstract height: option<float> with get, set
+            abstract width: option<float> with get, set
+            abstract right: option<float> with get, set
+            abstract left: option<float> with get, set
+            abstract bottom: option<float> with get, set
+            abstract top: option<float> with get, set
 
         type _Lit203 =
             abstract payload: option<obj> with get, set
 
             [<EmitProperty("type")>]
             abstract ``type``: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
+
+        type _Lit2941 =
+            abstract connect:
+                address: U2<Cloudflare.WorkersTypes.SocketAddress, string> *
+                ?options: Cloudflare.WorkersTypes.SocketOptions ->
+                    Cloudflare.WorkersTypes.Socket
+
+            abstract fetch: input: U3<obj, obj, string> * ?init: obj -> Promise<obj>
+
+        type _Lit200 =
+            abstract output: option<obj> with get, set
+            abstract error: option<_Lit202> with get, set
+            abstract status: Cloudflare.WorkersTypes.CloudflareWorkersModule.WorkflowInstanceStatus with get, set
+
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2955 =
+            | [<CompiledValue(true)>] True
+            | [<CompiledName("x")>] X
+            | [<CompiledName("y")>] Y
+
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2970 =
+            | [<CompiledName("0")>] ``0``
+            | [<CompiledName("1")>] ``1``
+
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2953 =
+            | [<CompiledName("svg")>] Svg
+            | [<CompiledName("json")>] Json
+            | [<CompiledName("png")>] Png
+            | [<CompiledName("avif")>] Avif
+            | [<CompiledName("webp")>] Webp
+            | [<CompiledName("jpeg")>] Jpeg
+            | [<CompiledName("baseline-jpeg")>] BaselineJpeg
+            | [<CompiledName("png-force")>] PngForce
 
         [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
         type _Lit2969 =
@@ -18015,100 +18121,6 @@ module rec Typescript =
             | [<CompiledName("FAILED:certificate has expired")>] ``FAILED:certificatehasexpired``
             | FAILED
 
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2970 =
-            | [<CompiledName("0")>] ``0``
-            | [<CompiledName("1")>] ``1``
-
-        type _Lit180 =
-            abstract Invoke: value: 'T * index: float * array: ResizeArray -> bool
-
-        type _Lit181 =
-            abstract Invoke: value: 'T * index: float * array: ResizeArray -> option<obj>
-
-        type _Lit183 =
-            abstract Invoke: value: 'T * index: float * array: ResizeArray -> 'U
-
-        type _Lit184 =
-            abstract Invoke: previousValue: 'T * currentValue: 'T * currentIndex: float * array: ResizeArray -> 'T
-
-        type _Lit186 =
-            abstract Invoke: value: 'T * index: float * obj: ResizeArray -> bool
-
-        type _Lit188 =
-            abstract Invoke: value: 'T * index: float * obj: ResizeArray -> option<obj>
-
-        type _Lit2963 =
-            abstract ja3Hash: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
-            abstract detectionIds: Cloudflare.WorkersTypes.AiSentenceSimilarityOutput with get, set
-            abstract staticResource: bool with get, set
-            abstract corporateProxy: bool with get, set
-            abstract verifiedBot: bool with get, set
-            /// <example>
-            /// 54
-            /// </example>
-            abstract score: float with get, set
-
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2955 =
-            | [<CompiledValue(true)>] True
-            | [<CompiledName("x")>] X
-            | [<CompiledName("y")>] Y
-
-        type _Lit189 =
-            abstract Invoke:
-                this: 'This * value: 'T * index: float * array: ResizeArray ->
-                    U2<System.Collections.Generic.IReadOnlyList<'U>, 'U>
-
-        type _Lit192 =
-            [<EmitProperty("__@unscopables@3142")>]
-            abstract _unscopables3142: option<_Lit193> with get, set
-
-            [<EmitProperty("__@iterator@3140")>]
-            abstract _iterator3140: option<_Lit193> with get, set
-
-            [<EmitProperty("with")>]
-            abstract ``with``: option<_Lit193> with get, set
-
-            abstract toSpliced: option<_Lit193> with get, set
-            abstract toSorted: option<_Lit193> with get, set
-            abstract toReversed: option<_Lit193> with get, set
-            abstract findLastIndex: option<_Lit193> with get, set
-            abstract findLast: option<_Lit193> with get, set
-            abstract at: option<_Lit193> with get, set
-            abstract flat: option<_Lit193> with get, set
-            abstract flatMap: option<_Lit193> with get, set
-            abstract includes: option<_Lit193> with get, set
-            abstract values: option<_Lit193> with get, set
-            abstract keys: option<_Lit193> with get, set
-            abstract entries: option<_Lit193> with get, set
-            abstract copyWithin: option<_Lit193> with get, set
-            abstract fill: option<_Lit193> with get, set
-            abstract findIndex: option<_Lit193> with get, set
-            abstract find: option<_Lit193> with get, set
-            abstract reduceRight: option<_Lit193> with get, set
-            abstract reduce: option<_Lit193> with get, set
-            abstract filter: option<_Lit193> with get, set
-            abstract map: option<_Lit193> with get, set
-            abstract forEach: option<_Lit193> with get, set
-            abstract some: option<_Lit193> with get, set
-            abstract every: option<_Lit193> with get, set
-            abstract lastIndexOf: option<_Lit193> with get, set
-            abstract indexOf: option<_Lit193> with get, set
-            abstract unshift: option<_Lit193> with get, set
-            abstract splice: option<_Lit193> with get, set
-            abstract sort: option<_Lit193> with get, set
-            abstract slice: option<_Lit193> with get, set
-            abstract shift: option<_Lit193> with get, set
-            abstract reverse: option<_Lit193> with get, set
-            abstract join: option<_Lit193> with get, set
-            abstract concat: option<_Lit193> with get, set
-            abstract push: option<_Lit193> with get, set
-            abstract pop: option<_Lit193> with get, set
-            abstract toLocaleString: option<_Lit193> with get, set
-            abstract toString: option<_Lit193> with get, set
-            abstract length: option<_Lit193> with get, set
-
         type _Lit2958 =
             abstract left: float with get, set
             abstract bottom: float with get, set
@@ -18116,39 +18128,21 @@ module rec Typescript =
             abstract top: float with get, set
             abstract color: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
 
+        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+        type _Lit2954 =
+            | [<CompiledName("none")>] None
+            | [<CompiledName("keep")>] Keep
+            | [<CompiledName("copyright")>] Copyright
+
         type _Lit2957 =
             abstract width: float with get, set
             abstract color: Cloudflare.WorkersTypes.D1SessionBookmark with get, set
 
-        type _Lit3044 =
-            abstract Item: key: Cloudflare.WorkersTypes.D1SessionBookmark -> option<obj>
-            abstract Invoke: [<ParamArray>] args: _Lit3044.Invoke.Args -> U2<_Lit194, U2<_Lit3044, unit>>
-
-            abstract catch<'TResult> :
-                ?onrejected: option<obj> -> U2<Promise<'TResult>, 'TResult> -> Promise<U2<'TResult, 'T>>
-
-            abstract ``then``<'TResult1, 'TResult2> :
-                ?onfulfilled: 'T -> U2<Promise<'TResult1>, 'TResult1> *
-                ?onrejected: option<obj> -> U2<Promise<'TResult2>, 'TResult2> ->
-                    Promise<U2<'TResult1, 'TResult2>>
-
-        type _Lit191 =
-            abstract recur: U2<proptypekey<_Lit191, U2<_Lit191.Recur, _Lit191.Recur>>, 'Arr> with get, set
-
-            [<EmitProperty("done")>]
-            abstract ``done``: 'Arr with get, set
-
-        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-        type _Lit2960 =
-            | [<CompiledName("off")>] Off
-            | [<CompiledName("lossy")>] Lossy
-            | [<CompiledName("lossless")>] Lossless
-
     module rec Instance =
-        type _Lit3 =
+        type _Lit2 =
             abstract Item: key: Cloudflare.WorkersTypes.D1SessionBookmark -> option<obj>
 
-        type _Lit2 =
+        type _Lit3 =
             abstract Item: key: Cloudflare.WorkersTypes.D1SessionBookmark -> option<obj>
 
     module rec MessageEvent =
@@ -18164,14 +18158,14 @@ module rec Typescript =
                 ``type``: Cloudflare.WorkersTypes.D1SessionBookmark * eventInitDict: PromiseRejectionEventInit -> obj
 
     module rec ReadableStream =
+        type _Lit7 =
+            abstract highWaterMark: option<float> with get, set
+
         type _Lit1 =
             abstract prototype: Cloudflare.WorkersTypes.AiTextToImageOutput with get, set
             abstract Create<'R> : ?underlyingSource: obj * ?strategy: obj -> obj
             abstract Create<'R> : underlyingSource: UnderlyingDefaultSource<'R> * ?strategy: obj -> obj
             abstract Create: underlyingSource: UnderlyingByteSource * ?strategy: _Lit7 -> obj
-
-        type _Lit7 =
-            abstract highWaterMark: option<float> with get, set
 
     module rec ReadableStreamBYOBReader =
         type _Lit1 =
@@ -18237,20 +18231,17 @@ module rec Typescript =
 
     module rec WebSocket =
         module rec _Lit1 =
-            module rec Invoke =
-                module rec Args =
-                    module rec Flat =
-                        [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-                        type D = | [<CompiledValue(1)>] ``1``
+            [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
+            type CLOSED = | [<CompiledValue(3)>] ``3``
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type NONE = | [<CompiledValue(0)>] ``0``
+            type CONNECTING = | [<CompiledValue(0)>] ``0``
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type DOMSTRING_SIZE_ERR = | [<CompiledValue(2)>] ``2``
+            type OPEN = | [<CompiledValue(1)>] ``1``
 
             [<RequireQualifiedAccess; StringEnum(CaseRules.None)>]
-            type HIERARCHY_REQUEST_ERR = | [<CompiledValue(3)>] ``3``
+            type CLOSING = | [<CompiledValue(2)>] ``2``
 
         type _Lit1 =
             abstract CLOSED: _Lit1.CLOSED with get
