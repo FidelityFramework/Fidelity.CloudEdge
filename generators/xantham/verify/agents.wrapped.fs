@@ -17008,7 +17008,7 @@ module rec Zod =
                             Promise<option<Agents.AgentContext>>
                          >
 
-            type ZodType =
+            type ZodType<'Output, 'Def, 'Input when 'Def :> ZodTypeDef> =
                 [<EmitConstructor>]
                 abstract Create: def: 'Def -> ZodType
 
