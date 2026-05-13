@@ -14,6 +14,14 @@ module rec Cloudflare =
                         abstract Item: key: string -> option<obj>
 
                 [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/binding",
+                         "WrapWorkflowBindingOptions")>]
+                type WrapWorkflowBindingOptions =
+                    abstract bindingName: option<string> with get, set
+
+                type DynamicWorkflowBinding =
+                    abstract Item: key: string -> option<obj>
+
+                [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/binding",
                          "DynamicWorkflowBindingProps")>]
                 type DynamicWorkflowBindingProps =
                     abstract metadata:
@@ -21,25 +29,7 @@ module rec Cloudflare =
 
                     abstract bindingName: string with get, set
 
-                type DynamicWorkflowBinding =
-                    abstract Item: key: string -> option<obj>
-
-                [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/binding",
-                         "WrapWorkflowBindingOptions")>]
-                type WrapWorkflowBindingOptions =
-                    abstract bindingName: option<string> with get, set
-
                 type ITestsFixturesDynamicWorkflowsNodeModulesCloudflareDynamicWorkflowsDistBinding =
-                    [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/binding",
-                             "_dispatcherBindingImpl")>]
-                    static member _dispatcherBindingImpl
-                        (
-                            getBinding: unit -> option<obj>,
-                            metadata:
-                                TestsFixturesDynamicWorkflowsNodeModulesCloudflareDynamicWorkflowsDistTypes.DispatcherMetadata
-                        ) : option<obj> =
-                        JS.undefined
-
                     [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/binding",
                              "wrapWorkflowBinding")>]
                     static member wrapWorkflowBinding
@@ -47,6 +37,16 @@ module rec Cloudflare =
                             metadata:
                                 TestsFixturesDynamicWorkflowsNodeModulesCloudflareDynamicWorkflowsDistTypes.DispatcherMetadata,
                             ?options: WrapWorkflowBindingOptions
+                        ) : option<obj> =
+                        JS.undefined
+
+                    [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/binding",
+                             "_dispatcherBindingImpl")>]
+                    static member _dispatcherBindingImpl
+                        (
+                            getBinding: unit -> option<obj>,
+                            metadata:
+                                TestsFixturesDynamicWorkflowsNodeModulesCloudflareDynamicWorkflowsDistTypes.DispatcherMetadata
                         ) : option<obj> =
                         JS.undefined
 
@@ -66,6 +66,16 @@ module rec Cloudflare =
                         abstract ctx: option<obj> with get, set
                         abstract env: 'Env with get, set
 
+                [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/entrypoint",
+                         "MissingDispatcherMetadataError");
+                  AbstractClass;
+                  AllowNullLiteral>]
+                type MissingDispatcherMetadataError private () =
+                    inherit exn()
+
+                    [<EmitConstructor>]
+                    abstract Create: unit -> MissingDispatcherMetadataError
+
                 type DispatchWorkflow =
                     abstract Invoke:
                         context: DispatchWorkflow._Lit1 *
@@ -80,16 +90,6 @@ module rec Cloudflare =
                              >
                                 -> U2<DispatchWorkflow.Invoke.LoadRunner, Promise<DispatchWorkflow.Invoke.LoadRunner>> ->
                             Promise<'Result>
-
-                [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/entrypoint",
-                         "MissingDispatcherMetadataError");
-                  AbstractClass;
-                  AllowNullLiteral>]
-                type MissingDispatcherMetadataError private () =
-                    inherit exn()
-
-                    [<EmitConstructor>]
-                    abstract Create: unit -> MissingDispatcherMetadataError
 
                 type ITestsFixturesDynamicWorkflowsNodeModulesCloudflareDynamicWorkflowsDistEntrypoint =
                     [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/entrypoint",
@@ -136,13 +136,11 @@ module rec Cloudflare =
                     abstract run: event: WorkflowEventLike<'T> * step: obj -> Promise<'R>
 
                 [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/types",
-                         "LoadWorkflowRunnerContext")>]
-                type LoadWorkflowRunnerContext<'Env> =
-                    abstract ctx: option<obj> with get, set
-                    abstract env: 'Env with get, set
-                    abstract metadata: DispatcherMetadata with get, set
-
-                type DispatcherMetadata = obj
+                         "WorkflowEventLike")>]
+                type WorkflowEventLike<'T> =
+                    abstract instanceId: string with get, set
+                    abstract timestamp: Date with get, set
+                    abstract payload: 'T with get, set
 
                 [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/types",
                          "LoadWorkflowRunner")>]
@@ -152,8 +150,10 @@ module rec Cloudflare =
                             U2<Promise<LoadWorkflowRunner.Invoke>, LoadWorkflowRunner.Invoke>
 
                 [<Import("@cloudflare/dynamic-workflows.Decoder.Tests/fixtures/dynamic-workflows/node_modules/@cloudflare/dynamic-workflows/dist/types",
-                         "WorkflowEventLike")>]
-                type WorkflowEventLike<'T> =
-                    abstract instanceId: string with get, set
-                    abstract timestamp: Date with get, set
-                    abstract payload: 'T with get, set
+                         "LoadWorkflowRunnerContext")>]
+                type LoadWorkflowRunnerContext<'Env> =
+                    abstract ctx: option<obj> with get, set
+                    abstract env: 'Env with get, set
+                    abstract metadata: DispatcherMetadata with get, set
+
+                type DispatcherMetadata = obj
