@@ -34,7 +34,6 @@
     "@types/node": "^22.10.2",
     "agents": "^0.12.4",
     "agents-sdk": "^0.0.36",
-    "cloudflare": "^6.2.0",
     "miniflare": "^3.20241106.2",
     "typescript": "^5.7.2",
     "wrangler": "^4.71.0"

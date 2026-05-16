@@ -360,18 +360,10 @@ what the per-package provenance attestation binds to.
 | `@cloudflare/worker-bundler` | **Lifted** (sibling of `agents`) | same as `agents` | same | 2026-05-16 | [link](https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworker-bundler@0.1.3) |
 | `@cloudflare/containers` | **Lifted** | [cloudflare/containers](https://github.com/cloudflare/containers) (`972331185`) | `.github/workflows/changesets.yml` @ `refs/heads/main` | 2026-05-16 | [link](https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers@0.3.4) |
 | `@cloudflare/sandbox` | **Lifted** | [cloudflare/sandbox-sdk](https://github.com/cloudflare/sandbox-sdk) (`100660808`) | `.github/workflows/release.yml` @ `refs/heads/main` | 2026-05-16 | [link](https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsandbox@0.10.1) |
-| `cloudflare` (unscoped) | **Lifted** | [cloudflare/cloudflare-typescript](https://github.com/cloudflare/cloudflare-typescript) (`753272060`) | `.github/workflows/publish-npm.yml` @ `refs/tags/v6.2.0` ⚑ | 2026-05-16 | [link](https://registry.npmjs.org/-/npm/v1/attestations/cloudflare@6.2.0) |
 | `@cloudflare/puppeteer` | **72 h (default)** | [cloudflare/puppeteer](https://github.com/cloudflare/puppeteer) | **No provenance attestation found** | 2026-05-16 | n/a — attestation endpoint returns 404. Audit-only treatment; scope unchanged — puppeteer is the Workers Browser-Rendering surface and is load-bearing for agentic info-gathering on the open web |
+| `cloudflare` (unscoped) | Excluded from ingestion | — | — | — | Excluded because the same REST endpoints are already covered by the Hawaii-generated Management tier (`Fidelity.CloudEdge.Management.*`). Carrying a parallel xantham binding would double maintenance for zero new capability |
 | `hono-agents` | Excluded from ingestion | — | — | — | Excluded because Fidelity has its own F#-native web framework occupying the same conceptual slot as Hono; the Hono integration layer carries no value into the F# surface |
 | All transitive publishers | **72 h (default)** | n/a | n/a | n/a | Transitives are never lifted — see "Why transitives never qualify" above |
-
-⚑ Note: `cloudflare@6.2.0` binds to an immutable tag ref
-(`refs/tags/v6.2.0`) rather than a branch HEAD. This is a *stronger*
-binding than the agents repo's `refs/heads/main` — a tag can be
-deleted but not silently rewritten in place without breaking signature
-verification. When re-verifying this row, accept any new
-`refs/tags/v<semver>` ref that matches the candidate version; reject a
-move to a branch ref.
 
 All lifts are contingent on the per-row provenance fields remaining
 true at re-verification. If a future release of any lifted package
@@ -414,8 +406,8 @@ artifact pair in [generators/xantham/output/](../generators/xantham/output).
 | `@cloudflare/containers` | 0.3.4 | Lifted | 🆕 Pending first regen |
 | `@cloudflare/sandbox` | 0.10.1 | Lifted | 🆕 Pending first regen |
 | `@cloudflare/puppeteer` | 1.1.0 | **72 h default** | 🆕 Pending first regen — full audit required, no shortcut |
-| `cloudflare` (unscoped) | 6.2.0 | Lifted | 🆕 Pending first regen — control-plane API client |
-| `hono-agents` | 3.0.11 | Excluded | ✗ Out of scope — parallel Hono integration is being built in-tree |
+| `cloudflare` (unscoped) | 6.2.0 | — | ✗ Out of scope — same REST endpoints already covered by Hawaii Management tier |
+| `hono-agents` | 3.0.11 | — | ✗ Out of scope — Fidelity provides an in-tree F#-native Hono peer |
 
 **React is out of scope for this project's binding surface.** Both
 `@cloudflare/ai-chat` and `@cloudflare/voice` declare `react@^19` and
@@ -442,10 +434,8 @@ ingestion set — the new packages bring transitives we have not
 previously audited (notable additions: `acorn`, `isomorphic-git`,
 `esbuild-wasm`, `sucrase`, `@typescript/vfs`, `typescript@^6`,
 `@ai-sdk/react`, `react@^19`, `partysocket`, `chromium-bidi`,
-`devtools-protocol`, `@puppeteer/browsers`, `ws`, `node-fetch`,
-`form-data-encoder`, `formdata-node`, `abort-controller`,
-`agentkeepalive`). Each must pass the audit checklist before the
-first lockfile is committed.
+`devtools-protocol`, `@puppeteer/browsers`, `ws`). Each must pass the
+audit checklist before the first lockfile is committed.
 
 | Package | Pinned | Latest | Audit status |
 |---|---|---|---|

@@ -35,11 +35,13 @@ The generation pipeline consumes Cloudflare specifications across two tracks —
 | `@cloudflare/containers` | npm; `cloudflare/containers` | not yet ingested | **Xantham** | Container-enabled DO helper |
 | `@cloudflare/sandbox` | npm; `cloudflare/sandbox-sdk` | not yet ingested | **Xantham** | Sandboxed command execution |
 | `@cloudflare/puppeteer` | npm; `cloudflare/puppeteer` | not yet ingested | **Xantham** | Puppeteer-API-compatible control over the Workers Browser-Rendering binding — fetch JS-driven pages, capture DOM snapshots, take screenshots, and extract content as tool calls from an agent. Load-bearing for agentic info-gathering on the open web |
-| `cloudflare` (unscoped) | npm; `cloudflare/cloudflare-typescript` | not yet ingested | **Xantham** | Official Cloudflare TypeScript API client; control-plane complement to Hawaii Management tier |
 
-`hono-agents` from the same monorepo is **excluded** — Fidelity provides its own F#-native web framework occupying the same conceptual slot as Hono, so the Hono-specific integration layer carries no value.
+Two packages from Cloudflare's npm landscape are deliberately **excluded** from xantham ingestion:
 
-The npm SDK ingestion gates are governed by the per-publisher provenance policy in [13_supply_chain_audit.md](13_supply_chain_audit.md). Eleven of the twelve direct dependencies in the suite carry the supply-chain embargo lift on the strength of SLSA v1 provenance from Cloudflare's GitHub org (`314135`). `@cloudflare/puppeteer` is the one Cloudflare-published direct dependency whose publisher hasn't enabled npm trusted-publishing yet, so its ingestion stays under the default 72-hour audit policy on every bump — that's an audit treatment, not a scope decision; its substantive role in the agentic surface is on par with the rest.
+- **`cloudflare` (unscoped)** — Cloudflare's official TypeScript control-plane API client. It covers the same REST endpoints (`api.cloudflare.com`) that Hawaii already binds from the OpenAPI spec into `Fidelity.CloudEdge.Management.*`. Carrying it as a duplicate xantham target would double the maintenance surface for zero new capability. If TS-client-style ergonomics over the Management bindings ever become desirable, that's a thin hand-curated layer atop Hawaii output — not a parallel ingestion.
+- **`hono-agents`** — Fidelity provides its own F#-native web framework occupying the same conceptual slot as Hono, so the Hono-specific integration layer carries no value into the F# surface.
+
+The npm SDK ingestion gates are governed by the per-publisher provenance policy in [13_supply_chain_audit.md](13_supply_chain_audit.md). Eleven of the twelve direct dependencies in the suite carry the supply-chain embargo lift on the strength of SLSA v1 provenance from Cloudflare's GitHub org (`314135`). `@cloudflare/puppeteer` is the one Cloudflare-published direct dependency whose publisher hasn't enabled npm trusted-publishing yet, so its ingestion stays under the default 72-hour audit policy on every bump — that's an audit treatment, not a scope decision; its substantive role in the agentic surface is on par with the rest. (Total = 12: `workers-types` + 7 from the agents monorepo + `dynamic-workflows` + `containers` + `sandbox` + `puppeteer`.)
 
 ## Xantham: Capabilities, Architecture, and Tracked Issues
 
