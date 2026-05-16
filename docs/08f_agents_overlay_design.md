@@ -15,17 +15,33 @@ The decision to split the new content into `Fidelity.CloudEdge.Agents` (and like
 
 This document scopes a subset of the broader Fidelity.CloudEdge coverage gaps catalogued in [03_gap_analysis.md](03_gap_analysis.md) — specifically the agentic-workload binding surface. The 0.3.0 release closes additional gaps documented there (workers-types refresh, Workflows V2 OpenAPI refresh) that aren't unique to the agentic story. This document focuses on the binding considerations that are unique to the Agents framework and Dynamic Workflows.
 
-Three distinct npm packages produce the surface this overlay covers:
+The `cloudflare/agents` monorepo has built out a family of co-developed packages since the original Agents Week, and the surface this overlay covers spans the full family plus the adjacent Cloudflare runtime SDKs:
 
-- **`@cloudflare/agents`** (the `Think<Env>` framework with lifecycle hooks). The core agentic abstraction. Lives in `cloudflare/agents` repo, separate from `workerd`. Tracked as gap G3 in [03_gap_analysis.md](03_gap_analysis.md).
-- **`@cloudflare/dynamic-workflows`** (~300 lines, published May 1, 2026). Multi-tenant workflow dispatch routing. Built on Workflows V2. Tracked as gap G4 in [03_gap_analysis.md](03_gap_analysis.md).
-- **`@cloudflare/workers-types`** Workflows V2 runtime types (in the latest version of the existing types package). Tracked as gap G1.
+**Core agentic framework (from the `cloudflare/agents` monorepo):**
+- **`agents`** (formerly `@cloudflare/agents` / `agents-sdk`) — the `Agent<'Env, 'State>` base class, `Think<'Env>` chat-agent subclass, lifecycle hooks, routing, state, scheduling, MCP, email, workflows, x402, browser-agents. The core agentic abstraction.
+- **`@cloudflare/ai-chat`** — persistent chat messages, resumable streaming, tool execution. React-coupled exports are filtered at the generator's `IgnorePathRender` layer (the project's reactivity model is signals/SolidJS, not React).
+- **`@cloudflare/voice`** — STT/TTS/VAD streaming, SFU utilities, `VoiceClient`, server mixins. React hooks filtered.
+- **`@cloudflare/think`** — opinionated agentic loop, stream resumption, `submitMessages()` durable programmatic submission, client tools, workspace tools.
+- **`@cloudflare/codemode`** — LLM-generated TypeScript that orchestrates tool calls inside a sandbox, replacing one-tool-call-at-a-time patterns.
+- **`@cloudflare/shell`** — sandboxed JS execution, virtual filesystem (`Workspace`), structured file I/O, transactional pattern replacement.
+- **`@cloudflare/worker-bundler`** — runtime Worker bundling for the Worker Loader binding.
+
+**Adjacent runtime SDKs (separate Cloudflare repos):**
+- **`@cloudflare/dynamic-workflows`** — multi-tenant workflow dispatch routing, built on Workflows V2. Tracked as gap G4 in [03_gap_analysis.md](03_gap_analysis.md).
+- **`@cloudflare/containers`** — container-enabled Durable Object helper.
+- **`@cloudflare/sandbox`** — sandboxed command execution (depends on `@cloudflare/containers`).
+- **`@cloudflare/puppeteer`** — Puppeteer-API-compatible control over the Workers Browser-Rendering binding. Substantive role: agentic information-gathering on the open web (fetching JS-driven pages, DOM snapshots, screenshots, content extraction as tool calls from an agent). Same capability class Cloudflare uses in their own site-crawler topology. Audited under the default 72h supply-chain policy because its publisher hasn't enabled npm trusted-publishing yet — that's an audit treatment, not a scope decision.
+
+**Workers platform foundation:**
+- **`@cloudflare/workers-types`** — the platform-bindings foundation, including the Workflows V2 runtime types added in the latest releases. Tracked as gap G1.
+
+`hono-agents` (also in the monorepo) is **out of scope** — Fidelity provides its own F#-native web framework occupying the same conceptual slot as Hono, so the Hono-specific integration layer carries no value into the F# surface.
 
 Plus the platform-level changes that the OpenAPI side will pick up:
 - **Workflows V2 management endpoints** (concurrency limits, instance scaling). Tracked as gap G2.
 - **Dynamic Workers management endpoints** (if exposed in OpenAPI). Tracked as gap G5.
 
-The Agents framework is the most architecturally consequential of these. It is, in the user's framing, "kinda the entire reason to be excited about Cloudflare as a delivery platform for agentic workloads." Getting its F# expression right is what this document is about.
+This is the intelligent-edge surface that Cloudflare has staked the platform on, and it is the substantive AI/agentic scope of Fidelity.CloudEdge — not a peripheral concern. The actor-model substrate documented in [08c](08c_mailbox_intercept.md) is what *lets* F# participate in these SDKs at the substrate level; this overlay is *how* F# participates at the surface level. Getting both right is what makes Fidelity.CloudEdge a coherent F#-native expression of Cloudflare's agentic platform rather than a stack of independently-generated layers an author has to reconcile.
 
 Tooling considerations specific to generating F# bindings from these TypeScript packages are documented in [06_tool_status.md](06_tool_status.md). The 0.3.0 release shipped these bindings as hand-curated `Types.fs` files because Glutinum crashed on the surface; per [00 Decision 7](00_architecture_decisions.md), Fidelity.CloudEdge has standardized on **Xantham** as the runtime binding generator going forward. Xantham handles the agents-sdk surface cleanly (where Glutinum did not). The hand-curated bindings will be replaced by Xantham-generated output once the renderer issues documented in [06](06_tool_status.md) are resolved. This document focuses on the F# author-facing API design; that one focuses on the binding generator's mechanics.
 

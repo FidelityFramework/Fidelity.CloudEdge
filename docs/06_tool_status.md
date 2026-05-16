@@ -18,14 +18,28 @@ For the original detailed analysis (Glutinum v0.12.0, Hawaii v0.66.0), see `_arc
 
 ## Binding Inputs
 
-The generation pipeline consumes the following sources:
+The generation pipeline consumes Cloudflare specifications across two tracks — OpenAPI for the Management/Tenancy tiers, and the Cloudflare intelligent-edge npm SDK suite for the Runtime tier. The npm suite is the substantive AI/agentic scope of Fidelity.CloudEdge and is on par with the workers-types foundation, not a side surface.
 
 | Input | Source | Current Tool | Migration Target | Output |
 |-------|--------|--------------|------------------|--------|
 | Cloudflare OpenAPI | `https://github.com/cloudflare/api-schemas` | Hawaii | Hawaii (no change) | 40 Management + 2 Tenancy services |
-| `@cloudflare/workers-types` | npm package | Glutinum | **Xantham** (migration pending) | Worker.Context, AI, DurableObjects |
-| `agents-sdk` (formerly `@cloudflare/agents`) | npm package | hand-curated `Types.fs` (Glutinum crashes on this surface) | **Xantham** | Agent base class, lifecycle hooks, Schedule, Callable attribute |
-| `@cloudflare/dynamic-workflows` | npm package | hand-curated `Types.fs` | **Xantham** | DynamicWorkflowBinding, dispatchWorkflow, wrapWorkflowBinding |
+| `@cloudflare/workers-types` | npm; `cloudflare/workerd` | Glutinum | **Xantham** (migration pending) | Worker.Context, AI, DurableObjects |
+| `agents` (formerly `@cloudflare/agents` / `agents-sdk`) | npm; `cloudflare/agents` monorepo | hand-curated `Types.fs` (Glutinum crashes on this surface) | **Xantham** | Agent base class, lifecycle hooks, Schedule, Callable attribute |
+| `@cloudflare/ai-chat` | npm; `cloudflare/agents` monorepo (sibling) | not yet ingested | **Xantham** | Persistent chat, resumable streaming, tool execution (React-coupled exports filtered) |
+| `@cloudflare/voice` | npm; `cloudflare/agents` monorepo (sibling) | not yet ingested | **Xantham** | STT/TTS/VAD/SFU, `VoiceClient`, server mixins (React hooks filtered) |
+| `@cloudflare/think` | npm; `cloudflare/agents` monorepo (sibling) | not yet ingested | **Xantham** | Opinionated agentic loop, stream resumption, `submitMessages()` |
+| `@cloudflare/codemode` | npm; `cloudflare/agents` monorepo (sibling) | not yet ingested | **Xantham** | LLM-generated TypeScript orchestrating tool calls in a sandbox |
+| `@cloudflare/shell` | npm; `cloudflare/agents` monorepo (sibling) | not yet ingested | **Xantham** | Sandboxed JS execution, virtual filesystem, git ops |
+| `@cloudflare/worker-bundler` | npm; `cloudflare/agents` monorepo (sibling) | not yet ingested | **Xantham** | Runtime Worker bundling for Worker Loader binding |
+| `@cloudflare/dynamic-workflows` | npm; `cloudflare/dynamic-workflows` | hand-curated `Types.fs` | **Xantham** | DynamicWorkflowBinding, dispatchWorkflow, wrapWorkflowBinding |
+| `@cloudflare/containers` | npm; `cloudflare/containers` | not yet ingested | **Xantham** | Container-enabled DO helper |
+| `@cloudflare/sandbox` | npm; `cloudflare/sandbox-sdk` | not yet ingested | **Xantham** | Sandboxed command execution |
+| `@cloudflare/puppeteer` | npm; `cloudflare/puppeteer` | not yet ingested | **Xantham** | Puppeteer-API-compatible control over the Workers Browser-Rendering binding — fetch JS-driven pages, capture DOM snapshots, take screenshots, and extract content as tool calls from an agent. Load-bearing for agentic info-gathering on the open web |
+| `cloudflare` (unscoped) | npm; `cloudflare/cloudflare-typescript` | not yet ingested | **Xantham** | Official Cloudflare TypeScript API client; control-plane complement to Hawaii Management tier |
+
+`hono-agents` from the same monorepo is **excluded** — Fidelity provides its own F#-native web framework occupying the same conceptual slot as Hono, so the Hono-specific integration layer carries no value.
+
+The npm SDK ingestion gates are governed by the per-publisher provenance policy in [13_supply_chain_audit.md](13_supply_chain_audit.md). Eleven of the twelve direct dependencies in the suite carry the supply-chain embargo lift on the strength of SLSA v1 provenance from Cloudflare's GitHub org (`314135`). `@cloudflare/puppeteer` is the one Cloudflare-published direct dependency whose publisher hasn't enabled npm trusted-publishing yet, so its ingestion stays under the default 72-hour audit policy on every bump — that's an audit treatment, not a scope decision; its substantive role in the agentic surface is on par with the rest.
 
 ## Xantham: Capabilities, Architecture, and Tracked Issues
 
