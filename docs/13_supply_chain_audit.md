@@ -6,6 +6,36 @@ generator — `@cloudflare/workers-types`, `@cloudflare/dynamic-workflows`,
 `agents` — and every transitive `npm` dependency that lands in the
 generator host's `node_modules/` during a regen.
 
+## Operating posture (relaxed default with sentinel triggers)
+
+This document specifies the full audit framework. In practice it is
+operated **leanly**: routine SDK bumps and `npm install` runs proceed
+without ceremony, and the strict ceremony below is reserved for
+specific risk triggers.
+
+**Default posture:** Proceed with normal `npm install` against the
+working environment. Do not require sandboxed installs, `npm ci
+--ignore-scripts`, or `npm audit signatures` on every bump.
+
+**Sentinel triggers — when the strict policy applies:**
+
+1. **Hot transitive in the embargo window.** After install, a quick
+   scan shows any resolved transitive (anywhere in the tree) was
+   published to npm within the last 72 hours. Surface the package and
+   its publish timestamp to the user; they decide whether to wait or
+   proceed.
+2. **Active campaign disclosure.** A shai-hulud-class disclosure
+   (Wiz, StepSecurity, Socket, CISA, etc.) names packages in the
+   resolved tree within the last 14 days. Treat the named package as
+   embargoed regardless of its own publish age.
+3. **Direct user flag.** The user explicitly asks "is X affected by
+   Y" or names a specific concern about a package or campaign.
+
+Outside these triggers, the per-publisher lift table below establishes
+trust at the *publisher* level (provenance + OIDC + repo-org binding)
+and the install proceeds normally. The strict checklist in this
+document is the path of escalation, not the default ceremony.
+
 ## Why this policy exists
 
 The xantham IR pipeline takes `.d.ts` files from installed npm packages

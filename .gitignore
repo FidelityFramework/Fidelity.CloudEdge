@@ -509,3 +509,20 @@ pnpm-lock.yaml
 CLAUDE.md
 
 .serena
+
+# Xantham generator output and CLI scratch
+# All of the following are reproducible from:
+#   - npm install (per the manifest + package-lock.json)
+#   - the xantham CLI (../speakez-xantham)
+#   - the .NET Driver (generators/xantham/Driver.fsproj)
+# They were committed historically when the ingestion set was three small
+# SDKs totaling <25MB; the expanded intelligent-edge surface produces IRs
+# that exceed GitHub's 100MB file limit (cloudflare.json @ ~128MB) and
+# the policy was overdue for revision regardless.
+generators/xantham/output/*.json
+generators/xantham/output/*.fs
+generators/xantham/verify/*.wrapped.fs
+.xantham/
+
+# Kept in tracking under generators/xantham/output/:
+#   - observations.md, issue-*.md (project documentation, not artifacts)
