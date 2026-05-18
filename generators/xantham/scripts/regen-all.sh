@@ -1,10 +1,13 @@
 #!/bin/bash
-# Rebuild Driver against current Xantham and regenerate all three SDK
-# outputs. Run after speakez-xantham source changes.
+# Rebuild Driver against current Xantham and regenerate all 12 Cloudflare
+# runtime SDK outputs. Run after speakez-xantham source changes.
 #
 # Usage:
-#   ./scripts/regen-all.sh            # build + regen all three
+#   ./scripts/regen-all.sh            # build + regen all 12
 #   ./scripts/regen-all.sh nobuild    # regen only (driver already built)
+#
+# The bare `cloudflare` package is the management REST client (handled
+# separately via Hawaii + OpenAPI) and is NOT a Xantham target.
 
 set -euo pipefail
 
@@ -13,12 +16,29 @@ DRIVER_DIR="$SCRIPT_DIR/.."
 OUT_DIR="$DRIVER_DIR/output"
 MODE="${1:-build}"
 
+# The 12 runtime SDK targets.
+SDKS=(
+    agents
+    ai-chat
+    codemode
+    containers
+    dynamic-workflows
+    puppeteer
+    sandbox
+    shell
+    think
+    voice
+    worker-bundler
+    workers-types
+)
+
 cd "$DRIVER_DIR"
 
 if [ "$MODE" = "build" ]; then
     dotnet build Driver.fsproj --no-incremental 2>&1 | tail -3
 fi
 
-dotnet run --project Driver.fsproj --no-build -- "$OUT_DIR/agents.json"             "$OUT_DIR/agents.fs"             2>&1 | tail -3
-dotnet run --project Driver.fsproj --no-build -- "$OUT_DIR/workers-types.json"      "$OUT_DIR/workers-types.fs"      2>&1 | tail -3
-dotnet run --project Driver.fsproj --no-build -- "$OUT_DIR/dynamic-workflows.json"  "$OUT_DIR/dynamic-workflows.fs"  2>&1 | tail -3
+for sdk in "${SDKS[@]}"; do
+    dotnet run --project Driver.fsproj --no-build -- \
+        "$OUT_DIR/${sdk}.json" "$OUT_DIR/${sdk}.fs" 2>&1 | tail -1
+done
