@@ -450,3 +450,49 @@ audit checklist before the first lockfile is committed.
 
 This table is a point-in-time snapshot. Re-derive it each audit — do
 not trust it past the date in the header.
+
+## Expected exits (transitional framing)
+
+This audit framework is operated as a transitional measure, not as the
+durable form of supply-chain hygiene for the Cloudflare binding work.
+It is the form appropriate while three things hold simultaneously:
+
+1. The npm registry remains under active worm and credential-stealer
+   campaigns (shai-hulud variants, mini-shai-hulud / TeamPCP, etc.).
+2. Trusted publishing (provenance attestations, OIDC, repo-bound
+   builds) is partially adopted — present for Cloudflare's direct
+   packages per the lift table, but uncommon across the transitive
+   graph.
+3. The binding pipeline ingests `.d.ts` from npm-installed packages,
+   which is also the install-time exposure surface.
+
+Three independent exits can retire or substantially shrink this
+ceremony:
+
+**Ecosystem hardening.** Universal adoption of npm provenance + OIDC
+across the transitive tree (not just direct deps) would make the
+per-publisher lift policy the default and reduce the 72-hour quarantine
+to a vestigial check. The Lifting-the-embargo §4 criteria collapse into
+"is the publisher trusted by ecosystem-default rules?"
+
+**JSIR-based binding-time analysis.** A JS-lift pass during binding
+generation can flag suspicious patterns in the analyzed JavaScript
+using the same capabilities Google built JSIR for (deobfuscation,
+malicious-code detection). See the two-layer analyzer sketch in
+[10_jsir_strategic_assessment.md §4.2](10_jsir_strategic_assessment.md).
+This is *additive* to install-time audit — install-time still happens,
+but its findings are captured permanently in the IR rather than at the
+install moment alone.
+
+**Node-free JS toolchain.** Substantial migration off Node (Deno, Bun,
+post-Node runtimes consolidating) would change the install-time
+exposure surface entirely. The corresponding shift on the
+binding-generator side — a native TypeScript parser replacing Node +
+TSC — moves independently but on the same trajectory.
+
+None of these is scheduled. The operating posture is: maintain the
+audit ceremony as today, expand it when active campaigns escalate, and
+revisit the framework when any of the three exits materially advances.
+The detail in this document is intentional — it makes the cost of the
+ceremony visible, which is what makes the eventual exits compelling
+rather than ad hoc.
