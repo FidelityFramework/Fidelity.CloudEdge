@@ -165,17 +165,25 @@ This process is still under review, but it's worth noting the "head space" that 
 
 #### Xantham (forward-going)
 
-```bash
-# Phase 1: extract TypeScript → JSON schema (Fable-compiled extractor)
-cd ../Xantham
-node ./index.js ./node_modules/@cloudflare/workers-types/index.d.ts
-# Produces output.json
+Xantham is a single .NET process. It runs the TypeScript 7 compiler (the Go `tsc` shipped in the pinned `typescript` npm package) as `tsc --api`, speaks its msgpack protocol over stdio through `Xantham.TypeScript.Wire`, and asks the live checker for types, symbols, and signatures. There is no Fable-compiled extractor and no JSON intermediate; the earlier extractor → `output.json` → decoder design is retired to Xantham's `.archive/`.
 
-# Phase 2: decode + generate F# from JSON schema (.NET generator)
-cp output.json src/Xantham.Fable/output.json
-dotnet run --project src/Xantham.Generator/Xantham.Generator.fsproj \
-    > /path/to/Fidelity.CloudEdge/src/Runtime/CloudEdge.Worker.Context/Generated.fs
+```bash
+# One command over a package directory; the package's own node_modules resolves its dependencies.
+cd ../Xantham
+dotnet run --project src/Xantham.Cli -- generate /home/hhh/repos/Fidelity.CloudEdge/node_modules/@cloudflare/workers-types \
+    -o /path/to/Fidelity.CloudEdge/src/Runtime/Fidelity.CloudEdge.Worker.Context/Generated
+
+# Emit the JSON Schema for xantham.json (also written by `build.fsx -- generate --only schema`).
+dotnet run --project src/Xantham.Cli -- schema -o xantham.schema.json
 ```
+
+Configuration is discovered from an `xantham.json` beside the package's `package.json` (`--config <path>` overrides the location). Its keys are `module` (the entry package's F# module name), `namespace` (the F# namespace a package family shares, so `@cloudflare/workers-types` and a dependent package read as `FSharp.CloudEdge` and `FSharp.CloudEdge.<Leaf>` from either side of a reference), `groups` (a disposition per dependency package: `ship` emits the dependency as its own module under `groups/`, `reference` templates its names against a run performed elsewhere, `map` redirects names to a hand-written binding such as `Fable.Core.JS.*` with the destination's arity, `widen` renders them as `obj` with a finding), and `lib` (the compiler lib option, spelled as `tsconfig.json` spells it).
+
+A run writes one `.fs` per shipped group plus a `manifest.json` that grades every symbol `Exact`, `Ergonomic`, `Widened`, or `Escape` and attributes each loss to a coded finding (`TR006`, `HG001`, ...). The manifest is the review artifact: a regeneration is judged by the tier movement it causes, and the finding keys say which mapping decision each loss traces to. Generated bindings target Fable 5.x only, open `Fable.Core` plus the `Fable.Browser.*` family, and expect `Xantham.Fable.Core` for the erased `keyof`/brand helpers.
+
+Xantham's own corpus pins `@cloudflare/workers-types` as a golden rung: every regeneration is diffed against the committed output, compiled as F# by a compile gate, and executed under Fable by a run gate. The September 20 source review at Xantham `c7e2fa0` found `cloudflare:workers` in the committed workers-types golden, including imported `DurableObject`, with `HG004` recording harvested exports. The earlier blanket `HG001` ambient-module blocker is therefore obsolete. Review the selected package graph's current `manifest.json` and `symbols.jsonl` for remaining losses; that upstream golden does not establish acceptance of this repository's full Agents graph.
+
+The reviewed Xantham README records the `Xantham.Cli` dotnet tool at `0.1.0-alpha.1`. Use its [generator guide](../../Xantham/docs/generator-usage.md) for package installation and configuration, or the checkout invocation above when preserving a specific source revision.
 
 #### Glutinum (legacy — deprecated)
 

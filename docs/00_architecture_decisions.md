@@ -229,6 +229,8 @@ Xantham is a hard fork of Glutinum that decomposes the pipeline into three phase
 
 The Hawaii pipeline for Management API generation is **unaffected** by this migration — Hawaii handles OpenAPI specifications, Xantham handles TypeScript definitions, and the two are orthogonal. Hawaii continues as the Management-tier binding generator. Xantham's role is the runtime-tier replacement for Glutinum specifically.
 
+**Addendum (September 2026)**: The commitment stands; the architecture it was made against does not. In September 2026 Xantham replaced the three-phase design described above (Fable extractor, JSON schema boundary, .NET decoder and generator) with a single .NET process built on `Xantham.TypeScript.Wire`: the TypeScript 7 Go compiler runs as `tsc --api`, the client speaks its msgpack protocol over stdio and reads the compiler's binary AST in place, and the generator (Harvest → Resolve → Shape → Render) asks the live checker for types, symbols, and signatures. There is no JSON intermediate, no `TypeKey` indirection, no reusable decoder, and no Fabulous.AST/Fantomas dependency; the retired design is preserved in Xantham's `.archive/`. The properties this decision valued survive in different form: identity is the checker's own rather than a schema-layer indirection, imports and namespaces derive from the checker's symbol origins, and reserved-name handling is a render-tier rule. Two things the new architecture adds are material to this repository: a per-symbol fidelity manifest (`Exact`/`Ergonomic`/`Widened`/`Escape`, with coded findings) that replaces line-count comparisons as the measure of a regeneration, and a `groups` configuration with `ship`/`reference`/`map`/`widen` dispositions plus a `namespace` key, which is the mechanism by which a package family publishes under one F# namespace. The migration sequencing above is superseded: steps 1–2 refer to the retired code; step 3 must use the selected package graph and its current correspondence evidence. The initial ambient-module blocker has since changed: the September 20 source review at Xantham `c7e2fa0` includes generated `cloudflare:workers` exports and imported `DurableObject` in the workers-types golden. This does not establish regeneration or acceptance of this repository's full Agents graph. Current invocation and configuration are documented in [01_dual_layer_architecture.md](01_dual_layer_architecture.md) § Generation Pipeline.
+
 ## Implementation Pipeline
 
 ### Runtime API Generation (Glutinum — being phased out per Decision 7)
@@ -245,19 +247,16 @@ npx @glutinum/cli generate \
 ### Runtime API Generation (Xantham — standard path going forward)
 
 ```bash
-# Phase 1: extract TypeScript → JSON schema (Fable-compiled extractor)
+# One process: the TypeScript 7 compiler is driven as `tsc --api` over msgpack/stdio.
+# Configuration is discovered from xantham.json beside the package's package.json.
 cd ../Xantham
-node ./index.js \
-    /home/hhh/repos/Fidelity.CloudEdge/node_modules/@cloudflare/workers-types/index.d.ts
-# Produces output.json (~14 MB for workers-types-shaped inputs)
-
-# Phase 2: decode + generate F# from JSON schema (.NET generator)
-cp output.json src/Xantham.Fable/output.json
-dotnet run --project src/Xantham.Generator/Xantham.Generator.fsproj \
-    > /path/to/Fidelity.CloudEdge/src/Runtime/CloudEdge.Worker.Context/Generated.fs
+dotnet run --project src/Xantham.Cli -- generate \
+    /home/hhh/repos/Fidelity.CloudEdge/node_modules/@cloudflare/workers-types \
+    -o /path/to/Fidelity.CloudEdge/src/Runtime/Fidelity.CloudEdge.Worker.Context/Generated
+# Writes <Module>.fs, one groups/<Group>.fs per shipped dependency, and manifest.json.
 ```
 
-The three phases are deliberately separated so the encoder (TypeScript Compiler API or future TSGO migration) can be replaced without touching downstream consumers, and so a Fidelity-specific generator can be substituted if framework-specific output conventions warrant it.
+The command, the `xantham.json` keys (`module`, `namespace`, `groups`, `lib`), the manifest tiers, and the current gaps against `@cloudflare/workers-types` are documented in [01_dual_layer_architecture.md](01_dual_layer_architecture.md) § Generation Pipeline. The earlier two-phase commands (Fable extractor → `output.json` → .NET generator) describe the architecture retired in September 2026; see the addendum to Decision 7.
 
 ### Management API Generation (Hawaii — unaffected by Xantham migration)
 ```bash
